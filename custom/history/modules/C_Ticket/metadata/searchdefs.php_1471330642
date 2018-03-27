@@ -1,0 +1,339 @@
+<?php
+$module_name = 'C_Ticket';
+$searchdefs[$module_name] = 
+array (
+  'layout' => 
+  array (
+    'basic_search' => 
+    array (
+      'name' => 
+      array (
+        'name' => 'name',
+        'default' => true,
+        'width' => '10%',
+      ),
+      'pax_name' => 
+      array (
+        'type' => 'varchar',
+        'label' => 'LBL_PAX_NAME',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'pax_name',
+      ),
+      'tour' => 
+      array (
+        'type' => 'varchar',
+        'label' => 'LBL_TOUR',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'tour',
+      ),
+      'current_user_only' => 
+      array (
+        'name' => 'current_user_only',
+        'label' => 'LBL_CURRENT_USER_FILTER',
+        'type' => 'bool',
+        'default' => true,
+        'width' => '10%',
+      ),
+    ),
+    'advanced_search' => 
+    array (
+      'name' => 
+      array (
+        'name' => 'name',
+        'default' => true,
+        'width' => '10%',
+      ),
+      'accounts_c_ticket_1_name' => 
+      array (
+        'type' => 'relate',
+        'link' => true,
+        'label' => 'LBL_ACCOUNTS_C_TICKET_1_FROM_ACCOUNTS_TITLE',
+        'id' => 'ACCOUNTS_C_TICKET_1ACCOUNTS_IDA',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'accounts_c_ticket_1_name',
+      ),
+      'customer_code' => 
+      array (
+        'type' => 'varchar',
+        'label' => 'LBL_CUSTOMER_CODE',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'customer_code',
+      ),
+      'pax_name' => 
+      array (
+        'type' => 'varchar',
+        'label' => 'LBL_PAX_NAME',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'pax_name',
+      ),
+      'tour' => 
+      array (
+        'type' => 'varchar',
+        'label' => 'LBL_TOUR',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'tour',
+      ),
+      'booking_date' => 
+      array (
+        'type' => 'date',
+        'label' => 'LBL_BOOKING_DATE',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'booking_date',
+        'enable_range_search' => true,
+        'options' => 'date_range_search_dom',
+      ),
+      'date_entered' => 
+      array (
+        'type' => 'datetime',
+        'studio' => 
+        array (
+          'portaleditview' => false,
+        ),
+        'label' => 'LBL_DATE_ENTERED',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'date_entered',
+      ),
+      'refund_date' => 
+      array (
+        'type' => 'date',
+        'label' => 'LBL_REFUND_DATE',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'refund_date',
+      ),
+      'airline' => 
+      array (
+        'type' => 'enum',
+        'label' => 'LBL_ASSET',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'airline',
+      ),
+      'assigned_user_id' => 
+      array (
+        'name' => 'assigned_user_id',
+        'label' => 'LBL_ASSIGNED_TO',
+        'type' => 'enum',
+        'function' => 
+        array (
+          'name' => 'get_user_array',
+          'params' => 
+          array (
+            0 => false,
+          ),
+        ),
+        'default' => true,
+        'width' => '10%',
+      ),
+      'category' => 
+      array (
+        'type' => 'enum',
+        'default' => true,
+        'studio' => 'visible',
+        'label' => 'LBL_CATEGORY',
+        'width' => '10%',
+        'name' => 'category',
+      ),
+      'supplier' => 
+      array (
+        'type' => 'enum',
+        'default' => true,
+        'studio' => 'visible',
+        'label' => 'LBL_SUPPLIER',
+        'width' => '10%',
+        'name' => 'supplier',
+      ),
+      'refunded' => 
+      array (
+        'type' => 'bool',
+        'label' => 'LBL_REFUNDED',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'refunded',
+      ),
+      'routing' => 
+      array (
+        'type' => 'varchar',
+        'label' => 'LBL_ROUTING',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'routing',
+      ),
+      'booking_code' => 
+      array (
+        'type' => 'varchar',
+        'label' => 'LBL_BOOKING_CODE',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'booking_code',
+      ),
+      'refund_fee' => 
+      array (
+        'type' => 'currency',
+        'label' => 'LBL_REFUND_FEE',
+        'currency_format' => true,
+        'width' => '10%',
+        'default' => true,
+        'name' => 'refund_fee',
+      ),
+      'refund_fee_airline' => 
+      array (
+        'type' => 'currency',
+        'label' => 'LBL_REFUND_FEE_AIRLINE',
+        'currency_format' => true,
+        'width' => '10%',
+        'default' => true,
+        'name' => 'refund_fee_airline',
+      ),
+      'gateway' => 
+      array (
+        'type' => 'varchar',
+        'label' => 'LBL_GATEWAY',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'gateway',
+      ),
+      'c_bookingticket_c_ticket_1_name' => 
+      array (
+        'type' => 'relate',
+        'link' => true,
+        'label' => 'LBL_C_BOOKINGTICKET_C_TICKET_1_FROM_C_BOOKINGTICKET_TITLE',
+        'id' => 'C_BOOKINGTICKET_C_TICKET_1C_BOOKINGTICKET_IDA',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'c_bookingticket_c_ticket_1_name',
+      ),
+      'public_fare' => 
+      array (
+        'type' => 'currency',
+        'label' => 'LBL_PUBLIC_FARE',
+        'currency_format' => true,
+        'width' => '10%',
+        'default' => true,
+        'name' => 'public_fare',
+      ),
+      'market_fare' => 
+      array (
+        'type' => 'currency',
+        'label' => 'LBL_MARKET_FARE',
+        'currency_format' => true,
+        'width' => '10%',
+        'default' => true,
+        'name' => 'market_fare',
+      ),
+      'receivable' => 
+      array (
+        'type' => 'currency',
+        'label' => 'LBL_RECEIVABLE',
+        'currency_format' => true,
+        'width' => '10%',
+        'default' => true,
+        'name' => 'receivable',
+      ),
+      'payable' => 
+      array (
+        'type' => 'currency',
+        'label' => 'LBL_PAYABLE',
+        'currency_format' => true,
+        'width' => '10%',
+        'default' => true,
+        'name' => 'payable',
+      ),
+      'earn' => 
+      array (
+        'type' => 'currency',
+        'label' => 'LBL_EARN',
+        'currency_format' => true,
+        'width' => '10%',
+        'default' => true,
+        'name' => 'earn',
+      ),
+      'fare_basic' => 
+      array (
+        'type' => 'varchar',
+        'label' => 'LBL_FARE_BASIC',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'fare_basic',
+      ),
+      'class' => 
+      array (
+        'type' => 'enum',
+        'default' => true,
+        'studio' => 'visible',
+        'label' => 'LBL_CLASS',
+        'width' => '10%',
+        'name' => 'class',
+      ),
+      'currency' => 
+      array (
+        'type' => 'enum',
+        'default' => true,
+        'studio' => 'visible',
+        'label' => 'LBL_CURRENCY',
+        'width' => '10%',
+        'name' => 'currency',
+      ),
+      'team_name' => 
+      array (
+        'type' => 'relate',
+        'link' => true,
+        'studio' => 
+        array (
+          'portallistview' => false,
+          'portaldetailview' => false,
+          'portaleditview' => false,
+        ),
+        'label' => 'LBL_TEAMS',
+        'id' => 'TEAM_ID',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'team_name',
+      ),
+      'current_user_only' => 
+      array (
+        'label' => 'LBL_CURRENT_USER_FILTER',
+        'type' => 'bool',
+        'default' => true,
+        'width' => '10%',
+        'name' => 'current_user_only',
+      ),
+      'favorites_only' => 
+      array (
+        'name' => 'favorites_only',
+        'label' => 'LBL_FAVORITES_FILTER',
+        'type' => 'bool',
+        'default' => true,
+        'width' => '10%',
+      ),
+      'c_ticket_c_ticket_1_name' => 
+      array (
+        'type' => 'relate',
+        'link' => true,
+        'label' => 'LBL_C_TICKET_C_TICKET_1_FROM_C_TICKET_L_TITLE',
+        'id' => 'C_TICKET_C_TICKET_1C_TICKET_IDA',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'c_ticket_c_ticket_1_name',
+      ),
+    ),
+  ),
+  'templateMeta' => 
+  array (
+    'maxColumns' => '3',
+    'maxColumnsBasic' => '4',
+    'widths' => 
+    array (
+      'label' => '10',
+      'field' => '30',
+    ),
+  ),
+);

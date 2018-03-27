@@ -1,0 +1,4 @@
+
+({transactionValue:'',_render:function(){if(this.def.convertToBase&&this.def.showTransactionalAmount&&this.model.get('currency_id')!=='-99'){this.transactionValue=app.currency.formatAmountLocale(this.model.get(this.name),this.model.get('currency_id'));}
+app.view.Field.prototype._render.call(this);return this;},unformat:function(value){return app.currency.unformatAmountLocale(value);},format:function(value){var base_rate=this.model.get('base_rate');var currencyId=this.model.get('currency_id');if(this.def.convertToBase){value=app.currency.convertWithRate(value,base_rate);currencyId='-99';}
+return app.currency.formatAmountLocale(value,currencyId);}})

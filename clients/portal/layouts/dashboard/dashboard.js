@@ -1,0 +1,2 @@
+
+({initialize:function(options){this.module_list=app.metadata.getModuleNames(true);options.meta.components=[];_.each(this.module_list,function(module){options.meta.components.push({layout:"list",context:{limit:5,module:module}});},this);app.view.Layout.prototype.initialize.call(this,options);}})

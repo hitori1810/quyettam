@@ -1,0 +1,22 @@
+<?php 
+ //WARNING: The contents of this file are auto-generated
+
+
+//THIS FILE IS AUTO GENERATED, DO NOT MODIFY
+$mod_strings['LBL_PROJECTTASK_PROJECT_1_FROM_PROJECTTASK_TITLE'] = 'Project Tasks';
+$mod_strings['LBL_PROJECTTASK_PROJECT_1_FROM_PROJECT_TITLE_ID'] = 'Project Tasks ID';
+
+
+//THIS FILE IS AUTO GENERATED, DO NOT MODIFY
+$mod_strings['LBL_PROJECTTASK_PROJECT_1_FROM_PROJECTTASK_TITLE'] = 'Project Tasks';
+$mod_strings['LBL_PROJECTTASK_PROJECT_1_FROM_PROJECT_TITLE_ID'] = 'Project Tasks ID';
+$mod_strings['LBL_PROJECT_C_WORKLOG_1_FROM_C_WORKLOG_TITLE'] = 'Work Logs';
+
+
+//THIS FILE IS AUTO GENERATED, DO NOT MODIFY
+$mod_strings['LBL_PROJECTTASK_PROJECT_1_FROM_PROJECTTASK_TITLE'] = 'Project Tasks';
+$mod_strings['LBL_PROJECTTASK_PROJECT_1_FROM_PROJECT_TITLE_ID'] = 'Project Tasks ID';
+$mod_strings['LBL_PROJECT_C_WORKLOG_1_FROM_C_WORKLOG_TITLE'] = 'Work Logs';
+$mod_strings['LBL_PROJECT_USERS_1_FROM_USERS_TITLE'] = 'Users';
+
+?>

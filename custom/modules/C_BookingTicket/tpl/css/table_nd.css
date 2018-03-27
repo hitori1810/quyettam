@@ -1,0 +1,20 @@
+table#celebs tr.evenListRowS1 td {
+    background-color: #fff;
+    border-bottom: 1px solid;
+    border-color: #ccc;
+}
+table#celebs tr.oddListRowS1 td {
+    background-color: #f6f6f6;
+    border-bottom: 1px solid;
+    border-color: #ccc;
+}
+table#celebs tr.oddListRowS1:hover td {
+    background-color: #dcf0ff;
+}
+table#celebs tr.evenListRowS1:hover td {
+    background-color: #dcf0ff;
+}
+table#celebs th {
+    border-bottom: 1px solid;
+    border-color: #ccc;
+}

@@ -1,0 +1,32 @@
+tour/hotel:
+- Contact: rela tới module contact.
+- Thêm field attach file.
+- Bổ dung code tour/hotel, cho phép search Global.
+- Trùng Tour Details. (tour detailview)
+- Details, policy: hiển thị thành bà viết, ko để scrollview.
+	
+Booking tour:
+- Khi chọn tour thì hiện code tour (read only)
+- Penalty khi hoàn tour thì mới hiện ra.
+
+Booking Tour/Hotel:
+- Bổ sung subpannel booking để lưu danh sách người đi (contact) .
+- Search global cho booking code tour/hotel.
+- Thêm field attach file.
+- Thêm payment info như ticket.
+
+Contact:
+- Relationship type: từ subpnal select 1 contact mới thì không hiện rela type.
+- Group of => Member of.
+
+Booking Other:
+- Bỏ required full-payment.
+- bổ sung subpannal chọn nhiều contact.
+- Thêm field số lượng, tính total amount theo số lượng.
+- Gửi mail noti cho sale.
+
+Product Catalog:
+- rela chọn tới contact (tên, sdt, email) => bỏ support...
+
+Booking Ticket:
+- 

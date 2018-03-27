@@ -1,0 +1,51 @@
+.date{
+    margin-left:240px;
+    width: 250px; 
+    border-collapse: collapse;                
+}
+.customer{
+    margin-left:115px;
+    margin-top:9px;
+    border-collapse: collapse; 
+    height: 300px;
+    width: 550px;
+}
+table, tr, td{
+    height: 30px;  
+/*    border :1px solid;  */
+}
+
+p {
+   word-break: break-all;
+}
+.detail{
+   vertical-align: bottom; 
+   margin-top:90px;
+   border-collapse: collapse; 
+/*   width: 800px; */
+   table-layout: fixed; 
+   height: 600px;
+   font-size : 15px;
+   line-height:31.5px;
+   
+}
+.sum{
+    position:fixed;
+    top: 775px;
+    left:440px;
+}
+.vat{
+    position:fixed;
+    top: 775px;
+    left:610px;
+}
+.total_amount{
+   position:fixed;
+   top: 820px;
+   left:650px; 
+}
+.money_string{
+   position:fixed;
+   top: 840px;
+   left:0px; 
+}
