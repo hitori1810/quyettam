@@ -178,7 +178,7 @@
 				<td width='2%' nowrap>
 	                {if $pageData.rowAccess[$id].edit}
 <!-- Edit by Lap Nguyen - OnlineCRM	                -->
-                    {if $pageData.bean.moduleDir != 'Reports' && $pageData.bean.moduleDir != 'C_Ticket'}
+                    {if $pageData.bean.moduleDir != 'Reports'}
                     <a title='{$editLinkString}' id="edit-{$rowData.ID}"
     href="index.php?module={$linkModule}&offset={$offset}&stamp={$pageData.stamp}&return_module={$linkModule}&action={$action}&record={$rowData.ID}"
                     >

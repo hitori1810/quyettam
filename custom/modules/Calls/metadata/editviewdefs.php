@@ -16,12 +16,12 @@ array (
         array (
           0 => 
           array (
-            'customCode' => '<input title="{$APP.LBL_SAVE_BUTTON_TITLE}" id="SAVE_HEADER" accessKey="{$APP.LBL_SAVE_BUTTON_KEY}" class="button primary" onclick="SUGAR.calls.fill_invitees();CAL.fillRepeatData();document.EditView.action.value=\'Save\'; document.EditView.return_action.value=\'DetailView\'; {if isset($smarty.request.isDuplicate) && $smarty.request.isDuplicate eq "true"}document.EditView.return_id.value=\'\'; {/if}formSubmitCheck();;" type="button" name="button" value="{$APP.LBL_SAVE_BUTTON_LABEL}">',
+            'customCode' => '<input title="{$APP.LBL_SAVE_BUTTON_TITLE}" id="SAVE_HEADER" accessKey="{$APP.LBL_SAVE_BUTTON_KEY}" class="button primary" onclick="SUGAR.calls.fill_invitees();CAL.fillRepeatData();document.EditView.action.value=\'Save\'; document.EditView.return_action.value=\'DetailView\'; {if isset($smarty.request.isDuplicate) && $smarty.request.isDuplicate eq "true"}document.EditView.return_id.value=\'\'; {/if}formSubmitCheck();" type="button" name="button" value="{$APP.LBL_SAVE_BUTTON_LABEL}">',
           ),
           1 => 'CANCEL',
           2 => 
           array (
-            'customCode' => '<input title="{$MOD.LBL_SEND_BUTTON_TITLE}" id="SAVE_SEND_HEADER" class="button" onclick="document.EditView.send_invites.value=\'1\';SUGAR.calls.fill_invitees();CAL.fillRepeatData();document.EditView.action.value=\'Save\';document.EditView.return_action.value=\'EditView\';document.EditView.return_module.value=\'{$smarty.request.return_module}\';formSubmitCheck();;" type="button" name="button" value="{$MOD.LBL_SEND_BUTTON_LABEL}">',
+            'customCode' => '<input title="{$MOD.LBL_SEND_BUTTON_TITLE}" id="SAVE_SEND_HEADER" class="button" onclick="document.EditView.send_invites.value=\'1\';SUGAR.calls.fill_invitees();CAL.fillRepeatData();document.EditView.action.value=\'Save\';document.EditView.return_action.value=\'EditView\';document.EditView.return_module.value=\'{$smarty.request.return_module}\';formSubmitCheck();" type="button" name="button" value="{$MOD.LBL_SEND_BUTTON_LABEL}">',
           ),
           3 => 
           array (
@@ -32,12 +32,12 @@ array (
         array (
           0 => 
           array (
-            'customCode' => '<input title="{$APP.LBL_SAVE_BUTTON_TITLE}" id="SAVE_FOOTER" accessKey="{$APP.LBL_SAVE_BUTTON_KEY}" class="button primary" onclick="SUGAR.calls.fill_invitees();CAL.fillRepeatData();document.EditView.action.value=\'Save\'; document.EditView.return_action.value=\'DetailView\'; {if isset($smarty.request.isDuplicate) && $smarty.request.isDuplicate eq "true"}document.EditView.return_id.value=\'\'; {/if}formSubmitCheck();;" type="button" name="button" value="{$APP.LBL_SAVE_BUTTON_LABEL}">',
+            'customCode' => '<input title="{$APP.LBL_SAVE_BUTTON_TITLE}" id="SAVE_FOOTER" accessKey="{$APP.LBL_SAVE_BUTTON_KEY}" class="button primary" onclick="SUGAR.calls.fill_invitees();CAL.fillRepeatData();document.EditView.action.value=\'Save\'; document.EditView.return_action.value=\'DetailView\'; {if isset($smarty.request.isDuplicate) && $smarty.request.isDuplicate eq "true"}document.EditView.return_id.value=\'\'; {/if}formSubmitCheck();" type="button" name="button" value="{$APP.LBL_SAVE_BUTTON_LABEL}">',
           ),
           1 => 'CANCEL',
           2 => 
           array (
-            'customCode' => '<input title="{$MOD.LBL_SEND_BUTTON_TITLE}" id="SAVE_SEND_FOOTER" class="button" onclick="document.EditView.send_invites.value=\'1\';SUGAR.calls.fill_invitees();CAL.fillRepeatData();document.EditView.action.value=\'Save\';document.EditView.return_action.value=\'EditView\';document.EditView.return_module.value=\'{$smarty.request.return_module}\';formSubmitCheck();;" type="button" name="button" value="{$MOD.LBL_SEND_BUTTON_LABEL}">',
+            'customCode' => '<input title="{$MOD.LBL_SEND_BUTTON_TITLE}" id="SAVE_SEND_FOOTER" class="button" onclick="document.EditView.send_invites.value=\'1\';SUGAR.calls.fill_invitees();CAL.fillRepeatData();document.EditView.action.value=\'Save\';document.EditView.return_action.value=\'EditView\';document.EditView.return_module.value=\'{$smarty.request.return_module}\';formSubmitCheck();" type="button" name="button" value="{$MOD.LBL_SEND_BUTTON_LABEL}">',
           ),
           3 => 
           array (
@@ -78,7 +78,6 @@ function formSubmitCheck(){ldelim}var duration=true;if(typeof(isValidDuration)!=
           'panelDefault' => 'expanded',
         ),
       ),
-      'syncDetailEditViews' => false,
     ),
     'panels' => 
     array (
@@ -166,27 +165,37 @@ function formSubmitCheck(){ldelim}var duration=true;if(typeof(isValidDuration)!=
             ),
           ),
         ),
+      ),
+      'LBL_CTICALLS_PANEL' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            'name' => 'call_source_c',
+          ),
+          1 => 
+          array (
+            'name' => 'call_destination_c',
+          ),
+        ),
         1 => 
         array (
           0 => 
           array (
-            'name' => 'date_modified',
-            'comment' => 'Date record last modified',
-            'studio' => 
-            array (
-              'portaleditview' => false,
-            ),
-            'label' => 'LBL_DATE_MODIFIED',
+            'name' => 'call_entrysource_c',
           ),
           1 => 
           array (
-            'name' => 'date_entered',
-            'comment' => 'Date record created',
-            'studio' => 
-            array (
-              'portaleditview' => false,
-            ),
-            'label' => 'LBL_DATE_ENTERED',
+            'name' => 'call_duration_minute_c',
+          ),
+        ),
+        2 => 
+        array (
+          0 => 
+          array (
+            'name' => 'record_c',
+            'type' => 'URL',
           ),
         ),
       ),

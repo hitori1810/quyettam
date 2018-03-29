@@ -13,8 +13,8 @@
             }
         },
         "alertsEl": "#alert",
-        "serverUrl": "http://localhost/proj/sugar_license/rest/v10",
-        "siteUrl": "http://localhost/proj/sugar_license",
+        "serverUrl": "http://localhost/cloudpro/rest/v10",
+        "siteUrl": "http://localhost/cloudpro/",
         "unsecureRoutes": ["signup", "error"],
         "loadCss": "url",
         "clientID": "support_portal",

@@ -25,35 +25,84 @@ $subpanel_layout = array(
 
 
 	'list_fields' => array(
-        'name'=>array(
-		    'name' => 'name',
-		 	'vname' => 'LBL_LIST_SUBJECT',
-			'widget_class' => 'SubPanelDetailViewLink',
-			'width' => '50%',
-		),
-		'date_start'=>array(
-		    'name' => 'date_start',
-		 	'vname' => 'LBL_LIST_DATE',
-			'width' => '25%',
-		),
-		'date_end'=>array(
-		    'name' => 'date_end',
-		    'vname' => 'LBL_DATE_END',
-		    'width' => '25%',
-		),
-		'edit_button'=>array(
-			'vname' => 'LBL_EDIT_BUTTON',
-			 'widget_class' => 'SubPanelEditButton',
-			 'width' => '2%',
-		),
-		'remove_button'=>array(
-			'vname' => 'LBL_REMOVE',
-			 'widget_class' => 'SubPanelRemoveButton',
-			 'width' => '2%',
-		),
-		'recurring_source'=>array(
-			'usage'=>'query_only',	
-		),
+    'name' =>
+  array (
+    'name' => 'name',
+    'vname' => 'LBL_LIST_SUBJECT',
+    'widget_class' => 'SubPanelDetailViewLink',
+    'width' => '20%',
+    'default' => true,
+  ),
+  'type' =>
+  array (
+    'type' => 'enum',
+    'default' => true,
+    'studio' =>
+    array (
+      'wireless_basic_search' => false,
+    ),
+    'vname' => 'LBL_SESSION_TYPE',
+    'width' => '10%',
+  ),
+  'session_status' =>
+  array (
+    'type' => 'enum',
+    'default' => true,
+    'studio' => 'visible',
+    'vname' => 'LBL_SESSION_STATUS',
+    'width' => '10%',
+  ),
+  'time_start_end' =>
+  array (
+    'name' => 'time_start_end',
+    'vname' => 'Dates/Times',
+    'width' => '12%',
+    'default' => true,
+    'sort_by' => 'date_start',
+  ),
+    'duration_cal' =>
+  array (
+    'type' => 'duration_cal',
+    'vname' => 'LBL_DURATION',
+    'width' => '10%',
+    'default' => true,
+  ),
+  'teacher_name' =>
+  array (
+    'type' => 'relate',
+    'link' => true,
+    'vname' => 'LBL_TEACHER_NAME',
+    'id' => 'TEACHER_ID',
+    'width' => '10%',
+    'default' => true,
+    'widget_class' => 'SubPanelDetailViewLink',
+    'target_module' => 'C_Teachers',
+    'target_record_key' => 'teacher_id',
+  ),
+  'room_name' =>
+  array (
+    'type' => 'relate',
+    'link' => true,
+    'vname' => 'LBL_ROOM_NAME',
+    'id' => 'ROOM_ID',
+    'width' => '10%',
+    'default' => true,
+    'widget_class' => 'SubPanelDetailViewLink',
+    'target_module' => 'C_Rooms',
+    'target_record_key' => 'room_id',
+  ),
+  'recurring_source' =>
+  array (
+    'usage' => 'query_only',
+  ),
+        'date_start' =>
+  array (
+    'usage' => 'query_only',
+  ),
+  'date_end' =>
+  array (
+    'usage' => 'query_only',
+  )
 	),
 );
 ?>

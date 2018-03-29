@@ -1,9 +1,9 @@
 <?php
-// created: 2018-03-27 23:02:36
+// created: 2018-03-29 10:02:23
 $mod_strings = array (
-  'LBL_TEAM' => 'Teams',
+  'LBL_TEAM' => 'Center',
   'LBL_TEAMS' => 'Teams:',
-  'LBL_TEAM_ID' => 'Team Id',
+  'LBL_TEAM_ID' => 'Center Id',
   'LBL_ADD_ANOTHER_FILE' => 'Add Another File',
   'LBL_ADD_DOCUMENT' => 'Add a Sugar Document',
   'LBL_ADD_FILE' => 'Add a file',
@@ -75,4 +75,7 @@ $mod_strings = array (
   'LBL_SELECT' => 'Select',
   'LBL_ID_FF_CLEAR' => 'Clear',
   'LBL_TYPE' => 'Type',
+  'LBL_SMS_ONLY' => 'SMS Only',
+  'LBL_SMS' => 'SMS',
+  'LBL_SURVEY_ID' => 'Survey',
 );

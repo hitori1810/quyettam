@@ -43,7 +43,6 @@ SUGAR.util.doWhen(function() {
 {/literal}
 </script>
 </div>
-  
 <script type="text/javascript">
 {literal}
 SUGAR.meetings = {};

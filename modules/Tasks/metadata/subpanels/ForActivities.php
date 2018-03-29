@@ -30,21 +30,25 @@ $subpanel_layout = array(
 		'name'=>array(
 			 'vname' => 'LBL_LIST_SUBJECT',
 			 'widget_class' => 'SubPanelDetailViewLink',
-			 'width' => '30%',
+			 'width' => '15%',
 		),
+                'description' => array(
+            'vname' => 'LBL_DESCRIPTION',
+            'width' => '30%',
+        ),
 		'status'=>array(
 			 'widget_class' => 'SubPanelActivitiesStatusField',
 			 'vname' => 'LBL_LIST_STATUS',
 			 'width' => '15%',
 		),
-		'contact_name'=>array(
-			 'widget_class' => 'SubPanelDetailViewLink',
-			 'target_record_key' => 'contact_id',
-			 'target_module' => 'Contacts',
-			 'module' => 'Contacts',
-			 'vname' => 'LBL_LIST_CONTACT',
-			 'width' => '11%',
-		),
+//		'contact_name'=>array(
+//			 'widget_class' => 'SubPanelDetailViewLink',
+//			 'target_record_key' => 'contact_id',
+//			 'target_module' => 'Contacts',
+//			 'module' => 'Contacts',
+//			 'vname' => 'LBL_LIST_CONTACT',
+//			 'width' => '11%',
+//		),
 		'date_due'=>array(
 			 'vname' => 'LBL_LIST_DUE_DATE',
 			 'width' => '10%',
@@ -57,7 +61,7 @@ $subpanel_layout = array(
 			'widget_class' => 'SubPanelDetailViewLink',
 		 	'target_record_key' => 'assigned_user_id',
 			'target_module' => 'Employees',
-			'width' => '22%',			
+			'width' => '10%',			
 		),
 		'edit_button'=>array(
 			'vname' => 'LBL_EDIT_BUTTON',

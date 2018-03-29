@@ -50,24 +50,25 @@
 	<td scope="row"><slot>{MOD.LBL_PUBLISH}</slot></td>
 	<td><slot><input type="checkbox" name="published" disabled {PUBLISHED}></slot></td>
 	-->
+    <!--Edit by Bui Kim Tung - customize display fot sms type-->    
 	</tr>
 	<tr>
-	<td scope="row" width='15%'><slot>{MOD.LBL_DESCRIPTION}</slot></td>
-	<td><slot>{DESCRIPTION}</slot></td>
+	<td scope="row" width='15%'><slot>{APP.LBL_EMAIL_TEMPLATE_TYPE}:</slot></td>
+	<td><slot>{TYPE}</slot></td>
 	<td scope="row"><slot>{APP.LBL_DATE_ENTERED}</slot></td>
 	<td><slot>{DATE_ENTERED} {APP.LBL_BY} {CREATED_BY}</slot></td>
-	</tr>	
-	<tr>
+	</tr>
+	<tr {DISPLAY_STYLE}>
 	<td scope="row"><slot>{MOD.LBL_FROM_NAME}</slot></td>
 	<td><slot>{FROM_NAME}</slot></td>
 	<td scope="row"><slot>{MOD.LBL_FROM_ADDRESS}</slot></td>
 	<td><slot>{FROM_ADDRESS}</slot></td>
 	</tr>
 	<tr>
+    <td scope="row" width='15%'><slot>{MOD.LBL_DESCRIPTION}</slot></td>
+    <td><slot>{DESCRIPTION}</slot></td>
 	<td scope="row" width='15%'><slot>{MOD.LBL_BASE_MODULE}</slot></td>
 	<td><slot>{BASE_MODULE}</slot></td>
-	<td scope="row"><slot>&nbsp;</slot></td>
-	<td><slot>&nbsp;</slot></td>
 	</tr>	
 <!--
 	<tr>
@@ -75,12 +76,13 @@
 	<td><slot></slot></td>
 	</tr>
 -->
-	<tr>
+	<tr  {DISPLAY_STYLE}>
 	<td scope="row" valign="top"><slot>{MOD.LBL_SUBJECT}</slot></td>
 	<td><slot>{SUBJECT}</slot></td>
 	<td scope="row" valign="top"><slot></slot></td>
 	<td><slot></slot></td>
 	</tr>
+    <!--END edit by Bui Kim Tung -->
 	<tr>
 	<td scope="row" valign="top"><slot>{MOD.LBL_BODY}</slot></td>
         <td colspan="3"  style="background-color: #ffffff;" ><slot><div id="html_div" style="background-color: #ffffff;padding: 5px">{BODY_HTML}</div>

@@ -31,6 +31,8 @@ class ImportCacheFiles
     const FILE_DUPLICATES         = 'dupes';
     const FILE_DUPLICATES_DISPLAY = 'dupesdisplay';
     const FILE_ERRORS             = 'error';
+    const FILE_UPDATES            = 'updates';
+    const FILE_UPDATE_RECORDS     = 'updaterecords';
     const FILE_ERROR_RECORDS      = 'errorrecords';
     const FILE_ERROR_RECORDS_ONLY = 'errorrecordsonly';
     const FILE_STATUS             = 'status';
@@ -161,6 +163,21 @@ class ImportCacheFiles
     public static function getErrorRecordsWithoutErrorFileName()
     {
         return self::_createFileName(self::FILE_ERROR_RECORDS_ONLY);
+    }
+    
+    public static function getUpdateFileName()
+    {
+        return self::_createFileName(self::FILE_UPDATES);
+    }
+
+    /**
+     * Returns the error records filename
+     *
+     * @return string filename
+     */
+    public static function getUpdateRecordsFileName()
+    {
+        return self::_createFileName(self::FILE_UPDATE_RECORDS);
     }
 
     /**

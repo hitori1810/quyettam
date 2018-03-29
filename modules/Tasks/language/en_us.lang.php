@@ -96,6 +96,7 @@ $mod_strings = array (
   'LBL_EXPORT_PARENT_TYPE' => 'Related To Module',
   'LBL_EXPORT_PARENT_ID' => 'Related To ID',
   'LBL_ASSIGNED_USER' => 'Assigned to',
+  'LBL_ASSIGNED_TO_ID' => 'Assigned to',
   'LBL_RELATED_TO' => 'Related to:',
 );
 

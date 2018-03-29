@@ -1,11 +1,11 @@
 <?php
-// created: 2018-03-27 23:02:36
+// created: 2018-03-29 16:49:26
 $mod_strings = array (
   'LBL_ASSIGNED_TO_ID' => 'Assigned User Id',
   'LBL_ASSIGNED_TO_NAME' => 'Assigned to',
-  'LBL_TEAM' => 'Team',
-  'LBL_TEAMS' => 'Teams',
-  'LBL_TEAM_ID' => 'Team Id',
+  'LBL_TEAM' => 'Center',
+  'LBL_TEAMS' => 'Center',
+  'LBL_TEAM_ID' => 'Center Id',
   'LBL_MODULE_NAME' => 'Target Lists',
   'LBL_MODULE_NAME_SINGULAR' => 'Target List',
   'LBL_MODULE_ID' => 'Target Lists',
@@ -41,7 +41,7 @@ $mod_strings = array (
   'LBL_CONTACTS_SUBPANEL_TITLE' => 'Contacts',
   'LBL_LEADS_SUBPANEL_TITLE' => 'Leads',
   'LBL_PROSPECTS_SUBPANEL_TITLE' => 'Targets',
-  'LBL_ACCOUNTS_SUBPANEL_TITLE' => 'Accounts',
+  'LBL_ACCOUNTS_SUBPANEL_TITLE' => 'Corporates',
   'LBL_COPY_PREFIX' => 'Copy of',
   'LBL_USERS_SUBPANEL_TITLE' => 'Users',
   'LBL_TYPE' => 'Type',

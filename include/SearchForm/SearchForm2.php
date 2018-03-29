@@ -861,6 +861,7 @@ require_once('include/EditView/EditView2.php');
                          }
 
                          if($type == 'date') {
+                              $field_value = str_replace("%",'',$field_value); // update by Trung Nguyen 2016.06.23
                             // The regular expression check is to circumvent special case YYYY-MM
                              $operator = '=';
                              if(preg_match('/^\d{4}.\d{1,2}$/', $field_value) != 0) { // preg_match returns number of matches
@@ -872,6 +873,7 @@ require_once('include/EditView/EditView2.php');
                          }
 
                          if($type == 'datetime' || $type == 'datetimecombo') {
+                             //$field_value = str_replace("%",'',$field_value); // update by Trung Nguyen 2016.06.23
                              try {
                                  if($operator == '=' || $operator == 'between') {
                                      // FG - bug45287 - If User asked for a range, takes edges from it.
@@ -1069,7 +1071,7 @@ require_once('include/EditView/EditView2.php');
                                          if(isset($this->seed->field_name_map) && isset($this->seed->field_name_map[$db_field]))
                                          {
                                              $vardefEntry = $this->seed->field_name_map[$db_field];
-                                             if(!empty($vardefEntry['db_concat_fields']) && in_array('first_name', $vardefEntry['db_concat_fields']) && in_array('last_name', $vardefEntry['db_concat_fields']))
+                                             if(!empty($vardefEntry['db_concat_fields']) && in_array('last_name', $vardefEntry['db_concat_fields']) && in_array('first_name', $vardefEntry['db_concat_fields']))
                                              {
                                                    if(!empty($GLOBALS['app_list_strings']['salutation_dom']) && is_array($GLOBALS['app_list_strings']['salutation_dom']))
                                                    {

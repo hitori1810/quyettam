@@ -1,37 +1,21 @@
 <?php
-$listViewDefs['ProductTemplates'] = 
+$listViewDefs['ProductTemplates'] =
 array (
-  'code' => 
+  'code' =>
   array (
     'type' => 'varchar',
     'label' => 'LBL_CODE',
     'width' => '10%',
     'default' => true,
   ),
-  'name' => 
+  'name' =>
   array (
-    'width' => '20%',
+    'width' => '15%',
     'label' => 'LBL_LIST_NAME',
     'link' => true,
     'default' => true,
   ),
-  'category_name' => 
-  array (
-    'width' => '20%',
-    'label' => 'LBL_LIST_CATEGORY',
-    'link' => false,
-    'sortable' => true,
-    'default' => true,
-  ),
-  'cost_price' => 
-  array (
-    'type' => 'currency',
-    'label' => 'LBL_COST_PRICE',
-    'currency_format' => true,
-    'width' => '10%',
-    'default' => true,
-  ),
-  'list_price' => 
+  'list_price' =>
   array (
     'type' => 'currency',
     'label' => 'LBL_LIST_PRICE',
@@ -39,19 +23,57 @@ array (
     'width' => '10%',
     'default' => true,
   ),
-  'discount_price' => 
+  'unit' =>
   array (
-    'type' => 'currency',
-    'label' => 'LBL_DISCOUNT_PRICE',
-    'currency_format' => true,
+    'type' => 'enum',
+    'studio' => 'visible',
+    'label' => 'LBL_UNIT',
     'width' => '10%',
     'default' => true,
   ),
-  'currency' => 
+  'type_name' =>
   array (
-    'type' => 'varchar',
-    'label' => 'LBL_CURRENCY',
+    'width' => '7%',
+    'label' => 'LBL_LIST_TYPE',
+    'link' => false,
+    'sortable' => true,
+    'default' => true,
+  ),
+  'status2' =>
+  array (
+    'type' => 'enum',
+    'label' => 'LBL_STATUS_2',
     'width' => '10%',
     'default' => true,
+  ),
+  'date_available' =>
+  array (
+    'type' => 'date',
+    'label' => 'LBL_DATE_AVAILABLE',
+    'width' => '10%',
+    'default' => true,
+  ),
+  'description' =>
+  array (
+    'type' => 'text',
+    'label' => 'LBL_DESCRIPTION',
+    'sortable' => false,
+    'width' => '15%',
+    'default' => true,
+  ),
+  'category_name' =>
+  array (
+    'width' => '10%',
+    'label' => 'LBL_LIST_CATEGORY',
+    'link' => false,
+    'sortable' => true,
+    'default' => false,
+  ),
+  'vendor_part_num' =>
+  array (
+    'type' => 'varchar',
+    'label' => 'LBL_VENDOR_PART_NUM',
+    'width' => '10%',
+    'default' => false,
   ),
 );

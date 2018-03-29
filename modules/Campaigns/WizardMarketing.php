@@ -56,10 +56,19 @@ $GLOBALS['log']->info("Wizard Continue Create Wizard");
  }else{
     echo getClassicModuleTitle($mod_strings['LBL_MODULE_NAME'], array($mod_strings['LBL_CAMPAIGN'].' '.$campaign_focus->name), true);
  }
+// Add By Hai Duc
+# tracy: overrides the default definition of the message
+# may be moved later to en_us.lang.php
+if ($campaign_focus->campaign_type == "SMS") {	
 
+    # tracy: use the sms.lang.php language file to override the regular Campaign lang
+    if ($campaign_focus->campaign_type == "SMS") require("modules/Campaigns/language/sms.lang.php");
+
+ }
 $ss = new Sugar_Smarty();
 $ss->assign("MOD", $mod_strings);
 $ss->assign("APP", $app_strings);
+$ss->assign("CAMPAIGN_TYPE", $campaign_focus->campaign_type);	// tracy: campaign type handler Add By Hai Duc
 if (isset($_REQUEST['return_module'])) $ss->assign("RETURN_MODULE", $_REQUEST['return_module']);
 if (isset($_REQUEST['return_action'])) $ss->assign("RETURN_ACTION", $_REQUEST['return_action']);
 if (isset($_REQUEST['return_id'])) $ss->assign("RETURN_ID", $_REQUEST['return_id']);
@@ -159,7 +168,8 @@ if (empty($mrkt_focus->inbound_email_id)) {
 $ss->assign("TIME_MERIDIEM", $timedate->AMPMMenu('', $mrkt_focus->time_start));
 $ss->assign("TIME_FORMAT", '('. $timedate->get_user_time_format().')');
 
-$email_templates_arr = get_bean_select_array(true, 'EmailTemplate','name','','name');
+$where = ($campaign_focus->campaign_type == "SMS") ? "sms_only=1" : "sms_only=0";
+$email_templates_arr = get_bean_select_array(true, 'EmailTemplate','name',$where,'name');
 if($mrkt_focus->template_id) {
     $ss->assign("TEMPLATE_ID", $mrkt_focus->template_id);
     $ss->assign("EMAIL_TEMPLATE_OPTIONS", get_select_options_with_id($email_templates_arr, $mrkt_focus->template_id));

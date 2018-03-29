@@ -11,27 +11,21 @@ array (
         'default' => true,
         'width' => '10%',
       ),
-      'current_user_only' => 
+      'meeting_type' => 
       array (
-        'name' => 'current_user_only',
-        'label' => 'LBL_CURRENT_USER_FILTER',
-        'type' => 'bool',
+        'type' => 'enum',
         'default' => true,
         'width' => '10%',
+        'label' => 'LBL_MEETING_TYPE',
+        'name' => 'meeting_type',
       ),
-      0 => 
+      'date_start' => 
       array (
-        'name' => 'favorites_only',
-        'label' => 'LBL_FAVORITES_FILTER',
-        'type' => 'bool',
-      ),
-      1 => 
-      array (
-        'name' => 'open_only',
-        'label' => 'LBL_OPEN_ITEMS',
-        'type' => 'bool',
-        'default' => false,
+        'type' => 'datetimecombo',
+        'label' => 'LBL_DATE',
         'width' => '10%',
+        'default' => true,
+        'name' => 'date_start',
       ),
     ),
     'advanced_search' => 
@@ -42,63 +36,80 @@ array (
         'default' => true,
         'width' => '10%',
       ),
-      'parent_name' => 
+      'meeting_type' => 
       array (
-        'type' => 'parent',
-        'label' => 'LBL_LIST_RELATED_TO',
-        'width' => '10%',
-        'default' => true,
-        'name' => 'parent_name',
-      ),
-      'current_user_only' => 
-      array (
-        'name' => 'current_user_only',
-        'label' => 'LBL_CURRENT_USER_FILTER',
-        'type' => 'bool',
+        'name' => 'meeting_type',
         'default' => true,
         'width' => '10%',
       ),
-      'status' => 
+      'date_start' => 
       array (
-        'name' => 'status',
-        'default' => true,
+        'type' => 'datetimecombo',
+        'label' => 'LBL_DATE',
         'width' => '10%',
-      ),
-      'assigned_user_id' => 
-      array (
-        'name' => 'assigned_user_id',
-        'type' => 'enum',
-        'label' => 'LBL_ASSIGNED_TO',
-        'function' => 
-        array (
-          'name' => 'get_user_array',
-          'params' => 
-          array (
-            0 => false,
-          ),
-        ),
         'default' => true,
-        'width' => '10%',
+        'name' => 'date_start',
       ),
-      'favorites_only' => 
+      'teacher_name' => 
       array (
-        'name' => 'favorites_only',
-        'label' => 'LBL_FAVORITES_FILTER',
-        'type' => 'bool',
+        'type' => 'relate',
+        'link' => true,
+        'label' => 'LBL_TEACHER_NAME',
+        'id' => 'TEACHER_ID',
+        'width' => '10%',
         'default' => true,
-        'width' => '10%',
+        'name' => 'teacher_name',
       ),
-      'date_entered' => 
+      'duration_cal' => 
       array (
-        'type' => 'datetime',
+        'type' => 'decimal',
+        'label' => 'LBL_DURATION',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'duration_cal',
+      ),
+      'lesson_number' => 
+      array (
+        'type' => 'int',
+        'default' => true,
+        'label' => 'LBL_LESSON_NUMBER',
+        'width' => '10%',
+        'name' => 'lesson_number',
+      ),
+      'description' => 
+      array (
+        'type' => 'text',
+        'label' => 'LBL_DESCRIPTION',
+        'sortable' => false,
+        'width' => '10%',
+        'default' => true,
+        'name' => 'description',
+      ),
+      'room_name' => 
+      array (
+        'type' => 'relate',
+        'link' => true,
+        'label' => 'LBL_ROOM_NAME',
+        'id' => 'ROOM_ID',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'room_name',
+      ),
+      'team_name' => 
+      array (
+        'type' => 'relate',
+        'link' => true,
         'studio' => 
         array (
+          'portallistview' => false,
+          'portaldetailview' => false,
           'portaleditview' => false,
         ),
-        'label' => 'LBL_DATE_ENTERED',
+        'label' => 'LBL_TEAMS',
+        'id' => 'TEAM_ID',
         'width' => '10%',
         'default' => true,
-        'name' => 'date_entered',
+        'name' => 'team_name',
       ),
     ),
   ),

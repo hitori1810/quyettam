@@ -318,6 +318,8 @@ function handleSave($prefix,$redirect=true, $useRequired=false) {
             $focus->users_arr = $userInvitees;
             $focus->contacts_arr = $contactInvitees;
             $focus->leads_arr = $leadInvitees;
+//            //Custom run workflow  - By Lap Nguyen
+//            $focus->meeting_module = $_REQUEST['relate_to'];
             
             $focus->save(true);
             $return_id = $focus->id;

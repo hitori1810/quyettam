@@ -57,7 +57,7 @@ $dictionary['Product'] = array('table' => 'products','audited'=>true,
 		'isnull'=>'true',
 		'module'=>'Contacts',
 		'source'=>'non-db',
-		'db_concat_fields'=> array(0=>'first_name', 1=>'last_name'),
+        'db_concat_fields'=> array(0=>'last_name', 1=>'first_name'),
 		),
   'type_id' =>
   array (
@@ -192,7 +192,7 @@ $dictionary['Product'] = array('table' => 'products','audited'=>true,
     'vname' => 'LBL_DISCOUNT_RATE_USDOLLAR',
     'type' => 'decimal',
     'len' => '26,6',
-  	'studio' => array('editview' => false), 
+  	'studio' => array('editview' => false),
   ),
   'discount_select' =>
   array (
@@ -746,7 +746,7 @@ array (
    array('lhs_module'=> 'Users', 'lhs_table'=> 'users', 'lhs_key' => 'id',
    'rhs_module'=> 'Products', 'rhs_table'=> 'products', 'rhs_key' => 'created_by',
    'relationship_type'=>'one-to-many')
-	
+
 	,'products_worksheet' =>
    array('lhs_module'=> 'Products', 'lhs_table'=> 'products', 'lhs_key' => 'id',
    'rhs_module'=> 'Worksheet', 'rhs_table'=> 'worksheet', 'rhs_key' => 'related_id',

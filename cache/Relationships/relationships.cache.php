@@ -1945,6 +1945,31 @@
         'default' => '0',
         'required' => false,
       ),
+      7 => 
+      array (
+        'name' => 'attendance',
+        'type' => 'varchar',
+        'len' => '1',
+        'default' => '0',
+      ),
+      8 => 
+      array (
+        'name' => 'enrollment_id',
+        'type' => 'id',
+        'len' => '36',
+      ),
+      9 => 
+      array (
+        'name' => 'contract_id',
+        'type' => 'id',
+        'len' => '36',
+      ),
+      10 => 
+      array (
+        'name' => 'situation_id',
+        'type' => 'id',
+        'len' => '36',
+      ),
     ),
     'indices' => 
     array (
@@ -2012,6 +2037,122 @@
     'join_table' => 'meetings_contacts',
     'join_key_lhs' => 'meeting_id',
     'join_key_rhs' => 'contact_id',
+  ),
+  'meetings_situations' => 
+  array (
+    'name' => 'meetings_situations',
+    'table' => 'meetings_contacts',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'id',
+        'len' => '36',
+      ),
+      1 => 
+      array (
+        'name' => 'meeting_id',
+        'type' => 'id',
+        'len' => '36',
+      ),
+      2 => 
+      array (
+        'name' => 'contact_id',
+        'type' => 'id',
+        'len' => '36',
+      ),
+      3 => 
+      array (
+        'name' => 'required',
+        'type' => 'varchar',
+        'len' => '1',
+        'default' => '1',
+      ),
+      4 => 
+      array (
+        'name' => 'accept_status',
+        'type' => 'varchar',
+        'len' => '25',
+        'default' => 'none',
+      ),
+      5 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      6 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => false,
+      ),
+      7 => 
+      array (
+        'name' => 'attendance',
+        'type' => 'varchar',
+        'len' => '1',
+        'default' => '0',
+      ),
+      8 => 
+      array (
+        'name' => 'enrollment_id',
+        'type' => 'id',
+        'len' => '36',
+      ),
+      9 => 
+      array (
+        'name' => 'contract_id',
+        'type' => 'id',
+        'len' => '36',
+      ),
+      10 => 
+      array (
+        'name' => 'situation_id',
+        'type' => 'id',
+        'len' => '36',
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'idx_con_mtg_situa',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'situation_id',
+        ),
+      ),
+    ),
+    'relationships' => 
+    array (
+      'meetings_situations' => 
+      array (
+        'lhs_module' => 'Meetings',
+        'lhs_table' => 'meetings',
+        'lhs_key' => 'id',
+        'rhs_module' => 'J_StudentSituations',
+        'rhs_table' => 'j_studentsituations',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'meetings_contacts',
+        'join_key_lhs' => 'meeting_id',
+        'join_key_rhs' => 'situation_id',
+      ),
+    ),
+    'lhs_module' => 'Meetings',
+    'lhs_table' => 'meetings',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_StudentSituations',
+    'rhs_table' => 'j_studentsituations',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'meetings_contacts',
+    'join_key_lhs' => 'meeting_id',
+    'join_key_rhs' => 'situation_id',
   ),
   'meetings_users' => 
   array (
@@ -2182,6 +2323,12 @@
         'len' => '1',
         'default' => '0',
         'required' => false,
+      ),
+      7 => 
+      array (
+        'name' => 'situation_id',
+        'type' => 'id',
+        'len' => '36',
       ),
     ),
     'indices' => 
@@ -6166,28 +6313,28 @@
     'join_key_lhs' => 'document_id',
     'join_key_rhs' => 'quote_id',
   ),
-  'accounts_campaigns_1' => 
+  'accounts_c_contacts_1' => 
   array (
-    'name' => 'accounts_campaigns_1',
+    'name' => 'accounts_c_contacts_1',
     'true_relationship_type' => 'one-to-many',
     'from_studio' => true,
     'relationships' => 
     array (
-      'accounts_campaigns_1' => 
+      'accounts_c_contacts_1' => 
       array (
         'lhs_module' => 'Accounts',
         'lhs_table' => 'accounts',
         'lhs_key' => 'id',
-        'rhs_module' => 'Campaigns',
-        'rhs_table' => 'campaigns',
+        'rhs_module' => 'C_Contacts',
+        'rhs_table' => 'c_contacts',
         'rhs_key' => 'id',
         'relationship_type' => 'many-to-many',
-        'join_table' => 'accounts_campaigns_1_c',
-        'join_key_lhs' => 'accounts_campaigns_1accounts_ida',
-        'join_key_rhs' => 'accounts_campaigns_1campaigns_idb',
+        'join_table' => 'accounts_c_contacts_1_c',
+        'join_key_lhs' => 'accounts_c_contacts_1accounts_ida',
+        'join_key_rhs' => 'accounts_c_contacts_1c_contacts_idb',
       ),
     ),
-    'table' => 'accounts_campaigns_1_c',
+    'table' => 'accounts_c_contacts_1_c',
     'fields' => 
     array (
       0 => 
@@ -6211,13 +6358,13 @@
       ),
       3 => 
       array (
-        'name' => 'accounts_campaigns_1accounts_ida',
+        'name' => 'accounts_c_contacts_1accounts_ida',
         'type' => 'varchar',
         'len' => 36,
       ),
       4 => 
       array (
-        'name' => 'accounts_campaigns_1campaigns_idb',
+        'name' => 'accounts_c_contacts_1c_contacts_idb',
         'type' => 'varchar',
         'len' => 36,
       ),
@@ -6226,7 +6373,7 @@
     array (
       0 => 
       array (
-        'name' => 'accounts_campaigns_1spk',
+        'name' => 'accounts_c_contacts_1spk',
         'type' => 'primary',
         'fields' => 
         array (
@@ -6235,56 +6382,56 @@
       ),
       1 => 
       array (
-        'name' => 'accounts_campaigns_1_ida1',
+        'name' => 'accounts_c_contacts_1_ida1',
         'type' => 'index',
         'fields' => 
         array (
-          0 => 'accounts_campaigns_1accounts_ida',
+          0 => 'accounts_c_contacts_1accounts_ida',
         ),
       ),
       2 => 
       array (
-        'name' => 'accounts_campaigns_1_alt',
+        'name' => 'accounts_c_contacts_1_alt',
         'type' => 'alternate_key',
         'fields' => 
         array (
-          0 => 'accounts_campaigns_1campaigns_idb',
+          0 => 'accounts_c_contacts_1c_contacts_idb',
         ),
       ),
     ),
     'lhs_module' => 'Accounts',
     'lhs_table' => 'accounts',
     'lhs_key' => 'id',
-    'rhs_module' => 'Campaigns',
-    'rhs_table' => 'campaigns',
+    'rhs_module' => 'C_Contacts',
+    'rhs_table' => 'c_contacts',
     'rhs_key' => 'id',
     'relationship_type' => 'many-to-many',
-    'join_table' => 'accounts_campaigns_1_c',
-    'join_key_lhs' => 'accounts_campaigns_1accounts_ida',
-    'join_key_rhs' => 'accounts_campaigns_1campaigns_idb',
+    'join_table' => 'accounts_c_contacts_1_c',
+    'join_key_lhs' => 'accounts_c_contacts_1accounts_ida',
+    'join_key_rhs' => 'accounts_c_contacts_1c_contacts_idb',
   ),
-  'accounts_c_bookinghotel_1' => 
+  'accounts_c_invoices_1' => 
   array (
-    'name' => 'accounts_c_bookinghotel_1',
+    'name' => 'accounts_c_invoices_1',
     'true_relationship_type' => 'one-to-many',
     'from_studio' => true,
     'relationships' => 
     array (
-      'accounts_c_bookinghotel_1' => 
+      'accounts_c_invoices_1' => 
       array (
         'lhs_module' => 'Accounts',
         'lhs_table' => 'accounts',
         'lhs_key' => 'id',
-        'rhs_module' => 'C_BookingHotel',
-        'rhs_table' => 'c_bookinghotel',
+        'rhs_module' => 'C_Invoices',
+        'rhs_table' => 'c_invoices',
         'rhs_key' => 'id',
         'relationship_type' => 'many-to-many',
-        'join_table' => 'accounts_c_bookinghotel_1_c',
-        'join_key_lhs' => 'accounts_c_bookinghotel_1accounts_ida',
-        'join_key_rhs' => 'accounts_c_bookinghotel_1c_bookinghotel_idb',
+        'join_table' => 'accounts_c_invoices_1_c',
+        'join_key_lhs' => 'accounts_c_invoices_1accounts_ida',
+        'join_key_rhs' => 'accounts_c_invoices_1c_invoices_idb',
       ),
     ),
-    'table' => 'accounts_c_bookinghotel_1_c',
+    'table' => 'accounts_c_invoices_1_c',
     'fields' => 
     array (
       0 => 
@@ -6308,13 +6455,13 @@
       ),
       3 => 
       array (
-        'name' => 'accounts_c_bookinghotel_1accounts_ida',
+        'name' => 'accounts_c_invoices_1accounts_ida',
         'type' => 'varchar',
         'len' => 36,
       ),
       4 => 
       array (
-        'name' => 'accounts_c_bookinghotel_1c_bookinghotel_idb',
+        'name' => 'accounts_c_invoices_1c_invoices_idb',
         'type' => 'varchar',
         'len' => 36,
       ),
@@ -6323,7 +6470,7 @@
     array (
       0 => 
       array (
-        'name' => 'accounts_c_bookinghotel_1spk',
+        'name' => 'accounts_c_invoices_1spk',
         'type' => 'primary',
         'fields' => 
         array (
@@ -6332,56 +6479,56 @@
       ),
       1 => 
       array (
-        'name' => 'accounts_c_bookinghotel_1_ida1',
+        'name' => 'accounts_c_invoices_1_ida1',
         'type' => 'index',
         'fields' => 
         array (
-          0 => 'accounts_c_bookinghotel_1accounts_ida',
+          0 => 'accounts_c_invoices_1accounts_ida',
         ),
       ),
       2 => 
       array (
-        'name' => 'accounts_c_bookinghotel_1_alt',
+        'name' => 'accounts_c_invoices_1_alt',
         'type' => 'alternate_key',
         'fields' => 
         array (
-          0 => 'accounts_c_bookinghotel_1c_bookinghotel_idb',
+          0 => 'accounts_c_invoices_1c_invoices_idb',
         ),
       ),
     ),
     'lhs_module' => 'Accounts',
     'lhs_table' => 'accounts',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_BookingHotel',
-    'rhs_table' => 'c_bookinghotel',
+    'rhs_module' => 'C_Invoices',
+    'rhs_table' => 'c_invoices',
     'rhs_key' => 'id',
     'relationship_type' => 'many-to-many',
-    'join_table' => 'accounts_c_bookinghotel_1_c',
-    'join_key_lhs' => 'accounts_c_bookinghotel_1accounts_ida',
-    'join_key_rhs' => 'accounts_c_bookinghotel_1c_bookinghotel_idb',
+    'join_table' => 'accounts_c_invoices_1_c',
+    'join_key_lhs' => 'accounts_c_invoices_1accounts_ida',
+    'join_key_rhs' => 'accounts_c_invoices_1c_invoices_idb',
   ),
-  'accounts_c_bookingticket_1' => 
+  'accounts_c_payments_1' => 
   array (
-    'name' => 'accounts_c_bookingticket_1',
+    'name' => 'accounts_c_payments_1',
     'true_relationship_type' => 'one-to-many',
     'from_studio' => true,
     'relationships' => 
     array (
-      'accounts_c_bookingticket_1' => 
+      'accounts_c_payments_1' => 
       array (
         'lhs_module' => 'Accounts',
         'lhs_table' => 'accounts',
         'lhs_key' => 'id',
-        'rhs_module' => 'C_BookingTicket',
-        'rhs_table' => 'c_bookingticket',
+        'rhs_module' => 'C_Payments',
+        'rhs_table' => 'c_payments',
         'rhs_key' => 'id',
         'relationship_type' => 'many-to-many',
-        'join_table' => 'accounts_c_bookingticket_1_c',
-        'join_key_lhs' => 'accounts_c_bookingticket_1accounts_ida',
-        'join_key_rhs' => 'accounts_c_bookingticket_1c_bookingticket_idb',
+        'join_table' => 'accounts_c_payments_1_c',
+        'join_key_lhs' => 'accounts_c_payments_1accounts_ida',
+        'join_key_rhs' => 'accounts_c_payments_1c_payments_idb',
       ),
     ),
-    'table' => 'accounts_c_bookingticket_1_c',
+    'table' => 'accounts_c_payments_1_c',
     'fields' => 
     array (
       0 => 
@@ -6405,13 +6552,13 @@
       ),
       3 => 
       array (
-        'name' => 'accounts_c_bookingticket_1accounts_ida',
+        'name' => 'accounts_c_payments_1accounts_ida',
         'type' => 'varchar',
         'len' => 36,
       ),
       4 => 
       array (
-        'name' => 'accounts_c_bookingticket_1c_bookingticket_idb',
+        'name' => 'accounts_c_payments_1c_payments_idb',
         'type' => 'varchar',
         'len' => 36,
       ),
@@ -6420,7 +6567,7 @@
     array (
       0 => 
       array (
-        'name' => 'accounts_c_bookingticket_1spk',
+        'name' => 'accounts_c_payments_1spk',
         'type' => 'primary',
         'fields' => 
         array (
@@ -6429,56 +6576,55 @@
       ),
       1 => 
       array (
-        'name' => 'accounts_c_bookingticket_1_ida1',
+        'name' => 'accounts_c_payments_1_ida1',
         'type' => 'index',
         'fields' => 
         array (
-          0 => 'accounts_c_bookingticket_1accounts_ida',
+          0 => 'accounts_c_payments_1accounts_ida',
         ),
       ),
       2 => 
       array (
-        'name' => 'accounts_c_bookingticket_1_alt',
+        'name' => 'accounts_c_payments_1_alt',
         'type' => 'alternate_key',
         'fields' => 
         array (
-          0 => 'accounts_c_bookingticket_1c_bookingticket_idb',
+          0 => 'accounts_c_payments_1c_payments_idb',
         ),
       ),
     ),
     'lhs_module' => 'Accounts',
     'lhs_table' => 'accounts',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_BookingTicket',
-    'rhs_table' => 'c_bookingticket',
+    'rhs_module' => 'C_Payments',
+    'rhs_table' => 'c_payments',
     'rhs_key' => 'id',
     'relationship_type' => 'many-to-many',
-    'join_table' => 'accounts_c_bookingticket_1_c',
-    'join_key_lhs' => 'accounts_c_bookingticket_1accounts_ida',
-    'join_key_rhs' => 'accounts_c_bookingticket_1c_bookingticket_idb',
+    'join_table' => 'accounts_c_payments_1_c',
+    'join_key_lhs' => 'accounts_c_payments_1accounts_ida',
+    'join_key_rhs' => 'accounts_c_payments_1c_payments_idb',
   ),
-  'accounts_c_bookingtour_1' => 
+  'bc_submission_data_bc_survey_answers' => 
   array (
-    'name' => 'accounts_c_bookingtour_1',
+    'name' => 'bc_submission_data_bc_survey_answers',
     'true_relationship_type' => 'one-to-many',
-    'from_studio' => true,
     'relationships' => 
     array (
-      'accounts_c_bookingtour_1' => 
+      'bc_submission_data_bc_survey_answers' => 
       array (
-        'lhs_module' => 'Accounts',
-        'lhs_table' => 'accounts',
+        'lhs_module' => 'bc_survey_answers',
+        'lhs_table' => 'bc_survey_answers',
         'lhs_key' => 'id',
-        'rhs_module' => 'C_BookingTour',
-        'rhs_table' => 'c_bookingtour',
+        'rhs_module' => 'bc_submission_data',
+        'rhs_table' => 'bc_submission_data',
         'rhs_key' => 'id',
         'relationship_type' => 'many-to-many',
-        'join_table' => 'accounts_c_bookingtour_1_c',
-        'join_key_lhs' => 'accounts_c_bookingtour_1accounts_ida',
-        'join_key_rhs' => 'accounts_c_bookingtour_1c_bookingtour_idb',
+        'join_table' => 'bc_submission_data_bc_survey_answers_c',
+        'join_key_lhs' => 'bc_submission_data_bc_survey_answersbc_survey_answers_ida',
+        'join_key_rhs' => 'bc_submission_data_bc_survey_answersbc_submission_data_idb',
       ),
     ),
-    'table' => 'accounts_c_bookingtour_1_c',
+    'table' => 'bc_submission_data_bc_survey_answers_c',
     'fields' => 
     array (
       0 => 
@@ -6502,13 +6648,13 @@
       ),
       3 => 
       array (
-        'name' => 'accounts_c_bookingtour_1accounts_ida',
+        'name' => 'bc_submission_data_bc_survey_answersbc_survey_answers_ida',
         'type' => 'varchar',
         'len' => 36,
       ),
       4 => 
       array (
-        'name' => 'accounts_c_bookingtour_1c_bookingtour_idb',
+        'name' => 'bc_submission_data_bc_survey_answersbc_submission_data_idb',
         'type' => 'varchar',
         'len' => 36,
       ),
@@ -6517,7 +6663,7 @@
     array (
       0 => 
       array (
-        'name' => 'accounts_c_bookingtour_1spk',
+        'name' => 'bc_submission_data_bc_survey_answersspk',
         'type' => 'primary',
         'fields' => 
         array (
@@ -6526,56 +6672,55 @@
       ),
       1 => 
       array (
-        'name' => 'accounts_c_bookingtour_1_ida1',
+        'name' => 'bc_submission_data_bc_survey_answers_ida1',
         'type' => 'index',
         'fields' => 
         array (
-          0 => 'accounts_c_bookingtour_1accounts_ida',
+          0 => 'bc_submission_data_bc_survey_answersbc_survey_answers_ida',
         ),
       ),
       2 => 
       array (
-        'name' => 'accounts_c_bookingtour_1_alt',
+        'name' => 'bc_submission_data_bc_survey_answers_alt',
         'type' => 'alternate_key',
         'fields' => 
         array (
-          0 => 'accounts_c_bookingtour_1c_bookingtour_idb',
+          0 => 'bc_submission_data_bc_survey_answersbc_submission_data_idb',
         ),
       ),
     ),
-    'lhs_module' => 'Accounts',
-    'lhs_table' => 'accounts',
+    'lhs_module' => 'bc_survey_answers',
+    'lhs_table' => 'bc_survey_answers',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_BookingTour',
-    'rhs_table' => 'c_bookingtour',
+    'rhs_module' => 'bc_submission_data',
+    'rhs_table' => 'bc_submission_data',
     'rhs_key' => 'id',
     'relationship_type' => 'many-to-many',
-    'join_table' => 'accounts_c_bookingtour_1_c',
-    'join_key_lhs' => 'accounts_c_bookingtour_1accounts_ida',
-    'join_key_rhs' => 'accounts_c_bookingtour_1c_bookingtour_idb',
+    'join_table' => 'bc_submission_data_bc_survey_answers_c',
+    'join_key_lhs' => 'bc_submission_data_bc_survey_answersbc_survey_answers_ida',
+    'join_key_rhs' => 'bc_submission_data_bc_survey_answersbc_submission_data_idb',
   ),
-  'accounts_c_ticketreport_1' => 
+  'bc_submission_data_bc_survey_questions' => 
   array (
-    'name' => 'accounts_c_ticketreport_1',
+    'name' => 'bc_submission_data_bc_survey_questions',
     'true_relationship_type' => 'one-to-many',
-    'from_studio' => true,
     'relationships' => 
     array (
-      'accounts_c_ticketreport_1' => 
+      'bc_submission_data_bc_survey_questions' => 
       array (
-        'lhs_module' => 'Accounts',
-        'lhs_table' => 'accounts',
+        'lhs_module' => 'bc_survey_questions',
+        'lhs_table' => 'bc_survey_questions',
         'lhs_key' => 'id',
-        'rhs_module' => 'C_TicketReport',
-        'rhs_table' => 'c_ticketreport',
+        'rhs_module' => 'bc_submission_data',
+        'rhs_table' => 'bc_submission_data',
         'rhs_key' => 'id',
         'relationship_type' => 'many-to-many',
-        'join_table' => 'accounts_c_ticketreport_1_c',
-        'join_key_lhs' => 'accounts_c_ticketreport_1accounts_ida',
-        'join_key_rhs' => 'accounts_c_ticketreport_1c_ticketreport_idb',
+        'join_table' => 'bc_submission_data_bc_survey_questions_c',
+        'join_key_lhs' => 'bc_submission_data_bc_survey_questionsbc_survey_questions_ida',
+        'join_key_rhs' => 'bc_submission_data_bc_survey_questionsbc_submission_data_idb',
       ),
     ),
-    'table' => 'accounts_c_ticketreport_1_c',
+    'table' => 'bc_submission_data_bc_survey_questions_c',
     'fields' => 
     array (
       0 => 
@@ -6599,13 +6744,13 @@
       ),
       3 => 
       array (
-        'name' => 'accounts_c_ticketreport_1accounts_ida',
+        'name' => 'bc_submission_data_bc_survey_questionsbc_survey_questions_ida',
         'type' => 'varchar',
         'len' => 36,
       ),
       4 => 
       array (
-        'name' => 'accounts_c_ticketreport_1c_ticketreport_idb',
+        'name' => 'bc_submission_data_bc_survey_questionsbc_submission_data_idb',
         'type' => 'varchar',
         'len' => 36,
       ),
@@ -6614,7 +6759,7 @@
     array (
       0 => 
       array (
-        'name' => 'accounts_c_ticketreport_1spk',
+        'name' => 'bc_submission_data_bc_survey_questionsspk',
         'type' => 'primary',
         'fields' => 
         array (
@@ -6623,56 +6768,55 @@
       ),
       1 => 
       array (
-        'name' => 'accounts_c_ticketreport_1_ida1',
+        'name' => 'bc_submission_data_bc_survey_questions_ida1',
         'type' => 'index',
         'fields' => 
         array (
-          0 => 'accounts_c_ticketreport_1accounts_ida',
+          0 => 'bc_submission_data_bc_survey_questionsbc_survey_questions_ida',
         ),
       ),
       2 => 
       array (
-        'name' => 'accounts_c_ticketreport_1_alt',
+        'name' => 'bc_submission_data_bc_survey_questions_alt',
         'type' => 'alternate_key',
         'fields' => 
         array (
-          0 => 'accounts_c_ticketreport_1c_ticketreport_idb',
+          0 => 'bc_submission_data_bc_survey_questionsbc_submission_data_idb',
         ),
       ),
     ),
-    'lhs_module' => 'Accounts',
-    'lhs_table' => 'accounts',
+    'lhs_module' => 'bc_survey_questions',
+    'lhs_table' => 'bc_survey_questions',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_TicketReport',
-    'rhs_table' => 'c_ticketreport',
+    'rhs_module' => 'bc_submission_data',
+    'rhs_table' => 'bc_submission_data',
     'rhs_key' => 'id',
     'relationship_type' => 'many-to-many',
-    'join_table' => 'accounts_c_ticketreport_1_c',
-    'join_key_lhs' => 'accounts_c_ticketreport_1accounts_ida',
-    'join_key_rhs' => 'accounts_c_ticketreport_1c_ticketreport_idb',
+    'join_table' => 'bc_submission_data_bc_survey_questions_c',
+    'join_key_lhs' => 'bc_submission_data_bc_survey_questionsbc_survey_questions_ida',
+    'join_key_rhs' => 'bc_submission_data_bc_survey_questionsbc_submission_data_idb',
   ),
-  'accounts_c_ticket_1' => 
+  'bc_submission_data_bc_survey_submission' => 
   array (
-    'name' => 'accounts_c_ticket_1',
+    'name' => 'bc_submission_data_bc_survey_submission',
     'true_relationship_type' => 'one-to-many',
-    'from_studio' => true,
     'relationships' => 
     array (
-      'accounts_c_ticket_1' => 
+      'bc_submission_data_bc_survey_submission' => 
       array (
-        'lhs_module' => 'Accounts',
-        'lhs_table' => 'accounts',
+        'lhs_module' => 'bc_survey_submission',
+        'lhs_table' => 'bc_survey_submission',
         'lhs_key' => 'id',
-        'rhs_module' => 'C_Ticket',
-        'rhs_table' => 'c_ticket',
+        'rhs_module' => 'bc_submission_data',
+        'rhs_table' => 'bc_submission_data',
         'rhs_key' => 'id',
         'relationship_type' => 'many-to-many',
-        'join_table' => 'accounts_c_ticket_1_c',
-        'join_key_lhs' => 'accounts_c_ticket_1accounts_ida',
-        'join_key_rhs' => 'accounts_c_ticket_1c_ticket_idb',
+        'join_table' => 'bc_submission_data_bc_survey_submission_c',
+        'join_key_lhs' => 'bc_submission_data_bc_survey_submissionbc_survey_submission_ida',
+        'join_key_rhs' => 'bc_submission_data_bc_survey_submissionbc_submission_data_idb',
       ),
     ),
-    'table' => 'accounts_c_ticket_1_c',
+    'table' => 'bc_submission_data_bc_survey_submission_c',
     'fields' => 
     array (
       0 => 
@@ -6696,13 +6840,13 @@
       ),
       3 => 
       array (
-        'name' => 'accounts_c_ticket_1accounts_ida',
+        'name' => 'bc_submission_data_bc_survey_submissionbc_survey_submission_ida',
         'type' => 'varchar',
         'len' => 36,
       ),
       4 => 
       array (
-        'name' => 'accounts_c_ticket_1c_ticket_idb',
+        'name' => 'bc_submission_data_bc_survey_submissionbc_submission_data_idb',
         'type' => 'varchar',
         'len' => 36,
       ),
@@ -6711,7 +6855,7 @@
     array (
       0 => 
       array (
-        'name' => 'accounts_c_ticket_1spk',
+        'name' => 'bc_submission_data_bc_survey_submissionspk',
         'type' => 'primary',
         'fields' => 
         array (
@@ -6720,2768 +6864,55 @@
       ),
       1 => 
       array (
-        'name' => 'accounts_c_ticket_1_ida1',
+        'name' => 'bc_submission_data_bc_survey_submission_ida1',
         'type' => 'index',
         'fields' => 
         array (
-          0 => 'accounts_c_ticket_1accounts_ida',
+          0 => 'bc_submission_data_bc_survey_submissionbc_survey_submission_ida',
         ),
       ),
       2 => 
       array (
-        'name' => 'accounts_c_ticket_1_alt',
+        'name' => 'bc_submission_data_bc_survey_submission_alt',
         'type' => 'alternate_key',
         'fields' => 
         array (
-          0 => 'accounts_c_ticket_1c_ticket_idb',
+          0 => 'bc_submission_data_bc_survey_submissionbc_submission_data_idb',
         ),
       ),
     ),
-    'lhs_module' => 'Accounts',
-    'lhs_table' => 'accounts',
+    'lhs_module' => 'bc_survey_submission',
+    'lhs_table' => 'bc_survey_submission',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_Ticket',
-    'rhs_table' => 'c_ticket',
+    'rhs_module' => 'bc_submission_data',
+    'rhs_table' => 'bc_submission_data',
     'rhs_key' => 'id',
     'relationship_type' => 'many-to-many',
-    'join_table' => 'accounts_c_ticket_1_c',
-    'join_key_lhs' => 'accounts_c_ticket_1accounts_ida',
-    'join_key_rhs' => 'accounts_c_ticket_1c_ticket_idb',
+    'join_table' => 'bc_submission_data_bc_survey_submission_c',
+    'join_key_lhs' => 'bc_submission_data_bc_survey_submissionbc_survey_submission_ida',
+    'join_key_rhs' => 'bc_submission_data_bc_survey_submissionbc_submission_data_idb',
   ),
-  'contacts_c_bookinghotel_1' => 
+  'bc_survey_accounts' => 
   array (
-    'name' => 'contacts_c_bookinghotel_1',
-    'true_relationship_type' => 'one-to-many',
-    'from_studio' => true,
-    'relationships' => 
-    array (
-      'contacts_c_bookinghotel_1' => 
-      array (
-        'lhs_module' => 'Contacts',
-        'lhs_table' => 'contacts',
-        'lhs_key' => 'id',
-        'rhs_module' => 'C_BookingHotel',
-        'rhs_table' => 'c_bookinghotel',
-        'rhs_key' => 'id',
-        'relationship_type' => 'many-to-many',
-        'join_table' => 'contacts_c_bookinghotel_1_c',
-        'join_key_lhs' => 'contacts_c_bookinghotel_1contacts_ida',
-        'join_key_rhs' => 'contacts_c_bookinghotel_1c_bookinghotel_idb',
-      ),
-    ),
-    'table' => 'contacts_c_bookinghotel_1_c',
-    'fields' => 
-    array (
-      0 => 
-      array (
-        'name' => 'id',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      1 => 
-      array (
-        'name' => 'date_modified',
-        'type' => 'datetime',
-      ),
-      2 => 
-      array (
-        'name' => 'deleted',
-        'type' => 'bool',
-        'len' => '1',
-        'default' => '0',
-        'required' => true,
-      ),
-      3 => 
-      array (
-        'name' => 'contacts_c_bookinghotel_1contacts_ida',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      4 => 
-      array (
-        'name' => 'contacts_c_bookinghotel_1c_bookinghotel_idb',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-    ),
-    'indices' => 
-    array (
-      0 => 
-      array (
-        'name' => 'contacts_c_bookinghotel_1spk',
-        'type' => 'primary',
-        'fields' => 
-        array (
-          0 => 'id',
-        ),
-      ),
-      1 => 
-      array (
-        'name' => 'contacts_c_bookinghotel_1_ida1',
-        'type' => 'index',
-        'fields' => 
-        array (
-          0 => 'contacts_c_bookinghotel_1contacts_ida',
-        ),
-      ),
-      2 => 
-      array (
-        'name' => 'contacts_c_bookinghotel_1_alt',
-        'type' => 'alternate_key',
-        'fields' => 
-        array (
-          0 => 'contacts_c_bookinghotel_1c_bookinghotel_idb',
-        ),
-      ),
-    ),
-    'lhs_module' => 'Contacts',
-    'lhs_table' => 'contacts',
-    'lhs_key' => 'id',
-    'rhs_module' => 'C_BookingHotel',
-    'rhs_table' => 'c_bookinghotel',
-    'rhs_key' => 'id',
-    'relationship_type' => 'many-to-many',
-    'join_table' => 'contacts_c_bookinghotel_1_c',
-    'join_key_lhs' => 'contacts_c_bookinghotel_1contacts_ida',
-    'join_key_rhs' => 'contacts_c_bookinghotel_1c_bookinghotel_idb',
-  ),
-  'contacts_c_bookingticket_1' => 
-  array (
-    'name' => 'contacts_c_bookingticket_1',
-    'true_relationship_type' => 'one-to-many',
-    'from_studio' => true,
-    'relationships' => 
-    array (
-      'contacts_c_bookingticket_1' => 
-      array (
-        'lhs_module' => 'Contacts',
-        'lhs_table' => 'contacts',
-        'lhs_key' => 'id',
-        'rhs_module' => 'C_BookingTicket',
-        'rhs_table' => 'c_bookingticket',
-        'rhs_key' => 'id',
-        'relationship_type' => 'many-to-many',
-        'join_table' => 'contacts_c_bookingticket_1_c',
-        'join_key_lhs' => 'contacts_c_bookingticket_1contacts_ida',
-        'join_key_rhs' => 'contacts_c_bookingticket_1c_bookingticket_idb',
-      ),
-    ),
-    'table' => 'contacts_c_bookingticket_1_c',
-    'fields' => 
-    array (
-      0 => 
-      array (
-        'name' => 'id',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      1 => 
-      array (
-        'name' => 'date_modified',
-        'type' => 'datetime',
-      ),
-      2 => 
-      array (
-        'name' => 'deleted',
-        'type' => 'bool',
-        'len' => '1',
-        'default' => '0',
-        'required' => true,
-      ),
-      3 => 
-      array (
-        'name' => 'contacts_c_bookingticket_1contacts_ida',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      4 => 
-      array (
-        'name' => 'contacts_c_bookingticket_1c_bookingticket_idb',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-    ),
-    'indices' => 
-    array (
-      0 => 
-      array (
-        'name' => 'contacts_c_bookingticket_1spk',
-        'type' => 'primary',
-        'fields' => 
-        array (
-          0 => 'id',
-        ),
-      ),
-      1 => 
-      array (
-        'name' => 'contacts_c_bookingticket_1_ida1',
-        'type' => 'index',
-        'fields' => 
-        array (
-          0 => 'contacts_c_bookingticket_1contacts_ida',
-        ),
-      ),
-      2 => 
-      array (
-        'name' => 'contacts_c_bookingticket_1_alt',
-        'type' => 'alternate_key',
-        'fields' => 
-        array (
-          0 => 'contacts_c_bookingticket_1c_bookingticket_idb',
-        ),
-      ),
-    ),
-    'lhs_module' => 'Contacts',
-    'lhs_table' => 'contacts',
-    'lhs_key' => 'id',
-    'rhs_module' => 'C_BookingTicket',
-    'rhs_table' => 'c_bookingticket',
-    'rhs_key' => 'id',
-    'relationship_type' => 'many-to-many',
-    'join_table' => 'contacts_c_bookingticket_1_c',
-    'join_key_lhs' => 'contacts_c_bookingticket_1contacts_ida',
-    'join_key_rhs' => 'contacts_c_bookingticket_1c_bookingticket_idb',
-  ),
-  'contacts_c_bookingticket_2' => 
-  array (
-    'name' => 'contacts_c_bookingticket_2',
-    'true_relationship_type' => 'one-to-many',
-    'from_studio' => true,
-    'relationships' => 
-    array (
-      'contacts_c_bookingticket_2' => 
-      array (
-        'lhs_module' => 'Contacts',
-        'lhs_table' => 'contacts',
-        'lhs_key' => 'id',
-        'rhs_module' => 'C_BookingTicket',
-        'rhs_table' => 'c_bookingticket',
-        'rhs_key' => 'id',
-        'relationship_type' => 'many-to-many',
-        'join_table' => 'contacts_c_bookingticket_2_c',
-        'join_key_lhs' => 'contacts_c_bookingticket_2contacts_ida',
-        'join_key_rhs' => 'contacts_c_bookingticket_2c_bookingticket_idb',
-      ),
-    ),
-    'table' => 'contacts_c_bookingticket_2_c',
-    'fields' => 
-    array (
-      0 => 
-      array (
-        'name' => 'id',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      1 => 
-      array (
-        'name' => 'date_modified',
-        'type' => 'datetime',
-      ),
-      2 => 
-      array (
-        'name' => 'deleted',
-        'type' => 'bool',
-        'len' => '1',
-        'default' => '0',
-        'required' => true,
-      ),
-      3 => 
-      array (
-        'name' => 'contacts_c_bookingticket_2contacts_ida',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      4 => 
-      array (
-        'name' => 'contacts_c_bookingticket_2c_bookingticket_idb',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-    ),
-    'indices' => 
-    array (
-      0 => 
-      array (
-        'name' => 'contacts_c_bookingticket_2spk',
-        'type' => 'primary',
-        'fields' => 
-        array (
-          0 => 'id',
-        ),
-      ),
-      1 => 
-      array (
-        'name' => 'contacts_c_bookingticket_2_ida1',
-        'type' => 'index',
-        'fields' => 
-        array (
-          0 => 'contacts_c_bookingticket_2contacts_ida',
-        ),
-      ),
-      2 => 
-      array (
-        'name' => 'contacts_c_bookingticket_2_alt',
-        'type' => 'alternate_key',
-        'fields' => 
-        array (
-          0 => 'contacts_c_bookingticket_2c_bookingticket_idb',
-        ),
-      ),
-    ),
-    'lhs_module' => 'Contacts',
-    'lhs_table' => 'contacts',
-    'lhs_key' => 'id',
-    'rhs_module' => 'C_BookingTicket',
-    'rhs_table' => 'c_bookingticket',
-    'rhs_key' => 'id',
-    'relationship_type' => 'many-to-many',
-    'join_table' => 'contacts_c_bookingticket_2_c',
-    'join_key_lhs' => 'contacts_c_bookingticket_2contacts_ida',
-    'join_key_rhs' => 'contacts_c_bookingticket_2c_bookingticket_idb',
-  ),
-  'contacts_c_bookingtour_1' => 
-  array (
-    'name' => 'contacts_c_bookingtour_1',
-    'true_relationship_type' => 'one-to-many',
-    'from_studio' => true,
-    'relationships' => 
-    array (
-      'contacts_c_bookingtour_1' => 
-      array (
-        'lhs_module' => 'Contacts',
-        'lhs_table' => 'contacts',
-        'lhs_key' => 'id',
-        'rhs_module' => 'C_BookingTour',
-        'rhs_table' => 'c_bookingtour',
-        'rhs_key' => 'id',
-        'relationship_type' => 'many-to-many',
-        'join_table' => 'contacts_c_bookingtour_1_c',
-        'join_key_lhs' => 'contacts_c_bookingtour_1contacts_ida',
-        'join_key_rhs' => 'contacts_c_bookingtour_1c_bookingtour_idb',
-      ),
-    ),
-    'table' => 'contacts_c_bookingtour_1_c',
-    'fields' => 
-    array (
-      0 => 
-      array (
-        'name' => 'id',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      1 => 
-      array (
-        'name' => 'date_modified',
-        'type' => 'datetime',
-      ),
-      2 => 
-      array (
-        'name' => 'deleted',
-        'type' => 'bool',
-        'len' => '1',
-        'default' => '0',
-        'required' => true,
-      ),
-      3 => 
-      array (
-        'name' => 'contacts_c_bookingtour_1contacts_ida',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      4 => 
-      array (
-        'name' => 'contacts_c_bookingtour_1c_bookingtour_idb',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-    ),
-    'indices' => 
-    array (
-      0 => 
-      array (
-        'name' => 'contacts_c_bookingtour_1spk',
-        'type' => 'primary',
-        'fields' => 
-        array (
-          0 => 'id',
-        ),
-      ),
-      1 => 
-      array (
-        'name' => 'contacts_c_bookingtour_1_ida1',
-        'type' => 'index',
-        'fields' => 
-        array (
-          0 => 'contacts_c_bookingtour_1contacts_ida',
-        ),
-      ),
-      2 => 
-      array (
-        'name' => 'contacts_c_bookingtour_1_alt',
-        'type' => 'alternate_key',
-        'fields' => 
-        array (
-          0 => 'contacts_c_bookingtour_1c_bookingtour_idb',
-        ),
-      ),
-    ),
-    'lhs_module' => 'Contacts',
-    'lhs_table' => 'contacts',
-    'lhs_key' => 'id',
-    'rhs_module' => 'C_BookingTour',
-    'rhs_table' => 'c_bookingtour',
-    'rhs_key' => 'id',
-    'relationship_type' => 'many-to-many',
-    'join_table' => 'contacts_c_bookingtour_1_c',
-    'join_key_lhs' => 'contacts_c_bookingtour_1contacts_ida',
-    'join_key_rhs' => 'contacts_c_bookingtour_1c_bookingtour_idb',
-  ),
-  'contacts_c_hotel_1' => 
-  array (
-    'name' => 'contacts_c_hotel_1',
-    'true_relationship_type' => 'one-to-many',
-    'from_studio' => true,
-    'relationships' => 
-    array (
-      'contacts_c_hotel_1' => 
-      array (
-        'lhs_module' => 'Contacts',
-        'lhs_table' => 'contacts',
-        'lhs_key' => 'id',
-        'rhs_module' => 'C_Hotel',
-        'rhs_table' => 'c_hotel',
-        'rhs_key' => 'id',
-        'relationship_type' => 'many-to-many',
-        'join_table' => 'contacts_c_hotel_1_c',
-        'join_key_lhs' => 'contacts_c_hotel_1contacts_ida',
-        'join_key_rhs' => 'contacts_c_hotel_1c_hotel_idb',
-      ),
-    ),
-    'table' => 'contacts_c_hotel_1_c',
-    'fields' => 
-    array (
-      0 => 
-      array (
-        'name' => 'id',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      1 => 
-      array (
-        'name' => 'date_modified',
-        'type' => 'datetime',
-      ),
-      2 => 
-      array (
-        'name' => 'deleted',
-        'type' => 'bool',
-        'len' => '1',
-        'default' => '0',
-        'required' => true,
-      ),
-      3 => 
-      array (
-        'name' => 'contacts_c_hotel_1contacts_ida',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      4 => 
-      array (
-        'name' => 'contacts_c_hotel_1c_hotel_idb',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-    ),
-    'indices' => 
-    array (
-      0 => 
-      array (
-        'name' => 'contacts_c_hotel_1spk',
-        'type' => 'primary',
-        'fields' => 
-        array (
-          0 => 'id',
-        ),
-      ),
-      1 => 
-      array (
-        'name' => 'contacts_c_hotel_1_ida1',
-        'type' => 'index',
-        'fields' => 
-        array (
-          0 => 'contacts_c_hotel_1contacts_ida',
-        ),
-      ),
-      2 => 
-      array (
-        'name' => 'contacts_c_hotel_1_alt',
-        'type' => 'alternate_key',
-        'fields' => 
-        array (
-          0 => 'contacts_c_hotel_1c_hotel_idb',
-        ),
-      ),
-    ),
-    'lhs_module' => 'Contacts',
-    'lhs_table' => 'contacts',
-    'lhs_key' => 'id',
-    'rhs_module' => 'C_Hotel',
-    'rhs_table' => 'c_hotel',
-    'rhs_key' => 'id',
-    'relationship_type' => 'many-to-many',
-    'join_table' => 'contacts_c_hotel_1_c',
-    'join_key_lhs' => 'contacts_c_hotel_1contacts_ida',
-    'join_key_rhs' => 'contacts_c_hotel_1c_hotel_idb',
-  ),
-  'contacts_c_ticket_1' => 
-  array (
-    'name' => 'contacts_c_ticket_1',
-    'true_relationship_type' => 'one-to-many',
-    'from_studio' => true,
-    'relationships' => 
-    array (
-      'contacts_c_ticket_1' => 
-      array (
-        'lhs_module' => 'Contacts',
-        'lhs_table' => 'contacts',
-        'lhs_key' => 'id',
-        'rhs_module' => 'C_Ticket',
-        'rhs_table' => 'c_ticket',
-        'rhs_key' => 'id',
-        'relationship_type' => 'many-to-many',
-        'join_table' => 'contacts_c_ticket_1_c',
-        'join_key_lhs' => 'contacts_c_ticket_1contacts_ida',
-        'join_key_rhs' => 'contacts_c_ticket_1c_ticket_idb',
-      ),
-    ),
-    'table' => 'contacts_c_ticket_1_c',
-    'fields' => 
-    array (
-      0 => 
-      array (
-        'name' => 'id',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      1 => 
-      array (
-        'name' => 'date_modified',
-        'type' => 'datetime',
-      ),
-      2 => 
-      array (
-        'name' => 'deleted',
-        'type' => 'bool',
-        'len' => '1',
-        'default' => '0',
-        'required' => true,
-      ),
-      3 => 
-      array (
-        'name' => 'contacts_c_ticket_1contacts_ida',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      4 => 
-      array (
-        'name' => 'contacts_c_ticket_1c_ticket_idb',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-    ),
-    'indices' => 
-    array (
-      0 => 
-      array (
-        'name' => 'contacts_c_ticket_1spk',
-        'type' => 'primary',
-        'fields' => 
-        array (
-          0 => 'id',
-        ),
-      ),
-      1 => 
-      array (
-        'name' => 'contacts_c_ticket_1_ida1',
-        'type' => 'index',
-        'fields' => 
-        array (
-          0 => 'contacts_c_ticket_1contacts_ida',
-        ),
-      ),
-      2 => 
-      array (
-        'name' => 'contacts_c_ticket_1_alt',
-        'type' => 'alternate_key',
-        'fields' => 
-        array (
-          0 => 'contacts_c_ticket_1c_ticket_idb',
-        ),
-      ),
-    ),
-    'lhs_module' => 'Contacts',
-    'lhs_table' => 'contacts',
-    'lhs_key' => 'id',
-    'rhs_module' => 'C_Ticket',
-    'rhs_table' => 'c_ticket',
-    'rhs_key' => 'id',
-    'relationship_type' => 'many-to-many',
-    'join_table' => 'contacts_c_ticket_1_c',
-    'join_key_lhs' => 'contacts_c_ticket_1contacts_ida',
-    'join_key_rhs' => 'contacts_c_ticket_1c_ticket_idb',
-  ),
-  'contacts_c_ticket_2' => 
-  array (
-    'name' => 'contacts_c_ticket_2',
-    'true_relationship_type' => 'one-to-many',
-    'from_studio' => true,
-    'relationships' => 
-    array (
-      'contacts_c_ticket_2' => 
-      array (
-        'lhs_module' => 'Contacts',
-        'lhs_table' => 'contacts',
-        'lhs_key' => 'id',
-        'rhs_module' => 'C_Ticket',
-        'rhs_table' => 'c_ticket',
-        'rhs_key' => 'id',
-        'relationship_type' => 'many-to-many',
-        'join_table' => 'contacts_c_ticket_2_c',
-        'join_key_lhs' => 'contacts_c_ticket_2contacts_ida',
-        'join_key_rhs' => 'contacts_c_ticket_2c_ticket_idb',
-      ),
-    ),
-    'table' => 'contacts_c_ticket_2_c',
-    'fields' => 
-    array (
-      0 => 
-      array (
-        'name' => 'id',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      1 => 
-      array (
-        'name' => 'date_modified',
-        'type' => 'datetime',
-      ),
-      2 => 
-      array (
-        'name' => 'deleted',
-        'type' => 'bool',
-        'len' => '1',
-        'default' => '0',
-        'required' => true,
-      ),
-      3 => 
-      array (
-        'name' => 'contacts_c_ticket_2contacts_ida',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      4 => 
-      array (
-        'name' => 'contacts_c_ticket_2c_ticket_idb',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-    ),
-    'indices' => 
-    array (
-      0 => 
-      array (
-        'name' => 'contacts_c_ticket_2spk',
-        'type' => 'primary',
-        'fields' => 
-        array (
-          0 => 'id',
-        ),
-      ),
-      1 => 
-      array (
-        'name' => 'contacts_c_ticket_2_ida1',
-        'type' => 'index',
-        'fields' => 
-        array (
-          0 => 'contacts_c_ticket_2contacts_ida',
-        ),
-      ),
-      2 => 
-      array (
-        'name' => 'contacts_c_ticket_2_alt',
-        'type' => 'alternate_key',
-        'fields' => 
-        array (
-          0 => 'contacts_c_ticket_2c_ticket_idb',
-        ),
-      ),
-    ),
-    'lhs_module' => 'Contacts',
-    'lhs_table' => 'contacts',
-    'lhs_key' => 'id',
-    'rhs_module' => 'C_Ticket',
-    'rhs_table' => 'c_ticket',
-    'rhs_key' => 'id',
-    'relationship_type' => 'many-to-many',
-    'join_table' => 'contacts_c_ticket_2_c',
-    'join_key_lhs' => 'contacts_c_ticket_2contacts_ida',
-    'join_key_rhs' => 'contacts_c_ticket_2c_ticket_idb',
-  ),
-  'contacts_c_tour_1' => 
-  array (
-    'name' => 'contacts_c_tour_1',
-    'true_relationship_type' => 'one-to-many',
-    'from_studio' => true,
-    'relationships' => 
-    array (
-      'contacts_c_tour_1' => 
-      array (
-        'lhs_module' => 'Contacts',
-        'lhs_table' => 'contacts',
-        'lhs_key' => 'id',
-        'rhs_module' => 'C_Tour',
-        'rhs_table' => 'c_tour',
-        'rhs_key' => 'id',
-        'relationship_type' => 'many-to-many',
-        'join_table' => 'contacts_c_tour_1_c',
-        'join_key_lhs' => 'contacts_c_tour_1contacts_ida',
-        'join_key_rhs' => 'contacts_c_tour_1c_tour_idb',
-      ),
-    ),
-    'table' => 'contacts_c_tour_1_c',
-    'fields' => 
-    array (
-      0 => 
-      array (
-        'name' => 'id',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      1 => 
-      array (
-        'name' => 'date_modified',
-        'type' => 'datetime',
-      ),
-      2 => 
-      array (
-        'name' => 'deleted',
-        'type' => 'bool',
-        'len' => '1',
-        'default' => '0',
-        'required' => true,
-      ),
-      3 => 
-      array (
-        'name' => 'contacts_c_tour_1contacts_ida',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      4 => 
-      array (
-        'name' => 'contacts_c_tour_1c_tour_idb',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-    ),
-    'indices' => 
-    array (
-      0 => 
-      array (
-        'name' => 'contacts_c_tour_1spk',
-        'type' => 'primary',
-        'fields' => 
-        array (
-          0 => 'id',
-        ),
-      ),
-      1 => 
-      array (
-        'name' => 'contacts_c_tour_1_ida1',
-        'type' => 'index',
-        'fields' => 
-        array (
-          0 => 'contacts_c_tour_1contacts_ida',
-        ),
-      ),
-      2 => 
-      array (
-        'name' => 'contacts_c_tour_1_alt',
-        'type' => 'alternate_key',
-        'fields' => 
-        array (
-          0 => 'contacts_c_tour_1c_tour_idb',
-        ),
-      ),
-    ),
-    'lhs_module' => 'Contacts',
-    'lhs_table' => 'contacts',
-    'lhs_key' => 'id',
-    'rhs_module' => 'C_Tour',
-    'rhs_table' => 'c_tour',
-    'rhs_key' => 'id',
-    'relationship_type' => 'many-to-many',
-    'join_table' => 'contacts_c_tour_1_c',
-    'join_key_lhs' => 'contacts_c_tour_1contacts_ida',
-    'join_key_rhs' => 'contacts_c_tour_1c_tour_idb',
-  ),
-  'c_bookinghotel_c_payment_1' => 
-  array (
-    'name' => 'c_bookinghotel_c_payment_1',
-    'true_relationship_type' => 'one-to-many',
-    'from_studio' => true,
-    'relationships' => 
-    array (
-      'c_bookinghotel_c_payment_1' => 
-      array (
-        'lhs_module' => 'C_BookingHotel',
-        'lhs_table' => 'c_bookinghotel',
-        'lhs_key' => 'id',
-        'rhs_module' => 'C_Payment',
-        'rhs_table' => 'c_payment',
-        'rhs_key' => 'id',
-        'relationship_type' => 'many-to-many',
-        'join_table' => 'c_bookinghotel_c_payment_1_c',
-        'join_key_lhs' => 'c_bookinghotel_c_payment_1c_bookinghotel_ida',
-        'join_key_rhs' => 'c_bookinghotel_c_payment_1c_payment_idb',
-      ),
-    ),
-    'table' => 'c_bookinghotel_c_payment_1_c',
-    'fields' => 
-    array (
-      0 => 
-      array (
-        'name' => 'id',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      1 => 
-      array (
-        'name' => 'date_modified',
-        'type' => 'datetime',
-      ),
-      2 => 
-      array (
-        'name' => 'deleted',
-        'type' => 'bool',
-        'len' => '1',
-        'default' => '0',
-        'required' => true,
-      ),
-      3 => 
-      array (
-        'name' => 'c_bookinghotel_c_payment_1c_bookinghotel_ida',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      4 => 
-      array (
-        'name' => 'c_bookinghotel_c_payment_1c_payment_idb',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-    ),
-    'indices' => 
-    array (
-      0 => 
-      array (
-        'name' => 'c_bookinghotel_c_payment_1spk',
-        'type' => 'primary',
-        'fields' => 
-        array (
-          0 => 'id',
-        ),
-      ),
-      1 => 
-      array (
-        'name' => 'c_bookinghotel_c_payment_1_ida1',
-        'type' => 'index',
-        'fields' => 
-        array (
-          0 => 'c_bookinghotel_c_payment_1c_bookinghotel_ida',
-        ),
-      ),
-      2 => 
-      array (
-        'name' => 'c_bookinghotel_c_payment_1_alt',
-        'type' => 'alternate_key',
-        'fields' => 
-        array (
-          0 => 'c_bookinghotel_c_payment_1c_payment_idb',
-        ),
-      ),
-    ),
-    'lhs_module' => 'C_BookingHotel',
-    'lhs_table' => 'c_bookinghotel',
-    'lhs_key' => 'id',
-    'rhs_module' => 'C_Payment',
-    'rhs_table' => 'c_payment',
-    'rhs_key' => 'id',
-    'relationship_type' => 'many-to-many',
-    'join_table' => 'c_bookinghotel_c_payment_1_c',
-    'join_key_lhs' => 'c_bookinghotel_c_payment_1c_bookinghotel_ida',
-    'join_key_rhs' => 'c_bookinghotel_c_payment_1c_payment_idb',
-  ),
-  'c_bookinghotel_c_room_1' => 
-  array (
-    'name' => 'c_bookinghotel_c_room_1',
-    'true_relationship_type' => 'one-to-many',
-    'from_studio' => true,
-    'relationships' => 
-    array (
-      'c_bookinghotel_c_room_1' => 
-      array (
-        'lhs_module' => 'C_BookingHotel',
-        'lhs_table' => 'c_bookinghotel',
-        'lhs_key' => 'id',
-        'rhs_module' => 'C_Room',
-        'rhs_table' => 'c_room',
-        'rhs_key' => 'id',
-        'relationship_type' => 'many-to-many',
-        'join_table' => 'c_bookinghotel_c_room_1_c',
-        'join_key_lhs' => 'c_bookinghotel_c_room_1c_bookinghotel_ida',
-        'join_key_rhs' => 'c_bookinghotel_c_room_1c_room_idb',
-      ),
-    ),
-    'table' => 'c_bookinghotel_c_room_1_c',
-    'fields' => 
-    array (
-      0 => 
-      array (
-        'name' => 'id',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      1 => 
-      array (
-        'name' => 'date_modified',
-        'type' => 'datetime',
-      ),
-      2 => 
-      array (
-        'name' => 'deleted',
-        'type' => 'bool',
-        'len' => '1',
-        'default' => '0',
-        'required' => true,
-      ),
-      3 => 
-      array (
-        'name' => 'c_bookinghotel_c_room_1c_bookinghotel_ida',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      4 => 
-      array (
-        'name' => 'c_bookinghotel_c_room_1c_room_idb',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-    ),
-    'indices' => 
-    array (
-      0 => 
-      array (
-        'name' => 'c_bookinghotel_c_room_1spk',
-        'type' => 'primary',
-        'fields' => 
-        array (
-          0 => 'id',
-        ),
-      ),
-      1 => 
-      array (
-        'name' => 'c_bookinghotel_c_room_1_ida1',
-        'type' => 'index',
-        'fields' => 
-        array (
-          0 => 'c_bookinghotel_c_room_1c_bookinghotel_ida',
-        ),
-      ),
-      2 => 
-      array (
-        'name' => 'c_bookinghotel_c_room_1_alt',
-        'type' => 'alternate_key',
-        'fields' => 
-        array (
-          0 => 'c_bookinghotel_c_room_1c_room_idb',
-        ),
-      ),
-    ),
-    'lhs_module' => 'C_BookingHotel',
-    'lhs_table' => 'c_bookinghotel',
-    'lhs_key' => 'id',
-    'rhs_module' => 'C_Room',
-    'rhs_table' => 'c_room',
-    'rhs_key' => 'id',
-    'relationship_type' => 'many-to-many',
-    'join_table' => 'c_bookinghotel_c_room_1_c',
-    'join_key_lhs' => 'c_bookinghotel_c_room_1c_bookinghotel_ida',
-    'join_key_rhs' => 'c_bookinghotel_c_room_1c_room_idb',
-  ),
-  'c_bookingticket_c_payment_1' => 
-  array (
-    'name' => 'c_bookingticket_c_payment_1',
-    'true_relationship_type' => 'one-to-many',
-    'from_studio' => true,
-    'relationships' => 
-    array (
-      'c_bookingticket_c_payment_1' => 
-      array (
-        'lhs_module' => 'C_BookingTicket',
-        'lhs_table' => 'c_bookingticket',
-        'lhs_key' => 'id',
-        'rhs_module' => 'C_Payment',
-        'rhs_table' => 'c_payment',
-        'rhs_key' => 'id',
-        'relationship_type' => 'many-to-many',
-        'join_table' => 'c_bookingticket_c_payment_1_c',
-        'join_key_lhs' => 'c_bookingticket_c_payment_1c_bookingticket_ida',
-        'join_key_rhs' => 'c_bookingticket_c_payment_1c_payment_idb',
-      ),
-    ),
-    'table' => 'c_bookingticket_c_payment_1_c',
-    'fields' => 
-    array (
-      0 => 
-      array (
-        'name' => 'id',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      1 => 
-      array (
-        'name' => 'date_modified',
-        'type' => 'datetime',
-      ),
-      2 => 
-      array (
-        'name' => 'deleted',
-        'type' => 'bool',
-        'len' => '1',
-        'default' => '0',
-        'required' => true,
-      ),
-      3 => 
-      array (
-        'name' => 'c_bookingticket_c_payment_1c_bookingticket_ida',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      4 => 
-      array (
-        'name' => 'c_bookingticket_c_payment_1c_payment_idb',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-    ),
-    'indices' => 
-    array (
-      0 => 
-      array (
-        'name' => 'c_bookingticket_c_payment_1spk',
-        'type' => 'primary',
-        'fields' => 
-        array (
-          0 => 'id',
-        ),
-      ),
-      1 => 
-      array (
-        'name' => 'c_bookingticket_c_payment_1_ida1',
-        'type' => 'index',
-        'fields' => 
-        array (
-          0 => 'c_bookingticket_c_payment_1c_bookingticket_ida',
-        ),
-      ),
-      2 => 
-      array (
-        'name' => 'c_bookingticket_c_payment_1_alt',
-        'type' => 'alternate_key',
-        'fields' => 
-        array (
-          0 => 'c_bookingticket_c_payment_1c_payment_idb',
-        ),
-      ),
-    ),
-    'lhs_module' => 'C_BookingTicket',
-    'lhs_table' => 'c_bookingticket',
-    'lhs_key' => 'id',
-    'rhs_module' => 'C_Payment',
-    'rhs_table' => 'c_payment',
-    'rhs_key' => 'id',
-    'relationship_type' => 'many-to-many',
-    'join_table' => 'c_bookingticket_c_payment_1_c',
-    'join_key_lhs' => 'c_bookingticket_c_payment_1c_bookingticket_ida',
-    'join_key_rhs' => 'c_bookingticket_c_payment_1c_payment_idb',
-  ),
-  'c_bookingticket_c_ticket_1' => 
-  array (
-    'name' => 'c_bookingticket_c_ticket_1',
-    'true_relationship_type' => 'one-to-many',
-    'from_studio' => true,
-    'relationships' => 
-    array (
-      'c_bookingticket_c_ticket_1' => 
-      array (
-        'lhs_module' => 'C_BookingTicket',
-        'lhs_table' => 'c_bookingticket',
-        'lhs_key' => 'id',
-        'rhs_module' => 'C_Ticket',
-        'rhs_table' => 'c_ticket',
-        'rhs_key' => 'id',
-        'relationship_type' => 'many-to-many',
-        'join_table' => 'c_bookingticket_c_ticket_1_c',
-        'join_key_lhs' => 'c_bookingticket_c_ticket_1c_bookingticket_ida',
-        'join_key_rhs' => 'c_bookingticket_c_ticket_1c_ticket_idb',
-      ),
-    ),
-    'table' => 'c_bookingticket_c_ticket_1_c',
-    'fields' => 
-    array (
-      0 => 
-      array (
-        'name' => 'id',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      1 => 
-      array (
-        'name' => 'date_modified',
-        'type' => 'datetime',
-      ),
-      2 => 
-      array (
-        'name' => 'deleted',
-        'type' => 'bool',
-        'len' => '1',
-        'default' => '0',
-        'required' => true,
-      ),
-      3 => 
-      array (
-        'name' => 'c_bookingticket_c_ticket_1c_bookingticket_ida',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      4 => 
-      array (
-        'name' => 'c_bookingticket_c_ticket_1c_ticket_idb',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-    ),
-    'indices' => 
-    array (
-      0 => 
-      array (
-        'name' => 'c_bookingticket_c_ticket_1spk',
-        'type' => 'primary',
-        'fields' => 
-        array (
-          0 => 'id',
-        ),
-      ),
-      1 => 
-      array (
-        'name' => 'c_bookingticket_c_ticket_1_ida1',
-        'type' => 'index',
-        'fields' => 
-        array (
-          0 => 'c_bookingticket_c_ticket_1c_bookingticket_ida',
-        ),
-      ),
-      2 => 
-      array (
-        'name' => 'c_bookingticket_c_ticket_1_alt',
-        'type' => 'alternate_key',
-        'fields' => 
-        array (
-          0 => 'c_bookingticket_c_ticket_1c_ticket_idb',
-        ),
-      ),
-    ),
-    'lhs_module' => 'C_BookingTicket',
-    'lhs_table' => 'c_bookingticket',
-    'lhs_key' => 'id',
-    'rhs_module' => 'C_Ticket',
-    'rhs_table' => 'c_ticket',
-    'rhs_key' => 'id',
-    'relationship_type' => 'many-to-many',
-    'join_table' => 'c_bookingticket_c_ticket_1_c',
-    'join_key_lhs' => 'c_bookingticket_c_ticket_1c_bookingticket_ida',
-    'join_key_rhs' => 'c_bookingticket_c_ticket_1c_ticket_idb',
-  ),
-  'c_bookingtour_c_payment_1' => 
-  array (
-    'name' => 'c_bookingtour_c_payment_1',
-    'true_relationship_type' => 'one-to-many',
-    'from_studio' => true,
-    'relationships' => 
-    array (
-      'c_bookingtour_c_payment_1' => 
-      array (
-        'lhs_module' => 'C_BookingTour',
-        'lhs_table' => 'c_bookingtour',
-        'lhs_key' => 'id',
-        'rhs_module' => 'C_Payment',
-        'rhs_table' => 'c_payment',
-        'rhs_key' => 'id',
-        'relationship_type' => 'many-to-many',
-        'join_table' => 'c_bookingtour_c_payment_1_c',
-        'join_key_lhs' => 'c_bookingtour_c_payment_1c_bookingtour_ida',
-        'join_key_rhs' => 'c_bookingtour_c_payment_1c_payment_idb',
-      ),
-    ),
-    'table' => 'c_bookingtour_c_payment_1_c',
-    'fields' => 
-    array (
-      0 => 
-      array (
-        'name' => 'id',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      1 => 
-      array (
-        'name' => 'date_modified',
-        'type' => 'datetime',
-      ),
-      2 => 
-      array (
-        'name' => 'deleted',
-        'type' => 'bool',
-        'len' => '1',
-        'default' => '0',
-        'required' => true,
-      ),
-      3 => 
-      array (
-        'name' => 'c_bookingtour_c_payment_1c_bookingtour_ida',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      4 => 
-      array (
-        'name' => 'c_bookingtour_c_payment_1c_payment_idb',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-    ),
-    'indices' => 
-    array (
-      0 => 
-      array (
-        'name' => 'c_bookingtour_c_payment_1spk',
-        'type' => 'primary',
-        'fields' => 
-        array (
-          0 => 'id',
-        ),
-      ),
-      1 => 
-      array (
-        'name' => 'c_bookingtour_c_payment_1_ida1',
-        'type' => 'index',
-        'fields' => 
-        array (
-          0 => 'c_bookingtour_c_payment_1c_bookingtour_ida',
-        ),
-      ),
-      2 => 
-      array (
-        'name' => 'c_bookingtour_c_payment_1_alt',
-        'type' => 'alternate_key',
-        'fields' => 
-        array (
-          0 => 'c_bookingtour_c_payment_1c_payment_idb',
-        ),
-      ),
-    ),
-    'lhs_module' => 'C_BookingTour',
-    'lhs_table' => 'c_bookingtour',
-    'lhs_key' => 'id',
-    'rhs_module' => 'C_Payment',
-    'rhs_table' => 'c_payment',
-    'rhs_key' => 'id',
-    'relationship_type' => 'many-to-many',
-    'join_table' => 'c_bookingtour_c_payment_1_c',
-    'join_key_lhs' => 'c_bookingtour_c_payment_1c_bookingtour_ida',
-    'join_key_rhs' => 'c_bookingtour_c_payment_1c_payment_idb',
-  ),
-  'c_district_c_province' => 
-  array (
-    'name' => 'c_district_c_province',
-    'true_relationship_type' => 'one-to-many',
-    'relationships' => 
-    array (
-      'c_district_c_province' => 
-      array (
-        'lhs_module' => 'C_Province',
-        'lhs_table' => 'c_province',
-        'lhs_key' => 'id',
-        'rhs_module' => 'C_District',
-        'rhs_table' => 'c_district',
-        'rhs_key' => 'id',
-        'relationship_type' => 'many-to-many',
-        'join_table' => 'c_district_c_province_c',
-        'join_key_lhs' => 'c_district_c_provincec_province_ida',
-        'join_key_rhs' => 'c_district_c_provincec_district_idb',
-      ),
-    ),
-    'table' => 'c_district_c_province_c',
-    'fields' => 
-    array (
-      0 => 
-      array (
-        'name' => 'id',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      1 => 
-      array (
-        'name' => 'date_modified',
-        'type' => 'datetime',
-      ),
-      2 => 
-      array (
-        'name' => 'deleted',
-        'type' => 'bool',
-        'len' => '1',
-        'default' => '0',
-        'required' => true,
-      ),
-      3 => 
-      array (
-        'name' => 'c_district_c_provincec_province_ida',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      4 => 
-      array (
-        'name' => 'c_district_c_provincec_district_idb',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-    ),
-    'indices' => 
-    array (
-      0 => 
-      array (
-        'name' => 'c_district_c_provincespk',
-        'type' => 'primary',
-        'fields' => 
-        array (
-          0 => 'id',
-        ),
-      ),
-      1 => 
-      array (
-        'name' => 'c_district_c_province_ida1',
-        'type' => 'index',
-        'fields' => 
-        array (
-          0 => 'c_district_c_provincec_province_ida',
-        ),
-      ),
-      2 => 
-      array (
-        'name' => 'c_district_c_province_alt',
-        'type' => 'alternate_key',
-        'fields' => 
-        array (
-          0 => 'c_district_c_provincec_district_idb',
-        ),
-      ),
-    ),
-    'lhs_module' => 'C_Province',
-    'lhs_table' => 'c_province',
-    'lhs_key' => 'id',
-    'rhs_module' => 'C_District',
-    'rhs_table' => 'c_district',
-    'rhs_key' => 'id',
-    'relationship_type' => 'many-to-many',
-    'join_table' => 'c_district_c_province_c',
-    'join_key_lhs' => 'c_district_c_provincec_province_ida',
-    'join_key_rhs' => 'c_district_c_provincec_district_idb',
-  ),
-  'c_hotel_c_bookinghotel_1' => 
-  array (
-    'name' => 'c_hotel_c_bookinghotel_1',
-    'true_relationship_type' => 'one-to-many',
-    'from_studio' => true,
-    'relationships' => 
-    array (
-      'c_hotel_c_bookinghotel_1' => 
-      array (
-        'lhs_module' => 'C_Hotel',
-        'lhs_table' => 'c_hotel',
-        'lhs_key' => 'id',
-        'rhs_module' => 'C_BookingHotel',
-        'rhs_table' => 'c_bookinghotel',
-        'rhs_key' => 'id',
-        'relationship_type' => 'many-to-many',
-        'join_table' => 'c_hotel_c_bookinghotel_1_c',
-        'join_key_lhs' => 'c_hotel_c_bookinghotel_1c_hotel_ida',
-        'join_key_rhs' => 'c_hotel_c_bookinghotel_1c_bookinghotel_idb',
-      ),
-    ),
-    'table' => 'c_hotel_c_bookinghotel_1_c',
-    'fields' => 
-    array (
-      0 => 
-      array (
-        'name' => 'id',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      1 => 
-      array (
-        'name' => 'date_modified',
-        'type' => 'datetime',
-      ),
-      2 => 
-      array (
-        'name' => 'deleted',
-        'type' => 'bool',
-        'len' => '1',
-        'default' => '0',
-        'required' => true,
-      ),
-      3 => 
-      array (
-        'name' => 'c_hotel_c_bookinghotel_1c_hotel_ida',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      4 => 
-      array (
-        'name' => 'c_hotel_c_bookinghotel_1c_bookinghotel_idb',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-    ),
-    'indices' => 
-    array (
-      0 => 
-      array (
-        'name' => 'c_hotel_c_bookinghotel_1spk',
-        'type' => 'primary',
-        'fields' => 
-        array (
-          0 => 'id',
-        ),
-      ),
-      1 => 
-      array (
-        'name' => 'c_hotel_c_bookinghotel_1_ida1',
-        'type' => 'index',
-        'fields' => 
-        array (
-          0 => 'c_hotel_c_bookinghotel_1c_hotel_ida',
-        ),
-      ),
-      2 => 
-      array (
-        'name' => 'c_hotel_c_bookinghotel_1_alt',
-        'type' => 'alternate_key',
-        'fields' => 
-        array (
-          0 => 'c_hotel_c_bookinghotel_1c_bookinghotel_idb',
-        ),
-      ),
-    ),
-    'lhs_module' => 'C_Hotel',
-    'lhs_table' => 'c_hotel',
-    'lhs_key' => 'id',
-    'rhs_module' => 'C_BookingHotel',
-    'rhs_table' => 'c_bookinghotel',
-    'rhs_key' => 'id',
-    'relationship_type' => 'many-to-many',
-    'join_table' => 'c_hotel_c_bookinghotel_1_c',
-    'join_key_lhs' => 'c_hotel_c_bookinghotel_1c_hotel_ida',
-    'join_key_rhs' => 'c_hotel_c_bookinghotel_1c_bookinghotel_idb',
-  ),
-  'c_ticket_c_ticket_1' => 
-  array (
-    'name' => 'c_ticket_c_ticket_1',
-    'true_relationship_type' => 'one-to-many',
-    'from_studio' => true,
-    'relationships' => 
-    array (
-      'c_ticket_c_ticket_1' => 
-      array (
-        'lhs_module' => 'C_Ticket',
-        'lhs_table' => 'c_ticket',
-        'lhs_key' => 'id',
-        'rhs_module' => 'C_Ticket',
-        'rhs_table' => 'c_ticket',
-        'rhs_key' => 'id',
-        'relationship_type' => 'many-to-many',
-        'join_table' => 'c_ticket_c_ticket_1_c',
-        'join_key_lhs' => 'c_ticket_c_ticket_1c_ticket_ida',
-        'join_key_rhs' => 'c_ticket_c_ticket_1c_ticket_idb',
-      ),
-    ),
-    'table' => 'c_ticket_c_ticket_1_c',
-    'fields' => 
-    array (
-      0 => 
-      array (
-        'name' => 'id',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      1 => 
-      array (
-        'name' => 'date_modified',
-        'type' => 'datetime',
-      ),
-      2 => 
-      array (
-        'name' => 'deleted',
-        'type' => 'bool',
-        'len' => '1',
-        'default' => '0',
-        'required' => true,
-      ),
-      3 => 
-      array (
-        'name' => 'c_ticket_c_ticket_1c_ticket_ida',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      4 => 
-      array (
-        'name' => 'c_ticket_c_ticket_1c_ticket_idb',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-    ),
-    'indices' => 
-    array (
-      0 => 
-      array (
-        'name' => 'c_ticket_c_ticket_1spk',
-        'type' => 'primary',
-        'fields' => 
-        array (
-          0 => 'id',
-        ),
-      ),
-      1 => 
-      array (
-        'name' => 'c_ticket_c_ticket_1_ida1',
-        'type' => 'index',
-        'fields' => 
-        array (
-          0 => 'c_ticket_c_ticket_1c_ticket_ida',
-        ),
-      ),
-      2 => 
-      array (
-        'name' => 'c_ticket_c_ticket_1_alt',
-        'type' => 'alternate_key',
-        'fields' => 
-        array (
-          0 => 'c_ticket_c_ticket_1c_ticket_idb',
-        ),
-      ),
-    ),
-    'lhs_module' => 'C_Ticket',
-    'lhs_table' => 'c_ticket',
-    'lhs_key' => 'id',
-    'rhs_module' => 'C_Ticket',
-    'rhs_table' => 'c_ticket',
-    'rhs_key' => 'id',
-    'relationship_type' => 'many-to-many',
-    'join_table' => 'c_ticket_c_ticket_1_c',
-    'join_key_lhs' => 'c_ticket_c_ticket_1c_ticket_ida',
-    'join_key_rhs' => 'c_ticket_c_ticket_1c_ticket_idb',
-  ),
-  'c_tour_c_bookingtour_1' => 
-  array (
-    'name' => 'c_tour_c_bookingtour_1',
-    'true_relationship_type' => 'one-to-many',
-    'from_studio' => true,
-    'relationships' => 
-    array (
-      'c_tour_c_bookingtour_1' => 
-      array (
-        'lhs_module' => 'C_Tour',
-        'lhs_table' => 'c_tour',
-        'lhs_key' => 'id',
-        'rhs_module' => 'C_BookingTour',
-        'rhs_table' => 'c_bookingtour',
-        'rhs_key' => 'id',
-        'relationship_type' => 'many-to-many',
-        'join_table' => 'c_tour_c_bookingtour_1_c',
-        'join_key_lhs' => 'c_tour_c_bookingtour_1c_tour_ida',
-        'join_key_rhs' => 'c_tour_c_bookingtour_1c_bookingtour_idb',
-      ),
-    ),
-    'table' => 'c_tour_c_bookingtour_1_c',
-    'fields' => 
-    array (
-      0 => 
-      array (
-        'name' => 'id',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      1 => 
-      array (
-        'name' => 'date_modified',
-        'type' => 'datetime',
-      ),
-      2 => 
-      array (
-        'name' => 'deleted',
-        'type' => 'bool',
-        'len' => '1',
-        'default' => '0',
-        'required' => true,
-      ),
-      3 => 
-      array (
-        'name' => 'c_tour_c_bookingtour_1c_tour_ida',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      4 => 
-      array (
-        'name' => 'c_tour_c_bookingtour_1c_bookingtour_idb',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-    ),
-    'indices' => 
-    array (
-      0 => 
-      array (
-        'name' => 'c_tour_c_bookingtour_1spk',
-        'type' => 'primary',
-        'fields' => 
-        array (
-          0 => 'id',
-        ),
-      ),
-      1 => 
-      array (
-        'name' => 'c_tour_c_bookingtour_1_ida1',
-        'type' => 'index',
-        'fields' => 
-        array (
-          0 => 'c_tour_c_bookingtour_1c_tour_ida',
-        ),
-      ),
-      2 => 
-      array (
-        'name' => 'c_tour_c_bookingtour_1_alt',
-        'type' => 'alternate_key',
-        'fields' => 
-        array (
-          0 => 'c_tour_c_bookingtour_1c_bookingtour_idb',
-        ),
-      ),
-    ),
-    'lhs_module' => 'C_Tour',
-    'lhs_table' => 'c_tour',
-    'lhs_key' => 'id',
-    'rhs_module' => 'C_BookingTour',
-    'rhs_table' => 'c_bookingtour',
-    'rhs_key' => 'id',
-    'relationship_type' => 'many-to-many',
-    'join_table' => 'c_tour_c_bookingtour_1_c',
-    'join_key_lhs' => 'c_tour_c_bookingtour_1c_tour_ida',
-    'join_key_rhs' => 'c_tour_c_bookingtour_1c_bookingtour_idb',
-  ),
-  'c_ward_c_district' => 
-  array (
-    'name' => 'c_ward_c_district',
-    'true_relationship_type' => 'one-to-many',
-    'relationships' => 
-    array (
-      'c_ward_c_district' => 
-      array (
-        'lhs_module' => 'C_District',
-        'lhs_table' => 'c_district',
-        'lhs_key' => 'id',
-        'rhs_module' => 'C_Ward',
-        'rhs_table' => 'c_ward',
-        'rhs_key' => 'id',
-        'relationship_type' => 'many-to-many',
-        'join_table' => 'c_ward_c_district_c',
-        'join_key_lhs' => 'c_ward_c_districtc_district_ida',
-        'join_key_rhs' => 'c_ward_c_districtc_ward_idb',
-      ),
-    ),
-    'table' => 'c_ward_c_district_c',
-    'fields' => 
-    array (
-      0 => 
-      array (
-        'name' => 'id',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      1 => 
-      array (
-        'name' => 'date_modified',
-        'type' => 'datetime',
-      ),
-      2 => 
-      array (
-        'name' => 'deleted',
-        'type' => 'bool',
-        'len' => '1',
-        'default' => '0',
-        'required' => true,
-      ),
-      3 => 
-      array (
-        'name' => 'c_ward_c_districtc_district_ida',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      4 => 
-      array (
-        'name' => 'c_ward_c_districtc_ward_idb',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-    ),
-    'indices' => 
-    array (
-      0 => 
-      array (
-        'name' => 'c_ward_c_districtspk',
-        'type' => 'primary',
-        'fields' => 
-        array (
-          0 => 'id',
-        ),
-      ),
-      1 => 
-      array (
-        'name' => 'c_ward_c_district_ida1',
-        'type' => 'index',
-        'fields' => 
-        array (
-          0 => 'c_ward_c_districtc_district_ida',
-        ),
-      ),
-      2 => 
-      array (
-        'name' => 'c_ward_c_district_alt',
-        'type' => 'alternate_key',
-        'fields' => 
-        array (
-          0 => 'c_ward_c_districtc_ward_idb',
-        ),
-      ),
-    ),
-    'lhs_module' => 'C_District',
-    'lhs_table' => 'c_district',
-    'lhs_key' => 'id',
-    'rhs_module' => 'C_Ward',
-    'rhs_table' => 'c_ward',
-    'rhs_key' => 'id',
-    'relationship_type' => 'many-to-many',
-    'join_table' => 'c_ward_c_district_c',
-    'join_key_lhs' => 'c_ward_c_districtc_district_ida',
-    'join_key_rhs' => 'c_ward_c_districtc_ward_idb',
-  ),
-  'leads_c_bookingticket_1' => 
-  array (
-    'name' => 'leads_c_bookingticket_1',
-    'true_relationship_type' => 'one-to-many',
-    'from_studio' => true,
-    'relationships' => 
-    array (
-      'leads_c_bookingticket_1' => 
-      array (
-        'lhs_module' => 'Leads',
-        'lhs_table' => 'leads',
-        'lhs_key' => 'id',
-        'rhs_module' => 'C_BookingTicket',
-        'rhs_table' => 'c_bookingticket',
-        'rhs_key' => 'id',
-        'relationship_type' => 'many-to-many',
-        'join_table' => 'leads_c_bookingticket_1_c',
-        'join_key_lhs' => 'leads_c_bookingticket_1leads_ida',
-        'join_key_rhs' => 'leads_c_bookingticket_1c_bookingticket_idb',
-      ),
-    ),
-    'table' => 'leads_c_bookingticket_1_c',
-    'fields' => 
-    array (
-      0 => 
-      array (
-        'name' => 'id',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      1 => 
-      array (
-        'name' => 'date_modified',
-        'type' => 'datetime',
-      ),
-      2 => 
-      array (
-        'name' => 'deleted',
-        'type' => 'bool',
-        'len' => '1',
-        'default' => '0',
-        'required' => true,
-      ),
-      3 => 
-      array (
-        'name' => 'leads_c_bookingticket_1leads_ida',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      4 => 
-      array (
-        'name' => 'leads_c_bookingticket_1c_bookingticket_idb',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-    ),
-    'indices' => 
-    array (
-      0 => 
-      array (
-        'name' => 'leads_c_bookingticket_1spk',
-        'type' => 'primary',
-        'fields' => 
-        array (
-          0 => 'id',
-        ),
-      ),
-      1 => 
-      array (
-        'name' => 'leads_c_bookingticket_1_ida1',
-        'type' => 'index',
-        'fields' => 
-        array (
-          0 => 'leads_c_bookingticket_1leads_ida',
-        ),
-      ),
-      2 => 
-      array (
-        'name' => 'leads_c_bookingticket_1_alt',
-        'type' => 'alternate_key',
-        'fields' => 
-        array (
-          0 => 'leads_c_bookingticket_1c_bookingticket_idb',
-        ),
-      ),
-    ),
-    'lhs_module' => 'Leads',
-    'lhs_table' => 'leads',
-    'lhs_key' => 'id',
-    'rhs_module' => 'C_BookingTicket',
-    'rhs_table' => 'c_bookingticket',
-    'rhs_key' => 'id',
-    'relationship_type' => 'many-to-many',
-    'join_table' => 'leads_c_bookingticket_1_c',
-    'join_key_lhs' => 'leads_c_bookingticket_1leads_ida',
-    'join_key_rhs' => 'leads_c_bookingticket_1c_bookingticket_idb',
-  ),
-  'leads_c_ticket_1' => 
-  array (
-    'name' => 'leads_c_ticket_1',
-    'true_relationship_type' => 'one-to-many',
-    'from_studio' => true,
-    'relationships' => 
-    array (
-      'leads_c_ticket_1' => 
-      array (
-        'lhs_module' => 'Leads',
-        'lhs_table' => 'leads',
-        'lhs_key' => 'id',
-        'rhs_module' => 'C_Ticket',
-        'rhs_table' => 'c_ticket',
-        'rhs_key' => 'id',
-        'relationship_type' => 'many-to-many',
-        'join_table' => 'leads_c_ticket_1_c',
-        'join_key_lhs' => 'leads_c_ticket_1leads_ida',
-        'join_key_rhs' => 'leads_c_ticket_1c_ticket_idb',
-      ),
-    ),
-    'table' => 'leads_c_ticket_1_c',
-    'fields' => 
-    array (
-      0 => 
-      array (
-        'name' => 'id',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      1 => 
-      array (
-        'name' => 'date_modified',
-        'type' => 'datetime',
-      ),
-      2 => 
-      array (
-        'name' => 'deleted',
-        'type' => 'bool',
-        'len' => '1',
-        'default' => '0',
-        'required' => true,
-      ),
-      3 => 
-      array (
-        'name' => 'leads_c_ticket_1leads_ida',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      4 => 
-      array (
-        'name' => 'leads_c_ticket_1c_ticket_idb',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-    ),
-    'indices' => 
-    array (
-      0 => 
-      array (
-        'name' => 'leads_c_ticket_1spk',
-        'type' => 'primary',
-        'fields' => 
-        array (
-          0 => 'id',
-        ),
-      ),
-      1 => 
-      array (
-        'name' => 'leads_c_ticket_1_ida1',
-        'type' => 'index',
-        'fields' => 
-        array (
-          0 => 'leads_c_ticket_1leads_ida',
-        ),
-      ),
-      2 => 
-      array (
-        'name' => 'leads_c_ticket_1_alt',
-        'type' => 'alternate_key',
-        'fields' => 
-        array (
-          0 => 'leads_c_ticket_1c_ticket_idb',
-        ),
-      ),
-    ),
-    'lhs_module' => 'Leads',
-    'lhs_table' => 'leads',
-    'lhs_key' => 'id',
-    'rhs_module' => 'C_Ticket',
-    'rhs_table' => 'c_ticket',
-    'rhs_key' => 'id',
-    'relationship_type' => 'many-to-many',
-    'join_table' => 'leads_c_ticket_1_c',
-    'join_key_lhs' => 'leads_c_ticket_1leads_ida',
-    'join_key_rhs' => 'leads_c_ticket_1c_ticket_idb',
-  ),
-  'leads_opportunities_1' => 
-  array (
-    'name' => 'leads_opportunities_1',
-    'true_relationship_type' => 'one-to-many',
-    'from_studio' => true,
-    'relationships' => 
-    array (
-      'leads_opportunities_1' => 
-      array (
-        'lhs_module' => 'Leads',
-        'lhs_table' => 'leads',
-        'lhs_key' => 'id',
-        'rhs_module' => 'Opportunities',
-        'rhs_table' => 'opportunities',
-        'rhs_key' => 'id',
-        'relationship_type' => 'many-to-many',
-        'join_table' => 'leads_opportunities_1_c',
-        'join_key_lhs' => 'leads_opportunities_1leads_ida',
-        'join_key_rhs' => 'leads_opportunities_1opportunities_idb',
-      ),
-    ),
-    'table' => 'leads_opportunities_1_c',
-    'fields' => 
-    array (
-      0 => 
-      array (
-        'name' => 'id',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      1 => 
-      array (
-        'name' => 'date_modified',
-        'type' => 'datetime',
-      ),
-      2 => 
-      array (
-        'name' => 'deleted',
-        'type' => 'bool',
-        'len' => '1',
-        'default' => '0',
-        'required' => true,
-      ),
-      3 => 
-      array (
-        'name' => 'leads_opportunities_1leads_ida',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      4 => 
-      array (
-        'name' => 'leads_opportunities_1opportunities_idb',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-    ),
-    'indices' => 
-    array (
-      0 => 
-      array (
-        'name' => 'leads_opportunities_1spk',
-        'type' => 'primary',
-        'fields' => 
-        array (
-          0 => 'id',
-        ),
-      ),
-      1 => 
-      array (
-        'name' => 'leads_opportunities_1_ida1',
-        'type' => 'index',
-        'fields' => 
-        array (
-          0 => 'leads_opportunities_1leads_ida',
-        ),
-      ),
-      2 => 
-      array (
-        'name' => 'leads_opportunities_1_alt',
-        'type' => 'alternate_key',
-        'fields' => 
-        array (
-          0 => 'leads_opportunities_1opportunities_idb',
-        ),
-      ),
-    ),
-    'lhs_module' => 'Leads',
-    'lhs_table' => 'leads',
-    'lhs_key' => 'id',
-    'rhs_module' => 'Opportunities',
-    'rhs_table' => 'opportunities',
-    'rhs_key' => 'id',
-    'relationship_type' => 'many-to-many',
-    'join_table' => 'leads_opportunities_1_c',
-    'join_key_lhs' => 'leads_opportunities_1leads_ida',
-    'join_key_rhs' => 'leads_opportunities_1opportunities_idb',
-  ),
-  'opportunities_c_bookinghotel_1' => 
-  array (
-    'name' => 'opportunities_c_bookinghotel_1',
-    'true_relationship_type' => 'one-to-many',
-    'from_studio' => true,
-    'relationships' => 
-    array (
-      'opportunities_c_bookinghotel_1' => 
-      array (
-        'lhs_module' => 'Opportunities',
-        'lhs_table' => 'opportunities',
-        'lhs_key' => 'id',
-        'rhs_module' => 'C_BookingHotel',
-        'rhs_table' => 'c_bookinghotel',
-        'rhs_key' => 'id',
-        'relationship_type' => 'many-to-many',
-        'join_table' => 'opportunities_c_bookinghotel_1_c',
-        'join_key_lhs' => 'opportunities_c_bookinghotel_1opportunities_ida',
-        'join_key_rhs' => 'opportunities_c_bookinghotel_1c_bookinghotel_idb',
-      ),
-    ),
-    'table' => 'opportunities_c_bookinghotel_1_c',
-    'fields' => 
-    array (
-      0 => 
-      array (
-        'name' => 'id',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      1 => 
-      array (
-        'name' => 'date_modified',
-        'type' => 'datetime',
-      ),
-      2 => 
-      array (
-        'name' => 'deleted',
-        'type' => 'bool',
-        'len' => '1',
-        'default' => '0',
-        'required' => true,
-      ),
-      3 => 
-      array (
-        'name' => 'opportunities_c_bookinghotel_1opportunities_ida',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      4 => 
-      array (
-        'name' => 'opportunities_c_bookinghotel_1c_bookinghotel_idb',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-    ),
-    'indices' => 
-    array (
-      0 => 
-      array (
-        'name' => 'opportunities_c_bookinghotel_1spk',
-        'type' => 'primary',
-        'fields' => 
-        array (
-          0 => 'id',
-        ),
-      ),
-      1 => 
-      array (
-        'name' => 'opportunities_c_bookinghotel_1_ida1',
-        'type' => 'index',
-        'fields' => 
-        array (
-          0 => 'opportunities_c_bookinghotel_1opportunities_ida',
-        ),
-      ),
-      2 => 
-      array (
-        'name' => 'opportunities_c_bookinghotel_1_alt',
-        'type' => 'alternate_key',
-        'fields' => 
-        array (
-          0 => 'opportunities_c_bookinghotel_1c_bookinghotel_idb',
-        ),
-      ),
-    ),
-    'lhs_module' => 'Opportunities',
-    'lhs_table' => 'opportunities',
-    'lhs_key' => 'id',
-    'rhs_module' => 'C_BookingHotel',
-    'rhs_table' => 'c_bookinghotel',
-    'rhs_key' => 'id',
-    'relationship_type' => 'many-to-many',
-    'join_table' => 'opportunities_c_bookinghotel_1_c',
-    'join_key_lhs' => 'opportunities_c_bookinghotel_1opportunities_ida',
-    'join_key_rhs' => 'opportunities_c_bookinghotel_1c_bookinghotel_idb',
-  ),
-  'opportunities_c_bookingticket_1' => 
-  array (
-    'name' => 'opportunities_c_bookingticket_1',
-    'true_relationship_type' => 'one-to-many',
-    'from_studio' => true,
-    'relationships' => 
-    array (
-      'opportunities_c_bookingticket_1' => 
-      array (
-        'lhs_module' => 'Opportunities',
-        'lhs_table' => 'opportunities',
-        'lhs_key' => 'id',
-        'rhs_module' => 'C_BookingTicket',
-        'rhs_table' => 'c_bookingticket',
-        'rhs_key' => 'id',
-        'relationship_type' => 'many-to-many',
-        'join_table' => 'opportunities_c_bookingticket_1_c',
-        'join_key_lhs' => 'opportunities_c_bookingticket_1opportunities_ida',
-        'join_key_rhs' => 'opportunities_c_bookingticket_1c_bookingticket_idb',
-      ),
-    ),
-    'table' => 'opportunities_c_bookingticket_1_c',
-    'fields' => 
-    array (
-      0 => 
-      array (
-        'name' => 'id',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      1 => 
-      array (
-        'name' => 'date_modified',
-        'type' => 'datetime',
-      ),
-      2 => 
-      array (
-        'name' => 'deleted',
-        'type' => 'bool',
-        'len' => '1',
-        'default' => '0',
-        'required' => true,
-      ),
-      3 => 
-      array (
-        'name' => 'opportunities_c_bookingticket_1opportunities_ida',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      4 => 
-      array (
-        'name' => 'opportunities_c_bookingticket_1c_bookingticket_idb',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-    ),
-    'indices' => 
-    array (
-      0 => 
-      array (
-        'name' => 'opportunities_c_bookingticket_1spk',
-        'type' => 'primary',
-        'fields' => 
-        array (
-          0 => 'id',
-        ),
-      ),
-      1 => 
-      array (
-        'name' => 'opportunities_c_bookingticket_1_ida1',
-        'type' => 'index',
-        'fields' => 
-        array (
-          0 => 'opportunities_c_bookingticket_1opportunities_ida',
-        ),
-      ),
-      2 => 
-      array (
-        'name' => 'opportunities_c_bookingticket_1_alt',
-        'type' => 'alternate_key',
-        'fields' => 
-        array (
-          0 => 'opportunities_c_bookingticket_1c_bookingticket_idb',
-        ),
-      ),
-    ),
-    'lhs_module' => 'Opportunities',
-    'lhs_table' => 'opportunities',
-    'lhs_key' => 'id',
-    'rhs_module' => 'C_BookingTicket',
-    'rhs_table' => 'c_bookingticket',
-    'rhs_key' => 'id',
-    'relationship_type' => 'many-to-many',
-    'join_table' => 'opportunities_c_bookingticket_1_c',
-    'join_key_lhs' => 'opportunities_c_bookingticket_1opportunities_ida',
-    'join_key_rhs' => 'opportunities_c_bookingticket_1c_bookingticket_idb',
-  ),
-  'opportunities_c_bookingtour_1' => 
-  array (
-    'name' => 'opportunities_c_bookingtour_1',
-    'true_relationship_type' => 'one-to-many',
-    'relationships' => 
-    array (
-      'opportunities_c_bookingtour_1' => 
-      array (
-        'lhs_module' => 'Opportunities',
-        'lhs_table' => 'opportunities',
-        'lhs_key' => 'id',
-        'rhs_module' => 'C_BookingTour',
-        'rhs_table' => 'c_bookingtour',
-        'rhs_key' => 'id',
-        'relationship_type' => 'many-to-many',
-        'join_table' => 'opportunities_c_bookingtour_1_c',
-        'join_key_lhs' => 'opportunities_c_bookingtour_1opportunities_ida',
-        'join_key_rhs' => 'opportunities_c_bookingtour_1c_bookingtour_idb',
-      ),
-    ),
-    'table' => 'opportunities_c_bookingtour_1_c',
-    'fields' => 
-    array (
-      0 => 
-      array (
-        'name' => 'id',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      1 => 
-      array (
-        'name' => 'date_modified',
-        'type' => 'datetime',
-      ),
-      2 => 
-      array (
-        'name' => 'deleted',
-        'type' => 'bool',
-        'len' => '1',
-        'default' => '0',
-        'required' => true,
-      ),
-      3 => 
-      array (
-        'name' => 'opportunities_c_bookingtour_1opportunities_ida',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      4 => 
-      array (
-        'name' => 'opportunities_c_bookingtour_1c_bookingtour_idb',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-    ),
-    'indices' => 
-    array (
-      0 => 
-      array (
-        'name' => 'opportunities_c_bookingtour_1spk',
-        'type' => 'primary',
-        'fields' => 
-        array (
-          0 => 'id',
-        ),
-      ),
-      1 => 
-      array (
-        'name' => 'opportunities_c_bookingtour_1_ida1',
-        'type' => 'index',
-        'fields' => 
-        array (
-          0 => 'opportunities_c_bookingtour_1opportunities_ida',
-        ),
-      ),
-      2 => 
-      array (
-        'name' => 'opportunities_c_bookingtour_1_alt',
-        'type' => 'alternate_key',
-        'fields' => 
-        array (
-          0 => 'opportunities_c_bookingtour_1c_bookingtour_idb',
-        ),
-      ),
-    ),
-    'lhs_module' => 'Opportunities',
-    'lhs_table' => 'opportunities',
-    'lhs_key' => 'id',
-    'rhs_module' => 'C_BookingTour',
-    'rhs_table' => 'c_bookingtour',
-    'rhs_key' => 'id',
-    'relationship_type' => 'many-to-many',
-    'join_table' => 'opportunities_c_bookingtour_1_c',
-    'join_key_lhs' => 'opportunities_c_bookingtour_1opportunities_ida',
-    'join_key_rhs' => 'opportunities_c_bookingtour_1c_bookingtour_idb',
-  ),
-  'producttemplates_c_hotel_1' => 
-  array (
-    'name' => 'producttemplates_c_hotel_1',
-    'true_relationship_type' => 'one-to-many',
-    'relationships' => 
-    array (
-      'producttemplates_c_hotel_1' => 
-      array (
-        'lhs_module' => 'ProductTemplates',
-        'lhs_table' => 'product_templates',
-        'lhs_key' => 'id',
-        'rhs_module' => 'C_Hotel',
-        'rhs_table' => 'c_hotel',
-        'rhs_key' => 'id',
-        'relationship_type' => 'many-to-many',
-        'join_table' => 'producttemplates_c_hotel_1_c',
-        'join_key_lhs' => 'producttemplates_c_hotel_1producttemplates_ida',
-        'join_key_rhs' => 'producttemplates_c_hotel_1c_hotel_idb',
-      ),
-    ),
-    'table' => 'producttemplates_c_hotel_1_c',
-    'fields' => 
-    array (
-      0 => 
-      array (
-        'name' => 'id',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      1 => 
-      array (
-        'name' => 'date_modified',
-        'type' => 'datetime',
-      ),
-      2 => 
-      array (
-        'name' => 'deleted',
-        'type' => 'bool',
-        'len' => '1',
-        'default' => '0',
-        'required' => true,
-      ),
-      3 => 
-      array (
-        'name' => 'producttemplates_c_hotel_1producttemplates_ida',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      4 => 
-      array (
-        'name' => 'producttemplates_c_hotel_1c_hotel_idb',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-    ),
-    'indices' => 
-    array (
-      0 => 
-      array (
-        'name' => 'producttemplates_c_hotel_1spk',
-        'type' => 'primary',
-        'fields' => 
-        array (
-          0 => 'id',
-        ),
-      ),
-      1 => 
-      array (
-        'name' => 'producttemplates_c_hotel_1_ida1',
-        'type' => 'index',
-        'fields' => 
-        array (
-          0 => 'producttemplates_c_hotel_1producttemplates_ida',
-        ),
-      ),
-      2 => 
-      array (
-        'name' => 'producttemplates_c_hotel_1_alt',
-        'type' => 'alternate_key',
-        'fields' => 
-        array (
-          0 => 'producttemplates_c_hotel_1c_hotel_idb',
-        ),
-      ),
-    ),
-    'lhs_module' => 'ProductTemplates',
-    'lhs_table' => 'product_templates',
-    'lhs_key' => 'id',
-    'rhs_module' => 'C_Hotel',
-    'rhs_table' => 'c_hotel',
-    'rhs_key' => 'id',
-    'relationship_type' => 'many-to-many',
-    'join_table' => 'producttemplates_c_hotel_1_c',
-    'join_key_lhs' => 'producttemplates_c_hotel_1producttemplates_ida',
-    'join_key_rhs' => 'producttemplates_c_hotel_1c_hotel_idb',
-  ),
-  'producttemplates_c_tour_1' => 
-  array (
-    'name' => 'producttemplates_c_tour_1',
-    'true_relationship_type' => 'one-to-many',
-    'from_studio' => true,
-    'relationships' => 
-    array (
-      'producttemplates_c_tour_1' => 
-      array (
-        'lhs_module' => 'ProductTemplates',
-        'lhs_table' => 'product_templates',
-        'lhs_key' => 'id',
-        'rhs_module' => 'C_Tour',
-        'rhs_table' => 'c_tour',
-        'rhs_key' => 'id',
-        'relationship_type' => 'many-to-many',
-        'join_table' => 'producttemplates_c_tour_1_c',
-        'join_key_lhs' => 'producttemplates_c_tour_1producttemplates_ida',
-        'join_key_rhs' => 'producttemplates_c_tour_1c_tour_idb',
-      ),
-    ),
-    'table' => 'producttemplates_c_tour_1_c',
-    'fields' => 
-    array (
-      0 => 
-      array (
-        'name' => 'id',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      1 => 
-      array (
-        'name' => 'date_modified',
-        'type' => 'datetime',
-      ),
-      2 => 
-      array (
-        'name' => 'deleted',
-        'type' => 'bool',
-        'len' => '1',
-        'default' => '0',
-        'required' => true,
-      ),
-      3 => 
-      array (
-        'name' => 'producttemplates_c_tour_1producttemplates_ida',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      4 => 
-      array (
-        'name' => 'producttemplates_c_tour_1c_tour_idb',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-    ),
-    'indices' => 
-    array (
-      0 => 
-      array (
-        'name' => 'producttemplates_c_tour_1spk',
-        'type' => 'primary',
-        'fields' => 
-        array (
-          0 => 'id',
-        ),
-      ),
-      1 => 
-      array (
-        'name' => 'producttemplates_c_tour_1_ida1',
-        'type' => 'index',
-        'fields' => 
-        array (
-          0 => 'producttemplates_c_tour_1producttemplates_ida',
-        ),
-      ),
-      2 => 
-      array (
-        'name' => 'producttemplates_c_tour_1_alt',
-        'type' => 'alternate_key',
-        'fields' => 
-        array (
-          0 => 'producttemplates_c_tour_1c_tour_idb',
-        ),
-      ),
-    ),
-    'lhs_module' => 'ProductTemplates',
-    'lhs_table' => 'product_templates',
-    'lhs_key' => 'id',
-    'rhs_module' => 'C_Tour',
-    'rhs_table' => 'c_tour',
-    'rhs_key' => 'id',
-    'relationship_type' => 'many-to-many',
-    'join_table' => 'producttemplates_c_tour_1_c',
-    'join_key_lhs' => 'producttemplates_c_tour_1producttemplates_ida',
-    'join_key_rhs' => 'producttemplates_c_tour_1c_tour_idb',
-  ),
-  'producttemplates_opportunities_1' => 
-  array (
-    'name' => 'producttemplates_opportunities_1',
-    'true_relationship_type' => 'one-to-many',
-    'from_studio' => true,
-    'relationships' => 
-    array (
-      'producttemplates_opportunities_1' => 
-      array (
-        'lhs_module' => 'ProductTemplates',
-        'lhs_table' => 'product_templates',
-        'lhs_key' => 'id',
-        'rhs_module' => 'Opportunities',
-        'rhs_table' => 'opportunities',
-        'rhs_key' => 'id',
-        'relationship_type' => 'many-to-many',
-        'join_table' => 'producttemplates_opportunities_1_c',
-        'join_key_lhs' => 'producttemplates_opportunities_1producttemplates_ida',
-        'join_key_rhs' => 'producttemplates_opportunities_1opportunities_idb',
-      ),
-    ),
-    'table' => 'producttemplates_opportunities_1_c',
-    'fields' => 
-    array (
-      0 => 
-      array (
-        'name' => 'id',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      1 => 
-      array (
-        'name' => 'date_modified',
-        'type' => 'datetime',
-      ),
-      2 => 
-      array (
-        'name' => 'deleted',
-        'type' => 'bool',
-        'len' => '1',
-        'default' => '0',
-        'required' => true,
-      ),
-      3 => 
-      array (
-        'name' => 'producttemplates_opportunities_1producttemplates_ida',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      4 => 
-      array (
-        'name' => 'producttemplates_opportunities_1opportunities_idb',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-    ),
-    'indices' => 
-    array (
-      0 => 
-      array (
-        'name' => 'producttemplates_opportunities_1spk',
-        'type' => 'primary',
-        'fields' => 
-        array (
-          0 => 'id',
-        ),
-      ),
-      1 => 
-      array (
-        'name' => 'producttemplates_opportunities_1_ida1',
-        'type' => 'index',
-        'fields' => 
-        array (
-          0 => 'producttemplates_opportunities_1producttemplates_ida',
-        ),
-      ),
-      2 => 
-      array (
-        'name' => 'producttemplates_opportunities_1_alt',
-        'type' => 'alternate_key',
-        'fields' => 
-        array (
-          0 => 'producttemplates_opportunities_1opportunities_idb',
-        ),
-      ),
-    ),
-    'lhs_module' => 'ProductTemplates',
-    'lhs_table' => 'product_templates',
-    'lhs_key' => 'id',
-    'rhs_module' => 'Opportunities',
-    'rhs_table' => 'opportunities',
-    'rhs_key' => 'id',
-    'relationship_type' => 'many-to-many',
-    'join_table' => 'producttemplates_opportunities_1_c',
-    'join_key_lhs' => 'producttemplates_opportunities_1producttemplates_ida',
-    'join_key_rhs' => 'producttemplates_opportunities_1opportunities_idb',
-  ),
-  'projecttask_c_worklog_1' => 
-  array (
-    'name' => 'projecttask_c_worklog_1',
-    'true_relationship_type' => 'one-to-many',
-    'from_studio' => true,
-    'relationships' => 
-    array (
-      'projecttask_c_worklog_1' => 
-      array (
-        'lhs_module' => 'ProjectTask',
-        'lhs_table' => 'project_task',
-        'lhs_key' => 'id',
-        'rhs_module' => 'C_WorkLog',
-        'rhs_table' => 'c_worklog',
-        'rhs_key' => 'id',
-        'relationship_type' => 'many-to-many',
-        'join_table' => 'projecttask_c_worklog_1_c',
-        'join_key_lhs' => 'projecttask_c_worklog_1projecttask_ida',
-        'join_key_rhs' => 'projecttask_c_worklog_1c_worklog_idb',
-      ),
-    ),
-    'table' => 'projecttask_c_worklog_1_c',
-    'fields' => 
-    array (
-      0 => 
-      array (
-        'name' => 'id',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      1 => 
-      array (
-        'name' => 'date_modified',
-        'type' => 'datetime',
-      ),
-      2 => 
-      array (
-        'name' => 'deleted',
-        'type' => 'bool',
-        'len' => '1',
-        'default' => '0',
-        'required' => true,
-      ),
-      3 => 
-      array (
-        'name' => 'projecttask_c_worklog_1projecttask_ida',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-      4 => 
-      array (
-        'name' => 'projecttask_c_worklog_1c_worklog_idb',
-        'type' => 'varchar',
-        'len' => 36,
-      ),
-    ),
-    'indices' => 
-    array (
-      0 => 
-      array (
-        'name' => 'projecttask_c_worklog_1spk',
-        'type' => 'primary',
-        'fields' => 
-        array (
-          0 => 'id',
-        ),
-      ),
-      1 => 
-      array (
-        'name' => 'projecttask_c_worklog_1_ida1',
-        'type' => 'index',
-        'fields' => 
-        array (
-          0 => 'projecttask_c_worklog_1projecttask_ida',
-        ),
-      ),
-      2 => 
-      array (
-        'name' => 'projecttask_c_worklog_1_alt',
-        'type' => 'alternate_key',
-        'fields' => 
-        array (
-          0 => 'projecttask_c_worklog_1c_worklog_idb',
-        ),
-      ),
-    ),
-    'lhs_module' => 'ProjectTask',
-    'lhs_table' => 'project_task',
-    'lhs_key' => 'id',
-    'rhs_module' => 'C_WorkLog',
-    'rhs_table' => 'c_worklog',
-    'rhs_key' => 'id',
-    'relationship_type' => 'many-to-many',
-    'join_table' => 'projecttask_c_worklog_1_c',
-    'join_key_lhs' => 'projecttask_c_worklog_1projecttask_ida',
-    'join_key_rhs' => 'projecttask_c_worklog_1c_worklog_idb',
-  ),
-  'projecttask_project_1' => 
-  array (
-    'name' => 'projecttask_project_1',
+    'name' => 'bc_survey_accounts',
     'true_relationship_type' => 'many-to-many',
-    'from_studio' => true,
     'relationships' => 
     array (
-      'projecttask_project_1' => 
+      'bc_survey_accounts' => 
       array (
-        'lhs_module' => 'ProjectTask',
-        'lhs_table' => 'project_task',
+        'lhs_module' => 'bc_survey',
+        'lhs_table' => 'bc_survey',
         'lhs_key' => 'id',
-        'rhs_module' => 'Project',
-        'rhs_table' => 'project',
+        'rhs_module' => 'Accounts',
+        'rhs_table' => 'accounts',
         'rhs_key' => 'id',
         'relationship_type' => 'many-to-many',
-        'join_table' => 'projecttask_project_1_c',
-        'join_key_lhs' => 'projecttask_project_1projecttask_ida',
-        'join_key_rhs' => 'projecttask_project_1project_idb',
+        'join_table' => 'bc_survey_accounts_c',
+        'join_key_lhs' => 'bc_survey_accountsbc_survey_ida',
+        'join_key_rhs' => 'bc_survey_accountsaccounts_idb',
       ),
     ),
-    'table' => 'projecttask_project_1_c',
+    'table' => 'bc_survey_accounts_c',
     'fields' => 
     array (
       0 => 
@@ -9505,13 +6936,13 @@
       ),
       3 => 
       array (
-        'name' => 'projecttask_project_1projecttask_ida',
+        'name' => 'bc_survey_accountsbc_survey_ida',
         'type' => 'varchar',
         'len' => 36,
       ),
       4 => 
       array (
-        'name' => 'projecttask_project_1project_idb',
+        'name' => 'bc_survey_accountsaccounts_idb',
         'type' => 'varchar',
         'len' => 36,
       ),
@@ -9520,7 +6951,7 @@
     array (
       0 => 
       array (
-        'name' => 'projecttask_project_1spk',
+        'name' => 'bc_survey_accountsspk',
         'type' => 'primary',
         'fields' => 
         array (
@@ -9529,48 +6960,47 @@
       ),
       1 => 
       array (
-        'name' => 'projecttask_project_1_alt',
+        'name' => 'bc_survey_accounts_alt',
         'type' => 'alternate_key',
         'fields' => 
         array (
-          0 => 'projecttask_project_1projecttask_ida',
-          1 => 'projecttask_project_1project_idb',
+          0 => 'bc_survey_accountsbc_survey_ida',
+          1 => 'bc_survey_accountsaccounts_idb',
         ),
       ),
     ),
-    'lhs_module' => 'ProjectTask',
-    'lhs_table' => 'project_task',
+    'lhs_module' => 'bc_survey',
+    'lhs_table' => 'bc_survey',
     'lhs_key' => 'id',
-    'rhs_module' => 'Project',
-    'rhs_table' => 'project',
+    'rhs_module' => 'Accounts',
+    'rhs_table' => 'accounts',
     'rhs_key' => 'id',
     'relationship_type' => 'many-to-many',
-    'join_table' => 'projecttask_project_1_c',
-    'join_key_lhs' => 'projecttask_project_1projecttask_ida',
-    'join_key_rhs' => 'projecttask_project_1project_idb',
+    'join_table' => 'bc_survey_accounts_c',
+    'join_key_lhs' => 'bc_survey_accountsbc_survey_ida',
+    'join_key_rhs' => 'bc_survey_accountsaccounts_idb',
   ),
-  'project_c_worklog_1' => 
+  'bc_survey_answers_bc_survey_questions' => 
   array (
-    'name' => 'project_c_worklog_1',
+    'name' => 'bc_survey_answers_bc_survey_questions',
     'true_relationship_type' => 'one-to-many',
-    'from_studio' => true,
     'relationships' => 
     array (
-      'project_c_worklog_1' => 
+      'bc_survey_answers_bc_survey_questions' => 
       array (
-        'lhs_module' => 'Project',
-        'lhs_table' => 'project',
+        'lhs_module' => 'bc_survey_questions',
+        'lhs_table' => 'bc_survey_questions',
         'lhs_key' => 'id',
-        'rhs_module' => 'C_WorkLog',
-        'rhs_table' => 'c_worklog',
+        'rhs_module' => 'bc_survey_answers',
+        'rhs_table' => 'bc_survey_answers',
         'rhs_key' => 'id',
         'relationship_type' => 'many-to-many',
-        'join_table' => 'project_c_worklog_1_c',
-        'join_key_lhs' => 'project_c_worklog_1project_ida',
-        'join_key_rhs' => 'project_c_worklog_1c_worklog_idb',
+        'join_table' => 'bc_survey_answers_bc_survey_questions_c',
+        'join_key_lhs' => 'bc_survey_answers_bc_survey_questionsbc_survey_questions_ida',
+        'join_key_rhs' => 'bc_survey_answers_bc_survey_questionsbc_survey_answers_idb',
       ),
     ),
-    'table' => 'project_c_worklog_1_c',
+    'table' => 'bc_survey_answers_bc_survey_questions_c',
     'fields' => 
     array (
       0 => 
@@ -9594,13 +7024,13 @@
       ),
       3 => 
       array (
-        'name' => 'project_c_worklog_1project_ida',
+        'name' => 'bc_survey_answers_bc_survey_questionsbc_survey_questions_ida',
         'type' => 'varchar',
         'len' => 36,
       ),
       4 => 
       array (
-        'name' => 'project_c_worklog_1c_worklog_idb',
+        'name' => 'bc_survey_answers_bc_survey_questionsbc_survey_answers_idb',
         'type' => 'varchar',
         'len' => 36,
       ),
@@ -9609,7 +7039,7 @@
     array (
       0 => 
       array (
-        'name' => 'project_c_worklog_1spk',
+        'name' => 'bc_survey_answers_bc_survey_questionsspk',
         'type' => 'primary',
         'fields' => 
         array (
@@ -9618,56 +7048,1663 @@
       ),
       1 => 
       array (
-        'name' => 'project_c_worklog_1_ida1',
+        'name' => 'bc_survey_answers_bc_survey_questions_ida1',
         'type' => 'index',
         'fields' => 
         array (
-          0 => 'project_c_worklog_1project_ida',
+          0 => 'bc_survey_answers_bc_survey_questionsbc_survey_questions_ida',
         ),
       ),
       2 => 
       array (
-        'name' => 'project_c_worklog_1_alt',
+        'name' => 'bc_survey_answers_bc_survey_questions_alt',
         'type' => 'alternate_key',
         'fields' => 
         array (
-          0 => 'project_c_worklog_1c_worklog_idb',
+          0 => 'bc_survey_answers_bc_survey_questionsbc_survey_answers_idb',
         ),
       ),
     ),
-    'lhs_module' => 'Project',
-    'lhs_table' => 'project',
+    'lhs_module' => 'bc_survey_questions',
+    'lhs_table' => 'bc_survey_questions',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_WorkLog',
-    'rhs_table' => 'c_worklog',
+    'rhs_module' => 'bc_survey_answers',
+    'rhs_table' => 'bc_survey_answers',
     'rhs_key' => 'id',
     'relationship_type' => 'many-to-many',
-    'join_table' => 'project_c_worklog_1_c',
-    'join_key_lhs' => 'project_c_worklog_1project_ida',
-    'join_key_rhs' => 'project_c_worklog_1c_worklog_idb',
+    'join_table' => 'bc_survey_answers_bc_survey_questions_c',
+    'join_key_lhs' => 'bc_survey_answers_bc_survey_questionsbc_survey_questions_ida',
+    'join_key_rhs' => 'bc_survey_answers_bc_survey_questionsbc_survey_answers_idb',
   ),
-  'project_users_1' => 
+  'bc_survey_automizer_bc_automizer_actions' => 
   array (
-    'name' => 'project_users_1',
-    'true_relationship_type' => 'many-to-many',
-    'from_studio' => true,
+    'name' => 'bc_survey_automizer_bc_automizer_actions',
+    'true_relationship_type' => 'one-to-many',
     'relationships' => 
     array (
-      'project_users_1' => 
+      'bc_survey_automizer_bc_automizer_actions' => 
       array (
-        'lhs_module' => 'Project',
-        'lhs_table' => 'project',
+        'lhs_module' => 'bc_survey_automizer',
+        'lhs_table' => 'bc_survey_automizer',
+        'lhs_key' => 'id',
+        'rhs_module' => 'bc_automizer_actions',
+        'rhs_table' => 'bc_automizer_actions',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'bc_survey_automizer_bc_automizer_actions_c',
+        'join_key_lhs' => 'bc_survey_automizer_bc_automizer_actionsbc_survey_automizer_ida',
+        'join_key_rhs' => 'bc_survey_automizer_bc_automizer_actionsbc_automizer_actions_idb',
+      ),
+    ),
+    'table' => 'bc_survey_automizer_bc_automizer_actions_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'bc_survey_automizer_bc_automizer_actionsbc_survey_automizer_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'bc_survey_automizer_bc_automizer_actionsbc_automizer_actions_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'bc_survey_automizer_bc_automizer_actionsspk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'bc_survey_automizer_bc_automizer_actions_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'bc_survey_automizer_bc_automizer_actionsbc_survey_automizer_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'bc_survey_automizer_bc_automizer_actions_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'bc_survey_automizer_bc_automizer_actionsbc_automizer_actions_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'bc_survey_automizer',
+    'lhs_table' => 'bc_survey_automizer',
+    'lhs_key' => 'id',
+    'rhs_module' => 'bc_automizer_actions',
+    'rhs_table' => 'bc_automizer_actions',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'bc_survey_automizer_bc_automizer_actions_c',
+    'join_key_lhs' => 'bc_survey_automizer_bc_automizer_actionsbc_survey_automizer_ida',
+    'join_key_rhs' => 'bc_survey_automizer_bc_automizer_actionsbc_automizer_actions_idb',
+  ),
+  'bc_survey_automizer_bc_automizer_condition' => 
+  array (
+    'name' => 'bc_survey_automizer_bc_automizer_condition',
+    'true_relationship_type' => 'one-to-many',
+    'relationships' => 
+    array (
+      'bc_survey_automizer_bc_automizer_condition' => 
+      array (
+        'lhs_module' => 'bc_survey_automizer',
+        'lhs_table' => 'bc_survey_automizer',
+        'lhs_key' => 'id',
+        'rhs_module' => 'bc_automizer_condition',
+        'rhs_table' => 'bc_automizer_condition',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'bc_survey_automizer_bc_automizer_condition_c',
+        'join_key_lhs' => 'bc_survey_3b38tomizer_ida',
+        'join_key_rhs' => 'bc_survey_3650ndition_idb',
+      ),
+    ),
+    'table' => 'bc_survey_automizer_bc_automizer_condition_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'bc_survey_3b38tomizer_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'bc_survey_3650ndition_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'bc_survey_automizer_bc_automizer_conditionspk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'bc_survey_automizer_bc_automizer_condition_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'bc_survey_3b38tomizer_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'bc_survey_automizer_bc_automizer_condition_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'bc_survey_3650ndition_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'bc_survey_automizer',
+    'lhs_table' => 'bc_survey_automizer',
+    'lhs_key' => 'id',
+    'rhs_module' => 'bc_automizer_condition',
+    'rhs_table' => 'bc_automizer_condition',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'bc_survey_automizer_bc_automizer_condition_c',
+    'join_key_lhs' => 'bc_survey_3b38tomizer_ida',
+    'join_key_rhs' => 'bc_survey_3650ndition_idb',
+  ),
+  'bc_survey_bc_survey_questions' => 
+  array (
+    'name' => 'bc_survey_bc_survey_questions',
+    'true_relationship_type' => 'one-to-many',
+    'relationships' => 
+    array (
+      'bc_survey_bc_survey_questions' => 
+      array (
+        'lhs_module' => 'bc_survey',
+        'lhs_table' => 'bc_survey',
+        'lhs_key' => 'id',
+        'rhs_module' => 'bc_survey_questions',
+        'rhs_table' => 'bc_survey_questions',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'bc_survey_bc_survey_questions_c',
+        'join_key_lhs' => 'bc_survey_bc_survey_questionsbc_survey_ida',
+        'join_key_rhs' => 'bc_survey_bc_survey_questionsbc_survey_questions_idb',
+      ),
+    ),
+    'table' => 'bc_survey_bc_survey_questions_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'bc_survey_bc_survey_questionsbc_survey_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'bc_survey_bc_survey_questionsbc_survey_questions_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'bc_survey_bc_survey_questionsspk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'bc_survey_bc_survey_questions_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'bc_survey_bc_survey_questionsbc_survey_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'bc_survey_bc_survey_questions_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'bc_survey_bc_survey_questionsbc_survey_questions_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'bc_survey',
+    'lhs_table' => 'bc_survey',
+    'lhs_key' => 'id',
+    'rhs_module' => 'bc_survey_questions',
+    'rhs_table' => 'bc_survey_questions',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'bc_survey_bc_survey_questions_c',
+    'join_key_lhs' => 'bc_survey_bc_survey_questionsbc_survey_ida',
+    'join_key_rhs' => 'bc_survey_bc_survey_questionsbc_survey_questions_idb',
+  ),
+  'bc_survey_bc_survey_template' => 
+  array (
+    'name' => 'bc_survey_bc_survey_template',
+    'true_relationship_type' => 'one-to-many',
+    'relationships' => 
+    array (
+      'bc_survey_bc_survey_template' => 
+      array (
+        'lhs_module' => 'bc_survey_template',
+        'lhs_table' => 'bc_survey_template',
+        'lhs_key' => 'id',
+        'rhs_module' => 'bc_survey',
+        'rhs_table' => 'bc_survey',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'bc_survey_bc_survey_template_c',
+        'join_key_lhs' => 'bc_survey_bc_survey_templatebc_survey_template_ida',
+        'join_key_rhs' => 'bc_survey_bc_survey_templatebc_survey_idb',
+      ),
+    ),
+    'table' => 'bc_survey_bc_survey_template_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'bc_survey_bc_survey_templatebc_survey_template_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'bc_survey_bc_survey_templatebc_survey_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'bc_survey_bc_survey_templatespk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'bc_survey_bc_survey_template_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'bc_survey_bc_survey_templatebc_survey_template_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'bc_survey_bc_survey_template_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'bc_survey_bc_survey_templatebc_survey_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'bc_survey_template',
+    'lhs_table' => 'bc_survey_template',
+    'lhs_key' => 'id',
+    'rhs_module' => 'bc_survey',
+    'rhs_table' => 'bc_survey',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'bc_survey_bc_survey_template_c',
+    'join_key_lhs' => 'bc_survey_bc_survey_templatebc_survey_template_ida',
+    'join_key_rhs' => 'bc_survey_bc_survey_templatebc_survey_idb',
+  ),
+  'bc_survey_contacts' => 
+  array (
+    'name' => 'bc_survey_contacts',
+    'true_relationship_type' => 'many-to-many',
+    'relationships' => 
+    array (
+      'bc_survey_contacts' => 
+      array (
+        'lhs_module' => 'bc_survey',
+        'lhs_table' => 'bc_survey',
+        'lhs_key' => 'id',
+        'rhs_module' => 'Contacts',
+        'rhs_table' => 'contacts',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'bc_survey_contacts_c',
+        'join_key_lhs' => 'bc_survey_contactsbc_survey_ida',
+        'join_key_rhs' => 'bc_survey_contactscontacts_idb',
+      ),
+    ),
+    'table' => 'bc_survey_contacts_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'bc_survey_contactsbc_survey_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'bc_survey_contactscontacts_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'bc_survey_contactsspk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'bc_survey_contacts_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'bc_survey_contactsbc_survey_ida',
+          1 => 'bc_survey_contactscontacts_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'bc_survey',
+    'lhs_table' => 'bc_survey',
+    'lhs_key' => 'id',
+    'rhs_module' => 'Contacts',
+    'rhs_table' => 'contacts',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'bc_survey_contacts_c',
+    'join_key_lhs' => 'bc_survey_contactsbc_survey_ida',
+    'join_key_rhs' => 'bc_survey_contactscontacts_idb',
+  ),
+  'bc_survey_leads' => 
+  array (
+    'name' => 'bc_survey_leads',
+    'true_relationship_type' => 'many-to-many',
+    'relationships' => 
+    array (
+      'bc_survey_leads' => 
+      array (
+        'lhs_module' => 'bc_survey',
+        'lhs_table' => 'bc_survey',
+        'lhs_key' => 'id',
+        'rhs_module' => 'Leads',
+        'rhs_table' => 'leads',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'bc_survey_leads_c',
+        'join_key_lhs' => 'bc_survey_leadsbc_survey_ida',
+        'join_key_rhs' => 'bc_survey_leadsleads_idb',
+      ),
+    ),
+    'table' => 'bc_survey_leads_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'bc_survey_leadsbc_survey_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'bc_survey_leadsleads_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'bc_survey_leadsspk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'bc_survey_leads_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'bc_survey_leadsbc_survey_ida',
+          1 => 'bc_survey_leadsleads_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'bc_survey',
+    'lhs_table' => 'bc_survey',
+    'lhs_key' => 'id',
+    'rhs_module' => 'Leads',
+    'rhs_table' => 'leads',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'bc_survey_leads_c',
+    'join_key_lhs' => 'bc_survey_leadsbc_survey_ida',
+    'join_key_rhs' => 'bc_survey_leadsleads_idb',
+  ),
+  'bc_survey_pages_bc_survey' => 
+  array (
+    'name' => 'bc_survey_pages_bc_survey',
+    'true_relationship_type' => 'one-to-many',
+    'relationships' => 
+    array (
+      'bc_survey_pages_bc_survey' => 
+      array (
+        'lhs_module' => 'bc_survey',
+        'lhs_table' => 'bc_survey',
+        'lhs_key' => 'id',
+        'rhs_module' => 'bc_survey_pages',
+        'rhs_table' => 'bc_survey_pages',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'bc_survey_pages_bc_survey_c',
+        'join_key_lhs' => 'bc_survey_pages_bc_surveybc_survey_ida',
+        'join_key_rhs' => 'bc_survey_pages_bc_surveybc_survey_pages_idb',
+      ),
+    ),
+    'table' => 'bc_survey_pages_bc_survey_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'bc_survey_pages_bc_surveybc_survey_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'bc_survey_pages_bc_surveybc_survey_pages_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'bc_survey_pages_bc_surveyspk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'bc_survey_pages_bc_survey_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'bc_survey_pages_bc_surveybc_survey_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'bc_survey_pages_bc_survey_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'bc_survey_pages_bc_surveybc_survey_pages_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'bc_survey',
+    'lhs_table' => 'bc_survey',
+    'lhs_key' => 'id',
+    'rhs_module' => 'bc_survey_pages',
+    'rhs_table' => 'bc_survey_pages',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'bc_survey_pages_bc_survey_c',
+    'join_key_lhs' => 'bc_survey_pages_bc_surveybc_survey_ida',
+    'join_key_rhs' => 'bc_survey_pages_bc_surveybc_survey_pages_idb',
+  ),
+  'bc_survey_pages_bc_survey_questions' => 
+  array (
+    'name' => 'bc_survey_pages_bc_survey_questions',
+    'true_relationship_type' => 'one-to-many',
+    'relationships' => 
+    array (
+      'bc_survey_pages_bc_survey_questions' => 
+      array (
+        'lhs_module' => 'bc_survey_pages',
+        'lhs_table' => 'bc_survey_pages',
+        'lhs_key' => 'id',
+        'rhs_module' => 'bc_survey_questions',
+        'rhs_table' => 'bc_survey_questions',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'bc_survey_pages_bc_survey_questions_c',
+        'join_key_lhs' => 'bc_survey_pages_bc_survey_questionsbc_survey_pages_ida',
+        'join_key_rhs' => 'bc_survey_pages_bc_survey_questionsbc_survey_questions_idb',
+      ),
+    ),
+    'table' => 'bc_survey_pages_bc_survey_questions_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'bc_survey_pages_bc_survey_questionsbc_survey_pages_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'bc_survey_pages_bc_survey_questionsbc_survey_questions_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'bc_survey_pages_bc_survey_questionsspk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'bc_survey_pages_bc_survey_questions_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'bc_survey_pages_bc_survey_questionsbc_survey_pages_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'bc_survey_pages_bc_survey_questions_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'bc_survey_pages_bc_survey_questionsbc_survey_questions_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'bc_survey_pages',
+    'lhs_table' => 'bc_survey_pages',
+    'lhs_key' => 'id',
+    'rhs_module' => 'bc_survey_questions',
+    'rhs_table' => 'bc_survey_questions',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'bc_survey_pages_bc_survey_questions_c',
+    'join_key_lhs' => 'bc_survey_pages_bc_survey_questionsbc_survey_pages_ida',
+    'join_key_rhs' => 'bc_survey_pages_bc_survey_questionsbc_survey_questions_idb',
+  ),
+  'bc_survey_pages_bc_survey_template' => 
+  array (
+    'name' => 'bc_survey_pages_bc_survey_template',
+    'true_relationship_type' => 'one-to-many',
+    'relationships' => 
+    array (
+      'bc_survey_pages_bc_survey_template' => 
+      array (
+        'lhs_module' => 'bc_survey_template',
+        'lhs_table' => 'bc_survey_template',
+        'lhs_key' => 'id',
+        'rhs_module' => 'bc_survey_pages',
+        'rhs_table' => 'bc_survey_pages',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'bc_survey_pages_bc_survey_template_c',
+        'join_key_lhs' => 'bc_survey_pages_bc_survey_templatebc_survey_template_ida',
+        'join_key_rhs' => 'bc_survey_pages_bc_survey_templatebc_survey_pages_idb',
+      ),
+    ),
+    'table' => 'bc_survey_pages_bc_survey_template_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'bc_survey_pages_bc_survey_templatebc_survey_template_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'bc_survey_pages_bc_survey_templatebc_survey_pages_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'bc_survey_pages_bc_survey_templatespk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'bc_survey_pages_bc_survey_template_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'bc_survey_pages_bc_survey_templatebc_survey_template_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'bc_survey_pages_bc_survey_template_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'bc_survey_pages_bc_survey_templatebc_survey_pages_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'bc_survey_template',
+    'lhs_table' => 'bc_survey_template',
+    'lhs_key' => 'id',
+    'rhs_module' => 'bc_survey_pages',
+    'rhs_table' => 'bc_survey_pages',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'bc_survey_pages_bc_survey_template_c',
+    'join_key_lhs' => 'bc_survey_pages_bc_survey_templatebc_survey_template_ida',
+    'join_key_rhs' => 'bc_survey_pages_bc_survey_templatebc_survey_pages_idb',
+  ),
+  'bc_survey_prospects' => 
+  array (
+    'name' => 'bc_survey_prospects',
+    'true_relationship_type' => 'many-to-many',
+    'relationships' => 
+    array (
+      'bc_survey_prospects' => 
+      array (
+        'lhs_module' => 'bc_survey',
+        'lhs_table' => 'bc_survey',
+        'lhs_key' => 'id',
+        'rhs_module' => 'Prospects',
+        'rhs_table' => 'prospects',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'bc_survey_prospects_c',
+        'join_key_lhs' => 'bc_survey_prospectsbc_survey_ida',
+        'join_key_rhs' => 'bc_survey_prospectsprospects_idb',
+      ),
+    ),
+    'table' => 'bc_survey_prospects_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'bc_survey_prospectsbc_survey_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'bc_survey_prospectsprospects_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'bc_survey_prospectsspk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'bc_survey_prospects_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'bc_survey_prospectsbc_survey_ida',
+          1 => 'bc_survey_prospectsprospects_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'bc_survey',
+    'lhs_table' => 'bc_survey',
+    'lhs_key' => 'id',
+    'rhs_module' => 'Prospects',
+    'rhs_table' => 'prospects',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'bc_survey_prospects_c',
+    'join_key_lhs' => 'bc_survey_prospectsbc_survey_ida',
+    'join_key_rhs' => 'bc_survey_prospectsprospects_idb',
+  ),
+  'bc_survey_submission_accounts' => 
+  array (
+    'name' => 'bc_survey_submission_accounts',
+    'true_relationship_type' => 'one-to-many',
+    'relationships' => 
+    array (
+      'bc_survey_submission_accounts' => 
+      array (
+        'lhs_module' => 'Accounts',
+        'lhs_table' => 'accounts',
+        'lhs_key' => 'id',
+        'rhs_module' => 'bc_survey_submission',
+        'rhs_table' => 'bc_survey_submission',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'bc_survey_submission_accounts_c',
+        'join_key_lhs' => 'bc_survey_submission_accountsaccounts_ida',
+        'join_key_rhs' => 'bc_survey_submission_accountsbc_survey_submission_idb',
+      ),
+    ),
+    'table' => 'bc_survey_submission_accounts_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'bc_survey_submission_accountsaccounts_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'bc_survey_submission_accountsbc_survey_submission_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'bc_survey_submission_accountsspk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'bc_survey_submission_accounts_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'bc_survey_submission_accountsaccounts_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'bc_survey_submission_accounts_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'bc_survey_submission_accountsbc_survey_submission_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'Accounts',
+    'lhs_table' => 'accounts',
+    'lhs_key' => 'id',
+    'rhs_module' => 'bc_survey_submission',
+    'rhs_table' => 'bc_survey_submission',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'bc_survey_submission_accounts_c',
+    'join_key_lhs' => 'bc_survey_submission_accountsaccounts_ida',
+    'join_key_rhs' => 'bc_survey_submission_accountsbc_survey_submission_idb',
+  ),
+  'bc_survey_submission_bc_survey' => 
+  array (
+    'name' => 'bc_survey_submission_bc_survey',
+    'true_relationship_type' => 'one-to-many',
+    'relationships' => 
+    array (
+      'bc_survey_submission_bc_survey' => 
+      array (
+        'lhs_module' => 'bc_survey',
+        'lhs_table' => 'bc_survey',
+        'lhs_key' => 'id',
+        'rhs_module' => 'bc_survey_submission',
+        'rhs_table' => 'bc_survey_submission',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'bc_survey_submission_bc_survey_c',
+        'join_key_lhs' => 'bc_survey_submission_bc_surveybc_survey_ida',
+        'join_key_rhs' => 'bc_survey_submission_bc_surveybc_survey_submission_idb',
+      ),
+    ),
+    'table' => 'bc_survey_submission_bc_survey_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'bc_survey_submission_bc_surveybc_survey_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'bc_survey_submission_bc_surveybc_survey_submission_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'bc_survey_submission_bc_surveyspk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'bc_survey_submission_bc_survey_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'bc_survey_submission_bc_surveybc_survey_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'bc_survey_submission_bc_survey_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'bc_survey_submission_bc_surveybc_survey_submission_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'bc_survey',
+    'lhs_table' => 'bc_survey',
+    'lhs_key' => 'id',
+    'rhs_module' => 'bc_survey_submission',
+    'rhs_table' => 'bc_survey_submission',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'bc_survey_submission_bc_survey_c',
+    'join_key_lhs' => 'bc_survey_submission_bc_surveybc_survey_ida',
+    'join_key_rhs' => 'bc_survey_submission_bc_surveybc_survey_submission_idb',
+  ),
+  'bc_survey_submission_contacts' => 
+  array (
+    'name' => 'bc_survey_submission_contacts',
+    'true_relationship_type' => 'one-to-many',
+    'relationships' => 
+    array (
+      'bc_survey_submission_contacts' => 
+      array (
+        'lhs_module' => 'Contacts',
+        'lhs_table' => 'contacts',
+        'lhs_key' => 'id',
+        'rhs_module' => 'bc_survey_submission',
+        'rhs_table' => 'bc_survey_submission',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'bc_survey_submission_contacts_c',
+        'join_key_lhs' => 'bc_survey_submission_contactscontacts_ida',
+        'join_key_rhs' => 'bc_survey_submission_contactsbc_survey_submission_idb',
+      ),
+    ),
+    'table' => 'bc_survey_submission_contacts_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'bc_survey_submission_contactscontacts_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'bc_survey_submission_contactsbc_survey_submission_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'bc_survey_submission_contactsspk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'bc_survey_submission_contacts_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'bc_survey_submission_contactscontacts_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'bc_survey_submission_contacts_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'bc_survey_submission_contactsbc_survey_submission_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'Contacts',
+    'lhs_table' => 'contacts',
+    'lhs_key' => 'id',
+    'rhs_module' => 'bc_survey_submission',
+    'rhs_table' => 'bc_survey_submission',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'bc_survey_submission_contacts_c',
+    'join_key_lhs' => 'bc_survey_submission_contactscontacts_ida',
+    'join_key_rhs' => 'bc_survey_submission_contactsbc_survey_submission_idb',
+  ),
+  'bc_survey_submission_leads' => 
+  array (
+    'name' => 'bc_survey_submission_leads',
+    'true_relationship_type' => 'one-to-many',
+    'relationships' => 
+    array (
+      'bc_survey_submission_leads' => 
+      array (
+        'lhs_module' => 'Leads',
+        'lhs_table' => 'leads',
+        'lhs_key' => 'id',
+        'rhs_module' => 'bc_survey_submission',
+        'rhs_table' => 'bc_survey_submission',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'bc_survey_submission_leads_c',
+        'join_key_lhs' => 'bc_survey_submission_leadsleads_ida',
+        'join_key_rhs' => 'bc_survey_submission_leadsbc_survey_submission_idb',
+      ),
+    ),
+    'table' => 'bc_survey_submission_leads_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'bc_survey_submission_leadsleads_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'bc_survey_submission_leadsbc_survey_submission_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'bc_survey_submission_leadsspk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'bc_survey_submission_leads_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'bc_survey_submission_leadsleads_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'bc_survey_submission_leads_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'bc_survey_submission_leadsbc_survey_submission_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'Leads',
+    'lhs_table' => 'leads',
+    'lhs_key' => 'id',
+    'rhs_module' => 'bc_survey_submission',
+    'rhs_table' => 'bc_survey_submission',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'bc_survey_submission_leads_c',
+    'join_key_lhs' => 'bc_survey_submission_leadsleads_ida',
+    'join_key_rhs' => 'bc_survey_submission_leadsbc_survey_submission_idb',
+  ),
+  'bc_survey_submission_prospects' => 
+  array (
+    'name' => 'bc_survey_submission_prospects',
+    'true_relationship_type' => 'one-to-many',
+    'relationships' => 
+    array (
+      'bc_survey_submission_prospects' => 
+      array (
+        'lhs_module' => 'Prospects',
+        'lhs_table' => 'prospects',
+        'lhs_key' => 'id',
+        'rhs_module' => 'bc_survey_submission',
+        'rhs_table' => 'bc_survey_submission',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'bc_survey_submission_prospects_c',
+        'join_key_lhs' => 'bc_survey_submission_prospectsprospects_ida',
+        'join_key_rhs' => 'bc_survey_submission_prospectsbc_survey_submission_idb',
+      ),
+    ),
+    'table' => 'bc_survey_submission_prospects_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'bc_survey_submission_prospectsprospects_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'bc_survey_submission_prospectsbc_survey_submission_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'bc_survey_submission_prospectsspk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'bc_survey_submission_prospects_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'bc_survey_submission_prospectsprospects_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'bc_survey_submission_prospects_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'bc_survey_submission_prospectsbc_survey_submission_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'Prospects',
+    'lhs_table' => 'prospects',
+    'lhs_key' => 'id',
+    'rhs_module' => 'bc_survey_submission',
+    'rhs_table' => 'bc_survey_submission',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'bc_survey_submission_prospects_c',
+    'join_key_lhs' => 'bc_survey_submission_prospectsprospects_ida',
+    'join_key_rhs' => 'bc_survey_submission_prospectsbc_survey_submission_idb',
+  ),
+  'bc_survey_submission_users' => 
+  array (
+    'name' => 'bc_survey_submission_users',
+    'true_relationship_type' => 'one-to-many',
+    'relationships' => 
+    array (
+      'bc_survey_submission_users' => 
+      array (
+        'lhs_module' => 'Users',
+        'lhs_table' => 'users',
+        'lhs_key' => 'id',
+        'rhs_module' => 'bc_survey_submission',
+        'rhs_table' => 'bc_survey_submission',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'bc_survey_submission_users_c',
+        'join_key_lhs' => 'bc_survey_submission_usersusers_ida',
+        'join_key_rhs' => 'bc_survey_submission_usersbc_survey_submission_idb',
+      ),
+    ),
+    'table' => 'bc_survey_submission_users_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'bc_survey_submission_usersusers_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'bc_survey_submission_usersbc_survey_submission_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'bc_survey_submission_usersspk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'bc_survey_submission_users_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'bc_survey_submission_usersusers_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'bc_survey_submission_users_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'bc_survey_submission_usersbc_survey_submission_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'bc_survey_submission',
+    'rhs_table' => 'bc_survey_submission',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'bc_survey_submission_users_c',
+    'join_key_lhs' => 'bc_survey_submission_usersusers_ida',
+    'join_key_rhs' => 'bc_survey_submission_usersbc_survey_submission_idb',
+  ),
+  'bc_survey_template_bc_survey_questions' => 
+  array (
+    'name' => 'bc_survey_template_bc_survey_questions',
+    'true_relationship_type' => 'one-to-many',
+    'relationships' => 
+    array (
+      'bc_survey_template_bc_survey_questions' => 
+      array (
+        'lhs_module' => 'bc_survey_template',
+        'lhs_table' => 'bc_survey_template',
+        'lhs_key' => 'id',
+        'rhs_module' => 'bc_survey_questions',
+        'rhs_table' => 'bc_survey_questions',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'bc_survey_template_bc_survey_questions_c',
+        'join_key_lhs' => 'bc_survey_template_bc_survey_questionsbc_survey_template_ida',
+        'join_key_rhs' => 'bc_survey_template_bc_survey_questionsbc_survey_questions_idb',
+      ),
+    ),
+    'table' => 'bc_survey_template_bc_survey_questions_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'bc_survey_template_bc_survey_questionsbc_survey_template_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'bc_survey_template_bc_survey_questionsbc_survey_questions_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'bc_survey_template_bc_survey_questionsspk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'bc_survey_template_bc_survey_questions_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'bc_survey_template_bc_survey_questionsbc_survey_template_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'bc_survey_template_bc_survey_questions_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'bc_survey_template_bc_survey_questionsbc_survey_questions_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'bc_survey_template',
+    'lhs_table' => 'bc_survey_template',
+    'lhs_key' => 'id',
+    'rhs_module' => 'bc_survey_questions',
+    'rhs_table' => 'bc_survey_questions',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'bc_survey_template_bc_survey_questions_c',
+    'join_key_lhs' => 'bc_survey_template_bc_survey_questionsbc_survey_template_ida',
+    'join_key_rhs' => 'bc_survey_template_bc_survey_questionsbc_survey_questions_idb',
+  ),
+  'bc_survey_users' => 
+  array (
+    'name' => 'bc_survey_users',
+    'true_relationship_type' => 'many-to-many',
+    'relationships' => 
+    array (
+      'bc_survey_users' => 
+      array (
+        'lhs_module' => 'bc_survey',
+        'lhs_table' => 'bc_survey',
         'lhs_key' => 'id',
         'rhs_module' => 'Users',
         'rhs_table' => 'users',
         'rhs_key' => 'id',
         'relationship_type' => 'many-to-many',
-        'join_table' => 'project_users_1_c',
-        'join_key_lhs' => 'project_users_1project_ida',
-        'join_key_rhs' => 'project_users_1users_idb',
+        'join_table' => 'bc_survey_users_c',
+        'join_key_lhs' => 'bc_survey_usersbc_survey_ida',
+        'join_key_rhs' => 'bc_survey_usersusers_idb',
       ),
     ),
-    'table' => 'project_users_1_c',
+    'table' => 'bc_survey_users_c',
     'fields' => 
     array (
       0 => 
@@ -9691,13 +8728,13 @@
       ),
       3 => 
       array (
-        'name' => 'project_users_1project_ida',
+        'name' => 'bc_survey_usersbc_survey_ida',
         'type' => 'varchar',
         'len' => 36,
       ),
       4 => 
       array (
-        'name' => 'project_users_1users_idb',
+        'name' => 'bc_survey_usersusers_idb',
         'type' => 'varchar',
         'len' => 36,
       ),
@@ -9706,7 +8743,7 @@
     array (
       0 => 
       array (
-        'name' => 'project_users_1spk',
+        'name' => 'bc_survey_usersspk',
         'type' => 'primary',
         'fields' => 
         array (
@@ -9715,25 +8752,5504 @@
       ),
       1 => 
       array (
-        'name' => 'project_users_1_alt',
+        'name' => 'bc_survey_users_alt',
         'type' => 'alternate_key',
         'fields' => 
         array (
-          0 => 'project_users_1project_ida',
-          1 => 'project_users_1users_idb',
+          0 => 'bc_survey_usersbc_survey_ida',
+          1 => 'bc_survey_usersusers_idb',
         ),
       ),
     ),
-    'lhs_module' => 'Project',
-    'lhs_table' => 'project',
+    'lhs_module' => 'bc_survey',
+    'lhs_table' => 'bc_survey',
     'lhs_key' => 'id',
     'rhs_module' => 'Users',
     'rhs_table' => 'users',
     'rhs_key' => 'id',
     'relationship_type' => 'many-to-many',
-    'join_table' => 'project_users_1_c',
-    'join_key_lhs' => 'project_users_1project_ida',
-    'join_key_rhs' => 'project_users_1users_idb',
+    'join_table' => 'bc_survey_users_c',
+    'join_key_lhs' => 'bc_survey_usersbc_survey_ida',
+    'join_key_rhs' => 'bc_survey_usersusers_idb',
+  ),
+  'contacts_c_invoices_1' => 
+  array (
+    'name' => 'contacts_c_invoices_1',
+    'true_relationship_type' => 'one-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'contacts_c_invoices_1' => 
+      array (
+        'lhs_module' => 'Contacts',
+        'lhs_table' => 'contacts',
+        'lhs_key' => 'id',
+        'rhs_module' => 'C_Invoices',
+        'rhs_table' => 'c_invoices',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'contacts_c_invoices_1_c',
+        'join_key_lhs' => 'contacts_c_invoices_1contacts_ida',
+        'join_key_rhs' => 'contacts_c_invoices_1c_invoices_idb',
+      ),
+    ),
+    'table' => 'contacts_c_invoices_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'contacts_c_invoices_1contacts_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'contacts_c_invoices_1c_invoices_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'contacts_c_invoices_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'contacts_c_invoices_1_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'contacts_c_invoices_1contacts_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'contacts_c_invoices_1_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'contacts_c_invoices_1c_invoices_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'Contacts',
+    'lhs_table' => 'contacts',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_Invoices',
+    'rhs_table' => 'c_invoices',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'contacts_c_invoices_1_c',
+    'join_key_lhs' => 'contacts_c_invoices_1contacts_ida',
+    'join_key_rhs' => 'contacts_c_invoices_1c_invoices_idb',
+  ),
+  'contacts_c_payments_1' => 
+  array (
+    'name' => 'contacts_c_payments_1',
+    'true_relationship_type' => 'one-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'contacts_c_payments_1' => 
+      array (
+        'lhs_module' => 'Contacts',
+        'lhs_table' => 'contacts',
+        'lhs_key' => 'id',
+        'rhs_module' => 'C_Payments',
+        'rhs_table' => 'c_payments',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'contacts_c_payments_1_c',
+        'join_key_lhs' => 'contacts_c_payments_1contacts_ida',
+        'join_key_rhs' => 'contacts_c_payments_1c_payments_idb',
+      ),
+    ),
+    'table' => 'contacts_c_payments_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'contacts_c_payments_1contacts_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'contacts_c_payments_1c_payments_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'contacts_c_payments_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'contacts_c_payments_1_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'contacts_c_payments_1contacts_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'contacts_c_payments_1_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'contacts_c_payments_1c_payments_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'Contacts',
+    'lhs_table' => 'contacts',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_Payments',
+    'rhs_table' => 'c_payments',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'contacts_c_payments_1_c',
+    'join_key_lhs' => 'contacts_c_payments_1contacts_ida',
+    'join_key_rhs' => 'contacts_c_payments_1c_payments_idb',
+  ),
+  'contacts_c_payments_2' => 
+  array (
+    'name' => 'contacts_c_payments_2',
+    'true_relationship_type' => 'one-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'contacts_c_payments_2' => 
+      array (
+        'lhs_module' => 'Contacts',
+        'lhs_table' => 'contacts',
+        'lhs_key' => 'id',
+        'rhs_module' => 'C_Payments',
+        'rhs_table' => 'c_payments',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'contacts_c_payments_2_c',
+        'join_key_lhs' => 'contacts_c_payments_2contacts_ida',
+        'join_key_rhs' => 'contacts_c_payments_2c_payments_idb',
+      ),
+    ),
+    'table' => 'contacts_c_payments_2_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'contacts_c_payments_2contacts_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'contacts_c_payments_2c_payments_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'contacts_c_payments_2spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'contacts_c_payments_2_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'contacts_c_payments_2contacts_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'contacts_c_payments_2_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'contacts_c_payments_2c_payments_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'Contacts',
+    'lhs_table' => 'contacts',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_Payments',
+    'rhs_table' => 'c_payments',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'contacts_c_payments_2_c',
+    'join_key_lhs' => 'contacts_c_payments_2contacts_ida',
+    'join_key_rhs' => 'contacts_c_payments_2c_payments_idb',
+  ),
+  'contacts_c_refunds_1' => 
+  array (
+    'name' => 'contacts_c_refunds_1',
+    'true_relationship_type' => 'one-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'contacts_c_refunds_1' => 
+      array (
+        'lhs_module' => 'Contacts',
+        'lhs_table' => 'contacts',
+        'lhs_key' => 'id',
+        'rhs_module' => 'C_Refunds',
+        'rhs_table' => 'c_refunds',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'contacts_c_refunds_1_c',
+        'join_key_lhs' => 'contacts_c_refunds_1contacts_ida',
+        'join_key_rhs' => 'contacts_c_refunds_1c_refunds_idb',
+      ),
+    ),
+    'table' => 'contacts_c_refunds_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'contacts_c_refunds_1contacts_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'contacts_c_refunds_1c_refunds_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'contacts_c_refunds_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'contacts_c_refunds_1_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'contacts_c_refunds_1contacts_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'contacts_c_refunds_1_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'contacts_c_refunds_1c_refunds_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'Contacts',
+    'lhs_table' => 'contacts',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_Refunds',
+    'rhs_table' => 'c_refunds',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'contacts_c_refunds_1_c',
+    'join_key_lhs' => 'contacts_c_refunds_1contacts_ida',
+    'join_key_rhs' => 'contacts_c_refunds_1c_refunds_idb',
+  ),
+  'contacts_j_feedback_1' => 
+  array (
+    'name' => 'contacts_j_feedback_1',
+    'true_relationship_type' => 'one-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'contacts_j_feedback_1' => 
+      array (
+        'lhs_module' => 'Contacts',
+        'lhs_table' => 'contacts',
+        'lhs_key' => 'id',
+        'rhs_module' => 'J_Feedback',
+        'rhs_table' => 'j_feedback',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'contacts_j_feedback_1_c',
+        'join_key_lhs' => 'contacts_j_feedback_1contacts_ida',
+        'join_key_rhs' => 'contacts_j_feedback_1j_feedback_idb',
+      ),
+    ),
+    'table' => 'contacts_j_feedback_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'contacts_j_feedback_1contacts_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'contacts_j_feedback_1j_feedback_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'contacts_j_feedback_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'contacts_j_feedback_1_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'contacts_j_feedback_1contacts_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'contacts_j_feedback_1_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'contacts_j_feedback_1j_feedback_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'Contacts',
+    'lhs_table' => 'contacts',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Feedback',
+    'rhs_table' => 'j_feedback',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'contacts_j_feedback_1_c',
+    'join_key_lhs' => 'contacts_j_feedback_1contacts_ida',
+    'join_key_rhs' => 'contacts_j_feedback_1j_feedback_idb',
+  ),
+  'contacts_j_ptresult_1' => 
+  array (
+    'name' => 'contacts_j_ptresult_1',
+    'true_relationship_type' => 'one-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'contacts_j_ptresult_1' => 
+      array (
+        'lhs_module' => 'Contacts',
+        'lhs_table' => 'contacts',
+        'lhs_key' => 'id',
+        'rhs_module' => 'J_PTResult',
+        'rhs_table' => 'j_ptresult',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'contacts_j_ptresult_1_c',
+        'join_key_lhs' => 'contacts_j_ptresult_1contacts_ida',
+        'join_key_rhs' => 'contacts_j_ptresult_1j_ptresult_idb',
+      ),
+    ),
+    'table' => 'contacts_j_ptresult_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'contacts_j_ptresult_1contacts_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'contacts_j_ptresult_1j_ptresult_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'contacts_j_ptresult_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'contacts_j_ptresult_1_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'contacts_j_ptresult_1contacts_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'contacts_j_ptresult_1_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'contacts_j_ptresult_1j_ptresult_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'Contacts',
+    'lhs_table' => 'contacts',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_PTResult',
+    'rhs_table' => 'j_ptresult',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'contacts_j_ptresult_1_c',
+    'join_key_lhs' => 'contacts_j_ptresult_1contacts_ida',
+    'join_key_rhs' => 'contacts_j_ptresult_1j_ptresult_idb',
+  ),
+  'contracts_j_class_1' => 
+  array (
+    'name' => 'contracts_j_class_1',
+    'true_relationship_type' => 'many-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'contracts_j_class_1' => 
+      array (
+        'lhs_module' => 'Contracts',
+        'lhs_table' => 'contracts',
+        'lhs_key' => 'id',
+        'rhs_module' => 'J_Class',
+        'rhs_table' => 'j_class',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'contracts_j_class_1_c',
+        'join_key_lhs' => 'contracts_j_class_1contracts_ida',
+        'join_key_rhs' => 'contracts_j_class_1j_class_idb',
+      ),
+    ),
+    'table' => 'contracts_j_class_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'contracts_j_class_1contracts_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'contracts_j_class_1j_class_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'contracts_j_class_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'contracts_j_class_1_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'contracts_j_class_1contracts_ida',
+          1 => 'contracts_j_class_1j_class_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'Contracts',
+    'lhs_table' => 'contracts',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Class',
+    'rhs_table' => 'j_class',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'contracts_j_class_1_c',
+    'join_key_lhs' => 'contracts_j_class_1contracts_ida',
+    'join_key_rhs' => 'contracts_j_class_1j_class_idb',
+  ),
+  'contracts_meetings_1' => 
+  array (
+    'name' => 'contracts_meetings_1',
+    'true_relationship_type' => 'many-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'contracts_meetings_1' => 
+      array (
+        'lhs_module' => 'Contracts',
+        'lhs_table' => 'contracts',
+        'lhs_key' => 'id',
+        'rhs_module' => 'Meetings',
+        'rhs_table' => 'meetings',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'contracts_meetings_1_c',
+        'join_key_lhs' => 'contracts_meetings_1contracts_ida',
+        'join_key_rhs' => 'contracts_meetings_1meetings_idb',
+      ),
+    ),
+    'table' => 'contracts_meetings_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'contracts_meetings_1contracts_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'contracts_meetings_1meetings_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'contracts_meetings_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'contracts_meetings_1_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'contracts_meetings_1contracts_ida',
+          1 => 'contracts_meetings_1meetings_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'Contracts',
+    'lhs_table' => 'contracts',
+    'lhs_key' => 'id',
+    'rhs_module' => 'Meetings',
+    'rhs_table' => 'meetings',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'contracts_meetings_1_c',
+    'join_key_lhs' => 'contracts_meetings_1contracts_ida',
+    'join_key_rhs' => 'contracts_meetings_1meetings_idb',
+  ),
+  'c_classes_contacts_1' => 
+  array (
+    'name' => 'c_classes_contacts_1',
+    'true_relationship_type' => 'many-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'c_classes_contacts_1' => 
+      array (
+        'lhs_module' => 'C_Classes',
+        'lhs_table' => 'c_classes',
+        'lhs_key' => 'id',
+        'rhs_module' => 'Contacts',
+        'rhs_table' => 'contacts',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'c_classes_contacts_1_c',
+        'join_key_lhs' => 'c_classes_contacts_1c_classes_ida',
+        'join_key_rhs' => 'c_classes_contacts_1contacts_idb',
+      ),
+    ),
+    'table' => 'c_classes_contacts_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'c_classes_contacts_1c_classes_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'c_classes_contacts_1contacts_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'c_classes_contacts_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'c_classes_contacts_1_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'c_classes_contacts_1c_classes_ida',
+          1 => 'c_classes_contacts_1contacts_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'C_Classes',
+    'lhs_table' => 'c_classes',
+    'lhs_key' => 'id',
+    'rhs_module' => 'Contacts',
+    'rhs_table' => 'contacts',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'c_classes_contacts_1_c',
+    'join_key_lhs' => 'c_classes_contacts_1c_classes_ida',
+    'join_key_rhs' => 'c_classes_contacts_1contacts_idb',
+  ),
+  'c_classes_contracts_1' => 
+  array (
+    'name' => 'c_classes_contracts_1',
+    'true_relationship_type' => 'many-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'c_classes_contracts_1' => 
+      array (
+        'lhs_module' => 'C_Classes',
+        'lhs_table' => 'c_classes',
+        'lhs_key' => 'id',
+        'rhs_module' => 'Contracts',
+        'rhs_table' => 'contracts',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'c_classes_contracts_1_c',
+        'join_key_lhs' => 'c_classes_contracts_1c_classes_ida',
+        'join_key_rhs' => 'c_classes_contracts_1contracts_idb',
+      ),
+    ),
+    'table' => 'c_classes_contracts_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'c_classes_contracts_1c_classes_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'c_classes_contracts_1contracts_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'c_classes_contracts_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'c_classes_contracts_1_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'c_classes_contracts_1c_classes_ida',
+          1 => 'c_classes_contracts_1contracts_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'C_Classes',
+    'lhs_table' => 'c_classes',
+    'lhs_key' => 'id',
+    'rhs_module' => 'Contracts',
+    'rhs_table' => 'contracts',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'c_classes_contracts_1_c',
+    'join_key_lhs' => 'c_classes_contracts_1c_classes_ida',
+    'join_key_rhs' => 'c_classes_contracts_1contracts_idb',
+  ),
+  'c_classes_c_rooms_1' => 
+  array (
+    'name' => 'c_classes_c_rooms_1',
+    'true_relationship_type' => 'many-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'c_classes_c_rooms_1' => 
+      array (
+        'lhs_module' => 'C_Classes',
+        'lhs_table' => 'c_classes',
+        'lhs_key' => 'id',
+        'rhs_module' => 'C_Rooms',
+        'rhs_table' => 'c_rooms',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'c_classes_c_rooms_1_c',
+        'join_key_lhs' => 'c_classes_c_rooms_1c_classes_ida',
+        'join_key_rhs' => 'c_classes_c_rooms_1c_rooms_idb',
+      ),
+    ),
+    'table' => 'c_classes_c_rooms_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'c_classes_c_rooms_1c_classes_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'c_classes_c_rooms_1c_rooms_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'c_classes_c_rooms_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'c_classes_c_rooms_1_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'c_classes_c_rooms_1c_classes_ida',
+          1 => 'c_classes_c_rooms_1c_rooms_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'C_Classes',
+    'lhs_table' => 'c_classes',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_Rooms',
+    'rhs_table' => 'c_rooms',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'c_classes_c_rooms_1_c',
+    'join_key_lhs' => 'c_classes_c_rooms_1c_classes_ida',
+    'join_key_rhs' => 'c_classes_c_rooms_1c_rooms_idb',
+  ),
+  'c_classes_c_teachers_1' => 
+  array (
+    'name' => 'c_classes_c_teachers_1',
+    'true_relationship_type' => 'many-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'c_classes_c_teachers_1' => 
+      array (
+        'lhs_module' => 'C_Classes',
+        'lhs_table' => 'c_classes',
+        'lhs_key' => 'id',
+        'rhs_module' => 'C_Teachers',
+        'rhs_table' => 'c_teachers',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'c_classes_c_teachers_1_c',
+        'join_key_lhs' => 'c_classes_c_teachers_1c_classes_ida',
+        'join_key_rhs' => 'c_classes_c_teachers_1c_teachers_idb',
+      ),
+    ),
+    'table' => 'c_classes_c_teachers_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'c_classes_c_teachers_1c_classes_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'c_classes_c_teachers_1c_teachers_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'c_classes_c_teachers_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'c_classes_c_teachers_1_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'c_classes_c_teachers_1c_classes_ida',
+          1 => 'c_classes_c_teachers_1c_teachers_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'C_Classes',
+    'lhs_table' => 'c_classes',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_Teachers',
+    'rhs_table' => 'c_teachers',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'c_classes_c_teachers_1_c',
+    'join_key_lhs' => 'c_classes_c_teachers_1c_classes_ida',
+    'join_key_rhs' => 'c_classes_c_teachers_1c_teachers_idb',
+  ),
+  'c_classes_opportunities_1' => 
+  array (
+    'name' => 'c_classes_opportunities_1',
+    'true_relationship_type' => 'many-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'c_classes_opportunities_1' => 
+      array (
+        'lhs_module' => 'C_Classes',
+        'lhs_table' => 'c_classes',
+        'lhs_key' => 'id',
+        'rhs_module' => 'Opportunities',
+        'rhs_table' => 'opportunities',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'c_classes_opportunities_1_c',
+        'join_key_lhs' => 'c_classes_opportunities_1c_classes_ida',
+        'join_key_rhs' => 'c_classes_opportunities_1opportunities_idb',
+      ),
+    ),
+    'table' => 'c_classes_opportunities_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'c_classes_opportunities_1c_classes_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'c_classes_opportunities_1opportunities_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'c_classes_opportunities_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'c_classes_opportunities_1_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'c_classes_opportunities_1c_classes_ida',
+          1 => 'c_classes_opportunities_1opportunities_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'C_Classes',
+    'lhs_table' => 'c_classes',
+    'lhs_key' => 'id',
+    'rhs_module' => 'Opportunities',
+    'rhs_table' => 'opportunities',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'c_classes_opportunities_1_c',
+    'join_key_lhs' => 'c_classes_opportunities_1c_classes_ida',
+    'join_key_rhs' => 'c_classes_opportunities_1opportunities_idb',
+  ),
+  'c_contacts_contacts_1' => 
+  array (
+    'name' => 'c_contacts_contacts_1',
+    'true_relationship_type' => 'one-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'c_contacts_contacts_1' => 
+      array (
+        'lhs_module' => 'C_Contacts',
+        'lhs_table' => 'c_contacts',
+        'lhs_key' => 'id',
+        'rhs_module' => 'Contacts',
+        'rhs_table' => 'contacts',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'c_contacts_contacts_1_c',
+        'join_key_lhs' => 'c_contacts_contacts_1c_contacts_ida',
+        'join_key_rhs' => 'c_contacts_contacts_1contacts_idb',
+      ),
+    ),
+    'table' => 'c_contacts_contacts_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'c_contacts_contacts_1c_contacts_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'c_contacts_contacts_1contacts_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'c_contacts_contacts_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'c_contacts_contacts_1_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'c_contacts_contacts_1c_contacts_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'c_contacts_contacts_1_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'c_contacts_contacts_1contacts_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'C_Contacts',
+    'lhs_table' => 'c_contacts',
+    'lhs_key' => 'id',
+    'rhs_module' => 'Contacts',
+    'rhs_table' => 'contacts',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'c_contacts_contacts_1_c',
+    'join_key_lhs' => 'c_contacts_contacts_1c_contacts_ida',
+    'join_key_rhs' => 'c_contacts_contacts_1contacts_idb',
+  ),
+  'c_contacts_contracts_1' => 
+  array (
+    'name' => 'c_contacts_contracts_1',
+    'true_relationship_type' => 'one-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'c_contacts_contracts_1' => 
+      array (
+        'lhs_module' => 'C_Contacts',
+        'lhs_table' => 'c_contacts',
+        'lhs_key' => 'id',
+        'rhs_module' => 'Contracts',
+        'rhs_table' => 'contracts',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'c_contacts_contracts_1_c',
+        'join_key_lhs' => 'c_contacts_contracts_1c_contacts_ida',
+        'join_key_rhs' => 'c_contacts_contracts_1contracts_idb',
+      ),
+    ),
+    'table' => 'c_contacts_contracts_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'c_contacts_contracts_1c_contacts_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'c_contacts_contracts_1contracts_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'c_contacts_contracts_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'c_contacts_contracts_1_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'c_contacts_contracts_1c_contacts_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'c_contacts_contracts_1_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'c_contacts_contracts_1contracts_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'C_Contacts',
+    'lhs_table' => 'c_contacts',
+    'lhs_key' => 'id',
+    'rhs_module' => 'Contracts',
+    'rhs_table' => 'contracts',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'c_contacts_contracts_1_c',
+    'join_key_lhs' => 'c_contacts_contracts_1c_contacts_ida',
+    'join_key_rhs' => 'c_contacts_contracts_1contracts_idb',
+  ),
+  'c_contacts_leads_1' => 
+  array (
+    'name' => 'c_contacts_leads_1',
+    'true_relationship_type' => 'one-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'c_contacts_leads_1' => 
+      array (
+        'lhs_module' => 'C_Contacts',
+        'lhs_table' => 'c_contacts',
+        'lhs_key' => 'id',
+        'rhs_module' => 'Leads',
+        'rhs_table' => 'leads',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'c_contacts_leads_1_c',
+        'join_key_lhs' => 'c_contacts_leads_1c_contacts_ida',
+        'join_key_rhs' => 'c_contacts_leads_1leads_idb',
+      ),
+    ),
+    'table' => 'c_contacts_leads_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'c_contacts_leads_1c_contacts_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'c_contacts_leads_1leads_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'c_contacts_leads_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'c_contacts_leads_1_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'c_contacts_leads_1c_contacts_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'c_contacts_leads_1_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'c_contacts_leads_1leads_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'C_Contacts',
+    'lhs_table' => 'c_contacts',
+    'lhs_key' => 'id',
+    'rhs_module' => 'Leads',
+    'rhs_table' => 'leads',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'c_contacts_leads_1_c',
+    'join_key_lhs' => 'c_contacts_leads_1c_contacts_ida',
+    'join_key_rhs' => 'c_contacts_leads_1leads_idb',
+  ),
+  'c_invoices_c_payments_1' => 
+  array (
+    'name' => 'c_invoices_c_payments_1',
+    'true_relationship_type' => 'one-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'c_invoices_c_payments_1' => 
+      array (
+        'lhs_module' => 'C_Invoices',
+        'lhs_table' => 'c_invoices',
+        'lhs_key' => 'id',
+        'rhs_module' => 'C_Payments',
+        'rhs_table' => 'c_payments',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'c_invoices_c_payments_1_c',
+        'join_key_lhs' => 'c_invoices_c_payments_1c_invoices_ida',
+        'join_key_rhs' => 'c_invoices_c_payments_1c_payments_idb',
+      ),
+    ),
+    'table' => 'c_invoices_c_payments_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'c_invoices_c_payments_1c_invoices_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'c_invoices_c_payments_1c_payments_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'c_invoices_c_payments_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'c_invoices_c_payments_1_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'c_invoices_c_payments_1c_invoices_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'c_invoices_c_payments_1_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'c_invoices_c_payments_1c_payments_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'C_Invoices',
+    'lhs_table' => 'c_invoices',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_Payments',
+    'rhs_table' => 'c_payments',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'c_invoices_c_payments_1_c',
+    'join_key_lhs' => 'c_invoices_c_payments_1c_invoices_ida',
+    'join_key_rhs' => 'c_invoices_c_payments_1c_payments_idb',
+  ),
+  'c_invoices_opportunities_1' => 
+  array (
+    'name' => 'c_invoices_opportunities_1',
+    'true_relationship_type' => 'one-to-one',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'c_invoices_opportunities_1' => 
+      array (
+        'lhs_module' => 'C_Invoices',
+        'lhs_table' => 'c_invoices',
+        'lhs_key' => 'id',
+        'rhs_module' => 'Opportunities',
+        'rhs_table' => 'opportunities',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'c_invoices_opportunities_1_c',
+        'join_key_lhs' => 'c_invoices_opportunities_1c_invoices_ida',
+        'join_key_rhs' => 'c_invoices_opportunities_1opportunities_idb',
+      ),
+    ),
+    'table' => 'c_invoices_opportunities_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'c_invoices_opportunities_1c_invoices_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'c_invoices_opportunities_1opportunities_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'c_invoices_opportunities_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'c_invoices_opportunities_1_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'c_invoices_opportunities_1c_invoices_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'c_invoices_opportunities_1_idb2',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'c_invoices_opportunities_1opportunities_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'C_Invoices',
+    'lhs_table' => 'c_invoices',
+    'lhs_key' => 'id',
+    'rhs_module' => 'Opportunities',
+    'rhs_table' => 'opportunities',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'c_invoices_opportunities_1_c',
+    'join_key_lhs' => 'c_invoices_opportunities_1c_invoices_ida',
+    'join_key_rhs' => 'c_invoices_opportunities_1opportunities_idb',
+  ),
+  'c_memberships_contacts_2' => 
+  array (
+    'name' => 'c_memberships_contacts_2',
+    'true_relationship_type' => 'one-to-one',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'c_memberships_contacts_2' => 
+      array (
+        'lhs_module' => 'C_Memberships',
+        'lhs_table' => 'c_memberships',
+        'lhs_key' => 'id',
+        'rhs_module' => 'Contacts',
+        'rhs_table' => 'contacts',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'c_memberships_contacts_2_c',
+        'join_key_lhs' => 'c_memberships_contacts_2c_memberships_ida',
+        'join_key_rhs' => 'c_memberships_contacts_2contacts_idb',
+      ),
+    ),
+    'table' => 'c_memberships_contacts_2_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'c_memberships_contacts_2c_memberships_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'c_memberships_contacts_2contacts_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'c_memberships_contacts_2spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'c_memberships_contacts_2_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'c_memberships_contacts_2c_memberships_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'c_memberships_contacts_2_idb2',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'c_memberships_contacts_2contacts_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'C_Memberships',
+    'lhs_table' => 'c_memberships',
+    'lhs_key' => 'id',
+    'rhs_module' => 'Contacts',
+    'rhs_table' => 'contacts',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'c_memberships_contacts_2_c',
+    'join_key_lhs' => 'c_memberships_contacts_2c_memberships_ida',
+    'join_key_rhs' => 'c_memberships_contacts_2contacts_idb',
+  ),
+  'c_memberships_leads_1' => 
+  array (
+    'name' => 'c_memberships_leads_1',
+    'true_relationship_type' => 'one-to-one',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'c_memberships_leads_1' => 
+      array (
+        'lhs_module' => 'C_Memberships',
+        'lhs_table' => 'c_memberships',
+        'lhs_key' => 'id',
+        'rhs_module' => 'Leads',
+        'rhs_table' => 'leads',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'c_memberships_leads_1_c',
+        'join_key_lhs' => 'c_memberships_leads_1c_memberships_ida',
+        'join_key_rhs' => 'c_memberships_leads_1leads_idb',
+      ),
+    ),
+    'table' => 'c_memberships_leads_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'c_memberships_leads_1c_memberships_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'c_memberships_leads_1leads_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'c_memberships_leads_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'c_memberships_leads_1_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'c_memberships_leads_1c_memberships_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'c_memberships_leads_1_idb2',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'c_memberships_leads_1leads_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'C_Memberships',
+    'lhs_table' => 'c_memberships',
+    'lhs_key' => 'id',
+    'rhs_module' => 'Leads',
+    'rhs_table' => 'leads',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'c_memberships_leads_1_c',
+    'join_key_lhs' => 'c_memberships_leads_1c_memberships_ida',
+    'join_key_rhs' => 'c_memberships_leads_1leads_idb',
+  ),
+  'c_packages_opportunities_1' => 
+  array (
+    'name' => 'c_packages_opportunities_1',
+    'true_relationship_type' => 'one-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'c_packages_opportunities_1' => 
+      array (
+        'lhs_module' => 'C_Packages',
+        'lhs_table' => 'c_packages',
+        'lhs_key' => 'id',
+        'rhs_module' => 'Opportunities',
+        'rhs_table' => 'opportunities',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'c_packages_opportunities_1_c',
+        'join_key_lhs' => 'c_packages_opportunities_1c_packages_ida',
+        'join_key_rhs' => 'c_packages_opportunities_1opportunities_idb',
+      ),
+    ),
+    'table' => 'c_packages_opportunities_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'c_packages_opportunities_1c_packages_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'c_packages_opportunities_1opportunities_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'c_packages_opportunities_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'c_packages_opportunities_1_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'c_packages_opportunities_1c_packages_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'c_packages_opportunities_1_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'c_packages_opportunities_1opportunities_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'C_Packages',
+    'lhs_table' => 'c_packages',
+    'lhs_key' => 'id',
+    'rhs_module' => 'Opportunities',
+    'rhs_table' => 'opportunities',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'c_packages_opportunities_1_c',
+    'join_key_lhs' => 'c_packages_opportunities_1c_packages_ida',
+    'join_key_rhs' => 'c_packages_opportunities_1opportunities_idb',
+  ),
+  'c_payments_c_refunds_1' => 
+  array (
+    'name' => 'c_payments_c_refunds_1',
+    'true_relationship_type' => 'one-to-one',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'c_payments_c_refunds_1' => 
+      array (
+        'lhs_module' => 'C_Payments',
+        'lhs_table' => 'c_payments',
+        'lhs_key' => 'id',
+        'rhs_module' => 'C_Refunds',
+        'rhs_table' => 'c_refunds',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'c_payments_c_refunds_1_c',
+        'join_key_lhs' => 'c_payments_c_refunds_1c_payments_ida',
+        'join_key_rhs' => 'c_payments_c_refunds_1c_refunds_idb',
+      ),
+    ),
+    'table' => 'c_payments_c_refunds_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'c_payments_c_refunds_1c_payments_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'c_payments_c_refunds_1c_refunds_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'c_payments_c_refunds_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'c_payments_c_refunds_1_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'c_payments_c_refunds_1c_payments_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'c_payments_c_refunds_1_idb2',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'c_payments_c_refunds_1c_refunds_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'C_Payments',
+    'lhs_table' => 'c_payments',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_Refunds',
+    'rhs_table' => 'c_refunds',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'c_payments_c_refunds_1_c',
+    'join_key_lhs' => 'c_payments_c_refunds_1c_payments_ida',
+    'join_key_rhs' => 'c_payments_c_refunds_1c_refunds_idb',
+  ),
+  'c_programs_c_classes_1' => 
+  array (
+    'name' => 'c_programs_c_classes_1',
+    'true_relationship_type' => 'one-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'c_programs_c_classes_1' => 
+      array (
+        'lhs_module' => 'C_Programs',
+        'lhs_table' => 'c_programs',
+        'lhs_key' => 'id',
+        'rhs_module' => 'C_Classes',
+        'rhs_table' => 'c_classes',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'c_programs_c_classes_1_c',
+        'join_key_lhs' => 'c_programs_c_classes_1c_programs_ida',
+        'join_key_rhs' => 'c_programs_c_classes_1c_classes_idb',
+      ),
+    ),
+    'table' => 'c_programs_c_classes_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'c_programs_c_classes_1c_programs_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'c_programs_c_classes_1c_classes_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'c_programs_c_classes_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'c_programs_c_classes_1_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'c_programs_c_classes_1c_programs_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'c_programs_c_classes_1_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'c_programs_c_classes_1c_classes_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'C_Programs',
+    'lhs_table' => 'c_programs',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_Classes',
+    'rhs_table' => 'c_classes',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'c_programs_c_classes_1_c',
+    'join_key_lhs' => 'c_programs_c_classes_1c_programs_ida',
+    'join_key_rhs' => 'c_programs_c_classes_1c_classes_idb',
+  ),
+  'c_programs_c_packages_1' => 
+  array (
+    'name' => 'c_programs_c_packages_1',
+    'true_relationship_type' => 'one-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'c_programs_c_packages_1' => 
+      array (
+        'lhs_module' => 'C_Programs',
+        'lhs_table' => 'c_programs',
+        'lhs_key' => 'id',
+        'rhs_module' => 'C_Packages',
+        'rhs_table' => 'c_packages',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'c_programs_c_packages_1_c',
+        'join_key_lhs' => 'c_programs_c_packages_1c_programs_ida',
+        'join_key_rhs' => 'c_programs_c_packages_1c_packages_idb',
+      ),
+    ),
+    'table' => 'c_programs_c_packages_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'c_programs_c_packages_1c_programs_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'c_programs_c_packages_1c_packages_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'c_programs_c_packages_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'c_programs_c_packages_1_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'c_programs_c_packages_1c_programs_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'c_programs_c_packages_1_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'c_programs_c_packages_1c_packages_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'C_Programs',
+    'lhs_table' => 'c_programs',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_Packages',
+    'rhs_table' => 'c_packages',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'c_programs_c_packages_1_c',
+    'join_key_lhs' => 'c_programs_c_packages_1c_programs_ida',
+    'join_key_rhs' => 'c_programs_c_packages_1c_packages_idb',
+  ),
+  'contact_c_sms' => 
+  array (
+    'name' => 'contact_c_sms',
+    'relationships' => 
+    array (
+      'contact_c_sms' => 
+      array (
+        'lhs_module' => 'Contacts',
+        'lhs_table' => 'contacts',
+        'lhs_key' => 'id',
+        'rhs_module' => 'C_SMS',
+        'rhs_table' => 'c_sms',
+        'rhs_key' => 'parent_id',
+        'relationship_type' => 'one-to-many',
+        'relationship_role_column' => 'parent_type',
+        'relationship_role_column_value' => 'Contacts',
+      ),
+    ),
+    'fields' => '',
+    'indices' => '',
+    'table' => '',
+    'lhs_module' => 'Contacts',
+    'lhs_table' => 'contacts',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_SMS',
+    'rhs_table' => 'c_sms',
+    'rhs_key' => 'parent_id',
+    'relationship_type' => 'one-to-many',
+    'relationship_role_column' => 'parent_type',
+    'relationship_role_column_value' => 'Contacts',
+  ),
+  'c_teachers_c_sms' => 
+  array (
+    'name' => 'c_teachers_c_sms',
+    'relationships' => 
+    array (
+      'c_teachers_c_sms' => 
+      array (
+        'lhs_module' => 'C_Teachers',
+        'lhs_table' => 'c_teachers',
+        'lhs_key' => 'id',
+        'rhs_module' => 'C_SMS',
+        'rhs_table' => 'c_sms',
+        'rhs_key' => 'parent_id',
+        'relationship_type' => 'one-to-many',
+        'relationship_role_column' => 'parent_type',
+        'relationship_role_column_value' => 'C_Teachers',
+      ),
+    ),
+    'fields' => '',
+    'indices' => '',
+    'table' => '',
+    'lhs_module' => 'C_Teachers',
+    'lhs_table' => 'c_teachers',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_SMS',
+    'rhs_table' => 'c_sms',
+    'rhs_key' => 'parent_id',
+    'relationship_type' => 'one-to-many',
+    'relationship_role_column' => 'parent_type',
+    'relationship_role_column_value' => 'C_Teachers',
+  ),
+  'j_ptresult_c_sms' => 
+  array (
+    'name' => 'j_ptresult_c_sms',
+    'relationships' => 
+    array (
+      'j_ptresult_c_sms' => 
+      array (
+        'lhs_module' => 'J_PTResult',
+        'lhs_table' => 'j_ptresult',
+        'lhs_key' => 'id',
+        'rhs_module' => 'C_SMS',
+        'rhs_table' => 'c_sms',
+        'rhs_key' => 'parent_id',
+        'relationship_type' => 'one-to-many',
+        'relationship_role_column' => 'parent_type',
+        'relationship_role_column_value' => 'J_PTResult',
+      ),
+    ),
+    'fields' => '',
+    'indices' => '',
+    'table' => '',
+    'lhs_module' => 'J_PTResult',
+    'lhs_table' => 'j_ptresult',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_SMS',
+    'rhs_table' => 'c_sms',
+    'rhs_key' => 'parent_id',
+    'relationship_type' => 'one-to-many',
+    'relationship_role_column' => 'parent_type',
+    'relationship_role_column_value' => 'J_PTResult',
+  ),
+  'j_studentsituations_c_sms' => 
+  array (
+    'name' => 'j_studentsituations_c_sms',
+    'relationships' => 
+    array (
+      'j_studentsituations_c_sms' => 
+      array (
+        'lhs_module' => 'J_StudentSituations',
+        'lhs_table' => 'j_studentsituations',
+        'lhs_key' => 'id',
+        'rhs_module' => 'C_SMS',
+        'rhs_table' => 'c_sms',
+        'rhs_key' => 'parent_id',
+        'relationship_type' => 'one-to-many',
+        'relationship_role_column' => 'parent_type',
+        'relationship_role_column_value' => 'J_StudentSituations',
+      ),
+    ),
+    'fields' => '',
+    'indices' => '',
+    'table' => '',
+    'lhs_module' => 'J_StudentSituations',
+    'lhs_table' => 'j_studentsituations',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_SMS',
+    'rhs_table' => 'c_sms',
+    'rhs_key' => 'parent_id',
+    'relationship_type' => 'one-to-many',
+    'relationship_role_column' => 'parent_type',
+    'relationship_role_column_value' => 'J_StudentSituations',
+  ),
+  'lead_c_sms' => 
+  array (
+    'name' => 'lead_c_sms',
+    'relationships' => 
+    array (
+      'lead_c_sms' => 
+      array (
+        'lhs_module' => 'Leads',
+        'lhs_table' => 'leads',
+        'lhs_key' => 'id',
+        'rhs_module' => 'C_SMS',
+        'rhs_table' => 'c_sms',
+        'rhs_key' => 'parent_id',
+        'relationship_type' => 'one-to-many',
+        'relationship_role_column' => 'parent_type',
+        'relationship_role_column_value' => 'Leads',
+      ),
+    ),
+    'fields' => '',
+    'indices' => '',
+    'table' => '',
+    'lhs_module' => 'Leads',
+    'lhs_table' => 'leads',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_SMS',
+    'rhs_table' => 'c_sms',
+    'rhs_key' => 'parent_id',
+    'relationship_type' => 'one-to-many',
+    'relationship_role_column' => 'parent_type',
+    'relationship_role_column_value' => 'Leads',
+  ),
+  'c_sponsors_c_payments_1' => 
+  array (
+    'name' => 'c_sponsors_c_payments_1',
+    'true_relationship_type' => 'one-to-one',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'c_sponsors_c_payments_1' => 
+      array (
+        'lhs_module' => 'C_Sponsors',
+        'lhs_table' => 'c_sponsors',
+        'lhs_key' => 'id',
+        'rhs_module' => 'C_Payments',
+        'rhs_table' => 'c_payments',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'c_sponsors_c_payments_1_c',
+        'join_key_lhs' => 'c_sponsors_c_payments_1c_sponsors_ida',
+        'join_key_rhs' => 'c_sponsors_c_payments_1c_payments_idb',
+      ),
+    ),
+    'table' => 'c_sponsors_c_payments_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'c_sponsors_c_payments_1c_sponsors_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'c_sponsors_c_payments_1c_payments_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'c_sponsors_c_payments_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'c_sponsors_c_payments_1_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'c_sponsors_c_payments_1c_sponsors_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'c_sponsors_c_payments_1_idb2',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'c_sponsors_c_payments_1c_payments_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'C_Sponsors',
+    'lhs_table' => 'c_sponsors',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_Payments',
+    'rhs_table' => 'c_payments',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'c_sponsors_c_payments_1_c',
+    'join_key_lhs' => 'c_sponsors_c_payments_1c_sponsors_ida',
+    'join_key_rhs' => 'c_sponsors_c_payments_1c_payments_idb',
+  ),
+  'c_teachers_j_gradebook_1' => 
+  array (
+    'name' => 'c_teachers_j_gradebook_1',
+    'true_relationship_type' => 'one-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'c_teachers_j_gradebook_1' => 
+      array (
+        'lhs_module' => 'C_Teachers',
+        'lhs_table' => 'c_teachers',
+        'lhs_key' => 'id',
+        'rhs_module' => 'J_Gradebook',
+        'rhs_table' => 'j_gradebook',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'c_teachers_j_gradebook_1_c',
+        'join_key_lhs' => 'c_teachers_j_gradebook_1c_teachers_ida',
+        'join_key_rhs' => 'c_teachers_j_gradebook_1j_gradebook_idb',
+      ),
+    ),
+    'table' => 'c_teachers_j_gradebook_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'c_teachers_j_gradebook_1c_teachers_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'c_teachers_j_gradebook_1j_gradebook_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'c_teachers_j_gradebook_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'c_teachers_j_gradebook_1_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'c_teachers_j_gradebook_1c_teachers_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'c_teachers_j_gradebook_1_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'c_teachers_j_gradebook_1j_gradebook_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'C_Teachers',
+    'lhs_table' => 'c_teachers',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Gradebook',
+    'rhs_table' => 'j_gradebook',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'c_teachers_j_gradebook_1_c',
+    'join_key_lhs' => 'c_teachers_j_gradebook_1c_teachers_ida',
+    'join_key_rhs' => 'c_teachers_j_gradebook_1j_gradebook_idb',
+  ),
+  'c_teachers_j_teachercontract_1' => 
+  array (
+    'name' => 'c_teachers_j_teachercontract_1',
+    'true_relationship_type' => 'one-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'c_teachers_j_teachercontract_1' => 
+      array (
+        'lhs_module' => 'C_Teachers',
+        'lhs_table' => 'c_teachers',
+        'lhs_key' => 'id',
+        'rhs_module' => 'J_Teachercontract',
+        'rhs_table' => 'j_teachercontract',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'c_teachers_j_teachercontract_1_c',
+        'join_key_lhs' => 'c_teachers_j_teachercontract_1c_teachers_ida',
+        'join_key_rhs' => 'c_teachers_j_teachercontract_1j_teachercontract_idb',
+      ),
+    ),
+    'table' => 'c_teachers_j_teachercontract_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'c_teachers_j_teachercontract_1c_teachers_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'c_teachers_j_teachercontract_1j_teachercontract_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'c_teachers_j_teachercontract_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'c_teachers_j_teachercontract_1_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'c_teachers_j_teachercontract_1c_teachers_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'c_teachers_j_teachercontract_1_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'c_teachers_j_teachercontract_1j_teachercontract_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'C_Teachers',
+    'lhs_table' => 'c_teachers',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Teachercontract',
+    'rhs_table' => 'j_teachercontract',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'c_teachers_j_teachercontract_1_c',
+    'join_key_lhs' => 'c_teachers_j_teachercontract_1c_teachers_ida',
+    'join_key_rhs' => 'c_teachers_j_teachercontract_1j_teachercontract_idb',
+  ),
+  'j_class_contacts_1' => 
+  array (
+    'name' => 'j_class_contacts_1',
+    'true_relationship_type' => 'many-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'j_class_contacts_1' => 
+      array (
+        'lhs_module' => 'J_Class',
+        'lhs_table' => 'j_class',
+        'lhs_key' => 'id',
+        'rhs_module' => 'Contacts',
+        'rhs_table' => 'contacts',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'j_class_contacts_1_c',
+        'join_key_lhs' => 'j_class_contacts_1j_class_ida',
+        'join_key_rhs' => 'j_class_contacts_1contacts_idb',
+      ),
+    ),
+    'table' => 'j_class_contacts_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'j_class_contacts_1j_class_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'j_class_contacts_1contacts_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'j_class_contacts_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'j_class_contacts_1_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'j_class_contacts_1j_class_ida',
+          1 => 'j_class_contacts_1contacts_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'J_Class',
+    'lhs_table' => 'j_class',
+    'lhs_key' => 'id',
+    'rhs_module' => 'Contacts',
+    'rhs_table' => 'contacts',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'j_class_contacts_1_c',
+    'join_key_lhs' => 'j_class_contacts_1j_class_ida',
+    'join_key_rhs' => 'j_class_contacts_1contacts_idb',
+  ),
+  'j_class_c_teachers_1' => 
+  array (
+    'name' => 'j_class_c_teachers_1',
+    'true_relationship_type' => 'many-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'j_class_c_teachers_1' => 
+      array (
+        'lhs_module' => 'J_Class',
+        'lhs_table' => 'j_class',
+        'lhs_key' => 'id',
+        'rhs_module' => 'C_Teachers',
+        'rhs_table' => 'c_teachers',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'j_class_c_teachers_1_c',
+        'join_key_lhs' => 'j_class_c_teachers_1j_class_ida',
+        'join_key_rhs' => 'j_class_c_teachers_1c_teachers_idb',
+      ),
+    ),
+    'table' => 'j_class_c_teachers_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'j_class_c_teachers_1j_class_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'j_class_c_teachers_1c_teachers_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'j_class_c_teachers_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'j_class_c_teachers_1_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'j_class_c_teachers_1j_class_ida',
+          1 => 'j_class_c_teachers_1c_teachers_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'J_Class',
+    'lhs_table' => 'j_class',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_Teachers',
+    'rhs_table' => 'c_teachers',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'j_class_c_teachers_1_c',
+    'join_key_lhs' => 'j_class_c_teachers_1j_class_ida',
+    'join_key_rhs' => 'j_class_c_teachers_1c_teachers_idb',
+  ),
+  'j_class_j_class_1' => 
+  array (
+    'name' => 'j_class_j_class_1',
+    'true_relationship_type' => 'one-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'j_class_j_class_1' => 
+      array (
+        'lhs_module' => 'J_Class',
+        'lhs_table' => 'j_class',
+        'lhs_key' => 'id',
+        'rhs_module' => 'J_Class',
+        'rhs_table' => 'j_class',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'j_class_j_class_1_c',
+        'join_key_lhs' => 'j_class_j_class_1j_class_ida',
+        'join_key_rhs' => 'j_class_j_class_1j_class_idb',
+      ),
+    ),
+    'table' => 'j_class_j_class_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'j_class_j_class_1j_class_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'j_class_j_class_1j_class_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'j_class_j_class_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'j_class_j_class_1_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'j_class_j_class_1j_class_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'j_class_j_class_1_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'j_class_j_class_1j_class_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'J_Class',
+    'lhs_table' => 'j_class',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Class',
+    'rhs_table' => 'j_class',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'j_class_j_class_1_c',
+    'join_key_lhs' => 'j_class_j_class_1j_class_ida',
+    'join_key_rhs' => 'j_class_j_class_1j_class_idb',
+  ),
+  'j_class_j_feedback_1' => 
+  array (
+    'name' => 'j_class_j_feedback_1',
+    'true_relationship_type' => 'one-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'j_class_j_feedback_1' => 
+      array (
+        'lhs_module' => 'J_Class',
+        'lhs_table' => 'j_class',
+        'lhs_key' => 'id',
+        'rhs_module' => 'J_Feedback',
+        'rhs_table' => 'j_feedback',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'j_class_j_feedback_1_c',
+        'join_key_lhs' => 'j_class_j_feedback_1j_class_ida',
+        'join_key_rhs' => 'j_class_j_feedback_1j_feedback_idb',
+      ),
+    ),
+    'table' => 'j_class_j_feedback_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'j_class_j_feedback_1j_class_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'j_class_j_feedback_1j_feedback_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'j_class_j_feedback_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'j_class_j_feedback_1_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'j_class_j_feedback_1j_class_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'j_class_j_feedback_1_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'j_class_j_feedback_1j_feedback_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'J_Class',
+    'lhs_table' => 'j_class',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Feedback',
+    'rhs_table' => 'j_feedback',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'j_class_j_feedback_1_c',
+    'join_key_lhs' => 'j_class_j_feedback_1j_class_ida',
+    'join_key_rhs' => 'j_class_j_feedback_1j_feedback_idb',
+  ),
+  'j_class_j_gradebook_1' => 
+  array (
+    'name' => 'j_class_j_gradebook_1',
+    'true_relationship_type' => 'one-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'j_class_j_gradebook_1' => 
+      array (
+        'lhs_module' => 'J_Class',
+        'lhs_table' => 'j_class',
+        'lhs_key' => 'id',
+        'rhs_module' => 'J_Gradebook',
+        'rhs_table' => 'j_gradebook',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'j_class_j_gradebook_1_c',
+        'join_key_lhs' => 'j_class_j_gradebook_1j_class_ida',
+        'join_key_rhs' => 'j_class_j_gradebook_1j_gradebook_idb',
+      ),
+    ),
+    'table' => 'j_class_j_gradebook_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'j_class_j_gradebook_1j_class_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'j_class_j_gradebook_1j_gradebook_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'j_class_j_gradebook_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'j_class_j_gradebook_1_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'j_class_j_gradebook_1j_class_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'j_class_j_gradebook_1_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'j_class_j_gradebook_1j_gradebook_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'J_Class',
+    'lhs_table' => 'j_class',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Gradebook',
+    'rhs_table' => 'j_gradebook',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'j_class_j_gradebook_1_c',
+    'join_key_lhs' => 'j_class_j_gradebook_1j_class_ida',
+    'join_key_rhs' => 'j_class_j_gradebook_1j_gradebook_idb',
+  ),
+  'j_class_j_teachercontract_1' => 
+  array (
+    'name' => 'j_class_j_teachercontract_1',
+    'true_relationship_type' => 'one-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'j_class_j_teachercontract_1' => 
+      array (
+        'lhs_module' => 'J_Class',
+        'lhs_table' => 'j_class',
+        'lhs_key' => 'id',
+        'rhs_module' => 'J_Teachercontract',
+        'rhs_table' => 'j_teachercontract',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'j_class_j_teachercontract_1_c',
+        'join_key_lhs' => 'j_class_j_teachercontract_1j_class_ida',
+        'join_key_rhs' => 'j_class_j_teachercontract_1j_teachercontract_idb',
+      ),
+    ),
+    'table' => 'j_class_j_teachercontract_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'j_class_j_teachercontract_1j_class_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'j_class_j_teachercontract_1j_teachercontract_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'j_class_j_teachercontract_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'j_class_j_teachercontract_1_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'j_class_j_teachercontract_1j_class_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'j_class_j_teachercontract_1_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'j_class_j_teachercontract_1j_teachercontract_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'J_Class',
+    'lhs_table' => 'j_class',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Teachercontract',
+    'rhs_table' => 'j_teachercontract',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'j_class_j_teachercontract_1_c',
+    'join_key_lhs' => 'j_class_j_teachercontract_1j_class_ida',
+    'join_key_rhs' => 'j_class_j_teachercontract_1j_teachercontract_idb',
+  ),
+  'j_class_leads_1' => 
+  array (
+    'name' => 'j_class_leads_1',
+    'true_relationship_type' => 'many-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'j_class_leads_1' => 
+      array (
+        'lhs_module' => 'J_Class',
+        'lhs_table' => 'j_class',
+        'lhs_key' => 'id',
+        'rhs_module' => 'Leads',
+        'rhs_table' => 'leads',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'j_class_leads_1_c',
+        'join_key_lhs' => 'j_class_leads_1j_class_ida',
+        'join_key_rhs' => 'j_class_leads_1leads_idb',
+      ),
+    ),
+    'table' => 'j_class_leads_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'j_class_leads_1j_class_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'j_class_leads_1leads_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'j_class_leads_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'j_class_leads_1_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'j_class_leads_1j_class_ida',
+          1 => 'j_class_leads_1leads_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'J_Class',
+    'lhs_table' => 'j_class',
+    'lhs_key' => 'id',
+    'rhs_module' => 'Leads',
+    'rhs_table' => 'leads',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'j_class_leads_1_c',
+    'join_key_lhs' => 'j_class_leads_1j_class_ida',
+    'join_key_rhs' => 'j_class_leads_1leads_idb',
+  ),
+  'j_coursefee_j_class_1' => 
+  array (
+    'name' => 'j_coursefee_j_class_1',
+    'true_relationship_type' => 'one-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'j_coursefee_j_class_1' => 
+      array (
+        'lhs_module' => 'J_Coursefee',
+        'lhs_table' => 'j_coursefee',
+        'lhs_key' => 'id',
+        'rhs_module' => 'J_Class',
+        'rhs_table' => 'j_class',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'j_coursefee_j_class_1_c',
+        'join_key_lhs' => 'j_coursefee_j_class_1j_coursefee_ida',
+        'join_key_rhs' => 'j_coursefee_j_class_1j_class_idb',
+      ),
+    ),
+    'table' => 'j_coursefee_j_class_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'j_coursefee_j_class_1j_coursefee_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'j_coursefee_j_class_1j_class_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'j_coursefee_j_class_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'j_coursefee_j_class_1_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'j_coursefee_j_class_1j_coursefee_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'j_coursefee_j_class_1_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'j_coursefee_j_class_1j_class_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'J_Coursefee',
+    'lhs_table' => 'j_coursefee',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Class',
+    'rhs_table' => 'j_class',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'j_coursefee_j_class_1_c',
+    'join_key_lhs' => 'j_coursefee_j_class_1j_coursefee_ida',
+    'join_key_rhs' => 'j_coursefee_j_class_1j_class_idb',
+  ),
+  'j_coursefee_j_payment_1' => 
+  array (
+    'name' => 'j_coursefee_j_payment_1',
+    'true_relationship_type' => 'one-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'j_coursefee_j_payment_1' => 
+      array (
+        'lhs_module' => 'J_Coursefee',
+        'lhs_table' => 'j_coursefee',
+        'lhs_key' => 'id',
+        'rhs_module' => 'J_Payment',
+        'rhs_table' => 'j_payment',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'j_coursefee_j_payment_1_c',
+        'join_key_lhs' => 'j_coursefee_j_payment_1j_coursefee_ida',
+        'join_key_rhs' => 'j_coursefee_j_payment_1j_payment_idb',
+      ),
+    ),
+    'table' => 'j_coursefee_j_payment_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'j_coursefee_j_payment_1j_coursefee_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'j_coursefee_j_payment_1j_payment_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'j_coursefee_j_payment_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'j_coursefee_j_payment_1_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'j_coursefee_j_payment_1j_coursefee_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'j_coursefee_j_payment_1_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'j_coursefee_j_payment_1j_payment_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'J_Coursefee',
+    'lhs_table' => 'j_coursefee',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Payment',
+    'rhs_table' => 'j_payment',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'j_coursefee_j_payment_1_c',
+    'join_key_lhs' => 'j_coursefee_j_payment_1j_coursefee_ida',
+    'join_key_rhs' => 'j_coursefee_j_payment_1j_payment_idb',
+  ),
+  'j_discount_j_discount_1' => 
+  array (
+    'name' => 'j_discount_j_discount_1',
+    'true_relationship_type' => 'many-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'j_discount_j_discount_1' => 
+      array (
+        'lhs_module' => 'J_Discount',
+        'lhs_table' => 'j_discount',
+        'lhs_key' => 'id',
+        'rhs_module' => 'J_Discount',
+        'rhs_table' => 'j_discount',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'j_discount_j_discount_1_c',
+        'join_key_lhs' => 'j_discount_j_discount_1j_discount_ida',
+        'join_key_rhs' => 'j_discount_j_discount_1j_discount_idb',
+      ),
+    ),
+    'table' => 'j_discount_j_discount_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'j_discount_j_discount_1j_discount_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'j_discount_j_discount_1j_discount_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'j_discount_j_discount_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'j_discount_j_discount_1_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'j_discount_j_discount_1j_discount_ida',
+          1 => 'j_discount_j_discount_1j_discount_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'J_Discount',
+    'lhs_table' => 'j_discount',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Discount',
+    'rhs_table' => 'j_discount',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'j_discount_j_discount_1_c',
+    'join_key_lhs' => 'j_discount_j_discount_1j_discount_ida',
+    'join_key_rhs' => 'j_discount_j_discount_1j_discount_idb',
+  ),
+  'j_discount_j_partnership_1' => 
+  array (
+    'name' => 'j_discount_j_partnership_1',
+    'true_relationship_type' => 'many-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'j_discount_j_partnership_1' => 
+      array (
+        'lhs_module' => 'J_Discount',
+        'lhs_table' => 'j_discount',
+        'lhs_key' => 'id',
+        'rhs_module' => 'J_Partnership',
+        'rhs_table' => 'j_partnership',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'j_discount_j_partnership_1_c',
+        'join_key_lhs' => 'j_discount_j_partnership_1j_discount_ida',
+        'join_key_rhs' => 'j_discount_j_partnership_1j_partnership_idb',
+      ),
+    ),
+    'table' => 'j_discount_j_partnership_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'j_discount_j_partnership_1j_discount_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'j_discount_j_partnership_1j_partnership_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'j_discount_j_partnership_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'j_discount_j_partnership_1_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'j_discount_j_partnership_1j_discount_ida',
+          1 => 'j_discount_j_partnership_1j_partnership_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'J_Discount',
+    'lhs_table' => 'j_discount',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Partnership',
+    'rhs_table' => 'j_partnership',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'j_discount_j_partnership_1_c',
+    'join_key_lhs' => 'j_discount_j_partnership_1j_discount_ida',
+    'join_key_rhs' => 'j_discount_j_partnership_1j_partnership_idb',
+  ),
+  'j_partnership_j_payment_1' => 
+  array (
+    'name' => 'j_partnership_j_payment_1',
+    'true_relationship_type' => 'one-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'j_partnership_j_payment_1' => 
+      array (
+        'lhs_module' => 'J_Partnership',
+        'lhs_table' => 'j_partnership',
+        'lhs_key' => 'id',
+        'rhs_module' => 'J_Payment',
+        'rhs_table' => 'j_payment',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'j_partnership_j_payment_1_c',
+        'join_key_lhs' => 'j_partnership_j_payment_1j_partnership_ida',
+        'join_key_rhs' => 'j_partnership_j_payment_1j_payment_idb',
+      ),
+    ),
+    'table' => 'j_partnership_j_payment_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'j_partnership_j_payment_1j_partnership_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'j_partnership_j_payment_1j_payment_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      5 => 
+      array (
+        'name' => 'discount_id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'j_partnership_j_payment_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'j_partnership_j_payment_1_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'j_partnership_j_payment_1j_partnership_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'j_partnership_j_payment_1_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'j_partnership_j_payment_1j_payment_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'J_Partnership',
+    'lhs_table' => 'j_partnership',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Payment',
+    'rhs_table' => 'j_payment',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'j_partnership_j_payment_1_c',
+    'join_key_lhs' => 'j_partnership_j_payment_1j_partnership_ida',
+    'join_key_rhs' => 'j_partnership_j_payment_1j_payment_idb',
+  ),
+  'j_payment_j_discount_1' => 
+  array (
+    'name' => 'j_payment_j_discount_1',
+    'true_relationship_type' => 'many-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'j_payment_j_discount_1' => 
+      array (
+        'lhs_module' => 'J_Payment',
+        'lhs_table' => 'j_payment',
+        'lhs_key' => 'id',
+        'rhs_module' => 'J_Discount',
+        'rhs_table' => 'j_discount',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'j_payment_j_discount_1_c',
+        'join_key_lhs' => 'j_payment_j_discount_1j_payment_ida',
+        'join_key_rhs' => 'j_payment_j_discount_1j_discount_idb',
+      ),
+    ),
+    'table' => 'j_payment_j_discount_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'j_payment_j_discount_1j_payment_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'j_payment_j_discount_1j_discount_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'j_payment_j_discount_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'j_payment_j_discount_1_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'j_payment_j_discount_1j_payment_ida',
+          1 => 'j_payment_j_discount_1j_discount_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'J_Payment',
+    'lhs_table' => 'j_payment',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Discount',
+    'rhs_table' => 'j_discount',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'j_payment_j_discount_1_c',
+    'join_key_lhs' => 'j_payment_j_discount_1j_payment_ida',
+    'join_key_rhs' => 'j_payment_j_discount_1j_discount_idb',
+  ),
+  'j_payment_j_inventory_1' => 
+  array (
+    'name' => 'j_payment_j_inventory_1',
+    'true_relationship_type' => 'one-to-one',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'j_payment_j_inventory_1' => 
+      array (
+        'lhs_module' => 'J_Payment',
+        'lhs_table' => 'j_payment',
+        'lhs_key' => 'id',
+        'rhs_module' => 'J_Inventory',
+        'rhs_table' => 'j_inventory',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'j_payment_j_inventory_1_c',
+        'join_key_lhs' => 'j_payment_j_inventory_1j_payment_ida',
+        'join_key_rhs' => 'j_payment_j_inventory_1j_inventory_idb',
+      ),
+    ),
+    'table' => 'j_payment_j_inventory_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'j_payment_j_inventory_1j_payment_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'j_payment_j_inventory_1j_inventory_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'j_payment_j_inventory_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'j_payment_j_inventory_1_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'j_payment_j_inventory_1j_payment_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'j_payment_j_inventory_1_idb2',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'j_payment_j_inventory_1j_inventory_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'J_Payment',
+    'lhs_table' => 'j_payment',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Inventory',
+    'rhs_table' => 'j_inventory',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'j_payment_j_inventory_1_c',
+    'join_key_lhs' => 'j_payment_j_inventory_1j_payment_ida',
+    'join_key_rhs' => 'j_payment_j_inventory_1j_inventory_idb',
+  ),
+  'j_payment_j_payment_1' => 
+  array (
+    'name' => 'j_payment_j_payment_1',
+    'true_relationship_type' => 'one-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'j_payment_j_payment_1' => 
+      array (
+        'lhs_module' => 'J_Payment',
+        'lhs_table' => 'j_payment',
+        'lhs_key' => 'id',
+        'rhs_module' => 'J_Payment',
+        'rhs_table' => 'j_payment',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'j_payment_j_payment_1_c',
+        'join_key_lhs' => 'j_payment_j_payment_1j_payment_ida',
+        'join_key_rhs' => 'j_payment_j_payment_1j_payment_idb',
+      ),
+    ),
+    'table' => 'j_payment_j_payment_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'j_payment_j_payment_1j_payment_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'j_payment_j_payment_1j_payment_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      5 => 
+      array (
+        'name' => 'hours',
+        'type' => 'decimal',
+        'len' => 13,
+        'precision' => '2',
+      ),
+      6 => 
+      array (
+        'name' => 'amount',
+        'type' => 'decimal',
+        'len' => 20,
+        'precision' => '2',
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'j_payment_j_payment_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'j_payment_j_payment_1_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'j_payment_j_payment_1j_payment_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'j_payment_j_payment_1_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'j_payment_j_payment_1j_payment_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'J_Payment',
+    'lhs_table' => 'j_payment',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Payment',
+    'rhs_table' => 'j_payment',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'j_payment_j_payment_1_c',
+    'join_key_lhs' => 'j_payment_j_payment_1j_payment_ida',
+    'join_key_rhs' => 'j_payment_j_payment_1j_payment_idb',
+  ),
+  'j_school_contacts_1' => 
+  array (
+    'name' => 'j_school_contacts_1',
+    'true_relationship_type' => 'one-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'j_school_contacts_1' => 
+      array (
+        'lhs_module' => 'J_School',
+        'lhs_table' => 'j_school',
+        'lhs_key' => 'id',
+        'rhs_module' => 'Contacts',
+        'rhs_table' => 'contacts',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'j_school_contacts_1_c',
+        'join_key_lhs' => 'j_school_contacts_1j_school_ida',
+        'join_key_rhs' => 'j_school_contacts_1contacts_idb',
+      ),
+    ),
+    'table' => 'j_school_contacts_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'j_school_contacts_1j_school_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'j_school_contacts_1contacts_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'j_school_contacts_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'j_school_contacts_1_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'j_school_contacts_1j_school_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'j_school_contacts_1_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'j_school_contacts_1contacts_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'J_School',
+    'lhs_table' => 'j_school',
+    'lhs_key' => 'id',
+    'rhs_module' => 'Contacts',
+    'rhs_table' => 'contacts',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'j_school_contacts_1_c',
+    'join_key_lhs' => 'j_school_contacts_1j_school_ida',
+    'join_key_rhs' => 'j_school_contacts_1contacts_idb',
+  ),
+  'j_school_leads_1' => 
+  array (
+    'name' => 'j_school_leads_1',
+    'true_relationship_type' => 'one-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'j_school_leads_1' => 
+      array (
+        'lhs_module' => 'J_School',
+        'lhs_table' => 'j_school',
+        'lhs_key' => 'id',
+        'rhs_module' => 'Leads',
+        'rhs_table' => 'leads',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'j_school_leads_1_c',
+        'join_key_lhs' => 'j_school_leads_1j_school_ida',
+        'join_key_rhs' => 'j_school_leads_1leads_idb',
+      ),
+    ),
+    'table' => 'j_school_leads_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'j_school_leads_1j_school_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'j_school_leads_1leads_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'j_school_leads_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'j_school_leads_1_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'j_school_leads_1j_school_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'j_school_leads_1_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'j_school_leads_1leads_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'J_School',
+    'lhs_table' => 'j_school',
+    'lhs_key' => 'id',
+    'rhs_module' => 'Leads',
+    'rhs_table' => 'leads',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'j_school_leads_1_c',
+    'join_key_lhs' => 'j_school_leads_1j_school_ida',
+    'join_key_rhs' => 'j_school_leads_1leads_idb',
+  ),
+  'j_school_prospects_1' => 
+  array (
+    'name' => 'j_school_prospects_1',
+    'true_relationship_type' => 'one-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'j_school_prospects_1' => 
+      array (
+        'lhs_module' => 'J_School',
+        'lhs_table' => 'j_school',
+        'lhs_key' => 'id',
+        'rhs_module' => 'Prospects',
+        'rhs_table' => 'prospects',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'j_school_prospects_1_c',
+        'join_key_lhs' => 'j_school_prospects_1j_school_ida',
+        'join_key_rhs' => 'j_school_prospects_1prospects_idb',
+      ),
+    ),
+    'table' => 'j_school_prospects_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'j_school_prospects_1j_school_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'j_school_prospects_1prospects_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'j_school_prospects_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'j_school_prospects_1_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'j_school_prospects_1j_school_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'j_school_prospects_1_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'j_school_prospects_1prospects_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'J_School',
+    'lhs_table' => 'j_school',
+    'lhs_key' => 'id',
+    'rhs_module' => 'Prospects',
+    'rhs_table' => 'prospects',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'j_school_prospects_1_c',
+    'join_key_lhs' => 'j_school_prospects_1j_school_ida',
+    'join_key_rhs' => 'j_school_prospects_1prospects_idb',
+  ),
+  'leads_contacts_1' => 
+  array (
+    'name' => 'leads_contacts_1',
+    'true_relationship_type' => 'many-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'leads_contacts_1' => 
+      array (
+        'lhs_module' => 'Leads',
+        'lhs_table' => 'leads',
+        'lhs_key' => 'id',
+        'rhs_module' => 'Contacts',
+        'rhs_table' => 'contacts',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'leads_contacts_1_c',
+        'join_key_lhs' => 'leads_contacts_1leads_ida',
+        'join_key_rhs' => 'leads_contacts_1contacts_idb',
+      ),
+    ),
+    'table' => 'leads_contacts_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'leads_contacts_1leads_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'leads_contacts_1contacts_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'leads_contacts_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'leads_contacts_1_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'leads_contacts_1leads_ida',
+          1 => 'leads_contacts_1contacts_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'Leads',
+    'lhs_table' => 'leads',
+    'lhs_key' => 'id',
+    'rhs_module' => 'Contacts',
+    'rhs_table' => 'contacts',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'leads_contacts_1_c',
+    'join_key_lhs' => 'leads_contacts_1leads_ida',
+    'join_key_rhs' => 'leads_contacts_1contacts_idb',
+  ),
+  'leads_c_payments_1' => 
+  array (
+    'name' => 'leads_c_payments_1',
+    'true_relationship_type' => 'one-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'leads_c_payments_1' => 
+      array (
+        'lhs_module' => 'Leads',
+        'lhs_table' => 'leads',
+        'lhs_key' => 'id',
+        'rhs_module' => 'C_Payments',
+        'rhs_table' => 'c_payments',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'leads_c_payments_1_c',
+        'join_key_lhs' => 'leads_c_payments_1leads_ida',
+        'join_key_rhs' => 'leads_c_payments_1c_payments_idb',
+      ),
+    ),
+    'table' => 'leads_c_payments_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'leads_c_payments_1leads_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'leads_c_payments_1c_payments_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'leads_c_payments_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'leads_c_payments_1_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'leads_c_payments_1leads_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'leads_c_payments_1_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'leads_c_payments_1c_payments_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'Leads',
+    'lhs_table' => 'leads',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_Payments',
+    'rhs_table' => 'c_payments',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'leads_c_payments_1_c',
+    'join_key_lhs' => 'leads_c_payments_1leads_ida',
+    'join_key_rhs' => 'leads_c_payments_1c_payments_idb',
+  ),
+  'leads_j_ptresult_1' => 
+  array (
+    'name' => 'leads_j_ptresult_1',
+    'true_relationship_type' => 'one-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'leads_j_ptresult_1' => 
+      array (
+        'lhs_module' => 'Leads',
+        'lhs_table' => 'leads',
+        'lhs_key' => 'id',
+        'rhs_module' => 'J_PTResult',
+        'rhs_table' => 'j_ptresult',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'leads_j_ptresult_1_c',
+        'join_key_lhs' => 'leads_j_ptresult_1leads_ida',
+        'join_key_rhs' => 'leads_j_ptresult_1j_ptresult_idb',
+      ),
+    ),
+    'table' => 'leads_j_ptresult_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'leads_j_ptresult_1leads_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'leads_j_ptresult_1j_ptresult_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'leads_j_ptresult_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'leads_j_ptresult_1_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'leads_j_ptresult_1leads_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'leads_j_ptresult_1_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'leads_j_ptresult_1j_ptresult_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'Leads',
+    'lhs_table' => 'leads',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_PTResult',
+    'rhs_table' => 'j_ptresult',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'leads_j_ptresult_1_c',
+    'join_key_lhs' => 'leads_j_ptresult_1leads_ida',
+    'join_key_rhs' => 'leads_j_ptresult_1j_ptresult_idb',
+  ),
+  'leads_leads_1' => 
+  array (
+    'name' => 'leads_leads_1',
+    'true_relationship_type' => 'many-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'leads_leads_1' => 
+      array (
+        'lhs_module' => 'Leads',
+        'lhs_table' => 'leads',
+        'lhs_key' => 'id',
+        'rhs_module' => 'Leads',
+        'rhs_table' => 'leads',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'leads_leads_1_c',
+        'join_key_lhs' => 'leads_leads_1leads_ida',
+        'join_key_rhs' => 'leads_leads_1leads_idb',
+      ),
+    ),
+    'table' => 'leads_leads_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'leads_leads_1leads_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'leads_leads_1leads_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'leads_leads_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'leads_leads_1_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'leads_leads_1leads_ida',
+          1 => 'leads_leads_1leads_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'Leads',
+    'lhs_table' => 'leads',
+    'lhs_key' => 'id',
+    'rhs_module' => 'Leads',
+    'rhs_table' => 'leads',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'leads_leads_1_c',
+    'join_key_lhs' => 'leads_leads_1leads_ida',
+    'join_key_rhs' => 'leads_leads_1leads_idb',
+  ),
+  'meetings_j_ptresult_1' => 
+  array (
+    'name' => 'meetings_j_ptresult_1',
+    'true_relationship_type' => 'one-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'meetings_j_ptresult_1' => 
+      array (
+        'lhs_module' => 'Meetings',
+        'lhs_table' => 'meetings',
+        'lhs_key' => 'id',
+        'rhs_module' => 'J_PTResult',
+        'rhs_table' => 'j_ptresult',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'meetings_j_ptresult_1_c',
+        'join_key_lhs' => 'meetings_j_ptresult_1meetings_ida',
+        'join_key_rhs' => 'meetings_j_ptresult_1j_ptresult_idb',
+      ),
+    ),
+    'table' => 'meetings_j_ptresult_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'meetings_j_ptresult_1meetings_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'meetings_j_ptresult_1j_ptresult_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'meetings_j_ptresult_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'meetings_j_ptresult_1_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'meetings_j_ptresult_1meetings_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'meetings_j_ptresult_1_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'meetings_j_ptresult_1j_ptresult_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'Meetings',
+    'lhs_table' => 'meetings',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_PTResult',
+    'rhs_table' => 'j_ptresult',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'meetings_j_ptresult_1_c',
+    'join_key_lhs' => 'meetings_j_ptresult_1meetings_ida',
+    'join_key_rhs' => 'meetings_j_ptresult_1j_ptresult_idb',
+  ),
+  'opportunities_c_refunds_1' => 
+  array (
+    'name' => 'opportunities_c_refunds_1',
+    'true_relationship_type' => 'one-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'opportunities_c_refunds_1' => 
+      array (
+        'lhs_module' => 'Opportunities',
+        'lhs_table' => 'opportunities',
+        'lhs_key' => 'id',
+        'rhs_module' => 'C_Refunds',
+        'rhs_table' => 'c_refunds',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'opportunities_c_refunds_1_c',
+        'join_key_lhs' => 'opportunities_c_refunds_1opportunities_ida',
+        'join_key_rhs' => 'opportunities_c_refunds_1c_refunds_idb',
+      ),
+    ),
+    'table' => 'opportunities_c_refunds_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'opportunities_c_refunds_1opportunities_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'opportunities_c_refunds_1c_refunds_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'opportunities_c_refunds_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'opportunities_c_refunds_1_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'opportunities_c_refunds_1opportunities_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'opportunities_c_refunds_1_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'opportunities_c_refunds_1c_refunds_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'Opportunities',
+    'lhs_table' => 'opportunities',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_Refunds',
+    'rhs_table' => 'c_refunds',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'opportunities_c_refunds_1_c',
+    'join_key_lhs' => 'opportunities_c_refunds_1opportunities_ida',
+    'join_key_rhs' => 'opportunities_c_refunds_1c_refunds_idb',
+  ),
+  'opportunities_meetings_1' => 
+  array (
+    'name' => 'opportunities_meetings_1',
+    'true_relationship_type' => 'many-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'opportunities_meetings_1' => 
+      array (
+        'lhs_module' => 'Opportunities',
+        'lhs_table' => 'opportunities',
+        'lhs_key' => 'id',
+        'rhs_module' => 'Meetings',
+        'rhs_table' => 'meetings',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'opportunities_meetings_1_c',
+        'join_key_lhs' => 'opportunities_meetings_1opportunities_ida',
+        'join_key_rhs' => 'opportunities_meetings_1meetings_idb',
+      ),
+    ),
+    'table' => 'opportunities_meetings_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'opportunities_meetings_1opportunities_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'opportunities_meetings_1meetings_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'opportunities_meetings_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'opportunities_meetings_1_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'opportunities_meetings_1opportunities_ida',
+          1 => 'opportunities_meetings_1meetings_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'Opportunities',
+    'lhs_table' => 'opportunities',
+    'lhs_key' => 'id',
+    'rhs_module' => 'Meetings',
+    'rhs_table' => 'meetings',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'opportunities_meetings_1_c',
+    'join_key_lhs' => 'opportunities_meetings_1opportunities_ida',
+    'join_key_rhs' => 'opportunities_meetings_1meetings_idb',
+  ),
+  'users_j_feedback_1' => 
+  array (
+    'name' => 'users_j_feedback_1',
+    'true_relationship_type' => 'one-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'users_j_feedback_1' => 
+      array (
+        'lhs_module' => 'Users',
+        'lhs_table' => 'users',
+        'lhs_key' => 'id',
+        'rhs_module' => 'J_Feedback',
+        'rhs_table' => 'j_feedback',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'users_j_feedback_1_c',
+        'join_key_lhs' => 'users_j_feedback_1users_ida',
+        'join_key_rhs' => 'users_j_feedback_1j_feedback_idb',
+      ),
+    ),
+    'table' => 'users_j_feedback_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'users_j_feedback_1users_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'users_j_feedback_1j_feedback_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'users_j_feedback_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'users_j_feedback_1_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'users_j_feedback_1users_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'users_j_feedback_1_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'users_j_feedback_1j_feedback_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Feedback',
+    'rhs_table' => 'j_feedback',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'users_j_feedback_1_c',
+    'join_key_lhs' => 'users_j_feedback_1users_ida',
+    'join_key_rhs' => 'users_j_feedback_1j_feedback_idb',
+  ),
+  'users_j_feedback_2' => 
+  array (
+    'name' => 'users_j_feedback_2',
+    'true_relationship_type' => 'one-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'users_j_feedback_2' => 
+      array (
+        'lhs_module' => 'Users',
+        'lhs_table' => 'users',
+        'lhs_key' => 'id',
+        'rhs_module' => 'J_Feedback',
+        'rhs_table' => 'j_feedback',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'users_j_feedback_2_c',
+        'join_key_lhs' => 'users_j_feedback_2users_ida',
+        'join_key_rhs' => 'users_j_feedback_2j_feedback_idb',
+      ),
+    ),
+    'table' => 'users_j_feedback_2_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'users_j_feedback_2users_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'users_j_feedback_2j_feedback_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'users_j_feedback_2spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'users_j_feedback_2_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'users_j_feedback_2users_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'users_j_feedback_2_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'users_j_feedback_2j_feedback_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Feedback',
+    'rhs_table' => 'j_feedback',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'users_j_feedback_2_c',
+    'join_key_lhs' => 'users_j_feedback_2users_ida',
+    'join_key_rhs' => 'users_j_feedback_2j_feedback_idb',
+  ),
+  'users_j_marketingplan_1' => 
+  array (
+    'name' => 'users_j_marketingplan_1',
+    'true_relationship_type' => 'one-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'users_j_marketingplan_1' => 
+      array (
+        'lhs_module' => 'Users',
+        'lhs_table' => 'users',
+        'lhs_key' => 'id',
+        'rhs_module' => 'J_Marketingplan',
+        'rhs_table' => 'j_marketingplan',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'users_j_marketingplan_1_c',
+        'join_key_lhs' => 'users_j_marketingplan_1users_ida',
+        'join_key_rhs' => 'users_j_marketingplan_1j_marketingplan_idb',
+      ),
+    ),
+    'table' => 'users_j_marketingplan_1_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'users_j_marketingplan_1users_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'users_j_marketingplan_1j_marketingplan_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'users_j_marketingplan_1spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'users_j_marketingplan_1_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'users_j_marketingplan_1users_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'users_j_marketingplan_1_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'users_j_marketingplan_1j_marketingplan_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Marketingplan',
+    'rhs_table' => 'j_marketingplan',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'users_j_marketingplan_1_c',
+    'join_key_lhs' => 'users_j_marketingplan_1users_ida',
+    'join_key_rhs' => 'users_j_marketingplan_1j_marketingplan_idb',
+  ),
+  'users_j_marketingplan_2' => 
+  array (
+    'name' => 'users_j_marketingplan_2',
+    'true_relationship_type' => 'one-to-many',
+    'from_studio' => true,
+    'relationships' => 
+    array (
+      'users_j_marketingplan_2' => 
+      array (
+        'lhs_module' => 'Users',
+        'lhs_table' => 'users',
+        'lhs_key' => 'id',
+        'rhs_module' => 'J_Marketingplan',
+        'rhs_table' => 'j_marketingplan',
+        'rhs_key' => 'id',
+        'relationship_type' => 'many-to-many',
+        'join_table' => 'users_j_marketingplan_2_c',
+        'join_key_lhs' => 'users_j_marketingplan_2users_ida',
+        'join_key_rhs' => 'users_j_marketingplan_2j_marketingplan_idb',
+      ),
+    ),
+    'table' => 'users_j_marketingplan_2_c',
+    'fields' => 
+    array (
+      0 => 
+      array (
+        'name' => 'id',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      1 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      2 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '1',
+        'default' => '0',
+        'required' => true,
+      ),
+      3 => 
+      array (
+        'name' => 'users_j_marketingplan_2users_ida',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+      4 => 
+      array (
+        'name' => 'users_j_marketingplan_2j_marketingplan_idb',
+        'type' => 'varchar',
+        'len' => 36,
+      ),
+    ),
+    'indices' => 
+    array (
+      0 => 
+      array (
+        'name' => 'users_j_marketingplan_2spk',
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      ),
+      1 => 
+      array (
+        'name' => 'users_j_marketingplan_2_ida1',
+        'type' => 'index',
+        'fields' => 
+        array (
+          0 => 'users_j_marketingplan_2users_ida',
+        ),
+      ),
+      2 => 
+      array (
+        'name' => 'users_j_marketingplan_2_alt',
+        'type' => 'alternate_key',
+        'fields' => 
+        array (
+          0 => 'users_j_marketingplan_2j_marketingplan_idb',
+        ),
+      ),
+    ),
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Marketingplan',
+    'rhs_table' => 'j_marketingplan',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'users_j_marketingplan_2_c',
+    'join_key_lhs' => 'users_j_marketingplan_2users_ida',
+    'join_key_rhs' => 'users_j_marketingplan_2j_marketingplan_idb',
   ),
   'user_direct_reports' => 
   array (
@@ -10398,17 +14914,6 @@
     'relationship_type' => 'one-to-many',
     'relationship_role_column' => 'target_type',
     'relationship_role_column_value' => 'Leads',
-  ),
-  'session_lead' => 
-  array (
-    'name' => 'session_lead',
-    'lhs_module' => 'Leads',
-    'lhs_table' => 'leads',
-    'lhs_key' => 'id',
-    'rhs_module' => 'C_Session',
-    'rhs_table' => 'c_session',
-    'rhs_key' => 'lead_id',
-    'relationship_type' => 'one-to-many',
   ),
   'cases_modified_user' => 
   array (
@@ -11763,6 +16268,17 @@
     'rhs_key' => 'modified_user_id',
     'relationship_type' => 'one-to-many',
   ),
+  'campaign_sponsors' => 
+  array (
+    'name' => 'campaign_sponsors',
+    'lhs_module' => 'Campaigns',
+    'lhs_table' => 'campaigns',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_Sponsors',
+    'rhs_table' => 'c_sponsors',
+    'rhs_key' => 'campaign_id',
+    'relationship_type' => 'one-to-many',
+  ),
   'email_template_email_marketings' => 
   array (
     'name' => 'email_template_email_marketings',
@@ -12232,6 +16748,39 @@
     'relationship_role_column' => 'target_type',
     'relationship_role_column_value' => 'Contacts',
   ),
+  'student_loyaltys' => 
+  array (
+    'name' => 'student_loyaltys',
+    'lhs_module' => 'Contacts',
+    'lhs_table' => 'contacts',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Loyalty',
+    'rhs_table' => 'j_loyalty',
+    'rhs_key' => 'student_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'student_membership' => 
+  array (
+    'name' => 'student_membership',
+    'lhs_module' => 'Contacts',
+    'lhs_table' => 'contacts',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_Memberships',
+    'rhs_table' => 'c_memberships',
+    'rhs_key' => 'student_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'student_paymentdetail' => 
+  array (
+    'name' => 'student_paymentdetail',
+    'lhs_module' => 'Contacts',
+    'lhs_table' => 'contacts',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_PaymentDetail',
+    'rhs_table' => 'j_paymentdetail',
+    'rhs_key' => 'student_id',
+    'relationship_type' => 'one-to-many',
+  ),
   'accounts_modified_user' => 
   array (
     'name' => 'accounts_modified_user',
@@ -12588,14 +17137,14 @@
     'relationship_role_column' => 'target_type',
     'relationship_role_column_value' => 'Accounts',
   ),
-  'account_ticketreports' => 
+  'account_payments' => 
   array (
-    'name' => 'account_ticketreports',
+    'name' => 'account_payments',
     'lhs_module' => 'Accounts',
     'lhs_table' => 'accounts',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_TicketReport',
-    'rhs_table' => 'c_ticketreport',
+    'rhs_module' => 'J_Payment',
+    'rhs_table' => 'j_payment',
     'rhs_key' => 'account_id',
     'relationship_type' => 'one-to-many',
   ),
@@ -12809,6 +17358,28 @@
     'rhs_key' => 'opportunity_id',
     'relationship_type' => 'one-to-many',
   ),
+  'enrollment_delivery' => 
+  array (
+    'name' => 'enrollment_delivery',
+    'lhs_module' => 'Opportunities',
+    'lhs_table' => 'opportunities',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_DeliveryRevenue',
+    'rhs_table' => 'c_deliveryrevenue',
+    'rhs_key' => 'enrollment_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'enrollment_carry' => 
+  array (
+    'name' => 'enrollment_carry',
+    'lhs_module' => 'Opportunities',
+    'lhs_table' => 'opportunities',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_Carryforward',
+    'rhs_table' => 'c_carryforward',
+    'rhs_key' => 'enrollment_id',
+    'relationship_type' => 'one-to-many',
+  ),
   'emailtemplates_team_count_relationship' => 
   array (
     'name' => 'emailtemplates_team_count_relationship',
@@ -12886,6 +17457,17 @@
     'rhs_module' => 'EmailTemplates',
     'rhs_table' => 'email_templates',
     'rhs_key' => 'assigned_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'emailtemplate_sms' => 
+  array (
+    'name' => 'emailtemplate_sms',
+    'lhs_module' => 'EmailTemplates',
+    'lhs_table' => 'email_templates',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_SMS',
+    'rhs_table' => 'c_sms',
+    'rhs_key' => 'template_id',
     'relationship_type' => 'one-to-many',
   ),
   'notes_assigned_user' => 
@@ -13339,6 +17921,28 @@
     'relationship_type' => 'one-to-many',
     'relationship_role_column' => 'parent_type',
     'relationship_role_column_value' => 'Meetings',
+  ),
+  'meeting_attendances' => 
+  array (
+    'name' => 'meeting_attendances',
+    'lhs_module' => 'Meetings',
+    'lhs_table' => 'meetings',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_Attendance',
+    'rhs_table' => 'c_attendance',
+    'rhs_key' => 'meeting_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'session_revenue' => 
+  array (
+    'name' => 'session_revenue',
+    'lhs_module' => 'Meetings',
+    'lhs_table' => 'meetings',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_DeliveryRevenue',
+    'rhs_table' => 'c_deliveryrevenue',
+    'rhs_key' => 'session_id',
+    'relationship_type' => 'one-to-many',
   ),
   'tasks_modified_user' => 
   array (
@@ -14295,6 +18899,28 @@
     'rhs_key' => 'created_by',
     'relationship_type' => 'one-to-many',
   ),
+  'book_inventorydetails' => 
+  array (
+    'name' => 'book_inventorydetails',
+    'lhs_module' => 'ProductTemplates',
+    'lhs_table' => 'product_templates',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Inventorydetail',
+    'rhs_table' => 'j_inventorydetail',
+    'rhs_key' => 'book_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'inventoryline_book' => 
+  array (
+    'name' => 'inventoryline_book',
+    'lhs_module' => 'ProductTemplate',
+    'lhs_table' => 'product_templates',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Inventorydetail',
+    'rhs_table' => 'j_inventorydetail',
+    'rhs_key' => 'book_id',
+    'relationship_type' => 'one-to-many',
+  ),
   'member_categories' => 
   array (
     'name' => 'member_categories',
@@ -14904,6 +19530,28 @@
     'rhs_key' => 'team_id',
     'relationship_type' => 'one-to-many',
   ),
+  'contract_paymentdetails' => 
+  array (
+    'name' => 'contract_paymentdetails',
+    'lhs_module' => 'Contracts',
+    'lhs_table' => 'contracts',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_PaymentDetail',
+    'rhs_table' => 'j_paymentdetail',
+    'rhs_key' => 'contract_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'contract_j_payment' => 
+  array (
+    'name' => 'contract_j_payment',
+    'lhs_module' => 'Contracts',
+    'lhs_table' => 'contracts',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Payment',
+    'rhs_table' => 'j_payment',
+    'rhs_key' => 'contract_id',
+    'relationship_type' => 'one-to-many',
+  ),
   'contracts_contract_types' => 
   array (
     'name' => 'contracts_contract_types',
@@ -14937,6 +19585,28 @@
     'rhs_module' => 'Contracts',
     'rhs_table' => 'contracts',
     'rhs_key' => 'account_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'contract_delivery' => 
+  array (
+    'name' => 'contract_delivery',
+    'lhs_module' => 'Contracts',
+    'lhs_table' => 'contracts',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_DeliveryRevenue',
+    'rhs_table' => 'c_deliveryrevenue',
+    'rhs_key' => 'contract_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'contract_contract_move' => 
+  array (
+    'name' => 'contract_contract_move',
+    'lhs_module' => 'Contracts',
+    'lhs_table' => 'contracts',
+    'lhs_key' => 'id',
+    'rhs_module' => 'Contracts',
+    'rhs_table' => 'contracts',
+    'rhs_key' => 'from_contract_id',
     'relationship_type' => 'one-to-many',
   ),
   'kbdocuments_team_count_relationship' => 
@@ -15885,44 +20555,44 @@
     'rhs_key' => 'assigned_user_id',
     'relationship_type' => 'one-to-many',
   ),
-  'c_bookinghotel_modified_user' => 
+  'c_attendance_modified_user' => 
   array (
-    'name' => 'c_bookinghotel_modified_user',
+    'name' => 'c_attendance_modified_user',
     'lhs_module' => 'Users',
     'lhs_table' => 'users',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_BookingHotel',
-    'rhs_table' => 'c_bookinghotel',
+    'rhs_module' => 'C_Attendance',
+    'rhs_table' => 'c_attendance',
     'rhs_key' => 'modified_user_id',
     'relationship_type' => 'one-to-many',
   ),
-  'c_bookinghotel_created_by' => 
+  'c_attendance_created_by' => 
   array (
-    'name' => 'c_bookinghotel_created_by',
+    'name' => 'c_attendance_created_by',
     'lhs_module' => 'Users',
     'lhs_table' => 'users',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_BookingHotel',
-    'rhs_table' => 'c_bookinghotel',
+    'rhs_module' => 'C_Attendance',
+    'rhs_table' => 'c_attendance',
     'rhs_key' => 'created_by',
     'relationship_type' => 'one-to-many',
   ),
-  'c_bookinghotel_team_count_relationship' => 
+  'c_attendance_team_count_relationship' => 
   array (
-    'name' => 'c_bookinghotel_team_count_relationship',
+    'name' => 'c_attendance_team_count_relationship',
     'lhs_module' => 'Teams',
     'lhs_table' => 'team_sets',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_BookingHotel',
-    'rhs_table' => 'c_bookinghotel',
+    'rhs_module' => 'C_Attendance',
+    'rhs_table' => 'c_attendance',
     'rhs_key' => 'team_set_id',
     'relationship_type' => 'one-to-many',
   ),
-  'c_bookinghotel_teams' => 
+  'c_attendance_teams' => 
   array (
-    'name' => 'c_bookinghotel_teams',
-    'lhs_module' => 'C_BookingHotel',
-    'lhs_table' => 'c_bookinghotel',
+    'name' => 'c_attendance_teams',
+    'lhs_module' => 'C_Attendance',
+    'lhs_table' => 'c_attendance',
     'lhs_key' => 'team_set_id',
     'rhs_module' => 'Teams',
     'rhs_table' => 'teams',
@@ -15964,66 +20634,66 @@
       ),
     ),
   ),
-  'c_bookinghotel_team' => 
+  'c_attendance_team' => 
   array (
-    'name' => 'c_bookinghotel_team',
+    'name' => 'c_attendance_team',
     'lhs_module' => 'Teams',
     'lhs_table' => 'teams',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_BookingHotel',
-    'rhs_table' => 'c_bookinghotel',
+    'rhs_module' => 'C_Attendance',
+    'rhs_table' => 'c_attendance',
     'rhs_key' => 'team_id',
     'relationship_type' => 'one-to-many',
   ),
-  'c_bookinghotel_assigned_user' => 
+  'c_attendance_assigned_user' => 
   array (
-    'name' => 'c_bookinghotel_assigned_user',
+    'name' => 'c_attendance_assigned_user',
     'lhs_module' => 'Users',
     'lhs_table' => 'users',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_BookingHotel',
-    'rhs_table' => 'c_bookinghotel',
+    'rhs_module' => 'C_Attendance',
+    'rhs_table' => 'c_attendance',
     'rhs_key' => 'assigned_user_id',
     'relationship_type' => 'one-to-many',
   ),
-  'c_bookingticket_modified_user' => 
+  'c_carryforward_modified_user' => 
   array (
-    'name' => 'c_bookingticket_modified_user',
+    'name' => 'c_carryforward_modified_user',
     'lhs_module' => 'Users',
     'lhs_table' => 'users',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_BookingTicket',
-    'rhs_table' => 'c_bookingticket',
+    'rhs_module' => 'C_Carryforward',
+    'rhs_table' => 'c_carryforward',
     'rhs_key' => 'modified_user_id',
     'relationship_type' => 'one-to-many',
   ),
-  'c_bookingticket_created_by' => 
+  'c_carryforward_created_by' => 
   array (
-    'name' => 'c_bookingticket_created_by',
+    'name' => 'c_carryforward_created_by',
     'lhs_module' => 'Users',
     'lhs_table' => 'users',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_BookingTicket',
-    'rhs_table' => 'c_bookingticket',
+    'rhs_module' => 'C_Carryforward',
+    'rhs_table' => 'c_carryforward',
     'rhs_key' => 'created_by',
     'relationship_type' => 'one-to-many',
   ),
-  'c_bookingticket_team_count_relationship' => 
+  'c_carryforward_team_count_relationship' => 
   array (
-    'name' => 'c_bookingticket_team_count_relationship',
+    'name' => 'c_carryforward_team_count_relationship',
     'lhs_module' => 'Teams',
     'lhs_table' => 'team_sets',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_BookingTicket',
-    'rhs_table' => 'C_bookingticket',
+    'rhs_module' => 'C_Carryforward',
+    'rhs_table' => 'c_carryforward',
     'rhs_key' => 'team_set_id',
     'relationship_type' => 'one-to-many',
   ),
-  'c_bookingticket_teams' => 
+  'c_carryforward_teams' => 
   array (
-    'name' => 'c_bookingticket_teams',
-    'lhs_module' => 'C_BookingTicket',
-    'lhs_table' => 'C_bookingticket',
+    'name' => 'c_carryforward_teams',
+    'lhs_module' => 'C_Carryforward',
+    'lhs_table' => 'c_carryforward',
     'lhs_key' => 'team_set_id',
     'rhs_module' => 'Teams',
     'rhs_table' => 'teams',
@@ -16065,77 +20735,66 @@
       ),
     ),
   ),
-  'c_bookingticket_team' => 
+  'c_carryforward_team' => 
   array (
-    'name' => 'c_bookingticket_team',
+    'name' => 'c_carryforward_team',
     'lhs_module' => 'Teams',
     'lhs_table' => 'teams',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_BookingTicket',
-    'rhs_table' => 'C_bookingticket',
+    'rhs_module' => 'C_Carryforward',
+    'rhs_table' => 'c_carryforward',
     'rhs_key' => 'team_id',
     'relationship_type' => 'one-to-many',
   ),
-  'c_bookingticket_assigned_user' => 
+  'c_carryforward_assigned_user' => 
   array (
-    'name' => 'c_bookingticket_assigned_user',
+    'name' => 'c_carryforward_assigned_user',
     'lhs_module' => 'Users',
     'lhs_table' => 'users',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_BookingTicket',
-    'rhs_table' => 'c_bookingticket',
+    'rhs_module' => 'C_Carryforward',
+    'rhs_table' => 'c_carryforward',
     'rhs_key' => 'assigned_user_id',
     'relationship_type' => 'one-to-many',
   ),
-  'users_sale' => 
+  'j_class_modified_user' => 
   array (
-    'name' => 'users_sale',
+    'name' => 'j_class_modified_user',
     'lhs_module' => 'Users',
     'lhs_table' => 'users',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_Ticket',
-    'rhs_table' => 'c_ticket',
-    'rhs_key' => 'user_sale_id',
-    'relationship_type' => 'one-to-many',
-  ),
-  'c_bookingtour_modified_user' => 
-  array (
-    'name' => 'c_bookingtour_modified_user',
-    'lhs_module' => 'Users',
-    'lhs_table' => 'users',
-    'lhs_key' => 'id',
-    'rhs_module' => 'C_BookingTour',
-    'rhs_table' => 'c_bookingtour',
+    'rhs_module' => 'J_Class',
+    'rhs_table' => 'j_class',
     'rhs_key' => 'modified_user_id',
     'relationship_type' => 'one-to-many',
   ),
-  'c_bookingtour_created_by' => 
+  'j_class_created_by' => 
   array (
-    'name' => 'c_bookingtour_created_by',
+    'name' => 'j_class_created_by',
     'lhs_module' => 'Users',
     'lhs_table' => 'users',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_BookingTour',
-    'rhs_table' => 'c_bookingtour',
+    'rhs_module' => 'J_Class',
+    'rhs_table' => 'j_class',
     'rhs_key' => 'created_by',
     'relationship_type' => 'one-to-many',
   ),
-  'c_bookingtour_team_count_relationship' => 
+  'j_class_team_count_relationship' => 
   array (
-    'name' => 'c_bookingtour_team_count_relationship',
+    'name' => 'j_class_team_count_relationship',
     'lhs_module' => 'Teams',
     'lhs_table' => 'team_sets',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_BookingTour',
-    'rhs_table' => 'c_bookingtour',
+    'rhs_module' => 'J_Class',
+    'rhs_table' => 'j_class',
     'rhs_key' => 'team_set_id',
     'relationship_type' => 'one-to-many',
   ),
-  'c_bookingtour_teams' => 
+  'j_class_teams' => 
   array (
-    'name' => 'c_bookingtour_teams',
-    'lhs_module' => 'C_BookingTour',
-    'lhs_table' => 'c_bookingtour',
+    'name' => 'j_class_teams',
+    'lhs_module' => 'J_Class',
+    'lhs_table' => 'j_class',
     'lhs_key' => 'team_set_id',
     'rhs_module' => 'Teams',
     'rhs_table' => 'teams',
@@ -16177,26 +20836,59 @@
       ),
     ),
   ),
-  'c_bookingtour_team' => 
+  'j_class_team' => 
   array (
-    'name' => 'c_bookingtour_team',
+    'name' => 'j_class_team',
     'lhs_module' => 'Teams',
     'lhs_table' => 'teams',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_BookingTour',
-    'rhs_table' => 'c_bookingtour',
+    'rhs_module' => 'J_Class',
+    'rhs_table' => 'j_class',
     'rhs_key' => 'team_id',
     'relationship_type' => 'one-to-many',
   ),
-  'c_bookingtour_assigned_user' => 
+  'j_class_assigned_user' => 
   array (
-    'name' => 'c_bookingtour_assigned_user',
+    'name' => 'j_class_assigned_user',
     'lhs_module' => 'Users',
     'lhs_table' => 'users',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_BookingTour',
-    'rhs_table' => 'c_bookingtour',
+    'rhs_module' => 'J_Class',
+    'rhs_table' => 'j_class',
     'rhs_key' => 'assigned_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_class_meetings' => 
+  array (
+    'name' => 'j_class_meetings',
+    'lhs_module' => 'J_Class',
+    'lhs_table' => 'j_class',
+    'lhs_key' => 'id',
+    'rhs_module' => 'Meetings',
+    'rhs_table' => 'meetings',
+    'rhs_key' => 'ju_class_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_class_studentsituations' => 
+  array (
+    'name' => 'j_class_studentsituations',
+    'lhs_module' => 'J_Class',
+    'lhs_table' => 'j_class',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_StudentSituations',
+    'rhs_table' => 'j_studentsituations',
+    'rhs_key' => 'ju_class_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'move_classes_studentsituations' => 
+  array (
+    'name' => 'move_classes_studentsituations',
+    'lhs_module' => 'J_Class',
+    'lhs_table' => 'j_class',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_StudentSituations',
+    'rhs_table' => 'j_studentsituations',
+    'rhs_key' => 'move_class_id',
     'relationship_type' => 'one-to-many',
   ),
   'c_configid_modified_user' => 
@@ -16232,6 +20924,885 @@
     'rhs_key' => 'assigned_user_id',
     'relationship_type' => 'one-to-many',
   ),
+  'j_configinvoiceno_modified_user' => 
+  array (
+    'name' => 'j_configinvoiceno_modified_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_ConfigInvoiceNo',
+    'rhs_table' => 'j_configinvoiceno',
+    'rhs_key' => 'modified_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_configinvoiceno_created_by' => 
+  array (
+    'name' => 'j_configinvoiceno_created_by',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_ConfigInvoiceNo',
+    'rhs_table' => 'j_configinvoiceno',
+    'rhs_key' => 'created_by',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_configinvoiceno_team_count_relationship' => 
+  array (
+    'name' => 'j_configinvoiceno_team_count_relationship',
+    'lhs_module' => 'Teams',
+    'lhs_table' => 'team_sets',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_ConfigInvoiceNo',
+    'rhs_table' => 'j_configinvoiceno',
+    'rhs_key' => 'team_set_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_configinvoiceno_teams' => 
+  array (
+    'name' => 'j_configinvoiceno_teams',
+    'lhs_module' => 'J_ConfigInvoiceNo',
+    'lhs_table' => 'j_configinvoiceno',
+    'lhs_key' => 'team_set_id',
+    'rhs_module' => 'Teams',
+    'rhs_table' => 'teams',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'team_sets_teams',
+    'join_key_lhs' => 'team_set_id',
+    'join_key_rhs' => 'team_id',
+    'fields' => 
+    array (
+      'id' => 
+      array (
+        'name' => 'id',
+        'vname' => 'LBL_ID',
+        'type' => 'id',
+        'required' => true,
+      ),
+      0 => 
+      array (
+        'name' => 'team_set_id',
+        'type' => 'id',
+      ),
+      1 => 
+      array (
+        'name' => 'team_id',
+        'type' => 'id',
+      ),
+      2 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      3 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '',
+        'default' => '0',
+      ),
+    ),
+  ),
+  'j_configinvoiceno_team' => 
+  array (
+    'name' => 'j_configinvoiceno_team',
+    'lhs_module' => 'Teams',
+    'lhs_table' => 'teams',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_ConfigInvoiceNo',
+    'rhs_table' => 'j_configinvoiceno',
+    'rhs_key' => 'team_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_configinvoiceno_assigned_user' => 
+  array (
+    'name' => 'j_configinvoiceno_assigned_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_ConfigInvoiceNo',
+    'rhs_table' => 'j_configinvoiceno',
+    'rhs_key' => 'assigned_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'c_contacts_modified_user' => 
+  array (
+    'name' => 'c_contacts_modified_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_Contacts',
+    'rhs_table' => 'c_contacts',
+    'rhs_key' => 'modified_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'c_contacts_created_by' => 
+  array (
+    'name' => 'c_contacts_created_by',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_Contacts',
+    'rhs_table' => 'c_contacts',
+    'rhs_key' => 'created_by',
+    'relationship_type' => 'one-to-many',
+  ),
+  'c_contacts_team_count_relationship' => 
+  array (
+    'name' => 'c_contacts_team_count_relationship',
+    'lhs_module' => 'Teams',
+    'lhs_table' => 'team_sets',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_Contacts',
+    'rhs_table' => 'c_contacts',
+    'rhs_key' => 'team_set_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'c_contacts_teams' => 
+  array (
+    'name' => 'c_contacts_teams',
+    'lhs_module' => 'C_Contacts',
+    'lhs_table' => 'c_contacts',
+    'lhs_key' => 'team_set_id',
+    'rhs_module' => 'Teams',
+    'rhs_table' => 'teams',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'team_sets_teams',
+    'join_key_lhs' => 'team_set_id',
+    'join_key_rhs' => 'team_id',
+    'fields' => 
+    array (
+      'id' => 
+      array (
+        'name' => 'id',
+        'vname' => 'LBL_ID',
+        'type' => 'id',
+        'required' => true,
+      ),
+      0 => 
+      array (
+        'name' => 'team_set_id',
+        'type' => 'id',
+      ),
+      1 => 
+      array (
+        'name' => 'team_id',
+        'type' => 'id',
+      ),
+      2 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      3 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '',
+        'default' => '0',
+      ),
+    ),
+  ),
+  'c_contacts_team' => 
+  array (
+    'name' => 'c_contacts_team',
+    'lhs_module' => 'Teams',
+    'lhs_table' => 'teams',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_Contacts',
+    'rhs_table' => 'c_contacts',
+    'rhs_key' => 'team_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'c_contacts_assigned_user' => 
+  array (
+    'name' => 'c_contacts_assigned_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_Contacts',
+    'rhs_table' => 'c_contacts',
+    'rhs_key' => 'assigned_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_coursefee_modified_user' => 
+  array (
+    'name' => 'j_coursefee_modified_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Coursefee',
+    'rhs_table' => 'j_coursefee',
+    'rhs_key' => 'modified_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_coursefee_created_by' => 
+  array (
+    'name' => 'j_coursefee_created_by',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Coursefee',
+    'rhs_table' => 'j_coursefee',
+    'rhs_key' => 'created_by',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_coursefee_team_count_relationship' => 
+  array (
+    'name' => 'j_coursefee_team_count_relationship',
+    'lhs_module' => 'Teams',
+    'lhs_table' => 'team_sets',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Coursefee',
+    'rhs_table' => 'j_coursefee',
+    'rhs_key' => 'team_set_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_coursefee_teams' => 
+  array (
+    'name' => 'j_coursefee_teams',
+    'lhs_module' => 'J_Coursefee',
+    'lhs_table' => 'j_coursefee',
+    'lhs_key' => 'team_set_id',
+    'rhs_module' => 'Teams',
+    'rhs_table' => 'teams',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'team_sets_teams',
+    'join_key_lhs' => 'team_set_id',
+    'join_key_rhs' => 'team_id',
+    'fields' => 
+    array (
+      'id' => 
+      array (
+        'name' => 'id',
+        'vname' => 'LBL_ID',
+        'type' => 'id',
+        'required' => true,
+      ),
+      0 => 
+      array (
+        'name' => 'team_set_id',
+        'type' => 'id',
+      ),
+      1 => 
+      array (
+        'name' => 'team_id',
+        'type' => 'id',
+      ),
+      2 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      3 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '',
+        'default' => '0',
+      ),
+    ),
+  ),
+  'j_coursefee_team' => 
+  array (
+    'name' => 'j_coursefee_team',
+    'lhs_module' => 'Teams',
+    'lhs_table' => 'teams',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Coursefee',
+    'rhs_table' => 'j_coursefee',
+    'rhs_key' => 'team_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_coursefee_assigned_user' => 
+  array (
+    'name' => 'j_coursefee_assigned_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Coursefee',
+    'rhs_table' => 'j_coursefee',
+    'rhs_key' => 'assigned_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'bc_submission_data_modified_user' => 
+  array (
+    'name' => 'bc_submission_data_modified_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'bc_submission_data',
+    'rhs_table' => 'bc_submission_data',
+    'rhs_key' => 'modified_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'bc_submission_data_created_by' => 
+  array (
+    'name' => 'bc_submission_data_created_by',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'bc_submission_data',
+    'rhs_table' => 'bc_submission_data',
+    'rhs_key' => 'created_by',
+    'relationship_type' => 'one-to-many',
+  ),
+  'bc_submission_data_assigned_user' => 
+  array (
+    'name' => 'bc_submission_data_assigned_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'bc_submission_data',
+    'rhs_table' => 'bc_submission_data',
+    'rhs_key' => 'assigned_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'bc_survey_submission_modified_user' => 
+  array (
+    'name' => 'bc_survey_submission_modified_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'bc_survey_submission',
+    'rhs_table' => 'bc_survey_submission',
+    'rhs_key' => 'modified_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'bc_survey_submission_created_by' => 
+  array (
+    'name' => 'bc_survey_submission_created_by',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'bc_survey_submission',
+    'rhs_table' => 'bc_survey_submission',
+    'rhs_key' => 'created_by',
+    'relationship_type' => 'one-to-many',
+  ),
+  'bc_survey_submission_assigned_user' => 
+  array (
+    'name' => 'bc_survey_submission_assigned_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'bc_survey_submission',
+    'rhs_table' => 'bc_survey_submission',
+    'rhs_key' => 'assigned_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'bc_survey_template_modified_user' => 
+  array (
+    'name' => 'bc_survey_template_modified_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'bc_survey_template',
+    'rhs_table' => 'bc_survey_template',
+    'rhs_key' => 'modified_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'bc_survey_template_created_by' => 
+  array (
+    'name' => 'bc_survey_template_created_by',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'bc_survey_template',
+    'rhs_table' => 'bc_survey_template',
+    'rhs_key' => 'created_by',
+    'relationship_type' => 'one-to-many',
+  ),
+  'bc_survey_template_assigned_user' => 
+  array (
+    'name' => 'bc_survey_template_assigned_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'bc_survey_template',
+    'rhs_table' => 'bc_survey_template',
+    'rhs_key' => 'assigned_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'bc_survey_modified_user' => 
+  array (
+    'name' => 'bc_survey_modified_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'bc_survey',
+    'rhs_table' => 'bc_survey',
+    'rhs_key' => 'modified_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'bc_survey_created_by' => 
+  array (
+    'name' => 'bc_survey_created_by',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'bc_survey',
+    'rhs_table' => 'bc_survey',
+    'rhs_key' => 'created_by',
+    'relationship_type' => 'one-to-many',
+  ),
+  'bc_survey_assigned_user' => 
+  array (
+    'name' => 'bc_survey_assigned_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'bc_survey',
+    'rhs_table' => 'bc_survey',
+    'rhs_key' => 'assigned_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'bc_survey_language_modified_user' => 
+  array (
+    'name' => 'bc_survey_language_modified_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'bc_survey_language',
+    'rhs_table' => 'bc_survey_language',
+    'rhs_key' => 'modified_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'bc_survey_language_created_by' => 
+  array (
+    'name' => 'bc_survey_language_created_by',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'bc_survey_language',
+    'rhs_table' => 'bc_survey_language',
+    'rhs_key' => 'created_by',
+    'relationship_type' => 'one-to-many',
+  ),
+  'bc_survey_language_assigned_user' => 
+  array (
+    'name' => 'bc_survey_language_assigned_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'bc_survey_language',
+    'rhs_table' => 'bc_survey_language',
+    'rhs_key' => 'assigned_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'bc_survey_questions_modified_user' => 
+  array (
+    'name' => 'bc_survey_questions_modified_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'bc_survey_questions',
+    'rhs_table' => 'bc_survey_questions',
+    'rhs_key' => 'modified_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'bc_survey_questions_created_by' => 
+  array (
+    'name' => 'bc_survey_questions_created_by',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'bc_survey_questions',
+    'rhs_table' => 'bc_survey_questions',
+    'rhs_key' => 'created_by',
+    'relationship_type' => 'one-to-many',
+  ),
+  'bc_survey_questions_assigned_user' => 
+  array (
+    'name' => 'bc_survey_questions_assigned_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'bc_survey_questions',
+    'rhs_table' => 'bc_survey_questions',
+    'rhs_key' => 'assigned_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'bc_survey_pages_modified_user' => 
+  array (
+    'name' => 'bc_survey_pages_modified_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'bc_survey_pages',
+    'rhs_table' => 'bc_survey_pages',
+    'rhs_key' => 'modified_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'bc_survey_pages_created_by' => 
+  array (
+    'name' => 'bc_survey_pages_created_by',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'bc_survey_pages',
+    'rhs_table' => 'bc_survey_pages',
+    'rhs_key' => 'created_by',
+    'relationship_type' => 'one-to-many',
+  ),
+  'bc_survey_pages_assigned_user' => 
+  array (
+    'name' => 'bc_survey_pages_assigned_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'bc_survey_pages',
+    'rhs_table' => 'bc_survey_pages',
+    'rhs_key' => 'assigned_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'bc_survey_answers_modified_user' => 
+  array (
+    'name' => 'bc_survey_answers_modified_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'bc_survey_answers',
+    'rhs_table' => 'bc_survey_answers',
+    'rhs_key' => 'modified_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'bc_survey_answers_created_by' => 
+  array (
+    'name' => 'bc_survey_answers_created_by',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'bc_survey_answers',
+    'rhs_table' => 'bc_survey_answers',
+    'rhs_key' => 'created_by',
+    'relationship_type' => 'one-to-many',
+  ),
+  'bc_survey_answers_assigned_user' => 
+  array (
+    'name' => 'bc_survey_answers_assigned_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'bc_survey_answers',
+    'rhs_table' => 'bc_survey_answers',
+    'rhs_key' => 'assigned_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'bc_survey_automizer_modified_user' => 
+  array (
+    'name' => 'bc_survey_automizer_modified_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'bc_survey_automizer',
+    'rhs_table' => 'bc_survey_automizer',
+    'rhs_key' => 'modified_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'bc_survey_automizer_created_by' => 
+  array (
+    'name' => 'bc_survey_automizer_created_by',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'bc_survey_automizer',
+    'rhs_table' => 'bc_survey_automizer',
+    'rhs_key' => 'created_by',
+    'relationship_type' => 'one-to-many',
+  ),
+  'bc_survey_automizer_assigned_user' => 
+  array (
+    'name' => 'bc_survey_automizer_assigned_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'bc_survey_automizer',
+    'rhs_table' => 'bc_survey_automizer',
+    'rhs_key' => 'assigned_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'bc_automizer_condition_modified_user' => 
+  array (
+    'name' => 'bc_automizer_condition_modified_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'bc_automizer_condition',
+    'rhs_table' => 'bc_automizer_condition',
+    'rhs_key' => 'modified_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'bc_automizer_condition_created_by' => 
+  array (
+    'name' => 'bc_automizer_condition_created_by',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'bc_automizer_condition',
+    'rhs_table' => 'bc_automizer_condition',
+    'rhs_key' => 'created_by',
+    'relationship_type' => 'one-to-many',
+  ),
+  'bc_automizer_condition_assigned_user' => 
+  array (
+    'name' => 'bc_automizer_condition_assigned_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'bc_automizer_condition',
+    'rhs_table' => 'bc_automizer_condition',
+    'rhs_key' => 'assigned_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'bc_automizer_actions_modified_user' => 
+  array (
+    'name' => 'bc_automizer_actions_modified_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'bc_automizer_actions',
+    'rhs_table' => 'bc_automizer_actions',
+    'rhs_key' => 'modified_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'bc_automizer_actions_created_by' => 
+  array (
+    'name' => 'bc_automizer_actions_created_by',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'bc_automizer_actions',
+    'rhs_table' => 'bc_automizer_actions',
+    'rhs_key' => 'created_by',
+    'relationship_type' => 'one-to-many',
+  ),
+  'bc_automizer_actions_assigned_user' => 
+  array (
+    'name' => 'bc_automizer_actions_assigned_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'bc_automizer_actions',
+    'rhs_table' => 'bc_automizer_actions',
+    'rhs_key' => 'assigned_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'c_deliveryrevenue_modified_user' => 
+  array (
+    'name' => 'c_deliveryrevenue_modified_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_DeliveryRevenue',
+    'rhs_table' => 'c_deliveryrevenue',
+    'rhs_key' => 'modified_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'c_deliveryrevenue_created_by' => 
+  array (
+    'name' => 'c_deliveryrevenue_created_by',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_DeliveryRevenue',
+    'rhs_table' => 'c_deliveryrevenue',
+    'rhs_key' => 'created_by',
+    'relationship_type' => 'one-to-many',
+  ),
+  'c_deliveryrevenue_team_count_relationship' => 
+  array (
+    'name' => 'c_deliveryrevenue_team_count_relationship',
+    'lhs_module' => 'Teams',
+    'lhs_table' => 'team_sets',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_DeliveryRevenue',
+    'rhs_table' => 'c_deliveryrevenue',
+    'rhs_key' => 'team_set_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'c_deliveryrevenue_teams' => 
+  array (
+    'name' => 'c_deliveryrevenue_teams',
+    'lhs_module' => 'C_DeliveryRevenue',
+    'lhs_table' => 'c_deliveryrevenue',
+    'lhs_key' => 'team_set_id',
+    'rhs_module' => 'Teams',
+    'rhs_table' => 'teams',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'team_sets_teams',
+    'join_key_lhs' => 'team_set_id',
+    'join_key_rhs' => 'team_id',
+    'fields' => 
+    array (
+      'id' => 
+      array (
+        'name' => 'id',
+        'vname' => 'LBL_ID',
+        'type' => 'id',
+        'required' => true,
+      ),
+      0 => 
+      array (
+        'name' => 'team_set_id',
+        'type' => 'id',
+      ),
+      1 => 
+      array (
+        'name' => 'team_id',
+        'type' => 'id',
+      ),
+      2 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      3 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '',
+        'default' => '0',
+      ),
+    ),
+  ),
+  'c_deliveryrevenue_team' => 
+  array (
+    'name' => 'c_deliveryrevenue_team',
+    'lhs_module' => 'Teams',
+    'lhs_table' => 'teams',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_DeliveryRevenue',
+    'rhs_table' => 'c_deliveryrevenue',
+    'rhs_key' => 'team_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'c_deliveryrevenue_assigned_user' => 
+  array (
+    'name' => 'c_deliveryrevenue_assigned_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_DeliveryRevenue',
+    'rhs_table' => 'c_deliveryrevenue',
+    'rhs_key' => 'assigned_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_discount_modified_user' => 
+  array (
+    'name' => 'j_discount_modified_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Discount',
+    'rhs_table' => 'j_discount',
+    'rhs_key' => 'modified_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_discount_created_by' => 
+  array (
+    'name' => 'j_discount_created_by',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Discount',
+    'rhs_table' => 'j_discount',
+    'rhs_key' => 'created_by',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_discount_team_count_relationship' => 
+  array (
+    'name' => 'j_discount_team_count_relationship',
+    'lhs_module' => 'Teams',
+    'lhs_table' => 'team_sets',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Discount',
+    'rhs_table' => 'j_discount',
+    'rhs_key' => 'team_set_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_discount_teams' => 
+  array (
+    'name' => 'j_discount_teams',
+    'lhs_module' => 'J_Discount',
+    'lhs_table' => 'j_discount',
+    'lhs_key' => 'team_set_id',
+    'rhs_module' => 'Teams',
+    'rhs_table' => 'teams',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'team_sets_teams',
+    'join_key_lhs' => 'team_set_id',
+    'join_key_rhs' => 'team_id',
+    'fields' => 
+    array (
+      'id' => 
+      array (
+        'name' => 'id',
+        'vname' => 'LBL_ID',
+        'type' => 'id',
+        'required' => true,
+      ),
+      0 => 
+      array (
+        'name' => 'team_set_id',
+        'type' => 'id',
+      ),
+      1 => 
+      array (
+        'name' => 'team_id',
+        'type' => 'id',
+      ),
+      2 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      3 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '',
+        'default' => '0',
+      ),
+    ),
+  ),
+  'j_discount_team' => 
+  array (
+    'name' => 'j_discount_team',
+    'lhs_module' => 'Teams',
+    'lhs_table' => 'teams',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Discount',
+    'rhs_table' => 'j_discount',
+    'rhs_key' => 'team_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_discount_assigned_user' => 
+  array (
+    'name' => 'j_discount_assigned_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Discount',
+    'rhs_table' => 'j_discount',
+    'rhs_key' => 'assigned_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_sponsor_j_discounts' => 
+  array (
+    'name' => 'j_sponsor_j_discounts',
+    'lhs_module' => 'J_Discount',
+    'lhs_table' => 'j_discount',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Sponsor',
+    'rhs_table' => 'j_sponsor',
+    'rhs_key' => 'discount_id',
+    'relationship_type' => 'one-to-many',
+  ),
   'c_duplicationdetection_modified_user' => 
   array (
     'name' => 'c_duplicationdetection_modified_user',
@@ -16254,74 +21825,6 @@
     'rhs_key' => 'created_by',
     'relationship_type' => 'one-to-many',
   ),
-  'c_duplicationdetection_team_count_relationship' => 
-  array (
-    'name' => 'c_duplicationdetection_team_count_relationship',
-    'lhs_module' => 'Teams',
-    'lhs_table' => 'team_sets',
-    'lhs_key' => 'id',
-    'rhs_module' => 'C_DuplicationDetection',
-    'rhs_table' => 'c_duplicationdetection',
-    'rhs_key' => 'team_set_id',
-    'relationship_type' => 'one-to-many',
-  ),
-  'c_duplicationdetection_teams' => 
-  array (
-    'name' => 'c_duplicationdetection_teams',
-    'lhs_module' => 'C_DuplicationDetection',
-    'lhs_table' => 'c_duplicationdetection',
-    'lhs_key' => 'team_set_id',
-    'rhs_module' => 'Teams',
-    'rhs_table' => 'teams',
-    'rhs_key' => 'id',
-    'relationship_type' => 'many-to-many',
-    'join_table' => 'team_sets_teams',
-    'join_key_lhs' => 'team_set_id',
-    'join_key_rhs' => 'team_id',
-    'fields' => 
-    array (
-      'id' => 
-      array (
-        'name' => 'id',
-        'vname' => 'LBL_ID',
-        'type' => 'id',
-        'required' => true,
-      ),
-      0 => 
-      array (
-        'name' => 'team_set_id',
-        'type' => 'id',
-      ),
-      1 => 
-      array (
-        'name' => 'team_id',
-        'type' => 'id',
-      ),
-      2 => 
-      array (
-        'name' => 'date_modified',
-        'type' => 'datetime',
-      ),
-      3 => 
-      array (
-        'name' => 'deleted',
-        'type' => 'bool',
-        'len' => '',
-        'default' => '0',
-      ),
-    ),
-  ),
-  'c_duplicationdetection_team' => 
-  array (
-    'name' => 'c_duplicationdetection_team',
-    'lhs_module' => 'Teams',
-    'lhs_table' => 'teams',
-    'lhs_key' => 'id',
-    'rhs_module' => 'C_DuplicationDetection',
-    'rhs_table' => 'c_duplicationdetection',
-    'rhs_key' => 'team_id',
-    'relationship_type' => 'one-to-many',
-  ),
   'c_duplicationdetection_assigned_user' => 
   array (
     'name' => 'c_duplicationdetection_assigned_user',
@@ -16333,44 +21836,44 @@
     'rhs_key' => 'assigned_user_id',
     'relationship_type' => 'one-to-many',
   ),
-  'c_hotel_modified_user' => 
+  'j_feedback_modified_user' => 
   array (
-    'name' => 'c_hotel_modified_user',
+    'name' => 'j_feedback_modified_user',
     'lhs_module' => 'Users',
     'lhs_table' => 'users',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_Hotel',
-    'rhs_table' => 'c_hotel',
+    'rhs_module' => 'J_Feedback',
+    'rhs_table' => 'j_feedback',
     'rhs_key' => 'modified_user_id',
     'relationship_type' => 'one-to-many',
   ),
-  'c_hotel_created_by' => 
+  'j_feedback_created_by' => 
   array (
-    'name' => 'c_hotel_created_by',
+    'name' => 'j_feedback_created_by',
     'lhs_module' => 'Users',
     'lhs_table' => 'users',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_Hotel',
-    'rhs_table' => 'c_hotel',
+    'rhs_module' => 'J_Feedback',
+    'rhs_table' => 'j_feedback',
     'rhs_key' => 'created_by',
     'relationship_type' => 'one-to-many',
   ),
-  'c_hotel_team_count_relationship' => 
+  'j_feedback_team_count_relationship' => 
   array (
-    'name' => 'c_hotel_team_count_relationship',
+    'name' => 'j_feedback_team_count_relationship',
     'lhs_module' => 'Teams',
     'lhs_table' => 'team_sets',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_Hotel',
-    'rhs_table' => 'c_hotel',
+    'rhs_module' => 'J_Feedback',
+    'rhs_table' => 'j_feedback',
     'rhs_key' => 'team_set_id',
     'relationship_type' => 'one-to-many',
   ),
-  'c_hotel_teams' => 
+  'j_feedback_teams' => 
   array (
-    'name' => 'c_hotel_teams',
-    'lhs_module' => 'C_Hotel',
-    'lhs_table' => 'c_hotel',
+    'name' => 'j_feedback_teams',
+    'lhs_module' => 'J_Feedback',
+    'lhs_table' => 'j_feedback',
     'lhs_key' => 'team_set_id',
     'rhs_module' => 'Teams',
     'rhs_table' => 'teams',
@@ -16412,25 +21915,730 @@
       ),
     ),
   ),
-  'c_hotel_team' => 
+  'j_feedback_team' => 
   array (
-    'name' => 'c_hotel_team',
+    'name' => 'j_feedback_team',
     'lhs_module' => 'Teams',
     'lhs_table' => 'teams',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_Hotel',
-    'rhs_table' => 'c_hotel',
+    'rhs_module' => 'J_Feedback',
+    'rhs_table' => 'j_feedback',
     'rhs_key' => 'team_id',
     'relationship_type' => 'one-to-many',
   ),
-  'c_hotel_assigned_user' => 
+  'j_feedback_assigned_user' => 
   array (
-    'name' => 'c_hotel_assigned_user',
+    'name' => 'j_feedback_assigned_user',
     'lhs_module' => 'Users',
     'lhs_table' => 'users',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_Hotel',
-    'rhs_table' => 'c_hotel',
+    'rhs_module' => 'J_Feedback',
+    'rhs_table' => 'j_feedback',
+    'rhs_key' => 'assigned_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'c_fieldhighlighter_modified_user' => 
+  array (
+    'name' => 'c_fieldhighlighter_modified_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_FieldHighlighter',
+    'rhs_table' => 'c_fieldhighlighter',
+    'rhs_key' => 'modified_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'c_fieldhighlighter_created_by' => 
+  array (
+    'name' => 'c_fieldhighlighter_created_by',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_FieldHighlighter',
+    'rhs_table' => 'c_fieldhighlighter',
+    'rhs_key' => 'created_by',
+    'relationship_type' => 'one-to-many',
+  ),
+  'c_fieldhighlighter_assigned_user' => 
+  array (
+    'name' => 'c_fieldhighlighter_assigned_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_FieldHighlighter',
+    'rhs_table' => 'c_fieldhighlighter',
+    'rhs_key' => 'assigned_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'c_helptextconfig_modified_user' => 
+  array (
+    'name' => 'c_helptextconfig_modified_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_HelpTextConfig',
+    'rhs_table' => 'c_helptextconfig',
+    'rhs_key' => 'modified_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'c_helptextconfig_created_by' => 
+  array (
+    'name' => 'c_helptextconfig_created_by',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_HelpTextConfig',
+    'rhs_table' => 'c_helptextconfig',
+    'rhs_key' => 'created_by',
+    'relationship_type' => 'one-to-many',
+  ),
+  'c_helptextconfig_assigned_user' => 
+  array (
+    'name' => 'c_helptextconfig_assigned_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_HelpTextConfig',
+    'rhs_table' => 'c_helptextconfig',
+    'rhs_key' => 'assigned_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_inventory_modified_user' => 
+  array (
+    'name' => 'j_inventory_modified_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Inventory',
+    'rhs_table' => 'j_inventory',
+    'rhs_key' => 'modified_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_inventory_created_by' => 
+  array (
+    'name' => 'j_inventory_created_by',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Inventory',
+    'rhs_table' => 'j_inventory',
+    'rhs_key' => 'created_by',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_inventory_team_count_relationship' => 
+  array (
+    'name' => 'j_inventory_team_count_relationship',
+    'lhs_module' => 'Teams',
+    'lhs_table' => 'team_sets',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Inventory',
+    'rhs_table' => 'j_inventory',
+    'rhs_key' => 'team_set_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_inventory_teams' => 
+  array (
+    'name' => 'j_inventory_teams',
+    'lhs_module' => 'J_Inventory',
+    'lhs_table' => 'j_inventory',
+    'lhs_key' => 'team_set_id',
+    'rhs_module' => 'Teams',
+    'rhs_table' => 'teams',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'team_sets_teams',
+    'join_key_lhs' => 'team_set_id',
+    'join_key_rhs' => 'team_id',
+    'fields' => 
+    array (
+      'id' => 
+      array (
+        'name' => 'id',
+        'vname' => 'LBL_ID',
+        'type' => 'id',
+        'required' => true,
+      ),
+      0 => 
+      array (
+        'name' => 'team_set_id',
+        'type' => 'id',
+      ),
+      1 => 
+      array (
+        'name' => 'team_id',
+        'type' => 'id',
+      ),
+      2 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      3 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '',
+        'default' => '0',
+      ),
+    ),
+  ),
+  'j_inventory_team' => 
+  array (
+    'name' => 'j_inventory_team',
+    'lhs_module' => 'Teams',
+    'lhs_table' => 'teams',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Inventory',
+    'rhs_table' => 'j_inventory',
+    'rhs_key' => 'team_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_inventory_assigned_user' => 
+  array (
+    'name' => 'j_inventory_assigned_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Inventory',
+    'rhs_table' => 'j_inventory',
+    'rhs_key' => 'assigned_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'inventory_inventorydetails' => 
+  array (
+    'name' => 'inventory_inventorydetails',
+    'lhs_module' => 'J_Inventory',
+    'lhs_table' => 'j_inventory',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Inventorydetail',
+    'rhs_table' => 'j_inventorydetail',
+    'rhs_key' => 'inventory_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_inventorydetail_modified_user' => 
+  array (
+    'name' => 'j_inventorydetail_modified_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Inventorydetail',
+    'rhs_table' => 'j_inventorydetail',
+    'rhs_key' => 'modified_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_inventorydetail_created_by' => 
+  array (
+    'name' => 'j_inventorydetail_created_by',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Inventorydetail',
+    'rhs_table' => 'j_inventorydetail',
+    'rhs_key' => 'created_by',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_inventorydetail_team_count_relationship' => 
+  array (
+    'name' => 'j_inventorydetail_team_count_relationship',
+    'lhs_module' => 'Teams',
+    'lhs_table' => 'team_sets',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Inventorydetail',
+    'rhs_table' => 'j_inventorydetail',
+    'rhs_key' => 'team_set_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_inventorydetail_teams' => 
+  array (
+    'name' => 'j_inventorydetail_teams',
+    'lhs_module' => 'J_Inventorydetail',
+    'lhs_table' => 'j_inventorydetail',
+    'lhs_key' => 'team_set_id',
+    'rhs_module' => 'Teams',
+    'rhs_table' => 'teams',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'team_sets_teams',
+    'join_key_lhs' => 'team_set_id',
+    'join_key_rhs' => 'team_id',
+    'fields' => 
+    array (
+      'id' => 
+      array (
+        'name' => 'id',
+        'vname' => 'LBL_ID',
+        'type' => 'id',
+        'required' => true,
+      ),
+      0 => 
+      array (
+        'name' => 'team_set_id',
+        'type' => 'id',
+      ),
+      1 => 
+      array (
+        'name' => 'team_id',
+        'type' => 'id',
+      ),
+      2 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      3 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '',
+        'default' => '0',
+      ),
+    ),
+  ),
+  'j_inventorydetail_team' => 
+  array (
+    'name' => 'j_inventorydetail_team',
+    'lhs_module' => 'Teams',
+    'lhs_table' => 'teams',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Inventorydetail',
+    'rhs_table' => 'j_inventorydetail',
+    'rhs_key' => 'team_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_inventorydetail_assigned_user' => 
+  array (
+    'name' => 'j_inventorydetail_assigned_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Inventorydetail',
+    'rhs_table' => 'j_inventorydetail',
+    'rhs_key' => 'assigned_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_invoice_modified_user' => 
+  array (
+    'name' => 'j_invoice_modified_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Invoice',
+    'rhs_table' => 'j_invoice',
+    'rhs_key' => 'modified_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_invoice_created_by' => 
+  array (
+    'name' => 'j_invoice_created_by',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Invoice',
+    'rhs_table' => 'j_invoice',
+    'rhs_key' => 'created_by',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_invoice_team_count_relationship' => 
+  array (
+    'name' => 'j_invoice_team_count_relationship',
+    'lhs_module' => 'Teams',
+    'lhs_table' => 'team_sets',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Invoice',
+    'rhs_table' => 'j_invoice',
+    'rhs_key' => 'team_set_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_invoice_teams' => 
+  array (
+    'name' => 'j_invoice_teams',
+    'lhs_module' => 'J_Invoice',
+    'lhs_table' => 'j_invoice',
+    'lhs_key' => 'team_set_id',
+    'rhs_module' => 'Teams',
+    'rhs_table' => 'teams',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'team_sets_teams',
+    'join_key_lhs' => 'team_set_id',
+    'join_key_rhs' => 'team_id',
+    'fields' => 
+    array (
+      'id' => 
+      array (
+        'name' => 'id',
+        'vname' => 'LBL_ID',
+        'type' => 'id',
+        'required' => true,
+      ),
+      0 => 
+      array (
+        'name' => 'team_set_id',
+        'type' => 'id',
+      ),
+      1 => 
+      array (
+        'name' => 'team_id',
+        'type' => 'id',
+      ),
+      2 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      3 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '',
+        'default' => '0',
+      ),
+    ),
+  ),
+  'j_invoice_team' => 
+  array (
+    'name' => 'j_invoice_team',
+    'lhs_module' => 'Teams',
+    'lhs_table' => 'teams',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Invoice',
+    'rhs_table' => 'j_invoice',
+    'rhs_key' => 'team_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_invoice_assigned_user' => 
+  array (
+    'name' => 'j_invoice_assigned_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Invoice',
+    'rhs_table' => 'j_invoice',
+    'rhs_key' => 'assigned_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'invoice_paymentdetail' => 
+  array (
+    'name' => 'invoice_paymentdetail',
+    'lhs_module' => 'J_Invoice',
+    'lhs_table' => 'j_invoice',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_PaymentDetail',
+    'rhs_table' => 'j_paymentdetail',
+    'rhs_key' => 'invoice_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_gradebook_modified_user' => 
+  array (
+    'name' => 'j_gradebook_modified_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Gradebook',
+    'rhs_table' => 'j_gradebook',
+    'rhs_key' => 'modified_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_gradebook_created_by' => 
+  array (
+    'name' => 'j_gradebook_created_by',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Gradebook',
+    'rhs_table' => 'j_gradebook',
+    'rhs_key' => 'created_by',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_gradebook_team_count_relationship' => 
+  array (
+    'name' => 'j_gradebook_team_count_relationship',
+    'lhs_module' => 'Teams',
+    'lhs_table' => 'team_sets',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Gradebook',
+    'rhs_table' => 'j_gradebook',
+    'rhs_key' => 'team_set_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_gradebook_teams' => 
+  array (
+    'name' => 'j_gradebook_teams',
+    'lhs_module' => 'J_Gradebook',
+    'lhs_table' => 'j_gradebook',
+    'lhs_key' => 'team_set_id',
+    'rhs_module' => 'Teams',
+    'rhs_table' => 'teams',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'team_sets_teams',
+    'join_key_lhs' => 'team_set_id',
+    'join_key_rhs' => 'team_id',
+    'fields' => 
+    array (
+      'id' => 
+      array (
+        'name' => 'id',
+        'vname' => 'LBL_ID',
+        'type' => 'id',
+        'required' => true,
+      ),
+      0 => 
+      array (
+        'name' => 'team_set_id',
+        'type' => 'id',
+      ),
+      1 => 
+      array (
+        'name' => 'team_id',
+        'type' => 'id',
+      ),
+      2 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      3 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '',
+        'default' => '0',
+      ),
+    ),
+  ),
+  'j_gradebook_team' => 
+  array (
+    'name' => 'j_gradebook_team',
+    'lhs_module' => 'Teams',
+    'lhs_table' => 'teams',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Gradebook',
+    'rhs_table' => 'j_gradebook',
+    'rhs_key' => 'team_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_gradebook_assigned_user' => 
+  array (
+    'name' => 'j_gradebook_assigned_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Gradebook',
+    'rhs_table' => 'j_gradebook',
+    'rhs_key' => 'assigned_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_gradebook_j_gradebookdetail' => 
+  array (
+    'name' => 'j_gradebook_j_gradebookdetail',
+    'lhs_module' => 'J_Gradebook',
+    'lhs_table' => 'j_gradebook',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_GradebookDetail',
+    'rhs_table' => 'j_gradebookdetail',
+    'rhs_key' => 'gradebook_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_gradebookconfig_modified_user' => 
+  array (
+    'name' => 'j_gradebookconfig_modified_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_GradebookConfig',
+    'rhs_table' => 'j_gradebookconfig',
+    'rhs_key' => 'modified_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_gradebookconfig_created_by' => 
+  array (
+    'name' => 'j_gradebookconfig_created_by',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_GradebookConfig',
+    'rhs_table' => 'j_gradebookconfig',
+    'rhs_key' => 'created_by',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_gradebookconfig_team_count_relationship' => 
+  array (
+    'name' => 'j_gradebookconfig_team_count_relationship',
+    'lhs_module' => 'Teams',
+    'lhs_table' => 'team_sets',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_GradebookConfig',
+    'rhs_table' => 'j_gradebookconfig',
+    'rhs_key' => 'team_set_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_gradebookconfig_teams' => 
+  array (
+    'name' => 'j_gradebookconfig_teams',
+    'lhs_module' => 'J_GradebookConfig',
+    'lhs_table' => 'j_gradebookconfig',
+    'lhs_key' => 'team_set_id',
+    'rhs_module' => 'Teams',
+    'rhs_table' => 'teams',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'team_sets_teams',
+    'join_key_lhs' => 'team_set_id',
+    'join_key_rhs' => 'team_id',
+    'fields' => 
+    array (
+      'id' => 
+      array (
+        'name' => 'id',
+        'vname' => 'LBL_ID',
+        'type' => 'id',
+        'required' => true,
+      ),
+      0 => 
+      array (
+        'name' => 'team_set_id',
+        'type' => 'id',
+      ),
+      1 => 
+      array (
+        'name' => 'team_id',
+        'type' => 'id',
+      ),
+      2 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      3 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '',
+        'default' => '0',
+      ),
+    ),
+  ),
+  'j_gradebookconfig_team' => 
+  array (
+    'name' => 'j_gradebookconfig_team',
+    'lhs_module' => 'Teams',
+    'lhs_table' => 'teams',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_GradebookConfig',
+    'rhs_table' => 'j_gradebookconfig',
+    'rhs_key' => 'team_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_gradebookconfig_assigned_user' => 
+  array (
+    'name' => 'j_gradebookconfig_assigned_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_GradebookConfig',
+    'rhs_table' => 'j_gradebookconfig',
+    'rhs_key' => 'assigned_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_gradebookdetail_modified_user' => 
+  array (
+    'name' => 'j_gradebookdetail_modified_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_GradebookDetail',
+    'rhs_table' => 'j_gradebookdetail',
+    'rhs_key' => 'modified_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_gradebookdetail_created_by' => 
+  array (
+    'name' => 'j_gradebookdetail_created_by',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_GradebookDetail',
+    'rhs_table' => 'j_gradebookdetail',
+    'rhs_key' => 'created_by',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_gradebookdetail_team_count_relationship' => 
+  array (
+    'name' => 'j_gradebookdetail_team_count_relationship',
+    'lhs_module' => 'Teams',
+    'lhs_table' => 'team_sets',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_GradebookDetail',
+    'rhs_table' => 'j_gradebookdetail',
+    'rhs_key' => 'team_set_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_gradebookdetail_teams' => 
+  array (
+    'name' => 'j_gradebookdetail_teams',
+    'lhs_module' => 'J_GradebookDetail',
+    'lhs_table' => 'j_gradebookdetail',
+    'lhs_key' => 'team_set_id',
+    'rhs_module' => 'Teams',
+    'rhs_table' => 'teams',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'team_sets_teams',
+    'join_key_lhs' => 'team_set_id',
+    'join_key_rhs' => 'team_id',
+    'fields' => 
+    array (
+      'id' => 
+      array (
+        'name' => 'id',
+        'vname' => 'LBL_ID',
+        'type' => 'id',
+        'required' => true,
+      ),
+      0 => 
+      array (
+        'name' => 'team_set_id',
+        'type' => 'id',
+      ),
+      1 => 
+      array (
+        'name' => 'team_id',
+        'type' => 'id',
+      ),
+      2 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      3 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '',
+        'default' => '0',
+      ),
+    ),
+  ),
+  'j_gradebookdetail_team' => 
+  array (
+    'name' => 'j_gradebookdetail_team',
+    'lhs_module' => 'Teams',
+    'lhs_table' => 'teams',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_GradebookDetail',
+    'rhs_table' => 'j_gradebookdetail',
+    'rhs_key' => 'team_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_gradebookdetail_assigned_user' => 
+  array (
+    'name' => 'j_gradebookdetail_assigned_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_GradebookDetail',
+    'rhs_table' => 'j_gradebookdetail',
     'rhs_key' => 'assigned_user_id',
     'relationship_type' => 'one-to-many',
   ),
@@ -16456,74 +22664,6 @@
     'rhs_key' => 'created_by',
     'relationship_type' => 'one-to-many',
   ),
-  'c_keyboardsetting_team_count_relationship' => 
-  array (
-    'name' => 'c_keyboardsetting_team_count_relationship',
-    'lhs_module' => 'Teams',
-    'lhs_table' => 'team_sets',
-    'lhs_key' => 'id',
-    'rhs_module' => 'C_KeyboardSetting',
-    'rhs_table' => 'c_keyboardsetting',
-    'rhs_key' => 'team_set_id',
-    'relationship_type' => 'one-to-many',
-  ),
-  'c_keyboardsetting_teams' => 
-  array (
-    'name' => 'c_keyboardsetting_teams',
-    'lhs_module' => 'C_KeyboardSetting',
-    'lhs_table' => 'c_keyboardsetting',
-    'lhs_key' => 'team_set_id',
-    'rhs_module' => 'Teams',
-    'rhs_table' => 'teams',
-    'rhs_key' => 'id',
-    'relationship_type' => 'many-to-many',
-    'join_table' => 'team_sets_teams',
-    'join_key_lhs' => 'team_set_id',
-    'join_key_rhs' => 'team_id',
-    'fields' => 
-    array (
-      'id' => 
-      array (
-        'name' => 'id',
-        'vname' => 'LBL_ID',
-        'type' => 'id',
-        'required' => true,
-      ),
-      0 => 
-      array (
-        'name' => 'team_set_id',
-        'type' => 'id',
-      ),
-      1 => 
-      array (
-        'name' => 'team_id',
-        'type' => 'id',
-      ),
-      2 => 
-      array (
-        'name' => 'date_modified',
-        'type' => 'datetime',
-      ),
-      3 => 
-      array (
-        'name' => 'deleted',
-        'type' => 'bool',
-        'len' => '',
-        'default' => '0',
-      ),
-    ),
-  ),
-  'c_keyboardsetting_team' => 
-  array (
-    'name' => 'c_keyboardsetting_team',
-    'lhs_module' => 'Teams',
-    'lhs_table' => 'teams',
-    'lhs_key' => 'id',
-    'rhs_module' => 'C_KeyboardSetting',
-    'rhs_table' => 'c_keyboardsetting',
-    'rhs_key' => 'team_id',
-    'relationship_type' => 'one-to-many',
-  ),
   'c_keyboardsetting_assigned_user' => 
   array (
     'name' => 'c_keyboardsetting_assigned_user',
@@ -16535,44 +22675,44 @@
     'rhs_key' => 'assigned_user_id',
     'relationship_type' => 'one-to-many',
   ),
-  'c_payment_modified_user' => 
+  'j_kindofcourse_modified_user' => 
   array (
-    'name' => 'c_payment_modified_user',
+    'name' => 'j_kindofcourse_modified_user',
     'lhs_module' => 'Users',
     'lhs_table' => 'users',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_Payment',
-    'rhs_table' => 'c_payment',
+    'rhs_module' => 'J_Kindofcourse',
+    'rhs_table' => 'j_kindofcourse',
     'rhs_key' => 'modified_user_id',
     'relationship_type' => 'one-to-many',
   ),
-  'c_payment_created_by' => 
+  'j_kindofcourse_created_by' => 
   array (
-    'name' => 'c_payment_created_by',
+    'name' => 'j_kindofcourse_created_by',
     'lhs_module' => 'Users',
     'lhs_table' => 'users',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_Payment',
-    'rhs_table' => 'c_payment',
+    'rhs_module' => 'J_Kindofcourse',
+    'rhs_table' => 'j_kindofcourse',
     'rhs_key' => 'created_by',
     'relationship_type' => 'one-to-many',
   ),
-  'c_payment_team_count_relationship' => 
+  'j_kindofcourse_team_count_relationship' => 
   array (
-    'name' => 'c_payment_team_count_relationship',
+    'name' => 'j_kindofcourse_team_count_relationship',
     'lhs_module' => 'Teams',
     'lhs_table' => 'team_sets',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_Payment',
-    'rhs_table' => 'c_payment',
+    'rhs_module' => 'J_Kindofcourse',
+    'rhs_table' => 'j_kindofcourse',
     'rhs_key' => 'team_set_id',
     'relationship_type' => 'one-to-many',
   ),
-  'c_payment_teams' => 
+  'j_kindofcourse_teams' => 
   array (
-    'name' => 'c_payment_teams',
-    'lhs_module' => 'C_Payment',
-    'lhs_table' => 'c_payment',
+    'name' => 'j_kindofcourse_teams',
+    'lhs_module' => 'J_Kindofcourse',
+    'lhs_table' => 'j_kindofcourse',
     'lhs_key' => 'team_set_id',
     'rhs_module' => 'Teams',
     'rhs_table' => 'teams',
@@ -16614,66 +22754,88 @@
       ),
     ),
   ),
-  'c_payment_team' => 
+  'j_kindofcourse_team' => 
   array (
-    'name' => 'c_payment_team',
+    'name' => 'j_kindofcourse_team',
     'lhs_module' => 'Teams',
     'lhs_table' => 'teams',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_Payment',
-    'rhs_table' => 'c_payment',
+    'rhs_module' => 'J_Kindofcourse',
+    'rhs_table' => 'j_kindofcourse',
     'rhs_key' => 'team_id',
     'relationship_type' => 'one-to-many',
   ),
-  'c_payment_assigned_user' => 
+  'j_kindofcourse_assigned_user' => 
   array (
-    'name' => 'c_payment_assigned_user',
+    'name' => 'j_kindofcourse_assigned_user',
     'lhs_module' => 'Users',
     'lhs_table' => 'users',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_Payment',
-    'rhs_table' => 'c_payment',
+    'rhs_module' => 'J_Kindofcourse',
+    'rhs_table' => 'j_kindofcourse',
     'rhs_key' => 'assigned_user_id',
     'relationship_type' => 'one-to-many',
   ),
-  'c_room_modified_user' => 
+  'kindofcourse_class' => 
   array (
-    'name' => 'c_room_modified_user',
+    'name' => 'kindofcourse_class',
+    'lhs_module' => 'J_Kindofcourse',
+    'lhs_table' => 'j_kindofcourse',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Class',
+    'rhs_table' => 'j_class',
+    'rhs_key' => 'koc_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'kindofcourse_gradeconfig' => 
+  array (
+    'name' => 'kindofcourse_gradeconfig',
+    'lhs_module' => 'J_Kindofcourse',
+    'lhs_table' => 'j_kindofcourse',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_GradebookConfig',
+    'rhs_table' => 'j_gradebookconfig',
+    'rhs_key' => 'koc_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_loyalty_modified_user' => 
+  array (
+    'name' => 'j_loyalty_modified_user',
     'lhs_module' => 'Users',
     'lhs_table' => 'users',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_Room',
-    'rhs_table' => 'c_room',
+    'rhs_module' => 'J_Loyalty',
+    'rhs_table' => 'j_loyalty',
     'rhs_key' => 'modified_user_id',
     'relationship_type' => 'one-to-many',
   ),
-  'c_room_created_by' => 
+  'j_loyalty_created_by' => 
   array (
-    'name' => 'c_room_created_by',
+    'name' => 'j_loyalty_created_by',
     'lhs_module' => 'Users',
     'lhs_table' => 'users',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_Room',
-    'rhs_table' => 'c_room',
+    'rhs_module' => 'J_Loyalty',
+    'rhs_table' => 'j_loyalty',
     'rhs_key' => 'created_by',
     'relationship_type' => 'one-to-many',
   ),
-  'c_room_team_count_relationship' => 
+  'j_loyalty_team_count_relationship' => 
   array (
-    'name' => 'c_room_team_count_relationship',
+    'name' => 'j_loyalty_team_count_relationship',
     'lhs_module' => 'Teams',
     'lhs_table' => 'team_sets',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_Room',
-    'rhs_table' => 'c_room',
+    'rhs_module' => 'J_Loyalty',
+    'rhs_table' => 'j_loyalty',
     'rhs_key' => 'team_set_id',
     'relationship_type' => 'one-to-many',
   ),
-  'c_room_teams' => 
+  'j_loyalty_teams' => 
   array (
-    'name' => 'c_room_teams',
-    'lhs_module' => 'C_Room',
-    'lhs_table' => 'c_room',
+    'name' => 'j_loyalty_teams',
+    'lhs_module' => 'J_Loyalty',
+    'lhs_table' => 'j_loyalty',
     'lhs_key' => 'team_set_id',
     'rhs_module' => 'Teams',
     'rhs_table' => 'teams',
@@ -16715,66 +22877,66 @@
       ),
     ),
   ),
-  'c_room_team' => 
+  'j_loyalty_team' => 
   array (
-    'name' => 'c_room_team',
+    'name' => 'j_loyalty_team',
     'lhs_module' => 'Teams',
     'lhs_table' => 'teams',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_Room',
-    'rhs_table' => 'c_room',
+    'rhs_module' => 'J_Loyalty',
+    'rhs_table' => 'j_loyalty',
     'rhs_key' => 'team_id',
     'relationship_type' => 'one-to-many',
   ),
-  'c_room_assigned_user' => 
+  'j_loyalty_assigned_user' => 
   array (
-    'name' => 'c_room_assigned_user',
+    'name' => 'j_loyalty_assigned_user',
     'lhs_module' => 'Users',
     'lhs_table' => 'users',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_Room',
-    'rhs_table' => 'c_room',
+    'rhs_module' => 'J_Loyalty',
+    'rhs_table' => 'j_loyalty',
     'rhs_key' => 'assigned_user_id',
     'relationship_type' => 'one-to-many',
   ),
-  'c_session_modified_user' => 
+  'j_marketingplan_modified_user' => 
   array (
-    'name' => 'c_session_modified_user',
+    'name' => 'j_marketingplan_modified_user',
     'lhs_module' => 'Users',
     'lhs_table' => 'users',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_Session',
-    'rhs_table' => 'c_session',
+    'rhs_module' => 'J_Marketingplan',
+    'rhs_table' => 'j_marketingplan',
     'rhs_key' => 'modified_user_id',
     'relationship_type' => 'one-to-many',
   ),
-  'c_session_created_by' => 
+  'j_marketingplan_created_by' => 
   array (
-    'name' => 'c_session_created_by',
+    'name' => 'j_marketingplan_created_by',
     'lhs_module' => 'Users',
     'lhs_table' => 'users',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_Session',
-    'rhs_table' => 'c_session',
+    'rhs_module' => 'J_Marketingplan',
+    'rhs_table' => 'j_marketingplan',
     'rhs_key' => 'created_by',
     'relationship_type' => 'one-to-many',
   ),
-  'c_session_team_count_relationship' => 
+  'j_marketingplan_team_count_relationship' => 
   array (
-    'name' => 'c_session_team_count_relationship',
+    'name' => 'j_marketingplan_team_count_relationship',
     'lhs_module' => 'Teams',
     'lhs_table' => 'team_sets',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_Session',
-    'rhs_table' => 'c_session',
+    'rhs_module' => 'J_Marketingplan',
+    'rhs_table' => 'j_marketingplan',
     'rhs_key' => 'team_set_id',
     'relationship_type' => 'one-to-many',
   ),
-  'c_session_teams' => 
+  'j_marketingplan_teams' => 
   array (
-    'name' => 'c_session_teams',
-    'lhs_module' => 'C_Session',
-    'lhs_table' => 'c_session',
+    'name' => 'j_marketingplan_teams',
+    'lhs_module' => 'J_Marketingplan',
+    'lhs_table' => 'j_marketingplan',
     'lhs_key' => 'team_set_id',
     'rhs_module' => 'Teams',
     'rhs_table' => 'teams',
@@ -16816,66 +22978,66 @@
       ),
     ),
   ),
-  'c_session_team' => 
+  'j_marketingplan_team' => 
   array (
-    'name' => 'c_session_team',
+    'name' => 'j_marketingplan_team',
     'lhs_module' => 'Teams',
     'lhs_table' => 'teams',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_Session',
-    'rhs_table' => 'c_session',
+    'rhs_module' => 'J_Marketingplan',
+    'rhs_table' => 'j_marketingplan',
     'rhs_key' => 'team_id',
     'relationship_type' => 'one-to-many',
   ),
-  'c_session_assigned_user' => 
+  'j_marketingplan_assigned_user' => 
   array (
-    'name' => 'c_session_assigned_user',
+    'name' => 'j_marketingplan_assigned_user',
     'lhs_module' => 'Users',
     'lhs_table' => 'users',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_Session',
-    'rhs_table' => 'c_session',
+    'rhs_module' => 'J_Marketingplan',
+    'rhs_table' => 'j_marketingplan',
     'rhs_key' => 'assigned_user_id',
     'relationship_type' => 'one-to-many',
   ),
-  'c_ticket_modified_user' => 
+  'c_memberships_modified_user' => 
   array (
-    'name' => 'c_ticket_modified_user',
+    'name' => 'c_memberships_modified_user',
     'lhs_module' => 'Users',
     'lhs_table' => 'users',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_Ticket',
-    'rhs_table' => 'c_ticket',
+    'rhs_module' => 'C_Memberships',
+    'rhs_table' => 'c_memberships',
     'rhs_key' => 'modified_user_id',
     'relationship_type' => 'one-to-many',
   ),
-  'c_ticket_created_by' => 
+  'c_memberships_created_by' => 
   array (
-    'name' => 'c_ticket_created_by',
+    'name' => 'c_memberships_created_by',
     'lhs_module' => 'Users',
     'lhs_table' => 'users',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_Ticket',
-    'rhs_table' => 'c_ticket',
+    'rhs_module' => 'C_Memberships',
+    'rhs_table' => 'c_memberships',
     'rhs_key' => 'created_by',
     'relationship_type' => 'one-to-many',
   ),
-  'c_ticket_team_count_relationship' => 
+  'c_memberships_team_count_relationship' => 
   array (
-    'name' => 'c_ticket_team_count_relationship',
+    'name' => 'c_memberships_team_count_relationship',
     'lhs_module' => 'Teams',
     'lhs_table' => 'team_sets',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_Ticket',
-    'rhs_table' => 'c_ticket',
+    'rhs_module' => 'C_Memberships',
+    'rhs_table' => 'c_memberships',
     'rhs_key' => 'team_set_id',
     'relationship_type' => 'one-to-many',
   ),
-  'c_ticket_teams' => 
+  'c_memberships_teams' => 
   array (
-    'name' => 'c_ticket_teams',
-    'lhs_module' => 'C_Ticket',
-    'lhs_table' => 'c_ticket',
+    'name' => 'c_memberships_teams',
+    'lhs_module' => 'C_Memberships',
+    'lhs_table' => 'c_memberships',
     'lhs_key' => 'team_set_id',
     'rhs_module' => 'Teams',
     'rhs_table' => 'teams',
@@ -16917,66 +23079,66 @@
       ),
     ),
   ),
-  'c_ticket_team' => 
+  'c_memberships_team' => 
   array (
-    'name' => 'c_ticket_team',
+    'name' => 'c_memberships_team',
     'lhs_module' => 'Teams',
     'lhs_table' => 'teams',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_Ticket',
-    'rhs_table' => 'c_ticket',
+    'rhs_module' => 'C_Memberships',
+    'rhs_table' => 'c_memberships',
     'rhs_key' => 'team_id',
     'relationship_type' => 'one-to-many',
   ),
-  'c_ticket_assigned_user' => 
+  'c_memberships_assigned_user' => 
   array (
-    'name' => 'c_ticket_assigned_user',
+    'name' => 'c_memberships_assigned_user',
     'lhs_module' => 'Users',
     'lhs_table' => 'users',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_Ticket',
-    'rhs_table' => 'c_ticket',
+    'rhs_module' => 'C_Memberships',
+    'rhs_table' => 'c_memberships',
     'rhs_key' => 'assigned_user_id',
     'relationship_type' => 'one-to-many',
   ),
-  'c_ticketreport_modified_user' => 
+  'j_partnership_modified_user' => 
   array (
-    'name' => 'c_ticketreport_modified_user',
+    'name' => 'j_partnership_modified_user',
     'lhs_module' => 'Users',
     'lhs_table' => 'users',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_TicketReport',
-    'rhs_table' => 'c_ticketreport',
+    'rhs_module' => 'J_Partnership',
+    'rhs_table' => 'j_partnership',
     'rhs_key' => 'modified_user_id',
     'relationship_type' => 'one-to-many',
   ),
-  'c_ticketreport_created_by' => 
+  'j_partnership_created_by' => 
   array (
-    'name' => 'c_ticketreport_created_by',
+    'name' => 'j_partnership_created_by',
     'lhs_module' => 'Users',
     'lhs_table' => 'users',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_TicketReport',
-    'rhs_table' => 'c_ticketreport',
+    'rhs_module' => 'J_Partnership',
+    'rhs_table' => 'j_partnership',
     'rhs_key' => 'created_by',
     'relationship_type' => 'one-to-many',
   ),
-  'c_ticketreport_team_count_relationship' => 
+  'j_partnership_team_count_relationship' => 
   array (
-    'name' => 'c_ticketreport_team_count_relationship',
+    'name' => 'j_partnership_team_count_relationship',
     'lhs_module' => 'Teams',
     'lhs_table' => 'team_sets',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_TicketReport',
-    'rhs_table' => 'c_ticketreport',
+    'rhs_module' => 'J_Partnership',
+    'rhs_table' => 'j_partnership',
     'rhs_key' => 'team_set_id',
     'relationship_type' => 'one-to-many',
   ),
-  'c_ticketreport_teams' => 
+  'j_partnership_teams' => 
   array (
-    'name' => 'c_ticketreport_teams',
-    'lhs_module' => 'C_TicketReport',
-    'lhs_table' => 'c_ticketreport',
+    'name' => 'j_partnership_teams',
+    'lhs_module' => 'J_Partnership',
+    'lhs_table' => 'j_partnership',
     'lhs_key' => 'team_set_id',
     'rhs_module' => 'Teams',
     'rhs_table' => 'teams',
@@ -17018,66 +23180,66 @@
       ),
     ),
   ),
-  'c_ticketreport_team' => 
+  'j_partnership_team' => 
   array (
-    'name' => 'c_ticketreport_team',
+    'name' => 'j_partnership_team',
     'lhs_module' => 'Teams',
     'lhs_table' => 'teams',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_TicketReport',
-    'rhs_table' => 'c_ticketreport',
+    'rhs_module' => 'J_Partnership',
+    'rhs_table' => 'j_partnership',
     'rhs_key' => 'team_id',
     'relationship_type' => 'one-to-many',
   ),
-  'c_ticketreport_assigned_user' => 
+  'j_partnership_assigned_user' => 
   array (
-    'name' => 'c_ticketreport_assigned_user',
+    'name' => 'j_partnership_assigned_user',
     'lhs_module' => 'Users',
     'lhs_table' => 'users',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_TicketReport',
-    'rhs_table' => 'c_ticketreport',
+    'rhs_module' => 'J_Partnership',
+    'rhs_table' => 'j_partnership',
     'rhs_key' => 'assigned_user_id',
     'relationship_type' => 'one-to-many',
   ),
-  'c_worklog_modified_user' => 
+  'j_payment_modified_user' => 
   array (
-    'name' => 'c_worklog_modified_user',
+    'name' => 'j_payment_modified_user',
     'lhs_module' => 'Users',
     'lhs_table' => 'users',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_WorkLog',
-    'rhs_table' => 'c_worklog',
+    'rhs_module' => 'J_Payment',
+    'rhs_table' => 'j_payment',
     'rhs_key' => 'modified_user_id',
     'relationship_type' => 'one-to-many',
   ),
-  'c_worklog_created_by' => 
+  'j_payment_created_by' => 
   array (
-    'name' => 'c_worklog_created_by',
+    'name' => 'j_payment_created_by',
     'lhs_module' => 'Users',
     'lhs_table' => 'users',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_WorkLog',
-    'rhs_table' => 'c_worklog',
+    'rhs_module' => 'J_Payment',
+    'rhs_table' => 'j_payment',
     'rhs_key' => 'created_by',
     'relationship_type' => 'one-to-many',
   ),
-  'c_worklog_team_count_relationship' => 
+  'j_payment_team_count_relationship' => 
   array (
-    'name' => 'c_worklog_team_count_relationship',
+    'name' => 'j_payment_team_count_relationship',
     'lhs_module' => 'Teams',
     'lhs_table' => 'team_sets',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_WorkLog',
-    'rhs_table' => 'c_worklog',
+    'rhs_module' => 'J_Payment',
+    'rhs_table' => 'j_payment',
     'rhs_key' => 'team_set_id',
     'relationship_type' => 'one-to-many',
   ),
-  'c_worklog_teams' => 
+  'j_payment_teams' => 
   array (
-    'name' => 'c_worklog_teams',
-    'lhs_module' => 'C_WorkLog',
-    'lhs_table' => 'c_worklog',
+    'name' => 'j_payment_teams',
+    'lhs_module' => 'J_Payment',
+    'lhs_table' => 'j_payment',
     'lhs_key' => 'team_set_id',
     'rhs_module' => 'Teams',
     'rhs_table' => 'teams',
@@ -17119,66 +23281,154 @@
       ),
     ),
   ),
-  'c_worklog_team' => 
+  'j_payment_team' => 
   array (
-    'name' => 'c_worklog_team',
+    'name' => 'j_payment_team',
     'lhs_module' => 'Teams',
     'lhs_table' => 'teams',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_WorkLog',
-    'rhs_table' => 'c_worklog',
+    'rhs_module' => 'J_Payment',
+    'rhs_table' => 'j_payment',
     'rhs_key' => 'team_id',
     'relationship_type' => 'one-to-many',
   ),
-  'c_worklog_assigned_user' => 
+  'j_payment_assigned_user' => 
   array (
-    'name' => 'c_worklog_assigned_user',
+    'name' => 'j_payment_assigned_user',
     'lhs_module' => 'Users',
     'lhs_table' => 'users',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_WorkLog',
-    'rhs_table' => 'c_worklog',
+    'rhs_module' => 'J_Payment',
+    'rhs_table' => 'j_payment',
     'rhs_key' => 'assigned_user_id',
     'relationship_type' => 'one-to-many',
   ),
-  'c_tour_modified_user' => 
+  'j_payment_carryforward' => 
   array (
-    'name' => 'c_tour_modified_user',
+    'name' => 'j_payment_carryforward',
+    'lhs_module' => 'J_Payment',
+    'lhs_table' => 'j_payment',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_Carryforward',
+    'rhs_table' => 'c_carryforward',
+    'rhs_key' => 'payment_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_payment_studentsituations' => 
+  array (
+    'name' => 'j_payment_studentsituations',
+    'lhs_module' => 'J_Payment',
+    'lhs_table' => 'j_payment',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_StudentSituations',
+    'rhs_table' => 'j_studentsituations',
+    'rhs_key' => 'payment_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_payment_j_sponsor' => 
+  array (
+    'name' => 'j_payment_j_sponsor',
+    'lhs_module' => 'J_Payment',
+    'lhs_table' => 'j_payment',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Sponsor',
+    'rhs_table' => 'j_sponsor',
+    'rhs_key' => 'payment_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_payment_moving_transfer' => 
+  array (
+    'name' => 'j_payment_moving_transfer',
+    'lhs_module' => 'J_Payment',
+    'lhs_table' => 'j_payment',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Payment',
+    'rhs_table' => 'j_payment',
+    'rhs_key' => 'payment_out_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'payment_paymentdetails' => 
+  array (
+    'name' => 'payment_paymentdetails',
+    'lhs_module' => 'J_Payment',
+    'lhs_table' => 'j_payment',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_PaymentDetail',
+    'rhs_table' => 'j_paymentdetail',
+    'rhs_key' => 'payment_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'payment_invoices' => 
+  array (
+    'name' => 'payment_invoices',
+    'lhs_module' => 'J_Payment',
+    'lhs_table' => 'j_payment',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Invoice',
+    'rhs_table' => 'j_invoice',
+    'rhs_key' => 'payment_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'payment_loyaltys' => 
+  array (
+    'name' => 'payment_loyaltys',
+    'lhs_module' => 'J_Payment',
+    'lhs_table' => 'j_payment',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Loyalty',
+    'rhs_table' => 'j_loyalty',
+    'rhs_key' => 'payment_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'ju_payment_revenue' => 
+  array (
+    'name' => 'ju_payment_revenue',
+    'lhs_module' => 'J_Payment',
+    'lhs_table' => 'j_payment',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_DeliveryRevenue',
+    'rhs_table' => 'c_deliveryrevenue',
+    'rhs_key' => 'ju_payment_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_paymentdetail_modified_user' => 
+  array (
+    'name' => 'j_paymentdetail_modified_user',
     'lhs_module' => 'Users',
     'lhs_table' => 'users',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_Tour',
-    'rhs_table' => 'c_tour',
+    'rhs_module' => 'J_PaymentDetail',
+    'rhs_table' => 'j_paymentdetail',
     'rhs_key' => 'modified_user_id',
     'relationship_type' => 'one-to-many',
   ),
-  'c_tour_created_by' => 
+  'j_paymentdetail_created_by' => 
   array (
-    'name' => 'c_tour_created_by',
+    'name' => 'j_paymentdetail_created_by',
     'lhs_module' => 'Users',
     'lhs_table' => 'users',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_Tour',
-    'rhs_table' => 'c_tour',
+    'rhs_module' => 'J_PaymentDetail',
+    'rhs_table' => 'j_paymentdetail',
     'rhs_key' => 'created_by',
     'relationship_type' => 'one-to-many',
   ),
-  'c_tour_team_count_relationship' => 
+  'j_paymentdetail_team_count_relationship' => 
   array (
-    'name' => 'c_tour_team_count_relationship',
+    'name' => 'j_paymentdetail_team_count_relationship',
     'lhs_module' => 'Teams',
     'lhs_table' => 'team_sets',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_Tour',
-    'rhs_table' => 'c_tour',
+    'rhs_module' => 'J_PaymentDetail',
+    'rhs_table' => 'j_paymentdetail',
     'rhs_key' => 'team_set_id',
     'relationship_type' => 'one-to-many',
   ),
-  'c_tour_teams' => 
+  'j_paymentdetail_teams' => 
   array (
-    'name' => 'c_tour_teams',
-    'lhs_module' => 'C_Tour',
-    'lhs_table' => 'c_tour',
+    'name' => 'j_paymentdetail_teams',
+    'lhs_module' => 'J_PaymentDetail',
+    'lhs_table' => 'j_paymentdetail',
     'lhs_key' => 'team_set_id',
     'rhs_module' => 'Teams',
     'rhs_table' => 'teams',
@@ -17220,33 +23470,828 @@
       ),
     ),
   ),
-  'c_tour_team' => 
+  'j_paymentdetail_team' => 
   array (
-    'name' => 'c_tour_team',
+    'name' => 'j_paymentdetail_team',
     'lhs_module' => 'Teams',
     'lhs_table' => 'teams',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_Tour',
-    'rhs_table' => 'c_tour',
+    'rhs_module' => 'J_PaymentDetail',
+    'rhs_table' => 'j_paymentdetail',
     'rhs_key' => 'team_id',
     'relationship_type' => 'one-to-many',
   ),
-  'c_tour_assigned_user' => 
+  'j_paymentdetail_assigned_user' => 
   array (
-    'name' => 'c_tour_assigned_user',
+    'name' => 'j_paymentdetail_assigned_user',
     'lhs_module' => 'Users',
     'lhs_table' => 'users',
     'lhs_key' => 'id',
-    'rhs_module' => 'C_Tour',
-    'rhs_table' => 'c_tour',
+    'rhs_module' => 'J_PaymentDetail',
+    'rhs_table' => 'j_paymentdetail',
     'rhs_key' => 'assigned_user_id',
     'relationship_type' => 'one-to-many',
   ),
-  'c_tour_email_addresses' => 
+  'paymentdetail_loyaltys' => 
   array (
-    'name' => 'c_tour_email_addresses',
-    'lhs_module' => 'C_Tour',
-    'lhs_table' => 'c_tour',
+    'name' => 'paymentdetail_loyaltys',
+    'lhs_module' => 'J_PaymentDetail',
+    'lhs_table' => 'j_paymentdetail',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Loyalty',
+    'rhs_table' => 'j_loyalty',
+    'rhs_key' => 'paymentdetail_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_ptresult_modified_user' => 
+  array (
+    'name' => 'j_ptresult_modified_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_PTResult',
+    'rhs_table' => 'j_ptresult',
+    'rhs_key' => 'modified_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_ptresult_created_by' => 
+  array (
+    'name' => 'j_ptresult_created_by',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_PTResult',
+    'rhs_table' => 'j_ptresult',
+    'rhs_key' => 'created_by',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_ptresult_team_count_relationship' => 
+  array (
+    'name' => 'j_ptresult_team_count_relationship',
+    'lhs_module' => 'Teams',
+    'lhs_table' => 'team_sets',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_PTResult',
+    'rhs_table' => 'j_ptresult',
+    'rhs_key' => 'team_set_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_ptresult_teams' => 
+  array (
+    'name' => 'j_ptresult_teams',
+    'lhs_module' => 'J_PTResult',
+    'lhs_table' => 'j_ptresult',
+    'lhs_key' => 'team_set_id',
+    'rhs_module' => 'Teams',
+    'rhs_table' => 'teams',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'team_sets_teams',
+    'join_key_lhs' => 'team_set_id',
+    'join_key_rhs' => 'team_id',
+    'fields' => 
+    array (
+      'id' => 
+      array (
+        'name' => 'id',
+        'vname' => 'LBL_ID',
+        'type' => 'id',
+        'required' => true,
+      ),
+      0 => 
+      array (
+        'name' => 'team_set_id',
+        'type' => 'id',
+      ),
+      1 => 
+      array (
+        'name' => 'team_id',
+        'type' => 'id',
+      ),
+      2 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      3 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '',
+        'default' => '0',
+      ),
+    ),
+  ),
+  'j_ptresult_team' => 
+  array (
+    'name' => 'j_ptresult_team',
+    'lhs_module' => 'Teams',
+    'lhs_table' => 'teams',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_PTResult',
+    'rhs_table' => 'j_ptresult',
+    'rhs_key' => 'team_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_ptresult_assigned_user' => 
+  array (
+    'name' => 'j_ptresult_assigned_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_PTResult',
+    'rhs_table' => 'j_ptresult',
+    'rhs_key' => 'assigned_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'c_rooms_modified_user' => 
+  array (
+    'name' => 'c_rooms_modified_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_Rooms',
+    'rhs_table' => 'c_rooms',
+    'rhs_key' => 'modified_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'c_rooms_created_by' => 
+  array (
+    'name' => 'c_rooms_created_by',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_Rooms',
+    'rhs_table' => 'c_rooms',
+    'rhs_key' => 'created_by',
+    'relationship_type' => 'one-to-many',
+  ),
+  'c_rooms_team_count_relationship' => 
+  array (
+    'name' => 'c_rooms_team_count_relationship',
+    'lhs_module' => 'Teams',
+    'lhs_table' => 'team_sets',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_Rooms',
+    'rhs_table' => 'c_rooms',
+    'rhs_key' => 'team_set_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'c_rooms_teams' => 
+  array (
+    'name' => 'c_rooms_teams',
+    'lhs_module' => 'C_Rooms',
+    'lhs_table' => 'c_rooms',
+    'lhs_key' => 'team_set_id',
+    'rhs_module' => 'Teams',
+    'rhs_table' => 'teams',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'team_sets_teams',
+    'join_key_lhs' => 'team_set_id',
+    'join_key_rhs' => 'team_id',
+    'fields' => 
+    array (
+      'id' => 
+      array (
+        'name' => 'id',
+        'vname' => 'LBL_ID',
+        'type' => 'id',
+        'required' => true,
+      ),
+      0 => 
+      array (
+        'name' => 'team_set_id',
+        'type' => 'id',
+      ),
+      1 => 
+      array (
+        'name' => 'team_id',
+        'type' => 'id',
+      ),
+      2 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      3 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '',
+        'default' => '0',
+      ),
+    ),
+  ),
+  'c_rooms_team' => 
+  array (
+    'name' => 'c_rooms_team',
+    'lhs_module' => 'Teams',
+    'lhs_table' => 'teams',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_Rooms',
+    'rhs_table' => 'c_rooms',
+    'rhs_key' => 'team_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'c_rooms_assigned_user' => 
+  array (
+    'name' => 'c_rooms_assigned_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_Rooms',
+    'rhs_table' => 'c_rooms',
+    'rhs_key' => 'assigned_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_school_modified_user' => 
+  array (
+    'name' => 'j_school_modified_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_School',
+    'rhs_table' => 'j_school',
+    'rhs_key' => 'modified_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_school_created_by' => 
+  array (
+    'name' => 'j_school_created_by',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_School',
+    'rhs_table' => 'j_school',
+    'rhs_key' => 'created_by',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_school_assigned_user' => 
+  array (
+    'name' => 'j_school_assigned_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_School',
+    'rhs_table' => 'j_school',
+    'rhs_key' => 'assigned_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'c_sms_modified_user' => 
+  array (
+    'name' => 'c_sms_modified_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_SMS',
+    'rhs_table' => 'c_sms',
+    'rhs_key' => 'modified_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'c_sms_created_by' => 
+  array (
+    'name' => 'c_sms_created_by',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_SMS',
+    'rhs_table' => 'c_sms',
+    'rhs_key' => 'created_by',
+    'relationship_type' => 'one-to-many',
+  ),
+  'c_sms_team_count_relationship' => 
+  array (
+    'name' => 'c_sms_team_count_relationship',
+    'lhs_module' => 'Teams',
+    'lhs_table' => 'team_sets',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_SMS',
+    'rhs_table' => 'c_sms',
+    'rhs_key' => 'team_set_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'c_sms_teams' => 
+  array (
+    'name' => 'c_sms_teams',
+    'lhs_module' => 'C_SMS',
+    'lhs_table' => 'c_sms',
+    'lhs_key' => 'team_set_id',
+    'rhs_module' => 'Teams',
+    'rhs_table' => 'teams',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'team_sets_teams',
+    'join_key_lhs' => 'team_set_id',
+    'join_key_rhs' => 'team_id',
+    'fields' => 
+    array (
+      'id' => 
+      array (
+        'name' => 'id',
+        'vname' => 'LBL_ID',
+        'type' => 'id',
+        'required' => true,
+      ),
+      0 => 
+      array (
+        'name' => 'team_set_id',
+        'type' => 'id',
+      ),
+      1 => 
+      array (
+        'name' => 'team_id',
+        'type' => 'id',
+      ),
+      2 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      3 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '',
+        'default' => '0',
+      ),
+    ),
+  ),
+  'c_sms_team' => 
+  array (
+    'name' => 'c_sms_team',
+    'lhs_module' => 'Teams',
+    'lhs_table' => 'teams',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_SMS',
+    'rhs_table' => 'c_sms',
+    'rhs_key' => 'team_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'c_sms_assigned_user' => 
+  array (
+    'name' => 'c_sms_assigned_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_SMS',
+    'rhs_table' => 'c_sms',
+    'rhs_key' => 'assigned_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_sponsor_modified_user' => 
+  array (
+    'name' => 'j_sponsor_modified_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Sponsor',
+    'rhs_table' => 'j_sponsor',
+    'rhs_key' => 'modified_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_sponsor_created_by' => 
+  array (
+    'name' => 'j_sponsor_created_by',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Sponsor',
+    'rhs_table' => 'j_sponsor',
+    'rhs_key' => 'created_by',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_sponsor_team_count_relationship' => 
+  array (
+    'name' => 'j_sponsor_team_count_relationship',
+    'lhs_module' => 'Teams',
+    'lhs_table' => 'team_sets',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Sponsor',
+    'rhs_table' => 'j_sponsor',
+    'rhs_key' => 'team_set_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_sponsor_teams' => 
+  array (
+    'name' => 'j_sponsor_teams',
+    'lhs_module' => 'J_Sponsor',
+    'lhs_table' => 'j_sponsor',
+    'lhs_key' => 'team_set_id',
+    'rhs_module' => 'Teams',
+    'rhs_table' => 'teams',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'team_sets_teams',
+    'join_key_lhs' => 'team_set_id',
+    'join_key_rhs' => 'team_id',
+    'fields' => 
+    array (
+      'id' => 
+      array (
+        'name' => 'id',
+        'vname' => 'LBL_ID',
+        'type' => 'id',
+        'required' => true,
+      ),
+      0 => 
+      array (
+        'name' => 'team_set_id',
+        'type' => 'id',
+      ),
+      1 => 
+      array (
+        'name' => 'team_id',
+        'type' => 'id',
+      ),
+      2 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      3 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '',
+        'default' => '0',
+      ),
+    ),
+  ),
+  'j_sponsor_team' => 
+  array (
+    'name' => 'j_sponsor_team',
+    'lhs_module' => 'Teams',
+    'lhs_table' => 'teams',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Sponsor',
+    'rhs_table' => 'j_sponsor',
+    'rhs_key' => 'team_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_sponsor_assigned_user' => 
+  array (
+    'name' => 'j_sponsor_assigned_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Sponsor',
+    'rhs_table' => 'j_sponsor',
+    'rhs_key' => 'assigned_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_studentsituations_modified_user' => 
+  array (
+    'name' => 'j_studentsituations_modified_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_StudentSituations',
+    'rhs_table' => 'j_studentsituations',
+    'rhs_key' => 'modified_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_studentsituations_created_by' => 
+  array (
+    'name' => 'j_studentsituations_created_by',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_StudentSituations',
+    'rhs_table' => 'j_studentsituations',
+    'rhs_key' => 'created_by',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_studentsituations_team_count_relationship' => 
+  array (
+    'name' => 'j_studentsituations_team_count_relationship',
+    'lhs_module' => 'Teams',
+    'lhs_table' => 'team_sets',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_StudentSituations',
+    'rhs_table' => 'j_studentsituations',
+    'rhs_key' => 'team_set_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_studentsituations_teams' => 
+  array (
+    'name' => 'j_studentsituations_teams',
+    'lhs_module' => 'J_StudentSituations',
+    'lhs_table' => 'j_studentsituations',
+    'lhs_key' => 'team_set_id',
+    'rhs_module' => 'Teams',
+    'rhs_table' => 'teams',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'team_sets_teams',
+    'join_key_lhs' => 'team_set_id',
+    'join_key_rhs' => 'team_id',
+    'fields' => 
+    array (
+      'id' => 
+      array (
+        'name' => 'id',
+        'vname' => 'LBL_ID',
+        'type' => 'id',
+        'required' => true,
+      ),
+      0 => 
+      array (
+        'name' => 'team_set_id',
+        'type' => 'id',
+      ),
+      1 => 
+      array (
+        'name' => 'team_id',
+        'type' => 'id',
+      ),
+      2 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      3 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '',
+        'default' => '0',
+      ),
+    ),
+  ),
+  'j_studentsituations_team' => 
+  array (
+    'name' => 'j_studentsituations_team',
+    'lhs_module' => 'Teams',
+    'lhs_table' => 'teams',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_StudentSituations',
+    'rhs_table' => 'j_studentsituations',
+    'rhs_key' => 'team_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_studentsituations_assigned_user' => 
+  array (
+    'name' => 'j_studentsituations_assigned_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_StudentSituations',
+    'rhs_table' => 'j_studentsituations',
+    'rhs_key' => 'assigned_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'situation_revenues' => 
+  array (
+    'name' => 'situation_revenues',
+    'lhs_module' => 'J_StudentSituations',
+    'lhs_table' => 'j_studentsituations',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_DeliveryRevenue',
+    'rhs_table' => 'c_deliveryrevenue',
+    'rhs_key' => 'situation_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'relate_situation' => 
+  array (
+    'name' => 'relate_situation',
+    'lhs_module' => 'J_StudentSituations',
+    'lhs_table' => 'j_studentsituations',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_StudentSituations',
+    'rhs_table' => 'j_studentsituations',
+    'rhs_key' => 'relate_situation_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'situation_delay_payment_delay' => 
+  array (
+    'name' => 'situation_delay_payment_delay',
+    'lhs_module' => 'J_StudentSituations',
+    'lhs_table' => 'j_studentsituations',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Payment',
+    'rhs_table' => 'j_payment',
+    'rhs_key' => 'delay_situation_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_targetconfig_modified_user' => 
+  array (
+    'name' => 'j_targetconfig_modified_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Targetconfig',
+    'rhs_table' => 'j_targetconfig',
+    'rhs_key' => 'modified_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_targetconfig_created_by' => 
+  array (
+    'name' => 'j_targetconfig_created_by',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Targetconfig',
+    'rhs_table' => 'j_targetconfig',
+    'rhs_key' => 'created_by',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_targetconfig_team_count_relationship' => 
+  array (
+    'name' => 'j_targetconfig_team_count_relationship',
+    'lhs_module' => 'Teams',
+    'lhs_table' => 'team_sets',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Targetconfig',
+    'rhs_table' => 'j_targetconfig',
+    'rhs_key' => 'team_set_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_targetconfig_teams' => 
+  array (
+    'name' => 'j_targetconfig_teams',
+    'lhs_module' => 'J_Targetconfig',
+    'lhs_table' => 'j_targetconfig',
+    'lhs_key' => 'team_set_id',
+    'rhs_module' => 'Teams',
+    'rhs_table' => 'teams',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'team_sets_teams',
+    'join_key_lhs' => 'team_set_id',
+    'join_key_rhs' => 'team_id',
+    'fields' => 
+    array (
+      'id' => 
+      array (
+        'name' => 'id',
+        'vname' => 'LBL_ID',
+        'type' => 'id',
+        'required' => true,
+      ),
+      0 => 
+      array (
+        'name' => 'team_set_id',
+        'type' => 'id',
+      ),
+      1 => 
+      array (
+        'name' => 'team_id',
+        'type' => 'id',
+      ),
+      2 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      3 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '',
+        'default' => '0',
+      ),
+    ),
+  ),
+  'j_targetconfig_team' => 
+  array (
+    'name' => 'j_targetconfig_team',
+    'lhs_module' => 'Teams',
+    'lhs_table' => 'teams',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Targetconfig',
+    'rhs_table' => 'j_targetconfig',
+    'rhs_key' => 'team_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_targetconfig_assigned_user' => 
+  array (
+    'name' => 'j_targetconfig_assigned_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Targetconfig',
+    'rhs_table' => 'j_targetconfig',
+    'rhs_key' => 'assigned_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'target_loyaltys' => 
+  array (
+    'name' => 'target_loyaltys',
+    'lhs_module' => 'J_Targetconfig',
+    'lhs_table' => 'j_targetconfig',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Loyalty',
+    'rhs_table' => 'j_loyalty',
+    'rhs_key' => 'target_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'c_teachers_modified_user' => 
+  array (
+    'name' => 'c_teachers_modified_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_Teachers',
+    'rhs_table' => 'c_teachers',
+    'rhs_key' => 'modified_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'c_teachers_created_by' => 
+  array (
+    'name' => 'c_teachers_created_by',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_Teachers',
+    'rhs_table' => 'c_teachers',
+    'rhs_key' => 'created_by',
+    'relationship_type' => 'one-to-many',
+  ),
+  'c_teachers_team_count_relationship' => 
+  array (
+    'name' => 'c_teachers_team_count_relationship',
+    'lhs_module' => 'Teams',
+    'lhs_table' => 'team_sets',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_Teachers',
+    'rhs_table' => 'c_teachers',
+    'rhs_key' => 'team_set_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'c_teachers_teams' => 
+  array (
+    'name' => 'c_teachers_teams',
+    'lhs_module' => 'C_Teachers',
+    'lhs_table' => 'c_teachers',
+    'lhs_key' => 'team_set_id',
+    'rhs_module' => 'Teams',
+    'rhs_table' => 'teams',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'team_sets_teams',
+    'join_key_lhs' => 'team_set_id',
+    'join_key_rhs' => 'team_id',
+    'fields' => 
+    array (
+      'id' => 
+      array (
+        'name' => 'id',
+        'vname' => 'LBL_ID',
+        'type' => 'id',
+        'required' => true,
+      ),
+      0 => 
+      array (
+        'name' => 'team_set_id',
+        'type' => 'id',
+      ),
+      1 => 
+      array (
+        'name' => 'team_id',
+        'type' => 'id',
+      ),
+      2 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      3 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '',
+        'default' => '0',
+      ),
+    ),
+  ),
+  'c_teachers_team' => 
+  array (
+    'name' => 'c_teachers_team',
+    'lhs_module' => 'Teams',
+    'lhs_table' => 'teams',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_Teachers',
+    'rhs_table' => 'c_teachers',
+    'rhs_key' => 'team_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'c_teachers_assigned_user' => 
+  array (
+    'name' => 'c_teachers_assigned_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_Teachers',
+    'rhs_table' => 'c_teachers',
+    'rhs_key' => 'assigned_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'c_teachers_email_addresses' => 
+  array (
+    'name' => 'c_teachers_email_addresses',
+    'lhs_module' => 'C_Teachers',
+    'lhs_table' => 'c_teachers',
     'lhs_key' => 'id',
     'rhs_module' => 'EmailAddresses',
     'rhs_table' => 'email_addresses',
@@ -17256,7 +24301,7 @@
     'join_key_lhs' => 'bean_id',
     'join_key_rhs' => 'email_address_id',
     'relationship_role_column' => 'bean_module',
-    'relationship_role_column_value' => 'C_Tour',
+    'relationship_role_column_value' => 'C_Teachers',
     'fields' => 
     array (
       0 => 
@@ -17314,11 +24359,11 @@
       ),
     ),
   ),
-  'c_tour_email_addresses_primary' => 
+  'c_teachers_email_addresses_primary' => 
   array (
-    'name' => 'c_tour_email_addresses_primary',
-    'lhs_module' => 'C_Tour',
-    'lhs_table' => 'c_tour',
+    'name' => 'c_teachers_email_addresses_primary',
+    'lhs_module' => 'C_Teachers',
+    'lhs_table' => 'c_teachers',
     'lhs_key' => 'id',
     'rhs_module' => 'EmailAddresses',
     'rhs_table' => 'email_addresses',
@@ -17385,5 +24430,442 @@
         'default' => 0,
       ),
     ),
+  ),
+  'teacher_holidays' => 
+  array (
+    'name' => 'teacher_holidays',
+    'lhs_module' => 'C_Teachers',
+    'lhs_table' => 'c_teachers',
+    'lhs_key' => 'id',
+    'rhs_module' => 'Holidays',
+    'rhs_table' => 'holidays',
+    'rhs_key' => 'teacher_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_teachercontract_modified_user' => 
+  array (
+    'name' => 'j_teachercontract_modified_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Teachercontract',
+    'rhs_table' => 'j_teachercontract',
+    'rhs_key' => 'modified_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_teachercontract_created_by' => 
+  array (
+    'name' => 'j_teachercontract_created_by',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Teachercontract',
+    'rhs_table' => 'j_teachercontract',
+    'rhs_key' => 'created_by',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_teachercontract_team_count_relationship' => 
+  array (
+    'name' => 'j_teachercontract_team_count_relationship',
+    'lhs_module' => 'Teams',
+    'lhs_table' => 'team_sets',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Teachercontract',
+    'rhs_table' => 'j_teachercontract',
+    'rhs_key' => 'team_set_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_teachercontract_teams' => 
+  array (
+    'name' => 'j_teachercontract_teams',
+    'lhs_module' => 'J_Teachercontract',
+    'lhs_table' => 'j_teachercontract',
+    'lhs_key' => 'team_set_id',
+    'rhs_module' => 'Teams',
+    'rhs_table' => 'teams',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'team_sets_teams',
+    'join_key_lhs' => 'team_set_id',
+    'join_key_rhs' => 'team_id',
+    'fields' => 
+    array (
+      'id' => 
+      array (
+        'name' => 'id',
+        'vname' => 'LBL_ID',
+        'type' => 'id',
+        'required' => true,
+      ),
+      0 => 
+      array (
+        'name' => 'team_set_id',
+        'type' => 'id',
+      ),
+      1 => 
+      array (
+        'name' => 'team_id',
+        'type' => 'id',
+      ),
+      2 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      3 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '',
+        'default' => '0',
+      ),
+    ),
+  ),
+  'j_teachercontract_team' => 
+  array (
+    'name' => 'j_teachercontract_team',
+    'lhs_module' => 'Teams',
+    'lhs_table' => 'teams',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Teachercontract',
+    'rhs_table' => 'j_teachercontract',
+    'rhs_key' => 'team_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_teachercontract_assigned_user' => 
+  array (
+    'name' => 'j_teachercontract_assigned_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Teachercontract',
+    'rhs_table' => 'j_teachercontract',
+    'rhs_key' => 'assigned_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'c_timekeeping_modified_user' => 
+  array (
+    'name' => 'c_timekeeping_modified_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'c_Timekeeping',
+    'rhs_table' => 'c_timekeeping',
+    'rhs_key' => 'modified_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'c_timekeeping_created_by' => 
+  array (
+    'name' => 'c_timekeeping_created_by',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'c_Timekeeping',
+    'rhs_table' => 'c_timekeeping',
+    'rhs_key' => 'created_by',
+    'relationship_type' => 'one-to-many',
+  ),
+  'c_timekeeping_team_count_relationship' => 
+  array (
+    'name' => 'c_timekeeping_team_count_relationship',
+    'lhs_module' => 'Teams',
+    'lhs_table' => 'team_sets',
+    'lhs_key' => 'id',
+    'rhs_module' => 'c_Timekeeping',
+    'rhs_table' => 'c_timekeeping',
+    'rhs_key' => 'team_set_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'c_timekeeping_teams' => 
+  array (
+    'name' => 'c_timekeeping_teams',
+    'lhs_module' => 'c_Timekeeping',
+    'lhs_table' => 'c_timekeeping',
+    'lhs_key' => 'team_set_id',
+    'rhs_module' => 'Teams',
+    'rhs_table' => 'teams',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'team_sets_teams',
+    'join_key_lhs' => 'team_set_id',
+    'join_key_rhs' => 'team_id',
+    'fields' => 
+    array (
+      'id' => 
+      array (
+        'name' => 'id',
+        'vname' => 'LBL_ID',
+        'type' => 'id',
+        'required' => true,
+      ),
+      0 => 
+      array (
+        'name' => 'team_set_id',
+        'type' => 'id',
+      ),
+      1 => 
+      array (
+        'name' => 'team_id',
+        'type' => 'id',
+      ),
+      2 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      3 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '',
+        'default' => '0',
+      ),
+    ),
+  ),
+  'c_timekeeping_team' => 
+  array (
+    'name' => 'c_timekeeping_team',
+    'lhs_module' => 'Teams',
+    'lhs_table' => 'teams',
+    'lhs_key' => 'id',
+    'rhs_module' => 'c_Timekeeping',
+    'rhs_table' => 'c_timekeeping',
+    'rhs_key' => 'team_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'c_timekeeping_assigned_user' => 
+  array (
+    'name' => 'c_timekeeping_assigned_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'c_Timekeeping',
+    'rhs_table' => 'c_timekeeping',
+    'rhs_key' => 'assigned_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'c_timesheet_modified_user' => 
+  array (
+    'name' => 'c_timesheet_modified_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_Timesheet',
+    'rhs_table' => 'c_timesheet',
+    'rhs_key' => 'modified_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'c_timesheet_created_by' => 
+  array (
+    'name' => 'c_timesheet_created_by',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_Timesheet',
+    'rhs_table' => 'c_timesheet',
+    'rhs_key' => 'created_by',
+    'relationship_type' => 'one-to-many',
+  ),
+  'c_timesheet_team_count_relationship' => 
+  array (
+    'name' => 'c_timesheet_team_count_relationship',
+    'lhs_module' => 'Teams',
+    'lhs_table' => 'team_sets',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_Timesheet',
+    'rhs_table' => 'c_timesheet',
+    'rhs_key' => 'team_set_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'c_timesheet_teams' => 
+  array (
+    'name' => 'c_timesheet_teams',
+    'lhs_module' => 'C_Timesheet',
+    'lhs_table' => 'c_timesheet',
+    'lhs_key' => 'team_set_id',
+    'rhs_module' => 'Teams',
+    'rhs_table' => 'teams',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'team_sets_teams',
+    'join_key_lhs' => 'team_set_id',
+    'join_key_rhs' => 'team_id',
+    'fields' => 
+    array (
+      'id' => 
+      array (
+        'name' => 'id',
+        'vname' => 'LBL_ID',
+        'type' => 'id',
+        'required' => true,
+      ),
+      0 => 
+      array (
+        'name' => 'team_set_id',
+        'type' => 'id',
+      ),
+      1 => 
+      array (
+        'name' => 'team_id',
+        'type' => 'id',
+      ),
+      2 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      3 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '',
+        'default' => '0',
+      ),
+    ),
+  ),
+  'c_timesheet_team' => 
+  array (
+    'name' => 'c_timesheet_team',
+    'lhs_module' => 'Teams',
+    'lhs_table' => 'teams',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_Timesheet',
+    'rhs_table' => 'c_timesheet',
+    'rhs_key' => 'team_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'c_timesheet_assigned_user' => 
+  array (
+    'name' => 'c_timesheet_assigned_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'C_Timesheet',
+    'rhs_table' => 'c_timesheet',
+    'rhs_key' => 'assigned_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'c_timesheet_meeting' => 
+  array (
+    'name' => 'c_timesheet_meeting',
+    'lhs_module' => 'C_Timesheet',
+    'lhs_table' => 'c_timesheet',
+    'lhs_key' => 'id',
+    'rhs_module' => 'Meetings',
+    'rhs_table' => 'meetings',
+    'rhs_key' => 'timesheet_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_voucher_modified_user' => 
+  array (
+    'name' => 'j_voucher_modified_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Voucher',
+    'rhs_table' => 'j_voucher',
+    'rhs_key' => 'modified_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_voucher_created_by' => 
+  array (
+    'name' => 'j_voucher_created_by',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Voucher',
+    'rhs_table' => 'j_voucher',
+    'rhs_key' => 'created_by',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_voucher_team_count_relationship' => 
+  array (
+    'name' => 'j_voucher_team_count_relationship',
+    'lhs_module' => 'Teams',
+    'lhs_table' => 'team_sets',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Voucher',
+    'rhs_table' => 'j_voucher',
+    'rhs_key' => 'team_set_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_voucher_teams' => 
+  array (
+    'name' => 'j_voucher_teams',
+    'lhs_module' => 'J_Voucher',
+    'lhs_table' => 'j_voucher',
+    'lhs_key' => 'team_set_id',
+    'rhs_module' => 'Teams',
+    'rhs_table' => 'teams',
+    'rhs_key' => 'id',
+    'relationship_type' => 'many-to-many',
+    'join_table' => 'team_sets_teams',
+    'join_key_lhs' => 'team_set_id',
+    'join_key_rhs' => 'team_id',
+    'fields' => 
+    array (
+      'id' => 
+      array (
+        'name' => 'id',
+        'vname' => 'LBL_ID',
+        'type' => 'id',
+        'required' => true,
+      ),
+      0 => 
+      array (
+        'name' => 'team_set_id',
+        'type' => 'id',
+      ),
+      1 => 
+      array (
+        'name' => 'team_id',
+        'type' => 'id',
+      ),
+      2 => 
+      array (
+        'name' => 'date_modified',
+        'type' => 'datetime',
+      ),
+      3 => 
+      array (
+        'name' => 'deleted',
+        'type' => 'bool',
+        'len' => '',
+        'default' => '0',
+      ),
+    ),
+  ),
+  'j_voucher_team' => 
+  array (
+    'name' => 'j_voucher_team',
+    'lhs_module' => 'Teams',
+    'lhs_table' => 'teams',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Voucher',
+    'rhs_table' => 'j_voucher',
+    'rhs_key' => 'team_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_voucher_assigned_user' => 
+  array (
+    'name' => 'j_voucher_assigned_user',
+    'lhs_module' => 'Users',
+    'lhs_table' => 'users',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Voucher',
+    'rhs_table' => 'j_voucher',
+    'rhs_key' => 'assigned_user_id',
+    'relationship_type' => 'one-to-many',
+  ),
+  'j_sponsor_vouchers' => 
+  array (
+    'name' => 'j_sponsor_vouchers',
+    'lhs_module' => 'J_Voucher',
+    'lhs_table' => 'j_voucher',
+    'lhs_key' => 'id',
+    'rhs_module' => 'J_Sponsor',
+    'rhs_table' => 'j_sponsor',
+    'rhs_key' => 'voucher_id',
+    'relationship_type' => 'one-to-many',
   ),
 );

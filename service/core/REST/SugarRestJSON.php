@@ -10,7 +10,7 @@ if(!defined('sugarEntry'))define('sugarEntry', true);
  * you are agreeing unconditionally that Company will be bound by the MSA and
  * certifying that you have authority to bind Company accordingly.
  *
- * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ * Copyright (C) 2004-2014 SugarCRM Inc.  All rights reserved.
  ********************************************************************************/
 
 
@@ -31,7 +31,6 @@ class SugarRestJSON extends SugarRestSerialize{
 	function generateResponse($input){
 		$json = getJSONObj();
 		ob_clean();
-		header('Content-Type: application/json; charset=UTF-8');
 		if (isset($this->faultObject)) {
 			$this->generateFaultResponse($this->faultObject);
 		} else {

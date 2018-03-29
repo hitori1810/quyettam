@@ -9,7 +9,7 @@
  * you are agreeing unconditionally that Company will be bound by the MSA and
  * certifying that you have authority to bind Company accordingly.
  *
- * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ * Copyright (C) 2004-2014 SugarCRM Inc.  All rights reserved.
  ********************************************************************************/
 
 require_once('service/v4/SugarWebServiceUtilv4.php');
@@ -38,8 +38,7 @@ class SugarWebServiceUtilv4_1 extends SugarWebServiceUtilv4
 
    				global $current_user;
    				require_once('modules/Users/User.php');
-   				$current_user = new User();
-   				$current_user->retrieve($_SESSION['user_id']);
+   				$current_user = BeanFactory::getBean('Users', $_SESSION['user_id']);
    				$this->login_success();
    				$GLOBALS['log']->info('Begin: SoapHelperWebServices->validate_authenticated - passed');
    				$GLOBALS['log']->info('End: SoapHelperWebServices->validate_authenticated');
@@ -98,8 +97,9 @@ class SugarWebServiceUtilv4_1 extends SugarWebServiceUtilv4
 		if (isset($bean->$link_field_name)) {
 			//First get all the related beans
             $params = array();
-            $params['offset'] = $offset;
-            $params['limit'] = $limit;
+            $params['offset']   = $offset;
+            $params['limit']    = $limit;
+            $params['orderby']  = $order_by;
 
             if (!empty($optional_where))
             {
@@ -110,10 +110,10 @@ class SugarWebServiceUtilv4_1 extends SugarWebServiceUtilv4
             //Create a list of field/value rows based on $link_module_fields
 			$list = array();
             $filterFields = array();
-            if (!empty($order_by) && !empty($related_beans))
-            {
-                $related_beans = order_beans($related_beans, $order_by);
-            }
+//            if (!empty($order_by) && !empty($related_beans))
+//            {
+//                $related_beans = order_beans($related_beans, $order_by);
+//            }
             foreach($related_beans as $id => $bean)
             {
                 if (empty($filterFields) && !empty($link_module_fields))

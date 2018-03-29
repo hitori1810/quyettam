@@ -363,7 +363,7 @@ $app_list_strings = array (
 
   'product_status_default_key' => 'Ship',
   'product_status_quote_key' => 'Quotes',
-  'product_status_dom' =>
+  'product_status_options' =>
   array (
     'Quotes' => 'Quoted',
     'Orders' => 'Ordered',
@@ -405,7 +405,7 @@ $app_list_strings = array (
     'Orders' => 'Order',
   ),
   'default_quote_stage_key' => 'Draft',
-  'quote_stage_dom' =>
+  'quote_stage_options' =>
   array (
     'Draft' => 'Draft',
     'Negotiation' => 'Negotiation',
@@ -494,7 +494,7 @@ $app_list_strings = array (
   ),
 
   'product_category_default_key' => '',
-  'product_category_dom' =>
+  'product_category_options' =>
   array (
 	'' => '',
   	'Accounts' => 'Accounts',

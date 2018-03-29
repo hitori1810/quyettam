@@ -36,3 +36,23 @@ function insert_variable_html_link(text){the_label=document.getElementById('url_
 if(the_label[0]=='{'&&the_label[the_label.length-1]=='}'){the_label=the_label.substring(1,the_label.length-1);}
 var thelink="<a href='"+text+"' > "+the_label+" </a>";insert_variable_html(thelink);}
 function insert_variable(text){if(document.getElementById('toggle_textonly').checked==true){insert_variable_text(document.getElementById('body_text_plain'),text);}else{insert_variable_html(text);}}
+function toggle_sms_only() {
+
+	if ($('#sms_toggle').attr("checked")) {
+		$('input[type=checkbox]#toggle_textonly').attr("checked",true);
+		$('input[type=checkbox]#toggle_textonly').attr("disabled", true);
+		$('#variable_module').parent().parent().hide();
+		$('textarea[name=subject]').parent().parent().hide();
+		$('#upload_div').hide();
+		$('tr#tr_attachments').hide();
+		$("input[name='sms_only']").val("1");
+	} else {
+		$('input[type=checkbox]#toggle_textonly').attr("disabled", false);
+		$('#variable_module').parent().parent().show();
+		$('textarea[name=subject]').parent().parent().show();
+		$('#upload_div').show();
+		$('tr#tr_attachments').show();
+		$("input[name='sms_only']").val("0");
+	}
+	toggle_text_only();
+}

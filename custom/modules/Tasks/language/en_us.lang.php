@@ -1,9 +1,11 @@
 <?php
-// created: 2015-05-08 10:50:07
+// created: 2018-03-28 11:56:05
 $mod_strings = array (
-  'LBL_LIST_RELATED_TO' => 'Relate to',
-  'LBL_PARENT_NAME' => 'Relate to',
-  'LBL_PARENT_TYPE' => 'Relate Type',
-  'LBL_PARENT_ID' => 'Relate Id',
-  'LBL_DESCRIPTION' => 'Description:',
+  'LBL_CONTACT_NAME' => 'Contact Name ',
+  'LBL_CONTACT' => 'Contact:',
+  'LBL_CONTACT_ID' => 'Contact ID:',
+  'LBL_CONTACT_PHONE' => 'Contact Phone:',
+  'LBL_OPPORTUNITY' => 'Enrollment',
+  'LBL_ACCOUNT' => 'Corporate',
+  'LBL_CASE' => 'Feedbacks',
 );

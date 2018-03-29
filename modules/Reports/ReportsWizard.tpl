@@ -48,6 +48,7 @@ background-image:url({$IMG}blank.gif);{literal}}{/literal}
     <input type="hidden" id="return_module" name="return_module" value="Reports">
     <input type="hidden" id="return_action" name="return_action" value="ReportsWizardType">
     <input type="hidden" name="run_query" value="0">
+    <input type="hidden" name="report_type" value="{$report_type}">
     <input type="hidden" name="save_and_run_query" value="0">
     <input type="hidden" name="current_step" value="{$current_step}">
     <input type="hidden" name="record" value="{$record}">
@@ -57,7 +58,7 @@ background-image:url({$IMG}blank.gif);{literal}}{/literal}
     <input type="hidden" name="panels_def">
     <input type="hidden" name="filters_defs">
     <input type="hidden" name='expanded_combo_summary_divs' id='expanded_combo_summary_divs' value=''>
-    <input type="hidden" name='report_offset' value ="{$report_offset}">	
+    <input type="hidden" name='report_offset' value ="{$report_offset}">
     <input type="hidden" name='sort_by' value ="{$sort_by}">
     <input type="hidden" name='sort_dir' value ="{$sort_dir}">
     <input type="hidden" name='summary_sort_by' value ="{$summary_sort_by}">
@@ -66,16 +67,16 @@ background-image:url({$IMG}blank.gif);{literal}}{/literal}
     <div id='wizard_outline_div' width='20%' >
     </div>
     <div id='report_type_div' style='display:none' class="edit view reportwizard">
-        <table width="100%" border="0" cellspacing="1" cellpadding="0" >	
+        <table width="100%" border="0" cellspacing="1" cellpadding="0" >
             <tr>
                 <td colspan=4 >{$MOD.LBL_SELECT_REPORT_TYPE}<br><br>
                 </td>
-            </tr>		
+            </tr>
             <tr valign="top">
                 <td width="35%">
-                    <table  border="0" cellspacing="2" cellpadding="0" >	
+                    <table  border="0" cellspacing="3" cellpadding="0" >
                         <tr valign='top'>
-                            <td><img src="{sugar_getimagepath file='RowsAndColumns.gif'}" name="rowsColsImg" onclick="SUGAR.reports.selectReportType('tabular');"
+                            <td><img src="{sugar_getimagepath file='RowsAndColumns.gif'}" name="rowsColsImg" onclick="SUGAR.reports.selectReportType('tabular'); $('input[name=report_type]').val('tabular')"
                                 onMouseOver="document.rowsColsImg.src='{sugar_getimagepath file='RowsAndColumnsOver.gif'}'"
                                 onMouseOut="document.rowsColsImg.src='{sugar_getimagepath file='RowsAndColumns.gif'}'"
                                 alt="{$MOD.LBL_ROWS_AND_COLUMNS_REPORT}"></td>
@@ -88,7 +89,7 @@ background-image:url({$IMG}blank.gif);{literal}}{/literal}
                             <td colspan=2>&nbsp;</td>
                         </tr>
                         <tr valign='top'>
-                            <td><img src="{sugar_getimagepath file='Summation.gif'}" name="summationImg" onclick="SUGAR.reports.selectReportType('summation');"
+                            <td><img src="{sugar_getimagepath file='Summation.gif'}" name="summationImg" onclick="SUGAR.reports.selectReportType('summation'); $('input[name=report_type]').val('summary')"
                                 onMouseOver="document.summationImg.src='{sugar_getimagepath file='SummationOver.gif'}'"
                                 onMouseOut="document.summationImg.src='{sugar_getimagepath file='Summation.gif'}'"
                                 alt="{$MOD.LBL_SUMMATION_REPORT}"></td>
@@ -97,13 +98,28 @@ background-image:url({$IMG}blank.gif);{literal}}{/literal}
                                 {$MOD.LBL_SUMMATION_REPORT_DESC}
                             </td>
                         </tr>
+                        <!--  Embedded Report Add By Lap Nguyen - OnlineCRM                  -->
+                        <tr>
+                            <td colspan=2>&nbsp;</td>
+                        </tr>
+                        <tr valign='top'>
+                            <td><img src="{sugar_getimagepath file='custom_report.png'}" name="embeddedImg" onclick="$('input[name=report_type]').val('embedded'); SUGAR.reports.selectReportType('summation_with_details');"
+                                onMouseOver="document.embeddedImg.src='{sugar_getimagepath file='custom_report_over.png'}'"
+                                onMouseOut="document.embeddedImg.src='{sugar_getimagepath file='custom_report.png'}'"
+                                alt="{$MOD.LBL_EMBEDDED_REPORT}"></td>
+                            <td>&nbsp;&nbsp;</td>
+                            <td class="buttonText"><h3 class='bold'>{$MOD.LBL_EMBEDDED_REPORT}</h3>
+                                {$MOD.LBL_EMBEDDED_REPORT_DESC}
+                            </td>
+                        </tr>
+                        <!--  Embedded Report Add By Lap Nguyen - OnlineCRM                   -->
                     </table>
                 </td>
                 <td width="10%">&nbsp;</td>
                 <td width="35%">
-                    <table  border="0" cellspacing="2" cellpadding="0">	
+                    <table  border="0" cellspacing="3" cellpadding="0">
                         <tr valign='top'>
-                            <td><img src="{sugar_getimagepath file='SummationWithDetails.gif'}" name="summationWithDetailsImg" onclick="SUGAR.reports.selectReportType('summation_with_details');"
+                            <td><img src="{sugar_getimagepath file='SummationWithDetails.gif'}" name="summationWithDetailsImg" onclick="$('input[name=report_type]').val('detailed_summary'); SUGAR.reports.selectReportType('summation_with_details');"
                                 onMouseOver="document.summationWithDetailsImg.src='{sugar_getimagepath file='SummationWithDetailsOver.gif'}'"
                                 onMouseOut="document.summationWithDetailsImg.src='{sugar_getimagepath file='SummationWithDetails.gif'}'"
                                 alt="{$MOD.LBL_SUMMATION_REPORT_WITH_DETAILS}"></td>
@@ -117,7 +133,7 @@ background-image:url({$IMG}blank.gif);{literal}}{/literal}
                         </tr>
 
                         <tr valign='top'>
-                            <td><img src="{sugar_getimagepath file='MatrixReport.gif'}" name="matrixImg" onclick="SUGAR.reports.selectReportType('summation', true);"
+                            <td><img src="{sugar_getimagepath file='MatrixReport.gif'}" name="matrixImg" onclick="SUGAR.reports.selectReportType('summation', true); $('input[name=report_type]').val('Matrix')"
                                 onMouseOver="document.matrixImg.src='{sugar_getimagepath file='MatrixReportOver.gif'}'"
                                 onMouseOut="document.matrixImg.src='{sugar_getimagepath file='MatrixReport.gif'}'"
                                 alt="{$MOD.LBL_MATRIX_REPORT}"></td>
@@ -126,8 +142,23 @@ background-image:url({$IMG}blank.gif);{literal}}{/literal}
                                 {$MOD.LBL_MATRIX_REPORT_DESC}
                             </td>
                         </tr>
+                                                <!--  iframe Report Add By Lap Nguyen - OnlineCRM                  -->
+                        <tr>
+                            <td colspan=2>&nbsp;</td>
+                        </tr>
+                        <tr valign='top'>
+                            <td><img src="{sugar_getimagepath file='ifame_report.png'}" name="ifameImg" onclick="$('input[name=report_type]').val('iframe'); SUGAR.reports.selectReportType('tabular');"
+                                onMouseOver="document.ifameImg.src='{sugar_getimagepath file='ifame_report_over.png'}'"
+                                onMouseOut="document.ifameImg.src='{sugar_getimagepath file='ifame_report.png'}'"
+                                alt="{$MOD.LBL_IFAME_REPORT}"></td>
+                            <td>&nbsp;&nbsp;</td>
+                            <td class="buttonText"><h3 class='bold'>{$MOD.LBL_IFAME_REPORT}</h3>
+                                {$MOD.LBL_IFAME_REPORT_DESC}
+                            </td>
+                        </tr>
+                        <!--  iframe Report Add By Lap Nguyen - OnlineCRM                   -->
                     </table>
-                </td>				
+                </td>
                 <td width="20%">&nbsp;</td>
             </tr>
         </table>
@@ -137,7 +168,7 @@ background-image:url({$IMG}blank.gif);{literal}}{/literal}
 
 
     <div id='module_select_div' style="display:none" class="edit view reportwizard">
-        <table width="100%" border="0" cellspacing="1" cellpadding="0" >	
+        <table width="100%" border="0" cellspacing="1" cellpadding="0" >
             <tr>
                 <td  colspan="6">{$MOD.LBL_SELECT_MODULE_BUTTON}<br><br>
                 </td>
@@ -171,11 +202,11 @@ background-image:url({$IMG}blank.gif);{literal}}{/literal}
         </table>
 
         <br/>
-    </div>	
+    </div>
     <div id='filters_div' style="display:none">
         <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom: 20px;">
             <tr>
-                <td align='left'><input type='button' title="{$MOD.LBL_PREVIOUS}" class="button" name="{$MOD.LBL_PREVIOUS}" value="{$MOD.LBL_PREVIOUS}" 
+                <td align='left'><input type='button' title="{$MOD.LBL_PREVIOUS}" class="button" name="{$MOD.LBL_PREVIOUS}" value="{$MOD.LBL_PREVIOUS}"
                     onClick='SUGAR.reports.showWizardStep(1);' id="previousBtn">&nbsp;&nbsp;<input type='button' title="{$MOD.LBL_NEXT}" class="button" name="{$MOD.LBL_NEXT}" value="{$MOD.LBL_NEXT}"
                     onClick='SUGAR.reports.showWizardStep(0);' id="nextBtn">{if $RUN_QUERY == 1 || $id || $record}&nbsp;&nbsp;<input type='button' title="{$APP.LBL_SAVE_BUTTON_LABEL}" class="button" name="{$APP.LBL_SAVE_BUTTON_LABEL}" value="{$APP.LBL_SAVE_BUTTON_LABEL}"
                     onClick='SUGAR.reports.saveReport();' id="saveBtn">&nbsp;&nbsp;<input type='button' title="{$MOD.LBL_PREVIEW_REPORT}" class="button" name="{$MOD.LBL_PREVIEW_REPORT}" value="{$MOD.LBL_PREVIEW_REPORT}"
@@ -184,9 +215,9 @@ background-image:url({$IMG}blank.gif);{literal}}{/literal}
                     onClick='SUGAR.reports.deleteReport();' id="deleteBtn">{/if}&nbsp;&nbsp;<input type='button' title="{$MOD.LBL_CANCEL}" class="button" name="{$MOD.LBL_CANCEL}" value="{$MOD.LBL_CANCEL}"
                     onClick='document.location.href = "index.php?module=Reports&action=index&query=true&clear_query=true"' id="cancelBtn"></td>
             </tr>
-        </table>	
+        </table>
         </br>
-        <table width="100%" border="0" cellspacing="1" cellpadding="0" >	
+        <table width="100%" border="0" cellspacing="1" cellpadding="0" >
             <tr>
                 <td  width="15%" valign='top'>
                     <div id="leftlayout" style="z-index:100;height:610px; width:202px;">
@@ -195,10 +226,10 @@ background-image:url({$IMG}blank.gif);{literal}}{/literal}
                         <div id="autocomplete" style="width:200px;">
                             <div class="autocompletewrapper">
                                 <input id="dt_input" size="23" style="width: 135px !important;" type="text"/>
-                                <input type="button" style="width: 45px;" id="clearButton" class="button" value="{$MOD.LBL_CLEAR}" name="{$MOD.LBL_CLEAR}" title="{$MOD.LBL_CLEAR}" />				    			
-                                <div id="dt_ac_container"></div> 
+                                <input type="button" style="width: 45px;" id="clearButton" class="button" value="{$MOD.LBL_CLEAR}" name="{$MOD.LBL_CLEAR}" title="{$MOD.LBL_CLEAR}" />
+                                <div id="dt_ac_container"></div>
                             </div>
-                        </div> 
+                        </div>
                         <div id="module_fields_panel" style="width:200px; float: left;">
                         </div>
                     </div>
@@ -209,15 +240,15 @@ background-image:url({$IMG}blank.gif);{literal}}{/literal}
                     <div id='group_by_div' style="display:none">
                         <div id='group_by_panel'>
                         </div>
-                    </div>						
+                    </div>
                     <div id='display_summaries_div' style="display:none">
                         <div id='display_summaries_panel'>
                         </div>
-                    </div>						
+                    </div>
                     <div id='display_cols_div' style="display:none">
                         <div id='display_cols_panel'>
                         </div>
-                    </div>					
+                    </div>
                 </td>
 
 
@@ -226,7 +257,7 @@ background-image:url({$IMG}blank.gif);{literal}}{/literal}
         <br/>
         <table width="100%" border="0" cellspacing="0" cellpadding="0" >
             <tr>
-                <td align='left'><input type='button' title="{$MOD.LBL_PREVIOUS}" class="button" name="{$MOD.LBL_PREVIOUS}" value="{$MOD.LBL_PREVIOUS}" 
+                <td align='left'><input type='button' title="{$MOD.LBL_PREVIOUS}" class="button" name="{$MOD.LBL_PREVIOUS}" value="{$MOD.LBL_PREVIOUS}"
                     onClick='SUGAR.reports.showWizardStep(1);' id="previousButton">&nbsp;&nbsp;<input type='button' title="{$MOD.LBL_NEXT}" class="button" name="{$MOD.LBL_NEXT}" value="{$MOD.LBL_NEXT}"
                     onClick='SUGAR.reports.showWizardStep(0);' id="nextButton">{if $RUN_QUERY == 1 || $id || $record}&nbsp;&nbsp;<input type='button' title="{$APP.LBL_SAVE_BUTTON_LABEL}" class="button" name="{$APP.LBL_SAVE_BUTTON_LABEL}" value="{$APP.LBL_SAVE_BUTTON_LABEL}"
                     onClick='SUGAR.reports.saveReport();' id="saveButton">&nbsp;&nbsp;<input type='button' title="{$MOD.LBL_PREVIEW_REPORT}" class="button" name="{$MOD.LBL_PREVIEW_REPORT}" value="{$MOD.LBL_PREVIEW_REPORT}"
@@ -235,12 +266,12 @@ background-image:url({$IMG}blank.gif);{literal}}{/literal}
                     onClick='SUGAR.reports.deleteReport();' id="deleteButton">{/if}&nbsp;&nbsp;<input type='button' title="{$MOD.LBL_CANCEL}" class="button" name="{$MOD.LBL_CANCEL}" value="{$MOD.LBL_CANCEL}"
                     onClick='document.location.href = "index.php?module=Reports&action=index&query=true&clear_query=true"' id="cancelButton"></td>
             </tr>
-        </table>	
+        </table>
     </div>
     <div id='chart_options_div' style="display:none">
         <table width="100%" border="0" cellspacing="0" cellpadding="0" >
             <tr>
-                <td align='left'><input type='button' title="{$MOD.LBL_PREVIOUS}" class="button" name="{$MOD.LBL_PREVIOUS}" value="{$MOD.LBL_PREVIOUS}" 
+                <td align='left'><input type='button' title="{$MOD.LBL_PREVIOUS}" class="button" name="{$MOD.LBL_PREVIOUS}" value="{$MOD.LBL_PREVIOUS}"
                     onClick='SUGAR.reports.showWizardStep(1);' id="previousButton">&nbsp;&nbsp;<input type='button' title="{$MOD.LBL_NEXT}" class="button" name="{$MOD.LBL_NEXT}" value="{$MOD.LBL_NEXT}"
                     onClick='SUGAR.reports.showWizardStep(0);' id="nextButton">{if $RUN_QUERY == 1 || $id || $record}&nbsp;&nbsp;<input type='button' title="{$APP.LBL_SAVE_BUTTON_LABEL}" class="button" name="{$APP.LBL_SAVE_BUTTON_LABEL}" value="{$APP.LBL_SAVE_BUTTON_LABEL}"
                     onClick='SUGAR.reports.saveReport();' id="saveButton">&nbsp;&nbsp;<input type='button' title="{$MOD.LBL_PREVIEW_REPORT}" class="button" name="{$MOD.LBL_PREVIEW_REPORT}" value="{$MOD.LBL_PREVIEW_REPORT}"
@@ -249,10 +280,10 @@ background-image:url({$IMG}blank.gif);{literal}}{/literal}
                     onClick='SUGAR.reports.deleteReport();' id="deleteButton">{/if}&nbsp;&nbsp;<input type='button' title="{$MOD.LBL_CANCEL}" class="button" name="{$MOD.LBL_CANCEL}" value="{$MOD.LBL_CANCEL}"
                     onClick='document.location.href = "index.php?module=Reports&action=index&query=true&clear_query=true"' id="cancelButton"></td>
             </tr>
-        </table>	
+        </table>
         </br>
         <div class="edit view">
-            <table width="100%" border="0" cellspacing="1" cellpadding="0" >	
+            <table width="100%" border="0" cellspacing="1" cellpadding="0" >
                 <tr>
                     <td id="no_chart_text" colspan=2>{$MOD.LBL_GROUP_BY_REQUIRED}<br/></td>
                 </tr>
@@ -280,26 +311,18 @@ background-image:url({$IMG}blank.gif);{literal}}{/literal}
                         <input name='chart_description' id="chart_description" size='50' value="{$chart_description}" maxsize="255"/>
                     </td>
                 </tr>
-                <!--  Custom URL to execute Report - Lap Nguyen-->
-                <tr>
-                    <td scope="row">{$MOD.LBL_CUSTOM_URL}:</td>
-                    <td align=left>
-                        <input name='custom_url' id="custom_url" size='50' value="{$custom_url}" maxsize="255"/>
-                    </td>
-                </tr>
-                <!--  END -->
                 <tr>
                     <td scope="row">{$MOD.LBL_DO_ROUND}:{$do_round_help}</td>
                     <td align=left>
                         <input type="checkbox" class="checkbox" name="do_round" id="do_round" {if ($do_round)}CHECKED{/if}>
                     </td>
-                </tr>			
+                </tr>
             </table>
         </div>
         <br/>
         <table width="100%" border="0" cellspacing="0" cellpadding="0" >
             <tr>
-                <td align='left'><input type='button' title="{$MOD.LBL_PREVIOUS}" class="button" name="{$MOD.LBL_PREVIOUS}" value="{$MOD.LBL_PREVIOUS}" 
+                <td align='left'><input type='button' title="{$MOD.LBL_PREVIOUS}" class="button" name="{$MOD.LBL_PREVIOUS}" value="{$MOD.LBL_PREVIOUS}"
                     onClick='SUGAR.reports.showWizardStep(1);' id="previousButton">&nbsp;&nbsp;<input type='button' title="{$MOD.LBL_NEXT}" class="button" name="{$MOD.LBL_NEXT}" value="{$MOD.LBL_NEXT}"
                     onClick='SUGAR.reports.showWizardStep(0);' id="nextButton">{if $RUN_QUERY == 1 || $id || $record}&nbsp;&nbsp;<input type='button' title="{$APP.LBL_SAVE_BUTTON_LABEL}" class="button" name="{$APP.LBL_SAVE_BUTTON_LABEL}" value="{$APP.LBL_SAVE_BUTTON_LABEL}"
                     onClick='SUGAR.reports.saveReport();' id="saveButton">&nbsp;&nbsp;<input type='button' title="{$MOD.LBL_PREVIEW_REPORT}" class="button" name="{$MOD.LBL_PREVIEW_REPORT}" value="{$MOD.LBL_PREVIEW_REPORT}"
@@ -308,22 +331,22 @@ background-image:url({$IMG}blank.gif);{literal}}{/literal}
                     onClick='SUGAR.reports.deleteReport();' id="deleteButton">{/if}&nbsp;&nbsp;<input type='button' title="{$MOD.LBL_CANCEL}" class="button" name="{$MOD.LBL_CANCEL}" value="{$MOD.LBL_CANCEL}"
                     onClick='document.location.href = "index.php?module=Reports&action=index&query=true&clear_query=true"' id="cancelButton"></td>
             </tr>
-        </table>	
-    </div>	
+        </table>
+    </div>
     <div id='report_details_div' style="display:none">
         <table  width='100%' border="0" cellspacing="0" cellpadding="0" >
             <tr>
-                <td align='left'><input type='button' title="{$MOD.LBL_PREVIOUS}" class="button" name="{$MOD.LBL_PREVIOUS}" value="{$MOD.LBL_PREVIOUS}" 
-                    onClick='SUGAR.reports.showWizardStep(1);' id="previousButton">&nbsp;&nbsp;<input type='button' title="{$APP.LBL_SAVE_BUTTON_LABEL}" class="button" name="{$APP.LBL_SAVE_BUTTON_LABEL}" value="{$APP.LBL_SAVE_BUTTON_LABEL}"
-                    onClick='SUGAR.reports.saveReport();' id="saveButton">&nbsp;&nbsp;<input type='button' title="{$MOD.LBL_PREVIEW_REPORT}" class="button" name="{$MOD.LBL_PREVIEW_REPORT}" value="{$MOD.LBL_PREVIEW_REPORT}"
-                    onClick='SUGAR.reports.previewReport();' id="previewButton">&nbsp;&nbsp;<input type='button' title="{$MOD.LBL_SAVE_RUN}" class="button" name="{$MOD.LBL_SAVE_RUN}" value="{$MOD.LBL_SAVE_RUN}"
-                    onClick='SUGAR.reports.runReport();' id="saveAndRunButton">{if $record && ($IS_ADMIN == 1|| $IS_OWNER == 1)}&nbsp;&nbsp;<input type='button' title="{$APP.LBL_DELETE_BUTTON_LABEL}" class="button" name="{$APP.LBL_DELETE_BUTTON_LABEL}" value="{$APP.LBL_DELETE_BUTTON_LABEL}"
-                    onClick='SUGAR.reports.deleteReport();' id="deleteButton">{/if}&nbsp;&nbsp;<input type='button' title="{$MOD.LBL_CANCEL}" class="button" name="{$MOD.LBL_CANCEL}" value="{$MOD.LBL_CANCEL}"
+                <td align='left'><input type='button' title="{$MOD.LBL_PREVIOUS}" class="button" name="{$MOD.LBL_PREVIOUS}" value="{$MOD.LBL_PREVIOUS}"
+                    onClick='SUGAR.reports.showWizardStep(1);' id="previousButton">&nbsp;&nbsp;<input type='button' title="{$APP.LBL_SAVE_BUTTON_LABEL}" class="button" name="bt_save" value="{$APP.LBL_SAVE_BUTTON_LABEL}"
+                    onClick='SUGAR.reports.saveReport();' id="saveButton">&nbsp;&nbsp;<input type='button' title="{$MOD.LBL_PREVIEW_REPORT}" class="button" name="bt_back" value="{$MOD.LBL_PREVIEW_REPORT}"
+                    onClick='SUGAR.reports.previewReport();' id="previewButton">&nbsp;&nbsp;<input type='button' title="{$MOD.LBL_SAVE_RUN}" class="button" name="bt_saveNrun" value="{$MOD.LBL_SAVE_RUN}"
+                    onClick='SUGAR.reports.runReport();' id="saveAndRunButton">{if $record && ($IS_ADMIN == 1|| $IS_OWNER == 1)}&nbsp;&nbsp;<input type='button' title="{$APP.LBL_DELETE_BUTTON_LABEL}" class="button" name="bt_delete" value="{$APP.LBL_DELETE_BUTTON_LABEL}"
+                    onClick='SUGAR.reports.deleteReport();' id="deleteButton">{/if}&nbsp;&nbsp;<input type='button' title="{$MOD.LBL_CANCEL}" class="button" name="bt_cancel" value="{$MOD.LBL_CANCEL}"
                     onClick='document.location.href = "index.php?module=Reports&action=index&query=true&clear_query=true"' id="cancelButton"></td>
 
             </tr>
         </table>
-        <br/>	
+        <br/>
         <div class="edit view">
             <table id="report_details_table" border="0"  width="100%" cellspacing="0" cellpadding="0" >
                 <tr>
@@ -334,12 +357,53 @@ background-image:url({$IMG}blank.gif);{literal}}{/literal}
                 <tr>
                     <td scope='row'><label for='show_query'>{$MOD.LBL_SHOW_QUERY}:</label></td>
                     <td><input type="checkbox" class="checkbox" name="show_query" id='show_query'  {if ($show_query)}CHECKED{/if}></td>
-                </tr>			
+                </tr>
+                <!-- Add By Hai Nguyen To Limit Result -->
+                <tr>
+                    <td scope='row'>{$MOD.LBL_LIMIT_RESULT}</td>
+                    <td align=left>
+                        <input type="text" name='limit_result' id="limit_result" size='45' value="{$limit_result}" maxsize="100"/>
+                    </td>
+                </tr>
+                <!-- End Hai Nguyen -->
+                <!--  Custom URL to execute Report - Lap Nguyen-->
+                <tr>
+                    <td scope="row">{$MOD.LBL_CUSTOM_URL}:{$custom_url_help}</td>
+                    <td align=left>
+                        <input type="text" name='custom_url' id="custom_url" size='45' value="{$custom_url}" maxsize="100"/>
+                    </td>
+                </tr>
+                {if $IS_ADMIN == 1}
+                <tr>
+                    <td scope="row">{$MOD.LBL_IS_ADMIN_DATA}: {$is_admin_data_help}</td>
+                    <td align=left>
+                        <input type="hidden" name='is_admin_data' id="is_admin_data" value="0"/>
+                        <input type="checkbox" {$checked_is_admin_data} id="is_admin_data" name="is_admin_data" value="1" title="{$MOD.LBL_IS_ADMIN_DATA}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td scope="row">{$MOD.LBL_IS_ROW_NUMBER}:</td>
+                    <td align=left>
+                        <input type="hidden" name='row_number' id="row_number" value="0"/>
+                        <input type="checkbox" {$checked_is_row_number} id="row_number" name="row_number" value="1" title="{$MOD.LBL_IS_ROW_NUMBER}"/>
+                    </td>
+                </tr>
+                {/if}
+                <tr>
+                    <td scope="row">{$MOD.LBL_REPORT_LIST}:</td>
+
+                    <td align=left>
+                    <select name='list_of[]' id='list_of' multiple='multiple' size="5">
+                    {$list_of_arr}
+                        </select>
+                    </td>
+                </tr>
+                <!--  END -->
                 {/if}
                 <tr>
                     <td scope='row'><label for='assigned_user_name'>{$MOD.LBL_OWNER}:</label> <span class='required'>*</span></td>
                     <td>{$USER_HTML}</td>
-                </tr>	
+                </tr>
                 <tr>
                     <td scope='row'>{$MOD.LBL_TEAM}: <span class='required'>*</span></td>
                     <td>{$TEAM_HTML}</td>
@@ -362,16 +426,16 @@ background-image:url({$IMG}blank.gif);{literal}}{/literal}
         <br/>
         <table  width='100%' border="0" cellspacing="0" cellpadding="0" >
             <tr>
-                <td align='left'><input type='button' title="{$MOD.LBL_PREVIOUS}" class="button" name="{$MOD.LBL_PREVIOUS}" value="{$MOD.LBL_PREVIOUS}" 
-                    onClick='SUGAR.reports.showWizardStep(1);' id="previousButton">&nbsp;&nbsp;<input type='button' title="{$APP.LBL_SAVE_BUTTON_LABEL}" class="button" name="{$APP.LBL_SAVE_BUTTON_LABEL}" value="{$APP.LBL_SAVE_BUTTON_LABEL}"
-                    onClick='SUGAR.reports.saveReport();' id="saveButton">&nbsp;&nbsp;<input type='button' title="{$MOD.LBL_PREVIEW_REPORT}" class="button" name="{$MOD.LBL_PREVIEW_REPORT}" value="{$MOD.LBL_PREVIEW_REPORT}"
-                    onClick='SUGAR.reports.previewReport();' id="previewButton">&nbsp;&nbsp;<input type='button' title="{$MOD.LBL_SAVE_RUN}" class="button" name="{$MOD.LBL_SAVE_RUN}" value="{$MOD.LBL_SAVE_RUN}"
-                    onClick='SUGAR.reports.runReport();' id="saveAndRunButton">{if $record && ($IS_ADMIN == 1|| $IS_OWNER == 1)}&nbsp;&nbsp;<input type='button' title="{$APP.LBL_DELETE_BUTTON_LABEL}" class="button" name="{$APP.LBL_DELETE_BUTTON_LABEL}" value="{$APP.LBL_DELETE_BUTTON_LABEL}"
-                    onClick='SUGAR.reports.deleteReport();' id="deleteButton">{/if}&nbsp;&nbsp;<input type='button' title="{$MOD.LBL_CANCEL}" class="button" name="{$MOD.LBL_CANCEL}" value="{$MOD.LBL_CANCEL}"
+                <td align='left'><input type='button' title="{$MOD.LBL_PREVIOUS}" class="button" name="{$MOD.LBL_PREVIOUS}" value="{$MOD.LBL_PREVIOUS}"
+                    onClick='SUGAR.reports.showWizardStep(1);' id="previousButton">&nbsp;&nbsp;<input type='button' title="{$APP.LBL_SAVE_BUTTON_LABEL}" class="button" name="bt_save" value="{$APP.LBL_SAVE_BUTTON_LABEL}"
+                    onClick='SUGAR.reports.saveReport();' id="saveButton">&nbsp;&nbsp;<input type='button' title="{$MOD.LBL_PREVIEW_REPORT}" class="button" name="bt_back" value="{$MOD.LBL_PREVIEW_REPORT}"
+                    onClick='SUGAR.reports.previewReport();' id="previewButton">&nbsp;&nbsp;<input type='button' title="{$MOD.LBL_SAVE_RUN}" class="button" name="bt_saveNrun" value="{$MOD.LBL_SAVE_RUN}"
+                    onClick='SUGAR.reports.runReport();' id="saveAndRunButton">{if $record && ($IS_ADMIN == 1|| $IS_OWNER == 1)}&nbsp;&nbsp;<input type='button' title="{$APP.LBL_DELETE_BUTTON_LABEL}" class="button" name="bt_delete" value="{$APP.LBL_DELETE_BUTTON_LABEL}"
+                    onClick='SUGAR.reports.deleteReport();' id="deleteButton">{/if}&nbsp;&nbsp;<input type='button' title="{$MOD.LBL_CANCEL}" class="button" name="bt_cancel" value="{$MOD.LBL_CANCEL}"
                     onClick='document.location.href = "index.php?module=Reports&action=index&query=true&clear_query=true"' id="cancelButton"></td>
 
             </tr>
-        </table>	
+        </table>
     </div>
 
 </form>
@@ -407,7 +471,7 @@ background-image:url({$IMG}blank.gif);{literal}}{/literal}
     var showHideChartButton = document.getElementById('showHideChartButton');
     if (chartId == null) {
     if (showHideChartButton != null) {
-    showHideChartButton.style.display = 'none';	
+    showHideChartButton.style.display = 'none';
     }
     } // if
     }
@@ -435,10 +499,10 @@ background-image:url({$IMG}blank.gif);{literal}}{/literal}
     onSuccess : onLoadDoInit,
     base : "include/javascript/yui/build/"
     });
-    reportLoader.addModule({ 
+    reportLoader.addModule({
     name: "sugarwidgets",
-    type: "js", 
-    fullpath: "include/javascript/sugarwidgets/SugarYUIWidgets.js", 
+    type: "js",
+    fullpath: "include/javascript/sugarwidgets/SugarYUIWidgets.js",
     varName: "YAHOO.SUGAR",
     requires: ["datatable", "dragdrop", "treeview", "tabview", "button", "autocomplete", "container"]
     });

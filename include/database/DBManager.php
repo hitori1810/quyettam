@@ -596,6 +596,8 @@ protected function checkQuery($sql, $object_name = false)
 				}
 			}
 
+            $val = trim($val);  // Fixed by Hieu Nguyen on 20150312
+
 			//handle auto increment values here - we may have to do something like nextval for oracle
 			if (!empty($fieldDef['auto_increment'])) {
 				$auto = $this->getAutoIncrementSQL($table, $fieldDef['name']);
@@ -2099,6 +2101,8 @@ protected function checkQuery($sql, $object_name = false)
 			    $val = $this->truncate($val, $fieldDef['len']);
 			}
 
+            $val = trim($val);  // Fixed by Hieu Nguyen on 20150312
+
     		if(!is_null($val) || !empty($fieldDef['required'])) {
     			$columns[] = "{$fieldDef['name']}=".$this->massageValue($val, $fieldDef);
     		} elseif($this->isNullable($fieldDef)) {
@@ -2946,7 +2950,7 @@ protected function checkQuery($sql, $object_name = false)
 			$values['before_value_string'] = $this->massageValue($changes['before'], $fieldDefs['before_value_string']);
 			$values['after_value_string'] = $this->massageValue($changes['after'], $fieldDefs['after_value_string']);
 		}
-		$values['date_created'] = $this->massageValue(TimeDate::getInstance()->nowDb(), $fieldDefs['date_created'] );
+		$values['date_created'] = $this->massageValue(TimeDate::getInstance()->nowDb(), $fieldDefs['date_created'] );   // Fixed by Lap Nguyen - 11/04/2017
 		if(!empty($current_user->id)) {
 		    $values['created_by'] = $this->massageValue($current_user->id, $fieldDefs['created_by']);
 		}

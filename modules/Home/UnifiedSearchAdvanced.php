@@ -28,7 +28,7 @@ class UnifiedSearchAdvanced {
         if(!empty($_REQUEST['query_string'])){
             $query_string = trim($_REQUEST['query_string']);
             if(!empty($query_string)){
-                $this->query_string = $query_string;
+                $this->query_string = '%'.$query_string;    //Bổ sung Sugar Search Advance LIKE % giống GLOBAL Search - Lap Nguyen
             }
         }
         $this->cache_search = sugar_cached('modules/unified_search_modules.php');

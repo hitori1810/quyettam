@@ -39,16 +39,16 @@ $subpanel_layout = array(
 			 'usage'				=> 'query_only',
              'force_exists'			=> true,
 		),
-		'contact_name'=>array(
-             'widget_class'         => 'SubPanelDetailViewLink',
-             'target_record_key'    => 'contact_id',
-             'target_module'        => 'Contacts',
-             'module'               => 'Contacts',
-             'vname'                => 'LBL_LIST_CONTACT',
-             'width'                => '11%',
-             'sortable'             => false,
-             'force_exists'			=> true,
-        ),
+//		'contact_name'=>array(
+//             'widget_class'         => 'SubPanelDetailViewLink',
+//             'target_record_key'    => 'contact_id',
+//             'target_module'        => 'Contacts',
+//             'module'               => 'Contacts',
+//             'vname'                => 'LBL_LIST_CONTACT',
+//             'width'                => '11%',
+//             'sortable'             => false,
+//             'force_exists'			=> true,
+//        ),
         'contact_id'=>array(
             'usage'=>'query_only',
     		'force_exists'=>true

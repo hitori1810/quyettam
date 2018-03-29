@@ -29,7 +29,8 @@ class SugarWidgetFieldEnum extends SugarWidgetReportField
     public function queryFilterNot_Empty($layout_def)
     {
         $column = $this->_get_column_select($layout_def);
-        return "(coalesce(" . $this->reporter->db->convert($column, "length") . ",0) > 0 AND $column != '^^' )\n";
+        //return "(coalesce(" . $this->reporter->db->convert($column, "length") . ",0) > 0 AND $column != '^^' )\n";
+        return "( 1=1 )\n"; // Custom fillter Is not Empty -> Select All by Lap Nguyen
     }
 
 	public function queryFilteris($layout_def) {

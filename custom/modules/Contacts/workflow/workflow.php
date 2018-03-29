@@ -13,8 +13,9 @@ include_once("include/workflow/custom_utils.php");
 		include("custom/modules/Contacts/workflow/alerts_array.php");
 		include("custom/modules/Contacts/workflow/actions_array.php");
 		include("custom/modules/Contacts/workflow/plugins_array.php");
-		
- if( ( isset($focus->assigned_user_id) && ( empty($focus->fetched_row) || array_key_exists('assigned_user_id', $focus->fetched_row) ) && $focus->fetched_row['assigned_user_id'] !== $focus->assigned_user_id) ){ 
+		if(empty($focus->fetched_row['id']) || (!empty($_SESSION["workflow_cron"]) && $_SESSION["workflow_cron"]=="Yes" && !empty($_SESSION["workflow_id_cron"]) && $_SESSION["workflow_id_cron"]=="222f0a9c-647a-7b85-f397-580f16fd374d")){ 
+ 
+ if((isset($focus->student_type) && $focus->student_type ==  'Adult')){ 
  
 
 	 //Frame Secondary 
@@ -23,11 +24,19 @@ include_once("include/workflow/custom_utils.php");
 	 //Secondary Triggers 
 
 	global $triggeredWorkflows;
-	if (!isset($triggeredWorkflows['836ff768_ca4e_e9ec_526f_55a3743c7f97'])){
-		$triggeredWorkflows['836ff768_ca4e_e9ec_526f_55a3743c7f97'] = true;
-		$_SESSION['WORKFLOW_ALERTS'] = isset($_SESSION['WORKFLOW_ALERTS']) && is_array($_SESSION['WORKFLOW_ALERTS']) ? $_SESSION['WORKFLOW_ALERTS'] : array();
-		$_SESSION['WORKFLOW_ALERTS']['Contacts'] = isset($_SESSION['WORKFLOW_ALERTS']['Contacts']) && is_array($_SESSION['WORKFLOW_ALERTS']['Contacts']) ? $_SESSION['WORKFLOW_ALERTS']['Contacts'] : array();
-		$_SESSION['WORKFLOW_ALERTS']['Contacts'] = array_merge($_SESSION['WORKFLOW_ALERTS']['Contacts'],array ('Contacts0_alert0',));	}
+	if (!isset($triggeredWorkflows['5a84c6d6_db97_46fa_a14f_58b3b06d8999'])){
+		$triggeredWorkflows['5a84c6d6_db97_46fa_a14f_58b3b06d8999'] = true;
+		 $alertshell_array = array(); 
+
+	 $alertshell_array['alert_msg'] = "5f494a9b-4b26-4ef9-48c6-580f15565d96"; 
+
+	 $alertshell_array['source_type'] = "Custom Template"; 
+
+	 $alertshell_array['alert_type'] = "Email"; 
+
+	 process_workflow_alerts($focus, $alert_meta_array['Contacts0_alert0'], $alertshell_array, false); 
+ 	 unset($alertshell_array); 
+		}
  
 
 	 //End Frame Secondary 
@@ -37,6 +46,9 @@ include_once("include/workflow/custom_utils.php");
 
  //End if trigger is true 
  } 
+
+		 //End if new, update, or all record
+ 		} 
 
 
 	//end function process_wflow_triggers

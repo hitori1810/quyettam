@@ -210,6 +210,18 @@
       'bean_name' => 'User',
       'source' => 'non-db',
     ),
+    'parent_id' => 
+    array (
+      'name' => 'parent_id',
+      'vname' => 'LBL_SAVED_SEARCH_PARENT_ID',
+      'type' => 'id',
+    ),
+    'public' => 
+    array (
+      'name' => 'public',
+      'vname' => 'LBL_SAVED_SEARCH_PUBLIC',
+      'type' => 'bool',
+    ),
   ),
   'relationships' => 
   array (

@@ -10,9 +10,7 @@ array (
         'buttons' => 
         array (
           0 => 'EDIT',
-          1 => 'DUPLICATE',
           2 => 'DELETE',
-          3 => 'FIND_DUPLICATES',
         ),
       ),
       'maxColumns' => '2',
@@ -43,7 +41,6 @@ array (
           'panelDefault' => 'expanded',
         ),
       ),
-      'syncDetailEditViews' => true,
     ),
     'panels' => 
     array (
@@ -53,27 +50,49 @@ array (
         array (
           0 => 
           array (
-            'name' => 'name',
-            'label' => 'LBL_SUBJECT',
+            'name' => 'case_number',
+            'label' => 'LBL_CASE_NUMBER',
           ),
-        ),
-        1 => 
-        array (
-          0 => 'account_name',
           1 => 'priority',
         ),
-        2 => 
+        1 => 
         array (
           0 => 'status',
           1 => 'type',
         ),
+        2 => 
+        array (
+          0 => 
+          array (
+            'name' => 'student_name',
+            'label' => 'LBL_STUDENT_NAME',
+          ),
+          1 => 
+          array (
+            'name' => 'target',
+            'label' => 'LBL_TARGET',
+          ),
+        ),
         3 => 
         array (
-          0 => 'description',
+          0 => 
+          array (
+            'name' => 'name',
+            'label' => 'LBL_SUBJECT',
+          ),
         ),
         4 => 
         array (
-          0 => 'resolution',
+          0 => 'description',
+        ),
+        5 => 
+        array (
+          0 => 
+          array (
+            'name' => 'work_log',
+            'comment' => 'Free-form text used to denote activities of interest',
+            'label' => 'LBL_WORK_LOG',
+          ),
         ),
       ),
       'LBL_PANEL_ASSIGNMENT' => 
@@ -87,8 +106,9 @@ array (
           ),
           1 => 
           array (
-            'name' => 'date_entered',
-            'customCode' => '{$fields.date_entered.value} {$APP.LBL_BY} {$fields.created_by_name.value}',
+            'name' => 'date_modified',
+            'label' => 'LBL_DATE_MODIFIED',
+            'customCode' => '{$fields.date_modified.value} {$APP.LBL_BY} {$fields.modified_by_name.value}',
           ),
         ),
         1 => 
@@ -96,9 +116,8 @@ array (
           0 => 'team_name',
           1 => 
           array (
-            'name' => 'date_modified',
-            'label' => 'LBL_DATE_MODIFIED',
-            'customCode' => '{$fields.date_modified.value} {$APP.LBL_BY} {$fields.modified_by_name.value}',
+            'name' => 'date_entered',
+            'customCode' => '{$fields.date_entered.value} {$APP.LBL_BY} {$fields.created_by_name.value}',
           ),
         ),
       ),

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.11, created on 2018-03-27 23:04:38
+<?php /* Smarty version 2.6.11, created on 2018-03-29 10:02:18
          compiled from include/MVC/View/tpls/modulelistmenu.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'htmlentities', 'include/MVC/View/tpls/modulelistmenu.tpl', 20, false),array('function', 'sugar_link', 'include/MVC/View/tpls/modulelistmenu.tpl', 20, false),)), $this); ?>

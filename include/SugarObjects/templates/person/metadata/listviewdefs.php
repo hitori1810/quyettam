@@ -23,7 +23,7 @@ $listViewDefs[$module_name] = array(
 		'link' => true,
 		'orderBy' => 'last_name',
         'default' => true,
-        'related_fields' => array('first_name', 'last_name', 'salutation'),
+        'related_fields' => array('last_name', 'first_name', 'salutation'),
 		), 
 	'TITLE' => array(
 		'width' => '15%', 

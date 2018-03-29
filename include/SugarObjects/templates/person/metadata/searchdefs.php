@@ -30,8 +30,8 @@ $module_name = '<module_name>';
 	 							array ('name' => 'favorites_only','label' => 'LBL_FAVORITES_FILTER','type' => 'bool',),
 							),
 						'advanced_search' => array(
-								'first_name', 
-								'last_name', 
+                                'last_name',
+								'first_name',  
 								'address_city',
 								'created_by_name',
 								'do_not_call',

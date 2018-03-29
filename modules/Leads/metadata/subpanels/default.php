@@ -81,12 +81,12 @@ $subpanel_layout = array(
 		 	'module' => 'Leads',
 			'width' => '4%',
 		),
-		'remove_button'=>array(
-			'vname' => 'LBL_REMOVE',
-			'widget_class' => 'SubPanelRemoveButton',
-		 	'module' => 'Leads',
-	 		'width' => '4%',
-		),
+//		'remove_button'=>array(
+//			'vname' => 'LBL_REMOVE',
+//			'widget_class' => 'SubPanelRemoveButton',
+//		 	'module' => 'Leads',
+//	 		'width' => '4%',
+//		),
 	),
 );
 

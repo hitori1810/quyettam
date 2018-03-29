@@ -24,9 +24,15 @@
 <form action="index.php" method="post" name="popup_query_form" id="popup_query_form">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td scope="row" nowrap="nowrap" width="15%">{MOD.LBL_NAME}</td>
-<td width="70%"><input id="team_name_input" type="text" size="15" tabindex="1" name="name" class="dataField" value="{NAME}"></td>
-</tr><tr>
+    <td scope="row" nowrap="nowrap" width="15%">{MOD.LBL_NAME}</td>
+    <td width="30%"><input id="team_name_input" type="text" size="15" tabindex="1" name="name" class="dataField" value="{NAME}"></td>
+    <td scope="row" nowrap="nowrap" width="15%">{MOD.LBL_REGION}</td>
+    <td width="30%">
+        <select class="team_region_input" id = "region" name="region">
+            {REGION_OPTIONS}
+        </select>
+    </td>
+<tr>
 <td valign="top" width="100%" align="left" colspan="2">
 <input type="hidden" name="module" value="{MODULE_NAME}" />
 <input type="hidden" name="action" value="Popup" />
@@ -57,13 +63,15 @@
 <tr height="20" class="listViewThS1">
 <td scope="col" class="listViewThS1" NOWRAP>{CHECKALL}</td>
 <td scope="col" width="15%" class="listViewThS1" nowrap="nowrap"><a href="{ORDER_BY}name" class="listViewThLinkS1">{MOD.LBL_LIST_NAME}{arrow_start}{name_arrow}{arrow_end}</a></td>
-<td scope="col" width="75%" class="listViewThS1" nowrap="nowrap">{MOD.LBL_LIST_DESCRIPTION}</td>
+<td scope="col" width="15%" class="listViewThS1" nowrap="nowrap">{MOD.LBL_REGION}</td>
+<td scope="col" width="60%" class="listViewThS1" nowrap="nowrap">{MOD.LBL_LIST_DESCRIPTION}</td>
 <td scope="col" width="10%" class="listViewThS1" nowrap="nowrap"><a href="{ORDER_BY}private" class="listViewThLinkS1">{MOD.LBL_PRIVATE}{arrow_start}{private_arrow}{arrow_end}</a></td>
 </tr>
 <!-- BEGIN: row -->
 <tr class="{ROW_COLOR}S1" height="20">
 <td valign='top'>{PREROW}</td>
 <td scope='row' valign="top"><a href="#" onclick="send_team_to_form('Teams','{TEAM.ID}');">{TEAM.NAME}</a></td>
+<td valign="top">{TEAM.REGION}</td>
 <td valign="top">{TEAM.DESCRIPTION}</td>
 <td valign="top">{TEAM.PRIVATE}</td>
 </tr>

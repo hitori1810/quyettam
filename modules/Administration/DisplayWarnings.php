@@ -51,7 +51,7 @@ if (is_admin($current_user))
     $admin = new Administration();
     $settings = $admin->retrieveSettings();
     if (!empty($settings->settings['info_fts_index_done'])) {
-        //displayAdminError(translate('LBL_FTS_INDEXING_DONE', 'Administration'));
+        displayAdminError(translate('LBL_FTS_INDEXING_DONE', 'Administration'));
     }
 }
 

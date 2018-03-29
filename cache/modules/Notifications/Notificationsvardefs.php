@@ -27,9 +27,10 @@
         'boost' => 3,
       ),
       'required' => true,
-      'importable' => 'required',
+      'importable' => 'true',
       'duplicate_merge' => 'enabled',
       'merge_filter' => 'selected',
+      'readonly' => true,
     ),
     'date_entered' => 
     array (
@@ -125,8 +126,9 @@
       'vname' => 'LBL_DESCRIPTION',
       'type' => 'text',
       'comment' => 'Full text of the note',
-      'rows' => 6,
+      'rows' => 4,
       'cols' => 80,
+      'readonly' => true,
     ),
     'deleted' => 
     array (
@@ -175,6 +177,8 @@
       'audited' => true,
       'comment' => 'User ID assigned to record',
       'duplicate_merge' => 'disabled',
+      'massupdate' => false,
+      'readonly' => true,
     ),
     'assigned_user_name' => 
     array (
@@ -189,6 +193,8 @@
       'id_name' => 'assigned_user_id',
       'module' => 'Users',
       'duplicate_merge' => 'disabled',
+      'massupdate' => false,
+      'readonly' => true,
     ),
     'assigned_user_link' => 
     array (
@@ -211,82 +217,93 @@
       'name' => 'is_read',
       'vname' => 'LBL_IS_READ',
       'type' => 'bool',
-      'massupdate' => 0,
+      'massupdate' => true,
       'comments' => '',
       'help' => '',
       'importable' => 'false',
       'duplicate_merge' => 'disabled',
       'duplicate_merge_dom_value' => '0',
       'audited' => 0,
+      'default' => 0,
       'reportable' => 1,
+    ),
+    'severity' => 
+    array (
+      'len' => 15,
+      'name' => 'severity',
+      'options' => 'notifications_severity_list',
+      'required' => true,
+      'type' => 'enum',
+      'massupdate' => false,
+      'vname' => 'LBL_SEVERITY',
+      'readonly' => true,
     ),
     'parent_name' => 
     array (
-      'required' => false,
-      'source' => 'non-db',
       'name' => 'parent_name',
-      'vname' => 'LBL_FLEX_RELATE',
-      'type' => 'parent',
-      'massupdate' => 0,
-      'no_default' => false,
-      'comments' => '',
-      'help' => '',
-      'importable' => 'true',
-      'duplicate_merge' => 'disabled',
-      'duplicate_merge_dom_value' => '0',
-      'audited' => false,
-      'reportable' => true,
-      'unified_search' => false,
-      'merge_filter' => 'disabled',
-      'len' => 25,
-      'size' => '20',
-      'options' => 'parent_type_display',
-      'studio' => 'visible',
+      'parent_type' => 'record_type_display',
       'type_name' => 'parent_type',
       'id_name' => 'parent_id',
-      'parent_type' => 'record_type_display',
+      'vname' => 'LBL_LIST_RELATED_TO',
+      'type' => 'parent',
+      'group' => 'parent_name',
+      'source' => 'non-db',
+      'options' => 'parent_type_display',
+      'studio' => true,
+      'massupdate' => false,
+      'readonly' => true,
     ),
     'parent_type' => 
     array (
-      'required' => false,
       'name' => 'parent_type',
       'vname' => 'LBL_PARENT_TYPE',
       'type' => 'parent_type',
-      'massupdate' => 0,
-      'no_default' => false,
-      'comments' => '',
-      'help' => '',
-      'importable' => 'true',
-      'duplicate_merge' => 'disabled',
-      'duplicate_merge_dom_value' => 0,
-      'audited' => false,
-      'reportable' => true,
-      'unified_search' => false,
-      'merge_filter' => 'disabled',
-      'len' => 255,
-      'size' => '20',
       'dbType' => 'varchar',
-      'studio' => 'hidden',
+      'group' => 'parent_name',
+      'options' => 'parent_type_display',
+      'len' => 100,
+      'comment' => 'Module notification is associated with.',
+      'studio' => 
+      array (
+        'searchview' => true,
+        'wirelesslistview' => true,
+      ),
     ),
     'parent_id' => 
     array (
-      'required' => false,
       'name' => 'parent_id',
       'vname' => 'LBL_PARENT_ID',
       'type' => 'id',
-      'massupdate' => 0,
-      'no_default' => false,
-      'comments' => '',
-      'help' => '',
-      'importable' => 'true',
-      'duplicate_merge' => 'disabled',
-      'duplicate_merge_dom_value' => 0,
-      'audited' => false,
-      'reportable' => true,
-      'unified_search' => false,
-      'merge_filter' => 'disabled',
-      'len' => 36,
-      'size' => '20',
+      'group' => 'parent_name',
+      'reportable' => false,
+      'comment' => 'ID of item indicated by parent_type.',
+      'studio' => 
+      array (
+        'searchview' => false,
+      ),
+    ),
+  ),
+  'indices' => 
+  array (
+    'id' => 
+    array (
+      'name' => 'notificationspk',
+      'type' => 'primary',
+      'fields' => 
+      array (
+        0 => 'id',
+      ),
+    ),
+    0 => 
+    array (
+      'name' => 'idx_notifications_my_unread_items',
+      'type' => 'index',
+      'fields' => 
+      array (
+        0 => 'assigned_user_id',
+        1 => 'is_read',
+        2 => 'deleted',
+      ),
     ),
   ),
   'relationships' => 
@@ -320,19 +337,6 @@
       'rhs_table' => 'notifications',
       'rhs_key' => 'assigned_user_id',
       'relationship_type' => 'one-to-many',
-    ),
-  ),
-  'optimistic_lock' => true,
-  'indices' => 
-  array (
-    'id' => 
-    array (
-      'name' => 'notificationspk',
-      'type' => 'primary',
-      'fields' => 
-      array (
-        0 => 'id',
-      ),
     ),
   ),
   'name_format_map' => 

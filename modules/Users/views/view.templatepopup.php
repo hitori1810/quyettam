@@ -85,6 +85,7 @@ class UsersViewTemplatePopup extends ViewPopup
             $displayColumns = array();
             $filter_fields = array();
             $popup = new PopupSmarty($this->bean, $this->module);
+            $popup->headerTpl = 'custom/modules/Users/tpls/PopupHeader.tpl';
             $this->bean->ACLFilterFieldList($listViewDefs[$this->module], array("owner_override" => true));
             foreach($listViewDefs[$this->module] as $col => $params) {
                 $filter_fields[strtolower($col)] = true;

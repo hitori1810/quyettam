@@ -1,5 +1,6 @@
 <?php
 
+    require_once("custom/include/utils/FieldHelper.php");
     require_once("custom/modules/C_KeyboardSetting/KeyboardSettingHelper.php");
     
     class C_KeyboardSettingViewEdit extends ViewEdit {
@@ -25,7 +26,7 @@
                     foreach($appliedFields as $fieldName => $config) {
                         $appliedFieldArr[] = array(
                             'field_name' => $fieldName, 
-                            'label' => KeyboardSettingHelper::getLabel($appliedModule, $fieldName),
+                            'label' => FieldHelper::getLabel($appliedModule, $fieldName),
                             'correction_type' => $config->correction_type
                         );
                         

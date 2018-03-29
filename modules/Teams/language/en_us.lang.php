@@ -44,13 +44,13 @@ $mod_strings = array (
 	'LBL_MODULE_TITLE' => 'Teams: Home',
 	'LBL_NAME' => 'Team Name:',
     'LBL_NAME_2' => 'Team Name(2):',
-    'LBL_PRIMARY_TEAM_NAME' => 'Primary Team Name',
+    'LBL_PRIMARY_TEAM_NAME' => 'Center',
 	'LBL_NEW_FORM_TITLE' => 'New Team',
 	'LBL_PRIVATE' => 'Private',
 	'LBL_PRIVATE_TEAM_FOR' => 'Private team for: ',
 	'LBL_SEARCH_FORM_TITLE' => 'Team Search',
 	'LBL_TEAM_MEMBERS' => 'Team Members',
-	'LBL_TEAM' => 'Teams:',
+	'LBL_TEAM' => 'Center:',
 	'LBL_USERS_SUBPANEL_TITLE' => 'Users',
 	'LBL_USERS'=>'Users',
 
@@ -64,11 +64,17 @@ $mod_strings = array (
 
     'LNK_LIST_TEAM' => 'Teams',
 	'LNK_LIST_TEAMNOTICE' => 'Team Notices',
-	'LNK_NEW_TEAM' => 'Create Team',
+    'LNK_NEW_TEAM' => 'Create Team',
+    'LBL_PREFIX' => 'Team Code',
+    'LBL_EC_EMAIL' => 'Email Group Sale',
+    'LBL_EFL_EMAIL' => 'Email Group EFL',
+    'LBL_CM_EMAIL' => 'Email CM',
 
     'NTC_DELETE_CONFIRMATION' => 'Are you sure you want to delete this record?',
 	'NTC_REMOVE_TEAM_MEMBER_CONFIRMATION' => 'Are you sure you want to remove this user\\\'s membership?',
 	'LBL_EDITLAYOUT' => 'Edit Layout' /*for 508 compliance fix*/,
+
+
 );
 
 

@@ -204,11 +204,11 @@ $vardef_meta_array = array (
 		//end inc_override
 		),
 		'ex_override' => array(
-			'name' => array('users', 'emails', 'product_bundles', 'email_addresses', 'email_addresses_primary', 'emailmarketing', 'tracked_urls', 'queueitems', 'log_entries', 'contract_types', 'reports_to_link'),
-			'module' => array('Users', 'Teams',
+			'name' => array('emails', 'product_bundles', 'email_addresses', 'email_addresses_primary', 'emailmarketing', 'tracked_urls', 'queueitems', 'log_entries', 'contract_types', 'reports_to_link'),
+			'module' => array('Teams',
 			    'CampaignLog',
 			    'Releases'),
-		//end ex_override
+		//end ex_override  Add User vào List Alert WorkFlow - By Lap Nguyen  ('module' => array('Users', 'Teams', ||| 'name' => array('users', 'emails', )
 		)
 
 	//end alert_rel_filter

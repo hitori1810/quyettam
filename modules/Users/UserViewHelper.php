@@ -114,7 +114,7 @@ class UserViewHelper {
             $this->ss->assign('IS_GROUP', '1');
             $this->usertype='GROUP';
         }
-        
+
         // Add new type: TEMPLATE - Thuan Nguyen
         $this->ss->assign('IS_TEMPLATE', '0');
         if ((!empty($this->bean->is_template) && $this->bean->is_template) || (isset($_REQUEST['usertype']) && $_REQUEST['usertype']=='template')) {
@@ -179,6 +179,14 @@ class UserViewHelper {
             $buttons_footer[]="<input type='button' class='button' id='reset_user_preferences_footer' onclick='if(confirm(\"{$reset_pref_warning}\"))window.location=\"".$_SERVER['PHP_SELF'] .'?'.$user_preference_url."&reset_preferences=true\";' value='".translate('LBL_RESET_PREFERENCES','Users')."' />";
             $buttons_footer[]="<input type='button' class='button' id='reset_homepage_footer' onclick='if(confirm(\"{$reset_home_warning}\"))window.location=\"".$_SERVER['PHP_SELF'] .'?'.$the_query_string."&reset_homepage=true\";' value='".translate('LBL_RESET_HOMEPAGE','Users')."' />";
 
+            // Added by Hieu Nguyen on 2015-05-21
+            if($current_user->is_admin == 1 && $this->bean->id != '' && $this->bean->id != $current_user->id && $_SESSION['impersonating_user'] == null) {
+                global $mod_strings;
+                $title = string_format($mod_strings['BTN_IMPERSONATE_TITLE'], array('user_name' => $this->bean->name));
+                $buttons_header[] = '<input type="button" class="button" id="login_as_header" onclick="location.href=\'index.php?module=Users&action=Impersonate&record='. $this->bean->id .'\'" value="'. $title .'" />';
+                $buttons_footer[] = '<input type="button" class="button" id="login_as_footer" onclick="location.href=\'index.php?module=Users&action=Impersonate&record='. $this->bean->id .'\'" value="'. $title .'" />';
+            }
+            // End Hieu Nguyen
         }
         if (isset($buttons_header)) $this->ss->assign("BUTTONS_HEADER", $buttons_header);
         if (isset($buttons_footer)) $this->ss->assign("BUTTONS_FOOTER", $buttons_footer);
@@ -738,7 +746,7 @@ class UserViewHelper {
             require_once('include/Sugarpdf/FontManager.php');
             $fontManager = new FontManager();
             $fontlist = $fontManager->getSelectFontList();
-            
+
 			if(isset($this->bean->id)){
 			$this->ss->assign('PDF_FONT_NAME_MAIN',get_select_options_with_id($fontlist, PDF_FONT_NAME_MAIN));
             $this->ss->assign('PDF_FONT_NAME_MAIN_DISPLAY',$fontlist[PDF_FONT_NAME_MAIN]);
@@ -754,7 +762,7 @@ class UserViewHelper {
             $this->ss->assign('PDF_FONT_NAME_DATA_DISPLAY',$fontlist['dejavusans']);
 			$this->ss->assign('PDF_FONT_SIZE_DATA',PDF_FONT_SIZE_DATA);
 			}
-            
+
             ///////// END PDF SETTINGS
             ////////////////////////////////////////////////////////////////////////////////
         }

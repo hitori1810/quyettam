@@ -131,8 +131,8 @@ $layout_defs['Accounts'] = array(
 			'add_subpanel_data' => 'contact_id',
 			'title_key' => 'LBL_CONTACTS_SUBPANEL_TITLE',
 			'top_buttons' => array(
-				array('widget_class' => 'SubPanelTopCreateAccountNameButton'),
-				array('widget_class' => 'SubPanelTopSelectButton', 'mode'=>'MultiSelect')
+	//			array('widget_class' => 'SubPanelTopCreateAccountNameButton'),
+	//			array('widget_class' => 'SubPanelTopSelectButton', 'mode'=>'MultiSelect')
 			),
 
 		),
@@ -159,11 +159,11 @@ $layout_defs['Accounts'] = array(
 			'add_subpanel_data' => 'lead_id',
 			'title_key' => 'LBL_LEADS_SUBPANEL_TITLE',
 			'top_buttons' => array(
-				array('widget_class' => 'SubPanelTopCreateLeadNameButton'),
-				array('widget_class' => 'SubPanelTopSelectButton',
-					'popup_module' => 'Opportunities',
-					'mode' => 'MultiSelect',
-				),
+	//			array('widget_class' => 'SubPanelTopCreateLeadNameButton'),
+//				array('widget_class' => 'SubPanelTopSelectButton',
+//					'popup_module' => 'Opportunities',
+	//				'mode' => 'MultiSelect',
+	//			),
 			),
 
 		),
@@ -275,7 +275,7 @@ $layout_defs['Accounts'] = array(
 			'add_subpanel_data' => 'contract_id',
 			'title_key' => 'LBL_CONTRACTS_SUBPANEL_TITLE',
 			'top_buttons' => array(
-				array('widget_class' => 'SubPanelTopButtonQuickCreate'),
+				array('widget_class' => 'SubPanelTopCreateButton'),
 			),
 		),
 

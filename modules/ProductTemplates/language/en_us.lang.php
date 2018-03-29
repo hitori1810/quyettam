@@ -60,7 +60,7 @@ $mod_strings = array (
   'LBL_MFT_PART_NUM' => 'Mft Part Number:',
   'LBL_MODULE_NAME' => 'Product Catalog',
   'LBL_MODULE_NAME_SINGULAR' => 'Product Catalog',
-  'LBL_MODULE_ID' => 'ProductTemplates',  
+  'LBL_MODULE_ID' => 'ProductTemplates',
   'LBL_MODULE_TITLE' => 'Product Catalog: Home',
   'LBL_NAME' => 'Product Name:',
   'LBL_NEW_FORM_TITLE' => 'Create Item',
@@ -110,6 +110,7 @@ $mod_strings = array (
   'LBL_PRODUCT_CATEGORIES' => 'Product Categories',
   'LBL_MANUFACTURERS' => 'Manufacturers',
   'LBL_PRODUCT_TYPES' => 'Product Types',
+  'LBL_INVENTORYDETAIL' => 'Inventory Detail',
 
 );
 

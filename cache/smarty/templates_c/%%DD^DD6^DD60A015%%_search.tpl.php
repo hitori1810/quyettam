@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.11, created on 2018-03-27 23:02:59
+<?php /* Smarty version 2.6.11, created on 2018-03-29 10:02:13
          compiled from themes/RacerX/tpls/_search.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'sugar_getimagepath', 'themes/RacerX/tpls/_search.tpl', 20, false),)), $this); ?>
@@ -51,7 +51,8 @@ $("#sugar_spot_search").ready(function() {
 
 </script>
 
-<?php if ($this->_tpl_vars['FTS_AUTOCOMPLETE_ENABLE']):  echo '
+<?php if ($this->_tpl_vars['FTS_AUTOCOMPLETE_ENABLE']): ?>
+<?php echo '
 <script>
     $("#glblSearchBtn").click(function(){
         SUGAR.util.doWhen(function(){
@@ -99,4 +100,4 @@ $("#sugar_spot_search").ready(function() {
 </script>
 '; ?>
 
-<?php endif; ?>
+<?php endif; ?>

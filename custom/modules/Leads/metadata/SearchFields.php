@@ -1,53 +1,49 @@
 <?php
-// created: 2016-06-06 16:31:13
+// created: 2017-11-29 23:46:29
 $searchFields['Leads'] = array (
-  'first_name' => 
+  'first_name' =>
   array (
     'query_type' => 'default',
   ),
-  'last_name' => 
+  'last_name' =>
   array (
     'query_type' => 'default',
   ),
-  'tax_code' => 
+  'search_name' =>
   array (
     'query_type' => 'default',
-  ),
-  'search_name' => 
-  array (
-    'query_type' => 'default',
-    'db_field' => 
+    'db_field' =>
     array (
       0 => 'first_name',
       1 => 'last_name',
     ),
     'force_unifiedsearch' => true,
   ),
-  'account_name' => 
+  'account_name' =>
   array (
     'query_type' => 'default',
-    'db_field' => 
+    'db_field' =>
     array (
       0 => 'leads.account_name',
     ),
   ),
-  'lead_source' => 
+  'lead_source' =>
   array (
     'query_type' => 'default',
     'operator' => '=',
     'options' => 'lead_source_dom',
     'template_var' => 'LEAD_SOURCE_OPTIONS',
   ),
-  'do_not_call' => 
+  'do_not_call' =>
   array (
     'query_type' => 'default',
     'operator' => '=',
     'input_type' => 'checkbox',
   ),
-  'phone' => 
+  'phone' =>
   array (
     'query_type' => 'default',
-    'db_field' => 
+    'db_field' =>
     array (
       0 => 'phone_mobile',
       1 => 'phone_work',
@@ -56,73 +52,73 @@ $searchFields['Leads'] = array (
       4 => 'phone_home',
     ),
   ),
-  'email' => 
+  'email' =>
   array (
     'query_type' => 'default',
     'operator' => 'subquery',
     'subquery' => 'SELECT eabr.bean_id FROM email_addr_bean_rel eabr JOIN email_addresses ea ON (ea.id = eabr.email_address_id) WHERE eabr.deleted=0 AND ea.email_address LIKE',
-    'db_field' => 
+    'db_field' =>
     array (
       0 => 'id',
     ),
   ),
-  'assistant' => 
+  'assistant' =>
   array (
     'query_type' => 'default',
   ),
-  'website' => 
+  'website' =>
   array (
     'query_type' => 'default',
   ),
-  'address_street' => 
+  'address_street' =>
   array (
     'query_type' => 'default',
-    'db_field' => 
+    'db_field' =>
     array (
       0 => 'primary_address_street',
       1 => 'alt_address_street',
     ),
   ),
-  'address_city' => 
+  'address_city' =>
   array (
     'query_type' => 'default',
-    'db_field' => 
+    'db_field' =>
     array (
       0 => 'primary_address_city',
       1 => 'alt_address_city',
     ),
   ),
-  'address_state' => 
+  'address_state' =>
   array (
     'query_type' => 'default',
-    'db_field' => 
+    'db_field' =>
     array (
       0 => 'primary_address_state',
       1 => 'alt_address_state',
     ),
   ),
-  'address_postalcode' => 
+  'address_postalcode' =>
   array (
     'query_type' => 'default',
-    'db_field' => 
+    'db_field' =>
     array (
       0 => 'primary_address_postalcode',
       1 => 'alt_address_postalcode',
     ),
   ),
-  'address_country' => 
+  'address_country' =>
   array (
     'query_type' => 'default',
-    'db_field' => 
+    'db_field' =>
     array (
       0 => 'primary_address_country',
       1 => 'alt_address_country',
     ),
   ),
-  'current_user_only' => 
+  'current_user_only' =>
   array (
     'query_type' => 'default',
-    'db_field' => 
+    'db_field' =>
     array (
       0 => 'assigned_user_id',
     ),
@@ -130,38 +126,38 @@ $searchFields['Leads'] = array (
     'vname' => 'LBL_CURRENT_USER_FILTER',
     'type' => 'bool',
   ),
-  'assigned_user_id' => 
+  'assigned_user_id' =>
   array (
     'query_type' => 'default',
   ),
-  'status' => 
+  'status' =>
   array (
     'query_type' => 'default',
     'options' => 'lead_status_dom',
     'template_var' => 'STATUS_OPTIONS',
   ),
-  'favorites_only' => 
+  'favorites_only' =>
   array (
     'query_type' => 'format',
     'operator' => 'subquery',
-    'subquery' => 'SELECT sugarfavorites.record_id FROM sugarfavorites 
-			                    WHERE sugarfavorites.deleted=0 
+    'subquery' => 'SELECT sugarfavorites.record_id FROM sugarfavorites
+			                    WHERE sugarfavorites.deleted=0
 			                        and sugarfavorites.module = \'Leads\'
 			                        and sugarfavorites.assigned_user_id = \'{0}\'',
-    'db_field' => 
+    'db_field' =>
     array (
       0 => 'id',
     ),
   ),
-  'open_only' => 
+  'open_only' =>
   array (
     'query_type' => 'default',
-    'db_field' => 
+    'db_field' =>
     array (
       0 => 'status',
     ),
     'operator' => 'not in',
-    'closed_values' => 
+    'closed_values' =>
     array (
       0 => 'Dead',
       1 => 'Recycled',
@@ -169,88 +165,133 @@ $searchFields['Leads'] = array (
     ),
     'type' => 'bool',
   ),
-  'range_date_entered' => 
+  'range_date_entered' =>
   array (
     'query_type' => 'default',
     'enable_range_search' => true,
     'is_date_field' => true,
   ),
-  'start_range_date_entered' => 
+  'start_range_date_entered' =>
   array (
     'query_type' => 'default',
     'enable_range_search' => true,
     'is_date_field' => true,
   ),
-  'end_range_date_entered' => 
+  'end_range_date_entered' =>
   array (
     'query_type' => 'default',
     'enable_range_search' => true,
     'is_date_field' => true,
   ),
-  'range_date_modified' => 
+  'range_date_modified' =>
   array (
     'query_type' => 'default',
     'enable_range_search' => true,
     'is_date_field' => true,
   ),
-  'start_range_date_modified' => 
+  'start_range_date_modified' =>
   array (
     'query_type' => 'default',
     'enable_range_search' => true,
     'is_date_field' => true,
   ),
-  'end_range_date_modified' => 
+  'end_range_date_modified' =>
   array (
     'query_type' => 'default',
     'enable_range_search' => true,
     'is_date_field' => true,
   ),
-  'range_opp_date_closed' => 
+  'phone_mobile' =>
+  array (
+    'query_type' => 'default',
+  ),
+  'email1' =>
+  array (
+    'query_type' => 'default',
+  ),
+  'range_working_date' =>
   array (
     'query_type' => 'default',
     'enable_range_search' => true,
     'is_date_field' => true,
   ),
-  'start_range_opp_date_closed' => 
+  'start_range_working_date' =>
   array (
     'query_type' => 'default',
     'enable_range_search' => true,
     'is_date_field' => true,
   ),
-  'end_range_opp_date_closed' => 
+  'end_range_working_date' =>
   array (
     'query_type' => 'default',
     'enable_range_search' => true,
     'is_date_field' => true,
   ),
-  'range_dob_year' => 
-  array (
-    'query_type' => 'default',
-    'enable_range_search' => true,
-  ),
-  'start_range_dob_year' => 
-  array (
-    'query_type' => 'default',
-    'enable_range_search' => true,
-  ),
-  'end_range_dob_year' => 
-  array (
-    'query_type' => 'default',
-    'enable_range_search' => true,
-  ),
-  'range_dob_date' => 
+  'range_birthdate' =>
   array (
     'query_type' => 'default',
     'enable_range_search' => true,
     'is_date_field' => true,
   ),
-  'start_range_dob_date' => 
+  'start_range_birthdate' =>
   array (
     'query_type' => 'default',
     'enable_range_search' => true,
     'is_date_field' => true,
   ),
-  'end_range_dob_date' => 
+  'end_range_birthdate' =>
+  array (
+    'query_type' => 'default',
+    'enable_range_search' => true,
+    'is_date_field' => true,
+  ),
+  'range_class_year' =>
+  array (
+    'query_type' => 'default',
+    'enable_range_search' => true,
+  ),
+  'start_range_class_year' =>
+  array (
+    'query_type' => 'default',
+    'enable_range_search' => true,
+  ),
+  'end_range_class_year' =>
+  array (
+    'query_type' => 'default',
+    'enable_range_search' => true,
+  ),
+  'description' =>
+  array (
+    'query_type' => 'default',
+  ),
+  'range_aims_id' =>
+  array (
+    'query_type' => 'default',
+    'enable_range_search' => true,
+  ),
+  'start_range_aims_id' =>
+  array (
+    'query_type' => 'default',
+    'enable_range_search' => true,
+  ),
+  'end_range_aims_id' =>
+  array (
+    'query_type' => 'default',
+    'enable_range_search' => true,
+  ),
+  'range_identity_date' =>
+  array (
+    'query_type' => 'default',
+    'enable_range_search' => true,
+    'is_date_field' => true,
+  ),
+  'start_range_identity_date' =>
+  array (
+    'query_type' => 'default',
+    'enable_range_search' => true,
+    'is_date_field' => true,
+  ),
+  'end_range_identity_date' =>
   array (
     'query_type' => 'default',
     'enable_range_search' => true,

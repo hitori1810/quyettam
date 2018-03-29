@@ -1,7 +1,7 @@
 <?php 
  $GLOBALS["dictionary"]["C_KeyboardSetting"]=array (
   'table' => 'c_keyboardsetting',
-  'audited' => true,
+  'audited' => false,
   'duplicate_merge' => true,
   'fields' => 
   array (
@@ -28,7 +28,7 @@
         'boost' => 3,
       ),
       'required' => true,
-      'importable' => 'required',
+      'importable' => 'true',
       'duplicate_merge' => 'enabled',
       'merge_filter' => 'selected',
     ),
@@ -126,7 +126,7 @@
       'vname' => 'LBL_DESCRIPTION',
       'type' => 'text',
       'comment' => 'Full text of the note',
-      'rows' => 6,
+      'rows' => 4,
       'cols' => 80,
     ),
     'deleted' => 
@@ -159,121 +159,6 @@
       'module' => 'Users',
       'bean_name' => 'User',
       'source' => 'non-db',
-    ),
-    'team_id' => 
-    array (
-      'name' => 'team_id',
-      'vname' => 'LBL_TEAM_ID',
-      'group' => 'team_name',
-      'reportable' => false,
-      'dbType' => 'id',
-      'type' => 'team_list',
-      'audited' => true,
-      'comment' => 'Team ID for the account',
-    ),
-    'team_set_id' => 
-    array (
-      'name' => 'team_set_id',
-      'rname' => 'id',
-      'id_name' => 'team_set_id',
-      'vname' => 'LBL_TEAM_SET_ID',
-      'type' => 'id',
-      'audited' => true,
-      'studio' => 'false',
-      'dbType' => 'id',
-    ),
-    'team_count' => 
-    array (
-      'name' => 'team_count',
-      'rname' => 'team_count',
-      'id_name' => 'team_id',
-      'vname' => 'LBL_TEAMS',
-      'join_name' => 'ts1',
-      'table' => 'teams',
-      'type' => 'relate',
-      'required' => 'true',
-      'isnull' => 'true',
-      'module' => 'Teams',
-      'link' => 'team_count_link',
-      'massupdate' => false,
-      'dbType' => 'int',
-      'source' => 'non-db',
-      'importable' => 'false',
-      'reportable' => false,
-      'duplicate_merge' => 'disabled',
-      'studio' => 'false',
-      'hideacl' => true,
-    ),
-    'team_name' => 
-    array (
-      'name' => 'team_name',
-      'db_concat_fields' => 
-      array (
-        0 => 'name',
-        1 => 'name_2',
-      ),
-      'sort_on' => 'tj.name',
-      'join_name' => 'tj',
-      'rname' => 'name',
-      'id_name' => 'team_id',
-      'vname' => 'LBL_TEAMS',
-      'type' => 'relate',
-      'required' => 'true',
-      'table' => 'teams',
-      'isnull' => 'true',
-      'module' => 'Teams',
-      'link' => 'team_link',
-      'massupdate' => false,
-      'dbType' => 'varchar',
-      'source' => 'non-db',
-      'len' => 36,
-      'custom_type' => 'teamset',
-      'studio' => 
-      array (
-        'portallistview' => false,
-        'portaldetailview' => false,
-        'portaleditview' => false,
-      ),
-    ),
-    'team_link' => 
-    array (
-      'name' => 'team_link',
-      'type' => 'link',
-      'relationship' => 'c_keyboardsetting_team',
-      'vname' => 'LBL_TEAMS_LINK',
-      'link_type' => 'one',
-      'module' => 'Teams',
-      'bean_name' => 'Team',
-      'source' => 'non-db',
-      'duplicate_merge' => 'disabled',
-      'studio' => 'false',
-    ),
-    'team_count_link' => 
-    array (
-      'name' => 'team_count_link',
-      'type' => 'link',
-      'relationship' => 'c_keyboardsetting_team_count_relationship',
-      'link_type' => 'one',
-      'module' => 'Teams',
-      'bean_name' => 'TeamSet',
-      'source' => 'non-db',
-      'duplicate_merge' => 'disabled',
-      'reportable' => false,
-      'studio' => 'false',
-    ),
-    'teams' => 
-    array (
-      'name' => 'teams',
-      'type' => 'link',
-      'relationship' => 'c_keyboardsetting_teams',
-      'bean_filter_field' => 'team_set_id',
-      'rhs_key_override' => true,
-      'source' => 'non-db',
-      'vname' => 'LBL_TEAMS',
-      'link_class' => 'TeamSetLink',
-      'link_file' => 'modules/Teams/TeamSetLink.php',
-      'studio' => 'false',
-      'reportable' => false,
     ),
     'assigned_user_id' => 
     array (
@@ -369,39 +254,6 @@
       'rhs_key' => 'created_by',
       'relationship_type' => 'one-to-many',
     ),
-    'c_keyboardsetting_team_count_relationship' => 
-    array (
-      'lhs_module' => 'Teams',
-      'lhs_table' => 'team_sets',
-      'lhs_key' => 'id',
-      'rhs_module' => 'C_KeyboardSetting',
-      'rhs_table' => 'c_keyboardsetting',
-      'rhs_key' => 'team_set_id',
-      'relationship_type' => 'one-to-many',
-    ),
-    'c_keyboardsetting_teams' => 
-    array (
-      'lhs_module' => 'C_KeyboardSetting',
-      'lhs_table' => 'c_keyboardsetting',
-      'lhs_key' => 'team_set_id',
-      'rhs_module' => 'Teams',
-      'rhs_table' => 'teams',
-      'rhs_key' => 'id',
-      'relationship_type' => 'many-to-many',
-      'join_table' => 'team_sets_teams',
-      'join_key_lhs' => 'team_set_id',
-      'join_key_rhs' => 'team_id',
-    ),
-    'c_keyboardsetting_team' => 
-    array (
-      'lhs_module' => 'Teams',
-      'lhs_table' => 'teams',
-      'lhs_key' => 'id',
-      'rhs_module' => 'C_KeyboardSetting',
-      'rhs_table' => 'c_keyboardsetting',
-      'rhs_key' => 'team_id',
-      'relationship_type' => 'one-to-many',
-    ),
     'c_keyboardsetting_assigned_user' => 
     array (
       'lhs_module' => 'Users',
@@ -426,27 +278,16 @@
         0 => 'id',
       ),
     ),
-    'team_set_c_keyboardsetting' => 
-    array (
-      'name' => 'idx_c_keyboardsetting_tmst_id',
-      'type' => 'index',
-      'fields' => 
-      array (
-        0 => 'team_set_id',
-      ),
-    ),
   ),
   'name_format_map' => 
   array (
   ),
   'visibility' => 
   array (
-    'TeamSecurity' => true,
   ),
   'templates' => 
   array (
     'assignable' => 'assignable',
-    'team_security' => 'team_security',
     'basic' => 'basic',
   ),
   'favorites' => true,

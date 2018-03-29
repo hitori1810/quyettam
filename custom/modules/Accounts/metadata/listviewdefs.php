@@ -1,12 +1,6 @@
 <?php
 $listViewDefs['Accounts'] = 
 array (
-  'code' => 
-  array (
-    'width' => '10%',
-    'label' => 'LBL_CODE',
-    'default' => true,
-  ),
   'name' => 
   array (
     'width' => '20%',
@@ -14,12 +8,11 @@ array (
     'link' => true,
     'default' => true,
   ),
-  'category' => 
+  'phone_office' => 
   array (
-    'type' => 'enum',
-    'default' => true,
-    'label' => 'LBL_CATEGORY',
     'width' => '10%',
+    'label' => 'LBL_LIST_PHONE',
+    'default' => true,
   ),
   'email1' => 
   array (
@@ -30,10 +23,10 @@ array (
     'customCode' => '{$EMAIL1_LINK}{$EMAIL1}</a>',
     'default' => true,
   ),
-  'phone_office' => 
+  'billing_address_street' => 
   array (
-    'width' => '10%',
-    'label' => 'LBL_LIST_PHONE',
+    'width' => '15%',
+    'label' => 'LBL_BILLING_ADDRESS_STREET',
     'default' => true,
   ),
   'assigned_user_name' => 
@@ -50,22 +43,130 @@ array (
     'label' => 'LBL_LIST_TEAM',
     'default' => true,
   ),
+  'account_type' => 
+  array (
+    'width' => '10%',
+    'label' => 'LBL_TYPE',
+    'default' => false,
+  ),
+  'billing_address_country' => 
+  array (
+    'width' => '10%',
+    'label' => 'LBL_BILLING_ADDRESS_COUNTRY',
+    'default' => false,
+  ),
+  'billing_address_city' => 
+  array (
+    'width' => '10%',
+    'label' => 'LBL_LIST_CITY',
+    'default' => false,
+  ),
   'date_entered' => 
   array (
     'width' => '5%',
     'label' => 'LBL_DATE_ENTERED',
     'default' => false,
   ),
-  'billing_address_street' => 
+  'industry' => 
   array (
-    'width' => '15%',
-    'label' => 'LBL_BILLING_ADDRESS_STREET',
+    'width' => '10%',
+    'label' => 'LBL_INDUSTRY',
+    'default' => false,
+  ),
+  'annual_revenue' => 
+  array (
+    'width' => '10%',
+    'label' => 'LBL_ANNUAL_REVENUE',
+    'default' => false,
+  ),
+  'phone_fax' => 
+  array (
+    'width' => '10%',
+    'label' => 'LBL_PHONE_FAX',
+    'default' => false,
+  ),
+  'billing_address_state' => 
+  array (
+    'width' => '7%',
+    'label' => 'LBL_BILLING_ADDRESS_STATE',
+    'default' => false,
+  ),
+  'billing_address_postalcode' => 
+  array (
+    'width' => '10%',
+    'label' => 'LBL_BILLING_ADDRESS_POSTALCODE',
     'default' => false,
   ),
   'shipping_address_street' => 
   array (
     'width' => '15%',
     'label' => 'LBL_SHIPPING_ADDRESS_STREET',
+    'default' => false,
+  ),
+  'shipping_address_city' => 
+  array (
+    'width' => '10%',
+    'label' => 'LBL_SHIPPING_ADDRESS_CITY',
+    'default' => false,
+  ),
+  'shipping_address_state' => 
+  array (
+    'width' => '7%',
+    'label' => 'LBL_SHIPPING_ADDRESS_STATE',
+    'default' => false,
+  ),
+  'shipping_address_postalcode' => 
+  array (
+    'width' => '10%',
+    'label' => 'LBL_SHIPPING_ADDRESS_POSTALCODE',
+    'default' => false,
+  ),
+  'shipping_address_country' => 
+  array (
+    'width' => '10%',
+    'label' => 'LBL_SHIPPING_ADDRESS_COUNTRY',
+    'default' => false,
+  ),
+  'rating' => 
+  array (
+    'width' => '10%',
+    'label' => 'LBL_RATING',
+    'default' => false,
+  ),
+  'phone_alternate' => 
+  array (
+    'width' => '10%',
+    'label' => 'LBL_OTHER_PHONE',
+    'default' => false,
+  ),
+  'website' => 
+  array (
+    'width' => '10%',
+    'label' => 'LBL_WEBSITE',
+    'default' => false,
+  ),
+  'ownership' => 
+  array (
+    'width' => '10%',
+    'label' => 'LBL_OWNERSHIP',
+    'default' => false,
+  ),
+  'employees' => 
+  array (
+    'width' => '10%',
+    'label' => 'LBL_EMPLOYEES',
+    'default' => false,
+  ),
+  'sic_code' => 
+  array (
+    'width' => '10%',
+    'label' => 'LBL_SIC_CODE',
+    'default' => false,
+  ),
+  'ticker_symbol' => 
+  array (
+    'width' => '10%',
+    'label' => 'LBL_TICKER_SYMBOL',
     'default' => false,
   ),
   'date_modified' => 
@@ -78,70 +179,6 @@ array (
   array (
     'width' => '10%',
     'label' => 'LBL_CREATED',
-    'default' => false,
-  ),
-  'bank_branch' => 
-  array (
-    'type' => 'varchar',
-    'label' => 'LBL_BANK_BRANCH',
-    'width' => '10%',
-    'default' => false,
-  ),
-  'phone_fax' => 
-  array (
-    'width' => '10%',
-    'label' => 'LBL_PHONE_FAX',
-    'default' => false,
-  ),
-  'credit_limit' => 
-  array (
-    'type' => 'currency',
-    'label' => 'LBL_CREDIT_LIMIT',
-    'currency_format' => true,
-    'width' => '10%',
-    'default' => false,
-  ),
-  'active_date' => 
-  array (
-    'type' => 'date',
-    'label' => 'LBL_ACTIVE_DATE',
-    'width' => '10%',
-    'default' => false,
-  ),
-  'brand_name' => 
-  array (
-    'type' => 'varchar',
-    'label' => 'LBL_BRAND_NAME',
-    'width' => '10%',
-    'default' => false,
-  ),
-  'exp_date' => 
-  array (
-    'type' => 'date',
-    'label' => 'LBL_EXP_DATE',
-    'width' => '10%',
-    'default' => false,
-  ),
-  'description' => 
-  array (
-    'type' => 'text',
-    'label' => 'LBL_DESCRIPTION',
-    'sortable' => false,
-    'width' => '10%',
-    'default' => false,
-  ),
-  'bank_name' => 
-  array (
-    'type' => 'enum',
-    'label' => 'LBL_BANK_NAME',
-    'width' => '10%',
-    'default' => false,
-  ),
-  'tax_code' => 
-  array (
-    'type' => 'varchar',
-    'label' => 'LBL_TAX_CODE',
-    'width' => '10%',
     'default' => false,
   ),
   'modified_by_name' => 

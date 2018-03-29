@@ -102,11 +102,7 @@ array (
               'updateCallback' => 'SugarWidgetScheduler.update_time();',
             ),
           ),
-          array (
-            'name' => 'location',
-            'comment' => 'Meeting location',
-            'label' => 'LBL_LOCATION',
-          ),
+          ''
         ),
         
         array(        

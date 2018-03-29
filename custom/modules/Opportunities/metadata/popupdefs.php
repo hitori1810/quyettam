@@ -5,42 +5,57 @@ $popupMeta = array (
     'orderBy' => 'name',
     'whereClauses' => array (
   'name' => 'opportunities.name',
-  'account_name' => 'accounts.name',
+  'oder_id' => 'opportunities.oder_id',
+  'c_packages_opportunities_1_name' => 'opportunities.c_packages_opportunities_1_name',
+  'contact_name' => 'opportunities.contact_name',
 ),
     'searchInputs' => array (
   0 => 'name',
-  1 => 'account_name',
+  2 => 'oder_id',
+  7 => 'c_packages_opportunities_1_name',
+  12 => 'contact_name',
 ),
     'searchdefs' => array (
-  0 => 'name',
-  1 => 
+  'oder_id' => 
   array (
-    'name' => 'account_name',
-    'displayParams' => 
-    array (
-      'hideButtons' => 'true',
-      'size' => 30,
-      'class' => 'sqsEnabled sqsNoAutofill',
-    ),
+    'type' => 'varchar',
+    'label' => 'LBL_ORDER_ID',
+    'width' => '10%',
+    'name' => 'oder_id',
   ),
-  2 => 'opportunity_type',
-  3 => 'sales_stage',
-  4 => 
+  'name' => 
   array (
-    'name' => 'assigned_user_id',
-    'type' => 'enum',
-    'label' => 'LBL_ASSIGNED_TO',
-    'function' => 
-    array (
-      'name' => 'get_user_array',
-      'params' => 
-      array (
-        0 => false,
-      ),
-    ),
+    'name' => 'name',
+    'width' => '10%',
+  ),
+  'contact_name' => 
+  array (
+    'type' => 'relate',
+    'link' => true,
+    'label' => 'LBL_CONTACT_NAME',
+    'id' => 'CONTACT_ID',
+    'width' => '10%',
+    'name' => 'contact_name',
+  ),
+  'c_packages_opportunities_1_name' => 
+  array (
+    'type' => 'relate',
+    'link' => true,
+    'label' => 'LBL_C_PACKAGES_OPPORTUNITIES_1_FROM_C_PACKAGES_TITLE',
+    'id' => 'C_PACKAGES_OPPORTUNITIES_1C_PACKAGES_IDA',
+    'width' => '10%',
+    'name' => 'c_packages_opportunities_1_name',
   ),
 ),
     'listviewdefs' => array (
+  'ODER_ID' => 
+  array (
+    'type' => 'varchar',
+    'label' => 'LBL_ORDER_ID',
+    'width' => '10%',
+    'default' => true,
+    'name' => 'oder_id',
+  ),
   'NAME' => 
   array (
     'width' => '30%',
@@ -49,34 +64,14 @@ $popupMeta = array (
     'default' => true,
     'name' => 'name',
   ),
-  'PARENT_NAME' => 
+  'CONTACT_NAME' => 
   array (
-    'type' => 'parent',
-    'studio' => 'visible',
-    'label' => 'LBL_PARENT_NAME',
+    'type' => 'relate',
     'link' => true,
-    'sortable' => false,
-    'ACLTag' => 'PARENT',
-    'dynamic_module' => 'PARENT_TYPE',
-    'id' => 'PARENT_ID',
-    'related_fields' => 
-    array (
-      0 => 'parent_id',
-      1 => 'parent_type',
-    ),
+    'label' => 'LBL_CONTACT_NAME',
+    'id' => 'CONTACT_ID',
     'width' => '10%',
     'default' => true,
-  ),
-  'ACCOUNT_NAME' => 
-  array (
-    'width' => '20%',
-    'label' => 'LBL_LIST_ACCOUNT_NAME',
-    'id' => 'ACCOUNT_ID',
-    'module' => 'Accounts',
-    'default' => true,
-    'sortable' => true,
-    'ACLTag' => 'ACCOUNT',
-    'name' => 'account_name',
   ),
   'SALES_STAGE' => 
   array (
@@ -84,21 +79,6 @@ $popupMeta = array (
     'label' => 'LBL_LIST_SALES_STAGE',
     'default' => true,
     'name' => 'sales_stage',
-  ),
-  'DESCRIPTION' => 
-  array (
-    'type' => 'text',
-    'label' => 'LBL_DESCRIPTION',
-    'sortable' => false,
-    'width' => '10%',
-    'default' => true,
-  ),
-  'ASSIGNED_USER_NAME' => 
-  array (
-    'width' => '5%',
-    'label' => 'LBL_LIST_ASSIGNED_USER',
-    'default' => true,
-    'name' => 'assigned_user_name',
   ),
 ),
 );

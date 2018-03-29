@@ -15,7 +15,7 @@
 *}
 </form>
 
-{* Added by Hieu Nguyen on 2015-05-28 to enable including scripts via javascript block in detailviewdef.php  *}
+{*Added by Hieu Nguyen on 2015-05-28 to enable including scripts via javascript block in detailviewdef.php *}
 {{if $externalJSFile}}
     {sugar_include include=$externalJSFile}
 {{/if}}
@@ -23,7 +23,7 @@
 {{if isset($scriptBlocks)}}
     {{$scriptBlocks}}
 {{/if}}
-{* End Hieu Nguyen *}
+{*End Hieu Nguyen*}
 
 <script>SUGAR.util.doWhen("document.getElementById('form') != null",
         function(){ldelim}SUGAR.util.buildAccessKeyLabels();{rdelim});

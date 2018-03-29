@@ -1,34 +1,36 @@
 <?php
     if(!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
 
-    /*********************************************************************************
-    * By installing or using this file, you are confirming on behalf of the entity
-    * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
-    * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
-    * http://www.sugarcrm.com/master-subscription-agreement
-    *
-    * If Company is not bound by the MSA, then by installing or using this file
-    * you are agreeing unconditionally that Company will be bound by the MSA and
-    * certifying that you have authority to bind Company accordingly.
-    *
-    * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
-    ********************************************************************************/
+    require_once 'include/MVC/View/views/view.list.php';
 
-    require_once('include/MVC/View/views/view.list.php'); 
     class OpportunitiesViewList extends ViewList
     {
-        function nm_introductionViewList() 
-        { 
-            parent::ViewList(); 
-        } 
-        function listViewPrepare() {    
-            $_REQUEST['orderBy'] = 'date_entered';  
-            $_REQUEST['sortOrder'] = 'desc'; 
-            parent::listViewPrepare(); 
+        public function preDisplay(){
+            parent::preDisplay();
+            //add js into listview - 02/08/2014 - by MTN
+            echo '<script type="text/javascript" src="custom/modules/Opportunities/js/listview.js"></script>'; 
+
+            //Dialog
+            echo $GLOBALS['app_strings']['LBL_THONGBAO_VAOLOP']; 
+
+            # Hide Quick Edit Pencil
+            $this->lv->quickViewLinks = false;
+            $this->lv->showMassupdateFields = false;
+            $this->lv->mergeduplicates = false;
+            $this->lv->delete = true;
+
+            //add Session into listview
+            if(isset($_GET['class_id'])){
+                $_SESSION['class_id'] = $_GET['class_id'];
+            }
+            //add button Add to Class
+            if(ACLController::checkAccess('C_Classes', 'import', false))
+                $this->lv->actionsMenuExtraItems[] = $this->buildMyMenuItem(); 
         }
 
-
-
-
-    }
-?>
+        protected function buildMyMenuItem(){
+            if(ACLController::checkAccess('C_Classes', 'import', false))
+            $html ='<a id="add_to_class" class="menuItem" href="javascript:void(0)" onclick="open_popup(\'C_Classes\',600,400, \'&id_advanced='.$_SESSION['class_id'].'&type_advanced=Practice\' ,true,true,{\'call_back_function\':\'showPopupConfirm\',\'form_name\':\'DetailView\',\'field_to_name_array\':{\'id\':\'class_id\'},},\'Select\',true);"  >'.$GLOBALS['mod_strings']['LBL_ADD_TO_CLASS'].'</a>';
+            return $html;
+        }
+}

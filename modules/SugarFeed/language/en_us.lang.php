@@ -13,8 +13,8 @@
  ********************************************************************************/
 
 $mod_strings = array (
-  'LBL_TEAM' => 'Team',
-  'LBL_TEAM_ID' => 'Team Id',
+  'LBL_TEAM' => 'Center',
+  'LBL_TEAM_ID' => 'Center Id',
   'LBL_ASSIGNED_TO_ID' => 'Assigned User Id',
   'LBL_ASSIGNED_TO_NAME' => 'Assigned to',
   'LBL_ID' => 'ID',

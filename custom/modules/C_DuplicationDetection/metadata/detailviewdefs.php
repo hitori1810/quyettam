@@ -30,13 +30,7 @@ array (
           'field' => '30',
         ),
       ),
-      'includes' => 
-      array (
-        0 => 
-        array (
-          'file' => 'custom/modules/C_DuplicationDetection/js/DetailView.js',
-        ),
-      ),
+      'javascript' => '{sugar_getscript file="custom/modules/C_DuplicationDetection/js/DetailView.js"}',
       'useTabs' => false,
       'tabDefs' => 
       array (

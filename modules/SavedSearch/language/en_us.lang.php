@@ -41,6 +41,8 @@ $mod_strings = array (
     'LBL_ASCENDING' => 'Ascending', 
     'LBL_DESCENDING' => 'Descending',
     'LBL_MODIFY_CURRENT_SEARCH'=> 'Modify current search',
+    'LBL_CONFIRM_PUBLISH_SAVED_SEARCH'=> 'Do you want to publish this Save Search to this 1 user',
+    'LBL_SAVED_SEARCH_NO_CHECK_OR_NONE_SEL'=> 'You must select as least 1 user',
 
 );
 

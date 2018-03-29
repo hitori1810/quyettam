@@ -22,8 +22,8 @@
       'link' => true,
       'fields' => 
       array (
-        0 => 'first_name',
-        1 => 'last_name',
+        0 => 'last_name',
+        1 => 'first_name',
       ),
       'sort_on' => 'last_name',
       'source' => 'non-db',
@@ -31,8 +31,8 @@
       'len' => '255',
       'db_concat_fields' => 
       array (
-        0 => 'first_name',
-        1 => 'last_name',
+        0 => 'last_name',
+        1 => 'first_name',
       ),
       'importable' => 'false',
     ),
@@ -130,7 +130,7 @@
       'vname' => 'LBL_DESCRIPTION',
       'type' => 'text',
       'comment' => 'Full text of the note',
-      'rows' => 6,
+      'rows' => 4,
       'cols' => 80,
     ),
     'deleted' => 
@@ -341,6 +341,7 @@
       'vname' => 'LBL_FIRST_NAME',
       'type' => 'varchar',
       'len' => '100',
+      'required' => true,
       'unified_search' => true,
       'full_text_search' => 
       array (
@@ -348,7 +349,6 @@
       ),
       'comment' => 'First name of the contact',
       'merge_filter' => 'selected',
-      'required' => true,
     ),
     'last_name' => 
     array (
@@ -363,7 +363,7 @@
       ),
       'comment' => 'Last name of the contact',
       'merge_filter' => 'selected',
-      'required' => true,
+      'required' => false,
       'importable' => 'required',
     ),
     'full_name' => 
@@ -414,6 +414,7 @@
       'vname' => 'LBL_DO_NOT_CALL',
       'type' => 'bool',
       'default' => '0',
+      'massupdate' => false,
     ),
     'phone_home' => 
     array (
@@ -448,6 +449,7 @@
         'visible' => false,
         'searchview' => true,
       ),
+      'required' => true,
     ),
     'phone_mobile' => 
     array (
@@ -457,12 +459,13 @@
       'dbType' => 'varchar',
       'len' => 100,
       'unified_search' => true,
+      'audited' => true,
       'full_text_search' => 
       array (
         'boost' => 1,
       ),
       'comment' => 'Mobile phone number of the contact',
-      'required' => true,
+      'merge_filter' => 'enabled',
     ),
     'phone_work' => 
     array (
@@ -471,7 +474,7 @@
       'type' => 'phone',
       'dbType' => 'varchar',
       'len' => 100,
-      'audited' => true,
+      'audited' => false,
       'unified_search' => true,
       'full_text_search' => 
       array (
@@ -523,6 +526,7 @@
       'source' => 'non-db',
       'group' => 'email1',
       'merge_filter' => 'enabled',
+      'required' => true,
       'studio' => 
       array (
         'editview' => true,
@@ -704,7 +708,7 @@
       'name' => 'assistant',
       'vname' => 'LBL_ASSISTANT',
       'type' => 'varchar',
-      'len' => '75',
+      'len' => '150',
       'unified_search' => true,
       'full_text_search' => 
       array (
@@ -737,6 +741,7 @@
       'source' => 'non-db',
       'vname' => 'LBL_EMAIL_ADDRESS_PRIMARY',
       'duplicate_merge' => 'disabled',
+      'massupdate' => false,
     ),
     'email_addresses' => 
     array (
@@ -778,12 +783,91 @@
         'editview' => false,
       ),
     ),
+    'converted' => 
+    array (
+      'name' => 'converted',
+      'vname' => 'LBL_CONVERTED',
+      'type' => 'bool',
+      'default' => '',
+      'comment' => 'Has Lead been converted to a Contact (and other Sugar objects)',
+      'massupdate' => true,
+    ),
     'birthdate' => 
     array (
       'name' => 'birthdate',
       'vname' => 'LBL_BIRTHDATE',
       'massupdate' => false,
       'type' => 'date',
+      'enable_range_search' => true,
+      'options' => 'date_range_search_dom',
+    ),
+    'facebook' => 
+    array (
+      'name' => 'facebook',
+      'vname' => 'LBL_FACEBOOK',
+      'type' => 'url',
+      'dbType' => 'varchar',
+      'len' => 255,
+      'audited' => true,
+      'comment' => 'URL of website for the company',
+    ),
+    'birthmonth' => 
+    array (
+      'required' => false,
+      'name' => 'birthmonth',
+      'vname' => 'LBL_BIRTH_MONTH',
+      'type' => 'enum',
+      'massupdate' => 0,
+      'default' => '',
+      'no_default' => false,
+      'comments' => '',
+      'help' => 'Birth Month',
+      'importable' => 'true',
+      'duplicate_merge' => 'disabled',
+      'duplicate_merge_dom_value' => '0',
+      'audited' => false,
+      'reportable' => true,
+      'unified_search' => false,
+      'merge_filter' => 'disabled',
+      'calculated' => false,
+      'len' => 5,
+      'size' => '20',
+      'options' => 'birth_month_list',
+      'studio' => 'visible',
+      'dependency' => false,
+    ),
+    'activity' => 
+    array (
+      'name' => 'activity',
+      'vname' => 'LBL_ACTIVITY',
+      'type' => 'enum',
+      'options' => 'activity_source_list',
+      'no_default' => false,
+      'len' => '100',
+      'audited' => false,
+      'massupdate' => false,
+      'required' => false,
+    ),
+    'full_target_name' => 
+    array (
+      'required' => false,
+      'name' => 'full_target_name',
+      'vname' => 'LBL_FULL_NAME',
+      'type' => 'varchar',
+      'massupdate' => 0,
+      'no_default' => false,
+      'comments' => '',
+      'help' => '',
+      'importable' => 'false',
+      'duplicate_merge' => 'disabled',
+      'duplicate_merge_dom_value' => '0',
+      'audited' => false,
+      'reportable' => true,
+      'unified_search' => false,
+      'merge_filter' => 'disabled',
+      'calculated' => false,
+      'len' => '250',
+      'size' => '20',
     ),
     'lead_id' => 
     array (
@@ -791,6 +875,14 @@
       'type' => 'id',
       'reportable' => false,
       'vname' => 'LBL_LEAD_ID',
+    ),
+    'other_mobile' => 
+    array (
+      'name' => 'other_mobile',
+      'vname' => 'LBL_OTHER_MOBILE',
+      'type' => 'phone',
+      'dbType' => 'varchar',
+      'len' => '50',
     ),
     'account_name' => 
     array (
@@ -814,6 +906,23 @@
       'massupdate' => false,
       'duplicate_merge' => 'disabled',
     ),
+    'campaign_name' => 
+    array (
+      'name' => 'campaign_name',
+      'rname' => 'name',
+      'id_name' => 'campaign_id',
+      'vname' => 'LBL_CAMPAIGN',
+      'type' => 'relate',
+      'link' => 'campaign_prospects',
+      'table' => 'campaigns',
+      'isnull' => 'true',
+      'module' => 'Campaigns',
+      'source' => 'non-db',
+      'additionalFields' => 
+      array (
+        'id' => 'campaign_id',
+      ),
+    ),
     'campaigns' => 
     array (
       'name' => 'campaigns',
@@ -823,6 +932,16 @@
       'bean_name' => 'CampaignLog',
       'source' => 'non-db',
       'vname' => 'LBL_CAMPAIGNLOG',
+    ),
+    'campaign_prospects' => 
+    array (
+      'name' => 'campaign_prospects',
+      'type' => 'link',
+      'relationship' => 'campaign_prospects',
+      'module' => 'Campaigns',
+      'bean_name' => 'Campaigns',
+      'source' => 'non-db',
+      'vname' => 'LBL_CAMPAIGN',
     ),
     'prospect_lists' => 
     array (
@@ -873,121 +992,6 @@
       'source' => 'non-db',
       'vname' => 'LBL_EMAILS',
     ),
-    'working_date' => 
-    array (
-      'name' => 'working_date',
-      'vname' => 'LBL_WORKING_DATE',
-      'type' => 'date',
-      'required' => true,
-      'massupdate' => true,
-      'importable' => 'true',
-      'duplicate_merge' => 'disabled',
-      'duplicate_merge_dom_value' => '0',
-      'audited' => false,
-      'reportable' => true,
-      'unified_search' => false,
-      'merge_filter' => 'disabled',
-      'calculated' => false,
-      'size' => '20',
-      'display_default' => 'now',
-      'source' => 'non-db',
-    ),
-    'status' => 
-    array (
-      'name' => 'status',
-      'vname' => 'LBL_STATUS',
-      'type' => 'enum',
-      'len' => '100',
-      'massupdate' => true,
-      'options' => 'target_status_dom',
-      'default' => 'New',
-      'comment' => 'Status of the target',
-      'required' => true,
-    ),
-    'category' => 
-    array (
-      'name' => 'category',
-      'vname' => 'LBL_CATEGORY',
-      'type' => 'enum',
-      'options' => 'category_options',
-      'massupdate' => false,
-      'len' => '40',
-      'audited' => true,
-      'merge_filter' => 'enabled',
-      'default' => 'FIT',
-    ),
-    'dob_day' => 
-    array (
-      'required' => false,
-      'name' => 'dob_day',
-      'vname' => 'LBL_DAY',
-      'massupdate' => false,
-      'type' => 'enum',
-      'len' => 10,
-      'key' => 'dob',
-      'options' => 'day_options',
-    ),
-    'dob_month' => 
-    array (
-      'required' => false,
-      'name' => 'dob_month',
-      'vname' => 'LBL_MONTH',
-      'massupdate' => false,
-      'type' => 'enum',
-      'len' => 10,
-      'key' => 'dob',
-      'options' => 'month_options',
-    ),
-    'dob_year' => 
-    array (
-      'name' => 'dob_year',
-      'vname' => 'LBL_YEAR',
-      'type' => 'int',
-      'massupdate' => false,
-      'dbType' => 'varchar',
-      'len' => 5,
-      'key' => 'dob',
-      'enable_range_search' => true,
-      'options' => 'numeric_range_search_dom',
-    ),
-    'dob_date' => 
-    array (
-      'name' => 'dob_date',
-      'vname' => 'LBL_BIRTHDATE',
-      'massupdate' => false,
-      'type' => 'date',
-      'key' => 'dob',
-      'enable_range_search' => true,
-      'options' => 'date_range_search_dom',
-    ),
-    'tax_code' => 
-    array (
-      'name' => 'tax_code',
-      'vname' => 'LBL_TAX_CODE',
-      'type' => 'varchar',
-      'massupdate' => false,
-      'len' => 50,
-      'unified_search' => true,
-    ),
-    'website' => 
-    array (
-      'name' => 'website',
-      'vname' => 'LBL_WEBSITE',
-      'type' => 'url',
-      'dbType' => 'varchar',
-      'massupdate' => false,
-      'len' => 255,
-      'link_target' => '_blank',
-      'comment' => 'URL of website for the company',
-    ),
-    'converted' => 
-    array (
-      'name' => 'converted',
-      'vname' => 'LBL_CONVERTED',
-      'massupdate' => false,
-      'type' => 'bool',
-      'default' => '0',
-    ),
   ),
   'indices' => 
   array (
@@ -1026,7 +1030,8 @@
       array (
         0 => 'last_name',
         1 => 'first_name',
-        2 => 'deleted',
+        2 => 'phone_mobile',
+        3 => 'deleted',
       ),
     ),
     2 => 

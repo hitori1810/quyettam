@@ -149,7 +149,8 @@
             if(is_array($sql)) {
                 return $this->queryArray($sql, $dieOnError, $msg, $suppress);
             }
-
+           // if($GLOBALS['current_user']->id == 1) echo ' <hr>' .$sql;
+            
             parent::countQuery($sql);
             $GLOBALS['log']->info('Query:' . $sql);
             $this->checkConnection();
@@ -1474,6 +1475,7 @@
         * Runs a query and returns a array data 
         *
         * @param  string   $sql        SQL Statement to execute
+        * @param  string   $resultType Specifies what type of array that should be produced
         * @param  bool     $dieOnError True if we want to call die if the query returns errors
         * @param  string   $msg        Message to log if error occurs
         * @param  bool     $suppress   Flag to suppress all error output unless in debug logging mode.
@@ -1483,7 +1485,7 @@
         * 
         * Add by Trung Nguyen 2015.02.04
         */
-        public function fetchArray($sql, $dieOnError = false, $msg = '', $suppress = false, $keepResult = false) {
+        public function fetchArray($sql, $resultType = '', $dieOnError = false, $msg = '', $suppress = false, $keepResult = false) {
             $data = array();
             $result = $this->query($sql, $dieOnError = false, $msg = '', $suppress = false, $keepResult = false);
             while ($row = $this->fetchByAssoc($result)){

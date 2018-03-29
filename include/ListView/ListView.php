@@ -1463,7 +1463,7 @@ $close_inline_img = SugarThemeRegistry::current()->getImage('close_inline', 'bor
                 else {
                     $html_text .= "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\"><tr><td align=\"left\"  nowrap>$select_link&nbsp;$export_link&nbsp;$delete_link&nbsp;$selected_objects_span";
                 }
-                $html_text .= "</td>\n<td nowrap align=\"right\">".$start_link."&nbsp;&nbsp;".$previous_link."&nbsp;&nbsp;<span class='pageNumbers'>(".$start_record." - ".$end_record." ".$this->local_app_strings['LBL_LIST_OF']." ".$row_count.")</span>&nbsp;&nbsp;".$next_link."&nbsp;&nbsp;".$end_link."</td></tr></table>\n";
+                $html_text .= "<div class=\"selectedTopSupanel\"></div></td>\n<td nowrap align=\"right\">".$start_link."&nbsp;&nbsp;".$previous_link."&nbsp;&nbsp;<span class='pageNumbers'>(".$start_record." - ".$end_record." ".$this->local_app_strings['LBL_LIST_OF']." ".$row_count.")</span>&nbsp;&nbsp;".$next_link."&nbsp;&nbsp;".$end_link."</td></tr></table>\n";
                 $html_text .= "</td>\n";
                 $html_text .= "</tr>\n";
                 $this->xTemplate->assign("PAGINATION",$html_text);

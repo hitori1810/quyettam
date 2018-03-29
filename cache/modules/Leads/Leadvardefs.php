@@ -27,8 +27,8 @@
       'link' => true,
       'fields' => 
       array (
-        0 => 'first_name',
-        1 => 'last_name',
+        0 => 'last_name',
+        1 => 'first_name',
       ),
       'sort_on' => 'last_name',
       'source' => 'non-db',
@@ -36,8 +36,8 @@
       'len' => '255',
       'db_concat_fields' => 
       array (
-        0 => 'first_name',
-        1 => 'last_name',
+        0 => 'last_name',
+        1 => 'first_name',
       ),
       'importable' => 'false',
     ),
@@ -135,7 +135,7 @@
       'vname' => 'LBL_DESCRIPTION',
       'type' => 'text',
       'comment' => 'Full text of the note',
-      'rows' => 6,
+      'rows' => 4,
       'cols' => 80,
     ),
     'deleted' => 
@@ -346,6 +346,7 @@
       'vname' => 'LBL_FIRST_NAME',
       'type' => 'varchar',
       'len' => '100',
+      'required' => true,
       'unified_search' => true,
       'full_text_search' => 
       array (
@@ -353,7 +354,6 @@
       ),
       'comment' => 'First name of the contact',
       'merge_filter' => 'selected',
-      'required' => true,
     ),
     'last_name' => 
     array (
@@ -369,6 +369,7 @@
       'comment' => 'Last name of the contact',
       'merge_filter' => 'selected',
       'required' => false,
+      'importable' => 'required',
     ),
     'full_name' => 
     array (
@@ -418,8 +419,9 @@
       'vname' => 'LBL_DO_NOT_CALL',
       'type' => 'bool',
       'default' => '0',
-      'audited' => true,
+      'audited' => false,
       'comment' => 'An indicator of whether contact can be called',
+      'massupdate' => false,
     ),
     'phone_home' => 
     array (
@@ -463,12 +465,13 @@
       'dbType' => 'varchar',
       'len' => 100,
       'unified_search' => true,
+      'audited' => true,
       'full_text_search' => 
       array (
         'boost' => 1,
       ),
       'comment' => 'Mobile phone number of the contact',
-      'required' => true,
+      'merge_filter' => 'enabled',
     ),
     'phone_work' => 
     array (
@@ -477,7 +480,7 @@
       'type' => 'phone',
       'dbType' => 'varchar',
       'len' => 100,
-      'audited' => true,
+      'audited' => false,
       'unified_search' => true,
       'full_text_search' => 
       array (
@@ -529,6 +532,7 @@
       'source' => 'non-db',
       'group' => 'email1',
       'merge_filter' => 'enabled',
+      'required' => true,
       'studio' => 
       array (
         'editview' => true,
@@ -635,12 +639,10 @@
     array (
       'name' => 'primary_address_country',
       'vname' => 'LBL_PRIMARY_ADDRESS_COUNTRY',
-      'type' => 'enum',
+      'type' => 'varchar',
       'group' => 'primary_address',
-      'comment' => 'The country used for the primary address',
+      'comment' => 'Country for primary address',
       'merge_filter' => 'enabled',
-      'options' => 'countries_list_dom',
-      'len' => '50',
     ),
     'alt_address_street' => 
     array (
@@ -702,19 +704,17 @@
     array (
       'name' => 'alt_address_country',
       'vname' => 'LBL_ALT_ADDRESS_COUNTRY',
-      'type' => 'enum',
-      'group' => 'primary_address',
-      'comment' => 'The country used for the primary address',
+      'type' => 'varchar',
+      'group' => 'alt_address',
+      'comment' => 'Country for alternate address',
       'merge_filter' => 'enabled',
-      'options' => 'countries_list_dom',
-      'len' => '50',
     ),
     'assistant' => 
     array (
       'name' => 'assistant',
       'vname' => 'LBL_ASSISTANT',
       'type' => 'varchar',
-      'len' => '75',
+      'len' => '150',
       'unified_search' => true,
       'full_text_search' => 
       array (
@@ -781,6 +781,7 @@
       'type' => 'bool',
       'default' => '0',
       'comment' => 'Has Lead been converted to a Contact (and other Sugar objects)',
+      'massupdate' => false,
     ),
     'refered_by' => 
     array (
@@ -796,11 +797,46 @@
       'name' => 'lead_source',
       'vname' => 'LBL_LEAD_SOURCE',
       'type' => 'enum',
-      'options' => 'lead_source_dom',
+      'options' => 'lead_source_list',
+      'no_default' => false,
       'len' => '100',
       'audited' => true,
       'comment' => 'Lead source (ex: Web, print)',
       'merge_filter' => 'enabled',
+      'massupdate' => true,
+      'required' => true,
+      'importable' => 'true',
+    ),
+    'activity' => 
+    array (
+      'name' => 'activity',
+      'vname' => 'LBL_ACTIVITY',
+      'type' => 'enum',
+      'options' => 'activity_source_list',
+      'no_default' => false,
+      'len' => '100',
+      'audited' => false,
+      'massupdate' => false,
+      'required' => false,
+    ),
+    'occupation' => 
+    array (
+      'required' => false,
+      'name' => 'occupation',
+      'vname' => 'LBL_OCCUPATION',
+      'type' => 'varchar',
+      'len' => '20',
+    ),
+    'category' => 
+    array (
+      'name' => 'category',
+      'vname' => 'LBL_CATEGORY',
+      'type' => 'enum',
+      'options' => 'category_list',
+      'no_default' => false,
+      'len' => '100',
+      'massupdate' => false,
+      'required' => false,
     ),
     'lead_source_description' => 
     array (
@@ -809,6 +845,28 @@
       'type' => 'text',
       'group' => 'lead_source',
       'comment' => 'Description of the lead source',
+    ),
+    'utm_source' => 
+    array (
+      'name' => 'utm_source',
+      'vname' => 'LBL_UTM_SOURCE',
+      'type' => 'varchar',
+      'len' => '100',
+    ),
+    'utm_medium' => 
+    array (
+      'name' => 'utm_medium',
+      'vname' => 'LBL_UTM_MEDIUM',
+      'type' => 'varchar',
+      'len' => '100',
+    ),
+    'branch' => 
+    array (
+      'name' => 'branch',
+      'vname' => 'LBL_BRANCH',
+      'type' => 'varchar',
+      'len' => '255',
+      'importable' => 'true',
     ),
     'status' => 
     array (
@@ -820,6 +878,7 @@
       'audited' => true,
       'comment' => 'Status of the lead',
       'merge_filter' => 'enabled',
+      'massupdate' => false,
     ),
     'status_description' => 
     array (
@@ -887,16 +946,26 @@
     ),
     'account_name' => 
     array (
+      'required' => false,
       'name' => 'account_name',
       'vname' => 'LBL_ACCOUNT_NAME',
-      'type' => 'varchar',
-      'len' => '255',
-      'unified_search' => true,
-      'full_text_search' => 
-      array (
-        'boost' => 3,
-      ),
-      'comment' => 'Account name for lead',
+      'type' => 'relate',
+      'rname' => 'name',
+      'id_name' => 'account_id',
+      'join_name' => 'accounts',
+      'link' => 'accounts',
+      'table' => 'accounts',
+      'isnull' => 'true',
+      'massupdate' => false,
+      'module' => 'Accounts',
+    ),
+    'account_id' => 
+    array (
+      'name' => 'account_id',
+      'type' => 'id',
+      'reportable' => false,
+      'vname' => 'LBL_ACCOUNT_ID',
+      'comment' => 'If converted, Account ID resulting from the conversion',
     ),
     'accounts' => 
     array (
@@ -905,6 +974,8 @@
       'relationship' => 'account_leads',
       'link_type' => 'one',
       'source' => 'non-db',
+      'module' => 'Accounts',
+      'bean_name' => 'Accounts',
       'vname' => 'LBL_ACCOUNT',
       'duplicate_merge' => 'disabled',
     ),
@@ -938,14 +1009,6 @@
       'source' => 'non-db',
       'vname' => 'LBL_LEADS',
       'reportable' => false,
-    ),
-    'account_id' => 
-    array (
-      'name' => 'account_id',
-      'type' => 'id',
-      'reportable' => false,
-      'vname' => 'LBL_ACCOUNT_ID',
-      'comment' => 'If converted, Account ID resulting from the conversion',
     ),
     'opportunity_id' => 
     array (
@@ -1116,6 +1179,63 @@
       'massupdate' => false,
       'studio' => 'false',
     ),
+    'birthdate' => 
+    array (
+      'name' => 'birthdate',
+      'vname' => 'LBL_BIRTHDATE',
+      'massupdate' => false,
+      'type' => 'date',
+      'comment' => 'The birthdate of the contact',
+      'enable_range_search' => true,
+      'options' => 'date_range_search_dom',
+      'unified_search' => true,
+    ),
+    'birthmonth' => 
+    array (
+      'required' => false,
+      'name' => 'birthmonth',
+      'vname' => 'LBL_BIRTH_MONTH',
+      'type' => 'enum',
+      'massupdate' => 0,
+      'default' => '',
+      'no_default' => false,
+      'comments' => '',
+      'help' => 'Birth Month',
+      'importable' => 'true',
+      'duplicate_merge' => 'disabled',
+      'duplicate_merge_dom_value' => '0',
+      'audited' => false,
+      'reportable' => true,
+      'unified_search' => false,
+      'merge_filter' => 'disabled',
+      'calculated' => false,
+      'len' => 5,
+      'size' => '20',
+      'options' => 'birth_month_list',
+      'studio' => 'visible',
+      'dependency' => false,
+    ),
+    'full_lead_name' => 
+    array (
+      'required' => false,
+      'name' => 'full_lead_name',
+      'vname' => 'LBL_FULL_NAME',
+      'type' => 'varchar',
+      'massupdate' => 0,
+      'no_default' => false,
+      'comments' => '',
+      'help' => '',
+      'importable' => 'false',
+      'duplicate_merge' => 'disabled',
+      'duplicate_merge_dom_value' => '0',
+      'audited' => false,
+      'reportable' => true,
+      'unified_search' => false,
+      'merge_filter' => 'disabled',
+      'calculated' => false,
+      'len' => '250',
+      'size' => '20',
+    ),
     'portal_name' => 
     array (
       'name' => 'portal_name',
@@ -1229,163 +1349,18 @@
       'default' => 'en_us',
       'vname' => 'LBL_PREFERRED_LANGUAGE',
       'options' => 'available_language_dom',
+      'massupdate' => false,
     ),
-    'leads_c_bookingticket_1' => 
+    'aims_id' => 
     array (
-      'name' => 'leads_c_bookingticket_1',
-      'type' => 'link',
-      'relationship' => 'leads_c_bookingticket_1',
-      'source' => 'non-db',
-      'module' => 'C_BookingTicket',
-      'bean_name' => 'C_BookingTicket',
-      'vname' => 'LBL_LEADS_C_BOOKINGTICKET_1_FROM_LEADS_TITLE',
-      'id_name' => 'leads_c_bookingticket_1leads_ida',
-      'link-type' => 'many',
-      'side' => 'left',
-    ),
-    'leads_c_ticket_1' => 
-    array (
-      'name' => 'leads_c_ticket_1',
-      'type' => 'link',
-      'relationship' => 'leads_c_ticket_1',
-      'source' => 'non-db',
-      'module' => 'C_Ticket',
-      'bean_name' => 'C_Ticket',
-      'vname' => 'LBL_LEADS_C_TICKET_1_FROM_LEADS_TITLE',
-      'id_name' => 'leads_c_ticket_1leads_ida',
-      'link-type' => 'many',
-      'side' => 'left',
-    ),
-    'leads_opportunities_1' => 
-    array (
-      'name' => 'leads_opportunities_1',
-      'type' => 'link',
-      'relationship' => 'leads_opportunities_1',
-      'source' => 'non-db',
-      'module' => 'Opportunities',
-      'bean_name' => 'Opportunity',
-      'vname' => 'LBL_LEADS_OPPORTUNITIES_1_FROM_LEADS_TITLE',
-      'id_name' => 'leads_opportunities_1leads_ida',
-      'link-type' => 'many',
-      'side' => 'left',
-    ),
-    'short_name' => 
-    array (
-      'name' => 'short_name',
-      'vname' => 'LBL_SHORT_NAME',
-      'type' => 'varchar',
-      'len' => 150,
-      'unified_search' => true,
-    ),
-    'rating' => 
-    array (
-      'name' => 'rating',
-      'vname' => 'LBL_RATING',
-      'type' => 'enum',
-      'options' => 'lead_rating_options',
-    ),
-    'industry' => 
-    array (
-      'name' => 'industry',
-      'vname' => 'LBL_INDUSTRY',
-      'type' => 'enum',
-      'options' => 'industry_dom',
-    ),
-    'tax_code' => 
-    array (
-      'name' => 'tax_code',
-      'vname' => 'LBL_TAX_CODE',
-      'type' => 'varchar',
-      'len' => 50,
-      'unified_search' => true,
-    ),
-    'business_type' => 
-    array (
-      'name' => 'business_type',
-      'vname' => 'LBL_BUSINESS_TYPE',
-      'type' => 'enum',
-      'options' => 'account_business_type_dom',
-    ),
-    'ownership' => 
-    array (
-      'name' => 'ownership',
-      'vname' => 'LBL_OWNERSHIP',
-      'type' => 'varchar',
-      'len' => 255,
-    ),
-    'code' => 
-    array (
-      'name' => 'code',
-      'vname' => 'LBL_CODE',
-      'type' => 'varchar',
       'required' => true,
-      'importable' => true,
-      'help' => 'Code',
-      'len' => '255',
-      'size' => '20',
-    ),
-    'credit_limit' => 
-    array (
-      'required' => false,
-      'name' => 'credit_limit',
-      'vname' => 'LBL_CREDIT_LIMIT',
-      'type' => 'currency',
-      'help' => 'Credit Limit',
-      'importable' => 'true',
-      'len' => 26,
-      'size' => '20',
-      'enable_range_search' => false,
-      'precision' => 2,
-    ),
-    'active_date' => 
-    array (
-      'name' => 'active_date',
-      'vname' => 'LBL_ACTIVE_DATE',
-      'type' => 'date',
-      'display_default' => 'now',
-    ),
-    'exp_date' => 
-    array (
-      'name' => 'exp_date',
-      'vname' => 'LBL_EXP_DATE',
-      'type' => 'date',
-    ),
-    'auto_convert_contact' => 
-    array (
-      'name' => 'auto_convert_contact',
-      'vname' => 'LBL_AUTO_CONVERT_CONTACT',
-      'type' => 'bool',
-      'dbType' => 'tinyint',
-      'default' => 0,
-    ),
-    'category' => 
-    array (
-      'name' => 'category',
-      'vname' => 'LBL_CATEGORY',
-      'type' => 'enum',
-      'options' => 'category_lead_options',
-      'len' => '40',
-      'audited' => true,
-      'merge_filter' => 'enabled',
-      'default' => 'FIT',
-    ),
-    'fit_category' => 
-    array (
-      'name' => 'fit_category',
-      'vname' => 'LBL_FIT_CATEGORY',
-      'type' => 'enum',
-      'options' => 'fit_category_options',
-      'len' => '40',
-      'audited' => true,
-      'merge_filter' => 'enabled',
-      'default' => 'Normal FIT',
-    ),
-    'working_date' => 
-    array (
-      'name' => 'working_date',
-      'vname' => 'LBL_WORKING_DATE',
-      'type' => 'date',
-      'massupdate' => true,
+      'name' => 'aims_id',
+      'vname' => 'LBL_AIMS_ID',
+      'type' => 'varchar',
+      'massupdate' => 0,
+      'no_default' => false,
+      'comments' => '',
+      'help' => 'AIMS ID Int',
       'importable' => 'true',
       'duplicate_merge' => 'disabled',
       'duplicate_merge_dom_value' => '0',
@@ -1394,465 +1369,83 @@
       'unified_search' => false,
       'merge_filter' => 'disabled',
       'calculated' => false,
+      'len' => '10',
       'size' => '20',
-    ),
-    'gs_code' => 
-    array (
-      'required' => false,
-      'name' => 'gs_code',
-      'vname' => 'LBL_GS_CODE',
-      'type' => 'varchar',
-      'massupdate' => 0,
-      'no_default' => false,
-      'importable' => 'false',
-      'duplicate_merge' => 'disabled',
-      'duplicate_merge_dom_value' => '0',
-      'audited' => false,
-      'reportable' => true,
-      'unified_search' => true,
-      'merge_filter' => 'disabled',
-      'calculated' => false,
-      'len' => '255',
-      'size' => '20',
-    ),
-    'opp_name' => 
-    array (
-      'name' => 'opp_name',
-      'vname' => 'LBL_OPPORTUNITY_NAME',
-      'type' => 'varchar',
-      'massupdate' => 0,
-      'no_default' => false,
-      'comments' => '',
-      'help' => '',
-      'importable' => 'true',
-      'duplicate_merge' => 'disabled',
-      'duplicate_merge_dom_value' => '0',
-      'audited' => false,
-      'reportable' => true,
-      'unified_search' => false,
-      'merge_filter' => 'disabled',
-      'len' => '50',
-      'size' => '20',
-      'required' => true,
-      'source' => 'non-db',
-      'studio' => 'visible',
-    ),
-    'opp_amount' => 
-    array (
-      'required' => false,
-      'name' => 'opp_amount',
-      'vname' => 'LBL_OPP_AMOUNT',
-      'type' => 'currency',
-      'massupdate' => 0,
-      'no_default' => false,
-      'comments' => '',
-      'help' => '',
-      'importable' => 'true',
-      'duplicate_merge' => 'disabled',
-      'duplicate_merge_dom_value' => '0',
-      'audited' => false,
-      'reportable' => true,
-      'unified_search' => false,
-      'merge_filter' => 'disabled',
-      'size' => '20',
-      'enable_range_search' => false,
-      'source' => 'non-db',
-      'studio' => 'visible',
-    ),
-    'opp_sales_stage' => 
-    array (
-      'name' => 'opp_sales_stage',
-      'vname' => 'LBL_OPP_SALES_STAGE',
-      'type' => 'enum',
-      'options' => 'sales_stage_dom',
-      'len' => '255',
-      'audited' => true,
-      'comment' => 'Indication of progression towards closure',
-      'merge_filter' => 'enabled',
-      'importable' => true,
-      'required' => true,
-      'source' => 'non-db',
-      'studio' => 'visible',
-    ),
-    'opp_description' => 
-    array (
-      'required' => false,
-      'name' => 'opp_description',
-      'vname' => 'LBL_OPP_DESCRIPTION',
-      'type' => 'text',
-      'massupdate' => 0,
-      'comments' => '',
-      'help' => '',
-      'importable' => 'true',
-      'duplicate_merge' => 'enabled',
-      'duplicate_merge_dom_value' => '1',
-      'audited' => true,
-      'reportable' => true,
-      'size' => '20',
-      'studio' => 'visible',
-      'rows' => '4',
-      'cols' => '60',
-      'source' => 'non-db',
-    ),
-    'opp_date_closed' => 
-    array (
-      'name' => 'opp_date_closed',
-      'vname' => 'LBL_OPP_DATE_CLOSED',
-      'type' => 'date',
-      'audited' => true,
-      'comment' => 'Expected or actual date the oppportunity will close',
-      'importable' => true,
-      'required' => true,
-      'enable_range_search' => true,
-      'options' => 'date_range_search_dom',
-      'source' => 'non-db',
-      'studio' => 'visible',
-    ),
-    'first_opportunity_id' => 
-    array (
-      'name' => 'first_opportunity_id',
-      'vname' => 'LBL_FIRST_OPPORTUNITY_ID',
-      'type' => 'varchar',
-      'massupdate' => 0,
-      'no_default' => false,
-      'comments' => '',
-      'help' => '',
-      'importable' => 'true',
-      'duplicate_merge' => 'disabled',
-      'duplicate_merge_dom_value' => '0',
-      'audited' => false,
-      'reportable' => true,
-      'unified_search' => false,
-      'merge_filter' => 'disabled',
-      'len' => '50',
-      'size' => '20',
-    ),
-    'create_opportunity' => 
-    array (
-      'required' => false,
-      'name' => 'create_opportunity',
-      'vname' => 'LBL_CREATE_OPPORTUNITY',
-      'type' => 'bool',
-      'massupdate' => 0,
-      'default' => '0',
-      'comments' => '',
-      'help' => '',
-      'importable' => 'true',
-      'duplicate_merge' => 'enabled',
-      'duplicate_merge_dom_value' => '1',
-      'audited' => true,
-      'reportable' => true,
-      'len' => '255',
-      'size' => '20',
-    ),
-    'currency_id' => 
-    array (
-      'name' => 'currency_id',
-      'type' => 'currency_id',
-      'dbType' => 'id',
-      'group' => 'currency_id',
-      'required' => true,
-      'vname' => 'LBL_CURRENCY',
-      'function' => 
-      array (
-        'name' => 'getCurrencyDropDown',
-        'returns' => 'html',
-      ),
-      'reportable' => false,
-      'default' => '-99',
-      'comment' => 'Currency used for display purposes',
-    ),
-    'currency_name' => 
-    array (
-      'name' => 'currency_name',
-      'rname' => 'name',
-      'id_name' => 'currency_id',
-      'vname' => 'LBL_CURRENCY_NAME',
-      'type' => 'relate',
-      'isnull' => 'true',
-      'table' => 'currencies',
-      'module' => 'Currencies',
-      'source' => 'non-db',
-      'function' => 
-      array (
-        'name' => 'getCurrencyNameDropDown',
-        'returns' => 'html',
-      ),
-      'studio' => 'false',
-      'duplicate_merge' => 'disabled',
-    ),
-    'currency_symbol' => 
-    array (
-      'name' => 'currency_symbol',
-      'rname' => 'symbol',
-      'id_name' => 'currency_id',
-      'vname' => 'LBL_CURRENCY_SYMBOL',
-      'type' => 'relate',
-      'isnull' => 'true',
-      'table' => 'currencies',
-      'module' => 'Currencies',
-      'source' => 'non-db',
-      'function' => 
-      array (
-        'name' => 'getCurrencySymbolDropDown',
-        'returns' => 'html',
-      ),
-      'studio' => 'false',
-      'duplicate_merge' => 'disabled',
-    ),
-    'passport' => 
-    array (
-      'name' => 'passport',
-      'vname' => 'LBL_PASSPORT',
-      'type' => 'varchar',
-      'required' => false,
-      'help' => 'Passport',
-      'len' => '50',
-      'size' => '20',
-    ),
-    'membership_number' => 
-    array (
-      'name' => 'membership_number',
-      'vname' => 'LBL_MEMBERSHIP_NUMBER',
-      'type' => 'varchar',
-      'required' => false,
-      'help' => 'Membership Number',
-      'len' => '50',
-      'size' => '20',
-    ),
-    'seat_type' => 
-    array (
-      'name' => 'seat_type',
-      'vname' => 'LBL_SEAT_TYPE',
-      'type' => 'enum',
-      'options' => 'seat_type_options',
-      'len' => '40',
-      'audited' => true,
-    ),
-    'airline' => 
-    array (
-      'name' => 'airline',
-      'vname' => 'LBL_AIRLINE',
-      'type' => 'enum',
-      'options' => 'full_supplier_ticket_list',
-      'len' => '40',
-      'audited' => true,
-    ),
-    'favorites' => 
-    array (
-      'required' => false,
-      'name' => 'favorites',
-      'vname' => 'LBL_FAVORITES',
-      'type' => 'text',
-      'massupdate' => 0,
-      'no_default' => false,
-      'comments' => '',
-      'help' => 'Favorites',
-      'importable' => 'true',
-      'duplicate_merge' => 'disabled',
-      'duplicate_merge_dom_value' => '0',
-      'audited' => false,
-      'reportable' => true,
-      'unified_search' => false,
-      'merge_filter' => 'disabled',
-      'calculated' => false,
-      'size' => '20',
-      'studio' => 'visible',
-      'rows' => '4',
-      'cols' => '60',
-    ),
-    'pax_name' => 
-    array (
-      'name' => 'pax_name',
-      'vname' => 'LBL_PAX_NAME',
-      'type' => 'varchar',
-      'massupdate' => 0,
-      'no_default' => false,
-      'comments' => '',
-      'help' => 'Pax name',
-      'importable' => 'true',
-      'duplicate_merge' => 'disabled',
-      'duplicate_merge_dom_value' => '0',
-      'audited' => true,
-      'reportable' => true,
-      'unified_search' => true,
-      'merge_filter' => 'disabled',
-      'calculated' => false,
-      'len' => '255',
-      'size' => '20',
-    ),
-    'dob_day' => 
-    array (
-      'required' => false,
-      'name' => 'dob_day',
-      'vname' => 'LBL_DAY',
-      'type' => 'enum',
-      'len' => 10,
-      'key' => 'dob',
-      'options' => 'day_options',
-    ),
-    'dob_month' => 
-    array (
-      'required' => false,
-      'name' => 'dob_month',
-      'vname' => 'LBL_MONTH',
-      'type' => 'enum',
-      'len' => 10,
-      'key' => 'dob',
-      'options' => 'month_options',
-    ),
-    'dob_year' => 
-    array (
-      'name' => 'dob_year',
-      'vname' => 'LBL_YEAR',
-      'type' => 'int',
-      'dbType' => 'varchar',
-      'len' => 5,
-      'key' => 'dob',
       'enable_range_search' => true,
       'options' => 'numeric_range_search_dom',
+      'disable_num_format' => true,
     ),
-    'dob_date' => 
+    'identity_number' => 
     array (
-      'name' => 'dob_date',
-      'vname' => 'LBL_BIRTHDATE',
+      'required' => false,
+      'name' => 'identity_number',
+      'vname' => 'LBL_INDENTITY_NUMBER',
+      'type' => 'varchar',
+      'len' => '100',
+      'size' => '20',
+      'audited' => true,
+    ),
+    'identity_date' => 
+    array (
+      'name' => 'identity_date',
+      'vname' => 'LBL_INDENTITY_DATE',
       'massupdate' => false,
       'type' => 'date',
-      'key' => 'dob',
+      'unified_search' => false,
       'enable_range_search' => true,
       'options' => 'date_range_search_dom',
     ),
-    'session_link' => 
-    array (
-      'name' => 'session_link',
-      'type' => 'link',
-      'relationship' => 'session_lead',
-      'module' => 'C_Session',
-      'bean_name' => 'C_Session',
-      'source' => 'non-db',
-      'vname' => 'LBL_SESSION',
-    ),
-    'facebook_id' => 
-    array (
-      'name' => 'facebook_id',
-      'vname' => 'LBL_FACEBOOK_ID',
-      'massupdate' => false,
-      'type' => 'varchar',
-      'len' => 100,
-    ),
-    'google_id' => 
-    array (
-      'name' => 'google_id',
-      'vname' => 'LBL_GOOGLE_ID',
-      'massupdate' => false,
-      'type' => 'varchar',
-      'len' => 100,
-    ),
-    'ibe_id' => 
-    array (
-      'name' => 'ibe_id',
-      'vname' => 'LBL_IBE_ID',
-      'massupdate' => false,
-      'type' => 'varchar',
-      'len' => 100,
-    ),
-    'document_type' => 
-    array (
-      'name' => 'document_type',
-      'vname' => 'LBL_DOCUMENT_TYPE',
-      'massupdate' => false,
-      'type' => 'enum',
-      'len' => 50,
-      'options' => 'customer_document_type_options',
-    ),
-    'card_holder' => 
-    array (
-      'name' => 'card_holder',
-      'vname' => 'LBL_CARD_HOLDER',
-      'massupdate' => false,
-      'type' => 'varchar',
-      'len' => 150,
-    ),
-    'nationality' => 
-    array (
-      'name' => 'nationality',
-      'vname' => 'LBL_NATIONALITY',
-      'massupdate' => false,
-      'type' => 'varchar',
-      'len' => 100,
-    ),
-    'document_number' => 
-    array (
-      'name' => 'document_number',
-      'vname' => 'LBL_DOCUMENT_NUMBER',
-      'massupdate' => false,
-      'type' => 'varchar',
-      'len' => 100,
-    ),
-    'issuing_country' => 
-    array (
-      'name' => 'issuing_country',
-      'vname' => 'LBL_ISSUING_COUNTRY',
-      'massupdate' => false,
-      'type' => 'varchar',
-      'len' => 100,
-    ),
-    'gender' => 
-    array (
-      'name' => 'gender',
-      'vname' => 'LBL_GENDER',
-      'massupdate' => false,
-      'type' => 'enum',
-      'options' => 'gender_list',
-      'len' => 20,
-    ),
-    'birthday' => 
-    array (
-      'name' => 'birthday',
-      'vname' => 'LBL_DOB_DATE',
-      'massupdate' => false,
-      'type' => 'varchar',
-      'len' => 20,
-    ),
-    'avatar_c' => 
+    'identity_location' => 
     array (
       'required' => false,
-      'source' => 'custom_fields',
-      'name' => 'avatar_c',
-      'vname' => 'LBL_AVATAR',
-      'type' => 'image',
-      'massupdate' => '0',
-      'default' => '',
-      'no_default' => false,
-      'comments' => '',
-      'help' => '',
-      'importable' => 'true',
-      'duplicate_merge' => 'disabled',
-      'duplicate_merge_dom_value' => '0',
-      'audited' => false,
-      'reportable' => true,
-      'unified_search' => false,
-      'merge_filter' => 'disabled',
-      'calculated' => false,
-      'len' => 255,
+      'name' => 'identity_location',
+      'vname' => 'LBL_INDENTITY_LOCATION',
+      'type' => 'varchar',
+      'len' => '200',
       'size' => '20',
-      'studio' => 'visible',
-      'dbType' => 'varchar',
-      'border' => '',
-      'width' => '120',
-      'height' => '',
-      'id' => 'Leadsavatar_c',
-      'custom_module' => 'Leads',
     ),
-    'promotion_source_type_c' => 
+    'place_of_birth' => 
     array (
       'required' => false,
-      'source' => 'custom_fields',
-      'name' => 'promotion_source_type_c',
-      'vname' => 'LBL_PROMOTION_SOURCE_TYPE',
-      'type' => 'parent_type',
-      'massupdate' => '0',
-      'default' => '',
+      'name' => 'place_of_birth',
+      'vname' => 'LBL_PLACE_OF_BIRTH',
+      'type' => 'varchar',
+      'len' => '200',
+      'size' => '20',
+    ),
+    'height' => 
+    array (
+      'required' => false,
+      'name' => 'height',
+      'vname' => 'LBL_HEIGHT',
+      'type' => 'decimal',
+      'audited' => false,
+      'dbType' => 'varchar',
+      'len' => '20',
+      'size' => '5',
+      'enable_range_search' => false,
+      'no_default' => true,
+    ),
+    'weight' => 
+    array (
+      'required' => false,
+      'name' => 'weight',
+      'vname' => 'LBL_WEIGHT',
+      'type' => 'decimal',
+      'audited' => false,
+      'dbType' => 'varchar',
+      'len' => '20',
+      'size' => '5',
+      'enable_range_search' => false,
+      'no_default' => true,
+    ),
+    'graduated_year' => 
+    array (
+      'required' => false,
+      'name' => 'graduated_year',
+      'vname' => 'LBL_GRADUATED_YEAR',
+      'type' => 'varchar',
+      'massupdate' => 0,
       'no_default' => false,
       'comments' => '',
       'help' => '',
@@ -1863,13 +1456,118 @@
       'reportable' => true,
       'unified_search' => false,
       'merge_filter' => 'disabled',
-      'calculated' => false,
       'len' => '100',
       'size' => '20',
+      'studio' => 'visible',
+    ),
+    'experience_year' => 
+    array (
+      'required' => false,
+      'name' => 'experience_year',
+      'vname' => 'LBL_EXPERIENCE_YEAR',
+      'type' => 'decimal',
+      'audited' => false,
       'dbType' => 'varchar',
-      'studio' => 'hidden',
-      'id' => 'Leadspromotion_source_type_c',
-      'custom_module' => 'Leads',
+      'len' => '20',
+      'size' => '5',
+      'enable_range_search' => false,
+      'no_default' => true,
+    ),
+    'facebook' => 
+    array (
+      'name' => 'facebook',
+      'vname' => 'LBL_FACEBOOK',
+      'type' => 'url',
+      'dbType' => 'varchar',
+      'len' => 255,
+      'audited' => true,
+      'comment' => 'URL of website for the company',
+    ),
+    'graduated_rate' => 
+    array (
+      'required' => false,
+      'name' => 'graduated_rate',
+      'vname' => 'LBL_GRADUATED_RATE',
+      'type' => 'enum',
+      'massupdate' => 0,
+      'no_default' => false,
+      'importable' => 'true',
+      'duplicate_merge' => 'disabled',
+      'duplicate_merge_dom_value' => '0',
+      'audited' => true,
+      'reportable' => true,
+      'unified_search' => false,
+      'merge_filter' => 'disabled',
+      'calculated' => false,
+      'len' => 100,
+      'size' => '20',
+      'options' => 'graduated_rate_list',
+      'studio' => 'visible',
+      'dependency' => false,
+    ),
+    'graduated_major' => 
+    array (
+      'required' => false,
+      'name' => 'graduated_major',
+      'vname' => 'LBL_GRADUATED_MAJOR',
+      'type' => 'varchar',
+      'len' => '200',
+      'size' => '20',
+    ),
+    'position' => 
+    array (
+      'required' => false,
+      'name' => 'position',
+      'vname' => 'LBL_POSITION',
+      'type' => 'varchar',
+      'len' => '200',
+      'size' => '20',
+    ),
+    'type' => 
+    array (
+      'name' => 'type',
+      'vname' => 'LBL_TYPE',
+      'massupdate' => 1,
+      'type' => 'enum',
+      'default' => 'Public',
+      'len' => '20',
+      'options' => 'student_type_list',
+      'studio' => 'visible',
+    ),
+    'pt_score' => 
+    array (
+      'name' => 'pt_score',
+      'type' => 'varchar',
+      'source' => 'non-db',
+      'vname' => 'LBL_PT_SCORE',
+      'studio' => 
+      array (
+        'listview' => false,
+      ),
+    ),
+    'email_parent_1' => 
+    array (
+      'name' => 'email_parent_1',
+      'vname' => 'LBL_EMAIL_PARENT_1',
+      'type' => 'varchar',
+      'len' => '255',
+      'importable' => 'true',
+    ),
+    'email_parent_2' => 
+    array (
+      'name' => 'email_parent_2',
+      'vname' => 'LBL_EMAIL_PARENT_2',
+      'type' => 'varchar',
+      'len' => '255',
+      'importable' => 'true',
+    ),
+    'last_pt_result' => 
+    array (
+      'name' => 'last_pt_result',
+      'vname' => 'LBL_LAST_PT_RESULT',
+      'type' => 'varchar',
+      'len' => '255',
+      'importable' => 'true',
     ),
   ),
   'indices' => 
@@ -1894,6 +1592,18 @@
     ),
     0 => 
     array (
+      'name' => 'idx_lead_last_first_phone',
+      'type' => 'index',
+      'fields' => 
+      array (
+        0 => 'last_name',
+        1 => 'first_name',
+        2 => 'phone_mobile',
+        3 => 'deleted',
+      ),
+    ),
+    1 => 
+    array (
       'name' => 'idx_lead_acct_name_first',
       'type' => 'index',
       'fields' => 
@@ -1902,7 +1612,7 @@
         1 => 'deleted',
       ),
     ),
-    1 => 
+    2 => 
     array (
       'name' => 'idx_lead_last_first',
       'type' => 'index',
@@ -1913,85 +1623,7 @@
         2 => 'deleted',
       ),
     ),
-    2 => 
-    array (
-      'name' => 'idx_lead_del_stat',
-      'type' => 'index',
-      'fields' => 
-      array (
-        0 => 'last_name',
-        1 => 'status',
-        2 => 'deleted',
-        3 => 'first_name',
-      ),
-    ),
     3 => 
-    array (
-      'name' => 'idx_lead_opp_del',
-      'type' => 'index',
-      'fields' => 
-      array (
-        0 => 'opportunity_id',
-        1 => 'deleted',
-      ),
-    ),
-    4 => 
-    array (
-      'name' => 'idx_leads_acct_del',
-      'type' => 'index',
-      'fields' => 
-      array (
-        0 => 'account_id',
-        1 => 'deleted',
-      ),
-    ),
-    5 => 
-    array (
-      'name' => 'idx_del_user',
-      'type' => 'index',
-      'fields' => 
-      array (
-        0 => 'deleted',
-        1 => 'assigned_user_id',
-      ),
-    ),
-    6 => 
-    array (
-      'name' => 'idx_lead_assigned',
-      'type' => 'index',
-      'fields' => 
-      array (
-        0 => 'assigned_user_id',
-      ),
-    ),
-    7 => 
-    array (
-      'name' => 'idx_lead_contact',
-      'type' => 'index',
-      'fields' => 
-      array (
-        0 => 'contact_id',
-      ),
-    ),
-    8 => 
-    array (
-      'name' => 'idx_reports_to',
-      'type' => 'index',
-      'fields' => 
-      array (
-        0 => 'reports_to_id',
-      ),
-    ),
-    9 => 
-    array (
-      'name' => 'idx_lead_phone_work',
-      'type' => 'index',
-      'fields' => 
-      array (
-        0 => 'phone_work',
-      ),
-    ),
-    10 => 
     array (
       'name' => 'idx_leads_id_del',
       'type' => 'index',
@@ -1999,6 +1631,15 @@
       array (
         0 => 'id',
         1 => 'deleted',
+      ),
+    ),
+    4 => 
+    array (
+      'name' => 'aims_id',
+      'type' => 'index',
+      'fields' => 
+      array (
+        0 => 'aims_id',
       ),
     ),
   ),
@@ -2179,16 +1820,6 @@
       'relationship_role_column' => 'target_type',
       'relationship_role_column_value' => 'Leads',
     ),
-    'session_lead' => 
-    array (
-      'lhs_module' => 'Leads',
-      'lhs_table' => 'leads',
-      'lhs_key' => 'id',
-      'rhs_module' => 'C_Session',
-      'rhs_table' => 'c_session',
-      'rhs_key' => 'lead_id',
-      'relationship_type' => 'one-to-many',
-    ),
   ),
   'optimistic_locking' => true,
   'name_format_map' => 
@@ -2213,7 +1844,7 @@
   'related_calc_fields' => 
   array (
   ),
-  'custom_fields' => true,
+  'custom_fields' => false,
   'acls' => 
   array (
     'SugarACLStatic' => true,

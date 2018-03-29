@@ -5,13 +5,11 @@
         public function toText($amt) {
             if (is_numeric($amt)) {
                 $sign = $amt >= 0 ? '' : 'Negative ';
-                $rs = $sign . $this->toQuadrillions(abs($amt)) . " ";
+                $rs = $sign . $this->toQuadrillions(abs($amt)) . " đồng chẵn.";
                 $rs = str_replace('  ',' ',$rs);
-                $rs = trim($rs);
-                //$rs = strtolower($rs);
-                $rs[0] = strtoupper($rs[0]);
+                $rs = ucfirst(mb_strtolower($rs,'UTF-8'));
                 $rs = str_replace('mươi một','mươi mốt',$rs);
-                return $rs.=' đồng.';
+                return $rs;
             } else {
                 throw new Exception('Only numeric values are allowed.');
             }
@@ -19,16 +17,16 @@
 
         private function toOnes($amt) {
             $words = array(
-                0 => 'không',
-                1 => 'một',
-                2 => 'hai',
-                3 => 'ba',
-                4 => 'bốn',
-                5 => 'năm',
-                6 => 'sáu',
-                7 => 'bảy',
-                8 => 'tám',
-                9 => 'chín'
+                0 => 'Không',
+                1 => 'Một',
+                2 => 'Hai',
+                3 => 'Ba',
+                4 => 'Bốn',
+                5 => 'Năm',
+                6 => 'Sáu',
+                7 => 'Bảy',
+                8 => 'Tám',
+                9 => 'Chín'
             );
 
             if ($amt >= 0 && $amt < 10)
@@ -43,32 +41,33 @@
 
             if ($firstDigit == 1) {
                 $words = array(
-                    0 => 'mười',
-                    1 => 'mười một',
-                    2 => 'mười hai',
-                    3 => 'mười ba',
-                    4 => 'mười bốn',
-                    5 => 'mười lăm',
-                    6 => 'mười sáu',
-                    7 => 'mười bảy',
-                    8 => 'mười tám',
-                    9 => 'mười chín'
+                    0 => 'Mười',
+                    1 => 'Mười Một',
+                    2 => 'Mười Hai',
+                    3 => 'Mười Ba',
+                    4 => 'Mười Bốn',
+                    5 => 'Mười Lăm',
+                    6 => 'Mười Sáu',
+                    7 => 'Mười Bảy',
+                    8 => 'Mười Tám',
+                    9 => 'Mười Chín'
                 );
 
                 return $words[$remainder];
             } else if ($firstDigit >= 2 && $firstDigit <= 9) {
                 $words = array(
-                    2 => 'hai mươi',
-                    3 => 'ba mươi',
-                    4 => 'bốn mươi',
-                    5 => 'năm mươi',
-                    6 => 'sáu mươi',
-                    7 => 'bảy mươi',
-                    8 => 'tám mươi',
-                    9 => 'chín mươi'
+                    2 => 'Hai Mươi',
+                    3 => 'Ba Mươi',
+                    4 => 'Bốn Mươi',
+                    5 => 'Năm Mươi',
+                    6 => 'Sáu Mươi',
+                    7 => 'Bảy Mươi',
+                    8 => 'Tám Mươi',
+                    9 => 'Chín Mươi'
                 );
 
                 $rest = $remainder == 0 ? '' : $this->toOnes($remainder);
+                if($remainder == 5) $rest = 'lăm';
                 return $words[$firstDigit] . ' ' . $rest;
             }
             else
@@ -81,7 +80,7 @@
 
             if ($ones >= 1 && $ones < 10) {
                 $rest = $remainder == 0 ? '' : $this->toTens($remainder);
-                return $this->toOnes($ones) . ' trăm ' . $rest;
+                return $this->toOnes($ones) . ' Trăm ' . $rest;
             }
             else
                 return $this->toTens($amt);
@@ -93,7 +92,7 @@
 
             if ($hundreds >= 1 && $hundreds < 1000) {
                 $rest = $remainder == 0 ? '' : $this->toHundreds($remainder);
-                return $this->toHundreds($hundreds) . ' nghìn ' . $rest;
+                return $this->toHundreds($hundreds) . ' Nghìn ' . $rest;
             }
             else
                 return $this->toHundreds($amt);
@@ -105,7 +104,7 @@
 
             if ($hundreds >= 1 && $hundreds < 1000) {
                 $rest = $remainder == 0 ? '' : $this->toThousands($remainder);
-                return $this->toHundreds($hundreds) . ' triệu ' . $rest;
+                return $this->toHundreds($hundreds) . ' Triệu ' . $rest;
             }
             else
                 return $this->toThousands($amt);
@@ -120,7 +119,7 @@
 
             if ($hundreds >= 1 && $hundreds < 1000) {
                 $rest = $remainder == 0 ? '' : $this->toMillions($remainder);
-                return $this->toHundreds($hundreds) . ' tỷ ' . $rest;
+                return $this->toHundreds($hundreds) . ' Tỷ ' . $rest;
             }
             else
                 return $this->toMillions($amt);
@@ -132,7 +131,7 @@
 
             if ($hundreds >= 1 && $hundreds < 1000) {
                 $rest = $remainder == 0 ? '' : $this->toBillions($remainder);
-                return $this->toHundreds($hundreds) . ' nghìn tỷ ' . $rest;
+                return $this->toHundreds($hundreds) . ' Nghìn Tỷ ' . $rest;
             }
             else
                 return $this->toBillions($amt);

@@ -28,13 +28,15 @@ $layout_defs['Meetings'] = array(
 			'order' => 10,
 			'module' => 'Contacts',
 			'get_subpanel_data' => 'contacts',
-			'title_key' => 'LBL_CONTACTS_SUBPANEL_TITLE',		
+			'title_key' => 'LBL_CONTACTS_SUBPANEL_TITLE',
+			'canLink' => false,			
 		),
 		'leads' => array(
 			'order' => 30,
 			'module' => 'Leads',
 			'get_subpanel_data' => 'leads',
 			'title_key' => 'LBL_LEADS_SUBPANEL_TITLE',
+			'canLink' => false,
 		),
 		'users'=> array(
 			'order' => 40,

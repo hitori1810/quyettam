@@ -1,9 +1,9 @@
 <?php
-// created: 2018-03-27 23:02:37
+// created: 2018-03-29 10:02:23
 $mod_strings = array (
-  'LBL_TEAM' => 'Teams',
-  'LBL_TEAMS' => 'Teams',
-  'LBL_TEAM_ID' => 'Team Id',
+  'LBL_TEAM' => 'Center',
+  'LBL_TEAMS' => 'Center',
+  'LBL_TEAM_ID' => 'Center Id',
   'LBL_ASSIGN_TEAM' => 'Assign To Teams',
   'LBL_RE' => 'RE:',
   'ERR_BAD_LOGIN_PASSWORD' => 'Login or Password Incorrect',

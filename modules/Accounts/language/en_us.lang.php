@@ -137,7 +137,7 @@ $mod_strings = array (
 	'LBL_SIC_CODE' => 'SIC Code:',
 	'LBL_STATE' => 'State:',
 	'LBL_TASKS_SUBPANEL_TITLE' => 'Tasks',
-	'LBL_TEAMS_LINK'=>'Teams',
+	'LBL_TEAMS_LINK'=>'Center',
 	'LBL_TICKER_SYMBOL' => 'Ticker Symbol:',
 	'LBL_TYPE' => 'Type:',
 	'LBL_USERS_ASSIGNED_LINK'=>'Assigned Users',
@@ -170,6 +170,7 @@ $mod_strings = array (
     'LBL_PARENT_ID' => 'Parent ID',
     'LBL_PHONE_ALTERNATE' => 'Phone Alternate',
     'LBL_EXPORT_ASSIGNED_USER_NAME' => 'Assigned User Name',
+    'LBL_HOLIDAYS' => 'Leave Request',
     // SNIP
     'LBL_CONTACT_HISTORY_SUBPANEL_TITLE' => 'Related Contacts\' Emails',
 );

@@ -1,15 +1,4 @@
-/*********************************************************************************
- * By installing or using this file, you are confirming on behalf of the entity
- * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
- * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
- * http://www.sugarcrm.com/master-subscription-agreement
- *
- * If Company is not bound by the MSA, then by installing or using this file
- * you are agreeing unconditionally that Company will be bound by the MSA and
- * certifying that you have authority to bind Company accordingly.
- *
- * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
- ********************************************************************************/
+
 if(typeof(SugarRest)=='undefined'){SugarRest=function(proxy_url,server_url,application_name){this.proxy_url=proxy_url;this.server_url=server_url;this.session_id=false;this.user_id=false;this.application_name=application_name;}
 SugarRest.prototype.call=function(method,args,callback,params,response_type){if(!callback)callback=this.log;console.log(callback);query=this.getQuery(method,args,response_type);YAHOO.util.Connect.asyncRequest('POST',this.proxy_url,{success:callback,failure:callback,scope:this,argument:params},query);}
 SugarRest.prototype.getQuery=function(method,args,response_type){if(!response_type)response_type='JSON';query='method='+method+'&input_type=JSON&response_type='+response_type;if(args!=null){m=YAHOO.lang.JSON.stringify(args);query+='&rest_data='+m;}

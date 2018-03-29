@@ -363,12 +363,12 @@ function currency_format_number($amount, $params = array()) {
     if(isset($params['round']) && is_int($params['round'])){
 	    $real_round = $params['round'];
     }else{
-        $real_round = $locale->getPrecedentPreference('default_currency_significant_digits');
+        $real_round = 0;
     }
 	if(isset($params['decimals']) && is_int($params['decimals'])){
         $real_decimals = $params['decimals'];
 	}else{
-	    $real_decimals = $locale->getPrecedentPreference('default_currency_significant_digits');
+	    $real_decimals = 0;
 	}
 	$real_round = $real_round == '' ? 0 : $real_round;
 	$real_decimals = $real_decimals == '' ? 0 : $real_decimals;

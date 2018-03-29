@@ -13,7 +13,4 @@
  ********************************************************************************/
 
 
-$app_list_strings['moduleList']['C_LeavingRequest'] = 'Leaving Requests';
-$app_list_strings['moduleList']['C_WorkLog'] = 'Work Logs';
-$app_list_strings['moduleList']['C_LeaveDetails'] = 'Leave Details';
-$app_list_strings['moduleList']['C_Holiday'] = 'Holidays';
+$app_list_strings['moduleList']['C_Timesheet'] = 'Timesheet';

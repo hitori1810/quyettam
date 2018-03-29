@@ -24,6 +24,9 @@
 <!-- END: list_nav_row -->
 	<tr height="20"  >
 	<th width="25%" NOWRAP><slot><a href="{ORDER_BY}name" class="listViewThLinkS1" >{MOD.LBL_LIST_NAME}{arrow_start}{name_arrow}{arrow_end}</a></slot></th>
+    <!--Edit by Bui Kim Tung - add type column-->
+    <th width="25%" NOWRAP><slot><a href="{ORDER_BY}type" class="listViewThLinkS1" >Type{arrow_start}{type_arrow}{arrow_end}</a></slot></th>
+    <!--END edit by Bui Kim Tung -->
 	<th width="20%" NOWRAP><slot><a href="{ORDER_BY}base_module" class="listViewThLinkS1" >{MOD.LBL_LIST_BASE_MODULE}{arrow_start}{base_module_arrow}{arrow_end}</a></slot></th>
 	<th width="35%" NOWRAP><slot><a href="{ORDER_BY}description" class="listViewThLinkS1" >{MOD.LBL_LIST_DESCRIPTION}{arrow_start}{description_arrow}{arrow_end}</a></slot></th>
 	<th width="20%" NOWRAP><slot><a href="{ORDER_BY}date_modified" class="listViewThLinkS1">{MOD.LBL_LIST_DATE_MODIFIED}{arrow_start}{date_modified_arrow}{arrow_end}</a></slot></th>
@@ -32,6 +35,9 @@
 <!-- BEGIN: row -->
 <tr height="20"  class="{ROW_COLOR}S1">
 		<td scope="row" valign=TOP><slot><a href="{URL_PREFIX}index.php?action=WorkFlowDetailView&module=WorkFlow&record={EMAIL_TEMPLATE.ID}&offset={EMAIL_TEMPLATE.OFFSET}&isfirstview={EMAIL_TEMPLATE.ISFIRSTVIEW}"  >{EMAIL_TEMPLATE.NAME}</a></slot></td>
+        <!--Edit by Bui Kim Tung - add type column-->
+        <td valign=TOP><slot>{EMAIL_TEMPLATE.TYPE}</slot></td>
+        <!--END edit by Bui Kim Tung -->
     	<td valign=TOP><slot>{EMAIL_TEMPLATE.BASE_MODULE}</slot></td>
 		<td valign=TOP><slot>{EMAIL_TEMPLATE.DESCRIPTION}</slot></td>
     	<td nowrap valign=TOP><slot>{EMAIL_TEMPLATE.DATE_MODIFIED}</slot></td>

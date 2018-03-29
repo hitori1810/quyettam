@@ -233,11 +233,12 @@ if(!$current_user->is_admin  && !$GLOBALS['current_user']->isAdminForModule('Use
 	    {
 	        $focus->setPreference('navigation_paradigm', 'gm', 0, 'global');
 	    }
-    
-        if(isset($_POST['user_subpanel_tabs'])){
-            if($_POST['user_subpanel_tabs'] == 'on')
-                $_POST['user_subpanel_tabs'] = 1;
-            $focus->setPreference('subpanel_tabs', $_POST['user_subpanel_tabs'], 0, 'global');
+
+	    if(isset($_POST['user_subpanel_tabs'])){
+            $focus->setPreference('subpanel_tabs', 1, 0, 'global');
+        }
+        else{
+            $focus->setPreference('subpanel_tabs', 0, 0, 'global');
         }
 
         if(isset($_POST['user_theme']))
@@ -292,8 +293,10 @@ if(!$current_user->is_admin  && !$GLOBALS['current_user']->isAdminForModule('Use
 			$focus->setPreference('email_reminder_time', -1, 0, 'global');
 		}
 		if(isset($_POST['timezone'])) $focus->setPreference('timezone',$_POST['timezone'], 0, 'global');
-		if(isset($_POST['ut'])) $focus->setPreference('ut', '0', 0, 'global');
-		else $focus->setPreference('ut', '1', 0, 'global');
+		
+		$focus->setPreference('ut', '1', 0, 'global');
+		$focus->setPreference('viewed_tour', '1', 0, 'global');
+		
 		if(isset($_POST['currency'])) $focus->setPreference('currency',$_POST['currency'], 0, 'global');
 		if(isset($_POST['default_currency_significant_digits'])) $focus->setPreference('default_currency_significant_digits',$_POST['default_currency_significant_digits'], 0, 'global');
 		if(isset($_POST['num_grp_sep'])) $focus->setPreference('num_grp_sep', $_POST['num_grp_sep'], 0, 'global');
@@ -378,6 +381,18 @@ if(!$current_user->is_admin  && !$GLOBALS['current_user']->isAdminForModule('Use
 	else
 	{	$GLOBALS['sugar_config']['disable_team_access_check'] = true;
 		$focus->save();
+        
+        /**
+        * Save user template references if this user create from template
+        * @author   Thuan Nguyen
+        */
+        //require helper
+        require_once('custom/modules/Users/UserTemplateHelper.php');
+        if (isset($_REQUEST['user_template_id']) && $_REQUEST['user_template_id'] != '') {
+            UserTemplateHelper::applyUserTemplate($_REQUEST['user_template_id'], $focus->id, false);
+        } 
+        //END: Save user template references
+        
 		$GLOBALS['sugar_config']['disable_team_access_check'] = false;
 		$return_id = $focus->id;
 		$ieVerified = true;

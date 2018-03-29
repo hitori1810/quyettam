@@ -248,5 +248,15 @@ class TeamSetLink extends Link {
 			$this->save();
 		}
 	}
+    
+    /**
+    * function return team list of object
+    * Add By Anh Trung.Nguyen Date: 10/6/2015
+    * Reason: Don't get list team id in module schedule in case choose 2 or more Teams
+    * 
+    */
+    function getTeamId() {
+        return $this->_teamList;
+    }
 }
 ?>

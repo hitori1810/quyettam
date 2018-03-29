@@ -12,14 +12,11 @@
  *
  * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
  ********************************************************************************/
-
-
-
-
 *}
 
 <!-- Added by Hieu Nguyen on 2015-05-04 -->
-<script type="text/javascript" src="custom/modules/ACLRoles/js/EnhancedACLForm.js"></script>
+{sugar_getscript file='custom/include/javascripts/jquery.freezeheader.min.js'}
+{sugar_getscript file='custom/modules/ACLRoles/js/EnhancedACLForm.js'}
 
 <form action="index.php" method="post" name="DetailView" id="form">
 

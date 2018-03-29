@@ -30,17 +30,6 @@ var user_detailview_tabs = new YAHOO.widget.TabView("user_detailview_tabs");
 {literal}
 user_detailview_tabs.on('contentReady', function(e){
 {/literal}
-{if $EDIT_SELF && $SHOW_DOWNLOADS_TAB}
-{literal}
-    user_detailview_tabs.addTab( new YAHOO.widget.Tab({
-        label: '{/literal}{$MOD.LBL_DOWNLOADS}{literal}',
-        dataSrc: 'index.php?to_pdf=1&module=Home&action=pluginList',
-        content: '<div style="text-align:center; width: 100%">{/literal}{sugar_image name="loading"}{literal}</div>',
-        cacheData: true
-    }));
-    user_detailview_tabs.getTab(3).getElementsByTagName('a')[0].id = 'tab4';
-{/literal}
-{/if}
 });
 {literal}
 $(document).ready(function(){
@@ -91,7 +80,7 @@ $(document).ready(function(){
         <li class="selected"><a id="tab1" href="#tab1"><em>{$MOD.LBL_USER_INFORMATION}</em></a></li>
         <li {if $IS_GROUP_OR_PORTAL}style="display: none;"{/if}><a id="tab2" href="#tab2"><em>{$MOD.LBL_ADVANCED}</em></a></li>
         {if $SHOW_ROLES}
-        <li style="display:{$HIDE_FOR_TEMPLATE}"><a id="tab3" href="#tab3"><em>{$MOD.LBL_USER_ACCESS}</em></a></li>
+        <li><a id="tab3" href="#tab3"><em>{$MOD.LBL_USER_ACCESS}</em></a></li>
         {/if}
     </ul>
     <div class="yui-content">

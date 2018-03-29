@@ -1,4 +1,15 @@
-
+/*********************************************************************************
+ * By installing or using this file, you are confirming on behalf of the entity
+ * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
+ * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
+ * http://www.sugarcrm.com/master-subscription-agreement
+ *
+ * If Company is not bound by the MSA, then by installing or using this file
+ * you are agreeing unconditionally that Company will be bound by the MSA and
+ * certifying that you have authority to bind Company accordingly.
+ *
+ * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ ********************************************************************************/
 ({extendsFrom:'DateField',stripIsoTZ:true,showAmPm:false,timeValue:'',serverTimeFormat:'H:i:s',_render:function(value){var self=this,viewName;self._presetDateValues();app.view.fields.DateField.prototype._render.call(self);viewName=self._getViewName();$(function(){if(self._isEditView(viewName)){self._setupTimepicker();}});},format:function(value){var jsDate,output,myUser=app.user,d,parts,before24Hours;if(this.stripIsoTZ){value=app.date.stripIsoTimeDelimterAndTZ(value);}
 if(this._isNewEditViewWithNoValue(value)){jsDate=this._setDateIfDefaultValue();if(!jsDate){return value;}}else if(!value){return value;}else{if(!this._verifyDateString(value)){return value;}
 jsDate=new Date(value);}

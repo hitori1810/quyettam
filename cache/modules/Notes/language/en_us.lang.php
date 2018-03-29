@@ -1,14 +1,9 @@
 <?php
-// created: 2018-03-27 23:02:37
+// created: 2018-03-29 16:49:26
 $mod_strings = array (
-  'LBL_ASSIGNED_TO_ID' => 'Assigned User Id',
-  'LBL_ASSIGNED_TO_NAME' => 'Assigned to',
-  'LBL_TEAM' => 'Teams',
-  'LBL_TEAMS' => 'Teams',
-  'LBL_TEAM_ID' => 'Team Id',
   'ERR_DELETE_RECORD' => 'You must specify a record number to delete the account.',
-  'LBL_ACCOUNT_ID' => 'Account ID:',
-  'LBL_CASE_ID' => 'Case ID:',
+  'LBL_ACCOUNT_ID' => 'Corporate ID:',
+  'LBL_CASE_ID' => 'Feedbacks ID:',
   'LBL_CLOSE' => 'Close:',
   'LBL_COLON' => ':',
   'LBL_CONTACT_ID' => 'Contact ID:',
@@ -38,7 +33,7 @@ $mod_strings = array (
   'LBL_NOTE_SUBJECT' => 'Subject:',
   'LBL_NOTES_SUBPANEL_TITLE' => 'Attachments',
   'LBL_NOTE' => 'Note:',
-  'LBL_OPPORTUNITY_ID' => 'Opportunity ID:',
+  'LBL_OPPORTUNITY_ID' => 'Enrollment ID:',
   'LBL_PARENT_ID' => 'Parent ID:',
   'LBL_PARENT_TYPE' => 'Parent Type',
   'LBL_PHONE' => 'Phone:',
@@ -74,4 +69,8 @@ $mod_strings = array (
   'LBL_DATE_ENTERED' => 'Date Created',
   'LBL_DATE_MODIFIED' => 'Date Modified',
   'LBL_DELETED' => 'Deleted',
+  'LBL_OPPORTUNITIES' => 'Enrollments',
+  'LBL_ACCOUNTS' => 'Corporates',
+  'LBL_CASES' => 'Feedbacks',
+  'LBL_MEETINGS' => 'Meetings',
 );

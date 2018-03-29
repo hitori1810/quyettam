@@ -67,8 +67,8 @@ foreach ($_POST['mass'] as $message_id) {
 	$marketing->retrieve($message_id);
 
 	//make sure that the marketing message has a mailbox.
-	//
-	if (empty($marketing->inbound_email_id)) {
+	//Lap Nguyen - Fix bugs Send SMS
+	if (empty($marketing->inbound_email_id) && $this->bean->campaign_type != 'SMS') {
 
 		echo "<p>";
 		echo "<h4>{$mod_strings['ERR_NO_MAILBOX']}</h4>";
@@ -162,7 +162,9 @@ $return_id=$_REQUEST['record'];
 
 if ($test) {
 	//navigate to EmailManDelivery..
-	$header_URL = "Location: index.php?action=EmailManDelivery&module=EmailMan&campaign_id={$_REQUEST['record']}&return_module={$return_module}&return_action={$return_action}&return_id={$return_id}&mode=test";
+// add by Hai Duc For SMS
+$str_file = ($campaign->campaign_type == "SMS") ? "SMSManDelivery" : "EmailManDelivery";
+	$header_URL = "Location: index.php?action={$str_file}&module=EmailMan&campaign_id={$_REQUEST['record']}&return_module={$return_module}&return_action={$return_action}&return_id={$return_id}&mode=test";
     if($from_wiz){$header_URL .= "&from_wiz=true";}
 } else {
 	//navigate back to campaign detail view...

@@ -39,6 +39,14 @@ global $theme;
 
 
 $GLOBALS['log']->info("EmailMarketing Edit View");
+// Add By Hai Duc
+#tracy: this is for SMS-specific labels
+if ($campaign->campaign_type == "SMS") { 
+	 $mod_strings['LBL_MODULE_NAME'] = "SMS Marketing";
+	 $mod_strings['LBL_TEMPLATE'] = "SMS Template";
+} 
+// End Add By Hai Duc
+
 $xtpl=new XTemplate ('modules/EmailMarketing/EditView.html');
 if(!ACLController::checkAccess('EmailTemplates', 'edit', true)){
 	unset($mod_strings['LBL_CREATE_EMAIL_TEMPLATE']);
@@ -92,7 +100,7 @@ $xtpl->assign("DATE_ENTERED", $focus->date_entered);
 $xtpl->assign("DATE_MODIFIED", $focus->date_modified);
 $xtpl->assign("ID", $focus->id);
 $xtpl->assign("NAME", $focus->name);
-$xtpl->assign("FROM_NAME", $focus->from_name);
+$xtpl->assign("FROM_NAME", ($campaign->campaign_type=='SMS' ? "x" : $focus->from_name));
 $xtpl->assign("FROM_ADDR", $focus->from_addr);
 $xtpl->assign("REPLY_NAME", $focus->reply_to_name);
 $xtpl->assign("REPLY_ADDR", $focus->reply_to_addr);
@@ -100,7 +108,11 @@ $xtpl->assign("DATE_START", $focus->date_start);
 $xtpl->assign("TIME_START", $time_start);
 $xtpl->assign("TIME_FORMAT", '('. $timedate->get_user_time_format().')');
 
-$email_templates_arr = get_bean_select_array(true, 'EmailTemplate','name',"(type IS NULL OR type='' OR type='campaign')",'name');
+// Add By Hai Duc
+// hai duc comment $email_templates_arr = get_bean_select_array(true, 'EmailTemplate','name',"(type IS NULL OR type='' OR type='campaign')",'name');
+$where = ($campaign_type == "SMS") ? "sms_only=1" : "sms_only=0";
+$email_templates_arr = get_bean_select_array(true, 'EmailTemplate','name',$where,'name');
+// end Add By Hai Duc
 if($focus->template_id) {
 	$xtpl->assign("TEMPLATE_ID", $focus->template_id);
 	$xtpl->assign("EMAIL_TEMPLATE_OPTIONS", get_select_options_with_id($email_templates_arr, $focus->template_id));
@@ -110,6 +122,12 @@ else {
 	$xtpl->assign("EMAIL_TEMPLATE_OPTIONS", get_select_options_with_id($email_templates_arr, ""));
 	$xtpl->assign("EDIT_TEMPLATE","visibility:hidden");
 }
+// Add By Hai Duc
+# tracy: to hide rows not needed for sms
+$xtpl->assign("HIDE_ELEMENT", "");
+if ($campaign->campaign_type == "SMS") 
+	$xtpl->assign("HIDE_ELEMENT", "style='display:none;'");
+// end Add By Hai Duc
 
 //include campaign utils..
 require_once('modules/Campaigns/utils.php');

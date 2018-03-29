@@ -1,50 +1,19 @@
 <?php
-
-if (!defined('sugarEntry') || !sugarEntry)
-    die('Not A Valid Entry Point');
-
-/* * *******************************************************************************
- * By installing or using this file, you are confirming on behalf of the entity
- * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
- * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
- * http://www.sugarcrm.com/master-subscription-agreement
- *
- * If Company is not bound by the MSA, then by installing or using this file
- * you are agreeing unconditionally that Company will be bound by the MSA and
- * certifying that you have authority to bind Company accordingly.
- *
- * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
- * ****************************************************************************** */
+if(!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point'); 
 
 
-
-
-/* * *******************************************************************************
-
- * Description:  TODO To be written.
- * Portions created by SugarCRM are Copyright (C) SugarCRM, Inc.
- * All Rights Reserved.
- * Contributor(s): ______________________________________..
- * ****************************************************************************** */
 global $mod_strings;
-if (ACLController::checkAccess('Meetings', 'edit', true))
-    $module_menu[] = Array("index.php?module=Meetings&action=EditView&return_module=Meetings&return_action=DetailView", $mod_strings['LNK_NEW_MEETING'], "CreateMeetings");
-if (ACLController::checkAccess('Calls', 'edit', true))
-    $module_menu[] = Array("index.php?module=Calls&action=EditView&return_module=Calls&return_action=DetailView", $mod_strings['LNK_NEW_CALL'], "CreateCalls");
-if (ACLController::checkAccess('Tasks', 'edit', true))
-    $module_menu[] = Array("index.php?module=Tasks&action=EditView&return_module=Tasks&return_action=DetailView", $mod_strings['LNK_NEW_TASK'], "CreateTasks");
+//if(ACLController::checkAccess('Meetings', 'edit', true))
+//if(ACLController::checkAccess('Calls', 'edit', true))$module_menu[]=Array("index.php?module=Calls&action=EditView&return_module=Calls&return_action=DetailView", $mod_strings['LNK_NEW_CALL'],"CreateCalls");
+//if(ACLController::checkAccess('Tasks', 'edit', true))$module_menu[]=Array("index.php?module=Tasks&action=EditView&return_module=Tasks&return_action=DetailView", $mod_strings['LNK_NEW_TASK'],"CreateTasks");
+if(ACLController::checkAccess('Calendar', 'list', true))$module_menu[]=Array("index.php?module=Calendar&action=index&view=week&only=Meeting", $mod_strings['LNK_VIEW_MEETING'],"Calendar");
+if(ACLController::checkAccess('Calendar', 'list', true))$module_menu[]=Array("index.php?module=Calendar&action=index&view=week&only=Testing", $mod_strings['LNK_VIEW_TESTING'],"Calendar");
+if(ACLController::checkAccess('Calendar', 'list', true))$module_menu[]=Array("index.php?module=Calendar&action=index&view=week&only=Consultant", $mod_strings['LNK_VIEW_CONSULTANT'],"Calendar");
+if(ACLController::checkAccess('Calendar', 'list', true))$module_menu[]=Array("index.php?module=Calendar&action=index&view=week&only=Task", $mod_strings['LNK_VIEW_TASK'],"Calendar");
+if(ACLController::checkAccess('Calendar', 'list', true))$module_menu[]=Array("index.php?module=Calendar&action=index&view=week&only=Call", $mod_strings['LNK_VIEW_CALL'],"Calendar");
+if(ACLController::checkAccess('Calendar', 'list', true))$module_menu[]=Array("index.php?module=Calendar&action=index&view=week", $mod_strings['LNK_VIEW_ALL'],"Calendar");
 
-// Lực : Add ViewMeeting , ViewCall , ViewTask
-if (ACLController::checkAccess('Meetings', 'list', true))
-    $module_menu[] = Array("index.php?module=Meetings&action=index&return_module=Meetings&return_action=DetailView", $mod_strings['LNK_MEETING_LIST'], "Meetings");
-if (ACLController::checkAccess('Calls', 'list', true))
-    $module_menu[] = Array("index.php?module=Calls&action=index&return_module=Calls&return_action=DetailView", $mod_strings['LNK_CALL_LIST'], "Calls");
-if (ACLController::checkAccess('Tasks', 'list', true))
-    $module_menu[] = Array("index.php?module=Tasks&action=index&return_module=Tasks&return_action=DetailView", $mod_strings['LNK_TASK_LIST'], "Tasks");
+if(ACLController::checkAccess('C_Classes', 'edit', true))$module_menu[]=Array("index.php?module=Calendar&action=index&view=month&only=Session&delete_Session=true", $mod_strings['LNK_SESSION'],"C_Classes");
 
-/**
- * END HB
- */
-if (ACLController::checkAccess('Calendar', 'list', true))
-    $module_menu[] = Array("index.php?module=Calendar&action=index&view=day", $mod_strings['LNK_VIEW_CALENDAR'], "Calendar");
+
 ?>

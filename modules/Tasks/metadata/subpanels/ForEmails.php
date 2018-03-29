@@ -38,14 +38,14 @@ $subpanel_layout = array(
 			 'vname' => 'LBL_LIST_STATUS',
 			 'width' => '15%',
 		),
-		'contact_name'=>array(
-			 'widget_class' => 'SubPanelDetailViewLink',
-			 'target_record_key' => 'contact_id',
-			 'target_module' => 'Contacts',
-			 'module' => 'Contacts',
-			 'vname' => 'LBL_LIST_CONTACT',
-			 'width' => '11%',
-		),
+//		'contact_name'=>array(
+//			 'widget_class' => 'SubPanelDetailViewLink',
+//			 'target_record_key' => 'contact_id',
+//			 'target_module' => 'Contacts',
+//			 'module' => 'Contacts',
+//			 'vname' => 'LBL_LIST_CONTACT',
+//			 'width' => '11%',
+//		),
 		
 		'parent_name'=>array(
 			 'vname' => 'LBL_LIST_RELATED_TO',

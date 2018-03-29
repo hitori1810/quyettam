@@ -1,6 +1,7 @@
 // ==========================================//
 // HANDLE CURRENCY FIELD BY LAP NGUYEN       //        
 // ==========================================//
+var cur_digits = 0;
 function numberFormat(nr){
     //remove the existing ,
     var regex = new RegExp('[a-zA-Z'+num_grp_sep+']',"g"); 
@@ -19,23 +20,31 @@ function numberFormat(nr){
     //join the 2 parts and return the formatted number
     return p1 + p2;
 }
-//Check currency with SUGAR's funtion
-function checkCurrency(focus){
-    var val = $(focus).val(),
+function check_currency(focus){
+    id = $(focus).attr('id');
+    val = $(focus).val();
     value = unformatNumber(val,num_grp_sep, dec_sep);
-    if(value != '')
-        $(focus).val(formatNumber(value,num_grp_sep,dec_sep,precision,precision));
+    if(value>0)
+        $(focus).val(formatNumber(value,num_grp_sep,dec_sep,cur_digits,cur_digits));  
+    else{
+        var zero = 0;
+        $(focus).val(formatNumber(zero.toFixed(cur_digits),num_grp_sep,dec_sep));
+    }
 }
-SUGAR.util.doWhen("$('input.currency').length", function(){
-  $("input.currency").keyup(function(){
+$(document).ready(function(){
+    $("input.currency").keyup(function(e){
         this.value = numberFormat(this.value);
     });
     //double check currency with SUGAR's funtion
     $('input.currency').live('blur',function(){
-        checkCurrency(this);
+        check_currency(this);
+    }); 
+    //double check currency with SUGAR's funtion
+    $('input.currency').live('change',function(){
+        check_currency(this);
     });
     //check all currency input when the page loaded
     $('input.currency').each(function(){
         $(this).css("text-align", "right"); 
-    });  
+    }); 
 });

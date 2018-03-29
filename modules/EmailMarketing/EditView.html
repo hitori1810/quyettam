@@ -49,6 +49,14 @@
 	<td scope="row"><slot>{MOD.LBL_STATUS_TEXT} <span class="required">{APP.LBL_REQUIRED_SYMBOL}</span></slot></td>
 	<td ><slot><select tabindex='2' id='status' name='status'>{STATUS_OPTIONS}</select></slot></td>
 	</tr>
+<!-- Add By Hai Duc-->
+<tr {HIDE_ELEMENT}>
+	<td scope="row"><slot>{MOD.LBL_FROM_MAILBOX_NAME}</slot></td>
+	<td ><slot><select  id='inbound_email_id' tabindex='1' onchange='set_from_email_and_name(this);' name='inbound_email_id'>{MAILBOXES}</select>&nbsp;<SPAN id='from_email' style="font-style:italic">{DEFAULT_FROM_EMAIL}</SPAN></slot></td>
+	<td scope="row"><slot>{MOD.LBL_FROM_NAME} <span class="required">{APP.LBL_REQUIRED_SYMBOL}</span></slot></td>
+	<td class="datafield"><slot><input name='from_name' id='from_name' tabindex='2' size='25' maxlength='25' type="text" value="{FROM_NAME}"></slot></td>
+	</tr>
+<!-- End Add By Hai Duc -->
 	<tr>
 	<td scope="row"><slot>{MOD.LBL_START_DATE_TIME} <span class="required">{APP.LBL_REQUIRED_SYMBOL}</span></slot></td>
 	<td class="datafield"><slot><table  cellpadding="0" cellspacing="0"><tr><td nowrap><input name='date_start' onblur="parseDate(this, '{CALENDAR_DATEFORMAT}');" id='date_start_date' size='11' tabindex='1' maxlength='10' type="text" value="{DATE_START}"> <img src="index.php?entryPoint=getImage&themeName={THEME}&imageName=jscalendar.gif" alt="{CALENDAR_DATEFORMAT}"  id="jscal_trigger" align="absmiddle">&nbsp;</td>

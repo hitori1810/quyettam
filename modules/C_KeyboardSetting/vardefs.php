@@ -14,7 +14,7 @@
 
     $dictionary['C_KeyboardSetting'] = array(
         'table'=>'c_keyboardsetting',
-        'audited'=>true,
+        'audited'=>false,
         'duplicate_merge'=>true,
         'fields'=>array (
             'target_module' => 
@@ -51,4 +51,4 @@
     if (!class_exists('VardefManager')){
         require_once('include/SugarObjects/VardefManager.php');
     }
-    VardefManager::createVardef('C_KeyboardSetting','C_KeyboardSetting', array('basic','team_security','assignable'));
+    VardefManager::createVardef('C_KeyboardSetting','C_KeyboardSetting', array('basic','assignable'));

@@ -1,7 +1,5 @@
 <?php
 
-    require_once("custom/modules/C_KeyboardSetting/KeyboardSettingHelper.php");
-    
     class C_KeyboardSettingViewDetail extends ViewDetail {
 
         function C_KeyboardSettingViewDetail() {
@@ -16,6 +14,7 @@
         }
         
         private function getTargetFieldTable() {
+            require_once("custom/include/utils/FieldHelper.php");
             global $mod_strings, $app_list_strings;
             $moduleName = $this->bean->target_module;
             $targetFields = json_decode(html_entity_decode($this->bean->target_fields));
@@ -33,7 +32,7 @@
                 $table .= '</thead>';    
                 foreach($targetFields as $fieldName => $config) {
                     $table .= '<tr>';  
-                    $table .= '<td>'. KeyboardSettingHelper::getLabel($moduleName, $fieldName) .'</td>';        
+                    $table .= '<td>'. FieldHelper::getLabel($moduleName, $fieldName) .'</td>';        
                     $table .= '<td>'. $fieldName .'</td>';          
                     $table .= '<td>'. translate('keyboardsetting_correction_type_options', '', $config->correction_type) .'</td>';          
                     $table .= '</tr>';          

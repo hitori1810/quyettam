@@ -9,7 +9,7 @@
  * you are agreeing unconditionally that Company will be bound by the MSA and
  * certifying that you have authority to bind Company accordingly.
  *
- * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ * Copyright (C) 2004-2014 SugarCRM Inc.  All rights reserved.
  ********************************************************************************/
 
 require_once('service/v3/SugarWebServiceUtilv3.php');
@@ -268,7 +268,7 @@ class SugarWebServiceUtilv3_1 extends SugarWebServiceUtilv3
 
 		if($value->module_dir == 'Bugs'){
 			require_once('modules/Releases/Release.php');
-			$seedRelease = new Release();
+			$seedRelease = BeanFactory::getBean('Releases');
 			$options = $seedRelease->get_releases(TRUE, "Active");
 			$options_ret = array();
 			foreach($options as $name=>$value){
@@ -346,6 +346,7 @@ class SugarWebServiceUtilv3_1 extends SugarWebServiceUtilv3
 		{
 			$show_deleted = 1;
 		}
+		$order_by=$seed->process_order_by($order_by, null);
 
 		$seed->addVisibilityWhere($where);
 		$params = array();

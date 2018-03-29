@@ -24,32 +24,28 @@ $subpanel_layout = array(
 
 	'list_fields' => array(
         'holiday_date'=>array(
-		 	'vname' => 'LBL_HOLIDAY_DATE',
-			'widget_class' => 'SubPanelDetailViewLink',
+             'vname' => 'LBL_HOLIDAY_DATE',
+            'widget_class' => 'SubPanelDetailViewLink',
+            'width' => '21%',
+        ),
+        'type'=>array(
+		 	'vname' => 'LBL_TYPE',
 			'width' => '21%',
 		),
 		'description'=>array(
 		 	'vname' => 'LBL_DESCRIPTION',
-			'width' => '75%',
-			'sortable'=>false,				
+			'width' => '50%',
+			'sortable'=>false,
 		),
-		'edit_button'=>array(
-			'vname' => 'LBL_EDIT_BUTTON',
-			 'widget_class' => 'SubPanelEditButton',
-			 'width' => '2%',
-		),
+        'remove_button'=>array(
+            'vname' => 'LBL_REMOVE',
+            'widget_class' => 'SubPanelRemoveButton',
+             'module' => 'Contracts',
+            'width' => '5%',
+        ),
 
 
 	),
 );
 
-if ( isset($_REQUEST['record']) ) {
-//remove the administrator edit button holiday for the user admin only
-        global $current_user;
-        $result = $GLOBALS['db']->query("SELECT is_admin FROM users WHERE id='".$GLOBALS['db']->quote($_REQUEST['record'])."'");
-        $row = $GLOBALS['db']->fetchByAssoc($result);
-        if(!is_admin($current_user)&& $current_user->isAdminForModule('Users')&& $row['is_admin']==1){
-            unset($subpanel_layout['list_fields']['edit_button']);
-        }
-}
-?>
+$subpanel_layout['order_by'] = 'holidays.holiday_date DESC';

@@ -205,7 +205,6 @@ class quicksearchQuery
                             $conditionArray,
                             '(' . $table_prefix . $db->getValidDBName($condition['name']) . sprintf(" like '%s%%'", $db->quote($condition['value'])) . ' or ' . $table_prefix . 'name_2' . sprintf(" like '%s%%'", $db->quote($condition['value'])) . ')'
                         );
-
                         $condition['exclude_private_teams'] = true;
                     }
                     else {
@@ -217,10 +216,10 @@ class quicksearchQuery
                     break;
 
                 case self::CONDITION_EQUAL:
-                    if (isset($condition['value'])) {
+                    if ($condition['value']) {
                         array_push(
                             $conditionArray,
-                            sprintf("(%s = '%s')", $table_prefix .$db->getValidDBName($condition['name']), $db->quote($condition['value']))
+                            sprintf("(%s = '%s')", $db->getValidDBName($condition['name']), $db->quote($condition['value']))
                             );
                     }
                     break;
@@ -547,7 +546,7 @@ class quicksearchQuery
         return (showFullName())
             // utils.php, if system is configured to show full name
             ? getUserArrayFromFullName($condition, true)
-            : get_user_array(false, 'Active', '', false, $condition,' AND portal_only=0 ',false);
+            : get_user_array(false, 'Active', '', false, $condition,' portal_only=0 AND portal_user=0 AND for_portal_only=0 AND ',false);
     }
 
     /**

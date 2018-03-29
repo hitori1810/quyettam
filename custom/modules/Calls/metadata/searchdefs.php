@@ -50,49 +50,13 @@ array (
         'default' => true,
         'name' => 'parent_name',
       ),
-      'date_start' => 
+      'current_user_only' => 
       array (
-        'type' => 'datetimecombo',
-        'label' => 'LBL_DATE',
-        'width' => '10%',
+        'name' => 'current_user_only',
+        'label' => 'LBL_CURRENT_USER_FILTER',
+        'type' => 'bool',
         'default' => true,
-        'name' => 'date_start',
-      ),
-      'date_end' => 
-      array (
-        'type' => 'datetimecombo',
-        'studio' => 
-        array (
-          'wirelesseditview' => false,
-        ),
-        'label' => 'LBL_DATE_END',
         'width' => '10%',
-        'default' => true,
-        'name' => 'date_end',
-      ),
-      'date_entered' => 
-      array (
-        'type' => 'datetime',
-        'studio' => 
-        array (
-          'portaleditview' => false,
-        ),
-        'label' => 'LBL_DATE_ENTERED',
-        'width' => '10%',
-        'default' => true,
-        'name' => 'date_entered',
-      ),
-      'date_modified' => 
-      array (
-        'type' => 'datetime',
-        'studio' => 
-        array (
-          'portaleditview' => false,
-        ),
-        'label' => 'LBL_DATE_MODIFIED',
-        'width' => '10%',
-        'default' => true,
-        'name' => 'date_modified',
       ),
       'direction' => 
       array (
@@ -108,22 +72,6 @@ array (
         'default' => true,
         'width' => '10%',
       ),
-      'created_by' => 
-      array (
-        'type' => 'assigned_user_name',
-        'label' => 'LBL_CREATED',
-        'width' => '10%',
-        'default' => true,
-        'name' => 'created_by',
-      ),
-      'modified_user_id' => 
-      array (
-        'type' => 'assigned_user_name',
-        'label' => 'LBL_MODIFIED',
-        'width' => '10%',
-        'default' => true,
-        'name' => 'modified_user_id',
-      ),
       'assigned_user_id' => 
       array (
         'name' => 'assigned_user_id',
@@ -137,6 +85,30 @@ array (
             0 => false,
           ),
         ),
+        'default' => true,
+        'width' => '10%',
+      ),
+      'team_name' => 
+      array (
+        'type' => 'relate',
+        'link' => true,
+        'studio' => 
+        array (
+          'portallistview' => false,
+          'portaldetailview' => false,
+          'portaleditview' => false,
+        ),
+        'label' => 'LBL_TEAMS',
+        'id' => 'TEAM_ID',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'team_name',
+      ),
+      'favorites_only' => 
+      array (
+        'name' => 'favorites_only',
+        'label' => 'LBL_FAVORITES_FILTER',
+        'type' => 'bool',
         'default' => true,
         'width' => '10%',
       ),

@@ -71,9 +71,10 @@ $emailman = new EmailMan();
         //3. recipient belongs to a prospect list of type test, attached to this campaign
 
         $select_query =" SELECT em.* FROM emailman em";
+        $select_query.=" LEFT OUTER JOIN campaigns c ON em.campaign_id = c.id";
         $select_query.=" join prospect_list_campaigns plc on em.campaign_id = plc.campaign_id";
         $select_query.=" join prospect_lists pl on pl.id = plc.prospect_list_id ";
-        $select_query.=" WHERE em.list_id = pl.id and pl.list_type = 'test'";
+        $select_query.=" WHERE em.list_id = pl.id and pl.list_type = 'test' AND c.campaign_type<>'SMS' ";
         $select_query.=" AND em.send_date_time <= ". $db->now();
         $select_query.=" AND (em.in_queue ='0' OR em.in_queue IS NULL OR (em.in_queue ='1' AND em.in_queue_date <= " .$db->convert($db->quoted($timedate->fromString("-1 day")->asDb()),"datetime")."))";
         $select_query.=" AND em.campaign_id='{$campaign_id}'";
@@ -83,15 +84,16 @@ $emailman = new EmailMan();
         //find all the message that meet the following criteria.
         //1. scheduled send date time is now
         //2. were never processed or last attempt was 24 hours ago
-        $select_query =" SELECT *";
-        $select_query.=" FROM $emailman->table_name";
-        $select_query.=" WHERE send_date_time <= ". $db->now();
+        $select_query =" SELECT em.*"; // add By Hai Duc
+        $select_query.=" FROM $emailman->table_name em ";
+        $select_query.=" LEFT OUTER JOIN campaigns c ON em.campaign_id=c.id ";
+        $select_query.=" WHERE c.campaign_type <> 'SMS' AND em.send_date_time <= ". $db->now();
         $select_query.=" AND (in_queue ='0' OR in_queue IS NULL OR ( in_queue ='1' AND in_queue_date <= " .$db->convert($db->quoted($timedate->fromString("-1 day")->asDb()),"datetime")."))";
 
         if (!empty($campaign_id)) {
-            $select_query.=" AND campaign_id='{$campaign_id}'";
+            $select_query.=" AND em.campaign_id='{$campaign_id}'";
         }
-        $select_query.=" ORDER BY send_date_time ASC,user_id, list_id";
+        $select_query.=" ORDER BY em.send_date_time ASC,em.user_id, em.list_id";
 
     }
 

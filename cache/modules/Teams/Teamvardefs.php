@@ -11,13 +11,36 @@
       'required' => true,
       'reportable' => true,
     ),
+    'short_name' => 
+    array (
+      'required' => true,
+      'name' => 'short_name',
+      'vname' => 'LBL_SHORT_NAME',
+      'type' => 'name',
+      'dbType' => 'varchar',
+      'len' => '30',
+    ),
     'code_prefix' => 
     array (
+      'required' => true,
       'name' => 'code_prefix',
       'vname' => 'LBL_PREFIX',
       'type' => 'name',
       'dbType' => 'varchar',
       'len' => '30',
+    ),
+    'team_type' => 
+    array (
+      'name' => 'team_type',
+      'required' => true,
+      'vname' => 'LBL_TEAM_TYPE',
+      'type' => 'enum',
+      'importable' => 'true',
+      'reportable' => true,
+      'len' => 100,
+      'size' => '20',
+      'options' => 'type_team_list',
+      'studio' => 'visible',
     ),
     'name' => 
     array (
@@ -26,6 +49,30 @@
       'type' => 'name',
       'dbType' => 'varchar',
       'len' => '128',
+    ),
+    'ec_email' => 
+    array (
+      'required' => false,
+      'name' => 'ec_email',
+      'vname' => 'LBL_EC_EMAIL',
+      'type' => 'varchar',
+      'len' => '100',
+    ),
+    'efl_email' => 
+    array (
+      'required' => false,
+      'name' => 'efl_email',
+      'vname' => 'LBL_EFL_EMAIL',
+      'type' => 'varchar',
+      'len' => '100',
+    ),
+    'cm_email' => 
+    array (
+      'required' => false,
+      'name' => 'cm_email',
+      'vname' => 'LBL_CM_EMAIL',
+      'type' => 'varchar',
+      'len' => '100',
     ),
     'name_2' => 
     array (
@@ -121,6 +168,23 @@
       'studio' => false,
       'duplicate_merge' => 'disabled',
     ),
+    'sms_config' => 
+    array (
+      'name' => 'sms_config',
+      'vname' => 'LBL_SMS_CONFIG',
+      'type' => 'longtext',
+    ),
+    'phone_number' => 
+    array (
+      'required' => false,
+      'name' => 'phone_number',
+      'vname' => 'LBL_PHONE_NUMBER',
+      'type' => 'varchar',
+      'massupdate' => 0,
+      'audited' => false,
+      'len' => '50',
+      'size' => '20',
+    ),
     'parent_id' => 
     array (
       'name' => 'parent_id',
@@ -163,6 +227,19 @@
       'relationship' => 'team_teams',
       'source' => 'non-db',
       'vname' => 'LBL_CHILD',
+    ),
+    'region' => 
+    array (
+      'name' => 'region',
+      'required' => true,
+      'vname' => 'LBL_REGION',
+      'type' => 'enum',
+      'importable' => 'true',
+      'reportable' => true,
+      'len' => 100,
+      'size' => '20',
+      'options' => 'region_list',
+      'studio' => 'visible',
     ),
   ),
   'acls' => 

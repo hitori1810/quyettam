@@ -1,15 +1,4 @@
-/*********************************************************************************
- * By installing or using this file, you are confirming on behalf of the entity
- * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
- * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
- * http://www.sugarcrm.com/master-subscription-agreement
- *
- * If Company is not bound by the MSA, then by installing or using this file
- * you are agreeing unconditionally that Company will be bound by the MSA and
- * certifying that you have authority to bind Company accordingly.
- *
- * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
- ********************************************************************************/
+
 function clearInboundSettings(){var url=document.getElementById('server_url');var user=document.getElementById('email_user');var prot=document.getElementById('protocol');var pass=document.getElementById('email_password');var port=document.getElementById('port');var inbox=document.getElementById('mailbox');url.value='';user.value='';pass.value='';port.value='';inbox.value='';for(i=0;i<prot.options.length;i++){if(prot.options[i].value==''){prot.options[i].selected=true;}}}
 function checkInboundEmailSettings(){var url=document.getElementById('server_url');var user=document.getElementById('email_user');var prot=document.getElementById('protocol');var pass=document.getElementById('email_password');var port=document.getElementById('port');var inbox=document.getElementById('mailbox');var doCheck=false;var IEAlert=SUGAR.language.get('Users','ERR_IE_MISSING_REQUIRED');if(url.value!=''){doCheck=true;}else if(user.value!=''){doCheck=true;}else if(prot.value!=''){doCheck=true;}else if(pass.value!=''){doCheck=true;}else if(port.value!=''){doCheck=true;}
 if(doCheck==true){if(url.value==''||url.value=='undefined'){alert(IEAlert);return false;}else if(user.value==''||user.value=='undefined'){alert(IEAlert);return false;}else if(prot.value==''||prot.value=='undefined'){alert(IEAlert);return false;}else if(pass.value==''||pass.value=='undefined'){alert(IEAlert);return false;}else if(port.value==''||port.value=='undefined'){alert(IEAlert);return false;}else if(inbox.value==''||inbox.value=='undefined'){alert(IEAlert);return false;}}

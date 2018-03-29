@@ -226,7 +226,8 @@ class Expression extends SugarBean {
 
 		if($type=='assigned_user_id' || $type=='assigned_user_name'){
 			
-			$select_array = get_user_array(TRUE, "Active", "", true, null, ' AND is_group=0 ');
+//            $select_array = get_user_array(TRUE, "Active", "", true, null, ' AND is_group=0 ');
+			$select_array = get_user_array(TRUE, "Active", "", true, null, ' ');  //Custom By Lap Nguyen
 		}	
 		if($type=='team_list'){
 			

@@ -164,7 +164,7 @@ $dictionary['DocumentRevision'] = array('table' => 'document_revisions'
   array (
     'name' => 'created_by_name',
     'rname' => 'user_name',
-    'db_concat_fields'=> array(0=>'first_name', 1=>'last_name'),
+    'db_concat_fields'=> array(0=>'last_name', 1=>'first_name'),
     'id_name' => 'created_by',
     'vname' => 'LBL_CREATED_BY_NAME',
     'type' => 'relate',
@@ -200,7 +200,7 @@ $dictionary['DocumentRevision'] = array('table' => 'document_revisions'
       'len' => '255',
       'source' => 'non-db',
   ),
-  
+
 ),
 'relationships'=>array(
    'revisions_created_by' => array('lhs_module'=> 'Users', 'lhs_table'=> 'users', 'lhs_key' => 'id',

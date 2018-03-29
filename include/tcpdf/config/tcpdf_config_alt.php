@@ -210,7 +210,7 @@ define ('PDF_FONT_SIZE_MAIN', 10);
 /**
  * default data font name
  */
-define ('PDF_FONT_NAME_DATA', 'helvetica');
+define ('PDF_FONT_NAME_DATA', 'dejavusans');
 
 /**
  * default data font size

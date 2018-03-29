@@ -650,13 +650,13 @@ class Team extends SugarBean
 	 * Return the team id for a team name.
 	 */
 	function retrieve_team_id($team_name) {
-		$query = "SELECT id from teams where name='".$this->db->quote($team_name)."' OR name_2 = '".$this->db->quote($team_name)."' ";
+		$query = "SELECT id from teams where (name='".$this->db->quote($team_name)."' OR name_2 = '".$this->db->quote($team_name)."' ";
         // Private teams seem to have the name split up, so we need to check for this
         $splitVal = explode(' ',$team_name,2);
         if ( isset($splitVal[1]) && !empty($splitVal[1]) ) {
             $query .= " OR ( name = '".$this->db->quote($splitVal[0])."' AND name_2 = '".$this->db->quote($splitVal[1])."' ) ";
         }
-        $query .= "AND deleted != 1";
+        $query .= ") AND (deleted != 1) AND (private = 0) AND (code_prefix IS NOT NULL AND code_prefix <> '')";  //Fix bug Import - Lap Nguyen
 		$result = $this->db->query($query, false, "Error retrieving user ID: ");
 		$row = $this->db->fetchByAssoc($result);
 		if (!$row) return false;

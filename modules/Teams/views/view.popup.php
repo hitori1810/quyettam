@@ -19,7 +19,7 @@ class TeamsViewPopup extends SugarView
 	var $type ='list';
 
 	function display(){
-		if(SugarAutoLoader::existing('modules/' . $this->module . '/Popup_picker.php')){
+		if(SugarAutoLoader::existing('custom/modules/' . $this->module . '/Popup_picker.php')){
 			require_once('modules/' . $this->module . '/Popup_picker.php');
 		}else{
 			require_once('include/Popups/Popup_picker.php');

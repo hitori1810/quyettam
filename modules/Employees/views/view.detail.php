@@ -38,7 +38,6 @@ class EmployeesViewDetail extends ViewDetail {
         $module = preg_replace("/ /","",$this->module);
 
         $params = $this->_getModuleTitleParams();
-        $params = array_filter($params, 'strlen');
         $count = count($params);
         $index = 0;
 

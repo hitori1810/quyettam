@@ -71,6 +71,13 @@ class Holiday extends SugarBean {
 	{
 		return $this->create_new_list_query($order_by, $where);
 	}	
+    
+    public function bean_implements($interface){
+        switch($interface){
+            case 'ACL': return true;
+        }
+        return false;
+    }
 
 }
 

@@ -313,6 +313,7 @@ $vardefs= array (
       'group'=>'email1',
             'merge_filter' => 'enabled',
         'studio' => array('editview' => true, 'editField' => true, 'searchview' => false, 'popupsearch' => false), // bug 46859 
+        'unified_search' => true,
         'full_text_search' => array('boost' => 3, 'analyzer' => 'whitespace'), //bug 54567
     ),
     

@@ -145,6 +145,7 @@ if(!empty($_REQUEST['search_form_only']) && $_REQUEST['search_form_only']) { // 
 			$searchForm->xtpl->assign('USER_FILTER', get_select_options_with_id(get_user_array(FALSE), (empty($_REQUEST['assigned_user_id']) ? '' : $_REQUEST['assigned_user_id'])));
 			$searchForm->xtpl->assign('REPORT_TYPES', get_select_options_with_id($app_list_strings['dom_report_types'], (empty($_REQUEST['report_type']) ? '' : $_REQUEST['report_type'])));
 		    $searchForm->xtpl->assign('FAVORITE', (isset($_REQUEST['favorite']) ? 'checked' : ''));
+            $searchForm->xtpl->assign('list_of_arr',get_select_options_with_id($app_list_strings['report_list_list'], (empty($_REQUEST['list_of']) ? '' : $_REQUEST['list_of']) ));
             $searchForm->displayBasic(false);
             break;
         case 'advanced_search':
@@ -154,6 +155,7 @@ if(!empty($_REQUEST['search_form_only']) && $_REQUEST['search_form_only']) { // 
 			$searchForm->xtpl->assign('TEAM_FILTER', get_select_options_with_id(get_team_array(FALSE), (empty($_REQUEST['team_id']) ? '' : $_REQUEST['team_id'])));
 			$searchForm->xtpl->assign('REPORT_TYPES', get_select_options_with_id($app_list_strings['dom_report_types'], (empty($_REQUEST['report_type']) ? '' : $_REQUEST['report_type'])));
 		    $searchForm->xtpl->assign('FAVORITE', (isset($_REQUEST['favorite']) ? 'checked' : ''));
+            $searchForm->xtpl->assign('list_of_arr',get_select_options_with_id($app_list_strings['report_list_list'], (empty($_REQUEST['list_of']) ? '' : $_REQUEST['list_of']) ));
             $searchForm->displayAdvanced(false, false, $listViewDefsNewArray, $lv);
             echo "<script>if(typeof(loadSSL_Scripts)=='function'){
 		loadSSL_Scripts();
@@ -210,7 +212,8 @@ $lv->displayColumns = $displayColumns;
 			$searchForm->xtpl->assign('USER_FILTER', get_select_options_with_id(get_user_array(FALSE), empty($_REQUEST['assigned_user_id']) ? isset($saved_search->contents['assigned_user_id']) && $saved_search->contents['assigned_user_id']!='_none' ? $saved_search->contents['assigned_user_id'] : '' : $_REQUEST['assigned_user_id'] ));
 			$searchForm->xtpl->assign('REPORT_TYPES', get_select_options_with_id($app_list_strings['dom_report_types'], empty($_REQUEST['report_type']) ? isset($saved_search->contents['report_type']) && $saved_search->contents['report_type']!='_none' ? $saved_search->contents['report_type'] : '' : $_REQUEST['report_type'] ));
 		    $searchForm->xtpl->assign('FAVORITE', (isset($_REQUEST['favorite']) ? 'checked' : ''));
-	        $searchForm->displayAdvanced(true, false, $listViewDefsNewArray, $lv);
+	        $searchForm->xtpl->assign('list_of_arr',get_select_options_with_id($app_list_strings['report_list_list'], (empty($_REQUEST['list_of']) ? '' : $_REQUEST['list_of']) ));
+            $searchForm->displayAdvanced(true, false, $listViewDefsNewArray, $lv);
             echo "<script>if(typeof(loadSSL_Scripts)=='function'){
 		loadSSL_Scripts();
 	}</script>";
@@ -219,6 +222,7 @@ $lv->displayColumns = $displayColumns;
 			$searchForm->xtpl->assign('USER_FILTER', get_select_options_with_id(get_user_array(FALSE), empty($_REQUEST['assigned_user_id_basic']) ? isset($saved_search->contents['assigned_user_id_basic']) && $saved_search->contents['assigned_user_id_basic']!='_none' ? $saved_search->contents['assigned_user_id_basic'] : '' : $_REQUEST['assigned_user_id_basic'] ));
 			$searchForm->xtpl->assign('REPORT_TYPES', get_select_options_with_id($app_list_strings['dom_report_types'], empty($_REQUEST['report_type_basic']) ? isset($saved_search->contents['report_type_basic']) && $saved_search->contents['report_type_basic']!='_none' ? $saved_search->contents['report_type_basic'] : '' : $_REQUEST['report_type_basic'] ));
 		    $searchForm->xtpl->assign('FAVORITE', (isset($_REQUEST['favorite']) ? 'checked' : ''));
+	        $searchForm->xtpl->assign('list_of_arr',get_select_options_with_id($app_list_strings['report_list_list'], empty($_REQUEST['list_of_basic']) ? isset($saved_search->contents['list_of_basic']) && $saved_search->contents['list_of_basic']!='_none' ? $saved_search->contents['list_of_basic'] : '' : $_REQUEST['list_of_basic'] ));
 	        $searchForm->displayBasic();
 	    }
 	}

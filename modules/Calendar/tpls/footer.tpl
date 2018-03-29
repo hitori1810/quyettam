@@ -15,5 +15,5 @@
 *}
 <div class='monthFooter'>
 	<div style='float: left;'>{$previous}</div><div style='float: right;'>{$next}</div>
-    <br style='clear:both;'> <!--EDIT theme by MTN - 09-02-2015-->
 </div>
+<br style='clear:both;'>

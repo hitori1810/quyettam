@@ -1,5 +1,5 @@
 <?php
-// created: 2015-11-11 09:15:59
+// created: 2016-09-14 09:44:42
 $searchFields['Calls'] = array (
   'name' => 
   array (
@@ -142,5 +142,20 @@ $searchFields['Calls'] = array (
     'query_type' => 'default',
     'enable_range_search' => true,
     'is_date_field' => true,
+  ),
+  'range_student_aims_id' => 
+  array (
+    'query_type' => 'default',
+    'enable_range_search' => true,
+  ),
+  'start_range_student_aims_id' => 
+  array (
+    'query_type' => 'default',
+    'enable_range_search' => true,
+  ),
+  'end_range_student_aims_id' => 
+  array (
+    'query_type' => 'default',
+    'enable_range_search' => true,
   ),
 );

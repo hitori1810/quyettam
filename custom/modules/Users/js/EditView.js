@@ -15,4 +15,12 @@ jQuery1_7_1(document).ready(function() {
         jQuery1_7_1('.pictureContainer img').attr('src', 'index.php?entryPoint=getImage&themeName=default&imageName=default-picture.png');  //set default picture
         jQuery1_7_1('.imagePreview img').attr('src', 'index.php?entryPoint=getImage&themeName=default&imageName=default-picture.png');     //set default picture
     });
+    
+    //add by Trung Nguyen 2015.04.25
+    $('#worklog_reminder_recipient').multipleSelect({
+         minimumCountSelected: 200,
+    });
+    $('#leaving_request_confirmer').multipleSelect({
+         minimumCountSelected: 200,
+    });
 });

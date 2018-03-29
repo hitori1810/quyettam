@@ -8,12 +8,12 @@
  * you are agreeing unconditionally that Company will be bound by the MSA and
  * certifying that you have authority to bind Company accordingly.
  *
- * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ * Copyright (C) 2004-2014 SugarCRM Inc.  All rights reserved.
  ********************************************************************************/
 
 <?php
 require('service/core/SugarSoapService.php');
-require('include/nusoap/nusoap.php');
+require('vendor/nusoap//nusoap.php');
 
 abstract class PHP5Soap extends SugarSoapService{
 	private $nusoap_server = null;

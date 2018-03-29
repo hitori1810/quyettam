@@ -1,4 +1,15 @@
-
+/*********************************************************************************
+ * By installing or using this file, you are confirming on behalf of the entity
+ * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
+ * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
+ * http://www.sugarcrm.com/master-subscription-agreement
+ *
+ * If Company is not bound by the MSA, then by installing or using this file
+ * you are agreeing unconditionally that Company will be bound by the MSA and
+ * certifying that you have authority to bind Company accordingly.
+ *
+ * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ ********************************************************************************/
 ({extendsFrom:'BaseeditmodalView',initialize:function(options){app.view.View.prototype.initialize.call(this,options);this.fallbackFieldTemplate="edit";if(this.layout){this.layout.on("app:view:password:editmodal",function(){this.model=this.context.get('model');this.render();this.$('.modal').modal('show');this.model.on("error:validation",function(){this.resetButton();},this);},this);}
 this.bindDataChange();},_renderHtml:function(){this.saveButtonWasClicked=false;this.events=_.clone(this.events);_.extend(this.events,{"focusin input[name=new_password]":"verifyCurrentPassword","focusin input[name=confirm_password]":"verifyCurrentPassword"});app.view.View.prototype._renderHtml.call(this);},verifyCurrentPassword:function(){var self=this,currentPassword;currentPassword=self.$('[name=current_password]').val();if(currentPassword&&currentPassword.length&&!self.saveButtonWasClicked){app.api.verifyPassword(currentPassword,{success:function(data){if(!self.checkUpdatePassWorked(data)){app.alert.show('pass_verification_failed',{level:'error',title:app.lang.get('LBL_PASSWORD',self.module),messages:app.lang.get('ERR_PASSWORD_MISMATCH',self.module),autoClose:true});self.$('[name=current_password]').val('');self.$('[name=current_password]').focus();}else{app.alert.dismiss('pass_verification_failed');}},error:function(error){app.error.handleHttpError(error,self);self.resetButton();}});}},handleCustomValidationError:function(field,errorMsg){field=field.parents('.control-group')
 field.addClass('error');field.find('.help-block').html("");field.find('.help-block').append(errorMsg);field.find('.add-on').remove();field.find('input:last').after('<span class="add-on"><i class="icon-exclamation-sign"></i></span>');},setLoading:function(){this.$('[name=save_button]').attr('data-loading-text',app.lang.get('LBL_LOADING'));this.$('[name=save_button]').button('loading');},verify:function(){var self=this,currentPassword,password,confirmPassword,confirmPasswordField,isError=false,passwordField,maxLen,currentPasswordField;self.setLoading();currentPasswordField=this.$('[name=current_password]');currentPassword=currentPasswordField.val();passwordField=this.$('[name=new_password]');password=passwordField.val();confirmPasswordField=this.$('[name=confirm_password]');confirmPassword=confirmPasswordField.val();if(!currentPassword){self.handleCustomValidationError(currentPasswordField,app.lang.get('ERR_ENTER_OLD_PASSWORD',self.module));isError=true;}

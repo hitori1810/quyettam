@@ -46,7 +46,7 @@ $mod_strings = array (
   'LBL_DATE_MODIFIED' => 'Date Modified',
   'LBL_MODIFIED' => 'Modified by: ',
   'LBL_CREATED' => 'Created by: ',
-  'LBL_TEAM' => 'Team: ',
+  'LBL_TEAM' => 'Center: ',
   'LBL_ASSIGNED_TO' => 'Assigned to: ',
   'LBL_ASSIGNED_TO_ID' => 'Assigned to:',
   'LBL_ASSIGNED_TO_NAME'=> 'Assigned to:',
@@ -418,6 +418,10 @@ $mod_strings = array (
     'ERR_NO_OPTS_SAVED'		=> 'No optimums were saved with your Inbound Email account.',
     'ERR_REVIEW_EMAIL_SETTINGS' => 'Please review Inbound Email settings.',
     'LBL_LEADS_DELETED_SINCE_CREATED' => '{0} leads that were created through this campaign have been deleted since creation.',
+'LBL_SMS' => 'SMS',
+   'LBL_WIZ_SENDSMS_TITLE' => 'Send SMS',
+   'LBL_NAVIGATION_MENU_SEND_SMS' => 'Send SMS',
+   'LBL_SEND_SMS' => 'Schedule SMS',
 );
 
 

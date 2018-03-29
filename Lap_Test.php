@@ -1,27 +1,33 @@
-﻿<?php
-/*$username = "root";
-$password = "";
-$hostname = "localhost"; 
+<?php
+echo '<html>
+<head>
+<script>
+function loaded()
+{
+    window.setTimeout(CloseMe, 100);
+}
 
-//connection to the database
-$dbhandle = mysql_connect($hostname, $username, $password) 
- or die("Unable to connect to MySQL");
-echo "Connected to MySQL<br>";
- $data = mysql_query("SELECT * FROM sugar_apollo.acl_roles_actions;") 
- or die(mysql_error());
-$count = 0;
-while ($info = mysql_fetch_array( $data )) {
- //  echo "ID:".$info{'id'}." Name:".$info{'access_override'}." <br>";
- $data2 = mysql_query("SELECT * FROM sugar_apollo.bugs;") 
- or die(mysql_error());
-   $count++;
-} 
+function CloseMe()
+{
+    window.close();
+}
+</script>
+</head>
+<body onLoad="loaded()">
+Debugger !!
+</body>';
 
-echo "Ðã thực hiện truy vấn $count lần";*/
-//echo phpinfo();
 
-echo "Today is " . date("Y-m-d H:i:s") . "<br>";
-
-echo date_default_timezone_get();
+//TEMP CONFIG SIS
+//  'dbconfig' =>
+//  array (
+//    'db_host_name' => '103.27.237.53',
+//    'db_host_instance' => 'SQLEXPRESS',
+//    'db_user_name' => 'lap.nguyen',
+//    'db_password' => 'UNdV3vQN8T6nx79R',
+//    'db_name' => 'sis_bk',
+//    'db_type' => 'mysqli',
+//    'db_port' => '',
+//    'db_manager' => 'MysqliManager',
+//  ),
 ?>
-

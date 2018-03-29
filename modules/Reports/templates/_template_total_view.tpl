@@ -18,7 +18,7 @@
 global $mod_strings;
 require_once('modules/Reports/templates/templates_reports.php');
 $reporter = $this->get_template_vars('reporter');
-$total_header_row = $reporter->get_total_header_row(); 
+$total_header_row = $reporter->get_total_header_row();
 $total_row = $reporter->get_summary_total_row();
 if ( isset($total_row['group_pos'])) {
 	$args['group_pos'] = $total_row['group_pos'];
@@ -27,7 +27,7 @@ if ( isset($total_row['group_column_is_invisible'])) {
 	$args['group_column_is_invisible'] = $total_row['group_column_is_invisible'];
 } // if
 	$reporter->layout_manager->setAttribute('no_sort',1);
-	echo get_form_header( $mod_strings['LBL_GRAND_TOTAL'],"", false); 
+	echo get_form_header( $mod_strings['LBL_GRAND_TOTAL'],"", false);
 	template_header_row($total_header_row,$args);
 {/php}
 <table width="100%" border="0" cellpadding="0" cellspacing="0" class="list view">
@@ -47,20 +47,20 @@ if ( isset($total_row['group_column_is_invisible'])) {
 {/php}
 {foreach from=$header_row key=module item=cell}
 	{if (($args.group_column_is_invisible != "") && ($args.group_pos eq $count))}
-{php}	
+{php}
 	$count = $count + 1;
 	$this->assign('count', $count);
 {/php}
 	{ else }
 	{if $cell eq ""}
-{php}	
+{php}
 	$cell = "&nbsp;";
 	$this->assign('cell', $cell);
 {/php}
 	{/if}
-	
-	<td scope="col" align='center'  valign=middle nowrap>	
-	
+
+	<td scope="col" align='center'  valign=middle nowrap>
+
 	{$cell}
 	{/if}
 {/foreach}
@@ -79,24 +79,35 @@ if ( isset($total_row['group_column_is_invisible'])) {
 	{/php}
 	{foreach from=$column_row.cells key=module item=cell}
 		{if (($column_row.group_column_is_invisible != "") && ($count|in_array:$column_row.group_pos)) }
-	{php}	
+	{php}
 		$count = $count + 1;
 		$this->assign('count', $count);
 	{/php}
 		{ else }
 		{if $cell eq ""}
-	{php}	
+	{php}
 		$cell = "&nbsp;";
 		$this->assign('cell', $cell);
 	{/php}
-		{/if}		
-		<td width="{$width}%" valign=TOP class="{$row_class}" bgcolor="{$bg_color}" scope="row">
-		
+		{/if}
+        {if substr_count($cell, '/') == 2 }
+        <td style='mso-number-format:"dd\/mm\/yyyy";text-align: left;' width="{$width}%" valign=TOP class="{$row_class}" bgcolor="{$bg_color}" {if $scope_row} scope='row' {/if}>
+        <td style='mso-number-format:"dd\/mm\/yyyy";text-align: left;' width="{$width}%" valign=TOP class="{$row_class}" bgcolor="{$bg_color}" scope="row">
+        {elseif (date('Y-m-d', strtotime($cell)) == $cell)}
+        <td style='mso-number-format:"yyyy-mm-dd";text-align: left;' width="{$width}%" valign=TOP class="{$row_class}" bgcolor="{$bg_color}" {if $scope_row} scope='row' {/if}>
+        <td style='mso-number-format:"yyyy-mm-dd";text-align: left;' width="{$width}%" valign=TOP class="{$row_class}" bgcolor="{$bg_color}" scope="row">
+        {elseif ((strlen($cell) > 4) && (preg_match("/^[0-9]+$/", $cell)))}
+        <td style="mso-number-format:\@;" width="{$width}%" valign=TOP class="{$row_class}" bgcolor="{$bg_color}" {if $scope_row} scope='row' {/if}>
+        <td style="mso-number-format:\@;" width="{$width}%" valign=TOP class="{$row_class}" bgcolor="{$bg_color}" scope="row">
+        {else}
+        <td width="{$width}%" valign=TOP class="{$row_class}" bgcolor="{$bg_color}" scope="row">
+        {/if}
+
 		{$cell}
 		{/if}
 	{/foreach}
 	</tr>
-	
+
 {php}
 	} else {
 	echo template_no_results();

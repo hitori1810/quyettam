@@ -65,7 +65,13 @@ class CampaignsViewDetail extends ViewDetail {
             $this->ss->assign("MSG_SCRIPT",$confirm_msg);
             
         }         
-        
+// custom send sms by hai duc
+            # tracy: use the sms.lang.php language file to override the regular Campaign lang
+            if ($this->bean->campaign_type == "SMS") {
+                global $mod_strings;
+                $mod_strings['LBL_QUEUE_BUTTON_LABEL'] = "Send SMS";
+            }
+            // end custom send sms by hai duc
 	    if (($this->bean->campaign_type == 'Email') || ($this->bean->campaign_type == 'NewsLetter' )) {
 	    	$this->ss->assign("ADD_BUTTON_STATE", "submit");
 	        $this->ss->assign("TARGET_BUTTON_STATE", "hidden");
@@ -96,18 +102,25 @@ class CampaignsViewDetail extends ViewDetail {
         require_once('include/SubPanel/SubPanelTiles.php');
         $subpanel = new SubPanelTiles($this->bean, $this->module);
         //get available list of subpanels
+//  custom send sms by hai duc
+            # tracy: change the title key of email marketing subpanel for SMS
+            if ($this->bean->campaign_type == "SMS") {
+                $subpanel->subpanel_definitions->layout_defs['subpanel_setup']['emailmarketing']['title_key'] = "SMS Marketing";
+            } 
+            // end custom send sms by hai duc
         $alltabs=$subpanel->subpanel_definitions->get_available_tabs();
         if (!empty($alltabs)) {
             //iterate through list, and filter out all but 3 subpanels
             foreach ($alltabs as $key=>$name) {
-                if ($name != 'prospectlists' && $name!='emailmarketing' && $name != 'tracked_urls') {
+                if ($this->bean->campaign_type == 'SMS' && $name != 'prospectlists' && $name!='emailmarketing' && $name != 'tracked_urls') {
                     //exclude subpanels that are not prospectlists, emailmarketing, or tracked urls
                     $subpanel->subpanel_definitions->exclude_tab($name);
                 }   
             }
-            //only show email marketing subpanel for email/newsletter campaigns
-            if ($this->bean->campaign_type != 'Email' && $this->bean->campaign_type != 'NewsLetter' ) {
-                //exclude emailmarketing subpanel if not on an email or newsletter campaign
+ //only show email marketing subpanel for email/newsletter campaigns
+                # tracy: include SMS
+                if ($this->bean->campaign_type != 'Email' && $this->bean->campaign_type != 'NewsLetter' && $this->bean->campaign_type != 'SMS' ) {
+                   
                 $subpanel->subpanel_definitions->exclude_tab('emailmarketing');
                 // Bug #49893  - 20120120 - Captivea (ybi) - Remove trackers subpanels if not on an email/newsletter campaign (useless subpannl)
                 $subpanel->subpanel_definitions->exclude_tab('tracked_urls');

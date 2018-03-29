@@ -17,7 +17,5 @@
 <!--Inheritance theme Racex: Add by MTN: 11/03/2015-->
 {include file="themes/RacerX/tpls/_head.tpl"}          
 
-<link rel="stylesheet" type="text/css" href="{sugar_getjspath file='themes/OnlineCRM-Blue/css/resetStyle.css'}"/>
-
 <!--Custom Theme: Add by MTN: 09/02/2015-->
 {sugar_getscript file="themes/OnlineCRM-Blue/js/customTheme.js"}

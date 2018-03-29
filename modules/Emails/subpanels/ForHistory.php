@@ -28,35 +28,25 @@ $subpanel_layout = array(
 		'name' => array(
 			 'vname'				=> 'LBL_LIST_SUBJECT',
 			 'widget_class'			=> 'SubPanelDetailViewLink',
-			 'width'				=> '30%',
+			 'width'				=> '15%',
              'parent_info'          => true
 		),
 		'status' => array(
 			 'vname'				=> 'LBL_LIST_STATUS',
 			 'width'				=> '15%',
 		),
-		'contact_name'=>array(
-             'widget_class'         => 'SubPanelDetailViewLink',
-             'target_record_key'    => 'contact_id',
-             'target_module'        => 'Contacts',
-             'module'               => 'Contacts',
-             'vname'                => 'LBL_LIST_CONTACT',
-             'width'                => '11%',
-             'sortable'             => false,
-             'force_exists'			=> true,
-        ),
         'contact_id'=>array(
             'usage'=>'query_only',
     		'force_exists'=>true
         ),
-        'contact_name_owner'=>array(
-            'usage'=>'query_only',
-            'force_exists'=>true
-        ),  
-        'contact_name_mod'=>array(
-            'usage'=>'query_only',
-            'force_exists'=>true
-        ),  
+//        'contact_name_owner'=>array(
+//            'usage'=>'query_only',
+//            'force_exists'=>true
+//        ),  
+//        'contact_name_mod'=>array(
+//            'usage'=>'query_only',
+//            'force_exists'=>true
+//        ),  
 		'date_modified' => array(
 			'width'					=> '10%',
 		),

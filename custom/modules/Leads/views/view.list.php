@@ -1,34 +1,66 @@
 <?php
-    if(!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
 
-    /*********************************************************************************
-    * By installing or using this file, you are confirming on behalf of the entity
-    * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
-    * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
-    * http://www.sugarcrm.com/master-subscription-agreement
-    *
-    * If Company is not bound by the MSA, then by installing or using this file
-    * you are agreeing unconditionally that Company will be bound by the MSA and
-    * certifying that you have authority to bind Company accordingly.
-    *
-    * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
-    ********************************************************************************/
+if (!defined('sugarEntry') || !sugarEntry)
+    die('Not A Valid Entry Point');
+/**
+*
+* LICENSE: The contents of this file are subject to the license agreement ("License") which is included
+* in the installation package (LICENSE.txt). By installing or using this file, you have unconditionally
+* agreed to the terms and conditions of the License, and you may not use this file except in compliance
+* with the License.
+*
+* @author     Original Author Biztech Co.
+*/
 
-    require_once('include/MVC/View/views/view.list.php'); 
-    class LeadsViewList extends ViewList
-    {
-        function nm_introductionViewList() 
-        { 
-            parent::ViewList(); 
-        } 
-        function listViewPrepare() {    
-            $_REQUEST['orderBy'] = 'date_entered';  
-            $_REQUEST['sortOrder'] = 'desc'; 
-            parent::listViewPrepare(); 
+
+require_once('modules/Leads/views/view.list.php');
+
+class CustomLeadsViewList extends LeadsViewList {
+    //Custom Survey
+    public function preDisplay() {
+        parent::preDisplay();
+        $this->lv->targetList = true;
+        $this->lv->export = false;
+        require_once('custom/include/modules/Administration/plugin.php');
+        $checkSurveySubscription = validateSurveySubscription();
+        if (!$checkSurveySubscription['success']) {
+
+        } else {
+//            $this->lv->actionsMenuExtraItems[] = $this->buildMyMenuItem();
+//            $this->lv->actionsMenuExtraItems[] = $this->pollMenuItem();
         }
-
-
-
-
     }
-?>
+    protected function buildMyMenuItem() {
+        global $app_strings, $current_user, $sugar_version;
+        echo '<link rel="stylesheet" type="text/css" href="custom/include/css/survey_css/survey.css">';
+        echo '<link rel="stylesheet" type="text/css" href="custom/include/css/survey_css/jquery.datetimepicker.css">';
+        echo '<script type="text/javascript" src="custom/include/js/survey_js/custom_code.js">';
+        $module_name = (!empty($_REQUEST['module'])) ? $_REQUEST['module'] : $this->module;
+        $re_sugar_version = '/(6\.4\.[0-9])/';
+         $type = 'survey';
+        if (preg_match($re_sugar_version, $sugar_version)) {
+            return "<a id='send_survey' onclick=\"getListRecords('{$module_name}','{$type}');\" class='menuItem' onmouseover='hiliteItem(this,\"yes\");' onmouseout='unhiliteItem(this);' href='javascript:void(0);' style='width:150px'>Send Survey</a>";
+        } else {
+            return "<a id='send_survey' onclick=\"getListRecords('{$module_name}','{$type}');\">Send Survey</a>";
+        }
+    }
+    protected function pollMenuItem() {
+        global $app_strings, $current_user,$sugar_version;
+        $module_name = (!empty($_REQUEST['module'])) ? $_REQUEST['module'] : $this->module;
+        $re_sugar_version = '/(6\.4\.[0-9])/';
+        $type = 'poll';
+        if (preg_match($re_sugar_version, $sugar_version)) {
+            return "<a id='send_poll' onclick=\"getListRecords('{$module_name}','{$type}');\" class='menuItem' onmouseover='hiliteItem(this,\"yes\");' onmouseout='unhiliteItem(this);' href='javascript:void(0);' style='width:150px'>Send Poll</a>";
+        } else {
+            return "<a id='send_poll' onclick=\"getListRecords('{$module_name}','{$type}');\">Send Poll</a>";
+        }
+    }
+    //END: Custom Survey
+
+    function listViewPrepare() {
+        $_REQUEST['orderBy'] = 'date_entered';
+        $_REQUEST['sortOrder'] = 'DESC';
+        parent::listViewPrepare();
+    }
+
+}

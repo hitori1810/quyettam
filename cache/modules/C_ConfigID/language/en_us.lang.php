@@ -1,5 +1,5 @@
 <?php
-// created: 2018-03-27 23:04:27
+// created: 2018-03-29 10:02:25
 $mod_strings = array (
   'LBL_ID' => 'ID',
   'LBL_DATE_ENTERED' => 'Date Created',
@@ -19,9 +19,9 @@ $mod_strings = array (
   'LBL_REMOVE' => 'Remove',
   'LBL_ASSIGNED_TO_ID' => 'Assigned User Id',
   'LBL_ASSIGNED_TO_NAME' => 'Assigned to',
-  'LBL_TEAM' => 'Teams',
-  'LBL_TEAMS' => 'Teams',
-  'LBL_TEAM_ID' => 'Team Id',
+  'LBL_TEAM' => 'Center',
+  'LBL_TEAMS' => 'Center',
+  'LBL_TEAM_ID' => 'Center Id',
   'LBL_LIST_FORM_TITLE' => 'Config:ID List',
   'LBL_MODULE_NAME' => 'Config:ID',
   'LBL_MODULE_TITLE' => 'Config:ID',

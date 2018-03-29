@@ -48,8 +48,8 @@ function disableReturnSubmission(e) {
 <div class="dashletPanelMenu wizard">
 
 <div class="bd">
-		
-		
+
+
 <div id="welcome" class="screen">
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
@@ -213,12 +213,12 @@ function disableReturnSubmission(e) {
                     <tr>
                         <td width="17%" scope="row" nowrap="nowrap"><slot>{$MOD.LBL_DECIMAL_SEP}:</slot>&nbsp;{sugar_help text=$MOD.LBL_DECIMAL_SEP_TEXT }</td>
                         <td ><slot>
-                            <input tabindex='14' name='dec_sep' id='default_decimal_seperator'
+                            <input tabindex='14' readonly="" class="input_readonly" name='dec_sep' id='default_decimal_seperator'
                                 type='text' maxlength='1' size='1' value='{$DEC_SEP}'
                                 onkeydown='setSigDigits();' onkeyup='setSigDigits();'>
                         </slot></td>
                         <td width="17%" scope="row" nowrap="nowrap"><slot>{$MOD.LBL_NUMBER_GROUPING_SEP}:</slot>&nbsp;{sugar_help text=$MOD.LBL_NUMBER_GROUPING_SEP_TEXT }</td>
-                        <td><input tabindex='14' name='num_grp_sep' id='default_number_grouping_seperator'
+                        <td><input tabindex='14' readonly="" class="input_readonly" name='num_grp_sep' id='default_number_grouping_seperator'
                                     type='text' maxlength='1' size='1' value='{$NUM_GRP_SEP}'
                                     onkeydown='setSigDigits();' onkeyup='setSigDigits();'></td>
                     </tr>
@@ -315,7 +315,7 @@ function disableReturnSubmission(e) {
                 <tr>
                     <td scope="row">
                         <h3>{$MOD.LBL_WIZARD_FINISH1}</h3>
-                         
+
                         <table cellpadding=0 cellspacing=0><input id='whatnext' name='whatnext' type="hidden" value='finish' />
                         {if $IS_ADMIN}
                         <tr><td><img src=include/images/start.png style="margin-right: 5px;"></td><td><a onclick='document.UserWizard.whatnext.value="finish";document.UserWizard.submit()' href="#" ><b> {$MOD.LBL_WIZARD_FINISH2}  </b></a><br> {$MOD.LBL_WIZARD_FINISH2DESC}</td></tr>
@@ -361,8 +361,8 @@ function disableReturnSubmission(e) {
     </div>
 </div>
 
-			
-		
+
+
 
 </div>
 
@@ -491,19 +491,19 @@ function testOutboundSettings()
         overlay("{/literal}{$APP.ERR_MISSING_REQUIRED_FIELDS}{literal}", errorMessage, 'alert');
         return false;
     }
-    
-    if(document.getElementById('mail_smtpuser') && trim(document.getElementById('mail_smtpuser').value) == '') 
+
+    if(document.getElementById('mail_smtpuser') && trim(document.getElementById('mail_smtpuser').value) == '')
     {
         isError = true;
         errorMessage += "{/literal}{$APP.LBL_EMAIL_ACCOUNTS_SMTPUSER}{literal}" + "<br/>";
     }
-    
-    if(document.getElementById('mail_smtppass') && trim(document.getElementById('mail_smtppass').value) == '') 
+
+    if(document.getElementById('mail_smtppass') && trim(document.getElementById('mail_smtppass').value) == '')
     {
         isError = true;
         errorMessage += "{/literal}{$APP.LBL_EMAIL_ACCOUNTS_SMTPPASS}{literal}" + "<br/>";
     }
-    
+
     if(isError) {
         overlay("{/literal}{$APP.ERR_MISSING_REQUIRED_FIELDS}{literal}", errorMessage, 'alert');
         return false;

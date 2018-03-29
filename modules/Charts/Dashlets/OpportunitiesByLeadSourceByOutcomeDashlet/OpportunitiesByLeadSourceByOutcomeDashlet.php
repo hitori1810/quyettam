@@ -91,7 +91,7 @@ class OpportunitiesByLeadSourceByOutcomeDashlet extends DashletGenericChart
      */
     protected function constuctQuery()
     {
-        $query = "SELECT lead_source,sales_stage,sum(amount_usdollar/1000) as total, ".
+        $query = "SELECT lead_source,sales_stage,sum(total_in_invoice/1000) as total, ".
                     "count(*) as opp_count FROM opportunities ";
 		$this->getSeedBean()->add_team_security_where_clause($query);
 		$query .= " WHERE opportunities.deleted=0 ";

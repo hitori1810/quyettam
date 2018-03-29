@@ -160,7 +160,7 @@ class SugarWidgetSubPanelTopButton extends SugarWidget
                 break ;
             case 'leads' :
             case 'contacts' :
-                $name = $defines['focus']->first_name . " " .$defines['focus']->last_name ;
+                $name = $defines['focus']->last_name . " " .$defines['focus']->first_name;
                 break ;
             default :
                $name = (isset($defines['focus']->name)) ? $defines['focus']->name : "";

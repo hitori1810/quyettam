@@ -130,7 +130,7 @@ return date;if(oldFormat=="user")
 if(oldFormat==null||oldFormat==""){oldFormat=SUGAR.util.DateUtils.guessFormat(date);}
 if(oldFormat==false){if(/^\d+$/.test(date))
 return new Date(date);return false;}
-var jsDate=new Date("Jan 1, 1970 00:00:00");var part="";var dateRemain=YAHOO.lang.trim(date);oldFormat=YAHOO.lang.trim(oldFormat)+" ";for(var j=0;j<oldFormat.length;j++){var c=oldFormat.charAt(j);if(c==':'||c=='/'||c=='-'||c=='.'||c==" "||c=='a'||c=="A"){var i=dateRemain.indexOf(c);if(i==-1)i=dateRemain.length;var v=dateRemain.substring(0,i);dateRemain=dateRemain.substring(i+1);switch(part){case'm':if(!(v>0&&v<13))return false;jsDate.setMonth(v-1);break;case'd':if(!(v>0&&v<32))return false;jsDate.setDate(v);break;case'Y':if(!(v>0))return false;jsDate.setYear(v);break;case'h':var timeformat=oldFormat.substring(oldFormat.length-4);if(timeformat.toLowerCase()=="i a "||timeformat.toLowerCase()==c+"ia "){if(dateRemain.substring(dateRemain.length-2).toLowerCase()=='pm'){v=v*1;if(v<12){v+=12;}}}
+var jsDate=new Date("Jan 1, 1972 00:00:00");var part="";var dateRemain=YAHOO.lang.trim(date);oldFormat=YAHOO.lang.trim(oldFormat)+" ";for(var j=0;j<oldFormat.length;j++){var c=oldFormat.charAt(j);if(c==':'||c=='/'||c=='-'||c=='.'||c==" "||c=='a'||c=="A"){var i=dateRemain.indexOf(c);if(i==-1)i=dateRemain.length;var v=dateRemain.substring(0,i);dateRemain=dateRemain.substring(i+1);switch(part){case'm':if(!(v>0&&v<13))return false;jsDate.setMonth(v-1);break;case'd':if(!(v>0&&v<32))return false;jsDate.setDate(v);break;case'Y':if(!(v>0))return false;jsDate.setYear(v);break;case'h':var timeformat=oldFormat.substring(oldFormat.length-4);if(timeformat.toLowerCase()=="i a "||timeformat.toLowerCase()==c+"ia "){if(dateRemain.substring(dateRemain.length-2).toLowerCase()=='pm'){v=v*1;if(v<12){v+=12;}}}
 case'H':jsDate.setHours(v);break;case'i':v=v.substring(0,2);jsDate.setMinutes(v);break;}
 part="";}else{part=c;}}
 return jsDate;},guessFormat:function(date){if(typeof date!="string")
@@ -142,7 +142,7 @@ else if(date.indexOf(".")!=-1)
 {dateSep=".";}
 else
 {return false;}
-var dateParts=date.split(dateSep);var dateFormat="";var jsDate=new Date("Jan 1, 1970 00:00:00");if(dateParts[0].length==4)
+var dateParts=date.split(dateSep);var dateFormat="";var jsDate=new Date("Jan 1, 1972 00:00:00");if(dateParts[0].length==4)
 {dateFormat="Y"+dateSep+"m"+dateSep+"d";}
 else if(dateParts[2].length==4)
 {dateFormat="m"+dateSep+"d"+dateSep+"Y";}

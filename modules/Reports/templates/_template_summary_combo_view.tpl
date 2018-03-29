@@ -23,7 +23,7 @@
 <input type="hidden" name="expandAllState" id="expandAllState" value="{$expandAll}">
 <input class="button" name="expandCollapse" id="expandCollapse" title="{$mod_strings.LBL_REPORT_COLLAPSE_ALL}"
     type="button"
-    value="{$mod_strings.LBL_REPORT_COLLAPSE_ALL}" 
+    value="{$mod_strings.LBL_REPORT_COLLAPSE_ALL}"
     onclick="expandCollapseAll('false');">
 <br/><br/>
 {php}
@@ -42,10 +42,10 @@ $indexOfGroupByStart = 0;
 $rowIdToCountArray = array();
 $forLoopIndexForGroupBy;
 $topLevelGroupColumnNameId = "";
-$got_row = 0;                                                                                   
+$got_row = 0;
 $divCounter = 0;
 while (( $row = $reporter->get_summary_next_row()) != 0 ) {
-	$got_row = 1;                                                                                   
+	$got_row = 1;
 	$startTable = true;
 	$indexOfGroupByStart = whereToStartGroupByRow($reporter, $count, $header_row, $previousRow, $row);
 	if ($indexOfGroupByStart != -1) {
@@ -92,7 +92,7 @@ if ($startTable) {
 	<tr>
 		<td>
 			<table width="100%" border="0" cellpadding="0" cellspacing="0" class="{$topLevelGroupClass}">
-				<tr height="20" >				
+				<tr height="20" >
 				  <th align='left' id = "{$rowId}" name= "{$rowId}" class="reportGroup1ByTableEvenListRowS1" valign=middle nowrap><span id="{$spanId}"><a href="javascript:expandCollapseComboSummaryDivTable('{$divId}')"><img width="8" height="8" border="0" absmiddle="" alt="{$mod_strings.LBL_ALT_SHOW}" src="{sugar_getimagepath file='basic_search.gif'}"/></a></span>&nbsp;{$groupByColumnName}
 				  </th>
 				</tr>
@@ -118,9 +118,9 @@ for ($forLoopIndexForGroupBy = $indexOfGroupByStart ; $forLoopIndexForGroupBy < 
 	} // for
 	$rowId = generateIdForGroupByIndex($counterArray, $forLoopIndexForGroupBy);
 	if (array_key_exists($rowId, $rowIdToCountArray)) {
-		$counterArray[$forLoopIndexForGroupBy] = $counterArray[$forLoopIndexForGroupBy] + 1;	
+		$counterArray[$forLoopIndexForGroupBy] = $counterArray[$forLoopIndexForGroupBy] + 1;
 		$rowId = generateIdForGroupByIndex($counterArray, $forLoopIndexForGroupBy);
-	} 
+	}
 	$rowIdToCountArray[$rowId] = 0;
 	$newRowId = $rowId;
 	if ($forLoopIndexForGroupBy < (count($reporter->report_def['group_defs']) -1)) {
@@ -135,7 +135,7 @@ for ($forLoopIndexForGroupBy = $indexOfGroupByStart ; $forLoopIndexForGroupBy < 
 	$this->assign('spaces', $spaces);
 	$indexOfGroupByStart++;
 	$this->assign('groupByColumnName', $groupByColumnName);
-	$this->assign('rowId', $newRowId);	
+	$this->assign('rowId', $newRowId);
 {/php}
 	<tr>
 		<td>
@@ -177,24 +177,30 @@ for ($forLoopIndexForGroupBy = $indexOfGroupByStart ; $forLoopIndexForGroupBy < 
 {/if}
 
 {php}
-	$count1 = 0;
+    $count1 = 0;
+	$r_number = 0;
 	$this->assign('count1', $count1);
+    $this->assign('r_number', $r_number);
 {/php}
+                {if $reporter->saved_report->row_number}
+                <th scope="col" align='center' class="reportGroupByDataChildTablelistViewThS1" valign=middle nowrap>No.
+                </th>
+                {/if}
 {foreach from=$header_row key=module item=cell}
 	{if (($args.group_column_is_invisible != "") && ($args.group_pos eq $count1))}
-{php}	
+{php}
 	$count1 = $count1 + 1;
 	$this->assign('count1', $count1);
 {/php}
 	{ else }
 	{if $cell eq ""}
-{php}	
+{php}
 	$cell = "&nbsp;";
 	$this->assign('cell', $cell);
 {/php}
-	{/if}	
-								<th scope="col" align='center' class="reportGroupByDataChildTablelistViewThS1" valign=middle nowrap>	
-	
+	{/if}
+								<th scope="col" align='center' class="reportGroupByDataChildTablelistViewThS1" valign=middle nowrap>
+
 	{$cell}
 								</th>
 	{/if}
@@ -209,6 +215,13 @@ for ($forLoopIndexForGroupBy = $indexOfGroupByStart ; $forLoopIndexForGroupBy < 
 					incrementCountForRowId($rowIdToCountArray, $rowId);
 {/php}
 <tr height=20 class="{$row_class}">
+{if $reporter->saved_report->row_number}
+{php}
+    $r_number = $r_number + 1;
+    $this->assign('r_number', $r_number);
+{/php}
+<td width="1%" valign=TOP bgcolor="{$bg_color}" scope="row">{$r_number}</td>
+{/if}
 {if ($isSummaryComboHeader)}
 
 {/if}
@@ -218,31 +231,40 @@ for ($forLoopIndexForGroupBy = $indexOfGroupByStart ; $forLoopIndexForGroupBy < 
 {/php}
 {foreach from=$column_row.cells key=module item=cell}
 	{if (($column_row.group_column_is_invisible != "") && ($count1|in_array:$column_row.group_pos)) }
-{php}	
+{php}
 	$count1 = $count1 + 1;
 	$this->assign('count1', $count1);
 {/php}
 	{ else }
 	{if $cell eq ""}
-{php}	
+{php}
 	$cell = "&nbsp;";
 	$this->assign('cell', $cell);
 {/php}
-	{/if}	
-									<td width="{$width}%" valign=TOP class="{$row_class[$module]}" bgcolor="{$bg_color}" scope="row">
-	
+	{/if}
+    {if substr_count($cell, '/') == 2 }
+    <td style='mso-number-format:"dd\/mm\/yyyy";text-align: left;' width="{$width}%" valign=TOP class="{$row_class[$module]}" bgcolor="{$bg_color}" scope="row">
+    {elseif (date('Y-m-d', strtotime($cell)) == $cell)}
+    <td style='mso-number-format:"yyyy-mm-dd";text-align: left;' width="{$width}%" valign=TOP class="{$row_class[$module]}" bgcolor="{$bg_color}" scope="row">
+	{elseif ((strlen($cell) > 4) && (preg_match("/^[0-9]+$/", $cell)))}
+    <td style="mso-number-format:\@;" width="{$width}%" valign=TOP class="{$row_class[$module]}" bgcolor="{$bg_color}" scope="row">
+    {else}
+    <td width="{$width}%" valign=TOP class="{$row_class[$module]}" bgcolor="{$bg_color}" scope="row">
+    {/if}
+
+
 	{$cell}
 									</td>
 	{/if}
 {/foreach}
 								</tr>
-				
+
 {php}
 			   } else {
 			     break;
 			   } // else
   			} // for
-{/php}							
+{/php}
   								</table>
 
 								</td>
@@ -263,7 +285,7 @@ for ($forLoopIndexForGroupBy = $indexOfGroupByStart ; $forLoopIndexForGroupBy < 
 if (!$got_row) {
 	echo template_summary_combo_view_no_results($args);
 	echo template_end_table($args);
-} // if	
+} // if
 $this->assign('divCounter', $divCounter);
 global $global_json;
 if (count($reporter->report_def['group_defs']) > 1) {
@@ -346,15 +368,15 @@ function expandCollapseComboSummaryDivTable(divId, expandAll) {
 		if (searchReturn != -1) {
 			showHideTableRows(divId, true);
 			//document.getElementById(divId).style.display = "";
-			document.getElementById("img_" + divId).innerHTML = 
+			document.getElementById("img_" + divId).innerHTML =
 			document.getElementById("img_" + divId).innerHTML.replace(/advanced_search/,"basic_search");
 			document.getElementById('expanded_combo_summary_divs').value += divId + " ";
 		} else {
 			//document.getElementById(divId).style.display = "none";
 			showHideTableRows(divId, false);
-			document.getElementById("img_" + divId).innerHTML = 			
+			document.getElementById("img_" + divId).innerHTML =
 			document.getElementById("img_" + divId).innerHTML.replace(/basic_search/,"advanced_search");
-			document.getElementById('expanded_combo_summary_divs').value = 
+			document.getElementById('expanded_combo_summary_divs').value =
 			document.getElementById('expanded_combo_summary_divs').value.replace(divId,"");
 
 		} // else
@@ -365,12 +387,12 @@ function expandCollapseComboSummaryDivTable(divId, expandAll) {
 </script>
 {php}
 //if ( ! isset($header_row[0]['norows'])) {
-//	echo get_form_header( $mod_strings['LBL_GRAND_TOTAL'],"", false); 
+//	echo get_form_header( $mod_strings['LBL_GRAND_TOTAL'],"", false);
 //} // if
 if ( $reporter->has_summary_columns()) {
 	// start template_total_table code
 	global $mod_strings;
-	$total_header_row = $reporter->get_total_header_row(); 
+	$total_header_row = $reporter->get_total_header_row();
 	$total_row = $reporter->get_summary_total_row();
 	if ( isset($total_row['group_pos'])) {
 		$args['group_pos'] = $total_row['group_pos'];
@@ -379,7 +401,7 @@ if ( $reporter->has_summary_columns()) {
 		$args['group_column_is_invisible'] = $total_row['group_column_is_invisible'];
 	} // if
  	$reporter->layout_manager->setAttribute('no_sort',1);
-  	echo get_form_header( $mod_strings['LBL_GRAND_TOTAL'],"", false); 
+  	echo get_form_header( $mod_strings['LBL_GRAND_TOTAL'],"", false);
   	template_header_row($total_header_row,$args);
 {/php}
 	<table width="100%" border="0" cellpadding="0" cellspacing="0" class="list view">
@@ -399,19 +421,19 @@ if ( $reporter->has_summary_columns()) {
 	{/php}
 	{foreach from=$header_row key=module item=cell}
 		{if (($args.group_column_is_invisible != "") && ($args.group_pos eq $count))}
-	{php}	
+	{php}
 		$count = $count + 1;
 		$this->assign('count', $count);
 	{/php}
 		{ else }
 		{if $cell eq ""}
-	{php}	
+	{php}
 		$cell = "&nbsp;";
 		$this->assign('cell', $cell);
 	{/php}
-		{/if}		
-		<td scope="col" align='left'  valign=middle nowrap>	
-		
+		{/if}
+		<td scope="col" align='left'  valign=middle nowrap>
+
 		{$cell}
 		{/if}
 	{/foreach}
@@ -430,25 +452,34 @@ if ( $reporter->has_summary_columns()) {
 		{/php}
 		{foreach from=$column_row.cells key=module item=cell}
 			{if (($column_row.group_column_is_invisible != "") && ($count|in_array:$column_row.group_pos)) }
-		{php}	
+		{php}
 			$count = $count + 1;
 			$this->assign('count', $count);
 		{/php}
 			{ else }
 			{if $cell eq ""}
-		{php}	
+		{php}
 			$cell = "&nbsp;";
 			$this->assign('cell', $cell);
 		{/php}
 			{/if}
-			
-			<td width="{$width}%" align="left" valign=TOP class="{$row_class}" bgcolor="{$bg_color}" scope="row">
-			
+            {if substr_count($cell, '/') == 2 }
+             <td style='mso-number-format:"dd\/mm\/yyyy";text-align: left;' width="{$width}%" align="left" valign=TOP class="{$row_class}" bgcolor="{$bg_color}" scope="row">
+            {elseif (date('Y-m-d', strtotime($cell)) == $cell)}
+            <td style='mso-number-format:"yyyy-mm-dd";text-align: left;' width="{$width}%" align="left" valign=TOP class="{$row_class}" bgcolor="{$bg_color}" scope="row">
+			{elseif ((strlen($cell) > 4) && (preg_match("/^[0-9]+$/", $cell)))}
+            <td style="mso-number-format:\@;" width="{$width}%" align="left" valign=TOP class="{$row_class}" bgcolor="{$bg_color}" scope="row">
+            {else}
+            <td width="{$width}%" align="left" valign=TOP class="{$row_class}" bgcolor="{$bg_color}" scope="row">
+            {/if}
+
+
+
 			{$cell}
 			{/if}
 		{/foreach}
 		</tr>
-		
+
 {php}
   	} else {
 		echo template_no_results();
@@ -457,5 +488,5 @@ if ( $reporter->has_summary_columns()) {
   	// end template_total_table code
   //template_total_table($reporter);
 } // if
-template_query_table($reporter); 
+template_query_table($reporter);
 {/php}

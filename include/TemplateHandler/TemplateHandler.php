@@ -450,7 +450,7 @@ class TemplateHandler {
                         } else if($matches[0] == 'Contacts'){
                             $sqs_objects[$name] = $qsd->getQSContact($field['name'], $field['id_name']);
                             if(preg_match('/_c$/si',$name) || !empty($field['quicksearch'])){
-                                $sqs_objects[$name]['field_list'] = array('salutation', 'first_name', 'last_name', 'id');
+                                $sqs_objects[$name]['field_list'] = array('salutation', 'last_name', 'first_name',  'id');
                             }
                         }
                     } else {

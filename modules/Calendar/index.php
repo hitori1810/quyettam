@@ -18,7 +18,12 @@ if(!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
 if(!ACLController::checkAccess('Calendar', 'list', true)){
 	ACLController::displayNoAccess(true);
 }
+//Delete session class_id_view_on_calendar - Lap Nguyen
+if(isset($_SESSION['class_id_view_on_calendar']) && $_GET['delete_Session'] == 'true'){
+   unset($_SESSION['class_id_view_on_calendar']); 
+}
 
+ 
 require_once('modules/Calendar/Calendar.php');
 require_once('modules/Calendar/CalendarDisplay.php');
 require_once("modules/Calendar/CalendarGrid.php");

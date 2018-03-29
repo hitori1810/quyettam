@@ -1,6 +1,8 @@
 <?php
-// created: 2018-03-27 23:02:38
+// created: 2018-03-29 16:49:26
 $mod_strings = array (
+  'LBL_ASSIGNED_TO_ID' => 'Assigned User Id',
+  'LBL_ASSIGNED_TO_NAME' => 'Assigned to',
   'LBL_ID' => 'ID',
   'LBL_DATE_ENTERED' => 'Date Created',
   'LBL_DATE_MODIFIED' => 'Date Modified',
@@ -11,14 +13,9 @@ $mod_strings = array (
   'LBL_CREATED_ID' => 'Created By Id',
   'LBL_DESCRIPTION' => 'Description',
   'LBL_DELETED' => 'Deleted',
-  'LBL_NAME' => 'Name',
+  'LBL_NAME' => 'Subject',
   'LBL_CREATED_USER' => 'Created by User',
   'LBL_MODIFIED_USER' => 'Modified by User',
-  'LBL_LIST_NAME' => 'Name',
-  'LBL_EDIT_BUTTON' => 'Edit',
-  'LBL_REMOVE' => 'Remove',
-  'LBL_ASSIGNED_TO_ID' => 'Assigned User Id',
-  'LBL_ASSIGNED_TO_NAME' => 'Assigned to',
   'LBL_TEAM' => 'Team',
   'LBL_TEAMS' => 'Teams',
   'LBL_TEAM_ID' => 'Team Id',
@@ -34,5 +31,13 @@ $mod_strings = array (
   'LBL_ACTIVITIES_SUBPANEL_TITLE' => 'Activities',
   'LBL_ASX_NOTIFICATIONS_SUBPANEL_TITLE' => 'Notifications',
   'LBL_NEW_FORM_TITLE' => 'New Notifications',
-  'LBL_IS_READ' => 'Read',
+  'LBL_IS_READ' => 'Read ?',
+  'LBL_SEVERITY' => 'Severity',
+  'LBL_SHOW_NOTIFICATIONS' => 'View Notifications',
+  'LBL_LIST_RELATED_TO' => 'Related to',
+  'LBL_PARENT_TYPE' => 'Type',
+  'LBL_PARENT_ID' => 'Parent ID',
+  'LBL_READ' => 'Read',
+  'LBL_UNREAD' => 'Unread',
+  'LBL_ASSIGNED_INFO' => ' has been assigned to you.',
 );

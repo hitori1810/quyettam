@@ -1,7 +1,7 @@
 <?php 
  $GLOBALS["dictionary"]["C_ConfigID"]=array (
   'table' => 'c_configid',
-  'audited' => true,
+  'audited' => false,
   'duplicate_merge' => true,
   'fields' => 
   array (
@@ -135,7 +135,7 @@
       'vname' => 'LBL_DESCRIPTION',
       'type' => 'text',
       'comment' => 'Full text of the note',
-      'rows' => 6,
+      'rows' => 4,
       'cols' => 80,
     ),
     'deleted' => 

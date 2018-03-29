@@ -1,5 +1,5 @@
 <?php
-if (!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
+if(!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
 /*********************************************************************************
  * By installing or using this file, you are confirming on behalf of the entity
  * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
@@ -10,16 +10,17 @@ if (!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
  * you are agreeing unconditionally that Company will be bound by the MSA and
  * certifying that you have authority to bind Company accordingly.
  *
- * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ * Copyright (C) 2004-2014 SugarCRM Inc.  All rights reserved.
  ********************************************************************************/
 
 
 /**
  * This file intialize the service class and does all the setters based on the values provided in soap/rest entry point
- * and calls serve method which takes the request and send response back to the client  
+ * and calls serve method which takes the request and send response back to the client
  */
 ob_start();
 chdir(dirname(__FILE__).'/../../');
+define('ENTRY_POINT_TYPE', 'api');
 require('include/entryPoint.php');
 require_once('soap/SoapError.php');
 require_once('SoapHelperWebService.php');

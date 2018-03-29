@@ -20,12 +20,12 @@
 <div id='ie8GradientFix'></div>
     <div class="inner">
   {include file="_headerModuleList.tpl" theme_template=true}
-    
+
     {if $AUTHENTICATED}
     {include file="_quickcreate.tpl" theme_template=true}
     {include file="_globalLinks.tpl" theme_template=true}
     {include file="_search.tpl" theme_template=true}
-    
+
 	{/if}
     </div>
 </div>

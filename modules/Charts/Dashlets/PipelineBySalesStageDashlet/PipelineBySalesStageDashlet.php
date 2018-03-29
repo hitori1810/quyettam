@@ -178,7 +178,7 @@ class PipelineBySalesStageDashlet extends DashletGenericChart
                         users.user_name,
                         opportunities.assigned_user_id,
                         count(*) AS opp_count,
-                        sum(amount_usdollar/1000) AS total
+                        sum(total_in_invoice/1000) AS total
                     FROM users,opportunities  ";
         $this->getSeedBean()->add_team_security_where_clause($query);
         $query .= " WHERE opportunities.date_closed >= ". db_convert("'".$this->pbss_date_start."'",'date').

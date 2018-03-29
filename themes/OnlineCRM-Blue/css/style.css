@@ -82,12 +82,12 @@ input[type=text],input[type=password] {
 
 input[type=text],input[type=password]
 {
-    width: 220px; /*Edit by MTN: 06/02/2015*/
+    /*width: 220px;*/ /*Edit by MTN: 06/02/2015*/
 }
 
 textarea{
-  width: 300px; 
-  height: 58px;
+/*    width: 300px;
+    height: 58px;    */
 }
 
 .dateTime input[type=text], .dateTime input[type=password]
@@ -277,7 +277,7 @@ th, td
     filter:alpha(opacity=90);
     -moz-opacity:0.9;
     opacity: 0.9;
-    /*	width:150px;*/
+    /*    width:150px;*/
 }
 
 /* sitemap link */
@@ -691,7 +691,7 @@ div.actionsContainer
 {
     padding: 5px 5px 5px 7px !important;
     /*background-color: #fff;*//*MTN*/
-    background: #EBEBED none repeat scroll 0 0; /*MTN*/
+    background: #EEEEEE none repeat scroll 0 0; /*MTN*/
 }
 table#tabFormPagination td,  #tabFormPagination, #EditView > table#tabFormPagination.detail.view
 {
@@ -1225,7 +1225,7 @@ div.indent_right {
 
 .search_form .view a {
     color: #005a9b;
-    font-size: 14px; /*Edit by MTN: 06/02/2015*/
+    font-size: 13.4px; /*Edit by Lap nguyen*/ /*Edit by MTN: 06/02/2015*/
     text-decoration: none;
     font-weight: bold;
 }
@@ -1299,7 +1299,7 @@ div.indent_right {
 }
 #sitemap h4 a:link, #sitemap h4 a:visited
 {
-    font-size: 13px;
+    font-size: 13.4px; /*Edit by Lap nguyen*/
 }
 #sitemap ul
 {
@@ -1861,10 +1861,6 @@ div.indent_right {
 }
 
 /** report styles **/
-#report_results{
-    margin-top: 10px;
-}
-
 table.reportlistViewRC{
     /* this definition should be exactly the same as .listViewThS1 */
     background:Black;
@@ -1876,7 +1872,7 @@ table.reportlistView{
 }
 
 .reportlistViewThS1 {
-    font-size: 13px;
+    font-size: 13.4px; /*Edit by Lap nguyen*/
     font-weight: bold;
     text-align: left;
     padding: 4px 5px 4px 5px;
@@ -1914,19 +1910,23 @@ table.reportlistView{
     background:White;
 }
 .reportGroupViewTable {
-    background:#e9eaed;
+    border-left: 1px solid Black;
+    border-top: 1px solid Black;
+    background:LightGrey;
 }
 .reportGroup1ByTable {
-    font-size: 15px;
+    font-size: 14px;
     border-left: none;
-    border-bottom: 1px solid #cccccc;
-    background:#e9eaed;
+    border-right: 1px solid Black;
+    border-bottom: 1px solid Black;
+    background:LightGrey;
 }
 .reportGroupNByTable {
-    font-size: 13px;
+    font-size: 13.4px; /*Edit by Lap nguyen*/
     border-left: none;
+    border-right: 1px solid Black;
     border-bottom: none;
-    /*background:White;*/ /*MTN*/
+    background:White;
 }
 .reportGroupByDataTableHeader {
     border-left: none;
@@ -1936,32 +1936,15 @@ table.reportlistView{
     background:White;
 }
 .reportDataChildtablelistView {
-    border-spacing: 0px;
-    background: #DBDBDB;
-}
-
-table.reportDataChildtablelistView tr th, table.reportDataChildtablelistView tr td
-{
     border-left: none;
     border-right: none;
-    border-top: 1px solid #cccccc;
+    border-top: none;
     border-bottom: none;
+    background:Black;
 }
-
-table.reportDataChildtablelistView tr th{
-    padding-top: 10px;
-    padding-bottom: 10px
-}
-
-table.reportDataChildtablelistView td.oddListRowS1 {
+table.reportDataChildtablelistView td {
     border-color: #ccc;
     background: white;
-    padding:4px 5px;
-}
-table.reportDataChildtablelistView td.evenListRowS1 {
-    border-color: #ccc;
-    background: white;
-    /*background: #F6F6F6;*/ /*MTN*/
     padding:4px 5px;
 }
 .reportGroupByDataChildTablelistViewThS1 {
@@ -1973,7 +1956,7 @@ table.reportDataChildtablelistView td.evenListRowS1 {
     border-right: none;
     border-top: none;
     border-bottom: none;
-    background:#f6f6f6;
+    background:White;
 }
 .reportGroupByDataEvenListRowS1, .reportGroupByDataOddListRowS1 {
     font-size: 12px;
@@ -1987,28 +1970,30 @@ table.reportDataChildtablelistView td.evenListRowS1 {
 .reportGroup1ByTableEvenListRowS1 {
     font-weight: bold;
     font-size: 14px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 15px;
+    padding-left: 5px;
+    padding-right: 8px;
+    padding-bottom: 5px;
+    padding-top: 3px;
     vertical-align: middle;
-    background:#DADADA;
+    background:#CCF;
     text-align: left;
-    border-radius: 3px 3px 0px 0px;
 }
 .reportGroupNByTableEvenListRowS1 {
     font-weight: bold;
     font-size: 12px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 15px;
+    padding-left: 5px;
+    padding-right: 8px;
+    padding-bottom: 5px;
+    padding-top: 3px;
     vertical-align: middle;
-    background:#FFF;
+    background:#CCF;
     text-align: left;
 }
 .reportGroupBySpaceTableView {
     border-left: none;
     border-right: none;
     border-top: none;
+    background:White;
 }
 .reportGroupByDataTableHeaderEmptyCell {
     border-bottom: 1px solid Black;
@@ -2033,60 +2018,42 @@ table.reportDataChildtablelistView td.evenListRowS1 {
 
 /* Start of Matrix Report Class */
 .reportlistView {
-
-}
+    border-top: 1px solid #000;
+    border-left: 1px solid #000;
+    }
 table.reportlistView td, table.reportlistView th {
     background: #fff;
-    border-left: none;
-    border-right: none;
-    border-top: 1px solid #cccccc;
-    border-bottom: none;
+    border-bottom: 1px solid #000;
+    border-right: 1px solid #000;
     color: #000;
     padding: 4px;
     text-align: center;
-    font-size: 14px; /*MTN*/
-}
-table.reportlistView th, .reportlistView .reportlistViewMatrixRightEmptyData, .reportlistView .reportlistViewMatrixRightEmptyData1 {
-    background: #dcdcdc;
+    font-size: 12px;
+    }
+    table.reportlistView th, .reportlistView .reportlistViewMatrixRightEmptyData, .reportlistView .reportlistViewMatrixRightEmptyData1 {
+    background: #CCF;
     font-weight: bold;
-}
-
-table.reportlistView td.oddListRowS1 {
-    border-color: #ccc;
-    background: white;
-    padding:4px 5px;
-}
-table.reportlistView td.evenListRowS1 {
-    border-color: #ccc;
-    background: white;
-    /*background: #F6F6F6;*/ /*MTN*/
-    padding:4px 5px;
-}
-
-table.reportlistView tr th{
-    padding-top: 10px;
-    padding-bottom: 10px
-}
+    }
 
 /* End of matrix report classes */
 
 /* for overlib js library */
 .olCapFontClass {
-    font-weight: bold;
+font-weight: bold;
 }
 .olCapFontClass A {
-    color: #dfdfdf;
-    font-size: 9px;
+	color: #dfdfdf;
+	font-size: 9px;
 }
 .olFgClass td, #forecastsWorksheet .olBgClass td.olFgClass {
-    background-color: #fff;
-    padding: 5px 7px 7px 10px !important;
-    line-height: 18px;
+	background-color: #fff;
+	padding: 5px 7px 7px 10px !important;
+	line-height: 18px;
 }
 .olCgClass td, #forecastsWorksheet .olBgClass td.olCgClass {
-    border-bottom: 2px solid #ddd;
-    background-color: #f6f6f6;
-    padding: 5px 3px 3px 10px !important;
+	border-bottom: 2px solid #ddd;
+	background-color: #f6f6f6;
+	padding: 5px 3px 3px 10px !important;
 }
 .olCgClass {
     padding: 0px;
@@ -2094,40 +2061,40 @@ table.reportlistView tr th{
 }
 #overDiv {
     padding: 1px !important;
-    background-color: #bbb;
-    -moz-box-shadow: 0 2px 10px #293E69; /*Edit by MTN: 06/02/2015*/
-    box-shadow: 0 2px 10px #293E69; /*Edit by MTN: 06/02/2015*/
-    -webkit-box-shadow: 0 2px 10px #293E69; /*Edit by MTN: 06/02/2015*/
-    -moz-border-radius: 6px;
-    border-radius: 6px;
-    -webkit-border-radius: 6px;
+	background-color: #bbb;
+	-moz-box-shadow: 0 2px 10px #666666;
+	box-shadow: 0 2px 10px #666666;
+	-webkit-box-shadow: 0 2px 10px #666666;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	-webkit-border-radius: 6px;
 }
 #forecastsWorksheet .olBgClass td {
     padding: 0 !important;
 }
 .olCloseFontClass {
-    padding-bottom: 1px;
-    text-align: right;
-    background-color: #dfdfdf;
-    font-weight: bold;
-    color: #293E69; /*Edit by MTN: 06/02/2015*/
-    background-color: #dfdfdf;
+	padding-bottom: 1px;
+	text-align: right;
+	background-color: #dfdfdf;
+	font-weight: bold;
+	color: #444;
+	background-color: #dfdfdf;
 }
 
 .olBgClass td.olFgClass{
-    -moz-border-radius: 0px 0px 6px 6px;
-    border-radius: 0px 0px 6px 6px;
-    -webkit-border-bottom-left-radius: 6px;
-    -webkit-border-bottom-right-radius: 6px;
+	-moz-border-radius: 0px 0px 6px 6px;
+	border-radius: 0px 0px 6px 6px;
+	-webkit-border-bottom-left-radius: 6px;
+	-webkit-border-bottom-right-radius: 6px;
 }
 
 .olBgClass td.olCgClass{
-    -moz-border-radius: 6px 6px 0px 0px;
-    border-radius: 6px 6px 0px 0px;
-    -webkit-border-top-left-radius: 6px;
-    -webkit-border-top-right-radius: 6px;
-    border-bottom-color: #ddd;
-    background-color: #eee;
+	-moz-border-radius: 6px 6px 0px 0px;
+	border-radius: 6px 6px 0px 0px;
+	-webkit-border-top-left-radius: 6px;
+	-webkit-border-top-right-radius: 6px;
+	border-bottom-color: #ddd;
+	background-color: #eee;
 }
 
 /* acl role colors */
@@ -2283,7 +2250,7 @@ table.tabForm td ul li {
 }
 .date
 {
-    font-size: 13px;
+    font-size: 13.4px; /*Edit by Lap nguyen*/
     font-weight: bold;
     border-bottom: 1px solid;
     padding-right: 10px;
@@ -2327,7 +2294,7 @@ table.tabForm td ul li {
 
 .teamNoticeText p {
     padding: 0px 10px 10px 10px;
-    font-size: 13px;
+    font-size: 13.4px; /*Edit by Lap nguyen*/
 }
 
 /* to force border to display on tiny-mce controls */
@@ -2714,17 +2681,17 @@ td.edit.view td[align=right]
 
     }
 
-.dashletPanel .hd .hd-center,.dashletPanel .hd .tl,.dashletPanel .hd .tr {
+    .dashletPanel .hd .hd-center,.dashletPanel .hd .tl,.dashletPanel .hd .tr {
     background-color: #DADADA;
-}
+    }
 
-.dashletPanel .hd  .hd-center {
+    .dashletPanel .hd  .hd-center {
     height: 38px;
     border-bottom: 1px solid #AFAFAE;
     padding: 0 10px;
-}
+    }
 
-.dashletPanel .hd .tr {
+    .dashletPanel .hd .tr {
     width:9px;
     height:38px;
     top:0;
@@ -2734,9 +2701,9 @@ td.edit.view td[align=right]
     border-color: #AFAFAE;
     border-style: solid;
     border-bottom: 1px solid #AFAFAE;
-}
+    }
 
-.dashletPanel .hd .tl {
+    .dashletPanel .hd .tl {
     width:9px;
     height:38px;
     top:0;
@@ -2746,141 +2713,141 @@ td.edit.view td[align=right]
     border-color: #AFAFAE;
     border-style: solid;
     border-bottom: 1px solid #AFAFAE;
-}
+    }
 
-.dashletPanel .hd.plain {
+    .dashletPanel .hd.plain {
     height:20px;
-}
+    }
 
-.dashletPanel .hd.plain .tl {
+    .dashletPanel .hd.plain .tl {
     background:url(../../../../index.php?entryPoint=getImage&imageName=dp-tl-plain.png) no-repeat;
     height:20px;
-}
+    }
 
-.dashletPanel .hd.plain .tr  {
+    .dashletPanel .hd.plain .tr  {
     background:url(../../../../index.php?entryPoint=getImage&imageName=dp-tr-plain.png) no-repeat;
     height:20px;
-}
+    }
 
 
 
 
-.dashletPanel .hd.plain  .hd-center {
+    .dashletPanel .hd.plain  .hd-center {
     background:url(../../../../index.php?entryPoint=getImage&imageName=dp-hd-plain.png) repeat-x;
     height: 20px;
-}
+    }
 
-/* Style the body with the left border */
-.dashletPanel .bd {
+    /* Style the body with the left border */
+    .dashletPanel .bd {
     overflow:hidden;
     padding: 0px;
     margin-top: 1px\9;
     background-color: #F5F5F5; /*MTN*/
-}
+    }
 
 
-.dashletPanel .bd .bd-center {
+    .dashletPanel .bd .bd-center {
     padding: 0px;
-}
+    }
 
-.dashletPanel .bd .ml {
+    .dashletPanel .bd .ml {
     width:0px;
     height: 100%;
     top:0;
     left:0;
     position:absolute;
-}
-.dashletPanel .bd .mr {
+    }
+    .dashletPanel .bd .mr {
     width:0px;
     height: 100%;
     top:0;
     right:0;
     position:absolute;
-}
+    }
 
-.dashletPanel .bd.plain {
+    .dashletPanel .bd.plain {
     padding:0 15px 0 15px;
-}
+    }
 
-/* Style the footer with the bottom corner images */
-.dashletPanel .ft {
+    /* Style the footer with the bottom corner images */
+    .dashletPanel .ft {
     font-size:11px;
     border:none;
     position: relative;
     padding: 0px;
     height:0px;
-}
+    }
 
 
-.dashletPanel .ft  .ft-center {
+    .dashletPanel .ft  .ft-center {
 
-}
+    }
 
-.dashletPanel .ft .bl {
+    .dashletPanel .ft .bl {
     bottom:0;
     left:0;
     position:absolute;
-}
-.dashletPanel .ft .br  {
+    }
+    .dashletPanel .ft .br  {
     bottom:0;
     right:0;
     position:absolute;
-}
+    }
 
-.dashletPanel .list {
+    .dashletPanel .list {
     -moz-border-radius: 0px;
     border-radius: 0px;
     -webkit-border-radius: 0px;
     border: 0px none;
     margin: 0px !important;
-}
+    }
 
-.dashletPanel .list tr.pagination td table td:first-child {
+    .dashletPanel .list tr.pagination td table td:first-child {
     -moz-border-radius: 0px;
     border-radius: 0px;
     -webkit-border-radius: 0px;
-}
+    }
 
-.dashletPanel .list tr.pagination td table td:last-child {
+    .dashletPanel .list tr.pagination td table td:last-child {
     -moz-border-radius: 0px;
     border-radius: 0px;
     -webkit-border-radius: 0px;
-}
+    }
 
-/* icons tool set for dashlet header */
-.dashletPanel .hd .hd-center .dashletToolSet {
+    /* icons tool set for dashlet header */
+    .dashletPanel .hd .hd-center .dashletToolSet {
     width: 100%;
     text-align: right;
     visibility:hidden;
     padding-top: 2px;
-}
+    }
 
-.dashletPanel .hd .hd-center .dashletToolSet a{
+    .dashletPanel .hd .hd-center .dashletToolSet a{
     padding: 0px 2px;
-}
+    }
 
-.dashletPanel .hd .hd-center .dashletToolSet a:last-child  {
+    .dashletPanel .hd .hd-center .dashletToolSet a:last-child  {
     padding-right: 0px;
-}
+    }
 
-.dashletPanel .hd.selected .hd-center .dashletToolSet {
+    .dashletPanel .hd.selected .hd-center .dashletToolSet {
     visibility: visible;
-}
+    }
 
 
-.dashletPanel .dashletNonTable {
+    .dashletPanel .dashletNonTable {
     border: 0px none;
     padding: 10px;
     border-bottom: 1px solid #ccc;
     background-color: #cccccc\9;
-}
+    }
 
-/* rounded corners */
+    /* rounded corners */
 
-/* Skin custom elements */
+    /* Skin custom elements */
 
 
-.dashletPanelMenu .hd {
+    .dashletPanelMenu .hd {
     padding:0;
     border:none;
     text-align:left;
@@ -2890,52 +2857,53 @@ td.edit.view td[align=right]
     padding-left: 22px;
     padding-right: 22px;
     height: 15px;
-}
+    }
 
-.dashletPanelMenu .hd  .hd-center {
+    .dashletPanelMenu .hd  .hd-center {
     background:url(../../../../index.php?entryPoint=getImage&imageName=dp-hd-menu.png) repeat-x;
     height: 15px;
-}
+    }
 
-.dashletPanelMenu .hd .tr {
+    .dashletPanelMenu .hd .tr {
     width:22px;
     height:15px;
     top:0;
     right:0;
     background:url(../../../../index.php?entryPoint=getImage&imageName=dp-tr-menu.png) no-repeat;
     position:absolute;
-}
+    }
 
-.dashletPanelMenu .hd .tl {
+    .dashletPanelMenu .hd .tl {
     width:22px;
     height:15px;
     top:0;
     left:0;
     background:url(../../../../index.php?entryPoint=getImage&imageName=dp-tl-menu.png) no-repeat;
     position:absolute;
-}
+    }
 
-.dashletPanelMenu .bd {
+    .dashletPanelMenu .bd {
     background:none;
     border: 0;
     padding: 0 22px;
-}
+    position: relative;
+    }
 
-.dashletPanelMenu .bd .bd-center {
+    .dashletPanelMenu .bd .bd-center {
     /*padding-top: 15px;*/
     background:url(../../../../index.php?entryPoint=getImage&imageName=dp-bd-menu.png) repeat;
-}
+    }
 
-.dashletPanelMenu .bd .screen {
+    .dashletPanelMenu .bd .screen {
     background-color: #fff;
     border: 1px solid #999;
     -moz-border-radius: 6px;
     border-radius: 6px;
     -webkit-border-radius: 6px;
     padding: 10px;
-}
+    }
 
-.dashletPanelMenu .bd .ml {
+    .dashletPanelMenu .bd .ml {
     top:0;
     left:0;
     width:22px;
@@ -2943,17 +2911,17 @@ td.edit.view td[align=right]
     position:absolute;
     background:url(../../../../index.php?entryPoint=getImage&imageName=dp-ml-menu.png) repeat-y;
 
-}
-.dashletPanelMenu .bd .mr {
+    }
+    .dashletPanelMenu .bd .mr {
     width:22px;
     top:0;
     right:0;
     height: 100%;
     position:absolute;
     background:url(../../../../index.php?entryPoint=getImage&imageName=dp-mr-menu.png) repeat-y;
-}
+    }
 
-.dashletPanelMenu  .ft {
+    .dashletPanelMenu  .ft {
     font-size:11px;
     border:none;
     position: relative;
@@ -2962,32 +2930,32 @@ td.edit.view td[align=right]
     padding-left: 22px;
     padding-right: 22px;
 
-}
+    }
 
-.dashletPanelMenu .ft .bl {
+    .dashletPanelMenu .ft .bl {
     bottom:0;
     left:0;
     position:absolute;
     background:url(../../../../index.php?entryPoint=getImage&imageName=dp-bl-menu.png) no-repeat;
     height: 22px;
     width: 22px;
-}
+    }
 
-.dashletPanelMenu .ft .br {
+    .dashletPanelMenu .ft .br {
     bottom:0;
     right:0;
     position:absolute;
     background:url(../../../../index.php?entryPoint=getImage&imageName=dp-br-menu.png) no-repeat;
     height: 22px;
     width: 22px;
-}
+    }
 
-.dashletPanelMenu .ft  .ft-center {
+    .dashletPanelMenu .ft  .ft-center {
     background:url(../../../../index.php?entryPoint=getImage&imageName=dp-ft-menu.png) repeat-x;
     height: 22px;
-}
+    }
 
-.dashletPanelMenu.wizard, .dashletPanelMenu.wizard.yui-module.yui-overlay.yui-panel  {
+    .dashletPanelMenu.wizard, .dashletPanelMenu.wizard.yui-module.yui-overlay.yui-panel  {
     box-shadow: 0 2px 10px #999999;
     -moz-box-shadow: 0 2px 10px #999999;
     -webkit-box-shadow: 0 2px 10px #999999;
@@ -2997,7 +2965,7 @@ td.edit.view td[align=right]
     background-color: rgba(0,0,0,.2);
     border: 1px solid #999;
     text-shadow: 0px 1px #fff;
-    font-size: 14px;
+    font-size: 13.4px; /*Edit by Lap nguyen*/
     clear:both;
 }
 
@@ -3110,7 +3078,7 @@ td.edit.view td[align=right]
 }
 
 .dashletPanelMenu.wizard table, .dashletPanelMenu.wizard div {
-    font-size: 14px;
+    font-size: 13.4px; /*Edit by Lap nguyen*/
 }
 
 /* import instruction */
@@ -3327,7 +3295,7 @@ hr
 a:link, a:visited /*, a:hoverRemove By Lap Nguyen*/
 {
     text-decoration: underline;
-    font-size: 14px; /*MTN*/
+    font-size: 13.4px; /*Edit by Lap nguyen*/ /*MTN*/
 }
 input, select, textarea, button, .button
 {
@@ -3562,7 +3530,7 @@ a.tabFormAdvLink:link, a.tabFormAdvLink:visited, a.tabFormAdvLink:hover
 }
 
 #welcome a {
-    font-size: 13px;
+    font-size: 13.4px; /*Edit by Lap nguyen*/
     text-decoration: none;
 }
 
@@ -3659,21 +3627,20 @@ body
 {
 
     color: #141823; /*Edit by MTN: 06/02/2015*/
-    background-color: #e9eaed; /*Edit by MTN: 06/02/2015*/
+    background: #f5f5f5;/*Edit by MTN: 06/02/2015*/
     /*background-image:url('../../../../index.php?entryPoint=getImage&imageName=bg.png');*/
-    background-repeat:no-repeat;
 }
 h1, h2, h3
 {
     color: #999;
 }
 .formHeader h3 {
-    font-size: 14px;
+    font-size: 13.4px; /*Edit by Lap nguyen*/
     color: #666;
 }
 
 .dashletPanel .formHeader  h3 {
-    font-size: 14px;
+    font-size: 13.4px; /*Edit by Lap nguyen*/
     color: #666;
     padding-top: 4px;
 }
@@ -3702,7 +3669,7 @@ button, input[type=submit], input[type=reset], input[type=button], .button, .but
     display: inline-block;
     padding: 4px 10px 4px;
     margin-bottom: 0;
-    font-size: 15px;
+    font-size: 13.4px; /*Edit by Lap nguyen*/
     line-height: 18px;
     color: #262627;
     font-weight: 500;
@@ -3830,9 +3797,9 @@ input,select
 {
     display: inline-block;
     padding: 4px;
-    font-size: 13px;
+    font-size: 13.4px; /*Edit by Lap nguyen*/
     line-height: 18px;
-    color: #58595b;
+    color: #444;
     border: 1px solid #ccc;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
@@ -3909,12 +3876,12 @@ span.id-ff.multiple button.button.lastChild{
 }
 
 button.id-ff-remove {
-    font-size: 25px; /*Edit by MTN: 06/02/2015*/
+    font-size: 10px; /*Edit by MTN: 06/02/2015*/
     padding: 3px 6px 3px 6px; /*Edit by MTN: 06/02/2015*/
 }
 
 .button.id-ff-remove img {
-    width: 14px;
+    width: 15px;
     height: 14px;
 }
 
@@ -3986,13 +3953,13 @@ ul.megamenu a, ul.moduleTabMore a, ul.sf-sub-modulelist a,
 #moduleList .sf-menu li:hover ul,
 #moduleList .sf-menu li.sfHover ul {
     left: 0;
-    top: 43px; /* match top ul list item height */
+    top: 44px; /*MTN: match top ul list item height */
     z-index: 99;
 }
 
 #moduleList ul.sf-menu li:hover li ul,
 #moduleListul.sf-menu li.sfHover li ul {
-    top:			-999em;
+    top:            -999em;
 }
 
 #moduleList ul.sf-menu li:hover .megamenu li ul,
@@ -4004,22 +3971,22 @@ ul.megamenu a, ul.moduleTabMore a, ul.sf-sub-modulelist a,
 
 #moduleList ul.sf-menu li li:hover ul,
 #moduleList ul.sf-menu li li.sfHover ul {
-    left:			10em; /* match ul width */
-    top:			0;
+    left:            10em; /* match ul width */
+    top:            0;
 }
 
 
 
 #moduleList ul.sf-menu li li:hover li ul,
 #moduleList ul.sf-menu li li.sfHover li ul {
-    top:			-999em;
+    top:            -999em;
 }
 
 
 #moduleList ul.sf-menu li li li:hover ul,
 #moduleList ul.sf-menu li li li.sfHover ul {
-    left:			10em; /* match ul width */
-    top:			0;
+    left:            10em; /* match ul width */
+    top:            0;
 }
 
 
@@ -4043,7 +4010,7 @@ ul.megamenu a, ul.moduleTabMore a, ul.sf-sub-modulelist a,
     padding: 13px 12px 12px 12px;
     line-height: 19px;
     text-decoration: none;
-    font-size: 15px;  /*Edit by MTN: 06/02/2015*/
+    font-size: 13.3px; /*Edit by Lap nguyen*/  /*Edit by Lap Nguyen: 24/04/2015*/
     border-right: none;
 }
 
@@ -4053,7 +4020,7 @@ ul.megamenu a, ul.moduleTabMore a, ul.sf-sub-modulelist a,
 
 #moduleList .sf-menu li li a, ul.megamenu li li a, ul.moduleTabMore li a, ul.sf-sub-modulelist li a {
     padding:  4px 10px;
-    font-size: 13px;
+    font-size: 13.4px; /*Edit by Lap nguyen*/
 }
 
 #moduleList .sf-menu ul li a, ul.megamenu li a, ul.moduleTabMore li a, ul.sf-sub-modulelist li a {
@@ -4071,7 +4038,7 @@ ul.megamenu, ul.megamenu li,
 ul.moduleTabMore, ul.moduleTabMore li, ul.sf-sub-modulelist li,
 #moduleList .sf-menu li ul li,
 #moduleList .sf-menu li ul {
-    background-color:		#fff;
+    background-color:        #fff;
 }
 
 ul.moduleTabMore, ul.sf-sub-modulelist,
@@ -4103,7 +4070,7 @@ ul.megamenu .MMShortcuts li.sfHover a.sf-with-ul,
 ul.moduleTabMore li.sfHover a.sf-with-ul,
 ul.sf-sub-modulelist li.sfHover > a.sf-with-ul{
     color: #fff !important;
-    background:		#293E69; /*Edit by MTN: 06/02/2015*/
+    background:        #293E69; /*Edit by MTN: 06/02/2015*/
 }
 
 #globalLinksModule ul.clickMenu.SugarActionMenu li a:hover,
@@ -4115,8 +4082,8 @@ ul.sf-sub-modulelist li.sfHover,
 #moduleList .sf-menu li a:focus,
 #moduleList .sf-menu li a:hover,
 #moduleList .sf-menu li a:active {
-    background:		#293E69; /*Edit by MTN: 06/02/2015*/
-    outline:		0;
+    background:        #293E69; /*Edit by MTN: 06/02/2015*/
+    outline:        0;
 }
 
 ul.megamenu ul a:hover,
@@ -4125,9 +4092,9 @@ ul.sf-sub-modulelist li a:hover,
 #moduleList .sf-menu ul a:focus,
 #moduleList .sf-menu ul a:hover,
 #moduleList .sf-menu ul a:active {
-    background:		#3a5795; /*Edit by MTN: 06/02/2015*/
+    background:        #3a5795; /*Edit by MTN: 06/02/2015*/
     color: #fff;
-    outline:		0;
+    outline:        0;
 }
 
 #moduleList .sf-menu > li.current > a {
@@ -4306,11 +4273,10 @@ ul.megamenu .megawrapper ul li,
 #moduleList .sf-menu ul .megawrapper ul li {
     background-color: transparent;
     color: #999999;
-    font-size: 14px;
+    font-size: 13.4px; /*Edit by Lap nguyen*/
     font-weight: bold;
     width: 100%;
 }
-
 #moduleList .sf-menu ul .megawrapper ul li.groupLabel, ul.megamenu .megawrapper ul li.groupLabel {
     padding-left: 10px;
     padding-bottom: 5px;
@@ -4319,7 +4285,7 @@ ul.megamenu .megawrapper ul li,
 ul.megamenu .megawrapper ul li a,
 #moduleList .sf-menu ul .megawrapper ul li a{
     font-weight: normal;
-    font-size: 15px; /*Edit by MTN: 06/02/2015*/
+    font-size: 13.4px; /*Edit by Lap nguyen*/ /*Edit by MTN: 06/02/2015*/
     padding: 4px 10px;
     position: relative;
 }
@@ -4532,7 +4498,7 @@ ul.subpanelTablist li a.activeSubTab:hover
 .list tr.pagination td table td span.pageNumbers
 {
     color: #444444;
-    font-size: 14px; /*Edit by MTN: 06/02/2015*/
+    font-size: 13.4px; /*Edit by Lap nguyen*/ /*Edit by MTN: 06/02/2015*/
 }
 .list
 {
@@ -4562,10 +4528,6 @@ ul.subpanelTablist li a.activeSubTab:hover
 }
 
 /*MTN*/
-.detail.view h4, .edit.view h4{
-    cursor: pointer;
-}
-
 #subpanel_list .list.view {
 }
 
@@ -4918,14 +4880,14 @@ ul.tablist li a.current:link, ul.tablist li a.current:visited, ul.tablist li a.c
 
 /* dashlet pages */
 #tabListContainer {
-    margin-top: 0px;
+    margin-top: 1px; /*MTN*/
     border: 0px;
     float: left;
 }
 
 #tabListContainer ul.subpanelTablist{
     border-bottom: none;
-    padding: 6px 0 10px;
+    padding: 5px 0 10px; /*MTN*/
     width: 100%;
     height: auto;
 }
@@ -4937,7 +4899,7 @@ ul.tablist li a.current:link, ul.tablist li a.current:visited, ul.tablist li a.c
 }
 
 #tabListContainer ul.subpanelTablist li a:link, .tabListContainer  ul.subpanelTablist li a:visited{
-    font-size: 14px;
+    font-size: 13.4px; /*Edit by Lap nguyen*/
     padding: 6px 10px 5px 10px;
     background-color: #ddd;
     border-color: #ccc;
@@ -5067,6 +5029,13 @@ div#tabListContainer.active .yui-bd {
     padding-top: 3px;
     margin-top: 1px\9;
 }
+@-moz-document url-prefix() {
+    #dashletCtrls {
+    padding-top: 6px;
+}
+}
+
+
 
 /* hack for safari */
 @media screen and (-webkit-min-device-pixel-ratio:0) {
@@ -5076,13 +5045,8 @@ div#tabListContainer.active .yui-bd {
 }
 
 #tabListContainerTD {
-    background-image: -moz-linear-gradient(center top,
-    transparent 0%,
-    transparent 92%,
-    rgba(204,204,204,1) 92%,
-    transparent 98%,
-    transparent 100%
-    );
+    background-image: -moz-linear-gradient(center top , transparent 0%, transparent 92%, #CCC 99%, transparent 98%, transparent 100%);
+    background-image: -ms-linear-gradient(center top , transparent 0%, transparent 92%, #CCC 99%, transparent 98%, transparent 100%);
     background-image: -webkit-gradient(
     linear,
     left top,
@@ -5123,7 +5087,7 @@ div#tabListContainer.active .yui-bd {
     border-bottom: 2px solid #ccc;
 }
 #dashletCtrls a {
-    font-size: 13px;
+    font-size: 13.4px; /*Edit by Lap nguyen*/
 }
 #change_layout {
     margin-left: 5px;
@@ -5154,7 +5118,7 @@ div#tabListContainer.active .yui-bd {
 
 .yui-button button {
     min-height: 10px;
-    font-size: 14px;
+    font-size: 13.4px; /*Edit by Lap nguyen*/
 }
 
 .yui-button .first-child {
@@ -5205,7 +5169,7 @@ div#tabListContainer.active .yui-bd {
 }
 
 .yui-navset li em {
-    font-size: 14px;
+    font-size: 13.4px; /*Edit by Lap nguyen*/
 }
 
 .yui-navset .yui-nav li, .yui-navset .yui-navset-top .yui-nav li {
@@ -5235,7 +5199,7 @@ div#tabListContainer.active .yui-bd {
 }
 
 .yui-layout .yui-layout-unit div.yui-layout-bd, .yui-navset .yui-content, .yui-navset .yui-navset-top .yui-content {
-    border-color:#c3c3c3; 
+    border-color:#c3c3c3;
 }
 
 .yui-navset .yui-content, .yui-navset .yui-navset-top .yui-content  {
@@ -5298,9 +5262,14 @@ a.sugar-tab-close, .yui-navset .yui-nav a.sugar-tab-close, .yui-navset .yui-nav 
     border-color: #666;
 }
 .yui-module .hd, .yui-panel .hd {
-    background-color: #DADADA;
-    color: #666;
-    padding: 6px 8px;
+    background-color: #3d77cb;
+    color: #FFF;
+    font-size: 100%;
+    line-height: 100%;
+    border-bottom: 1px solid #3d77cb;
+    font-weight: bold;
+    padding: 4px;
+    white-space: nowrap;
 }
 
 .yui-module .hd .title, .yui-panel .hd .title {
@@ -5312,7 +5281,19 @@ a.sugar-tab-close, .yui-navset .yui-nav a.sugar-tab-close, .yui-navset .yui-nav 
 }
 
 .yui-dialog .container-close {
-    top: 6px;
+    position: absolute;
+    top: 5px;
+    right: 6px;
+    z-index: 6;
+    height: 12px;
+    width: 12px;
+    margin: 0px;
+    padding: 0px;
+    cursor: pointer;
+    visibility: inherit;
+    text-indent: -10000em;
+    overflow: hidden;
+    text-decoration: none;
 }
 
 .yui-panel-container.shadow .underlay {
@@ -5334,11 +5315,11 @@ a.sugar-tab-close, .yui-navset .yui-nav a.sugar-tab-close, .yui-navset .yui-nav 
 /* Default Styles */
 body
 {
-    font-size: 15px; /*Edit by MTN: 06/02/2015*/
+    font-size: 13.4px; /*Edit by Lap nguyen*/ /*Edit by MTN: 06/02/2015*/
 }
 table, div
 {
-    font-size: 15px; /*Edit by MTN: 06/02/2015*/
+    font-size: 13.4px; /*Edit by Lap nguyen*/ /*Edit by MTN: 06/02/2015*/
 }
 h1, h2
 {
@@ -5346,21 +5327,21 @@ h1, h2
 }
 h3
 {
-    font-size: 15px; /*Edit by MTN: 06/02/2015*/
+    font-size: 13.4px; /*Edit by Lap nguyen*/ /*Edit by MTN: 06/02/2015*/
 }
 h4, h5
 {
-    font-size: 15px; /*Edit by MTN: 06/02/2015*/
+    font-size: 13.4px; /*Edit by Lap nguyen*/ /*Edit by MTN: 06/02/2015*/
 }
-input, select, textarea, button
+input, select, textarea
 {
-    font-size: 15px;
+    font-size: 13.5px !important; /*Edit by Lap nguyen*/
     padding: 2px; /*MTN*/
 }
 /*MTN*/
 button.addNewCity, button.addNewDicstrict, button.addNewState
 {
-    /*font-size: 24px;*/
+    font-size: 24px;  /*MTN: enable*/
     padding: 3px 6px 3px 6px;
 }
 
@@ -5381,19 +5362,19 @@ button.addNewCity, button.addNewDicstrict, button.addNewState
 #moduleList ul li,
 #subModuleList span
 {
-    font-size: 15px; /*Edit by MTN: 06/02/2015*/
+    font-size: 13.4px; /*Edit by Lap nguyen*/ /*Edit by MTN: 06/02/2015*/
 }
 
 /*welcome user and date bar and last view*/
 #welcome, #search, #sitemapLink, #themepickerLinkSpan
 {
-    font-size: 15px; /*Edit by MTN: 06/02/2015*/
+    font-size: 13.4px; /*Edit by Lap nguyen*/ /*Edit by MTN: 06/02/2015*/
 }
 
 /* search */
 #search input[name=query_string]
 {
-    font-size: 14px; /*Edit by MTN: 06/02/2015*/
+    font-size: 13.4px; /*Edit by Lap nguyen*/ /*Edit by MTN: 06/02/2015*/
 }
 
 /* side quickcreate */
@@ -5406,7 +5387,7 @@ button.addNewCity, button.addNewDicstrict, button.addNewState
 #newRecord form a:link,
 #newRecord form a:visited
 {
-    font-size: 14px; /*Edit by MTN: 06/02/2015*/
+    font-size: 13.4px; /*Edit by Lap nguyen*/ /*Edit by MTN: 06/02/2015*/
 }
 
 /* reports */
@@ -5424,7 +5405,7 @@ button.addNewCity, button.addNewDicstrict, button.addNewState
 .reportlistViewMatrixRightEmptyData,
 .reportlistViewMatrixRightEmptyData1
 {
-    font-size: 14px; /*Edit by MTN: 06/02/2015*/
+    font-size: 13.4px; /*Edit by Lap nguyen*/ /*Edit by MTN: 06/02/2015*/
 }
 
 .reportevenListRowS1,
@@ -5437,7 +5418,7 @@ button.addNewCity, button.addNewDicstrict, button.addNewState
 .reportGroupByDataMatrixEvenListRowS4,
 .reportDataChildtablelistView td
 {
-    font-size: 15px; /*Edit by MTN: 06/02/2015*/
+    font-size: 13.4px; /*Edit by Lap nguyen*/ /*Edit by MTN: 06/02/2015*/
 }
 
 #filters_tab,#reportDetailsTable {
@@ -5465,19 +5446,19 @@ button.addNewCity, button.addNewDicstrict, button.addNewState
 /* for all views */
 .view tr, .view td, .view h4, .view div
 {
-    font-size: 14px; /*Edit by MTN: 06/02/2015*/
+    font-size: 13.4px; /*Edit by Lap nguyen*/ /*Edit by MTN: 06/02/2015*/
 }
 .view td a, .view div a, .list th div
 {
-    font-size: 14px; /*Edit by MTN: 06/02/2015*/
+    font-size: 13.4px; /*Edit by Lap nguyen*/ /*Edit by MTN: 06/02/2015*/
 }
 .other td a, .detail td a
 {
-    font-size: 15px; /*Edit by MTN: 06/02/2015*/
+    font-size: 13.4px; /*Edit by Lap nguyen*/ /*Edit by MTN: 06/02/2015*/
 }
 .subTabs td
 {
-    font-size: 14px; /*Edit by MTN: 06/02/2015*/
+    font-size: 13.4px; /*Edit by Lap nguyen*/ /*Edit by MTN: 06/02/2015*/
 }
 
 /* for edit and detail views */
@@ -5486,17 +5467,26 @@ button.addNewCity, button.addNewDicstrict, button.addNewState
 }
 
 .detail.view h4:first-child {
-    background-color: #DADADA;
-}
-.edit.view h4:first-child {
-    background-color: #DADADA;
+    background-color: #f5f5f5;
     font-weight: bold;
     margin: 0px;
     text-align: left;
-    border: none;
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 15px;
+    border: 1px solid #e8e8e8;
+    border-top: 1px solid #fff;
+}
+.edit.view h4:first-child {
+    background-color: #f5f5f5;
+    font-weight: bold;
+    margin: 0px;
+    text-align: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    border: 1px solid #e8e8e8;
+    border-top: 1px solid #fff;
 }
 
 .edit.view.collapsed h4,.detail.view.collapsed h4 {
@@ -5565,7 +5555,7 @@ border-radius: 0px 6px 0px 0px;
 
     text-decoration:none;
     color: #46629E; /*Edit by MTN: 06/02/2015*/
-    font-size: 15px; /*Edit by MTN: 06/02/2015*/
+    font-size: 13.4px; /*Edit by Lap nguyen*/ /*Edit by MTN: 06/02/2015*/
 }
 
 .oddListRowS1 td a > img, .evenListRowS1 td a > img {
@@ -5619,7 +5609,7 @@ a.utilsLink:visited
 a.tabFormAdvLink:link,
 a.tabFormAdvLink:visited
 {
-    font-size: 13px; /*Edit by MTN: 06/02/2015*/
+    font-size: 13.4px; /*Edit by Lap nguyen*/ /*Edit by MTN: 06/02/2015*/
 }
 /* calendar styles */
 .monthBox,
@@ -5628,11 +5618,11 @@ a.tabFormAdvLink:visited
 .monthHeader a,
 .monthFooter a
 {
-    font-size: 15px; /*Edit by MTN: 06/02/2015*/
+    font-size: 13.4px; /*Edit by Lap nguyen*/ /*Edit by MTN: 06/02/2015*/
 }
 
 .monthHeader a, .monthFooter a{
-    font-size: 15px;
+    font-size: 13.4px; /*Edit by Lap nguyen*/
     text-decoration: none;
     color: #0E70B8;
 }
@@ -5667,17 +5657,17 @@ ul.subpanelTablist li a,
 .subpanelTabForm,
 .subpanelTabForm h3
 {
-    font-size: 15px; /*Edit by MTN: 06/02/2015*/
+    font-size: 13.4px; /*Edit by Lap nguyen*/ /*Edit by MTN: 06/02/2015*/
 }
 .subTabMore
 {
-    font-size: 14px; /*Edit by MTN: 06/02/2015*/
+    font-size: 13.4px; /*Edit by Lap nguyen*/ /*Edit by MTN: 06/02/2015*/
 }
 
 /* for quick searches */
 .sqsMatchedSmartInputItem
 {
-    font-size: 14px; /*Edit by MTN: 06/02/2015*/
+    font-size: 13.4px; /*Edit by Lap nguyen*/ /*Edit by MTN: 06/02/2015*/
 }
 
 /* for overlib js library */
@@ -5689,35 +5679,35 @@ ul.subpanelTablist li a,
 /* sitemap */
 #sitemap a:link, #sitemap a:visited, #sitemap a:hover
 {
-    font-size: 14px; /*Edit by MTN: 06/02/2015*/
+    font-size: 13.4px; /*Edit by Lap nguyen*/ /*Edit by MTN: 06/02/2015*/
 }
 #sitemap h4 a:link, #sitemap h4 a:visited, #sitemap h4 a:hover
 {
-    font-size: 15px; /*Edit by MTN: 06/02/2015*/
+    font-size: 13.4px; /*Edit by Lap nguyen*/ /*Edit by MTN: 06/02/2015*/
 }
 
 /* for about page */
 .about, .about td, .about span
 {
-    font-size: 15px; /*Edit by MTN: 06/02/2015*/
+    font-size: 13.4px; /*Edit by Lap nguyen*/ /*Edit by MTN: 06/02/2015*/
 }
 
 /* for edit view like forms that need a smaller font size */
 .edit.view.small td,.detail.view.small td
 {
-    font-size: 14px; /*Edit by MTN: 06/02/2015*/
+    font-size: 13.4px; /*Edit by Lap nguyen*/ /*Edit by MTN: 06/02/2015*/
 }
 
 /* to make the reportwizard button text smaller */
 .reportwizard .buttonText
 {
-    font-size: 14px; /*Edit by MTN: 06/02/2015*/
+    font-size: 13.4px; /*Edit by Lap nguyen*/ /*Edit by MTN: 06/02/2015*/
 }
 
 /* to fix the size of the fonts in the unified module search popup */
 #unified_search_advanced_div .edit.view td
 {
-    font-size: 14px; /*Edit by MTN: 06/02/2015*/
+    font-size: 13.4px; /*Edit by Lap nguyen*/ /*Edit by MTN: 06/02/2015*/
 }
 
 /* overlib popups */
@@ -5732,7 +5722,7 @@ ul.subpanelTablist li a,
 #emailContextMenu a.yuimenuitemlabel:link,
 #emailContextMenu a.yuimenuitemlabel:visited
 {
-    font-size:14px; /*Edit by MTN: 06/02/2015*/
+    font-size: 13.4px; /*Edit by Lap nguyen*/ /*Edit by MTN: 06/02/2015*/
     padding:0 20px 1px;
 }
 
@@ -5915,12 +5905,11 @@ span.dcmenuitem:hover{
 
 #dcmenuSugarCube, #dcmenuSugarCubeEmpty{
     float: right;
-    padding: 0px 0px 0 2px;
     height: 43px;
 }
-#dcmenuSugarCube.focused {
-    background-color: #000;
-}
+/*#dcmenuSugarCube.focused {
+background-color: #000;
+}*/
 
 #dcboxbody.dcmenuSugarCube {
     width: 320px;
@@ -5937,7 +5926,7 @@ span.dcmenuitem:hover{
 }
 
 #dcboxbody.dcmenuSugarCube .dashletPanel.dc .hd #dctitle {
-    color: #cdcccb;
+    color: #a0a0a0;
     font-weight: normal;
 }
 
@@ -5948,7 +5937,7 @@ span.dcmenuitem:hover{
     color: #cdcccb;
 }
 #dcboxbody.dcmenuSugarCube .dashletPanel.dc .hd .icon-remove:before {
-    font-size: 15px;
+    font-size: 13.4px; /*Edit by Lap nguyen*/
 }
 
 #dcmenuSugarCubeEmpty {
@@ -5962,7 +5951,7 @@ span.dcmenuitem:hover{
 }
 
 #dcmenuSugarCube:hover {
-    background-color: #293E69;  /*Edit by MTN: 06/02/2015*/
+    /*background-color: #293E69; */ /*Edit by MTN: 06/02/2015*/
 }
 
 #notifDivider {
@@ -6006,7 +5995,7 @@ span.dcmenuitem:hover{
 
 #dcmenuSugarCube .notifCount{
     font-weight:bold;
-    font-size:11px !important;
+    font-size:12px !important;
     color:#FFFFFF;
     position: relative;
     text-align: center;
@@ -6022,6 +6011,23 @@ span.dcmenuitem:hover{
     margin:0px 5px;
 }
 
+#dcmenuSugarCube .notifNoneCount{
+    font-weight:bold;
+    font-size:12px !important;
+    color:#FFFFFF;
+    position: relative;
+    text-align: center;
+    background-color: #1b1b1b;
+    border-radius: 2px;
+    width: 16px;
+    cursor: pointer;
+    padding: 1px;
+    width: 24px;
+    height:18px;
+    padding-top:6px;
+    top:8px;
+    margin:0px 5px;
+}
 
 #dcmenuContainer
 {
@@ -6126,7 +6132,7 @@ li div.follow {float:none;}
 #SpotResults {
 }
 #SpotResults div{
-    font-size:14px;
+    font-size: 13.4px; /*Edit by Lap nguyen*/
     font-weight:bold;
 
 }
@@ -6237,7 +6243,7 @@ table.dcSearch {
     padding: 3px 9px;
     margin: 0px;
     font-family: Helvetica, Arial, 'lucida grande',tahoma,verdana,arial,sans-serif;
-    font-size: 15px;
+    font-size: 13.4px; /*Edit by Lap nguyen*/
     font-weight: normal;
     line-height: 1;
     color: #f5f5f5;
@@ -6590,7 +6596,7 @@ ul.clickMenu li a, .list tr.pagination td.buttons ul.clickMenu > li > a:link, .l
     font-weight: normal !important;
     padding: 4px 10px 4px 10px !important;
     color: #000;
-    font-size: 14px; /*Edit by MTN: 06/02/2015*/
+    font-size: 13.4px; /*Edit by Lap nguyen*/ /*Edit by MTN: 06/02/2015*/
 }
 
 .list tr.pagination td.buttons ul.clickMenu:hover > li > a:link, .list tr.pagination td.buttons ul.clickMenu:hover > li > a{
@@ -6757,7 +6763,7 @@ ul.clickMenu li ul.subnav li input {
     /*width: 170px;*/
     width:100%
 }
-td.paginationActionButtons ul.clickMenu li a { font-size:14px !important; } /*Edit by MTN: 06/02/2015*/
+td.paginationActionButtons ul.clickMenu li a { font-size:13px !important; } /*Edit by MTN: 06/02/2015*/
 
 ul.SugarActionMenuIESub li a:hover, ul.clickMenu.SugarActionMenu li a:hover, ul.clickMenu.SugarActionMenu li span.subhover:hover,
 ul.clickMenu li ul.subnav li a:hover,ul.clickMenu li ul.subnav li input:hover, ul.clickMenu.subpanel.records li ul.subnav li a:hover, ul.clickMenu ul.subnav-sub li a:hover { /*--Hover effect for subnav links--*/
@@ -6826,7 +6832,7 @@ ul#globalLinks.clickMenu li ul.subnav {
 
 ul#globalLinks.clickMenu > li > a {
     color: #fff;
-    font-size: 14px;
+    font-size: 13.4px; /*Edit by Lap nguyen*/
     padding: 14px 7px !important;
 }
 
@@ -6906,7 +6912,7 @@ ul.clickMenu.show {
     color: #999 !important;
     padding: 3px 0 3px 0px!important;
     font-weight: normal !important;
-    font-size: 13px;
+    font-size: 13.4px; /*Edit by Lap nguyen*/
 }
 
 #quickCreate {
@@ -6938,14 +6944,14 @@ ul.clickMenu.show {
 ul#globalLinksSubnav li { min-width: 120px;}
 ul#globalLinksSubnav, ul#quickCreateULSubnav,
 #quickCreate ul.clickMenu li ul.subnav, #globalLinksModule ul.clickMenu li ul.subnav{
-    top: 43px;
+    top: 44px; /*MTN*/
     right: 0;
     left: auto;
     padding: 10px 0px;
     border: 1px solid #999;
     /*Bug#54711: in IE9, all list menu in Admin are pushed to left side and not visible.*/
-    width: 100%;
-    /*width: auto;*/
+    /*width: 100%*/ /*MTN*/
+    width: auto;
     min-width: 150px;
 }
 
@@ -6956,7 +6962,7 @@ ul#globalLinksSubnav, ul#quickCreateULSubnav,
 #globalLinksSubnav li a, #quickCreateULSubnav li a,
 #quickCreate ul.clickMenu li ul.subnav li a, #globalLinksModule ul.clickMenu li ul.subnav li a {
     padding: 4px 10px !important;
-    font-size: 15px !important; /*Edit by MTN: 06/02/2015*/
+    font-size: 14px !important; /*Edit by MTN: 06/02/2015*/
     color: #293E69; /*Edit by MTN: 06/02/2015*/
     line-height: 1.45;
 }
@@ -7085,7 +7091,7 @@ ul#globalLinksSubnav, ul#quickCreateULSubnav,
 /* miscellaneaous 508 classes */
 .detail508 tr td[scope="col"]
 {
-    color: #888;
+    color: #76777a;
     background-color: #fff; /*Edit by MTN: 06/02/2015*/
     border-color: #ccc;
     text-align: right;
@@ -7094,8 +7100,8 @@ ul#globalLinksSubnav, ul#quickCreateULSubnav,
 
 .edit508 tr td[scope="col"]
 {
-    color: #888; /*Edit by MTN: 06/02/2015*/
-    background-color: #fff; /*Edit by MTN: 06/02/2015*/
+    color: #444;
+    background-color: #eee;
     border-color: #ccc;
     white-space: nowrap;
 }
@@ -7168,6 +7174,16 @@ p.submsg, p.submsg a{
     border-bottom: 1px solid #ccc;
 }
 
+.cardDetailsDialog .ui-dialog-titlebar {
+    border: 0px none;
+    background: #3a5795;
+    /*padding-bottom: 2px;*/ /*MTN*/
+    padding: 8px;
+    border-bottom: 1px solid #ccc;
+    border-radius: 3px 3px 0px 0px !important;
+    color: #fff;
+}
+
 .ui-dialog .ui-widget-content {
     color: #293E69; /*Edit by MTN: 06/02/2015*/
 
@@ -7176,18 +7192,25 @@ p.submsg, p.submsg a{
 .ui-dialog .ui-dialog-titlebar .ui-dialog-title div {
     font-weight: normal;
     color: #666;
-    font-size: 13px;
+    font-size: 13.4px; /*Edit by Lap nguyen*/
     text-shadow: 0px 1px #fff;
 }
 
 .ui-dialog .ui-dialog-titlebar-close {
-    margin-top: -10px;
+    margin-top: -12px; /*MTN*/
     width: 20px; /*MTN*/
     padding: 0px;
+    margin-right: 3px; /*MTN*/
 }
 
 .ui-dialog .ui-dialog-titlebar-close span {
     background: url(../../../../index.php?entryPoint=getImage&imageName=close.png) no-repeat center !important;
+    height: 20px; /*MTN*/
+    width: 20px;  /*MTN*/
+}
+
+.cardDetailsDialog .ui-dialog-titlebar-close span {
+    background: url(../../../../index.php?entryPoint=getImage&imageName=closePopup.png) no-repeat center !important;
     height: 20px; /*MTN*/
     width: 20px;  /*MTN*/
 }
@@ -7198,6 +7221,7 @@ p.submsg, p.submsg a{
 }
 .ui-corner-all {
     border-radius: 1px !important;
+    border: none;
 }
 
 
@@ -7227,7 +7251,7 @@ p.submsg, p.submsg a{
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#dfdfdf');
     border: 1px solid #aaaaaa;
     font-family: Helvetica, Arial, 'lucida grande',tahoma,verdana,arial,sans-serif;
-    font-size: 14px;
+    font-size: 13.4px; /*Edit by Lap nguyen*/
     cursor: pointer;
     text-align: center;
     padding: 10px 0;
@@ -7284,7 +7308,7 @@ td #moduleListTD
     border-left: 1px solid #CCCCCC !important;
     text-align: center;
     font-family: Helvetica, Arial, 'lucida grande',tahoma,verdana,arial,sans-serif;
-    font-size: 15px;
+    font-size: 13.4px; /*Edit by Lap nguyen*/
     text-shadow: 0px 1px #fff;
     padding-top: 6px;
     font-weight: bold;
@@ -7549,12 +7573,12 @@ div.hoverscroll div.fixed-arrow.bottom {
     display: inline-block;
     padding: 4px 10px 4px;
     margin-bottom: 0;
-    font-size: 13px;
+    font-size: 13.4px; /*Edit by Lap nguyen*/
     line-height: 18px;
     color: #262627;
     font-weight: 500;
     text-align: center;
-/*    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75); Remove by Lap Nguyen*/
+    /*    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75); Remove by Lap Nguyen*/
     vertical-align: middle;
     background-color: #ebebea;
     background-image: -moz-linear-gradient(top, #ffffff, #cdcccb);
@@ -7637,7 +7661,7 @@ div.hoverscroll div.fixed-arrow.bottom {
 }
 .btn-large {
     padding: 9px 14px;
-    font-size: 15px;
+    font-size: 13.4px; /*Edit by Lap nguyen*/
     line-height: normal;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -8009,10 +8033,10 @@ input[type="submit"].btn.small {
     margin-top: 3px;
 }
 
-@font-face {
+/*@font-face {
     font-family: 'Open Sans';
     src: url(../../../../themes/default/font/OpenSans-Light.ttf);
-}
+}     */
 
 /*  Font Awesome
 the iconic font designed for use with Twitter Bootstrap
@@ -8705,7 +8729,7 @@ readers do not read off random characters that represent icons */
     -webkit-border-radius: 2px 2px 0 0;
     -moz-border-radius: 2px 2px 0 0;
     border-radius: 2px 2px 0 0;
-    font-size: 13px;
+    font-size: 13.4px; /*Edit by Lap nguyen*/
     color: #fff;
 }
 .popover-content {
@@ -8837,7 +8861,7 @@ h3.popover-title {
     line-height: 18px;
     margin-bottom: 10px;
     text-align: left;
-    font-size: 14px;
+    font-size: 13.4px; /*Edit by Lap nguyen*/
 }
 
 .modal.tour .well {
@@ -8853,7 +8877,7 @@ h3.popover-title {
 }
 
 #tour .modal-body p {
-    font-size: 13px;
+    font-size: 13.4px; /*Edit by Lap nguyen*/
     line-height: 18px;
 }
 
@@ -8877,7 +8901,7 @@ i.icon-arrow-up:before {
 }
 
 .tour i.icon-play.icon-xsm {
-    font-size: 13px;
+    font-size: 13.4px; /*Edit by Lap nguyen*/
 }
 .caption {
     font-size: 16px;
@@ -9044,7 +9068,7 @@ i.icon-arrow-up:before {
 
 /*MTN*/
 .draggable table {
-    font-size: 13px;
+    font-size: 13.4px; /*Edit by Lap nguyen*/
 }
 /*MTN*/
 #search_form_team_name_advanced_table button {
@@ -9107,4 +9131,253 @@ i.icon-arrow-up:before {
 #repairsql{
     height: 500px !important;
     width: 750px !important;
+}
+/*MTN*/
+.ms-parent .ms-drop{
+    width: 154px !important;
+}
+
+.ms-parent .ms-drop .ms-search input{
+    width: 145px !important;
+}
+
+.detail.view td.data{
+    padding: 0px !important;
+}
+
+.detail.view td.data .div_value{
+    min-height: 24px !important;
+    padding: 5px;
+}
+
+.detail.view td.data .div_value span{
+    display: inline-table;
+    vertical-align: middle;
+}
+
+.detail.view td.data .edit_block{
+    padding: 5px;
+}
+
+.detail.view td.data .edit_block button{
+    margin-top: 5px;
+}
+.detail.view td.data img {
+    margin-top: 8px;
+}
+
+.detail.view td.data .edit_block .id-ff button{
+    margin-top: 0px !important;
+}
+
+.detail.view td.data .edit_block .id-ff button img {
+    margin-top: 0px !important;
+}
+
+#globalLinksModule ul.clickMenu li ul.subnav{
+    width: auto !important;
+}
+/*Multiple select*/
+.ms-choice > div{
+    top: 3px !important; /*MTN*/
+}
+
+/*MTN: CSS 2 field Email + Team*/
+.emailaddresses button{
+      padding: 2px 6px 3px;
+      font-size: 24px;
+}
+
+#email1_span table, #email1_span > table tr:first-child td:first-child{
+    padding-left: 0px !important;
+}
+
+#EditView_team_name_table,
+#form_DCQuickCreate_Accounts_team_name_table,
+#form_DCQuickCreate_Contacts_team_name_table,
+#form_DCQuickCreate_Opportunities_team_name_table,
+#form_DCQuickCreate_Leads_team_name_table,
+#form_DCQuickCreate_Documents_team_name_table,
+#form_DCQuickCreate_Notes_team_name_table,
+#form_DCQuickCreate_Tasks_team_name_table,
+#form_DCQuickCreate_Meetings_team_name_table,
+#form_DCQuickCreate_Calls_team_name_table,
+#lineLabel_team_name td{
+    padding: 3px 3px 3px 0px !important;
+}
+
+#EditView_team_name_table tr td[scope="row"],
+#form_DCQuickCreate_Accounts_team_name_table tr td[scope="row"],
+#form_DCQuickCreate_Contacts_team_name_table tr td[scope="row"],
+#form_DCQuickCreate_Opportunities_team_name_table tr td[scope="row"],
+#form_DCQuickCreate_Leads_team_name_table tr td[scope="row"],
+#form_DCQuickCreate_Documents_team_name_table tr td[scope="row"],
+#form_DCQuickCreate_Notes_team_name_table tr td[scope="row"],
+#form_DCQuickCreate_Tasks_team_name_table tr td[scope="row"],
+#form_DCQuickCreate_Meetings_team_name_table tr td[scope="row"],
+#form_DCQuickCreate_Calls_team_name_table tr td[scope="row"]{
+    padding: 5px 5px 5px 0px !important;
+}
+
+#search_form_team_name_advanced_table, #search_form_team_name_advanced_table td{
+    padding: 3px 3px 3px 0px !important;
+}
+
+#search_form_team_name_advanced_table tr td[scope="row"]{
+    padding: 10px 20px 20px 0px !important;
+}
+
+#search_form_team_name_advanced_table button.button.firstChild{
+    -moz-border-radius-top-right: 0px;
+    -moz-border-radius-bottom-right: 0px;
+    border-radius-top-right: 0px;
+    border-radius-bottom-right: 0px;
+    -webkit-border-bottom-right-radius: 0px;
+    -webkit-border-top-right-radius: 0px;
+    border-right-color: #eee;
+}
+
+#search_form_team_name_advanced_table button.button.lastChild{
+    -moz-border-radius-top-left: 0px;
+    -moz-border-radius-bottom-left: 0px;
+    border-radius-top-left: 0px;
+    border-radius-bottom-left: 0px;
+    -webkit-border-bottom-left-radius: 0px;
+    -webkit-border-top-left-radius: 0px;
+}
+/*MTN: END CSS 2 field Email + Team*/
+
+#dcmenu .MMShortcuts li.current a {
+    background: #293E69;
+	color: #ffffff;
+	font-weight: bold;
+}
+
+#footer #globalLanguage {
+    float: right;
+    height: 31px;
+    padding: 7px 10px 0px;
+}
+
+#footer #globalLanguage select {
+    font-size: 12px;
+}
+
+#footer #globalLanguage #availability_status {
+    float: left;
+    margin-top: 7px;
+    margin-right: 2px;
+}
+
+/*Fix icon search Global by MTN*/
+#dcmenuSearchDiv #glblSearchBtn {
+    right: 10px;
+}
+/*END fix icon search Global*/
+/* CSS: Cool color backgrond for text*/
+.textbg_blue {
+    background:#115CAB;
+    color: #fff;
+    border-radius:2px;
+    padding:2px 5px 2px 5px;
+    font-weight: bold;
+}
+.textbg_bluelight {
+    background:#04ADEC;
+    color: #fff;
+    border-radius:2px;
+    padding:2px 5px 2px 5px;
+    font-weight: bold;
+}
+.textbg_red {
+    background:#A8141B;
+    color: #fff;
+    border-radius:2px;
+    padding:2px 5px 2px 5px;
+    font-weight: bold;
+}
+.textbg_redlight {
+    background:#FF0000;
+    color: #fff;
+    border-radius:2px;
+    padding:2px 5px 2px 5px;
+    font-weight: bold;
+}
+.textbg_black {
+    background:#272727;
+    color: #fff;
+    border-radius:2px;
+    padding:2px 5px 2px 5px;
+    font-weight: bold;
+}
+.textbg_yellow {
+    background:#F1D44A;
+    color: #fff;
+    border-radius:2px;
+    padding:2px 5px 2px 5px;
+    font-weight: bold;
+}
+.textbg_green {
+    background:#468931;
+    color: #fff;
+    border-radius:2px;
+    padding:2px 5px 2px 5px;
+    font-weight: bold;
+}
+.textbg_violet {
+    background:#aa68ff;
+    color: #fff;
+    border-radius:2px;
+    padding:2px 5px 2px 5px;
+    font-weight: bold;
+}
+.textbg_orange {
+    background:#FF8C00;
+    color: #fff;
+    border-radius:2px;
+    padding:2px 5px 2px 5px;
+    font-weight: bold;
+}
+.textbg_crimson {
+    background:#DC143C;
+    color: #fff;
+    border-radius:2px;
+    padding:2px 5px 2px 5px;
+    font-weight: bold;
+}
+.textbg_yellow_light {
+    background:#e8b71a;
+    color: #3c3c3b;
+    border-radius:2px;
+    padding:2px 5px 2px 5px;
+    font-weight: bold;
+}
+.textbg_blood {
+    background:#db3340;
+    color: #fff;
+    border-radius:2px;
+    padding:2px 5px 2px 5px;
+    font-weight: bold;
+}
+.textbg_dream {
+    background:#32CD32;
+    color: #fff;
+    border-radius:2px;
+    padding:2px 5px 2px 5px;
+    font-weight: bold;
+}
+.textbg_nocolor {
+    font-weight: bold;
+}
+.label_add {
+    background-color: #eee;
+
+    padding:5px 5px 5px 5px;
+}
+.cal_panel {
+width: 205px !important;
+}
+.spantitle {
+color: #F5F5F5 !important;
+font-size: 14px !important;
 }

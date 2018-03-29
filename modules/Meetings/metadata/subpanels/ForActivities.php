@@ -19,7 +19,7 @@ $subpanel_layout = array(
 	//Removed button because this layout def is a component of
 	//the activities sub-panel.
 
-	'where' => "(meetings.status !='Held' AND meetings.status !='Not Held')",
+	'where' => "(meetings.status !='Held' AND meetings.status !='Not Held' AND meetings.meeting_type !='Session')",
 	
 	
 				
@@ -34,22 +34,26 @@ $subpanel_layout = array(
 		'name'=>array(
 			 'vname' => 'LBL_LIST_SUBJECT',
 			 'widget_class' => 'SubPanelDetailViewLink',
-			 'width' => '42%',
+			 'width' => '15%',
 		),
+                'description' => array(
+            'vname' => 'LBL_DESCRIPTION',
+            'width' => '30%',
+        ),
 		'status'=>array(
 			 'widget_class' => 'SubPanelActivitiesStatusField',
 			 'vname' => 'LBL_LIST_STATUS',
 			 'width' => '15%',
 		),
-		'contact_name'=>array(
-			 'widget_class' => 'SubPanelDetailViewLink',
-			 'target_record_key' => 'contact_id',
-			 'target_module' => 'Contacts',
-			 'module' => 'Contacts',
-			 'vname' => 'LBL_LIST_CONTACT',
-			 'width' => '11%',
-			 'sortable'=>false,
-		),
+//		'contact_name'=>array(
+//			 'widget_class' => 'SubPanelDetailViewLink',
+//			 'target_record_key' => 'contact_id',
+//			 'target_module' => 'Contacts',
+//			 'module' => 'Contacts',
+//			 'vname' => 'LBL_LIST_CONTACT',
+//			 'width' => '11%',
+//			 'sortable'=>false,
+//		),
 		'contact_id'=>array(
 			'usage'=>'query_only',
 	

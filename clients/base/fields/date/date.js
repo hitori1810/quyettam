@@ -1,4 +1,15 @@
-
+/*********************************************************************************
+ * By installing or using this file, you are confirming on behalf of the entity
+ * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
+ * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
+ * http://www.sugarcrm.com/master-subscription-agreement
+ *
+ * If Company is not bound by the MSA, then by installing or using this file
+ * you are agreeing unconditionally that Company will be bound by the MSA and
+ * certifying that you have authority to bind Company accordingly.
+ *
+ * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ ********************************************************************************/
 ({datepickerVisible:false,dateValue:'',serverDateFormat:'Y-m-d',stripIsoTZ:true,initialize:function(options){this.userTimePrefs=app.user.getPreference('timepref');this.usersDatePrefs=app.user.getPreference('datepref');if(!_.isUndefined(this.showAmPm)){this.showAmPm=this.userTimePrefs.match(/[aA]$/)==null?true:false;}
 app.view.Field.prototype.initialize.call(this,options);},bindDomChange:function(){},_presetDateValues:function(){this.dateValue=this.$('.datepicker').val();this.dateValue=(this.dateValue)?this.dateValue:'';if(!_.isUndefined(this._setTimeValue)&&_.isFunction(this._setTimeValue)){this._setTimeValue();}},_setupDatepicker:function(){this.datepickerMap=this._patchDatepickerMeta();this.$(".datepicker").attr('placeholder',app.date.toDatepickerFormat(this.usersDatePrefs));this.$(".datepicker").datepicker({languageDictionary:this.datepickerMap,format:(this.usersDatePrefs)?app.date.toDatepickerFormat(this.usersDatePrefs):'mm-dd-yyyy'});this.$(".datepicker").datepicker().on({show:_.bind(this.showDatepicker,this),hide:_.bind(this.hideDatepicker,this)});},showDatepicker:function(ev){this.datepickerVisible=true;},hideDatepicker:function(ev){var model=this.model,fieldName=this.name,timeValue='',hrsMins={},dateValue='',$timepicker;this.datepickerVisible=false;model=this.model;fieldName=this.name;if(!_.isUndefined(this._setTimepickerValue)&&_.isFunction(this._setTimepickerValue)){$timepicker=this.$('.ui-timepicker-input');hrsMins=this._getHoursMinutes($timepicker);this._setTimepickerValue($timepicker,hrsMins.hours,hrsMins.minutes);}else{hrsMins={hours:'00',minutes:'00'};}
 dateValue=this._getDatepickerValue();if(this._verifyDateString(dateValue)){model.set(fieldName,this._buildUnformatted(dateValue,hrsMins.hours,hrsMins.minutes),{silent:true});}else{model.set(fieldName,dateValue,hrsMins.hours,hrsMins.minutes,{silent:true});}},_verifyDateString:function(value){var dateFormat=(this.usersDatePrefs)?app.date.toDatepickerFormat(this.usersDatePrefs):'mm-dd-yyyy';if(_.isNaN(Date.parse(value))){return $.prototype.DateVerifier(value,dateFormat);}

@@ -19,6 +19,9 @@
 {$pagination_data}
 {/if}
 <tr height="20">
+{if $reporter->saved_report->row_number}
+    <th scope="col" align='center' class="reportlistViewThS1" valign=middle nowrap>No.</th>
+{/if}
 {if ($isSummaryCombo)}
 <th scope="col" align='center' class="reportlistViewThS1" valign=middle nowrap>&nbsp;</th>
 {/if}
@@ -31,19 +34,19 @@
 {/php}
 {foreach from=$header_row key=module item=cell}
 	{if (($args.group_column_is_invisible != "") && ($args.group_pos eq $count))}
-{php}	
+{php}
 	$count = $count + 1;
 	$this->assign('count', $count);
 {/php}
 	{ else }
 	{if $cell eq ""}
-{php}	
+{php}
 	$cell = "&nbsp;";
 	$this->assign('cell', $cell);
 {/php}
 	{/if}
-	<th scope="col" align='center' class="reportlistViewThS1" valign=middle nowrap>	
-	
+	<th scope="col" align='center' class="reportlistViewThS1" valign=middle nowrap>
+
 	{$cell}
 	{/if}
 {/foreach}
@@ -54,11 +57,20 @@ require_once('modules/Reports/templates/templates_reports.php');
 $reporter = $this->get_template_vars('reporter');
 $args = $this->get_template_vars('args');
 $got_row = 0;
+$r_number = 0;
+$this->assign('r_number', $r_number);
 while (( $row = $reporter->get_summary_next_row() ) != 0 ) {
 	$got_row = 1;
 	template_list_row($row,true);
 {/php}
 <tr height=20 class="{$row_class}" onmouseover="setPointer(this, '{$rownum}', 'over', '{$bg_color}', '{$hilite_bg}', '{$click_bg}');" onmouseout="setPointer(this, '{$rownum}', 'out', '{$bg_color}', '{$hilite_bg}', '{$click_bg}');" onmousedown="setPointer(this, '{$rownum}', 'click', '{$bg_color}', '{$hilite_bg}', '{$click_bg}');">
+{if $reporter->saved_report->row_number}
+{php}
+    $r_number = $r_number + 1;
+    $this->assign('r_number', $r_number);
+{/php}
+<td width="1%" valign=TOP class="{$row_class[$module]}" bgcolor="{$bg_color}" scope="row">{$r_number}</td>
+{/if}
 {if ($isSummaryComboHeader)}
 <td><span id="img_{$divId}"><a href="javascript:expandCollapseComboSummaryDiv('{$divId}')"><img width="8" height="8" border="0" absmiddle="" alt=$mod_strings.LBL_SHOW src="{$image_path}advanced_search.gif"/></a></span></td>
 {/if}
@@ -69,20 +81,28 @@ while (( $row = $reporter->get_summary_next_row() ) != 0 ) {
  {assign var='scope_row' value=true}
 {foreach from=$column_row.cells key=module item=cell}
 	{if (($column_row.group_column_is_invisible != "") && ($count|in_array:$column_row.group_pos)) }
-{php}	
-	$count = $count + 1;
+{php}
+    $count = $count + 1;
 	$this->assign('count', $count);
 {/php}
 	{ else }
 	{if $cell eq ""}
-{php}	
+{php}
 	$cell = "&nbsp;";
 	$this->assign('cell', $cell);
 {/php}
 	{/if}
-	
-	<td width="{$width}%" valign=TOP class="{$row_class[$module]}" bgcolor="{$bg_color}" {if $scope_row} scope='row' {/if}>
-	{$cell}</td>
+            {if substr_count($cell, '/') == 2 }
+            <td style='mso-number-format:"dd\/mm\/yyyy";text-align: left;' width="{$width}%" valign=TOP class="{$row_class[$module]}" bgcolor="{$bg_color}" {if $scope_row} scope='row' {/if}>
+            {elseif (date('Y-m-d', strtotime($cell)) == $cell)}
+            <td style='mso-number-format:"yyyy-mm-dd";text-align: left;' width="{$width}%" valign=TOP class="{$row_class[$module]}" bgcolor="{$bg_color}" {if $scope_row} scope='row' {/if}>
+	        {elseif ((strlen($cell) > 4) && (preg_match("/^[0-9]+$/", $cell)))}
+            <td style="mso-number-format:\@;" width="{$width}%" valign=TOP class="{$row_class[$module]}" bgcolor="{$bg_color}" {if $scope_row} scope='row' {/if}>
+            {else}
+            <td width="{$width}%" valign=TOP class="{$row_class[$module]}" bgcolor="{$bg_color}" {if $scope_row} scope='row' {/if}>
+            {/if}
+
+    {$cell}</td>
 	{/if}
 	 {assign var='scope_row' value=false}
 {/foreach}
@@ -92,12 +112,12 @@ while (( $row = $reporter->get_summary_next_row() ) != 0 ) {
 if (!$got_row) {
 	echo template_summary_view_no_results($args);
 } // if
-echo template_end_table($args);	
+echo template_end_table($args);
 if ($reporter->has_summary_columns()) {
 	$reporter->run_total_query();
 	// start template_total_table code
 	global $mod_strings;
-	$total_header_row = $reporter->get_total_header_row(); 
+	$total_header_row = $reporter->get_total_header_row();
 	$total_row = $reporter->get_summary_total_row();
 	if ( isset($total_row['group_pos'])) {
 		$args['group_pos'] = $total_row['group_pos'];
@@ -106,7 +126,7 @@ if ($reporter->has_summary_columns()) {
 		$args['group_column_is_invisible'] = $total_row['group_column_is_invisible'];
 	} // if
  	$reporter->layout_manager->setAttribute('no_sort',1);
-  	echo get_form_header( $mod_strings['LBL_GRAND_TOTAL'],"", false); 
+  	echo get_form_header( $mod_strings['LBL_GRAND_TOTAL'],"", false);
   	template_header_row($total_header_row,$args);
 {/php}
 	<table width="100%" border="0" cellpadding="0" cellspacing="0" class="list view">
@@ -124,21 +144,23 @@ if ($reporter->has_summary_columns()) {
 		$count = 0;
 		$this->assign('count', $count);
 	{/php}
+    {if $reporter->saved_report->row_number}
+    <th scope="col"  valign=middle nowrap></th>
+    {/if}
 	{foreach from=$header_row key=module item=cell}
 		{if (($args.group_column_is_invisible != "") && ($args.group_pos eq $count))}
-	{php}	
+	{php}
 		$count = $count + 1;
 		$this->assign('count', $count);
 	{/php}
 		{ else }
 	{if $cell eq ""}
-{php}	
+{php}
 	$cell = "&nbsp;";
 	$this->assign('cell', $cell);
 {/php}
-	{/if}		
-		<th scope="col"  valign=middle nowrap>	
-		
+	{/if}
+		<th scope="col"  valign=middle nowrap>
 		{$cell}
 		{/if}
 	{/foreach}
@@ -156,21 +178,33 @@ if ($reporter->has_summary_columns()) {
 			$this->assign('count', $count);
 		{/php}
         {assign var='scope_row' value=true}
+        {if $reporter->saved_report->row_number}
+        <td width="%" valign="TOP" class="Array" bgcolor="" scope="row">&nbsp;</td>
+        {/if}
 		{foreach from=$column_row.cells key=module item=cell}
 			{if (($column_row.group_column_is_invisible != "") && ($count|in_array:$column_row.group_pos)) }
-		{php}	
+		{php}
 			$count = $count + 1;
 			$this->assign('count', $count);
 		{/php}
 			{ else }
 	{if $cell eq ""}
-{php}	
+{php}
 	$cell = "&nbsp;";
 	$this->assign('cell', $cell);
 {/php}
-	{/if}
-			<td width="{$width}%" valign=TOP class="{$row_class}" bgcolor="{$bg_color}" {if $scope_row} scope='row' {/if}>
-			
+	{/if}   {if substr_count($cell, '/') == 2}
+            <td style='mso-number-format:"dd\/mm\/yyyy";text-align: left;' width="{$width}%" valign=TOP class="{$row_class}" bgcolor="{$bg_color}" {if $scope_row} scope='row' {/if}>
+            {elseif (date('Y-m-d', strtotime($cell)) == $cell)}
+            <td style='mso-number-format:"yyyy-mm-dd";text-align: left;' width="{$width}%" valign=TOP class="{$row_class}" bgcolor="{$bg_color}" {if $scope_row} scope='row' {/if}>
+            {elseif ((strlen($cell) > 4) && (preg_match("/^[0-9]+$/", $cell)))}
+            <td style="mso-number-format:\@;" width="{$width}%" valign=TOP class="{$row_class}" bgcolor="{$bg_color}" {if $scope_row} scope='row' {/if}>
+            {else}
+            <td width="{$width}%" valign=TOP class="{$row_class}" bgcolor="{$bg_color}" {if $scope_row} scope='row' {/if}>
+            {/if}
+
+
+
 			{$cell}
 			{/if}
 			{assign var='scope_row' value=false}
@@ -181,8 +215,8 @@ if ($reporter->has_summary_columns()) {
 		echo template_summary_view_no_results();
   	}
 	echo template_end_table($args);
-  	// end template_total_table code	
+  	// end template_total_table code
 	//template_total_table($reporter);
-} // if	
-template_query_table($reporter); 
+} // if
+template_query_table($reporter);
 {/php}

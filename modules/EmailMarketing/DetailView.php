@@ -46,6 +46,12 @@ global $theme;
 
 
 $GLOBALS['log']->info("EmailMarketing Edit View");
+// Add By Hai Duc
+#tracy: this is for SMS-specific labels 
+if ($campaign->campaign_type == "SMS") { 
+	 $mod_strings['LBL_MODULE_NAME'] = "SMS Marketing";
+	 $mod_strings['LBL_TEMPLATE'] = "SMS Template";
+} 
 
 $xtpl=new XTemplate ('modules/EmailMarketing/DetailView.html');
 
@@ -99,6 +105,13 @@ if($focus->template_id) {
 }
 
 //include campaign utils..
+// Add By Hai Duc
+# tracy: to hide rows when it's for sms
+$xtpl->assign("HIDE_ELEMENT", "");
+if ($campaign->campaign_type == "SMS") { 
+	$xtpl->assign("HIDE_ELEMENT", "style='display:none;'");
+}
+// End Add By Hai Duc
 require_once('modules/Campaigns/utils.php');
 if (empty($_REQUEST['campaign_name'])) {
 	

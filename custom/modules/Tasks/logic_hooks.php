@@ -4,9 +4,8 @@
  $hook_version = 1; 
 $hook_array = Array(); 
 // position, file, function 
-$hook_array['after_save'] = Array(); 
-$hook_array['after_save'][] = Array(1, 'Çreate new notify', 'custom/include/LogicHooks/ActivitiesNotifier.php','ActivitiesNotifier', 'createActivitiesNotify'); 
 $hook_array['before_save'] = Array(); 
+$hook_array['before_save'][] = Array(2, 'Update Lead Status', 'custom/modules/Tasks/setLeadStatus.php','leadTaskStatus', 'setLeadStatus'); 
 $hook_array['before_save'][] = Array(1, 'workflow', 'include/workflow/WorkFlowHandler.php','WorkFlowHandler', 'WorkFlowHandler'); 
 
 

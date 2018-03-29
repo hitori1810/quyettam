@@ -92,17 +92,7 @@ EditView_tabs.on('contentReady', function(e){
     }
 {/literal}
 {/if}
-{if $EDIT_SELF && $SHOW_DOWNLOADS_TAB}
-{literal}
-    EditView_tabs.addTab( new YAHOO.widget.Tab({
-        label: '{/literal}{$MOD.LBL_DOWNLOADS}{literal}',
-        dataSrc: 'index.php?to_pdf=1&module=Home&action=pluginList',
-        content: '<div style="text-align:center; width: 100%">{/literal}{sugar_image name="loading"}{literal}</div>',
-        cacheData: true
-    }));
-    EditView_tabs.getTab(5).getElementsByTagName('a')[0].id = 'tab6';
-{/literal}
-{/if}
+
 
 {if $scroll_to_cal}
     {literal}

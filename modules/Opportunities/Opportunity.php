@@ -23,12 +23,12 @@ class Opportunity extends SugarBean
      * @deprecated
      * const STAGE_CLOSED_WON
      */
-    const STAGE_CLOSED_WON  = 'Closed Won';
+    const STAGE_CLOSED_WON  = 'Success';
     /**
      * @deprecated
      * const STAGE_CLOSED_LOST
      */
-	const STAGE_CLOSED_LOST = 'Closed Lost';
+	const STAGE_CLOSED_LOST = 'Failure';
 
 	var $field_name_map;
 	// Stored fields

@@ -1270,9 +1270,6 @@ p#clear {
     color: #a6a6a6;
 }
 
- .yui-dialog .container-close{
-    background:transparent url(../../../../index.php?entryPoint=getImage&themeName=Sugar&themeName=Sugar&imageName=sugar-yui-sprites.png) repeat-x scroll 6px -67px;
-}
 
  .yui-simple-dialog .bd .yui-icon {
     width: 16px;
@@ -6220,7 +6217,6 @@ h2.yui-editor-skipheader,h3.yui-editor-skipheader {
 .cal_panel.yui-panel .bd {
     padding-top:5px;
     padding-bottom:0px;
-    float: left;
 }
 
 .callnav_today {

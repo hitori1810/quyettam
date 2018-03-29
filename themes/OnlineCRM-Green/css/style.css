@@ -152,3 +152,11 @@ ul.clickMenu:hover, ul.clickMenu li ul.subnav li a:hover,ul.clickMenu li ul.subn
     color: #4E5665 !important;
     background-color: #F6F7F8;
 }
+
+.cardDetailsDialog .ui-dialog-titlebar{
+   background:#16a085 !important; 
+}
+
+#dcmenu .MMShortcuts li.current a {
+    background: #16917A !important;
+}

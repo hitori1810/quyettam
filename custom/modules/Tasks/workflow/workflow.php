@@ -14,7 +14,7 @@ include_once("include/workflow/custom_utils.php");
 		include("custom/modules/Tasks/workflow/actions_array.php");
 		include("custom/modules/Tasks/workflow/plugins_array.php");
 		
- if( ( isset($focus->assigned_user_id) && ( empty($focus->fetched_row) || array_key_exists('assigned_user_id', $focus->fetched_row) ) && $focus->fetched_row['assigned_user_id'] !== $focus->assigned_user_id) ){ 
+ if(true){ 
  
 
 	 //Frame Secondary 
@@ -23,11 +23,19 @@ include_once("include/workflow/custom_utils.php");
 	 //Secondary Triggers 
 
 	global $triggeredWorkflows;
-	if (!isset($triggeredWorkflows['8c1c2cb2_4663_3099_b1ce_55a37498caa7'])){
-		$triggeredWorkflows['8c1c2cb2_4663_3099_b1ce_55a37498caa7'] = true;
-		$_SESSION['WORKFLOW_ALERTS'] = isset($_SESSION['WORKFLOW_ALERTS']) && is_array($_SESSION['WORKFLOW_ALERTS']) ? $_SESSION['WORKFLOW_ALERTS'] : array();
-		$_SESSION['WORKFLOW_ALERTS']['Tasks'] = isset($_SESSION['WORKFLOW_ALERTS']['Tasks']) && is_array($_SESSION['WORKFLOW_ALERTS']['Tasks']) ? $_SESSION['WORKFLOW_ALERTS']['Tasks'] : array();
-		$_SESSION['WORKFLOW_ALERTS']['Tasks'] = array_merge($_SESSION['WORKFLOW_ALERTS']['Tasks'],array ('Tasks0_alert0',));	}
+	if (!isset($triggeredWorkflows['33bb7c47_5f2e_e62c_ba27_586f119b5a11'])){
+		$triggeredWorkflows['33bb7c47_5f2e_e62c_ba27_586f119b5a11'] = true;
+		 $alertshell_array = array(); 
+
+	 $alertshell_array['alert_msg'] = "d612d3dc-1ef5-886e-a127-57c4ea718e90"; 
+
+	 $alertshell_array['source_type'] = "Custom Template"; 
+
+	 $alertshell_array['alert_type'] = "Email"; 
+
+	 process_workflow_alerts($focus, $alert_meta_array['Tasks0_alert0'], $alertshell_array, false); 
+ 	 unset($alertshell_array); 
+		}
  
 
 	 //End Frame Secondary 

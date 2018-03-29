@@ -42,14 +42,16 @@ public function getDuplicateQuery($focus, $prefix='')
     }
 
     $query .= " WHERE deleted != 1 AND (status <> 'Converted' OR status IS NULL) AND ";
-    
+
     //Use the first and last name from the $_POST to filter.  If only last name supplied use that
 	if(isset($_POST[$prefix.'first_name']) && strlen($_POST[$prefix.'first_name']) != 0 && isset($_POST[$prefix.'last_name']) && strlen($_POST[$prefix.'last_name']) != 0) {
 		$query .= " (first_name='". $_POST[$prefix.'first_name'] . "' AND last_name = '". $_POST[$prefix.'last_name'] ."')";
-	} else {
-		$query .= " last_name = '". $_POST[$prefix.'last_name'] ."'";
 	}
-    return $query;
+    // Remove check duplicate
+    // else {
+//		$query .= " last_name = '". $_POST[$prefix.'last_name'] ."'";
+//	}
+    return '';
 }
 
 
@@ -209,7 +211,7 @@ function handleSave($prefix,$redirect=true, $useRequired=false, $do_save=true, $
 	}
 
     //Check for duplicate Leads
-    /*if (empty($_POST['record']) && empty($_POST['dup_checked']))
+    if (empty($_POST['record']) && empty($_POST['dup_checked']))
     {
 		$duplicateLeads = $this->checkForDuplicates($prefix);
 
@@ -307,7 +309,7 @@ function handleSave($prefix,$redirect=true, $useRequired=false, $do_save=true, $
             }
             return null;
 		}
-    } */
+    }
 
 	if (!isset($_POST[$prefix.'email_opt_out'])) $focus->email_opt_out = 0;
 	if (!isset($_POST[$prefix.'do_not_call'])) $focus->do_not_call = 0;
@@ -323,23 +325,24 @@ function handleSave($prefix,$redirect=true, $useRequired=false, $do_save=true, $
 
     $return_id = $focus->id;
 
-	if (isset($_POST[$prefix.'prospect_id']) &&  !empty($_POST[$prefix.'prospect_id'])) {
-		$prospect=new Prospect();
-		$prospect->retrieve($_POST[$prefix.'prospect_id']);
-		$prospect->lead_id=$focus->id;
-		// Set to keep email in target
-		$prospect->in_workflow = true;
-		$prospect->save();
-
-        //if prospect id exists, make sure we are coming from prospect detail
-        if(strtolower($_POST['return_module']) =='prospects' && strtolower($_POST['return_action']) == 'detailview'){
-            //create campaing_log entry
-
-            if(isset($focus->campaign_id) && $focus->campaign_id != null){
-                campaign_log_lead_entry($focus->campaign_id,$prospect, $focus,'lead');
-            }
-        }
-	}
+//	if (isset($_POST[$prefix.'prospect_id']) &&  !empty($_POST[$prefix.'prospect_id'])) {
+//		$prospect=new Prospect();
+//		$prospect->retrieve($_POST[$prefix.'prospect_id']);
+//		$prospect->lead_id=$focus->id;
+//		// Set to keep email in target
+//		$prospect->in_workflow = true;
+//		$prospect->converted = true;
+//		$prospect->save();
+//
+//        //if prospect id exists, make sure we are coming from prospect detail
+//        if(strtolower($_POST['return_module']) =='prospects' && strtolower($_POST['return_action']) == 'detailview'){
+//            //create campaing_log entry
+//
+//            if(isset($focus->campaign_id) && $focus->campaign_id != null){
+//                campaign_log_lead_entry($focus->campaign_id,$prospect, $focus,'lead');
+//            }
+//        }
+//	}
 
 	///////////////////////////////////////////////////////////////////////////////
 	////	INBOUND EMAIL HANDLING

@@ -62,10 +62,11 @@ class SugarWidgetFieldName extends SugarWidgetFieldVarchar
             }
 
             // only present edit link if user has save access
-            //Remove button edit in report -- by Tung Bui Kim
-            //if (self::$moduleSavePermissions[$module]) {
+            //Remove Buttom Edit in Report - By Lap Nguyen
+//            if (self::$moduleSavePermissions[$module]) {
 //                $str .= " <a href=\"#\" data-record=$record data-module=$module class=\"quickEdit\"><img border=\"0\" src=\"themes/Sugar/images/edit_inline.png\"></a>";
 //            }
+            //END
         }
 
 

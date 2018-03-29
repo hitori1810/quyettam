@@ -26,7 +26,7 @@
                                     <h4>{$MOD.LBL_MAIL_OPTIONS_TITLE}</h4>
                                 </th>
                             </tr>
-                            <tr>
+                            <tr style="display:{$HIDE_FOR_TEMPLATE}">
                                 <td scope="row" width="17%">
                                 {$MOD.LBL_EMAIL}:  {if $REQUIRED_EMAIL_ADDRESS}<span class="required" id="mandatory_email">{$APP.LBL_REQUIRED_SYMBOL}</span> {/if}
                                 </td>
@@ -236,8 +236,8 @@
                         </tr>
                         <!-- BEGIN: pro_oc -->
                         <tr>
-                            <td  scope="row" valign="top"><slot>{$APP.LBL_OC_STATUS}:</slot>&nbsp;{sugar_help text=$APP.LBL_OC_STATUS_TEXT }</td>
-                            <td ><slot><select tabindex='12' name="oc_status" {$IS_ADMIN_DISABLED}>{$OC_STATUS}</select></slot></td>
+                            <td  scope="row" valign="top"><!--<slot>{$APP.LBL_OC_STATUS}:</slot>&nbsp;{sugar_help text=$APP.LBL_OC_STATUS_TEXT } turn off by Trung Nguyen--></td>
+                            <td ><!--<slot><select tabindex='12' name="oc_status" {$IS_ADMIN_DISABLED}>{$OC_STATUS}</select></slot>--></td>
                             <td scope="row" valign="top"><slot>{$MOD.LBL_OWN_OPPS}:</slot>&nbsp;{sugar_help text=$MOD.LBL_OWN_OPPS_DESC }</td>
                             <td ><slot><input tabindex='12' type="checkbox" name="no_opps" {$NO_OPPS}></slot></td>
                         </tr>
@@ -246,7 +246,11 @@
                         <tr>
                             {if !empty($SHOW_TEAM_SELECTION)}
                             <td width="20%" scope="row"><slot>{$MOD.LBL_DEFAULT_TEAM}:</slot>&nbsp;{sugar_help text=$MOD.LBL_DEFAULT_TEAM_TEXT }</td>
+                            {if ($IS_ADMIN)}
                             <td ><slot>{$DEFAULT_TEAM_OPTIONS}</slot></td>
+                            {else}
+                            <td ><slot>{$DEFAULT_TEAM_LIST}</slot></td>
+                            {/if}
                             {/if}
                             <td scope="row"></td>
                             <td></td>
@@ -332,7 +336,7 @@
                             <!-- END: currency -->
                         </tr>
                         <tr>
-                        {if ($IS_ADMIN)}
+                        {if (($IS_ADMIN) && !isset($HIDE_FOR_TEMPLATE))}
                             <td scope="row"><slot>{$MOD.LBL_PROMPT_TIMEZONE}:</slot>&nbsp;{sugar_help text=$MOD.LBL_PROMPT_TIMEZONE_TEXT }</td>
                             <td ><slot><input type="checkbox" tabindex='14'class="checkbox" name="ut" value="0" {$PROMPTTZ}></slot></td>
                         {else}
@@ -341,7 +345,7 @@
                         {/if}
                             <td width="17%" scope="row"><slot>{$MOD.LBL_NUMBER_GROUPING_SEP}:</slot>&nbsp;{sugar_help text=$MOD.LBL_NUMBER_GROUPING_SEP_TEXT }</td>
                             <td ><slot>
-                                <input tabindex='14' name='num_grp_sep' id='default_number_grouping_seperator'
+                                <input tabindex='14' readonly="" class="input_readonly" name='num_grp_sep' id='default_number_grouping_seperator'
                                     type='text' maxlength='1' size='1' value='{$NUM_GRP_SEP}'
                                     onkeydown='setSigDigits();' onkeyup='setSigDigits();'>
                             </slot></td></tr>
@@ -351,7 +355,7 @@
                             <td  valign="top"><slot><select tabindex='14' id="default_locale_name_format" name="default_locale_name_format" selected="{$default_locale_name_format}">{$NAMEOPTIONS}</select></slot></td>
                              <td width="17%" scope="row"><slot>{$MOD.LBL_DECIMAL_SEP}:</slot>&nbsp;{sugar_help text=$MOD.LBL_DECIMAL_SEP_TEXT }</td>
                             <td ><slot>
-                                <input tabindex='14' name='dec_sep' id='default_decimal_seperator'
+                                <input tabindex='14' readonly="" class="input_readonly" name='dec_sep' id='default_decimal_seperator'
                                     type='text' maxlength='1' size='1' value='{$DEC_SEP}'
                                     onkeydown='setSigDigits();' onkeyup='setSigDigits();'>
                             </slot></td>
@@ -420,11 +424,6 @@
                     </table>
         </div>
     </div>
-    {if $ID}
-    <div id="eapm_area" style='display:{$HIDE_FOR_GROUP_AND_PORTAL};'>
-        <div style="text-align:center; width: 100%">{sugar_image name="loading"}</div>
-    </div>
-    {/if}
 </div>
 
 <script type="text/javascript">

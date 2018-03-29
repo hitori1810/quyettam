@@ -22,7 +22,7 @@ $vardefs =array(
 			'options' => 'salutation_dom',
 			'massupdate' => false,
 			'len' => '255',
-			'comment' => 'Contact salutation (e.g., Mr, Ms)'            
+			'comment' => 'Contact salutation (e.g., Mr, Ms)'
 		),
 'first_name' =>
 		array (
@@ -30,11 +30,12 @@ $vardefs =array(
 			'vname' => 'LBL_FIRST_NAME',
 			'type' => 'varchar',
 			'len' => '100',
+            'required'=>true,
 			'unified_search' => true,
 			'full_text_search' => array('boost' => 3),
 			'comment' => 'First name of the contact',
-            'merge_filter' => 'selected',     
-            
+            'merge_filter' => 'selected',
+
 		),
 	'last_name' =>
 		array (
@@ -42,11 +43,11 @@ $vardefs =array(
 			'vname' => 'LBL_LAST_NAME',
 			'type' => 'varchar',
 			'len' => '100',
-			'unified_search' => true, 
+			'unified_search' => true,
 			'full_text_search' => array('boost' => 3),
 			'comment' => 'Last name of the contact',
             'merge_filter' => 'selected',
-            'required'=>true,
+            'required'=>false,
             'importable' => 'required',
 		),
 	'name' =>
@@ -55,13 +56,13 @@ $vardefs =array(
 			'rname' => 'name',
 			'vname' => 'LBL_NAME',
 			'type' => 'name',
-			'link' => true, // bug 39288 
-			'fields' => array('first_name', 'last_name'),
+			'link' => true, // bug 39288
+			'fields' => array('last_name', 'first_name'),
 			'sort_on' => 'last_name',
 			'source' => 'non-db',
 			'group'=>'last_name',
 			'len' => '255',
-			'db_concat_fields'=> array(0=>'first_name', 1=>'last_name'),
+			'db_concat_fields'=> array(0=>'last_name', 1=>'first_name'),
             'importable' => 'false',
 		),
 	'full_name' =>
@@ -101,8 +102,9 @@ $vardefs =array(
 			'vname' => 'LBL_DO_NOT_CALL',
 			'type' => 'bool',
 			'default' => '0',
-			'audited'=>true,
-			'comment' => 'An indicator of whether contact can be called'
+			'audited'=>false,
+			'comment' => 'An indicator of whether contact can be called',
+            'massupdate' => false,
 		),
 	'phone_home' =>
 		array (
@@ -111,7 +113,7 @@ $vardefs =array(
 			'type' => 'phone',
 			'dbType' => 'varchar',
 			'len' => 100,
-			'unified_search' => true, 
+			'unified_search' => true,
 			'full_text_search' => array('boost' => 1),
 			'comment' => 'Home phone number of the contact',
             'merge_filter' => 'enabled',
@@ -129,6 +131,7 @@ $vardefs =array(
 			),
 			'vname' =>'LBL_ANY_EMAIL',
 			'studio' => array('visible'=>false, 'searchview'=>true),
+            'required'=>true,
 		),
 	'phone_mobile' =>
 		array (
@@ -138,6 +141,7 @@ $vardefs =array(
 			'dbType' => 'varchar',
 			'len' => 100,
 			'unified_search' => true,
+            'audited'=>true,
 			'full_text_search' => array('boost' => 1),
 			'comment' => 'Mobile phone number of the contact',
             'merge_filter' => 'enabled',
@@ -149,7 +153,7 @@ $vardefs =array(
 			'type' => 'phone',
 			'dbType' => 'varchar',
 			'len' => 100,
-			'audited'=>true,
+			'audited'=>false,
 			'unified_search' => true,
 			'full_text_search' => array('boost' => 1),
 			'comment' => 'Work phone number of the contact',
@@ -179,7 +183,7 @@ $vardefs =array(
 			'comment' => 'Contact fax number',
             'merge_filter' => 'enabled',
 		),
-	'email1' => 
+	'email1' =>
 		array(
 			'name'		=> 'email1',
 			'vname'		=> 'LBL_EMAIL_ADDRESS',
@@ -190,10 +194,11 @@ $vardefs =array(
 			'source'	=> 'non-db',
 			'group'=>'email1',
             'merge_filter' => 'enabled',
-		    'studio' => array('editview' => true, 'editField' => true, 'searchview' => false, 'popupsearch' => false), // bug 46859 
+            'required'=>true,
+		    'studio' => array('editview' => true, 'editField' => true, 'searchview' => false, 'popupsearch' => false), // bug 46859
 		    'full_text_search' => array('boost' => 3, 'analyzer' => 'whitespace'), //bug 54567
 		),
-	'email2' => 
+	'email2' =>
 		array(
 			'name'		=> 'email2',
 			'vname'		=> 'LBL_OTHER_EMAIL_ADDRESS',
@@ -206,7 +211,7 @@ $vardefs =array(
             'merge_filter' => 'enabled',
 		    'studio' => 'false',
 		),
-    'invalid_email' => 
+    'invalid_email' =>
 		array(
 			'name'		=> 'invalid_email',
 			'vname'     => 'LBL_INVALID_EMAIL',
@@ -214,8 +219,8 @@ $vardefs =array(
 			'type'		=> 'bool',
 		    'massupdate' => false,
 		    'studio' => 'false',
-		),    
-    'email_opt_out' => 
+		),
+    'email_opt_out' =>
 		array(
 			'name'		=> 'email_opt_out',
 			'vname'     => 'LBL_EMAIL_OPT_OUT',
@@ -224,7 +229,7 @@ $vardefs =array(
 		    'massupdate' => false,
 			'studio'=>'false',
 		),
-		
+
 	'primary_address_street' =>
 		array (
 			'name' => 'primary_address_street',
@@ -250,7 +255,7 @@ $vardefs =array(
 			'type' => 'varchar',
 			'len' => '150',
 			'source' => 'non-db',
-		),		
+		),
 	'primary_address_city' =>
 		array (
 			'name' => 'primary_address_city',
@@ -280,7 +285,7 @@ $vardefs =array(
 			'group'=>'primary_address',
 			'comment' => 'Postal code for primary address',
             'merge_filter' => 'enabled',
-            
+
 		),
 	'primary_address_country' =>
 		array (
@@ -316,7 +321,7 @@ $vardefs =array(
 			'type' => 'varchar',
 			'len' => '150',
 			'source' => 'non-db',
-		),			
+		),
 	'alt_address_city' =>
 		array (
 			'name' => 'alt_address_city',
@@ -361,7 +366,7 @@ $vardefs =array(
 			'name' => 'assistant',
 			'vname' => 'LBL_ASSISTANT',
 			'type' => 'varchar',
-			'len' => '75',
+			'len' => '150',
 			'unified_search' => true,
 			'full_text_search' => array('boost' => 2),
 			'comment' => 'Name of the assistant of the contact',
@@ -380,8 +385,8 @@ $vardefs =array(
 			'comment' => 'Phone number of the assistant of the contact',
             'merge_filter' => 'enabled',
 		),
-		
-	'email_addresses_primary' => 
+
+	'email_addresses_primary' =>
 		array (
             'name' => 'email_addresses_primary',
             'type' => 'link',
@@ -389,6 +394,7 @@ $vardefs =array(
             'source' => 'non-db',
             'vname' => 'LBL_EMAIL_ADDRESS_PRIMARY',
             'duplicate_merge' => 'disabled',
+            'massupdate' => false,
 		),
     'email_addresses' =>
 		array (
@@ -424,7 +430,7 @@ $vardefs =array(
             'len' => '255',
             'width' => '120',
             'height' => '',
-            'border' => '',					
+            'border' => '',
 		),
 ),
      'name_format_map' => array(
@@ -434,21 +440,21 @@ $vardefs =array(
         't' => 'title',
     ),
 'relationships'=>array(
-    strtolower($module).'_email_addresses' => 
+    strtolower($module).'_email_addresses' =>
     array(
         'lhs_module'=> $module, 'lhs_table'=> strtolower($module), 'lhs_key' => 'id',
         'rhs_module'=> 'EmailAddresses', 'rhs_table'=> 'email_addresses', 'rhs_key' => 'id',
         'relationship_type'=>'many-to-many',
-        'join_table'=> 'email_addr_bean_rel', 'join_key_lhs'=>'bean_id', 'join_key_rhs'=>'email_address_id', 
+        'join_table'=> 'email_addr_bean_rel', 'join_key_lhs'=>'bean_id', 'join_key_rhs'=>'email_address_id',
         'relationship_role_column'=>'bean_module',
         'relationship_role_column_value'=>$module
     ),
-    strtolower($module).'_email_addresses_primary' => 
+    strtolower($module).'_email_addresses_primary' =>
     array('lhs_module'=> $module, 'lhs_table'=> strtolower($module), 'lhs_key' => 'id',
         'rhs_module'=> 'EmailAddresses', 'rhs_table'=> 'email_addresses', 'rhs_key' => 'id',
         'relationship_type'=>'many-to-many',
-        'join_table'=> 'email_addr_bean_rel', 'join_key_lhs'=>'bean_id', 'join_key_rhs'=>'email_address_id', 
-        'relationship_role_column'=>'primary_address', 
+        'join_table'=> 'email_addr_bean_rel', 'join_key_lhs'=>'bean_id', 'join_key_rhs'=>'email_address_id',
+        'relationship_role_column'=>'primary_address',
         'relationship_role_column_value'=>'1'
     ),
 )

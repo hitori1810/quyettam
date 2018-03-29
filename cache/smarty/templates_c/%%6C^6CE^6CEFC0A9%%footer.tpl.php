@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.11, created on 2018-03-27 23:02:59
+<?php /* Smarty version 2.6.11, created on 2018-03-29 10:05:42
          compiled from include/EditView/footer.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'sugar_button', 'include/EditView/footer.tpl', 30, false),array('function', 'sugar_action_menu', 'include/EditView/footer.tpl', 39, false),)), $this); ?>
@@ -35,13 +35,18 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'sugar_butto
 ?>
       <?php echo smarty_function_sugar_button(array('module' => ($this->_tpl_vars['module']),'id' => ($this->_tpl_vars['button']),'form_id' => ($this->_tpl_vars['form_id']),'view' => ($this->_tpl_vars['view']),'appendTo' => 'footer_buttons','location' => 'FOOTER'), $this);?>
 
-   <?php endforeach; endif; unset($_from);  else:  echo smarty_function_sugar_button(array('module' => ($this->_tpl_vars['module']),'id' => 'SAVE','view' => ($this->_tpl_vars['view']),'form_id' => ($this->_tpl_vars['form_id']),'location' => 'FOOTER','appendTo' => 'footer_buttons'), $this);?>
+   <?php endforeach; endif; unset($_from); ?>
+<?php else: ?>
+<?php echo smarty_function_sugar_button(array('module' => ($this->_tpl_vars['module']),'id' => 'SAVE','view' => ($this->_tpl_vars['view']),'form_id' => ($this->_tpl_vars['form_id']),'location' => 'FOOTER','appendTo' => 'footer_buttons'), $this);?>
 
 <?php echo smarty_function_sugar_button(array('module' => ($this->_tpl_vars['module']),'id' => 'CANCEL','view' => ($this->_tpl_vars['view']),'form_id' => ($this->_tpl_vars['form_id']),'location' => 'FOOTER','appendTo' => 'footer_buttons'), $this);?>
 
-<?php endif;  if (empty ( $this->_tpl_vars['form']['hideAudit'] ) || ! $this->_tpl_vars['form']['hideAudit']):  echo smarty_function_sugar_button(array('module' => ($this->_tpl_vars['module']),'id' => 'Audit','view' => ($this->_tpl_vars['view']),'form_id' => ($this->_tpl_vars['form_id']),'appendTo' => 'footer_buttons'), $this);?>
+<?php endif; ?>
+<?php if (empty ( $this->_tpl_vars['form']['hideAudit'] ) || ! $this->_tpl_vars['form']['hideAudit']): ?>
+<?php echo smarty_function_sugar_button(array('module' => ($this->_tpl_vars['module']),'id' => 'Audit','view' => ($this->_tpl_vars['view']),'form_id' => ($this->_tpl_vars['form_id']),'appendTo' => 'footer_buttons'), $this);?>
 
-<?php endif;  echo smarty_function_sugar_action_menu(array('buttons' => $this->_tpl_vars['footer_buttons'],'class' => 'fancymenu','flat' => true), $this);?>
+<?php endif; ?>
+<?php echo smarty_function_sugar_action_menu(array('buttons' => $this->_tpl_vars['footer_buttons'],'class' => 'fancymenu','flat' => true), $this);?>
 
 </div>
 <?php endif; ?>
@@ -60,4 +65,4 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'sugar_butto
 <?php endif; ?>
 <script>SUGAR.util.doWhen("document.getElementById('EditView') != null",
         function(){ldelim}SUGAR.util.buildAccessKeyLabels();{rdelim});
-</script>
+</script>

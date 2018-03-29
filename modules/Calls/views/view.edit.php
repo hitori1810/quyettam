@@ -2,17 +2,17 @@
 if(!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
 
 /*********************************************************************************
- * By installing or using this file, you are confirming on behalf of the entity
- * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
- * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
- * http://www.sugarcrm.com/master-subscription-agreement
- *
- * If Company is not bound by the MSA, then by installing or using this file
- * you are agreeing unconditionally that Company will be bound by the MSA and
- * certifying that you have authority to bind Company accordingly.
- *
- * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
- ********************************************************************************/
+* By installing or using this file, you are confirming on behalf of the entity
+* subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
+* the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
+* http://www.sugarcrm.com/master-subscription-agreement
+*
+* If Company is not bound by the MSA, then by installing or using this file
+* you are agreeing unconditionally that Company will be bound by the MSA and
+* certifying that you have authority to bind Company accordingly.
+*
+* Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+********************************************************************************/
 
 
 require_once('include/json_config.php');
@@ -20,48 +20,34 @@ require_once('include/json_config.php');
 class CallsViewEdit extends ViewEdit
 {
     /**
-     * @const MAX_REPEAT_INTERVAL Max repeat interval.
-     */
+    * @const MAX_REPEAT_INTERVAL Max repeat interval.
+    */
     const MAX_REPEAT_INTERVAL = 30;
-    
- 	/**
- 	 * @see SugarView::preDisplay()
- 	 */
- 	public function preDisplay()
- 	{
- 		if($_REQUEST['module'] != 'Calls' && isset($_REQUEST['status']) && empty($_REQUEST['status'])) {
-	       $this->bean->status = '';
- 		} //if
-        if(!empty($_REQUEST['status']) && ($_REQUEST['status'] == 'Held')) {
-	       $this->bean->status = 'Held';
- 		}
- 		parent::preDisplay();
- 	}
 
- 	/**
- 	 * @see SugarView::display()
- 	 */
- 	public function display()
- 	{
- 		global $json;
+    /**
+    * @see SugarView::display()
+    */
+    public function display()
+    {
+        global $json;
         $json = getJSONobj();
         $json_config = new json_config();
-		if (isset($this->bean->json_id) && !empty ($this->bean->json_id)) {
-			$javascript = $json_config->get_static_json_server(false, true, 'Calls', $this->bean->json_id);
+        if (isset($this->bean->json_id) && !empty ($this->bean->json_id)) {
+            $javascript = $json_config->get_static_json_server(false, true, 'Calls', $this->bean->json_id);
 
-		} else {
-			$this->bean->json_id = $this->bean->id;
-			$javascript = $json_config->get_static_json_server(false, true, 'Calls', $this->bean->id);
+        } else {
+            $this->bean->json_id = $this->bean->id;
+            $javascript = $json_config->get_static_json_server(false, true, 'Calls', $this->bean->id);
 
-		}
- 		$this->ss->assign('JSON_CONFIG_JAVASCRIPT', $javascript);
+        }
+        $this->ss->assign('JSON_CONFIG_JAVASCRIPT', $javascript);
 
- 		if($this->ev->isDuplicate){
-	        $this->bean->status = $this->bean->getDefaultStatus();
- 		} //if
- 		
+        if($this->ev->isDuplicate){
+            $this->bean->status = $this->bean->getDefaultStatus();
+        } //if
+
         $this->ss->assign('APPLIST', $GLOBALS['app_list_strings']);
-        
+
         $repeatIntervals = array();
         for ($i = 1; $i <= self::MAX_REPEAT_INTERVAL; $i++) {
             $repeatIntervals[$i] = $i;
@@ -76,7 +62,14 @@ class CallsViewEdit extends ViewEdit
         }
         $this->ss->assign('dow', $dow);
         $this->ss->assign('repeatData', json_encode($this->view_object_map['repeatData']));
- 		
- 		parent::display();
- 	}
+
+        //Fix bug SugarCRM gay kho hieu
+        if($_REQUEST['return_module'] == 'Contacts' && (empty($this->bean->id)) && (!empty($_REQUEST['return_id']))){
+            $contact = BeanFactory::getBean('Contacts',$_REQUEST['return_id']);
+            $_REQUEST['parent_type']    = $_REQUEST['return_module'];
+            $_REQUEST['parent_id']      = $contact->id;
+            $_REQUEST['parent_name']    = $contact->name;
+        }
+        parent::display();
+    }
 }

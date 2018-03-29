@@ -1,5 +1,5 @@
 <?php
-// created: 2015-05-04 11:37:29
+// created: 2015-03-10 08:47:11
 $searchFields['Opportunities'] = array (
   'name' => 
   array (
@@ -185,6 +185,73 @@ $searchFields['Opportunities'] = array (
     'enable_range_search' => true,
   ),
   'end_worst_case' => 
+  array (
+    'query_type' => 'default',
+    'enable_range_search' => true,
+  ),
+  'date_closed' => 
+  array (
+    'query_type' => 'default',
+  ),
+  'range_total_in_invoice' => 
+  array (
+    'query_type' => 'default',
+    'enable_range_search' => true,
+  ),
+  'start_range_total_in_invoice' => 
+  array (
+    'query_type' => 'default',
+    'enable_range_search' => true,
+  ),
+  'end_range_total_in_invoice' => 
+  array (
+    'query_type' => 'default',
+    'enable_range_search' => true,
+  ),
+  'range_expire_date' => 
+  array (
+    'query_type' => 'default',
+    'enable_range_search' => true,
+    'is_date_field' => true,
+  ),
+  'start_range_expire_date' => 
+  array (
+    'query_type' => 'default',
+    'enable_range_search' => true,
+    'is_date_field' => true,
+  ),
+  'end_range_expire_date' => 
+  array (
+    'query_type' => 'default',
+    'enable_range_search' => true,
+    'is_date_field' => true,
+  ),
+  'range_discount_amount' => 
+  array (
+    'query_type' => 'default',
+    'enable_range_search' => true,
+  ),
+  'start_range_discount_amount' => 
+  array (
+    'query_type' => 'default',
+    'enable_range_search' => true,
+  ),
+  'end_range_discount_amount' => 
+  array (
+    'query_type' => 'default',
+    'enable_range_search' => true,
+  ),
+  'range_tax_amount' => 
+  array (
+    'query_type' => 'default',
+    'enable_range_search' => true,
+  ),
+  'start_range_tax_amount' => 
+  array (
+    'query_type' => 'default',
+    'enable_range_search' => true,
+  ),
+  'end_range_tax_amount' => 
   array (
     'query_type' => 'default',
     'enable_range_search' => true,

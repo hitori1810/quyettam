@@ -16,14 +16,9 @@
  ********************************************************************************/
 
 
-$app_list_strings['moduleList']['C_BookingHotel'] = 'Booking Hotel';
-$app_list_strings['status_booking_hotel_list'][''] = '';
-$app_list_strings['status_booking_hotel_list']['PaymentPending'] = 'Payment Pending';
-$app_list_strings['status_booking_hotel_list']['Comfirmation'] = 'Comfirmation';
-$app_list_strings['status_booking_hotel_list']['Amendment'] = 'Amendment';
-$app_list_strings['status_booking_hotel_list']['Cancellation'] = 'Cancellation';
-$app_list_strings['status_booking_hotel_list']['Deposit'] = 'Deposit';
-$app_list_strings['breakfast_hotel_list']['Inclued'] = 'Inclued';
+$app_list_strings['moduleList']['C_Attendance'] = 'Attendance';
+$app_list_strings['leaving_type_student_list']['Allow'] = 'Allow';
+$app_list_strings['leaving_type_student_list']['NotAllow'] = 'Not Allow';
 
 
 /*********************************************************************************
@@ -40,12 +35,7 @@ $app_list_strings['breakfast_hotel_list']['Inclued'] = 'Inclued';
  ********************************************************************************/
 
 
-$app_list_strings['moduleList']['C_BookingTicket'] = 'Booking Ticket';
-$app_list_strings['status_booking_ticket_list']['WaitingList'] = 'Waiting List';
-$app_list_strings['status_booking_ticket_list']['Comfirmed'] = 'Comfirmed';
-$app_list_strings['status_booking_ticket_list']['Deposited'] = 'Deposited';
-$app_list_strings['status_booking_ticket_list']['Paid'] = 'Paid';
-$app_list_strings['booking_type_booking_ticket_list']['Normal'] = 'Normal';
+$app_list_strings['moduleList']['C_Carryforward'] = 'Carryforward';
 
 
 /*********************************************************************************
@@ -62,12 +52,40 @@ $app_list_strings['booking_type_booking_ticket_list']['Normal'] = 'Normal';
  ********************************************************************************/
 
 
-$app_list_strings['moduleList']['C_BookingTour'] = 'Booking Tour';
-$app_list_strings['status_booking_tour_list']['Pending'] = 'Pending';
-$app_list_strings['status_booking_tour_list']['Comfirmation'] = 'Comfirmation';
-$app_list_strings['status_booking_tour_list']['Amendment'] = 'Amendment';
-$app_list_strings['status_booking_tour_list']['Cancel'] = 'Cancel';
-$app_list_strings['status_booking_tour_list']['Deposit'] = 'Deposit';
+$app_list_strings['moduleList']['J_Class'] = 'Class';
+$app_list_strings['status_class_list']['Planning'] = 'Planning';
+$app_list_strings['status_class_list']['In Progess'] = 'In Progess';
+$app_list_strings['maxsize_class_list']['10'] = '10';
+$app_list_strings['maxsize_class_list']['20'] = '20';
+$app_list_strings['maxsize_class_list']['30'] = '30';
+$app_list_strings['maxsize_class_list']['40'] = '40';
+$app_list_strings['maxsize_class_list']['50'] = '50';
+$app_list_strings['maxsize_class_list']['60'] = '60';
+$app_list_strings['maxsize_class_list']['70'] = '70';
+$app_list_strings['kind_of_course_junior_program_list']['Kindy'] = 'Kindy';
+$app_list_strings['kind_of_course_junior_program_list']['Kids'] = 'Kids';
+$app_list_strings['kind_of_course_junior_program_list']['Kids Plus'] = 'Kids Plus';
+$app_list_strings['kind_of_course_junior_program_list']['Teens'] = 'Teens';
+$app_list_strings['kind_of_course_junior_program_list']['Premium'] = 'Premium';
+$app_list_strings['kind_of_course_junior_program_list']['IELTS/TOEFL'] = 'IELTS/TOEFL';
+$app_list_strings['level_junior_program_list']['1'] = '1';
+$app_list_strings['level_junior_program_list']['2'] = '2';
+$app_list_strings['level_junior_program_list']['3'] = '3';
+$app_list_strings['level_junior_program_list']['4'] = '4';
+$app_list_strings['level_junior_program_list']['5'] = '5';
+$app_list_strings['level_junior_program_list']['6'] = '6';
+$app_list_strings['level_junior_program_list']['E'] = 'E';
+$app_list_strings['level_junior_program_list']['PI'] = 'PI';
+$app_list_strings['level_junior_program_list']['I'] = 'I';
+$app_list_strings['level_junior_program_list']['UI'] = 'UI';
+$app_list_strings['level_junior_program_list']['A'] = 'A';
+$app_list_strings['module_junior_program_list']['A'] = 'A';
+$app_list_strings['module_junior_program_list']['B'] = 'B';
+$app_list_strings['module_junior_program_list']['C'] = 'C';
+$app_list_strings['module_junior_program_list']['1'] = '1';
+$app_list_strings['module_junior_program_list']['2'] = '2';
+$app_list_strings['module_junior_program_list']['3'] = '3';
+$app_list_strings['module_junior_program_list']['4'] = '4';
 
 
 /*********************************************************************************
@@ -84,21 +102,41 @@ $app_list_strings['status_booking_tour_list']['Deposit'] = 'Deposit';
  ********************************************************************************/
 
 
-$app_list_strings['c_category_category_dom'][''] = '';
-$app_list_strings['c_category_category_dom']['Marketing'] = 'Marketing';
-$app_list_strings['c_category_category_dom']['Knowledege Base'] = 'Knowledge Base';
-$app_list_strings['c_category_category_dom']['Sales'] = 'Sales';
-$app_list_strings['c_category_subcategory_dom'][''] = '';
-$app_list_strings['c_category_subcategory_dom']['Marketing Collateral'] = 'Marketing Collateral';
-$app_list_strings['c_category_subcategory_dom']['Product Brochures'] = 'Product Brochures';
-$app_list_strings['c_category_subcategory_dom']['FAQ'] = 'FAQ';
-$app_list_strings['c_category_status_dom']['Active'] = 'Active';
-$app_list_strings['c_category_status_dom']['Draft'] = 'Draft';
-$app_list_strings['c_category_status_dom']['FAQ'] = 'FAQ';
-$app_list_strings['c_category_status_dom']['Expired'] = 'Expired';
-$app_list_strings['c_category_status_dom']['Under Review'] = 'Under Review';
-$app_list_strings['c_category_status_dom']['Pending'] = 'Pending';
-$app_list_strings['moduleList']['C_Category'] = 'Category';
+$app_list_strings['moduleList']['C_Classes'] = 'Classes';
+$app_list_strings['status_classes_list']['Opening'] = 'Opening';
+$app_list_strings['status_classes_list']['Full'] = 'Full';
+$app_list_strings['status_classes_list']['Closed'] = 'Closed';
+
+
+/*********************************************************************************
+ * By installing or using this file, you are confirming on behalf of the entity
+ * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
+ * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
+ * http://www.sugarcrm.com/master-subscription-agreement
+ *
+ * If Company is not bound by the MSA, then by installing or using this file
+ * you are agreeing unconditionally that Company will be bound by the MSA and
+ * certifying that you have authority to bind Company accordingly.
+ *
+ * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ ********************************************************************************/
+
+
+$app_list_strings['moduleList']['C_Commission'] = 'Commission';
+
+
+/*********************************************************************************
+ * By installing or using this file, you are confirming on behalf of the entity
+ * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
+ * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
+ * http://www.sugarcrm.com/master-subscription-agreement
+ *
+ * If Company is not bound by the MSA, then by installing or using this file
+ * you are agreeing unconditionally that Company will be bound by the MSA and
+ * certifying that you have authority to bind Company accordingly.
+ *
+ * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ ********************************************************************************/
 
 
 $app_list_strings['moduleList']['C_ConfigID'] = 'Config:ID';
@@ -118,7 +156,198 @@ $app_list_strings['moduleList']['C_ConfigID'] = 'Config:ID';
  ********************************************************************************/
 
 
-$app_list_strings['moduleList']['C_DetailViewEditableConfig'] = 'DetailView Editable Config';
+$app_list_strings['moduleList']['J_ConfigInvoiceNo'] = 'Config:InvoiceNo';
+
+
+/*********************************************************************************
+ * By installing or using this file, you are confirming on behalf of the entity
+ * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
+ * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
+ * http://www.sugarcrm.com/master-subscription-agreement
+ *
+ * If Company is not bound by the MSA, then by installing or using this file
+ * you are agreeing unconditionally that Company will be bound by the MSA and
+ * certifying that you have authority to bind Company accordingly.
+ *
+ * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ ********************************************************************************/
+
+
+$app_list_strings['moduleList']['C_Contacts'] = 'Contacts';
+
+
+/*********************************************************************************
+ * By installing or using this file, you are confirming on behalf of the entity
+ * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
+ * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
+ * http://www.sugarcrm.com/master-subscription-agreement
+ *
+ * If Company is not bound by the MSA, then by installing or using this file
+ * you are agreeing unconditionally that Company will be bound by the MSA and
+ * certifying that you have authority to bind Company accordingly.
+ *
+ * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ ********************************************************************************/
+
+
+$app_list_strings['moduleList']['J_Coursefee'] = 'Course fee';
+
+
+/**
+ * create applist string of survey Question
+ *
+ * LICENSE: The contents of this file are subject to the license agreement ("License") which is included
+ * in the installation package (LICENSE.txt). By installing or using this file, you have unconditionally
+ * agreed to the terms and conditions of the License, and you may not use this file except in compliance
+ * with the License.
+ *
+ * @author     Original Author Biztech Co.
+ */
+
+
+$app_list_strings['moduleList']['bc_survey_questions'] = 'Survey Questions';
+$app_list_strings['moduleList']['bc_survey_answers'] = 'Survey Answers';
+$app_list_strings['moduleList']['bc_survey_template'] = 'Survey Template';
+$app_list_strings['moduleList']['bc_survey'] = 'Survey';
+$app_list_strings['moduleList']['bc_survey_pages'] = 'Survey Pages';
+$app_list_strings['moduleList']['bc_survey_submission'] = 'Survey Transaction';
+$app_list_strings['moduleList']['bc_submission_data'] = 'Submission Data';
+$app_list_strings['moduleList']['bc_survey_automizer'] = 'Survey Automation';
+$app_list_strings['question_type_list'] = array(
+    'Textbox' => 'Textbox',
+    'CommentTextbox' => 'Comment Textbox',
+    'Checkbox' => 'Checkbox',
+    'RadioButton' => 'Radio Button',
+    'DrodownList' => 'Dropdown List',
+    'MultiSelectList' => 'MultiSelect List',
+    'ContactInformation' => 'Contact Information',
+    'question_section' =>'Question Section',
+    'Rating' => 'Rating',
+    'Matrix' => 'Matrix / Grid',
+    'Scale' => 'Scale',
+    'Date' => 'DateTime',
+    'Image' => 'Image',
+    'Video' => 'Video',
+);
+$app_list_strings['operator_list']['Equal_To'] = 'Equal To';
+$app_list_strings['operator_list']['Not_Equal_To'] = 'Not Equal To';
+$app_list_strings['operator_list']['Greater_Than'] = 'Greater Than';
+$app_list_strings['operator_list']['Less_Than'] = 'Less Than';
+$app_list_strings['operator_list']['Greater_Than_or_Equal_To'] = 'Greater Than or Equal To';
+$app_list_strings['operator_list']['Less_Than_or_Equal_To'] = 'Less Than or Equal To';
+$app_list_strings['operator_list']['Contains'] = 'Contains';
+$app_list_strings['operator_list']['Starts_With'] = 'Starts With';
+$app_list_strings['operator_list']['Ends_With'] = 'Ends With';
+$app_list_strings['operator_list']['is_null'] = 'Is Null';
+$app_list_strings['operator_list']['Any_change']="Any Change";
+$app_list_strings['question_type_list']['ContactInformation'] = 'Contact Information';
+$app_list_strings['parent_type_list'][''] = '';
+$app_list_strings['parent_type_list']['Survey'] = 'Survey';
+$app_list_strings['parent_type_list']['SurveyTemplate'] = 'Survey Template';
+$app_list_strings['survey_submission_list'] = array (
+  'Mail_not_receive' => 'Mail not Receive',
+  'Pending' => 'Pending',
+  'Submitted' => 'Submitted',
+);
+$app_list_strings['condition_type_list']['Value'] = 'Value';
+$app_list_strings['condition_type_list']['Field'] = 'Field';
+$app_list_strings['condition_type_list']['Any_Change'] = 'Any Change';
+$app_list_strings['condition_type_list']['SecurityGroup'] = 'In SecurityGroup';
+$app_list_strings['condition_type_list']['Date'] = 'Date';
+$app_list_strings['condition_type_list']['Multi'] = 'One of';
+$app_list_strings['moduleList']['bc_survey_language'] = 'Survey Language';
+$app_list_strings['text_direction_list']['left_to_right'] = 'Left to Right';
+$app_list_strings['text_direction_list']['right_to_left'] = 'Right to Left';
+$app_list_strings['language_status_list']['enable'] = 'Enable';
+$app_list_strings['language_status_list']['disable'] = 'Disable';
+ $app_list_strings['execution_occurs_list'] = array(
+    'when_record_saved' => 'When record saved',
+    'after_elapse_time' => 'After elapse time',
+);
+$app_list_strings['survey_language_dom'] =  array (
+    'en_us' => 'English (US)',
+    'vn_VN' => 'Vietnamese',
+  );
+$app_list_strings['status_list'] = array(
+    'active' => 'Active',
+    'inactive' => 'Inactive',
+);
+$app_list_strings['sync_module_list'] = array(
+    'Accounts'  => 'Accounts',
+    'Contacts'  => 'Contacts',
+    'Leads'     => 'Leads',
+    'Prospects' => 'Targets',
+);
+$app_list_strings['sync_type_list'] = array(
+    'create'  => 'Create Records',
+    'create_update'  => 'Create or Update Records',
+);
+$app_list_strings['applied_to_list'] = array(
+    'new_and_updated_records' => 'New and Updated records',
+    'new_records_only' => 'New records only',
+    'updated_records_only' => 'Updated records only'
+);
+$app_list_strings['submitted_by']=array (
+  'recipient' => 'Recipient',
+  'sender' => 'Sender',
+);
+$app_list_strings['language_direction']=array (
+  'left_to_right' => 'Left to Right',
+  'right_to_left' => 'Right to Left',
+);
+        $app_list_strings['bc_moduleList'] = array(
+            'Accounts'      => 'Accounts',
+            'Contacts'      => 'Students',
+            'Leads'         => 'Leads',
+            'Prospects'     => 'Targets',
+            'C_Teachers'    => 'Teachers',
+            'Tasks'         => 'Tasks',
+            'Meetings'      => 'Meetings',
+            'Notes'      => 'Notes',
+            'Calls'      => 'Calls',
+        );
+
+
+/*********************************************************************************
+ * By installing or using this file, you are confirming on behalf of the entity
+ * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
+ * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
+ * http://www.sugarcrm.com/master-subscription-agreement
+ *
+ * If Company is not bound by the MSA, then by installing or using this file
+ * you are agreeing unconditionally that Company will be bound by the MSA and
+ * certifying that you have authority to bind Company accordingly.
+ *
+ * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ ********************************************************************************/
+
+
+$app_list_strings['moduleList']['C_DeliveryRevenue'] = 'Delivery Revenue';
+
+
+/*********************************************************************************
+ * By installing or using this file, you are confirming on behalf of the entity
+ * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
+ * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
+ * http://www.sugarcrm.com/master-subscription-agreement
+ *
+ * If Company is not bound by the MSA, then by installing or using this file
+ * you are agreeing unconditionally that Company will be bound by the MSA and
+ * certifying that you have authority to bind Company accordingly.
+ *
+ * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ ********************************************************************************/
+
+
+$app_list_strings['moduleList']['J_Discount'] = 'Discount';
+$app_list_strings['status_discount_list']['Active'] = 'Active';
+$app_list_strings['status_discount_list']['Inactive'] = 'Inactive';
+$app_list_strings['type_discount_list']['Discount Percent'] = 'Discount Percent';
+$app_list_strings['type_discount_list']['Discount Amount'] = 'Discount Amount';
+$app_list_strings['type_discount_list']['Gift'] = 'Gift';
+$app_list_strings['applyfor_discount_list']['Current Student'] = 'Current Student';
+$app_list_strings['applyfor_discount_list']['New Student'] = 'New Student';
+$app_list_strings['applyfor_discount_list']['Both'] = 'Both';
 
 
 /*********************************************************************************
@@ -152,7 +381,206 @@ $app_list_strings['moduleList']['C_DuplicationDetection'] = 'Duplication Detecti
  ********************************************************************************/
 
 
-$app_list_strings['moduleList']['C_Hotel'] = 'Hotel';
+$app_list_strings['moduleList']['J_Feedback'] = 'Feedback';
+$app_list_strings['status_feedback_list'][''] = '';
+$app_list_strings['status_feedback_list']['New'] = 'New';
+$app_list_strings['status_feedback_list']['Assigned'] = 'Assigned';
+$app_list_strings['status_feedback_list']['In Progress'] = 'In Progress';
+$app_list_strings['status_feedback_list']['Done'] = 'Done';
+$app_list_strings['priority_feedback_list'][''] = '';
+$app_list_strings['priority_feedback_list']['High'] = 'High';
+$app_list_strings['priority_feedback_list']['Medium'] = 'Medium';
+$app_list_strings['priority_feedback_list']['Low'] = 'Low';
+
+
+/*********************************************************************************
+ * By installing or using this file, you are confirming on behalf of the entity
+ * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
+ * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
+ * http://www.sugarcrm.com/master-subscription-agreement
+ *
+ * If Company is not bound by the MSA, then by installing or using this file
+ * you are agreeing unconditionally that Company will be bound by the MSA and
+ * certifying that you have authority to bind Company accordingly.
+ *
+ * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ ********************************************************************************/
+
+
+$app_list_strings['moduleList']['C_FieldHighlighter'] = 'Field Highlighter';
+
+
+/*********************************************************************************
+ * By installing or using this file, you are confirming on behalf of the entity
+ * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
+ * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
+ * http://www.sugarcrm.com/master-subscription-agreement
+ *
+ * If Company is not bound by the MSA, then by installing or using this file
+ * you are agreeing unconditionally that Company will be bound by the MSA and
+ * certifying that you have authority to bind Company accordingly.
+ *
+ * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ ********************************************************************************/
+$app_list_strings['status_gradebook_list']['Approved'] = 'Approved';
+$app_list_strings['status_gradebook_list']['NotApprove'] = 'Not Approve';
+
+
+/*********************************************************************************
+ * By installing or using this file, you are confirming on behalf of the entity
+ * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
+ * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
+ * http://www.sugarcrm.com/master-subscription-agreement
+ *
+ * If Company is not bound by the MSA, then by installing or using this file
+ * you are agreeing unconditionally that Company will be bound by the MSA and
+ * certifying that you have authority to bind Company accordingly.
+ *
+ * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ ********************************************************************************/
+
+
+$app_list_strings['moduleList']['C_HelpTextConfig'] = 'Help Text Config';
+
+
+   $app_list_strings['moduleList']['Holidays'] = 'Holidays';
+
+
+
+/*********************************************************************************
+ * By installing or using this file, you are confirming on behalf of the entity
+ * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
+ * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
+ * http://www.sugarcrm.com/master-subscription-agreement
+ *
+ * If Company is not bound by the MSA, then by installing or using this file
+ * you are agreeing unconditionally that Company will be bound by the MSA and
+ * certifying that you have authority to bind Company accordingly.
+ *
+ * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ ********************************************************************************/
+
+
+$app_list_strings['moduleList']['J_Inventory'] = 'Inventory';
+$app_list_strings['status_inventory_list']['Draft'] = 'Draft';
+$app_list_strings['status_inventory_list']['In Progress'] = 'In Process';
+$app_list_strings['status_inventory_list']['Done'] = 'Done';
+$app_list_strings['type_inventory_list']['Export'] = 'Export';
+$app_list_strings['type_inventory_list']['Import'] = 'Import';
+$app_list_strings['from_inventory_list']['Center'] = 'Center';
+$app_list_strings['from_inventory_list']['Supplier'] = 'Supplier';
+$app_list_strings['to_inventory_list']['Center'] = 'Center';
+$app_list_strings['to_inventory_list']['Teacher/Library'] = 'Teacher/Library';
+$app_list_strings['to_inventory_list']['Corp/BEP'] = 'Corp/BEP';
+
+
+/*********************************************************************************
+ * By installing or using this file, you are confirming on behalf of the entity
+ * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
+ * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
+ * http://www.sugarcrm.com/master-subscription-agreement
+ *
+ * If Company is not bound by the MSA, then by installing or using this file
+ * you are agreeing unconditionally that Company will be bound by the MSA and
+ * certifying that you have authority to bind Company accordingly.
+ *
+ * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ ********************************************************************************/
+
+
+$app_list_strings['moduleList']['J_Inventorydetail'] = 'Inventory Detail';
+
+
+/*********************************************************************************
+ * By installing or using this file, you are confirming on behalf of the entity
+ * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
+ * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
+ * http://www.sugarcrm.com/master-subscription-agreement
+ *
+ * If Company is not bound by the MSA, then by installing or using this file
+ * you are agreeing unconditionally that Company will be bound by the MSA and
+ * certifying that you have authority to bind Company accordingly.
+ *
+ * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ ********************************************************************************/
+
+
+$app_list_strings['moduleList']['J_Invoice'] = 'Invoice';
+
+
+/*********************************************************************************
+ * By installing or using this file, you are confirming on behalf of the entity
+ * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
+ * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
+ * http://www.sugarcrm.com/master-subscription-agreement
+ *
+ * If Company is not bound by the MSA, then by installing or using this file
+ * you are agreeing unconditionally that Company will be bound by the MSA and
+ * certifying that you have authority to bind Company accordingly.
+ *
+ * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ ********************************************************************************/
+
+
+$app_list_strings['moduleList']['C_Invoicelines'] = 'Invoice Lines';
+
+
+/*********************************************************************************
+ * By installing or using this file, you are confirming on behalf of the entity
+ * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
+ * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
+ * http://www.sugarcrm.com/master-subscription-agreement
+ *
+ * If Company is not bound by the MSA, then by installing or using this file
+ * you are agreeing unconditionally that Company will be bound by the MSA and
+ * certifying that you have authority to bind Company accordingly.
+ *
+ * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ ********************************************************************************/
+
+
+$app_list_strings['moduleList']['C_Invoices'] = 'Invoices';
+$app_list_strings['status_invoice_list']['Paid'] = 'Paid';
+$app_list_strings['status_invoice_list']['Unpaid'] = 'Unpaid';
+$app_list_strings['status_invoice_list']['Cancel'] = 'Cancel';
+
+
+/*********************************************************************************
+ * By installing or using this file, you are confirming on behalf of the entity
+ * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
+ * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
+ * http://www.sugarcrm.com/master-subscription-agreement
+ *
+ * If Company is not bound by the MSA, then by installing or using this file
+ * you are agreeing unconditionally that Company will be bound by the MSA and
+ * certifying that you have authority to bind Company accordingly.
+ *
+ * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ ********************************************************************************/
+
+
+$app_list_strings['j_feedback_type_dom']['Administration'] = 'Administration';
+$app_list_strings['j_feedback_type_dom']['Product'] = 'Product';
+$app_list_strings['j_feedback_type_dom']['User'] = 'User';
+$app_list_strings['j_feedback_status_dom']['New'] = 'New';
+$app_list_strings['j_feedback_status_dom']['Assigned'] = 'Assigned';
+$app_list_strings['j_feedback_status_dom']['Closed'] = 'Closed';
+$app_list_strings['j_feedback_status_dom']['Pending Input'] = 'Pending Input';
+$app_list_strings['j_feedback_status_dom']['Rejected'] = 'Rejected';
+$app_list_strings['j_feedback_status_dom']['Duplicate'] = 'Duplicate';
+$app_list_strings['j_feedback_priority_dom']['P1'] = 'High';
+$app_list_strings['j_feedback_priority_dom']['P2'] = 'Medium';
+$app_list_strings['j_feedback_priority_dom']['P3'] = 'Low';
+$app_list_strings['j_feedback_resolution_dom'][''] = '';
+$app_list_strings['j_feedback_resolution_dom']['Accepted'] = 'Accepted';
+$app_list_strings['j_feedback_resolution_dom']['Duplicate'] = 'Duplicate';
+$app_list_strings['j_feedback_resolution_dom']['Closed'] = 'Closed';
+$app_list_strings['j_feedback_resolution_dom']['Out of Date'] = 'Out of Date';
+$app_list_strings['j_feedback_resolution_dom']['Invalid'] = 'Invalid';
+$app_list_strings['moduleList']['J_GradebookConfig'] = 'Gradebook Config';
+$app_list_strings['moduleList']['J_Gradebook'] = 'Gradebook';
+$app_list_strings['moduleList']['J_Feedback'] = 'Feedback';
+$app_list_strings['moduleList']['J_GradebookDetail'] = 'Gradebook Detail';
 
 
 /*********************************************************************************
@@ -186,7 +614,26 @@ $app_list_strings['moduleList']['C_KeyboardSetting'] = 'Keyboard Settings';
  ********************************************************************************/
 
 
-$app_list_strings['moduleList']['C_LeaveDay'] = 'Leave Days';
+$app_list_strings['moduleList']['J_Kindofcourse'] = 'Kindofcourse';
+$app_list_strings['kind_of_course_junior_program_list']['Kindy'] = 'Kindy';
+$app_list_strings['kind_of_course_junior_program_list']['Kids'] = 'Kids';
+$app_list_strings['kind_of_course_junior_program_list']['Kids Plus'] = 'Kids Plus';
+$app_list_strings['kind_of_course_junior_program_list']['Teens'] = 'Teens';
+$app_list_strings['kind_of_course_junior_program_list']['Premium'] = 'Premium';
+$app_list_strings['kind_of_course_junior_program_list']['IELTS/TOEFL'] = 'IELTS/TOEFL';
+$app_list_strings['level_junior_program_list']['1'] = '1';
+$app_list_strings['level_junior_program_list']['2'] = '2';
+$app_list_strings['level_junior_program_list']['3'] = '3';
+$app_list_strings['level_junior_program_list']['4'] = '4';
+$app_list_strings['level_junior_program_list']['5'] = '5';
+$app_list_strings['level_junior_program_list']['6'] = '6';
+$app_list_strings['level_junior_program_list']['E'] = 'E';
+$app_list_strings['level_junior_program_list']['PI'] = 'PI';
+$app_list_strings['level_junior_program_list']['I'] = 'I';
+$app_list_strings['level_junior_program_list']['UI'] = 'UI';
+$app_list_strings['level_junior_program_list']['A'] = 'A';
+$app_list_strings['status_Kindofcourse_list']['Active'] = 'Active';
+$app_list_strings['status_Kindofcourse_list']['Inactive'] = 'Inactive';
 
 
 /*********************************************************************************
@@ -203,14 +650,7 @@ $app_list_strings['moduleList']['C_LeaveDay'] = 'Leave Days';
  ********************************************************************************/
 
 
-$app_list_strings['moduleList']['C_Payment'] = 'Payment';
-$app_list_strings['payment_method_options']['Cash'] = 'Cash';
-$app_list_strings['payment_method_options']['BankTranfer'] = 'Bank Tranfer';
-$app_list_strings['payment_method_options']['Card'] = 'Card';
-$app_list_strings['payment_method_options']['Other'] = 'Other';
-$app_list_strings['currency_list']['VND'] = 'VND';
-$app_list_strings['currency_list']['USD'] = 'USD';
-$app_list_strings['currency_list']['EUR'] = 'EUR';
+$app_list_strings['moduleList']['J_Loyalty'] = 'Loyalty';
 
 
 /*********************************************************************************
@@ -227,245 +667,7 @@ $app_list_strings['currency_list']['EUR'] = 'EUR';
  ********************************************************************************/
 
 
-$app_list_strings['moduleList']['C_Province'] = 'Province';
-$app_list_strings['moduleList']['C_District'] = 'District';
-$app_list_strings['moduleList']['C_Ward'] = 'Ward';
-$app_list_strings['countries_dom'][''] = '';
-$app_list_strings['countries_dom']['ABU DHABI'] = 'ABU DHABI';
-$app_list_strings['countries_dom']['ADEN'] = 'ADEN';
-$app_list_strings['countries_dom']['AFGHANISTAN'] = 'AFGHANISTAN';
-$app_list_strings['countries_dom']['ALBANIA'] = 'ALBANIA';
-$app_list_strings['countries_dom']['ALGERIA'] = 'ALGERIA';
-$app_list_strings['countries_dom']['AMERICAN SAMOA'] = 'AMERICAN SAMOA';
-$app_list_strings['countries_dom']['ANDORRA'] = 'ANDORRA';
-$app_list_strings['countries_dom']['ANGOLA'] = 'ANGOLA';
-$app_list_strings['countries_dom']['ANTARCTICA'] = 'ANTARCTICA';
-$app_list_strings['countries_dom']['ANTIGUA'] = 'ANTIGUA';
-$app_list_strings['countries_dom']['ARGENTINA'] = 'ARGENTINA';
-$app_list_strings['countries_dom']['ARMENIA'] = 'ARMENIA';
-$app_list_strings['countries_dom']['ARUBA'] = 'ARUBA';
-$app_list_strings['countries_dom']['AUSTRALIA'] = 'AUSTRALIA';
-$app_list_strings['countries_dom']['AUSTRIA'] = 'AUSTRIA';
-$app_list_strings['countries_dom']['AZERBAIJAN'] = 'AZERBAIJAN';
-$app_list_strings['countries_dom']['BAHAMAS'] = 'BAHAMAS';
-$app_list_strings['countries_dom']['BAHRAIN'] = 'BAHRAIN';
-$app_list_strings['countries_dom']['BANGLADESH'] = 'BANGLADESH';
-$app_list_strings['countries_dom']['BARBADOS'] = 'BARBADOS';
-$app_list_strings['countries_dom']['BELARUS'] = 'BELARUS';
-$app_list_strings['countries_dom']['BELGIUM'] = 'BELGIUM';
-$app_list_strings['countries_dom']['BELIZE'] = 'BELIZE';
-$app_list_strings['countries_dom']['BENIN'] = 'BENIN';
-$app_list_strings['countries_dom']['BERMUDA'] = 'BERMUDA';
-$app_list_strings['countries_dom']['BHUTAN'] = 'BHUTAN';
-$app_list_strings['countries_dom']['BOLIVIA'] = 'BOLIVIA';
-$app_list_strings['countries_dom']['BOSNIA'] = 'BOSNIA';
-$app_list_strings['countries_dom']['BOTSWANA'] = 'BOTSWANA';
-$app_list_strings['countries_dom']['BOUVET ISLAND'] = 'BOUVET ISLAND';
-$app_list_strings['countries_dom']['BRAZIL'] = 'BRAZIL';
-$app_list_strings['countries_dom']['BRITISH ANTARCTICA TERRITORY'] = 'BRITISH ANTARCTICA TERRITORY';
-$app_list_strings['countries_dom']['BRITISH INDIAN OCEAN TERRITORY'] = 'BRITISH INDIAN OCEAN TERRITORY';
-$app_list_strings['countries_dom']['BRITISH VIRGIN ISLANDS'] = 'BRITISH VIRGIN ISLANDS';
-$app_list_strings['countries_dom']['BRITISH WEST INDIES'] = 'BRITISH WEST INDIES';
-$app_list_strings['countries_dom']['BRUNEI'] = 'BRUNEI';
-$app_list_strings['countries_dom']['BULGARIA'] = 'BULGARIA';
-$app_list_strings['countries_dom']['BURKINA FASO'] = 'BURKINA FASO';
-$app_list_strings['countries_dom']['BURUNDI'] = 'BURUNDI';
-$app_list_strings['countries_dom']['CAMBODIA'] = 'CAMBODIA';
-$app_list_strings['countries_dom']['CAMEROON'] = 'CAMEROON';
-$app_list_strings['countries_dom']['CANADA'] = 'CANADA';
-$app_list_strings['countries_dom']['CANAL ZONE'] = 'CANAL ZONE';
-$app_list_strings['countries_dom']['CANARY ISLAND'] = 'CANARY ISLAND';
-$app_list_strings['countries_dom']['CAPE VERDI ISLANDS'] = 'CAPE VERDI ISLANDS';
-$app_list_strings['countries_dom']['CAYMAN ISLANDS'] = 'CAYMAN ISLANDS';
-$app_list_strings['countries_dom']['CEVLON'] = 'CEVLON';
-$app_list_strings['countries_dom']['CHAD'] = 'CHAD';
-$app_list_strings['countries_dom']['CHANNEL ISLAND UK'] = 'CHANNEL ISLAND UK';
-$app_list_strings['countries_dom']['CHILE'] = 'CHILE';
-$app_list_strings['countries_dom']['CHINA'] = 'CHINA';
-$app_list_strings['countries_dom']['CHRISTMAS ISLAND'] = 'CHRISTMAS ISLAND';
-$app_list_strings['countries_dom']['COCOS (KEELING) ISLAND'] = 'COCOS (KEELING) ISLAND';
-$app_list_strings['countries_dom']['COLOMBIA'] = 'COLOMBIA';
-$app_list_strings['countries_dom']['COMORO ISLANDS'] = 'COMORO ISLANDS';
-$app_list_strings['countries_dom']['CONGO'] = 'CONGO';
-$app_list_strings['countries_dom']['CONGO KINSHASA'] = 'CONGO KINSHASA';
-$app_list_strings['countries_dom']['COOK ISLANDS'] = 'COOK ISLANDS';
-$app_list_strings['countries_dom']['COSTA RICA'] = 'COSTA RICA';
-$app_list_strings['countries_dom']['CROATIA'] = 'CROATIA';
-$app_list_strings['countries_dom']['CUBA'] = 'CUBA';
-$app_list_strings['countries_dom']['CURACAO'] = 'CURACAO';
-$app_list_strings['countries_dom']['CYPRUS'] = 'CYPRUS';
-$app_list_strings['countries_dom']['CZECH REPUBLIC'] = 'CZECH REPUBLIC';
-$app_list_strings['countries_dom']['DAHOMEY'] = 'DAHOMEY';
-$app_list_strings['countries_dom']['DENMARK'] = 'DENMARK';
-$app_list_strings['countries_dom']['DJIBOUTI'] = 'DJIBOUTI';
-$app_list_strings['countries_dom']['DOMINICA'] = 'DOMINICA';
-$app_list_strings['countries_dom']['DOMINICAN REPUBLIC'] = 'DOMINICAN REPUBLIC';
-$app_list_strings['countries_dom']['DUBAI'] = 'DUBAI';
-$app_list_strings['countries_dom']['ECUADOR'] = 'ECUADOR';
-$app_list_strings['countries_dom']['EGYPT'] = 'EGYPT';
-$app_list_strings['countries_dom']['EL SALVADOR'] = 'EL SALVADOR';
-$app_list_strings['countries_dom']['EQUATORIAL GUINEA'] = 'EQUATORIAL GUINEA';
-$app_list_strings['countries_dom']['ESTONIA'] = 'ESTONIA';
-$app_list_strings['countries_dom']['ETHIOPIA'] = 'ETHIOPIA';
-$app_list_strings['countries_dom']['FAEROE ISLANDS'] = 'FAEROE ISLANDS';
-$app_list_strings['countries_dom']['FALKLAND ISLANDS'] = 'FALKLAND ISLANDS';
-$app_list_strings['countries_dom']['FIJI'] = 'FIJI';
-$app_list_strings['countries_dom']['FINLAND'] = 'FINLAND';
-$app_list_strings['countries_dom']['FRANCE'] = 'FRANCE';
-$app_list_strings['countries_dom']['FRENCH GUIANA'] = 'FRENCH GUIANA';
-$app_list_strings['countries_dom']['FRENCH POLYNESIA'] = 'FRENCH POLYNESIA';
-$app_list_strings['countries_dom']['GABON'] = 'GABON';
-$app_list_strings['countries_dom']['GAMBIA'] = 'GAMBIA';
-$app_list_strings['countries_dom']['GEORGIA'] = 'GEORGIA';
-$app_list_strings['countries_dom']['GERMANY'] = 'GERMANY';
-$app_list_strings['countries_dom']['GHANA'] = 'GHANA';
-$app_list_strings['countries_dom']['GIBRALTAR'] = 'GIBRALTAR';
-$app_list_strings['countries_dom']['GREECE'] = 'GREECE';
-$app_list_strings['countries_dom']['GREENLAND'] = 'GREENLAND';
-$app_list_strings['countries_dom']['GUADELOUPE'] = 'GUADELOUPE';
-$app_list_strings['countries_dom']['GUAM'] = 'GUAM';
-$app_list_strings['countries_dom']['GUATEMALA'] = 'GUATEMALA';
-$app_list_strings['countries_dom']['GUINEA'] = 'GUINEA';
-$app_list_strings['countries_dom']['GUYANA'] = 'GUYANA';
-$app_list_strings['countries_dom']['HAITI'] = 'HAITI';
-$app_list_strings['countries_dom']['HONDURAS'] = 'HONDURAS';
-$app_list_strings['countries_dom']['HONG KONG'] = 'HONG KONG';
-$app_list_strings['countries_dom']['HUNGARY'] = 'HUNGARY';
-$app_list_strings['countries_dom']['ICELAND'] = 'ICELAND';
-$app_list_strings['countries_dom']['IFNI'] = 'IFNI';
-$app_list_strings['countries_dom']['INDIA'] = 'INDIA';
-$app_list_strings['countries_dom']['INDONESIA'] = 'INDONESIA';
-$app_list_strings['countries_dom']['IRAN'] = 'IRAN';
-$app_list_strings['countries_dom']['IRAQ'] = 'IRAQ';
-$app_list_strings['countries_dom']['IRELAND'] = 'IRELAND';
-$app_list_strings['countries_dom']['ISRAEL'] = 'ISRAEL';
-$app_list_strings['countries_dom']['ITALY'] = 'ITALY';
-$app_list_strings['countries_dom']['IVORY COAST'] = 'IVORY COAST';
-$app_list_strings['countries_dom']['JAMAICA'] = 'JAMAICA';
-$app_list_strings['countries_dom']['JAPAN'] = 'JAPAN';
-$app_list_strings['countries_dom']['JORDAN'] = 'JORDAN';
-$app_list_strings['countries_dom']['KAZAKHSTAN'] = 'KAZAKHSTAN';
-$app_list_strings['countries_dom']['KENYA'] = 'KENYA';
-$app_list_strings['countries_dom']['KOREA'] = 'KOREA';
-$app_list_strings['countries_dom']['KOREA, SOUTH'] = 'KOREA, SOUTH';
-$app_list_strings['countries_dom']['KUWAIT'] = 'KUWAIT';
-$app_list_strings['countries_dom']['KYRGYZSTAN'] = 'KYRGYZSTAN';
-$app_list_strings['countries_dom']['LAOS'] = 'LAOS';
-$app_list_strings['countries_dom']['LATVIA'] = 'LATVIA';
-$app_list_strings['countries_dom']['LEBANON'] = 'LEBANON';
-$app_list_strings['countries_dom']['LEEWARD ISLANDS'] = 'LEEWARD ISLANDS';
-$app_list_strings['countries_dom']['LESOTHO'] = 'LESOTHO';
-$app_list_strings['countries_dom']['LIBYA'] = 'LIBYA';
-$app_list_strings['countries_dom']['LIECHTENSTEIN'] = 'LIECHTENSTEIN';
-$app_list_strings['countries_dom']['LITHUANIA'] = 'LITHUANIA';
-$app_list_strings['countries_dom']['LUXEMBOURG'] = 'LUXEMBOURG';
-$app_list_strings['countries_dom']['MACAO'] = 'MACAO';
-$app_list_strings['countries_dom']['MACEDONIA'] = 'MACEDONIA';
-$app_list_strings['countries_dom']['MADAGASCAR'] = 'MADAGASCAR';
-$app_list_strings['countries_dom']['MALAWI'] = 'MALAWI';
-$app_list_strings['countries_dom']['MALAYSIA'] = 'MALAYSIA';
-$app_list_strings['countries_dom']['MALDIVES'] = 'MALDIVES';
-$app_list_strings['countries_dom']['MALI'] = 'MALI';
-$app_list_strings['countries_dom']['MALTA'] = 'MALTA';
-$app_list_strings['countries_dom']['MARTINIQUE'] = 'MARTINIQUE';
-$app_list_strings['countries_dom']['MAURITANIA'] = 'MAURITANIA';
-$app_list_strings['countries_dom']['MAURITIUS'] = 'MAURITIUS';
-$app_list_strings['countries_dom']['MELANESIA'] = 'MELANESIA';
-$app_list_strings['countries_dom']['MEXICO'] = 'MEXICO';
-$app_list_strings['countries_dom']['MOLDOVIA'] = 'MOLDOVIA';
-$app_list_strings['countries_dom']['MONACO'] = 'MONACO';
-$app_list_strings['countries_dom']['MONGOLIA'] = 'MONGOLIA';
-$app_list_strings['countries_dom']['MOROCCO'] = 'MOROCCO';
-$app_list_strings['countries_dom']['MOZAMBIQUE'] = 'MOZAMBIQUE';
-$app_list_strings['countries_dom']['MYANAMAR'] = 'MYANAMAR';
-$app_list_strings['countries_dom']['NAMIBIA'] = 'NAMIBIA';
-$app_list_strings['countries_dom']['NEPAL'] = 'NEPAL';
-$app_list_strings['countries_dom']['NETHERLANDS'] = 'NETHERLANDS';
-$app_list_strings['countries_dom']['NETHERLANDS ANTILLES'] = 'NETHERLANDS ANTILLES';
-$app_list_strings['countries_dom']['NETHERLANDS ANTILLES NEUTRAL ZONE'] = 'NETHERLANDS ANTILLES NEUTRAL ZONE';
-$app_list_strings['countries_dom']['NEW CALADONIA'] = 'NEW CALADONIA';
-$app_list_strings['countries_dom']['NEW HEBRIDES'] = 'NEW HEBRIDES';
-$app_list_strings['countries_dom']['NEW ZEALAND'] = 'NEW ZEALAND';
-$app_list_strings['countries_dom']['NICARAGUA'] = 'NICARAGUA';
-$app_list_strings['countries_dom']['NIGER'] = 'NIGER';
-$app_list_strings['countries_dom']['NIGERIA'] = 'NIGERIA';
-$app_list_strings['countries_dom']['NORFOLK ISLAND'] = 'NORFOLK ISLAND';
-$app_list_strings['countries_dom']['NORWAY'] = 'NORWAY';
-$app_list_strings['countries_dom']['OMAN'] = 'OMAN';
-$app_list_strings['countries_dom']['OTHER'] = 'OTHER';
-$app_list_strings['countries_dom']['PACIFIC ISLAND'] = 'PACIFIC ISLAND';
-$app_list_strings['countries_dom']['PAKISTAN'] = 'PAKISTAN';
-$app_list_strings['countries_dom']['PANAMA'] = 'PANAMA';
-$app_list_strings['countries_dom']['PAPUA NEW GUINEA'] = 'PAPUA NEW GUINEA';
-$app_list_strings['countries_dom']['PARAGUAY'] = 'PARAGUAY';
-$app_list_strings['countries_dom']['PERU'] = 'PERU';
-$app_list_strings['countries_dom']['PHILIPPINES'] = 'PHILIPPINES';
-$app_list_strings['countries_dom']['POLAND'] = 'POLAND';
-$app_list_strings['countries_dom']['PORTUGAL'] = 'PORTUGAL';
-$app_list_strings['countries_dom']['PORTUGUESE TIMOR'] = 'PORTUGUESE TIMOR';
-$app_list_strings['countries_dom']['PUERTO RICO'] = 'PUERTO RICO';
-$app_list_strings['countries_dom']['QATAR'] = 'QATAR';
-$app_list_strings['countries_dom']['REPUBLIC OF BELARUS'] = 'REPUBLIC OF BELARUS';
-$app_list_strings['countries_dom']['REPUBLIC OF SOUTH AFRICA'] = 'REPUBLIC OF SOUTH AFRICA';
-$app_list_strings['countries_dom']['REUNION'] = 'REUNION';
-$app_list_strings['countries_dom']['ROMANIA'] = 'ROMANIA';
-$app_list_strings['countries_dom']['RUSSIA'] = 'RUSSIA';
-$app_list_strings['countries_dom']['RWANDA'] = 'RWANDA';
-$app_list_strings['countries_dom']['RYUKYU ISLANDS'] = 'RYUKYU ISLANDS';
-$app_list_strings['countries_dom']['SABAH'] = 'SABAH';
-$app_list_strings['countries_dom']['SAN MARINO'] = 'SAN MARINO';
-$app_list_strings['countries_dom']['SAUDI ARABIA'] = 'SAUDI ARABIA';
-$app_list_strings['countries_dom']['SENEGAL'] = 'SENEGAL';
-$app_list_strings['countries_dom']['SERBIA'] = 'SERBIA';
-$app_list_strings['countries_dom']['SEYCHELLES'] = 'SEYCHELLES';
-$app_list_strings['countries_dom']['SIERRA LEONE'] = 'SIERRA LEONE';
-$app_list_strings['countries_dom']['SINGAPORE'] = 'SINGAPORE';
-$app_list_strings['countries_dom']['SLOVAKIA'] = 'SLOVAKIA';
-$app_list_strings['countries_dom']['SLOVENIA'] = 'SLOVENIA';
-$app_list_strings['countries_dom']['SOMALILIAND'] = 'SOMALILIAND';
-$app_list_strings['countries_dom']['SOUTH AFRICA'] = 'SOUTH AFRICA';
-$app_list_strings['countries_dom']['SOUTH YEMEN'] = 'SOUTH YEMEN';
-$app_list_strings['countries_dom']['SPAIN'] = 'SPAIN';
-$app_list_strings['countries_dom']['SPANISH SAHARA'] = 'SPANISH SAHARA';
-$app_list_strings['countries_dom']['SRI LANKA'] = 'SRI LANKA';
-$app_list_strings['countries_dom']['ST. KITTS AND NEVIS'] = 'ST. KITTS AND NEVIS';
-$app_list_strings['countries_dom']['ST. LUCIA'] = 'ST. LUCIA';
-$app_list_strings['countries_dom']['SUDAN'] = 'SUDAN';
-$app_list_strings['countries_dom']['SURINAM'] = 'SURINAM';
-$app_list_strings['countries_dom']['SW AFRICA'] = 'SW AFRICA';
-$app_list_strings['countries_dom']['SWAZILAND'] = 'SWAZILAND';
-$app_list_strings['countries_dom']['SWEDEN'] = 'SWEDEN';
-$app_list_strings['countries_dom']['SWITZERLAND'] = 'SWITZERLAND';
-$app_list_strings['countries_dom']['SYRIA'] = 'SYRIA';
-$app_list_strings['countries_dom']['TAIWAN'] = 'TAIWAN';
-$app_list_strings['countries_dom']['TAJIKISTAN'] = 'TAJIKISTAN';
-$app_list_strings['countries_dom']['TANZANIA'] = 'TANZANIA';
-$app_list_strings['countries_dom']['THAILAND'] = 'THAILAND';
-$app_list_strings['countries_dom']['TONGA'] = 'TONGA';
-$app_list_strings['countries_dom']['TRINIDAD'] = 'TRINIDAD';
-$app_list_strings['countries_dom']['TUNISIA'] = 'TUNISIA';
-$app_list_strings['countries_dom']['TURKEY'] = 'TURKEY';
-$app_list_strings['countries_dom']['UGANDA'] = 'UGANDA';
-$app_list_strings['countries_dom']['UKRAINE'] = 'UKRAINE';
-$app_list_strings['countries_dom']['UNITED ARAB EMIRATES'] = 'UNITED ARAB EMIRATES';
-$app_list_strings['countries_dom']['UNITED KINGDOM'] = 'UNITED KINGDOM';
-$app_list_strings['countries_dom']['UPPER VOLTA'] = 'UPPER VOLTA';
-$app_list_strings['countries_dom']['URUGUAY'] = 'URUGUAY';
-$app_list_strings['countries_dom']['US PACIFIC ISLAND'] = 'US PACIFIC ISLAND';
-$app_list_strings['countries_dom']['US VIRGIN ISLANDS'] = 'US VIRGIN ISLANDS';
-$app_list_strings['countries_dom']['USA'] = 'USA';
-$app_list_strings['countries_dom']['UZBEKISTAN'] = 'UZBEKISTAN';
-$app_list_strings['countries_dom']['VANUATU'] = 'VANUATU';
-$app_list_strings['countries_dom']['VATICAN CITY'] = 'VATICAN CITY';
-$app_list_strings['countries_dom']['VENEZUELA'] = 'VENEZUELA';
-$app_list_strings['countries_dom']['VIETNAM'] = 'VIETNAM';
-$app_list_strings['countries_dom']['WAKE ISLAND'] = 'WAKE ISLAND';
-$app_list_strings['countries_dom']['WEST INDIES'] = 'WEST INDIES';
-$app_list_strings['countries_dom']['WESTERN SAHARA'] = 'WESTERN SAHARA';
-$app_list_strings['countries_dom']['YEMEN'] = 'YEMEN';
-$app_list_strings['countries_dom']['ZAIRE'] = 'ZAIRE';
-$app_list_strings['countries_dom']['ZAMBIA'] = 'ZAMBIA';
-$app_list_strings['countries_dom']['ZIMBABWE'] = 'ZIMBABWE';
+$app_list_strings['moduleList']['J_LoyaltyConfig'] = 'LoyaltyConfig';
 
 
 /*********************************************************************************
@@ -482,31 +684,28 @@ $app_list_strings['countries_dom']['ZIMBABWE'] = 'ZIMBABWE';
  ********************************************************************************/
 
 
-$app_list_strings['moduleList']['C_Room'] = 'Room';
-$app_list_strings['room_type_room_list']['Single'] = 'Single';
-$app_list_strings['room_type_room_list']['Double'] = 'Double';
-$app_list_strings['room_type_room_list']['Twin'] = 'Twin';
-$app_list_strings['room_type_room_list']['Triple'] = 'Triple';
-$app_list_strings['room_type_room_list']['Other'] = 'Other';
-$app_list_strings['category_room_list']['Standard'] = 'Standard';
-$app_list_strings['category_room_list']['Superior'] = 'Superior';
-$app_list_strings['category_room_list']['Deluxe'] = 'Deluxe';
-$app_list_strings['category_room_list']['Suite'] = 'Suite';
-$app_list_strings['category_room_list']['Other'] = 'Other';
-$app_list_strings['adult_room_list']['0'] = '0';
-$app_list_strings['adult_room_list']['1'] = '1';
-$app_list_strings['adult_room_list']['2'] = '2';
-$app_list_strings['adult_room_list']['3'] = '3';
-$app_list_strings['adult_room_list']['4'] = '4';
-$app_list_strings['adult_room_list']['5'] = '5';
-$app_list_strings['adult_room_list']['6'] = '6';
-$app_list_strings['children_room_list']['0'] = '0';
-$app_list_strings['children_room_list']['1'] = '1';
-$app_list_strings['children_room_list']['2'] = '2';
-$app_list_strings['children_room_list']['3'] = '3';
-$app_list_strings['children_room_list']['4'] = '4';
-$app_list_strings['children_room_list']['5'] = '5';
-$app_list_strings['children_room_list']['6'] = '6';
+$app_list_strings['j_marketingplan_category_dom'][''] = '';
+$app_list_strings['j_marketingplan_category_dom']['Marketing'] = 'Marketing';
+$app_list_strings['j_marketingplan_category_dom']['Knowledege Base'] = 'Knowledge Base';
+$app_list_strings['j_marketingplan_category_dom']['Sales'] = 'Sales';
+$app_list_strings['j_marketingplan_subcategory_dom'][''] = '';
+$app_list_strings['j_marketingplan_subcategory_dom']['Marketing Collateral'] = 'Marketing Collateral';
+$app_list_strings['j_marketingplan_subcategory_dom']['Product Brochures'] = 'Product Brochures';
+$app_list_strings['j_marketingplan_subcategory_dom']['FAQ'] = 'FAQ';
+$app_list_strings['j_marketingplan_status_dom']['Active'] = 'Active';
+$app_list_strings['j_marketingplan_status_dom']['Draft'] = 'Draft';
+$app_list_strings['j_marketingplan_status_dom']['FAQ'] = 'FAQ';
+$app_list_strings['j_marketingplan_status_dom']['Expired'] = 'Expired';
+$app_list_strings['j_marketingplan_status_dom']['Under Review'] = 'Under Review';
+$app_list_strings['j_marketingplan_status_dom']['Pending'] = 'Pending';
+$app_list_strings['moduleList']['J_marketingplan'] = 'Marketing Plan';
+$app_list_strings['moduleList']['J_Marketingplan'] = 'Marketing Plan';
+$app_list_strings['status_marketingplan_list']['Active'] = 'Active';
+$app_list_strings['status_marketingplan_list']['Inactive'] = 'Inactive';
+$app_list_strings['category_marketingplan_list']['New Student'] = 'New Student';
+$app_list_strings['category_marketingplan_list']['Current Student'] = 'Current Student';
+$app_list_strings['currency_marketingplan_list']['VND'] = 'VND';
+$app_list_strings['currency_marketingplan_list']['Dollars'] = 'Dollars';
 
 
 /*********************************************************************************
@@ -523,7 +722,7 @@ $app_list_strings['children_room_list']['6'] = '6';
  ********************************************************************************/
 
 
-$app_list_strings['moduleList']['C_Session'] = 'Session';
+$app_list_strings['moduleList']['C_Memberships'] = 'Memberships';
 
 
 /*********************************************************************************
@@ -540,7 +739,333 @@ $app_list_strings['moduleList']['C_Session'] = 'Session';
  ********************************************************************************/
 
 
-$app_list_strings['moduleList']['C_Ticket'] = 'Ticket';
+$app_list_strings['moduleList']['C_Packages'] = 'Packages';
+$app_list_strings['interval_packages_list']['9'] = '9 months';
+$app_list_strings['interval_packages_list']['12'] = '12 months';
+
+
+/*********************************************************************************
+ * By installing or using this file, you are confirming on behalf of the entity
+ * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
+ * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
+ * http://www.sugarcrm.com/master-subscription-agreement
+ *
+ * If Company is not bound by the MSA, then by installing or using this file
+ * you are agreeing unconditionally that Company will be bound by the MSA and
+ * certifying that you have authority to bind Company accordingly.
+ *
+ * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ ********************************************************************************/
+
+
+$app_list_strings['moduleList']['J_Partnership'] = 'Partnership';
+
+
+/*********************************************************************************
+ * By installing or using this file, you are confirming on behalf of the entity
+ * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
+ * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
+ * http://www.sugarcrm.com/master-subscription-agreement
+ *
+ * If Company is not bound by the MSA, then by installing or using this file
+ * you are agreeing unconditionally that Company will be bound by the MSA and
+ * certifying that you have authority to bind Company accordingly.
+ *
+ * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ ********************************************************************************/
+
+
+$app_list_strings['moduleList']['J_Payment'] = 'Payment';
+$app_list_strings['payment_type_payment_list']['Enrollment'] = 'Enrollment';
+$app_list_strings['payment_type_payment_list']['Deposit'] = 'Deposit';
+$app_list_strings['sale_type_payment_list']['Retention'] = 'Retention';
+$app_list_strings['status_payment_list']['Planing'] = 'Planing';
+$app_list_strings['foc_type_payment_list']['0'] = '0';
+$app_list_strings['foc_type_payment_list']['50'] = '50';
+$app_list_strings['foc_type_payment_list']['100'] = '100';
+$app_list_strings['payment_method_junior_list']['Cash'] = 'Cash';
+$app_list_strings['payment_method_junior_list']['Card'] = 'Card';
+$app_list_strings['payment_method_junior_list']['Other'] = 'Other';
+
+
+/*********************************************************************************
+ * By installing or using this file, you are confirming on behalf of the entity
+ * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
+ * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
+ * http://www.sugarcrm.com/master-subscription-agreement
+ *
+ * If Company is not bound by the MSA, then by installing or using this file
+ * you are agreeing unconditionally that Company will be bound by the MSA and
+ * certifying that you have authority to bind Company accordingly.
+ *
+ * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ ********************************************************************************/
+
+
+$app_list_strings['moduleList']['J_PaymentDetail'] = 'Payment Detail';
+
+
+/*********************************************************************************
+ * By installing or using this file, you are confirming on behalf of the entity
+ * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
+ * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
+ * http://www.sugarcrm.com/master-subscription-agreement
+ *
+ * If Company is not bound by the MSA, then by installing or using this file
+ * you are agreeing unconditionally that Company will be bound by the MSA and
+ * certifying that you have authority to bind Company accordingly.
+ *
+ * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ ********************************************************************************/
+
+
+$app_list_strings['moduleList']['C_Payments'] = 'Payments';
+$app_list_strings['menthod_payments_list']['Cash'] = 'Cash';
+$app_list_strings['menthod_payments_list']['CreditDebitCard'] = 'Credit / Debit Card';
+$app_list_strings['menthod_payments_list']['BankTranfer'] = 'Bank Tranfer';
+$app_list_strings['status_payments_list']['Unpaid'] = 'Unpaid';
+$app_list_strings['status_payments_list']['Paid'] = 'Paid';    
+$app_list_strings['card_type_payments_list'][''] = '';
+$app_list_strings['card_type_payments_list']['MasterCard'] = 'MasterCard';
+$app_list_strings['card_type_payments_list']['VisaCard'] = 'VisaCard';
+$app_list_strings['card_type_payments_list']['VietcomBank'] = 'VietcomBank (VCB)';
+$app_list_strings['card_type_payments_list']['JCB'] = 'JCB';
+$app_list_strings['card_type_payments_list']['AmericanExpress'] = 'American Express (AMEX)';
+$app_list_strings['expiration_date_payment_list']['January'] = 'January';
+$app_list_strings['expiration_date_payment_list']['February'] = 'February';
+$app_list_strings['expiration_date_payment_list']['March'] = 'March';
+$app_list_strings['expiration_date_payment_list']['April'] = 'April';
+$app_list_strings['expiration_date_payment_list']['May'] = 'May';
+$app_list_strings['expiration_date_payment_list']['June'] = 'June';
+$app_list_strings['expiration_date_payment_list']['July'] = 'July';
+$app_list_strings['expiration_date_payment_list']['August'] = 'August';
+$app_list_strings['expiration_date_payment_list']['September'] = 'September';
+$app_list_strings['expiration_date_payment_list']['October'] = 'October';
+$app_list_strings['expiration_date_payment_list']['November'] = 'November';
+$app_list_strings['expiration_date_payment_list']['December'] = 'December';
+$app_list_strings['year_list']['2014'] = '2014';
+$app_list_strings['year_list']['2015'] = '2015';
+$app_list_strings['year_list']['2016'] = '2016';
+$app_list_strings['year_list']['2017'] = '2017';
+$app_list_strings['year_list']['2018'] = '2018';
+$app_list_strings['year_list']['2019'] = '2019';
+$app_list_strings['year_list']['2020'] = '2020';
+$app_list_strings['year_list']['2021'] = '2021';
+$app_list_strings['year_list']['2022'] = '2022';
+
+
+/*********************************************************************************
+ * By installing or using this file, you are confirming on behalf of the entity
+ * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
+ * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
+ * http://www.sugarcrm.com/master-subscription-agreement
+ *
+ * If Company is not bound by the MSA, then by installing or using this file
+ * you are agreeing unconditionally that Company will be bound by the MSA and
+ * certifying that you have authority to bind Company accordingly.
+ *
+ * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ ********************************************************************************/
+
+
+$app_list_strings['moduleList']['C_Programs'] = 'Programs';
+$app_list_strings['status_programs_list']['Active'] = 'Active';
+$app_list_strings['status_programs_list']['Deactive'] = 'Deactive';
+$app_list_strings['status_programs_list']['Draft'] = 'Draft';
+
+
+/*********************************************************************************
+ * By installing or using this file, you are confirming on behalf of the entity
+ * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
+ * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
+ * http://www.sugarcrm.com/master-subscription-agreement
+ *
+ * If Company is not bound by the MSA, then by installing or using this file
+ * you are agreeing unconditionally that Company will be bound by the MSA and
+ * certifying that you have authority to bind Company accordingly.
+ *
+ * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ ********************************************************************************/
+
+
+$app_list_strings['moduleList']['J_PTResult'] = 'PT Result';
+
+
+/*********************************************************************************
+ * By installing or using this file, you are confirming on behalf of the entity
+ * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
+ * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
+ * http://www.sugarcrm.com/master-subscription-agreement
+ *
+ * If Company is not bound by the MSA, then by installing or using this file
+ * you are agreeing unconditionally that Company will be bound by the MSA and
+ * certifying that you have authority to bind Company accordingly.
+ *
+ * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ ********************************************************************************/
+
+
+$app_list_strings['c_refunds_category_dom'][''] = '';
+$app_list_strings['c_refunds_category_dom']['Marketing'] = 'Marketing';
+$app_list_strings['c_refunds_category_dom']['Knowledege Base'] = 'Knowledge Base';
+$app_list_strings['c_refunds_category_dom']['Sales'] = 'Sales';
+$app_list_strings['c_refunds_subcategory_dom'][''] = '';
+$app_list_strings['c_refunds_subcategory_dom']['Marketing Collateral'] = 'Marketing Collateral';
+$app_list_strings['c_refunds_subcategory_dom']['Product Brochures'] = 'Product Brochures';
+$app_list_strings['c_refunds_subcategory_dom']['FAQ'] = 'FAQ';
+$app_list_strings['c_refunds_status_dom']['Active'] = 'Active';
+$app_list_strings['c_refunds_status_dom']['Draft'] = 'Draft';
+$app_list_strings['c_refunds_status_dom']['FAQ'] = 'FAQ';
+$app_list_strings['c_refunds_status_dom']['Expired'] = 'Expired';
+$app_list_strings['c_refunds_status_dom']['Under Review'] = 'Under Review';
+$app_list_strings['c_refunds_status_dom']['Pending'] = 'Pending';
+$app_list_strings['moduleList']['C_Refunds'] = 'Refunds';
+
+
+/*********************************************************************************
+ * By installing or using this file, you are confirming on behalf of the entity
+ * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
+ * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
+ * http://www.sugarcrm.com/master-subscription-agreement
+ *
+ * If Company is not bound by the MSA, then by installing or using this file
+ * you are agreeing unconditionally that Company will be bound by the MSA and
+ * certifying that you have authority to bind Company accordingly.
+ *
+ * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ ********************************************************************************/
+
+
+$app_list_strings['moduleList']['C_Reports'] = 'Custom Report';
+
+
+/*********************************************************************************
+ * By installing or using this file, you are confirming on behalf of the entity
+ * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
+ * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
+ * http://www.sugarcrm.com/master-subscription-agreement
+ *
+ * If Company is not bound by the MSA, then by installing or using this file
+ * you are agreeing unconditionally that Company will be bound by the MSA and
+ * certifying that you have authority to bind Company accordingly.
+ *
+ * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ ********************************************************************************/
+
+
+$app_list_strings['moduleList']['C_Rooms'] = 'Rooms';
+$app_list_strings['type_rooms_list']['Adult'] = 'Adult';
+$app_list_strings['type_rooms_list']['Children'] = 'Children';
+$app_list_strings['type_rooms_list']['Training'] = 'Training';
+
+
+/*********************************************************************************
+ * By installing or using this file, you are confirming on behalf of the entity
+ * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
+ * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
+ * http://www.sugarcrm.com/master-subscription-agreement
+ *
+ * If Company is not bound by the MSA, then by installing or using this file
+ * you are agreeing unconditionally that Company will be bound by the MSA and
+ * certifying that you have authority to bind Company accordingly.
+ *
+ * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ ********************************************************************************/
+
+
+$app_list_strings['moduleList']['J_School'] = 'School';
+$app_list_strings['level_school_list'][''] = '-none-';
+$app_list_strings['level_school_list']['Primary School'] = 'Primary School';
+$app_list_strings['level_school_list']['Junior High School'] = 'Junior High School';
+$app_list_strings['level_school_list']['Senior High School'] = 'Senior High School';
+
+
+/*********************************************************************************
+ * By installing or using this file, you are confirming on behalf of the entity
+ * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
+ * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
+ * http://www.sugarcrm.com/master-subscription-agreement
+ *
+ * If Company is not bound by the MSA, then by installing or using this file
+ * you are agreeing unconditionally that Company will be bound by the MSA and
+ * certifying that you have authority to bind Company accordingly.
+ *
+ * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ ********************************************************************************/
+
+
+$app_list_strings['moduleList']['C_SMS'] = 'SMS';
+
+
+/*********************************************************************************
+ * By installing or using this file, you are confirming on behalf of the entity
+ * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
+ * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
+ * http://www.sugarcrm.com/master-subscription-agreement
+ *
+ * If Company is not bound by the MSA, then by installing or using this file
+ * you are agreeing unconditionally that Company will be bound by the MSA and
+ * certifying that you have authority to bind Company accordingly.
+ *
+ * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ ********************************************************************************/
+
+
+$app_list_strings['moduleList']['J_Sponsor'] = 'Sponsor';
+
+
+/*********************************************************************************
+ * By installing or using this file, you are confirming on behalf of the entity
+ * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
+ * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
+ * http://www.sugarcrm.com/master-subscription-agreement
+ *
+ * If Company is not bound by the MSA, then by installing or using this file
+ * you are agreeing unconditionally that Company will be bound by the MSA and
+ * certifying that you have authority to bind Company accordingly.
+ *
+ * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ ********************************************************************************/
+
+
+$app_list_strings['moduleList']['C_Sponsors'] = 'Sponsors';
+
+
+/*********************************************************************************
+ * By installing or using this file, you are confirming on behalf of the entity
+ * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
+ * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
+ * http://www.sugarcrm.com/master-subscription-agreement
+ *
+ * If Company is not bound by the MSA, then by installing or using this file
+ * you are agreeing unconditionally that Company will be bound by the MSA and
+ * certifying that you have authority to bind Company accordingly.
+ *
+ * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ ********************************************************************************/
+
+
+$app_list_strings['moduleList']['J_StudentSituations'] = 'Student Situations';
+$app_list_strings['type_student_situation_list'][''] = '-none-';
+$app_list_strings['type_student_situation_list']['Enrolled'] = 'Enrolled';
+$app_list_strings['type_student_situation_list']['Delayed'] = 'Delayed';
+$app_list_strings['type_student_situation_list']['OutStanding'] = 'OutStanding';
+$app_list_strings['type_student_situation_list']['Stopped'] = 'Stopped';
+
+
+/**
+ * The file used to store label for Wordpress Customer Portal 
+ *
+ * LICENSE: The contents of this file are subject to the license agreement ("License") which is included
+ * in the installation package (LICENSE.txt). By installing or using this file, you have unconditionally
+ * agreed to the terms and conditions of the License, and you may not use this file except in compliance
+ * with the License.
+ *
+ * @author  Biztech Consultancy
+ */
+
+$app_strings['VALIDATE_ERROR'] = 'There seems some error while validating your license for Survey Rocket Plugin. Please try again later.';
+$app_strings['VALIDATE_FAIL'] = 'Please contact your Administrator to validate License.';
 
 
 
@@ -558,7 +1083,9 @@ $app_list_strings['moduleList']['C_Ticket'] = 'Ticket';
  ********************************************************************************/
 
 
-$app_list_strings['moduleList']['C_TicketReport'] = 'Ticket Report';
+$app_list_strings['moduleList']['J_Targetconfig'] = 'Target Config';
+$app_list_strings['type_Targetconfig_list']['New Sale'] = 'New Sale';
+$app_list_strings['type_Targetconfig_list']['Target Enquires'] = 'Target Enquires';
 
 
 /*********************************************************************************
@@ -575,8 +1102,9 @@ $app_list_strings['moduleList']['C_TicketReport'] = 'Ticket Report';
  ********************************************************************************/
 
 
-$app_list_strings['moduleList']['C_HourRate'] = 'Hour Rate';
-$app_list_strings['moduleList']['C_TimesheetConfig'] = 'Timesheet Config';
+$app_list_strings['moduleList']['C_Teachers'] = 'Teachers';
+$app_list_strings['married_teachers_list']['Yes'] = 'Yes';
+$app_list_strings['married_teachers_list']['No'] = 'No';
 
 
 /*********************************************************************************
@@ -593,10 +1121,15 @@ $app_list_strings['moduleList']['C_TimesheetConfig'] = 'Timesheet Config';
  ********************************************************************************/
 
 
-$app_list_strings['moduleList']['C_LeavingRequest'] = 'Leaving Requests';
-$app_list_strings['moduleList']['C_WorkLog'] = 'Work Logs';
-$app_list_strings['moduleList']['C_LeaveDetails'] = 'Leave Details';
-$app_list_strings['moduleList']['C_Holiday'] = 'Holidays';
+$app_list_strings['moduleList']['J_Teachercontract'] = 'Teacher Contract';
+$app_list_strings['type_TeacherContract_list']['AM'] = 'AM';
+$app_list_strings['type_TeacherContract_list']['AC'] = 'AC';
+$app_list_strings['type_TeacherContract_list']['ST'] = 'ST';
+$app_list_strings['type_TeacherContract_list']['MT'] = 'MT';
+$app_list_strings['type_TeacherContract_list']['FT'] = 'FT';
+$app_list_strings['type_TeacherContract_list']['PT'] = 'PT';
+$app_list_strings['status_TeacherContract_list']['Active'] = 'Active';
+$app_list_strings['status_TeacherContract_list']['Inactive'] = 'Inactive';
 
 
 /*********************************************************************************
@@ -613,7 +1146,68 @@ $app_list_strings['moduleList']['C_Holiday'] = 'Holidays';
  ********************************************************************************/
 
 
-$app_list_strings['moduleList']['C_Tour'] = 'Tour';
+$app_list_strings['moduleList']['c_Timekeeping'] = 'Timekeeping';
+$app_list_strings['leaving_type_employee_list']['KL'] = 'Unpaid Leave';
+$app_list_strings['leaving_type_employee_list']['O'] = 'Sick Leave';
+$app_list_strings['leaving_type_employee_list']['CO'] = 'Sick Leave of Children';
+$app_list_strings['leaving_type_employee_list']['B'] = 'Compensation Leave';
+$app_list_strings['leaving_type_employee_list']['K'] = 'Others';
+$app_list_strings['leaving_type_employee_list']['P'] = 'Annual Leave';
+$app_list_strings['leaving_type_employee_list']['KH'] = 'Mariage Leave';
+$app_list_strings['leaving_type_employee_list']['TG'] = 'Mouring Leave';
+$app_list_strings['leaving_type_employee_list']['KT'] = 'Pregnant Leave';
+$app_list_strings['leaving_type_employee_list']['TS'] = 'Maternity Leave';
 
+
+/*********************************************************************************
+ * By installing or using this file, you are confirming on behalf of the entity
+ * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
+ * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
+ * http://www.sugarcrm.com/master-subscription-agreement
+ *
+ * If Company is not bound by the MSA, then by installing or using this file
+ * you are agreeing unconditionally that Company will be bound by the MSA and
+ * certifying that you have authority to bind Company accordingly.
+ *
+ * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ ********************************************************************************/
+
+
+$app_list_strings['moduleList']['C_Timesheet'] = 'Timesheet';
+
+
+/*********************************************************************************
+ * By installing or using this file, you are confirming on behalf of the entity
+ * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
+ * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
+ * http://www.sugarcrm.com/master-subscription-agreement
+ *
+ * If Company is not bound by the MSA, then by installing or using this file
+ * you are agreeing unconditionally that Company will be bound by the MSA and
+ * certifying that you have authority to bind Company accordingly.
+ *
+ * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ ********************************************************************************/
+
+
+$app_list_strings['moduleList']['C_Vouchers'] = 'Vouchers';
+
+
+/*********************************************************************************
+ * By installing or using this file, you are confirming on behalf of the entity
+ * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
+ * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
+ * http://www.sugarcrm.com/master-subscription-agreement
+ *
+ * If Company is not bound by the MSA, then by installing or using this file
+ * you are agreeing unconditionally that Company will be bound by the MSA and
+ * certifying that you have authority to bind Company accordingly.
+ *
+ * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ ********************************************************************************/
+
+
+$app_list_strings['moduleList']['J_Voucher'] = 'Voucher';
+$app_list_strings['moduleList']['J_Voucher1'] = 'Voucher';
 
 ?>

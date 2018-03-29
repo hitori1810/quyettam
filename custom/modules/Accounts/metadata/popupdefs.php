@@ -5,17 +5,15 @@ $popupMeta = array (
     'orderBy' => 'name',
     'whereClauses' => array (
   'name' => 'accounts.name',
-  'email' => 'accounts.email',
-  'team_name' => 'accounts.team_name',
-  'code' => 'accounts.code',
   'phone_office' => 'accounts.phone_office',
+  'billing_address_street' => 'accounts.billing_address_street',
+  'tax_code' => 'accounts.tax_code',
 ),
     'searchInputs' => array (
   0 => 'name',
-  5 => 'email',
-  7 => 'team_name',
-  8 => 'code',
-  9 => 'phone_office',
+  2 => 'phone_office',
+  5 => 'billing_address_street',
+  6 => 'tax_code',
 ),
     'create' => array (
   'formBase' => 'AccountFormBase.php',
@@ -29,17 +27,17 @@ $popupMeta = array (
   'createButton' => 'LNK_NEW_ACCOUNT',
 ),
     'searchdefs' => array (
-  'code' => 
-  array (
-    'type' => 'varchar',
-    'label' => 'LBL_CODE',
-    'width' => '10%',
-    'name' => 'code',
-  ),
   'name' => 
   array (
     'name' => 'name',
     'width' => '10%',
+  ),
+  'billing_address_street' => 
+  array (
+    'type' => 'varchar',
+    'label' => 'LBL_BILLING_ADDRESS_STREET',
+    'width' => '10%',
+    'name' => 'billing_address_street',
   ),
   'phone_office' => 
   array (
@@ -48,58 +46,44 @@ $popupMeta = array (
     'width' => '10%',
     'name' => 'phone_office',
   ),
-  'email' => 
+  'tax_code' => 
   array (
-    'name' => 'email',
+    'type' => 'varchar',
+    'label' => 'LBL_TAX_CODE',
     'width' => '10%',
-  ),
-  'team_name' => 
-  array (
-    'type' => 'relate',
-    'link' => true,
-    'studio' => 
-    array (
-      'portallistview' => false,
-      'portaldetailview' => false,
-      'portaleditview' => false,
-    ),
-    'label' => 'LBL_TEAMS',
-    'id' => 'TEAM_ID',
-    'width' => '10%',
-    'name' => 'team_name',
+    'name' => 'tax_code',
   ),
 ),
     'listviewdefs' => array (
-  'CODE' => 
-  array (
-    'type' => 'varchar',
-    'label' => 'LBL_CODE',
-    'width' => '10%',
-    'default' => true,
-    'name' => 'code',
-  ),
   'NAME' => 
   array (
-    'width' => '15%',
+    'width' => '20%',
     'label' => 'LBL_LIST_ACCOUNT_NAME',
     'link' => true,
     'default' => true,
     'name' => 'name',
   ),
-  'BRAND_NAME' => 
+  'PHONE_OFFICE' => 
+  array (
+    'width' => '10%',
+    'label' => 'LBL_LIST_PHONE',
+    'default' => true,
+    'name' => 'phone_office',
+  ),
+  'BILLING_ADDRESS_STREET' => 
+  array (
+    'width' => '20%',
+    'label' => 'LBL_BILLING_ADDRESS_STREET',
+    'default' => true,
+    'name' => 'billing_address_street',
+  ),
+  'TAX_CODE' => 
   array (
     'type' => 'varchar',
-    'label' => 'LBL_BRAND_NAME',
+    'label' => 'LBL_TAX_CODE',
     'width' => '10%',
     'default' => true,
-    'name' => 'brand_name',
-  ),
-  'CATEGORY' => 
-  array (
-    'type' => 'enum',
-    'default' => true,
-    'label' => 'LBL_CATEGORY',
-    'width' => '10%',
+    'name' => 'tax_code',
   ),
   'TEAM_NAME' => 
   array (
@@ -115,7 +99,6 @@ $popupMeta = array (
     'id' => 'TEAM_ID',
     'width' => '10%',
     'default' => true,
-    'name' => 'team_name',
   ),
 ),
 );

@@ -17,7 +17,7 @@ if(!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
 $DCActions = array( 
     'Accounts' => 'Accounts', 
 	'Contacts' => 'Contacts', 
-	'Opportunities' => 'Opportunities', 
+	//'Opportunities' => 'Opportunities', 
 	'Leads' => 'Leads', 
 	'Emails' => 'Emails',
     'Documents' => 'Documents',

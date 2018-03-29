@@ -26,10 +26,10 @@
                            ),
                     'layout' => array(  					
 						'basic_search' => array(
-						 	'name',
+						 	'name','sms_only',
                             'type' => array('name' => 'type', 'type'=>'enum', 'function' => array('name' => 'EmailTemplate::getTypeOptionsForSearch'))
 							),
-					    'advanced_search' => array('name',
+					    'advanced_search' => array('name','sms_only',
                                                         'type' => array('name' => 'type', 'type'=>'enum', 'function' => array('name' => 'EmailTemplate::getTypeOptionsForSearch')),
                                                         'subject','description',
                                 					    'assigned_user_id' => 

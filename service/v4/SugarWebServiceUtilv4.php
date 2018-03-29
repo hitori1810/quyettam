@@ -9,7 +9,7 @@
  * you are agreeing unconditionally that Company will be bound by the MSA and
  * certifying that you have authority to bind Company accordingly.
  *
- * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ * Copyright (C) 2004-2014 SugarCRM Inc.  All rights reserved.
  ********************************************************************************/
 
 require_once('service/v3_1/SugarWebServiceUtilv3_1.php');
@@ -126,10 +126,11 @@ class SugarWebServiceUtilv4 extends SugarWebServiceUtilv3_1
 		{
 			$show_deleted = 1;
 		}
+//		$order_by=$seed->process_order_by($order_by, null);
 
 		$params = array();
-		if(!empty($favorites)) {
-		  $params['favorites'] = true;
+		if(!empty($favorites) && $favorites) {
+		  $params['favorites'] = 2;
 		}
 
 		$query = $seed->create_new_list_query($order_by, $where,array(),$params, $show_deleted);
@@ -184,10 +185,7 @@ class SugarWebServiceUtilv4 extends SugarWebServiceUtilv3_1
 	 */
 	function metdataAclParserWirelessEdit($module_name, $metadata)
 	{
-	    global  $beanList, $beanFiles;
-	    $class_name = $beanList[$module_name];
-	    require_once($beanFiles[$class_name]);
-	    $seed = new $class_name();
+	    $seed = BeanFactory::getBean($module_name);
 
 	    $results = array();
 	    $results['templateMeta'] = $metadata['templateMeta'];
@@ -239,10 +237,7 @@ class SugarWebServiceUtilv4 extends SugarWebServiceUtilv3_1
 	 */
 	function metdataAclParserWirelessList($module_name, $metadata)
 	{
-	    global  $beanList, $beanFiles;
-	    $class_name = $beanList[$module_name];
-	    require_once($beanFiles[$class_name]);
-	    $seed = new $class_name();
+	    $seed = BeanFactory::getBean($module_name);
 
 	    $results = array();
 	    foreach ($metadata as $field_name => $entry)
@@ -365,7 +360,7 @@ class SugarWebServiceUtilv4 extends SugarWebServiceUtilv3_1
 
 		if($value->module_dir == 'Bugs'){
 			require_once('modules/Releases/Release.php');
-			$seedRelease = new Release();
+			$seedRelease = BeanFactory::getBean('Releases');
 			$options = $seedRelease->get_releases(TRUE, "Active");
 			$options_ret = array();
 			foreach($options as $name=>$value){
@@ -413,17 +408,15 @@ class SugarWebServiceUtilv4 extends SugarWebServiceUtilv3_1
 
 	function new_handle_set_entries($module_name, $name_value_lists, $select_fields = FALSE) {
 		$GLOBALS['log']->info('Begin: SoapHelperWebServices->new_handle_set_entries');
-		global $beanList, $beanFiles, $current_user, $app_list_strings;
+		global $current_user, $app_list_strings;
 
 		$ret_values = array();
 
-		$class_name = $beanList[$module_name];
-		require_once($beanFiles[$class_name]);
 		$ids = array();
 		$count = 1;
 		$total = sizeof($name_value_lists);
 		foreach($name_value_lists as $name_value_list){
-			$seed = new $class_name();
+			$seed = BeanFactory::getBean($module_name);
 
 			$seed->update_vcal = false;
 			foreach($name_value_list as $name => $value){
@@ -486,7 +479,7 @@ class SugarWebServiceUtilv4 extends SugarWebServiceUtilv3_1
 				else{
 					//since we found a duplicate we should set the sync flag
 					if( $seed->ACLAccess('Save')){
-						$seed = new $class_name();
+						$seed = $seed->getCleanCopy();
 						$seed->id = $duplicate_id;
 						$seed->contacts_users_id = $current_user->id;
 						$seed->save();
@@ -608,10 +601,14 @@ class SugarWebServiceUtilv4 extends SugarWebServiceUtilv3_1
             $errorObject->set_error('invalid_login');
 			$this->setFaultObject($errorObject);
             return false;
+        } catch (Zend_Oauth_Exception $e) {
+            $GLOBALS['log']->debug("Zend_Oauth_Exception: $e");
+            $errorObject->set_error('invalid_login');
+            $this->setFaultObject($errorObject);
+            return false;
         }
 
-	    $user = new User();
-	    $user->retrieve($token->assigned_user_id);
+	    $user = BeanFactory::getBean('Users', $token->assigned_user_id);
 	    if(empty($user->id)) {
 	        return false;
 	    }
@@ -676,10 +673,9 @@ class SugarWebServiceUtilv4 extends SugarWebServiceUtilv3_1
 	    foreach ($layout_defs[$module]['subpanel_setup'] as $subpanel => $subpaneldefs)
 	    {
 	        $moduleToCheck = $subpaneldefs['module'];
-	        if(!isset($beanList[$moduleToCheck]))
-	           continue;
-	        $class_name = $beanList[$moduleToCheck];
-	        $bean = new $class_name();
+	        $bean = BeanFactory::getBean($moduleToCheck);
+	        if(empty($bean)) continue;
+
 	        if($bean->ACLAccess('list'))
 	            $results[$subpanel] = $subpaneldefs;
 	    }

@@ -16,7 +16,7 @@ if(!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
 
 require_once('include/Sugarpdf/SugarpdfFactory.php');
 require_once('modules/Reports/Report.php');
-require_once('custom/include/ConvertVnString/convert_vi_to_en.php');
+
 
 function preprocess($type = NULL, $reporter){
     $pdf = SugarpdfFactory::loadSugarpdf($type, "Reports", $reporter, array());
@@ -34,9 +34,6 @@ function process($pdf, $reportname, $stream){
     }
     $filenamestamp .= '_'.date(translate('LBL_PDF_TIMESTAMP', 'Reports'), time());
     $cr = array(' ',"\r", "\n","/");
-    // Edit by Bui Kim Tung - Convert string vi-en
-    $reportname = convert_vi_to_en($reportname);
-    //--- End edit by Bui Kim Tung
     $filename = str_replace($cr, '_', $reportname.$filenamestamp.'.pdf');
     if(isset($_SERVER['HTTP_USER_AGENT']) && preg_match("/MSIE/", $_SERVER['HTTP_USER_AGENT'])) {
         $filename = urlencode($filename);

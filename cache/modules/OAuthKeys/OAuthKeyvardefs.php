@@ -29,7 +29,7 @@
         'boost' => 3,
       ),
       'required' => true,
-      'importable' => 'required',
+      'importable' => 'true',
       'duplicate_merge' => 'enabled',
       'merge_filter' => 'selected',
     ),
@@ -127,7 +127,7 @@
       'vname' => 'LBL_DESCRIPTION',
       'type' => 'text',
       'comment' => 'Full text of the note',
-      'rows' => 6,
+      'rows' => 4,
       'cols' => 80,
     ),
     'deleted' => 

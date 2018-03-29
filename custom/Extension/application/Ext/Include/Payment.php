@@ -1,7 +1,7 @@
 <?php 
  //WARNING: The contents of this file are auto-generated
-$beanList['C_Payment'] = 'C_Payment';
-$beanFiles['C_Payment'] = 'modules/C_Payment/C_Payment.php';
-$moduleList[] = 'C_Payment';
+$beanList['J_Payment'] = 'J_Payment';
+$beanFiles['J_Payment'] = 'modules/J_Payment/J_Payment.php';
+$moduleList[] = 'J_Payment';
 
 ?>

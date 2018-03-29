@@ -1016,7 +1016,7 @@ function get_invite_email($focus, $admin, $address_array, $invite_person, $alert
 
 		if($possible_invitee==true){
 			setup_mail_object($mail_object, $admin);
-			$user_info_array['notify_user']->new_assigned_user_name = $user_info_array['notify_user']->first_name.' '.$user_info_array['notify_user']->last_name;
+			$user_info_array['notify_user']->new_assigned_user_name =  $user_info_array['notify_user']->last_name.' '.$user_info_array['notify_user']->first_name;
 
 			if($type=="Default"){
 				$error = get_system_default_body($mail_object, $focus, $user_info_array['notify_user']);
@@ -1039,7 +1039,7 @@ function get_invite_email($focus, $admin, $address_array, $invite_person, $alert
 
 		if($possible_invitee==true){
 			setup_mail_object($mail_object, $admin);
-			$user_info_array['notify_user']->new_assigned_user_name = $user_info_array['notify_user']->first_name.' '.$user_info_array['notify_user']->last_name;
+			$user_info_array['notify_user']->new_assigned_user_name = $user_info_array['notify_user']->last_name.' '.$user_info_array['notify_user']->first_name;
 			if($type=="Default"){
 				$error = get_system_default_body($mail_object, $focus, $user_info_array['notify_user']);
 			} else {
@@ -1060,7 +1060,7 @@ function get_invite_email($focus, $admin, $address_array, $invite_person, $alert
 
 		if($possible_invitee==true){
 		setup_mail_object($mail_object, $admin);
-		$user_info_array['notify_user']->new_assigned_user_name = $user_info_array['notify_user']->first_name.' '.$user_info_array['notify_user']->last_name;
+		$user_info_array['notify_user']->new_assigned_user_name = $user_info_array['notify_user']->last_name.' '.$user_info_array['notify_user']->first_name;
 			if($type=="Default"){
 				$error = get_system_default_body($mail_object, $focus, $user_info_array['notify_user']);
 			} else {

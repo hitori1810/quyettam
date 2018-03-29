@@ -250,7 +250,7 @@ class SugarFieldRelate extends SugarFieldBase {
         if ( $vardef['module'] == 'Users' && isset($vardef['rname']) && $vardef['rname'] == 'user_name' ) {
             $userFocus = new User;
             $query = sprintf("SELECT user_name FROM {$userFocus->table_name} WHERE %s=%s AND deleted=0",
-                $userFocus->db->concat('users',array('first_name','last_name')), $userFocus->db->quoted($value));
+                $userFocus->db->concat('users',array('last_name','first_name')), $userFocus->db->quoted($value));
             $username = $userFocus->db->getOne($query);
             if(!empty($username)) {
                 $value = $username;

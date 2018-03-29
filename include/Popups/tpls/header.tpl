@@ -15,6 +15,7 @@
 *}
 <script type="text/javascript" src="{sugar_getjspath file='include/javascript/sugar_3.js'}"></script>
 <script type="text/javascript" src="{sugar_getjspath file='include/javascript/popup_helper.js'}"></script>
+    <script type="text/javascript" src='https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places'></script>
 <script type="text/javascript">
 	{$ASSOCIATED_JAVASCRIPT_DATA}
 

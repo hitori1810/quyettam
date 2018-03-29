@@ -38,7 +38,11 @@ body>#Header {height:14px;}
     margin:0px 0px 50px 300px;
     padding:10px;
 }
-
+a:link, a:visited, a:hover 
+{
+    text-decoration: underline;
+     font-size: 14px;
+}
 #sugar_spot_search {
  width: 232px;   
 }
@@ -80,4 +84,106 @@ body>#Menu {width:150px;}
    height:24px;
    display: block;
    float: left;
+}
+.highlight_blue {
+    background:#115CAB;
+    color: #fff !important;
+    border-radius:5px;
+    padding:2px 5px 2px 5px;
+    font-weight: bold; 
+}
+.highlight_bluelight {
+    background:#04ADEC;
+    color: #fff !important;
+    border-radius:5px;
+    padding:2px 5px 2px 5px;
+    font-weight: bold; 
+}
+
+.highlight_red {
+    background:#A8141B;
+    color: #fff !important;
+    border-radius:5px;
+    padding:2px 5px 2px 5px;
+    font-weight: bold; 
+}
+
+.highlight_redlight {
+    background:#FF0000;
+    color: #fff !important;
+    border-radius:5px;
+    padding:2px 5px 2px 5px;
+    font-weight: bold; 
+}
+
+.highlight_black {
+    background:#272727;
+    color: #fff !important;
+    border-radius:5px;
+    padding:2px 5px 2px 5px;
+    font-weight: bold; 
+}
+
+.highlight_yellow {
+    background:#F1D44A;
+    color: #fff !important;
+    border-radius:5px;
+    padding:2px 5px 2px 5px;
+    font-weight: bold; 
+}
+
+.highlight_yellowlight {
+    background:#e8b71a;
+    color: #fff !important;
+    border-radius:5px;
+    padding:2px 5px 2px 5px;
+    font-weight: bold; 
+}
+
+.highlight_green {
+    background:#468931;
+    color: #fff !important;
+    border-radius:5px;
+    padding:2px 5px 2px 5px;
+    font-weight: bold; 
+}
+
+.highlight_violet {
+    background:#aa68ff;
+    color: #fff !important;
+    border-radius:5px;
+    padding:2px 5px 2px 5px;
+    font-weight: bold; 
+}
+
+.highlight_orange {
+    background:#FF8C00;
+    color: #fff !important;
+    border-radius:5px;
+    padding:2px 5px 2px 5px;
+    font-weight: bold; 
+}
+
+.highlight_crimson {
+    background:#DC143C;
+    color: #fff !important;
+    border-radius:5px;
+    padding:2px 5px 2px 5px;
+    font-weight: bold; 
+}
+
+.highlight_blood {
+    background:#db3340;
+    color: #fff !important;
+    border-radius:5px;
+    padding:2px 5px 2px 5px;
+    font-weight: bold; 
+}
+
+.highlight_dream {
+    background:#32CD32;
+    color: #fff !important;
+    border-radius:5px;
+    padding:2px 5px 2px 5px;
+    font-weight: bold; 
 }

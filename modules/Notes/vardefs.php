@@ -233,7 +233,7 @@ $dictionary['Note'] = array(
 		'type'=>'relate',
 		'link'=>'contact',
 		'join_name'=>'contacts',
-        'db_concat_fields'=> array(0=>'first_name', 1=>'last_name'),
+        'db_concat_fields'=> array(0=>'last_name', 1=>'first_name'),
 		'isnull'=>'true',
 		'module'=>'Contacts',
 		'source'=>'non-db',

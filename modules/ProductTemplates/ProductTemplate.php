@@ -484,6 +484,20 @@ class ProductTemplate extends SugarBean {
 		}		
 		parent::save($check_notify);	
 	}
+    
+    /**
+* set role for module.
+* 
+* @param mixed $interface
+* 
+* @author Trung Nguyen at 2016.08.18 for #351
+*/
+function bean_implements($interface) {
+        switch($interface){
+            case 'ACL': return true;
+        }
+        return false;
+    }
 }
 
 function getProductTypes($focus, $field='type_id', $value,$view='DetailView') {
@@ -593,8 +607,5 @@ function getSupportTerms($focus, $field='support_term', $value,$view='DetailView
 	}
     return $focus->support_term;
 }
-
-
-
 
 ?>

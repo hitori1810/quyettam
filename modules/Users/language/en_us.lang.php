@@ -93,10 +93,7 @@ $mod_strings = array (
 	'LBL_ADDRESS_STREET_2'				=> 'Address Street 2',
 	'LBL_ADDRESS_STREET_3'				=> 'Address Street 3',
 	'LBL_ADDRESS'						=> 'Address',
-	'LBL_ADMIN_USER'					=> 'System Administrator User',
-
-
-
+	'LBL_ADMIN_USER'					=> 'System Administrator User', 
 	'LBL_ADMIN_DESC'					=> 'User can access the Administration page all records, regardless of team security.',
 	'LBL_REGULAR_DESC'					=> 'User can access modules and records based on team security and roles.',
 	'LBL_ADMIN'							=> 'System Administrator',
@@ -611,7 +608,7 @@ $mod_strings = array (
 	'LBL_EAPM_SUBPANEL_TITLE' => 'External Accounts',
 
 	'LBL_EDITLAYOUT' => 'Edit Layout' /*for 508 compliance fix*/,
-	'LBL_HELP' => 'Help' /*for 508 compliance fix*/,
+	'LBL_HELP' => 'Giúp đỡ' /*for 508 compliance fix*/,
 	'LBL_CHECKMARK' => 'Checkmark' /*for 508 compliance fix*/,
 	'LBL_THEMEPREVIEW' => 'Preview' /*for 508 compliance fix*/,
 
@@ -635,13 +632,16 @@ $mod_strings = array (
     'LBL_DELETED' => 'Deleted',
     'LBL_HIDEOPTIONS' => 'Hide Options',
     'LBL_SHOWOPTIONS' => 'Show Options',
-    'LBL_REMEMBER_ME' => 'Remember Me',
+    'LBL_REMEMBER_ME' => 'Remember Me?',
     
     'LNK_NEW_USER_TEMPLATES' => 'Create User Template',
     'LBL_TEMPLATE'   => 'Template',
     'LBL_TEMPLATE_DESC' => 'Use for creating user template.',
     'LBL_SAVE_AS_USER_BUTTON_LABEL' => 'Save as User',
     'LBL_APPLY_USER_TEMPLATE_BUTTON_LABEL' => 'Apply User Template',
+    'LBL_PORTAL_USER_P' => 'Portal User ?',
+    'LBL_FULL_NAME' => 'Full Name Custom',
+    'LBL_AIMS_ID' => 'AIMS ID',
 ); // END STRINGS DEFS
 
 ?>

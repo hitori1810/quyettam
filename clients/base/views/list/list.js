@@ -1,4 +1,15 @@
-
+/*********************************************************************************
+ * By installing or using this file, you are confirming on behalf of the entity
+ * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
+ * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
+ * http://www.sugarcrm.com/master-subscription-agreement
+ *
+ * If Company is not bound by the MSA, then by installing or using this file
+ * you are agreeing unconditionally that Company will be bound by the MSA and
+ * certifying that you have authority to bind Company accordingly.
+ *
+ * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ ********************************************************************************/
 ({events:{'click [class*="orderBy"]':'setOrderBy','mouseenter tr':'showActions','mouseleave tr':'hideActions'},calculateRelativeWidths:function(){var totalWidth=0;for(var p in this.meta.panels){for(var f in this.meta.panels[p].fields){var field=this.meta.panels[p].fields[f];totalWidth+=parseInt(field.width)||10;}
 var adjustment=100 / totalWidth;for(var f in this.meta.panels[p].fields){var field=this.meta.panels[p].fields[f];field.width=Math.floor((parseInt(field.width)||10)*adjustment);}}},_renderHtml:function(){this.calculateRelativeWidths();this.collection.newRecords=_.find(this.collection.models,function(model){return model.old===true;})
 app.view.View.prototype._renderHtml.call(this);this.layout.off("list:search:fire",null,this);this.layout.off("list:paginate:success",null,this);this.layout.on("list:search:fire",this.fireSearch,this);this.layout.on("list:paginate:success",this.render,this);this.layout.off("list:filter:toggled",null,this);this.layout.on("list:filter:toggled",this.filterToggled,this);this.limit=this.context.get('limit')?this.context.get('limit'):null;},filterToggled:function(isOpened){this.filterOpened=isOpened;},fireSearch:function(term){var options={limit:this.limit||null,params:{q:term},fields:this.collection.fields||{}};this.collection.fetch(options);},setOrderBy:function(event){var orderMap,collection,fieldName,nOrder,options,eventTarget,orderBy;var self=this;self.orderBy=self.orderBy||{};orderMap={"desc":"_desc","asc":"_asc"};collection=self.collection;eventTarget=self.$(event.target);fieldName=eventTarget.data('fieldname');orderBy=eventTarget.data('orderby');if(!orderBy){orderBy=eventTarget.data('fieldname');}

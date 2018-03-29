@@ -24,7 +24,7 @@ class CasesViewDetail extends ViewDetail {
         parent::preDisplay();
         if(ACLController::checkAccess('KBDocuments', 'edit', true))
         {
-            array_push($this->dv->defs['templateMeta']['form']['buttons'], array(
+            /*array_push($this->dv->defs['templateMeta']['form']['buttons'], array(
                     'customCode'=>'<input title="{$MOD.LBL_CREATE_KB_DOCUMENT}" accessKey="M" class="button" onclick="this.form.return_module.value=\'Cases\'; this.form.return_action.value=\'DetailView\';this.form.action.value=\'EditView\';this.form.module.value=\'KBDocuments\';" type="submit" name="button" value="{$MOD.LBL_CREATE_KB_DOCUMENT}">',
                     'sugar_html' => array(
                         'type' => 'submit',
@@ -38,7 +38,7 @@ class CasesViewDetail extends ViewDetail {
                         ),
                     ),
                 )
-            );
+            );*/
         }
         $this->dv->th->deleteTemplate($this->dv->module, $this->dv->view);
     }

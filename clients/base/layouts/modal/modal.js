@@ -1,4 +1,15 @@
-
+/*********************************************************************************
+ * By installing or using this file, you are confirming on behalf of the entity
+ * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
+ * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
+ * http://www.sugarcrm.com/master-subscription-agreement
+ *
+ * If Company is not bound by the MSA, then by installing or using this file
+ * you are agreeing unconditionally that Company will be bound by the MSA and
+ * certifying that you have authority to bind Company accordingly.
+ *
+ * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ ********************************************************************************/
 ({baseComponents:[{'view':'modal-header'}],initialize:function(options){var self=this,showEvent=options.meta.showEvent;if(!_.isFunction(this.$el.modal)){app.logger.error("Unable to load modal.js: Needs bootstrap modal plugin.");}
 this.metaComponents=options.meta.components;options.meta.components=this.baseComponents;if(options.meta.before){_.each(options.meta.before,function(callback,event){self.before(event,callback);});}
 app.view.Layout.prototype.initialize.call(this,options);if(_.isArray(showEvent)){_.each(showEvent,function(evt,index){self._bindShowEvent(evt);});}else{self._bindShowEvent(showEvent);}},_bindShowEvent:function(event,delegate){var self=this;if(_.isObject(event))

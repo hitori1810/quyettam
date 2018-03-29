@@ -107,7 +107,7 @@
           {/if}
           {foreach from=$custom_imports key=key item=item name=saved}
           <tr id="custom_import_{$smarty.foreach.saved.index}">
-            <td scope="row" colspan="2" width="10%" style="padding-right: 10px;">
+            <td scope="row" colspan="2" width="50%" style="padding-right: 10px;">
                 <input class="radio" type="radio" name="source" value="custom:{$item.IMPORT_ID}"/>
                 &nbsp;{$item.IMPORT_NAME}
             </td>
@@ -139,6 +139,8 @@
           </tr>
           {/foreach}
     </table>
+    <input type="hidden" id="hd_default_mapping_record" value="{$DEFAULT_MAPPING_RECORD}"/>
+    {sugar_getscript file="custom/modules/Import/js/CustomImport.js"}
 </td>
 </tr>
 </table>

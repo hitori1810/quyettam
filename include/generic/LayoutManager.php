@@ -241,7 +241,7 @@ class LayoutManager
 			$widget_def['widget_class'] = 'Fieldteam_set_id';
 		}
 
-		if(empty($widget_def['widget_class']))
+		if(empty($widget_def['widget_class']) || $widget_def['widget_class'] == 'Fieldlink')// Fix bug Order By Count - By Lap Nguyen
 		{
 			// Default the class to SugarWidgetField
 			$class_name = $this->widget_prefix.$this->default_widget_name;

@@ -159,7 +159,7 @@ $dictionary['KBDocumentRevision'] = array('table' => 'kbdocument_revisions'
   array (
     'name' => 'created_by_name',
     'rname' => 'user_name',
-    'db_concat_fields'=> array(0=>'first_name', 1=>'last_name'),
+    'db_concat_fields'=> array(0=>'last_name', 1=>'first_name'),
     'id_name' => 'created_by',
     'vname' => 'LBL_CREATED_BY_NAME',
     'type' => 'relate',
@@ -197,8 +197,8 @@ $dictionary['KBDocumentRevision'] = array('table' => 'kbdocument_revisions'
        array('name' =>'knowledgedocumentrevisionspk', 'type' =>'primary', 'fields'=>array('id')),
        array('name' =>'idx_del_latest_kbcontent_id', 'type' =>'index', 'fields'=>array('deleted', 'latest', 'kbcontent_id')),
 	   array('name' => 'idx_cont_id_doc_id', 'type' => 'index', 'fields' => array('kbcontent_id', 'kbdocument_id')),
-	   array('name' => 'idx_name_rev_id_del', 'type' => 'index', 'fields' => array('document_revision_id', 'kbdocument_id', 'deleted')),       
-       
+	   array('name' => 'idx_name_rev_id_del', 'type' => 'index', 'fields' => array('document_revision_id', 'kbdocument_id', 'deleted')),
+
 
 )
 );

@@ -35,7 +35,6 @@ array (
           'file' => 'modules/Accounts/Account.js',
         ),
       ),
-      'syncDetailEditViews' => false,
       'tabDefs' => 
       array (
         'LBL_ACCOUNT_INFORMATION' => 
@@ -48,12 +47,8 @@ array (
           'newTab' => false,
           'panelDefault' => 'expanded',
         ),
-        'LBL_PANEL_ASSIGNMENT' => 
-        array (
-          'newTab' => false,
-          'panelDefault' => 'expanded',
-        ),
       ),
+      'syncDetailEditViews' => false,
     ),
     'panels' => 
     array (
@@ -63,10 +58,10 @@ array (
         array (
           0 => 
           array (
-            'name' => 'code',
-            'label' => 'LBL_CODE',
+            'name' => 'account_id',
+            'label' => 'LBL_ACCOUNT_ID',
+            'customCode' => '{$ACCOUNT_ID}',
           ),
-          1 => 'business_type',
         ),
         1 => 
         array (
@@ -89,35 +84,17 @@ array (
         array (
           0 => 
           array (
-            'name' => 'iata_code',
-          ),
-          1 =>  ''
-        ),
-        3 => 
-        array (
-          0 => 
-          array (
-            'name' => 'brand_name',
-          ),
-          1 => 
-          array (
-            'name' => 'mobile_phone',
-          ),
-        ),
-        
-        4 => 
-        array (
-          0 => 
-          array (
-            'name' => 'tax_code',
+            'name' => 'website',
+            'type' => 'link',
+            'label' => 'LBL_WEBSITE',
           ),
           1 => 
           array (
             'name' => 'phone_fax',
+            'label' => 'LBL_FAX',
           ),
         ),
-        
-        5 => 
+        3 => 
         array (
           0 => 
           array (
@@ -147,7 +124,7 @@ array (
             ),
           ),
         ),
-        6 => 
+        4 => 
         array (
           0 => 
           array (
@@ -155,57 +132,8 @@ array (
             'studio' => 'false',
             'label' => 'LBL_EMAIL',
           ),
-          1 => 
-          array (
-            'name' => 'dob_day',
-            'label' => 'LBL_BIRTHDATE',
-            'type' => 'Dob',
-          ),
         ),
-        7 => 
-        array (
-            'name' => 'category',
-        ),
-        8 => 
-        array (
-          0 => 
-          array (
-            'name' => 'bank_account_number',
-            'label' => 'LBL_BANK_ACCOUNT_NUMBER',
-          ),
-          1 => 
-          array (
-             'name' => 'bank_name',
-            'label' => 'LBL_BANK_NAME',
-          ),
-        ),
-        9 => 
-        array (
-          0 => 
-          array (
-             'name' => 'credit_limit',
-            'label' => 'LBL_CREDIT_LIMIT',
-          ), 
-          1 => 
-          array (
-              'name' => 'bank_branch',
-          ),
-        ),
-        
-        10 => 
-        array (
-          0 => 
-          array (
-            'name' => 'active_date',
-            'label' => 'LBL_ACTIVE_DATE',
-          ),
-          1 => 
-          array (
-            'name' => 'exp_date',
-            'label' => 'LBL_EXP_DATE',
-          ),
-        ),
-        11 => 
+        5 => 
         array (
           0 => 
           array (
@@ -218,38 +146,27 @@ array (
       array (
         0 => 
         array (
-          0 => 'industry',
+          0 => 'type_of_account',
           1 => 
           array (
-            'name' => 'lead_source',
-            'comment' => 'Lead source (ex: Web, print)',
-            'label' => 'LBL_SOURCE',
+            'name' => 'tax_code',
+            'label' => 'LBL_TAX_CODE',
           ),
         ),
         1 => 
         array (
-          0 => 'annual_revenue',
-          1 => 'employees',
+          0 => 
+          array (
+            'name' => 'bank_name',
+            'label' => 'LBL_BANK_NAME',
+          ),
+          1 => 
+          array (
+            'name' => 'bank_number',
+            'label' => 'LBL_BANK_NUMBER',
+          ),
         ),
         2 => 
-        array (
-          0 => 'sic_code',
-          1 => 'ticker_symbol',
-        ),
-        3 => 
-        array (
-          0 => 'parent_name',
-          1 => 'ownership',
-        ),
-        4 => 
-        array (
-          0 => 'campaign_name',
-          1 => 'rating',
-        ),
-      ),
-      'LBL_PANEL_ASSIGNMENT' => 
-      array (
-        0 => 
         array (
           0 => 
           array (

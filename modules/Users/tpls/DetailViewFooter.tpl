@@ -21,7 +21,7 @@
                             <h4>{$MOD.LBL_MAIL_OPTIONS_TITLE}</h4>
                         </th>
                     </tr>
-                    <tr>
+                    <tr style="display:{$HIDE_FOR_TEMPLATE}">
                         <td align="top" scope="row" width="15%">
                             {$MOD.LBL_EMAIL|strip_semicolon}:
                         </td>
@@ -30,7 +30,7 @@
                         </td>
                     </tr>
                     <tr id="email_options_link_type">
-                        <td align="top"  scope="row">
+                        <td align="top"  scope="row" width="15%">
                             {$MOD.LBL_EMAIL_LINK_TYPE|strip_semicolon}:
                         </td>
                         <td >
@@ -251,6 +251,7 @@
             </table>
         </div>
     </div>
+</form>
 {if $SHOW_ROLES}
     {$ROLE_HTML}
 {else}

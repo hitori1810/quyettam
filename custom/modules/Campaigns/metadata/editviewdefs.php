@@ -19,7 +19,7 @@ array (
           'field' => '30',
         ),
       ),
-      'javascript' => '<script type="text/javascript" src="include/javascript/popup_parent_helper.js?v=fTmpH0IwCXe-mfl9_dlaBA"></script>
+      'javascript' => '<script type="text/javascript" src="include/javascript/popup_parent_helper.js?v=ccjaZyVwRaSQMvronviLOQ"></script>
 <script type="text/javascript">
 function type_change() {ldelim}
 	type = document.getElementsByName(\'campaign_type\');
@@ -30,6 +30,12 @@ function type_change() {ldelim}
 		document.getElementById(\'freq_label\').style.display = \'none\';
 		document.getElementById(\'freq_field\').style.display = \'none\';
 	 {rdelim}
+     
+    if(type[0].value==\'Other\') {ldelim}
+        document.getElementById(\'other_type\').style.display = \'\';
+     {rdelim} else {ldelim}
+        document.getElementById(\'other_type\').style.display = \'none\';
+     {rdelim}
  {rdelim}
 type_change();
 
@@ -78,7 +84,6 @@ function ConvertItems(id)  {ldelim}
           'panelDefault' => 'expanded',
         ),
       ),
-      'syncDetailEditViews' => false,
     ),
     'panels' => 
     array (
@@ -105,6 +110,16 @@ function ConvertItems(id)  {ldelim}
               'required' => false,
               'showFormats' => true,
             ),
+          ),
+          1 => 
+          array (
+            'name' => 'campaign_type',
+            'displayParams' => 
+            array (
+              'javascript' => 'onchange="type_change();"',
+            ),
+            'customCode' => '{html_options name="campaign_type" id="campaign_type" options=$fields.campaign_type.options selected=$fields.campaign_type.value onchange="type_change();"}&nbsp;
+                            &nbsp;<input name="other_type" style="display:none; width:200px !important"  id="other_type" type="text" value="{$fields.other_type.value}">',
           ),
         ),
         2 => 
@@ -161,10 +176,6 @@ function ConvertItems(id)  {ldelim}
               'rows' => 8,
               'cols' => 80,
             ),
-          ),
-          1 => 
-          array (
-            'name' => 'accounts_campaigns_1_name',
           ),
         ),
       ),

@@ -30,39 +30,38 @@ $subpanel_layout = array(
 		'name'=>array(
 			 'vname' => 'LBL_LIST_SUBJECT',
 			 'widget_class' => 'SubPanelDetailViewLink',
-			 'width' => '30%',
+			 'width' => '15%',
 		),
+         'description' => array(
+            'vname' => 'LBL_DESCRIPTION',
+            'width' => '30%',
+        ),
 		'status'=>array(
 			 'widget_class' => 'SubPanelActivitiesStatusField',
 			 'vname' => 'LBL_LIST_STATUS',
 			 'width' => '15%',
 			 'force_exists'=>true //this will create a fake field in the case a field is not defined
 		),
+        'date_start'=>array(
+            'vname' => 'LBL_LIST_DUE_DATE',
+            'width' => '10%',
+        ),
 		'reply_to_status' => array(
 			 'usage'				=> 'query_only',
              'force_exists'			=> true,
              'force_default'		=> 0,
 		),
-		'contact_name'=>array(
-			 'widget_class'			=> 'SubPanelDetailViewLink',
-			 'target_record_key'	=> 'contact_id',
-			 'target_module'		=> 'Contacts',
-			 'module'				=> 'Contacts',
-			 'vname'				=> 'LBL_LIST_CONTACT',
-			 'width'				=> '11%',
-			 'sortable'=>false,
-		),
 		'contact_id'=>array(
 			'usage'=>'query_only',
 		),
-		'contact_name_owner'=>array(
-			'usage'=>'query_only',
-			'force_exists'=>true
-		),
-		'contact_name_mod'=>array(
-			'usage'=>'query_only',
-			'force_exists'=>true
-		),
+//		'contact_name_owner'=>array(
+//			'usage'=>'query_only',
+//			'force_exists'=>true
+//		),
+//		'contact_name_mod'=>array(
+//			'usage'=>'query_only',
+//			'force_exists'=>true
+//		),
 		'parent_id'=>array(
             'usage'=>'query_only',
 			'force_exists'=>true
@@ -79,10 +78,7 @@ $subpanel_layout = array(
 			'vname' => 'LBL_LIST_DATE_ENTERED',
 			'width' => '10%',
 		),
-        'date_start'=>array(
-            'vname' => 'LBL_LIST_DUE_DATE',
-            'width' => '10%',
-        ),
+        
 		'assigned_user_name' => array (
 			'name' => 'assigned_user_name',
 			'vname' => 'LBL_LIST_ASSIGNED_TO_NAME',

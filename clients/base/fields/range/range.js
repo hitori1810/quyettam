@@ -1,4 +1,15 @@
-
+/*********************************************************************************
+ * By installing or using this file, you are confirming on behalf of the entity
+ * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
+ * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
+ * http://www.sugarcrm.com/master-subscription-agreement
+ *
+ * If Company is not bound by the MSA, then by installing or using this file
+ * you are agreeing unconditionally that Company will be bound by the MSA and
+ * certifying that you have authority to bind Company accordingly.
+ *
+ * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ ********************************************************************************/
 ({fieldTag:'.rangeSlider',_sliderTypeSettings:{single:{handles:1,connect:false},upper:{handles:1,connect:'upper'},lower:{handles:1,connect:'lower'},double:{handles:2,connect:false},connected:{handles:2,connect:true}},_render:function(value){app.view.Field.prototype._render.call(this);this._setupSlider(this.$el.find(this.fieldTag));},unformat:function(value){var sliderType=this.def.sliderType||'single';switch(sliderType){case'single':return _.first(value);case'upper':return{min:_.first(value),max:this.def.maxRange||100};case'lower':return{min:this.def.minRange||0,max:_.last(value)};case'double':return[_.isNaN(_.first(value))?this.def.minRange||0:_.first(value),_.isNaN(_.last(value))?this.def.maxRange||100:_.last(value)];case'connected':default:return{min:_.isNaN(_.first(value))?this.def.minRange||0:_.first(value),max:_.isNaN(_.last(value))?this.def.maxRange||100:_.last(value)};}},format:function(value){var sliderType=this.def.sliderType||'single';switch(sliderType){case'single':return[value||this.def.rangeMin||0];case'upper':return[value.min||this.def.rangeMin||0];case'lower':return[value.max||this.def.rangeMax||100];case'double':return value;case'connected':default:if(value){return[value.min||this.def.rangeMin||0,value.max||this.def.rangeMax||100];}}
 return[this.def.rangeMin||0,this.def.rangeMax||100];},_setupSlider:function(jqel){jqel.noUiSlider('init',{knobs:this._calculateHandles(),connect:this._setupHandleConnections(this.def.sliderType||'single'),scale:this._setupSliderEndpoints(),start:this._setupSliderStartPositions(),change:this._sliderChange,end:this._sliderChangeComplete,field:this});if(!this.def.hideStyle){this._addStyle(jqel);}
 if(this.def.enabled==false||this.def.view!='edit'){jqel.noUiSlider('disable');}},_addStyle:function(jqel){var start=this._setupSliderStartPositions(),endpoints=this._setupSliderEndpoints();jqel.append(function(){var html="",segments=11,w=$(this).width(),segmentWidth=w/(segments-1),acum=0;for(i=0;i<segments;i++){acum=(segmentWidth*i)-2;html+="<div class='ticks' style='left:"+acum+"px'></div>";}

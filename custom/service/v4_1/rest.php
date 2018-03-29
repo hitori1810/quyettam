@@ -35,7 +35,6 @@
  * "Powered by SugarCRM".
  ********************************************************************************/
 
-
 /**
  * This is a rest entry point for rest version 4
  */

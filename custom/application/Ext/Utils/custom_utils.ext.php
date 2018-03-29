@@ -2,214 +2,188 @@
  //WARNING: The contents of this file are auto-generated
 
 
+function getdiscount(){
+    $options = array();
+    $sql  = "SELECT id, `name` FROM j_discount ";
+    $result = $GLOBALS['db']->query($sql);
+    while($discount = $GLOBALS['db']->fetchByAssoc($result)){
+        $options[$discount['id']] = $discount['name'];
+    }
+    return $options;
 
-    function getAvailableModules() {
-        require_once('modules/MySettings/TabController.php');
-        global $app_list_strings;
-        // Unused modules
-        $excludeModule = array('Home', 'Emails', 'Forecasts', 'Bugs', 'Reports', 'Calendar');
+}
 
-        $controller = new TabController();
-        $tabs = $controller->get_tabs_system();
+/**
+* CustomUtils
+* Modified By Thanh Le At 04/2015
+* Removed AjaxgetAddress
+*/
 
-        // Loop all the enabled modules name to convert into an array of: module_name => module_label
-        $availableModules = array('' => '');
-        foreach($tabs[0] as $moduleName) {  // $tabs[0] is the list of avaiable modules
-            if(!in_array($moduleName, $excludeModule)) {
-                $moduleLabel = $app_list_strings['moduleList'][$moduleName];    // Get module label
-                $availableModules[$moduleName] = $moduleLabel;    
-            }
+function getAvailableModules() {
+    require_once('modules/MySettings/TabController.php');
+    global $app_list_strings;
+    // Unused modules
+    $excludeModule = array('Home', 'Emails', 'Forecasts', 'Bugs', 'Reports', 'Calendar');
+
+    $controller = new TabController();
+    $tabs = $controller->get_tabs_system();
+
+    // Loop all the enabled modules name to convert into an array of: module_name => module_label
+    $availableModules = array('' => '');
+    foreach($tabs[0] as $moduleName) {  // $tabs[0] is the list of avaiable modules
+        if(!in_array($moduleName, $excludeModule)) {
+            $moduleLabel = $app_list_strings['moduleList'][$moduleName];    // Get module label
+            $availableModules[$moduleName] = $moduleLabel;
         }
-
-        return $availableModules;   
     }
 
-    /**
-    * Function generate provine option
-    * @author Hai Nguyen
-    */
-    function getProvineOprions(){
-        $province_list_options = array(); 
-        $province_list_options[''] = '';
-        $arrTemp = array();
-        $query = "SELECT  id, name FROM c_province WHERE deleted = 0 AND (name LIKE 'Ho Chi Minh' OR name LIKE 'Ha Noi') ORDER BY name";
-        $result = $GLOBALS['db']->query($query);
-        if($GLOBALS['db']->getRowCount($result)>0){
-            while($row = $GLOBALS['db']->fetchByAssoc($result)){
-                $province_list_options[$row['id']] = $row['name'];
-                $arrTemp[] = $row['id'];
-            }
-        }
-        $idNotIn = implode("','",$arrTemp);
+    return $availableModules;
+}
 
-        $query = "SELECT  id, name FROM c_province WHERE deleted = 0 ";
-        if(!empty($idNotIn))
-            $query .= " AND id NOT IN ('{$idNotIn}')"; 
-        $query .= " ORDER BY name";
-        $result = $GLOBALS['db']->query($query);
-        if($GLOBALS['db']->getRowCount($result)>0){
-            while($row = $GLOBALS['db']->fetchByAssoc($result)){
-                $province_list_options[$row['id']] = $row['name'];
-            }
-        }
-        return $province_list_options; 
-    }
-    /**
-    * Function genarate District option
-    * @author Hai Nguyen
-    * 
-    */
-    function getDistrictOptions(){
-        $district_list_options = array();
-        $query = "SELECT 
-        a.id,
-        a.name
-        FROM
-        c_district a 
-        WHERE a.deleted = 0
-        ORDER BY a.name ";
-        $result = $GLOBALS['db']->query($query);
-        if($GLOBALS['db']->getRowCount($result)>0){
-            $district_list_options[''] = '';
-            while($row = $GLOBALS['db']->fetchByAssoc($result)){
-                $district_list_options[$row['id']] = $row['name'];
-            }
-        }
-        return $district_list_options;
-    }
-    /**
-    * Function get All Ward option
-    * @author Hai Nguyen
-    */
-    function getWardOptions(){
-        $ward_list_options = array();
-        $query = 'SELECT 
-        c_ward.id,
-        c_ward.name
-        FROM
-        c_ward
-        WHERE c_ward.deleted = 0 
-        ORDER BY c_ward.name';
-        $result = $GLOBALS['db']->query($query);
-        if($GLOBALS['db']->getRowCount($result)>0){
-            $ward_list_options [''] ='';
-            while($row = $GLOBALS['db']->fetchByAssoc($result)){
-                $ward_list_options[$row['id']] = $row['name'];
-            }
-        }
-        return $ward_list_options;
-    }
+/**
+* Convert vietnamese name to no marks
+*/
+function viToEn($str){
+    $str = html_entity_decode_utf8($str);
+    //Convert Unicode Dung San
+    $str=preg_replace('/(à|á|ả|ã|ạ|ă|ắ|ằ|ẳ|ẵ|ặ|â|ấ|ầ|ẩ|ẫ|ậ)/','a',$str);
+    $str=preg_replace('/(Á|À|Ả|Ã|Ạ|Ă|Ắ|Ằ|Ẳ|Ẵ|Ặ|Â|Ấ|Ầ|Ẩ|Ẫ|Ậ)/','A',$str);
 
-    /**
-    * function get all Provinve By Country
-    * @author Hai Nguyen
-    * @param mixed $country
-    * @return $html province option
-    */
-    function ajaxGetProvinceByCountry($country = '', $province_value){
-        $html = '<option value=""> </option>';
-        $selected = '';
-        if($country != ''){
-            $query = "SELECT  id, name FROM c_province WHERE deleted = 0 AND country = '{$country}' AND (name LIKE 'Ho Chi Minh' OR name LIKE 'Ha Noi') ORDER BY name";
-            $result = $GLOBALS['db']->query($query);
-            if($GLOBALS['db']->getRowCount($result)>0){
-                while($row = $GLOBALS['db']->fetchByAssoc($result)){
-                    $selected = $row['id'] == $province_value? 'selected="selected"':'';
-                    $html .= "<option value='{$row['id']}' ".$selected."> {$row['name']}</option>"; 
-                    $arrTemp[] = $row['id'];
-                }
-            }
-            $idNotIn = implode("','",$arrTemp);
-            $query = "SELECT  id, name FROM c_province WHERE deleted = 0 AND country = '{$country}' ";
-            if(!empty($idNotIn))
-                $query .= " AND id NOT IN ('{$idNotIn}')"; 
-            $query .= " ORDER BY name";
-            $result = $GLOBALS['db']->query($query);
-            if($GLOBALS['db']->getRowCount($result) >0){
-                while($row = $GLOBALS['db']->fetchByAssoc($result)){
-                    $selected = $row['id'] == $province_value? 'selected="selected"':'';
-                    $html .= "<option value='{$row['id']}' ".$selected."> {$row['name']}</option>";  
-                }
-            }
-        }
-        return $html;
-    }
-    /**
-    * Function get District By Province
-    * @author Hai Nguyen 
-    * @param mixed $province
-    * @return mixed $html option
-    */
-    function ajaxGetDistrictByProvince($province = '',$district_value =''){
-        $html = '<option value=""> </option>';
-        if(!empty($province)){
-            $query = "SELECT 
-            a.id,
-            a.name
-            FROM
-            c_district a 
-            JOIN c_district_c_province_c b 
-            ON a.id = b.c_district_c_provincec_district_idb 
-            AND b.deleted = 0 
-            WHERE a.deleted = 0 AND b.c_district_c_provincec_province_ida = '{$province}'
-            ORDER BY a.name ";
-            $result = $GLOBALS['db']->query($query);
-            if($GLOBALS['db']->getRowCount($result)>0){
-                while($row = $GLOBALS['db']->fetchByAssoc($result)){
-                    $selected = $row['id'] == $district_value? 'selected="selected"':'';
-                    $html .= "<option value='{$row['id']}' ".$selected."> {$row['name']}</option>";  
-                }
-            } 
-        }
-        return $html;
-    }
-    /**
-    * function get Ward By District 
-    * @author Hai Nguyen
-    * @param mixed $district
-    * @return mixed $html option
-    */
-    function ajaxGetWardByDistrict($district ='',$ward_value=''){
-        $html = '<option value=""> </option>';
-        if(!empty($district)){
-            $query = "SELECT 
-            c_ward.id,
-            c_ward.name,
-            c_ward_c_district_c.c_ward_c_districtc_district_ida AS billing_address_district 
-            FROM
-            c_ward
-            JOIN c_ward_c_district_c 
-            ON c_ward_c_district_c.c_ward_c_districtc_ward_idb = c_ward.id 
-            AND c_ward_c_district_c.deleted = 0 
-            WHERE c_ward.deleted = 0 AND c_ward_c_district_c.c_ward_c_districtc_district_ida = '{$district}'
-            ORDER BY c_ward.name";
-            $result = $GLOBALS['db']->query($query);
-            if($GLOBALS['db']->getRowCount($result)){
-                while($row = $GLOBALS['db']->fetchByAssoc($result)){
-                    $selected = $row['id'] == $ward_value? 'selected="selected"':'';
-                    $html .= "<option value='{$row['id']}' ".$selected."> {$row['name']}</option>";  
-                }
-            }
-        }
-        return $html;
-    }
-    /**
-    * function genarate target list
-    * 
-    * @return target list (id=>name)
-    * 
-    * Add by Trung Nguyen at 2015.03.03
-    */
-    function getTargetList(){
-        $bean = BeanFactory::getBean('ProspectLists');
-        $beanList = $bean->get_full_list();
-        $targetList = array();
-        for($i=0;$i<count($beanList);$i++){
-            $targetList[$beanList[$i]->id] = $beanList[$i]->name;
-        }
-        return $targetList;                    
+    $str=preg_replace("/(é|è|ẻ|ẽ|ẹ|ê|ế|ề|ể|ễ|ệ)/",'e',$str);
+    $str=preg_replace("/(É|È|Ẻ|Ẽ|Ẹ|Ê|Ế|Ề|Ể|Ễ|Ệ)/",'E',$str);
+
+    $str=preg_replace("/(í|ì|ỉ|ị|ĩ)/",'i',$str);
+    $str=preg_replace("/(Í|Ì|Ỉ|Ĩ|Ị)/",'i',$str);
+
+    $str=preg_replace("/(ó|ò|ỏ|õ|ọ|ô|ố|ồ|ổ|ỗ|ộ|ơ|ớ|ờ|ở|ỡ|ợ)/",'o',$str);
+    $str=preg_replace("/(Ó|Ò|Ỏ|Õ|Ọ|Ô|Ố|Ồ|Ổ|Ỗ|Ộ|Ơ|Ớ|Ờ|Ở|Ỡ|Ợ)/",'O',$str);
+
+    $str=preg_replace("/(ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự)/",'u',$str);
+    $str=preg_replace("/(Ú|Ù|Ủ|Ũ|Ụ|Ư|Ứ|Ừ|Ử|Ữ|Ự)/",'U',$str);
+
+    $str=preg_replace("/(ý|ỳ|ỷ|ỹ|ỵ)/",'y',$str);
+    $str=preg_replace("/(Ý|Ỳ|Ỷ|Ỹ|Ỵ)/",'Y',$str);
+
+    $str=preg_replace("/(đ)/",'d',$str);
+    $str=preg_replace("/(Đ)/",'D',$str);
+
+
+    //Convert Unicode To Hop
+    $str=preg_replace('/(à|á|ả|ã|ạ|ă|ắ|ằ|ẳ|ẵ|ặ|â|ấ|ầ|ẩ|ẫ|ậ)/','a',$str);
+    $str=preg_replace('/(Á|À|Ả|Ã|Ạ|Ă|Ắ|Ằ|Ẳ|Ẵ|Ặ|Â|Ấ|Ầ|Ẩ|Ẫ|Ậ)/','A',$str);
+
+    $str=preg_replace("/(é|è|ẻ|ẽ|ẹ|ê|ế|ề|ể|ễ|ệ)/",'e',$str);
+    $str=preg_replace("/(É|È|Ẻ|Ẽ|Ẹ|Ê|Ế|Ề|Ể|Ễ|Ệ)/",'E',$str);
+
+    $str=preg_replace("/(í|ì|ỉ|ị|ĩ)/",'i',$str);
+    $str=preg_replace("/(Í|Ì|Ỉ|Ĩ|Ị)/",'i',$str);
+
+    $str=preg_replace("/(ó|ò|ỏ|õ|ọ|ô|ố|ồ|ổ|ỗ|ộ|ơ|ớ|ờ|ở|ỡ|ợ)/",'o',$str);
+    $str=preg_replace("/(Ó|Ò|Ỏ|Õ|Ọ|Ô|Ố|Ồ|Ổ|Ỗ|Ộ|Ơ|Ớ|Ờ|Ở|Ỡ|Ợ)/",'O',$str);
+
+    $str=preg_replace("/(ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự)/",'u',$str);
+    $str=preg_replace("/(Ú|Ù|Ủ|Ũ|Ụ|Ư|Ứ|Ừ|Ử|Ữ|Ự)/",'U',$str);
+
+    $str=preg_replace("/(ý|ỳ|ỷ|ỹ|ỵ)/",'y',$str);
+    $str=preg_replace("/(Ý|Ỳ|Ỷ|Ỹ|Ỵ)/",'Y',$str);
+
+    $str=preg_replace("/(đ)/",'d',$str);
+    $str=preg_replace("/(Đ)/",'D',$str);
+    $str=preg_replace("/(`)/",'',$str);
+    return $str;
+}
+
+function getTeamType($team_id){
+    return $GLOBALS['db']->getOne("SELECT team_type FROM teams WHERE id = '$team_id' AND deleted = 0");
+}
+
+function getParentTeamName($team_id){
+    return $GLOBALS['db']->getOne("SELECT l1.name
+    FROM teams
+    LEFT JOIN teams l1 ON l1.id = teams.parent_id AND l1.deleted <> 1
+    WHERE teams.id = '$team_id' AND teams.deleted = 0");
+}
+
+/**
+ * Generate an array of string dates between 2 dates
+ *
+ * @param string $start Start date
+ * @param string $end End date
+ * @param string $format Output format (Default: Y-m-d)
+ *
+ * @return array
+ */
+function getDatesFromRange($start, $end, $format = 'Y-m-d') {
+    $array = array();
+    $interval = new DateInterval('P1D');
+
+    $realEnd = new DateTime($end);
+    $realEnd->add($interval);
+
+    $period = new DatePeriod(new DateTime($start), $interval, $realEnd);
+
+    foreach($period as $date) {
+        $array[] = $date->format($format);
     }
 
-    
+    return $array;
+}
+function get_string_between($string, $start = "'", $end = "'"){
+    $string = " ".$string;
+    $ini = strpos($string,$start);
+    if ($ini == 0) return "";
+    $ini += strlen($start);
+    $len = strpos($string,$end,$ini) - $ini;
+    return substr($string,$ini,$len);
+}
+function checkDataLockDate($input_date_time){
+    global $current_user, $timedate, $sugar_config;
+    if($sugar_config['lock_info']){
+        if(!empty($sugar_config['except_lock_for_user_name'])){
+            $count_match = 0;
+            $user_name = explode(",", $sugar_config['except_lock_for_user_name']);
+            for($i = 0; $i<count($user_name); $i++){
+                if($user_name[$i] == $current_user->user_name)
+                    $count_match++;
+            }
+            if($count_match > 0) return true;
+        }
+
+        if($current_user->isAdmin())
+            return true;
+        else{
+            $splited            = explode('-',$GLOBALS['sugar_config']['lock_date']);
+            $input_date_db      = $timedate->to_db_date($input_date_time, false);
+            $check_date_time    = strtotime('first day of next month '.$input_date_db) + ( (intval($splited[0]) - 1) * 86400 ) + ( (intval($splited[1])) * 3600 );
+            $now_date           = strtotime('+7hour '. $timedate->nowDb());
+            if($now_date > $check_date_time)
+                return false;
+            else return true;
+        }
+
+    }else return true;
+
+}
+
+    function getTeacher(){
+        $options = array();
+        $sql  = "SELECT id,full_teacher_name FROM c_teachers WHERE deleted = 0";
+        $result = $GLOBALS['db']->query($sql);
+        while($teacher = $GLOBALS['db']->fetchByAssoc($result)){
+            $options[$teacher['id']] = $teacher['full_teacher_name'];
+        }
+        return $options;
+    }
+    function getRoom(){
+        $options = array();
+        $sql  = "SELECT id,name FROM c_rooms WHERE deleted = 0";
+        $result = $GLOBALS['db']->query($sql);
+        while($teacher = $GLOBALS['db']->fetchByAssoc($result)){
+            $options[$teacher['id']] = $teacher['name'];
+        }
+        return $options;
+    }
+
+
 
 ?>

@@ -1,6 +1,7 @@
-<?php /* Smarty version 2.6.11, created on 2018-03-27 23:02:58
+<?php /* Smarty version 2.6.11, created on 2018-03-29 10:02:13
          compiled from themes/RacerX/tpls/_dcmenu.tpl */ ?>
-<?php if ($this->_tpl_vars['AUTHENTICATED']):  echo $this->_tpl_vars['DCSCRIPT']; ?>
+<?php if ($this->_tpl_vars['AUTHENTICATED']): ?>
+<?php echo $this->_tpl_vars['DCSCRIPT']; ?>
 
 <div id='dcmenutop'></div>
 <div id='dcmenu' class='dcmenu dcmenuFloat navbar navbar-fixed-top'>
@@ -11,7 +12,7 @@ $this->_smarty_include(array('smarty_include_tpl_file' => "themes/RacerX/tpls/_h
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
-    
+
     <?php if ($this->_tpl_vars['AUTHENTICATED']): ?>
     <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "themes/RacerX/tpls/_quickcreate.tpl", 'smarty_include_vars' => array()));
@@ -28,7 +29,7 @@ $this->_smarty_include(array('smarty_include_tpl_file' => "themes/RacerX/tpls/_s
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
-    
+
 	<?php endif; ?>
     </div>
 </div>

@@ -1,9 +1,9 @@
 <?php
-// created: 2018-03-27 23:02:36
+// created: 2018-03-29 16:49:26
 $mod_strings = array (
-  'LBL_TEAM' => 'Teams',
-  'LBL_TEAMS' => 'Teams',
-  'LBL_TEAM_ID' => 'Team:',
+  'LBL_TEAM' => 'Center',
+  'LBL_TEAMS' => 'Center',
+  'LBL_TEAM_ID' => 'Center:',
   'LBL_MODULE_NAME' => 'Project',
   'LBL_MODULE_NAME_SINGULAR' => 'Project',
   'LBL_MODULE_TITLE' => 'Projects: Home',
@@ -64,9 +64,9 @@ $mod_strings = array (
   'LBL_QUICK_NEW_PROJECT' => 'New Project',
   'LBL_PROJECT_TASKS_SUBPANEL_TITLE' => 'Project Tasks',
   'LBL_CONTACTS_SUBPANEL_TITLE' => 'Contacts',
-  'LBL_ACCOUNTS_SUBPANEL_TITLE' => 'Accounts',
-  'LBL_OPPORTUNITIES_SUBPANEL_TITLE' => 'Opportunities',
-  'LBL_CASES_SUBPANEL_TITLE' => 'Cases',
+  'LBL_ACCOUNTS_SUBPANEL_TITLE' => 'Corporates',
+  'LBL_OPPORTUNITIES_SUBPANEL_TITLE' => 'Enrollments',
+  'LBL_CASES_SUBPANEL_TITLE' => 'Feedbacks',
   'LBL_BUGS_SUBPANEL_TITLE' => 'Bugs',
   'LBL_PRODUCTS_SUBPANEL_TITLE' => 'Products',
   'LBL_QUOTES_SUBPANEL_TITLE' => 'Quotes',
@@ -173,7 +173,7 @@ $mod_strings = array (
   'LBL_MY_PROJECTS_DASHBOARD' => 'My Projects Dashboard',
   'LBL_RESOURCE_REPORT' => 'Resource Report',
   'LBL_PERSONAL_HOLIDAY' => '-- Personal Holiday --',
-  'LBL_OPPORTUNITIES' => 'Opportunities',
+  'LBL_OPPORTUNITIES' => 'Enrollments',
   'LBL_LAST_WEEK' => 'Previous',
   'LBL_NEXT_WEEK' => 'Next',
   'LBL_PROJECTRESOURCES_SUBPANEL_TITLE' => 'Project Resources',
@@ -182,8 +182,8 @@ $mod_strings = array (
   'LBL_PROJECT_INFORMATION' => 'Overview',
   'LBL_EDITLAYOUT' => 'Edit Layout',
   'LBL_INSERTROWS' => 'Insert Rows',
-  'LBL_PROJECTTASK_PROJECT_1_FROM_PROJECTTASK_TITLE' => 'Project Tasks',
-  'LBL_PROJECTTASK_PROJECT_1_FROM_PROJECT_TITLE_ID' => 'Project Tasks ID',
-  'LBL_PROJECT_C_WORKLOG_1_FROM_C_WORKLOG_TITLE' => 'Work Logs',
-  'LBL_PROJECT_USERS_1_FROM_USERS_TITLE' => 'Users',
+  'LBL_CONTACTS' => 'Contacts',
+  'LBL_ACCOUNTS' => 'Corporates',
+  'LBL_CASES' => 'Feedbacks',
+  'LBL_MEETINGS' => 'Meetings',
 );

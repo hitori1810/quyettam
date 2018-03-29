@@ -89,8 +89,9 @@
 
 		<script>
 		var image_path = '{$IMAGE_PATH}';
-		{literal}
-
+        {literal}
+            //create variables that will be used to monitor the number of tracker url  - ADD BY LAP NGUYEN
+            var trackers_added = 0;
 			//create variables that will be used to monitor the number of target url
 			var targets_added = 0;
 			//variable that will be passed back to server to specify list of targets
@@ -124,9 +125,11 @@
 					{/literal}
 					//display the selected display text, not the value
 					{$PL_DOM_STMT}
-					{literal}
+					
+                    {literal}
 					//construct html to display chosen tracker
-					var trgt_name_html = "<input id='target_name"+targets_added +"' type='hidden' size='20' maxlength='255' name='added_target_name"+targets_added+"' value='"+trgt_name.value+"' >"+trgt_name.value;
+					debugger;
+                    var trgt_name_html = "<input id='target_name"+targets_added +"' type='hidden' size='20' maxlength='255' name='added_target_name"+targets_added+"' value='"+trgt_name.value+"' >"+trgt_name.value;
 					var trgt_id_html = "<input type='hidden' name='added_target_id"+trackers_added+"' id='added_target_id"+trackers_added+"' value='"+trgt_id.value+"' >";
 					var trgt_type_html = "<input name='added_target_type"+trackers_added+"' id='added_target_type"+trackers_added+"' type='hidden' value='"+trgt_type.value+"'/>"+trgt_type_text;
 

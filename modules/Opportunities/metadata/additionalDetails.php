@@ -27,9 +27,14 @@ function additionalDetailsOpportunity($fields) {
 
 	if(!empty($fields['DESCRIPTION'])) {
 		$overlib_string .= '<b>'. $mod_strings['LBL_DESCRIPTION'] . '</b> ';
-		$overlib_string .= substr($fields['DESCRIPTION'], 0, 300);
-		if(strlen($fields['DESCRIPTION']) > 300) $overlib_string .= '...';
-	}	
+		$overlib_string .= substr($fields['DESCRIPTION'], 0, 300).'<br>';
+		if(strlen($fields['DESCRIPTION']) > 300) $overlib_string .= '...<br>';
+	}
+    if($fields['ADDED_TO_CLASS']){
+     $overlib_string .= '<b>'. $mod_strings['LBL_ADDED_TO_CLASS'] . ':</b>  ';   
+     $overlib_string .= ' Yes';   
+    }
+    	
 	
 	return array('fieldToAddTo' => 'NAME', 
 				 'string' => $overlib_string, 

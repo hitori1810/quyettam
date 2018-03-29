@@ -1,30 +1,19 @@
-{*
-
-/*********************************************************************************
- * By installing or using this file, you are confirming on behalf of the entity
- * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
- * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
- * http://www.sugarcrm.com/master-subscription-agreement
- *
- * If Company is not bound by the MSA, then by installing or using this file
- * you are agreeing unconditionally that Company will be bound by the MSA and
- * certifying that you have authority to bind Company accordingly.
- *
- * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
- ********************************************************************************/
-
-
-
-
-*}
-
 <div id="SpotResults">
-    <div>{$APP.LBL_NOTIFICATIONS}</div>
-    <ul>
+    <table width="100%" id="celebs_notification" cellpadding="0" cellspacing="0">
+    <tfoot>
+    <tr><td colspan="3" align="center"><a style='font-weight:bold;' href='index.php?module=Notifications&action=ListView' title='View Notifications' rel='tooltip'><i class="icon icon-plus"></i> View Notifications</a></td></tr>
+    </tfoot>
+    <tbody>
         {foreach from=$data item=n}
-            <li><a href='javascript:void(0)' onclick="DCMenu.viewMiniNotification('{$n->id}');">{$n->name}</li>
+             <tr id="n_{$n->id}" {if $n->status == 'Read'} class='' {else} class="Unread" {/if}>
+             <td width="15%"><span class="nofi-label nofi-{$n->parent_type}">{$n->parent_type}</span></td>
+             <td width="75%">{$n->content}<br><span class="timestampContent">{$n->timeLapse}</span></td>
+             <td width="10%"><span id="nofi_toggle" style="font-size: 10px;" onclick="markNotification('{$n->id}');" class="nofi-label nofi-Default" title="{if $n->status == 'Read'}Mark as Unread{else}Mark as Read{/if}">{$n->status}</span></td>
+             </tr>
         {foreachelse}
-            <li>-None-</li>
+
         {/foreach}
-    </ul>
+    </tbody>
+        </table>
+        <input type="hidden" name="js_notification" id="js_notification" value="{$js_notification}">
 </div>

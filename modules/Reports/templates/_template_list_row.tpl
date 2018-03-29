@@ -25,13 +25,21 @@
 {assign var='scope_row' value=true}
 {foreach from=$column_row.cells key=module item=cell}
 	{if (($column_row.group_column_is_invisible != "") && ($count|in_array:$column_row.group_pos)) }
-{php}	
+{php}
 	$count = $count + 1;
 	$this->assign('count', $count);
 {/php}
 	{ else }
-	<td width="{$width}%" valign=TOP class="{$row_class}" bgcolor="{$bg_color}" {if $scope_row} scope='row' {/if}>
-	
+    {if substr_count($cell, '/') == 2}
+    <td style='mso-number-format:"dd\/mm\/yyyy";text-align: left;' width="{$width}%" valign=TOP class="{$row_class}" bgcolor="{$bg_color}" {if $scope_row} scope='row' {/if}>
+    {elseif (date('Y-m-d', strtotime($cell)) == $cell)}
+    <td style='mso-number-format:"yyyy-mm-dd";text-align: left;' width="{$width}%" valign=TOP class="{$row_class}" bgcolor="{$bg_color}" {if $scope_row} scope='row' {/if}>
+    {elseif ((strlen($cell) > 4) && (preg_match("/^[0-9]+$/", $cell)))}
+    <td style="mso-number-format:\@;" width="{$width}%" valign=TOP class="{$row_class}" bgcolor="{$bg_color}" {if $scope_row} scope='row' {/if}>
+    {else}
+    <td width="{$width}%" valign=TOP class="{$row_class}" bgcolor="{$bg_color}" {if $scope_row} scope='row' {/if}>
+    {/if}
+
 	{$cell}
 	{/if}
     {assign var='scope_row' value=false}

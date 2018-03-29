@@ -55,6 +55,7 @@ $viewdefs['Users']['EditView'] = array(
                   'phone_other'),
             array('','phone_fax'),
             array('','phone_home'),
+            array('leaving_request_confirmer','worklog_remaning_recipient'),
             array('messenger_type','messenger_id'),
             array('address_street','address_city'),
             array('address_state','address_postalcode'),

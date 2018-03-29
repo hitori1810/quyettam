@@ -14,7 +14,7 @@
 
     $dictionary['C_DuplicationDetection'] = array(
         'table'=>'c_duplicationdetection',
-        'audited'=>true,
+        'audited'=>false,
         'duplicate_merge'=>true,
         'fields'=>array (
             'preventive_type' => 
@@ -60,4 +60,4 @@
     if (!class_exists('VardefManager')){
         require_once('include/SugarObjects/VardefManager.php');
     }
-    VardefManager::createVardef('C_DuplicationDetection','C_DuplicationDetection', array('basic','team_security','assignable'));
+    VardefManager::createVardef('C_DuplicationDetection','C_DuplicationDetection', array('basic','assignable'));

@@ -87,7 +87,6 @@ array (
           'panelDefault' => 'expanded',
         ),
       ),
-      'syncDetailEditViews' => true,
     ),
     'panels' => 
     array (
@@ -102,16 +101,20 @@ array (
           ),
           1 => 
           array (
-            'name' => 'status',
-            'comment' => 'The status of the call (Held, Not Held, etc.)',
-            'studio' => 
-            array (
-              'detailview' => false,
-            ),
+            'name' => 'direction',
+            'customCode' => '{$fields.direction.options[$fields.direction.value]} {$fields.status.options[$fields.status.value]}',
             'label' => 'LBL_STATUS',
           ),
         ),
         1 => 
+        array (
+          0 => 
+          array (
+            'name' => 'call_type',
+            'label' => 'LBL_CALL_TYPE',
+          ),
+        ),
+        2 => 
         array (
           0 => 
           array (
@@ -125,7 +128,7 @@ array (
             'customLabel' => '{sugar_translate label=\'LBL_MODULE_NAME\' module=$fields.parent_type.value}',
           ),
         ),
-        2 => 
+        3 => 
         array (
           0 => 
           array (
@@ -140,7 +143,7 @@ array (
             'label' => 'LBL_REMINDER',
           ),
         ),
-        3 => 
+        4 => 
         array (
           0 => 
           array (
@@ -161,6 +164,54 @@ array (
             'label' => 'LBL_ASSIGNED_TO',
           ),
           1 => 'team_name',
+        ),
+        1 => 
+        array (
+          0 => 
+          array (
+            'name' => 'date_modified',
+            'customCode' => '{$fields.date_modified.value} {$APP.LBL_BY} {$fields.modified_by_name.value}&nbsp;',
+            'label' => 'LBL_DATE_MODIFIED',
+          ),
+          1 => 
+          array (
+            'name' => 'date_entered',
+            'customCode' => '{$fields.date_entered.value} {$APP.LBL_BY} {$fields.created_by_name.value}&nbsp;',
+            'label' => 'LBL_DATE_ENTERED',
+          ),
+        ),
+      ),
+      'LBL_CTICALLS_PANEL' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            'name' => 'call_source_c',
+          ),
+          1 => 
+          array (
+            'name' => 'call_destination_c',
+          ),
+        ),
+        1 => 
+        array (
+          0 => 
+          array (
+            'name' => 'call_entrysource_c',
+          ),
+          1 => 
+          array (
+            'name' => 'call_duration_minute_c',
+          ),
+        ),
+        2 => 
+        array (
+          0 => 
+          array (
+            'name' => 'record_c',
+            'type' => 'URL',
+          ),
         ),
       ),
     ),

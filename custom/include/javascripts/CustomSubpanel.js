@@ -1,11 +1,11 @@
 /*
-* Customize Subpanel as tabs
-* Author: Hieu Nguyen
-* Date: 08-01-2013
+ * Customize Subpanel as tabs
+ * Author: Hieu Nguyen
+ * Date: 08-01-2013
 */
 
-
 $(document).ready(function(){
+
     // Only do when subpanel tabs is enabled
     if($('#groupTabs')[0] != null){
 
@@ -25,7 +25,7 @@ $(document).ready(function(){
 
         function markActive(tab){
             $('#groupTabs li a.current').removeClass('current');
-            $(tab).addClass('current');    
+            $(tab).addClass('current');
         }
 
         // Hide all subpanel on load
@@ -39,7 +39,7 @@ $(document).ready(function(){
         $('#subpanel_list li').each(function(){
             var moduleName = $(this).find('h3').text();
             var subpanelID = $(this).attr('id');
-            $('#groupTabs').append('<li><a data-subpanel="'+subpanelID+'" href="">'+moduleName+'</a></li>');    
+            $('#groupTabs').append('<li><a data-subpanel="'+subpanelID+'" href="">'+moduleName+'</a></li>');
         });
 
         // Onclick on a tab
@@ -57,12 +57,9 @@ $(document).ready(function(){
         // Onclick show all
         $('#groupTabs li:first a').click(function(){
             markActive($(this));
-            showAllSubpanel();    
+            showAllSubpanel();
         });
 
         jQuery('a[data-subpanel="undefined"]').parent().hide();
-    }  
-
-    
+    }
 });
- 

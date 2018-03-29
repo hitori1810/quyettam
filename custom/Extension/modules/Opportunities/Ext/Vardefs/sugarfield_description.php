@@ -1,5 +1,5 @@
 <?php
- // created: 2015-03-26 11:45:44
+ // created: 2014-12-23 07:09:21
 $dictionary['Opportunity']['fields']['description']['comments']='Full text of the note';
 $dictionary['Opportunity']['fields']['description']['merge_filter']='disabled';
 $dictionary['Opportunity']['fields']['description']['calculated']=false;

@@ -19,7 +19,7 @@ $popupMeta = array('moduleMain' => 'Team',
 						'orderBy' => 'teams.private, teams.name',
 						'whereClauses' => 
 							array('name' => 'teams.name', 'private' => 'teams.private'),
-                        'whereStatement'=> "( teams.associated_user_id IS NULL OR teams.associated_user_id NOT IN ( SELECT id FROM users WHERE status = 'Inactive' OR portal_only = '1' ))",
+                        'whereStatement'=> "( teams.associated_user_id IS NULL OR teams.associated_user_id NOT IN ( SELECT id FROM users WHERE status = 'Inactive' OR portal_only = '1' )) AND teams.private = '0'",
 						'searchInputs' =>
 							array('name')
 						);

@@ -29,7 +29,8 @@ function additionalDetailsMeeting($fields) {
     }
 	if(!empty($fields['DATE_START'])) 
 		$overlib_string .= '<b>'. $mod_strings['LBL_DATE_TIME'] . '</b> ' . $fields['DATE_START'] . ' <br>';
-	if(isset($fields['DURATION_HOURS']) || isset($fields['DURATION_MINUTES'])) {
+	
+    if(isset($fields['DURATION_HOURS']) || isset($fields['DURATION_MINUTES'])) {
 		$overlib_string .= '<b>'. $mod_strings['LBL_DURATION'] . '</b> '; 
         if(isset($fields['DURATION_HOURS'])) {
             $overlib_string .= $fields['DURATION_HOURS'] . $mod_strings['LBL_HOURS_ABBREV'] . ' ';
@@ -52,6 +53,7 @@ function additionalDetailsMeeting($fields) {
   	    $overlib_string .= '<b>'. $mod_strings['LBL_STATUS'] . '</b> ' . $fields['STATUS'];
   	    $overlib_string .= '<br>';
       }
+
 
     if(!empty($fields['DESCRIPTION'])) {
 		$overlib_string .= '<b>'. $mod_strings['LBL_DESCRIPTION'] . '</b> ' . substr($fields['DESCRIPTION'], 0, 300);

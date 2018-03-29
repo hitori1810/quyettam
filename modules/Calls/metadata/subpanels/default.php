@@ -51,15 +51,15 @@ $subpanel_layout = array(
 			 'width' => '15%',
 			 
 		),
-		'contact_name'=>array(
-			 'widget_class' => 'SubPanelDetailViewLink',
-			 'target_record_key' => 'contact_id',
-			 'target_module' => 'Contacts',
-			 'module' => 'Contacts',
-			 'vname' => 'LBL_LIST_CONTACT',
-			 'width' => '11%',
-			 'sortable'=>false,
-		),
+//		'contact_name'=>array(
+//			 'widget_class' => 'SubPanelDetailViewLink',
+//			 'target_record_key' => 'contact_id',
+//			 'target_module' => 'Contacts',
+//			 'module' => 'Contacts',
+//			 'vname' => 'LBL_LIST_CONTACT',
+//			 'width' => '11%',
+//			 'sortable'=>false,
+//		),
 			
 		'date_start'=>array(
 			 'vname' => 'LBL_DATE_TIME',

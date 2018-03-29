@@ -57,7 +57,7 @@ class Localization {
     /* Charset mappings for iconv */
     var $iconvCharsetMap = array(
         'KS_C_5601-1987' => 'CP949',
-        'ISO-8859-8-I' => 'ISO-8859-8'            
+        'ISO-8859-8-I' => 'ISO-8859-8'
         );
 
     /**
@@ -94,13 +94,14 @@ class Localization {
 	/**
 	 * returns an array of Sugar Config defaults that are determined by locale settings
 	 * @return array
+     * Custom By Lap Nguyen
 	 */
 	function getLocaleConfigDefaults() {
 		$coreDefaults = array(
 			'currency'								=> '',
-			'datef'									=> 'm/d/Y',
+			'datef'									=> 'd/m/Y',
 			'timef'									=> 'H:i',
-			'default_currency_significant_digits'	=> 2,
+			'default_currency_significant_digits'	=> 0,
 			'default_currency_symbol'				=> '$',
 			'default_export_charset'				=> $this->default_export_charset,
 			'default_locale_name_format'			=> 's f l',
@@ -456,8 +457,10 @@ class Localization {
 	}
 
 	function getPrecision($user=null) {
-		$precision = $this->getPrecedentPreference('default_currency_significant_digits', $user);
+        //Custom Hide Precision - By Lap Nguyen
+		$precision = 0;
 		return $precision;
+        //END
 	}
 
 	function getCurrencySymbol($user=null) {

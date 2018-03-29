@@ -38,6 +38,7 @@ $moduleList[] = 'ProspectLists';
 
 $moduleList[] = 'Quotes';
 $moduleList[] = 'Products';
+$moduleList[] = 'ProductTemplates';
 $moduleList[] = 'Forecasts';
 $moduleList[] = 'Contracts';
 $moduleList[] = 'KBDocuments';
@@ -46,8 +47,7 @@ $moduleList[] = 'Documents';
 $moduleList[] = 'Cases';
 $moduleList[] = 'Project';
 $moduleList[] = 'Bugs';
-//Add by Trung Nguyen at 2015.02.03
-$moduleList[] = 'ProjectTask';
+$moduleList[] = 'Holidays';  //#97
 
 // this list defines all of the module names and bean names in the app
 // to create a new module's bean class, add the bean definition here
@@ -311,9 +311,9 @@ $modInvisList = array('Administration', 'Currencies', 'CustomFields', 'Connector
     'Dropdown', 'Dynamic', 'DynamicFields', 'DynamicLayout', 'EditCustomFields',
     'Help', 'Import',  'MySettings', 'EditCustomFields','FieldsMetaData',
     'UpgradeWizard', 'Trackers', 'Connectors', 'Employees', 'Calendar',
-    'Manufacturers','ProductBundles', 'ProductBundleNotes', 'ProductCategories', 'ProductTemplates', 'ProductTypes','Shippers',
+    'Manufacturers','ProductBundles', 'ProductBundleNotes', 'ProductCategories', /*'ProductTemplates',*/ 'ProductTypes','Shippers',
     'TaxRates', 'TeamNotices', 'Teams','TimePeriods','ForecastOpportunities','Quotas','KBDocumentRevisions','KBDocumentKBTags','KBTags','KBContents',
-    'ContractTypes', 'ForecastSchedule', 'Worksheet','ACLFields', 'ProjectResources', 'Holidays', 'SNIP',
+    'ContractTypes', 'ForecastSchedule', 'Worksheet','ACLFields', 'ProjectResources', /*'Holidays',*/ 'SNIP',
     'Releases','Sync',
     'Users',  'Versions', 'LabelEditor','Roles','EmailMarketing'
     ,'OptimisticLock', 'TeamMemberships', 'TeamSets', 'TeamSetModule', 'Audit', 'MailMerge', 'MergeRecords', 'EmailAddresses','EmailText',
@@ -322,7 +322,7 @@ $modInvisList = array('Administration', 'Currencies', 'CustomFields', 'Connector
     'Groups','InboundEmail',
     'ACLActions', 'ACLRoles',
     'DocumentRevisions',
-    /*'ProjectTask',*/ //turn of by Trung Nguyen 2015.02.03: show module Project Tast.
+    'ProjectTask',
     );
 $adminOnlyList = array(
                     //module => list of actions  (all says all actions are admin only)
@@ -394,7 +394,7 @@ $modInvisList[] = 'SugarFeed';
 
 $beanList['Notifications'] = 'Notifications';
 $beanFiles['Notifications'] = 'modules/Notifications/Notifications.php';
-$modInvisList[] = 'Notifications';
+$moduleList[] = 'Notifications';
 // This is the mapping for modules that appear under a different module's tab
 // Be sure to also add the modules to $modInvisList, otherwise their tab will still appear
 $GLOBALS['moduleTabMap'] = array(

@@ -9,7 +9,7 @@
  * you are agreeing unconditionally that Company will be bound by the MSA and
  * certifying that you have authority to bind Company accordingly.
  *
- * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ * Copyright (C) 2004-2014 SugarCRM Inc.  All rights reserved.
  ********************************************************************************/
 
 require_once('modules/Notifications/views/view.quicklist.php');
@@ -26,7 +26,7 @@ class ViewSystemQuicklist extends ViewQuickList{
 		$GLOBALS['system_notification_count'] = 0;
 		$sv = new SugarView();
 		$sv->includeClassicFile('modules/Administration/DisplayWarnings.php');
-	    
+
 		echo $this->_formatNotificationsForQuickDisplay($GLOBALS['system_notification_buffer'], "modules/Notifications/tpls/systemQuickView.tpl");
 
         $this->clearFTSFlags();
@@ -48,6 +48,6 @@ class ViewSystemQuicklist extends ViewQuickList{
             $cfg = new Configurator();
             $cfg->config['fts_disable_notification'] = false;
             $cfg->handleOverride();
-        }        
+        }
     }
 }

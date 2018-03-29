@@ -10,7 +10,7 @@ if(!defined('sugarEntry'))define('sugarEntry', true);
  * you are agreeing unconditionally that Company will be bound by the MSA and
  * certifying that you have authority to bind Company accordingly.
  *
- * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ * Copyright (C) 2004-2014 SugarCRM Inc.  All rights reserved.
  ********************************************************************************/
 
 
@@ -44,15 +44,12 @@ class SugarWebServiceImplv4 extends SugarWebServiceImplv3_1 {
      */
     public function login($user_auth, $application, $name_value_list = array()){
         $GLOBALS['log']->info("Begin: SugarWebServiceImpl->login({$user_auth['user_name']}, $application, ". print_r($name_value_list, true) .")");
-        global $sugar_config, $system_config;
+        global $sugar_config;
         $error = new SoapError();
-        $user = new User();
+        $user = BeanFactory::getBean('Users');
         $success = false;
-        //rrs
-        $system_config = new Administration();
-        $system_config->retrieveSettings('system');
-        $authController = new AuthenticationController();
-        //rrs
+        $authController = AuthenticationController::getInstance();
+
         if(!empty($user_auth['encryption']) && $user_auth['encryption'] === 'PLAIN' && $authController->authController->userAuthenticateClass != "LDAPAuthenticateUser")
         {
             $user_auth['password'] = md5($user_auth['password']);
@@ -170,8 +167,7 @@ class SugarWebServiceImplv4 extends SugarWebServiceImplv3_1 {
                 self::$helperObject->get_mobile_login_data($nameValueArray);
             }
 
-            $currencyObject = new Currency();
-            $currencyObject->retrieve($cur_id);
+            $currencyObject = BeanFactory::getBean('Currencies', $cur_id);
             $nameValueArray['user_currency_name'] = self::$helperObject->get_name_value('user_currency_name', $currencyObject->name);
             $_SESSION['user_language'] = $current_language;
             return array('id'=>session_id(), 'module_name'=>'Users', 'name_value_list'=>$nameValueArray);
@@ -262,9 +258,7 @@ class SugarWebServiceImplv4 extends SugarWebServiceImplv3_1 {
             $sugar_config['list_max_entries_per_page'] = $max_results;
         } // if
 
-        $class_name = $beanList[$module_name];
-        require_once($beanFiles[$class_name]);
-        $seed = new $class_name();
+        $seed = BeanFactory::getBean($module_name);
 
         if (!self::$helperObject->checkACLAccess($seed, 'list', $error, 'no_access')) {
             $GLOBALS['log']->error('End: SugarWebServiceImpl->get_entry_list - FAILED on checkACLAccess');
@@ -353,9 +347,9 @@ class SugarWebServiceImplv4 extends SugarWebServiceImplv3_1 {
             if( empty($module_name) )
                 continue;
 
-            $class_name = $beanList[$module_name];
-            require_once($beanFiles[$class_name]);
-            $seed = new $class_name();
+            $seed = BeanFactory::getBean($module_name);
+            if( empty($seed) )
+            	continue;
 
             foreach ($a_view as $view)
             {
@@ -459,8 +453,7 @@ class SugarWebServiceImplv4 extends SugarWebServiceImplv3_1 {
     				$unifiedSearchFields[$name] [ $field ]['value'] = $search_string;
     			}
 
-    			require_once $beanFiles[$beanName] ;
-    			$seed = new $beanName();
+    			$seed = BeanFactory::getBean($name);
     			require_once 'include/SearchForm/SearchForm2.php' ;
     			if ($beanName == "User"
     			    || $beanName == "ProjectTask"
@@ -620,8 +613,7 @@ class SugarWebServiceImplv4 extends SugarWebServiceImplv3_1 {
 
         $GLOBALS['disable_date_format'] = FALSE;
         require_once('include/Sugarpdf/SugarpdfFactory.php');
-        $bean = new Quote();
-        $bean->retrieve($quote_id);
+        $bean = BeanFactory::getBean('Quotes', $quote_id);
         $sugarpdfBean = SugarpdfFactory::loadSugarpdf($pdf_format, 'Quotes', $bean, array() );
         $sugarpdfBean->process();
 
@@ -660,8 +652,7 @@ class SugarWebServiceImplv4 extends SugarWebServiceImplv3_1 {
         $GLOBALS['disable_date_format'] = FALSE;
     	require_once('modules/Reports/templates/templates_pdf.php');
 
-    	$saved_report = new SavedReport();
-    	$saved_report->retrieve($report_id);
+    	$saved_report = BeanFactory::getBean('Reports', $report_id);
 
     	$contents = '';
     	if($saved_report->id != null)
@@ -788,7 +779,7 @@ class SugarWebServiceImplv4 extends SugarWebServiceImplv3_1 {
 
         }
 
-        $seed = new User();
+        $seed = BeanFactory::getBean('Users');
         $res = $seed->db->query($query);
         $emails = array();
         while($row = $seed->db->fetchByAssoc($res)) {

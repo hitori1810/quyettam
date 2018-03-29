@@ -1,17 +1,17 @@
 <?php
 if(!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
 /*********************************************************************************
- * By installing or using this file, you are confirming on behalf of the entity
- * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
- * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
- * http://www.sugarcrm.com/master-subscription-agreement
- *
- * If Company is not bound by the MSA, then by installing or using this file
- * you are agreeing unconditionally that Company will be bound by the MSA and
- * certifying that you have authority to bind Company accordingly.
- *
- * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
- ********************************************************************************/
+* By installing or using this file, you are confirming on behalf of the entity
+* subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
+* the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
+* http://www.sugarcrm.com/master-subscription-agreement
+*
+* If Company is not bound by the MSA, then by installing or using this file
+* you are agreeing unconditionally that Company will be bound by the MSA and
+* certifying that you have authority to bind Company accordingly.
+*
+* Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+********************************************************************************/
 
 $dictionary['User'] = array(
     'table' => 'users',
@@ -31,19 +31,19 @@ $dictionary['User'] = array(
             'importable' => 'required',
             'required' => true,
             'studio' => array(
-               'no_duplicate' => true,
-               'editview' => false,
-               'detailview' => true,
-               'quickcreate' => false,
-               'basic_search' => false,
-               'advanced_search' => false,
-               'wirelesseditview' => false,
-               'wirelessdetailview' => true,
-               'wirelesslistview' => false,
-               'wireless_basic_search' => false,
-               'wireless_advanced_search' => false,
-               'rollup' => false,
-               ),
+                'no_duplicate' => true,
+                'editview' => false,
+                'detailview' => true,
+                'quickcreate' => false,
+                'basic_search' => false,
+                'advanced_search' => false,
+                'wirelesseditview' => false,
+                'wirelessdetailview' => true,
+                'wirelesslistview' => false,
+                'wireless_basic_search' => false,
+                'wireless_advanced_search' => false,
+                'rollup' => false,
+            ),
         ) ,
         'user_hash' => array(
             'name' => 'user_hash',
@@ -90,8 +90,8 @@ $dictionary['User'] = array(
             'studio' => array('formula' => false),
         ) ,
         /**
-         * authenticate_id is used by authentication plugins so they may place a quick lookup key for looking up a given user after authenticating through the plugin
-         */
+        * authenticate_id is used by authentication plugins so they may place a quick lookup key for looking up a given user after authenticating through the plugin
+        */
         'authenticate_id' => array(
             'name' => 'authenticate_id',
             'vname' => 'LBL_AUTHENTICATE_ID',
@@ -102,9 +102,9 @@ $dictionary['User'] = array(
             'studio' => array('listview' => false, 'searchview'=>false, 'related' => false),
         ) ,
         /**
-         * sugar_login will force the user to use sugar authentication
-         * regardless of what authentication the system is configured to use
-         */
+        * sugar_login will force the user to use sugar authentication
+        * regardless of what authentication the system is configured to use
+        */
         'sugar_login' => array(
             'name' => 'sugar_login',
             'vname' => 'LBL_SUGAR_LOGIN',
@@ -139,7 +139,7 @@ $dictionary['User'] = array(
             'type' => 'name',
             'len' => '30',
             'importable' => 'required',
-        	'required' => true,
+            'required' => true,
         ) ,
         'full_name' => array(
             'name' => 'full_name',
@@ -147,18 +147,16 @@ $dictionary['User'] = array(
             'vname' => 'LBL_NAME',
             'type' => 'name',
             'fields' => array(
-                'first_name',
-                'last_name'
+                'last_name',
+                'first_name'
             ) ,
-            'source' => 'non-db',
+            'source' => 'varchar',
             'sort_on' => 'last_name',
             'sort_on2' => 'first_name',
-            'db_concat_fields' => array(
-                0 => 'first_name',
-                1 => 'last_name'
-            ) ,
-            'len' => '510',
+            'db_concat_fields'=> array(0=>'last_name', 1=>'first_name'),
+            'len' => '255',
             'studio' => array('formula' => false),
+            'reportable' => true,
         ) ,
         'name' => array(
             'name' => 'name',
@@ -167,12 +165,30 @@ $dictionary['User'] = array(
             'type' => 'varchar',
             'source' => 'non-db',
             'len' => '510',
-            'db_concat_fields' => array(
-                0 => 'first_name',
-                1 => 'last_name'
-            ) ,
+            'db_concat_fields'=> array(0=>'last_name', 1=>'first_name'),
             'importable' => 'false',
         ) ,
+        'full_user_name' =>
+        array (
+            'required' => false,
+            'name' => 'full_user_name',
+            'vname' => 'LBL_FULL_NAME',
+            'type' => 'varchar',
+            'massupdate' => 0,
+            'no_default' => false,
+            'comments' => '',
+            'help' => '',
+            'importable' => 'false',
+            'duplicate_merge' => 'disabled',
+            'duplicate_merge_dom_value' => '0',
+            'audited' => false,
+            'reportable' => true,
+            'unified_search' => false,
+            'merge_filter' => 'disabled',
+            'calculated' => false,
+            'len' => '250',
+            'size' => '20',
+        ),
         'is_admin' => array(
             'name' => 'is_admin',
             'vname' => 'LBL_IS_ADMIN',
@@ -180,6 +196,14 @@ $dictionary['User'] = array(
             'default' => '0',
             'studio' => array('listview' => false, 'searchview'=>false, 'related' => false),
         ) ,
+        'portal_user' =>
+        array(
+            'name' => 'portal_user',
+            'vname' => 'LBL_PORTAL_USER_P',
+            'type' => 'bool',
+            'massupdate' => false,
+            'default' => '0',
+        ),
         'external_auth_only' => array(
             'name' => 'external_auth_only',
             'vname' => 'LBL_EXT_AUTHENTICATE',
@@ -254,7 +278,7 @@ $dictionary['User'] = array(
         ) ,
         'created_by_name' => array(
             'name' => 'created_by_name',
-	        'vname' => 'LBL_CREATED_BY_NAME', //bug 48978
+            'vname' => 'LBL_CREATED_BY_NAME', //bug 48978
             'type' => 'varchar',
             'source' => 'non-db',
             'importable' => 'false',
@@ -280,35 +304,35 @@ $dictionary['User'] = array(
             'name' => 'phone_home',
             'vname' => 'LBL_HOME_PHONE',
             'type' => 'phone',
-			'dbType' => 'varchar',
+            'dbType' => 'varchar',
             'len' => '50',
         ) ,
         'phone_mobile' => array(
             'name' => 'phone_mobile',
             'vname' => 'LBL_MOBILE_PHONE',
             'type' => 'phone',
-			'dbType' => 'varchar',
+            'dbType' => 'varchar',
             'len' => '50',
         ) ,
         'phone_work' => array(
             'name' => 'phone_work',
             'vname' => 'LBL_WORK_PHONE',
             'type' => 'phone',
-			'dbType' => 'varchar',
+            'dbType' => 'varchar',
             'len' => '50',
         ) ,
         'phone_other' => array(
             'name' => 'phone_other',
             'vname' => 'LBL_OTHER_PHONE',
             'type' => 'phone',
-			'dbType' => 'varchar',
+            'dbType' => 'varchar',
             'len' => '50',
         ) ,
         'phone_fax' => array(
             'name' => 'phone_fax',
             'vname' => 'LBL_FAX_PHONE',
             'type' => 'phone',
-			'dbType' => 'varchar',
+            'dbType' => 'varchar',
             'len' => '50',
         ) ,
         'status' => array(
@@ -386,146 +410,146 @@ $dictionary['User'] = array(
             'name' => 'team_id',
             'vname' => 'LBL_DEFAULT_TEAM',
             'reportable' => false,
-        	'source' => 'non-db',
+            'source' => 'non-db',
             'type' => 'id',
             'len' => '36',
             'studio' => array('listview' => false, 'searchview'=>false, 'formula' => false),
         ) ,
-			'team_set_id' =>
-			array (
-				'name' => 'team_set_id',
-				'rname' => 'id',
-				'id_name' => 'team_set_id',
-				'vname' => 'LBL_TEAM_SET_ID',
-				'type' => 'id',
-			    'audited' => true,
-			    'studio' => 'false',
-			),
-			'team_count' =>
-			array (
-				'name' => 'team_count',
-				'rname' => 'team_count',
-				'id_name' => 'team_id',
-				'vname' => 'LBL_TEAMS',
-				'join_name'=>'ts1',
-				'table' => 'team_sets',
-				'type' => 'relate',
-	            'required' => 'true',
-				'table' => 'teams',
-				'isnull' => 'true',
-				'module' => 'Teams',
-				'link' => 'team_count_link',
-				'massupdate' => false,
-				'dbType' => 'int',
-				'source' => 'non-db',
-				'importable' => 'false',
-				'reportable'=>false,
-			    'duplicate_merge' => 'disabled',
-				'studio' => 'false',
-			),
-			'team_name' =>
-			array (
-				'name' => 'team_name',
-				'db_concat_fields'=> array(0=>'name', 1=>'name_2'),
-				'rname' => 'name',
-				'id_name' => 'team_id',
-				'vname' => 'LBL_TEAMS',
-				'type' => 'relate',
-	            'required' => true,
-				'table' => 'teams',
-				'isnull' => 'true',
-				'module' => 'Teams',
-				'link' => 'team_link',
-				'massupdate' => false,
-				'dbType' => 'varchar',
-				'source' => 'non-db',
-				'len' => 36,
-				'custom_type' => 'teamset',
-                'studio' => array(
-                    'listview'    => false,
-                    'searchview'  =>false,
-                    'editview'    =>false,
-                    'quickcreate' =>false,
-                    'wirelesslistview' => false,
-                    'wirelessdetailview' => false,
-                    'wirelesseditview' => false,
-                ),
-			),
-			'team_link' =>
-		    array (
-		      'name' => 'team_link',
-		      'type' => 'link',
-		      'relationship' => 'users_team',
-		      'vname' => 'LBL_TEAMS_LINK',
-		      'link_type' => 'one',
-		      'module' => 'Teams',
-		      'bean_name' => 'Team',
-		      'source' => 'non-db',
-		      'duplicate_merge' => 'disabled',
-		      'studio' => 'false',
-                'reportable'=>false,
-		    ),
-            'default_primary_team' => array (
-                'name' => 'default_primary_team',
-                'type' => 'link',
-                'relationship' => 'users_team',
-                'vname' => 'LBL_DEFAULT_PRIMARY_TEAM',
-                'link_type' => 'one',
-                'module' => 'Teams',
-                'bean_name' => 'Team',
-                'source' => 'non-db',
-                'duplicate_merge' => 'disabled',
-                'studio' => 'false',
+        'team_set_id' =>
+        array (
+            'name' => 'team_set_id',
+            'rname' => 'id',
+            'id_name' => 'team_set_id',
+            'vname' => 'LBL_TEAM_SET_ID',
+            'type' => 'id',
+            'audited' => true,
+            'studio' => 'false',
+        ),
+        'team_count' =>
+        array (
+            'name' => 'team_count',
+            'rname' => 'team_count',
+            'id_name' => 'team_id',
+            'vname' => 'LBL_TEAMS',
+            'join_name'=>'ts1',
+            'table' => 'team_sets',
+            'type' => 'relate',
+            'required' => 'true',
+            'table' => 'teams',
+            'isnull' => 'true',
+            'module' => 'Teams',
+            'link' => 'team_count_link',
+            'massupdate' => false,
+            'dbType' => 'int',
+            'source' => 'non-db',
+            'importable' => 'false',
+            'reportable'=>false,
+            'duplicate_merge' => 'disabled',
+            'studio' => 'false',
+        ),
+        'team_name' =>
+        array (
+            'name' => 'team_name',
+            'db_concat_fields'=> array(0=>'name', 1=>'name_2'),
+            'rname' => 'name',
+            'id_name' => 'team_id',
+            'vname' => 'LBL_TEAMS',
+            'type' => 'relate',
+            'required' => true,
+            'table' => 'teams',
+            'isnull' => 'true',
+            'module' => 'Teams',
+            'link' => 'team_link',
+            'massupdate' => false,
+            'dbType' => 'varchar',
+            'source' => 'non-db',
+            'len' => 36,
+            'custom_type' => 'teamset',
+            'studio' => array(
+                'listview'    => false,
+                'searchview'  =>false,
+                'editview'    =>false,
+                'quickcreate' =>false,
+                'wirelesslistview' => false,
+                'wirelessdetailview' => false,
+                'wirelesseditview' => false,
             ),
-		    'team_count_link' =>
-	  			array (
-	  			'name' => 'team_count_link',
-	    		'type' => 'link',
-	    		'relationship' => 'users_team_count_relationship',
-	            'link_type' => 'one',
-			    'module' => 'Teams',
-			    'bean_name' => 'TeamSet',
-			    'source' => 'non-db',
-			    'duplicate_merge' => 'disabled',
-	  			'reportable'=>false,
-	  			'studio' => 'false',
-	  		),
-	  		'teams' =>
-			array (
-				'name' => 'teams',
-		        'type' => 'link',
-				'relationship' => 'users_teams',
-				'bean_filter_field' => 'team_set_id',
-				'rhs_key_override' => true,
-		        'source' => 'non-db',
-				'vname' => 'LBL_TEAMS',
-				'link_class' => 'TeamSetLink',
-				'link_file' => 'modules/Teams/TeamSetLink.php',
-				'studio' => 'false',
-				'reportable'=>false,
-			),
-			'team_memberships' => array(
-	            'name' => 'team_memberships',
-	            'type' => 'link',
-	            'relationship' => 'team_memberships',
-	            'source' => 'non-db',
-	            'vname' => 'LBL_TEAM_MEMBERSHIP'
-        	) ,
-            'team_sets' => array(
-                'name' => 'team_sets',
-                'type' => 'link',
-                'relationship' => 'users_team_sets',
-                'source' => 'non-db',
-                'vname' => 'LBL_TEAM_SET'
-            ),
-			'users_signatures' => array(
-			    'name' => 'users_signatures',
-			    'type' => 'link',
-			    'relationship' => 'users_users_signatures',
-			    'source' => 'non-db',
-			    'studio' => 'false',
-			    'reportable'=>false,
-			    ),
+        ),
+        'team_link' =>
+        array (
+            'name' => 'team_link',
+            'type' => 'link',
+            'relationship' => 'users_team',
+            'vname' => 'LBL_TEAMS_LINK',
+            'link_type' => 'one',
+            'module' => 'Teams',
+            'bean_name' => 'Team',
+            'source' => 'non-db',
+            'duplicate_merge' => 'disabled',
+            'studio' => 'false',
+            'reportable'=>false,
+        ),
+        'default_primary_team' => array (
+            'name' => 'default_primary_team',
+            'type' => 'link',
+            'relationship' => 'users_team',
+            'vname' => 'LBL_DEFAULT_PRIMARY_TEAM',
+            'link_type' => 'one',
+            'module' => 'Teams',
+            'bean_name' => 'Team',
+            'source' => 'non-db',
+            'duplicate_merge' => 'disabled',
+            'studio' => 'false',
+        ),
+        'team_count_link' =>
+        array (
+            'name' => 'team_count_link',
+            'type' => 'link',
+            'relationship' => 'users_team_count_relationship',
+            'link_type' => 'one',
+            'module' => 'Teams',
+            'bean_name' => 'TeamSet',
+            'source' => 'non-db',
+            'duplicate_merge' => 'disabled',
+            'reportable'=>false,
+            'studio' => 'false',
+        ),
+        'teams' =>
+        array (
+            'name' => 'teams',
+            'type' => 'link',
+            'relationship' => 'users_teams',
+            'bean_filter_field' => 'team_set_id',
+            'rhs_key_override' => true,
+            'source' => 'non-db',
+            'vname' => 'LBL_TEAMS',
+            'link_class' => 'TeamSetLink',
+            'link_file' => 'modules/Teams/TeamSetLink.php',
+            'studio' => 'false',
+            'reportable'=>false,
+        ),
+        'team_memberships' => array(
+            'name' => 'team_memberships',
+            'type' => 'link',
+            'relationship' => 'team_memberships',
+            'source' => 'non-db',
+            'vname' => 'LBL_TEAM_MEMBERSHIP'
+        ) ,
+        'team_sets' => array(
+            'name' => 'team_sets',
+            'type' => 'link',
+            'relationship' => 'users_team_sets',
+            'source' => 'non-db',
+            'vname' => 'LBL_TEAM_SET'
+        ),
+        'users_signatures' => array(
+            'name' => 'users_signatures',
+            'type' => 'link',
+            'relationship' => 'users_users_signatures',
+            'source' => 'non-db',
+            'studio' => 'false',
+            'reportable'=>false,
+        ),
 
         'deleted' => array(
             'name' => 'deleted',
@@ -633,7 +657,7 @@ $dictionary['User'] = array(
             'vname' => 'LBL_REPORTS_TO',
             'reportable' => false,
         ) ,
-        'email1' => 
+        'email1' =>
         array(
             'name'      => 'email1',
             'vname'     => 'LBL_EMAIL_ADDRESS',
@@ -645,9 +669,9 @@ $dictionary['User'] = array(
             'group'=>'email1',
             'required' => true,
             'merge_filter' => 'enabled',
-            'studio' => array('editview' => true, 'editField' => true, 'searchview' => false, 'popupsearch' => false), // bug 46859 
+            'studio' => array('editview' => true, 'editField' => true, 'searchview' => false, 'popupsearch' => false), // bug 46859
             'full_text_search' => array('boost' => 3, 'index' => 'not_analyzed'), //bug 54567
-        ),        
+        ),
         'email'=> array(
             'name' => 'email',
             'type' => 'email',
@@ -746,7 +770,7 @@ $dictionary['User'] = array(
             'source' => 'non-db',
             'vname' => 'LBL_LIST_ACCEPT_STATUS',
             'importable' => 'false',
-        	'studio' => array('listview' => false, 'searchview'=>false, 'formula' => false),
+            'studio' => array('listview' => false, 'searchview'=>false, 'formula' => false),
         ) ,
         'accept_status_name' => array(
             'name' => 'accept_status_name',
@@ -782,34 +806,34 @@ $dictionary['User'] = array(
             'vname' => 'LBL_HOLIDAYS',
         ) ,
 
-       'eapm' =>
-		  array (
-		    'name' => 'eapm',
-		    'type' => 'link',
-		    'relationship' => 'eapm_assigned_user',
-		    'vname' => 'LBL_ASSIGNED_TO_USER',
-		    'source'=>'non-db',
-		  ),
-	 'oauth_tokens' =>
-      array (
-        'name' => 'oauth_tokens',
-        'type' => 'link',
-        'relationship' => 'oauthtokens_assigned_user',
-        'vname' => 'LBL_OAUTH_TOKENS',
-        'link_type' => 'one',
-        'module'=>'OAuthTokens',
-        'bean_name'=>'OAuthToken',
-        'source'=>'non-db',
-        'side' => 'left',
-      ),
+        'eapm' =>
+        array (
+            'name' => 'eapm',
+            'type' => 'link',
+            'relationship' => 'eapm_assigned_user',
+            'vname' => 'LBL_ASSIGNED_TO_USER',
+            'source'=>'non-db',
+        ),
+        'oauth_tokens' =>
+        array (
+            'name' => 'oauth_tokens',
+            'type' => 'link',
+            'relationship' => 'oauthtokens_assigned_user',
+            'vname' => 'LBL_OAUTH_TOKENS',
+            'link_type' => 'one',
+            'module'=>'OAuthTokens',
+            'bean_name'=>'OAuthToken',
+            'source'=>'non-db',
+            'side' => 'left',
+        ),
         'project_resource'=>
-		array (
-			'name' => 'project_resource',
-			'type' => 'link',
-			'relationship' => 'projects_users_resources',
-			'source' => 'non-db',
-			'vname' => 'LBL_PROJECTS',
-		),
+        array (
+            'name' => 'project_resource',
+            'type' => 'link',
+            'relationship' => 'projects_users_resources',
+            'source' => 'non-db',
+            'vname' => 'LBL_PROJECTS',
+        ),
         'quotas' =>
         array (
             'name' => 'quotas',
@@ -838,14 +862,40 @@ $dictionary['User'] = array(
             'vname'=>'LBL_WORKSHEETS',
         ),
 
-    'preferred_language' =>
-      array(
-         'name' => 'preferred_language',
-         'type' => 'enum',
-         'default' => 'en_us',
-         'vname' => 'LBL_PREFERRED_LANGUAGE',
-         'options' => 'available_language_dom',
-      ),
+        'preferred_language' =>
+        array(
+            'name' => 'preferred_language',
+            'type' => 'enum',
+            'default' => 'en_us',
+            'vname' => 'LBL_PREFERRED_LANGUAGE',
+            'options' => 'available_language_dom',
+        ),
+        // ******** TASK IMPORT ***********************
+        'aims_id' =>
+        array (
+            'required' => false,
+            'name' => 'aims_id',
+            'vname' => 'LBL_AIMS_ID',
+            'type' => 'varchar',
+            'massupdate' => 0,
+            'no_default' => false,
+            'comments' => '',
+            'help' => 'AIMS ID Int',
+            'importable' => 'true',
+            'duplicate_merge' => 'disabled',
+            'duplicate_merge_dom_value' => '0',
+            'audited' => false,
+            'reportable' => true,
+            'unified_search' => true,
+            'full_text_search' => array('boost' => 3),
+            'merge_filter' => 'disabled',
+            'calculated' => false,
+            'len' => '10',
+            'size' => '20',
+            'enable_range_search' => true,
+            'options' => 'numeric_range_search_dom',
+            'disable_num_format' => true,
+        ),
 
     ) ,
     'name_format_map' => array(
@@ -874,68 +924,68 @@ $dictionary['User'] = array(
             )
         ) ,
         array(
-			'name' => 'idx_users_reports_to_id',
-			'type' => 'index',
-			'fields' => array('reports_to_id', 'id')
-		),
-		array(
-			'name' => 'idx_users_tmst_id',
-			'type' => 'index',
-			'fields' => array('team_set_id')
-		),
+            'name' => 'idx_users_reports_to_id',
+            'type' => 'index',
+            'fields' => array('reports_to_id', 'id')
+        ),
+        array(
+            'name' => 'idx_users_tmst_id',
+            'type' => 'index',
+            'fields' => array('team_set_id')
+        ),
     ) ,
-	'relationships' => array (
-  		'user_direct_reports' => array('lhs_module'=> 'Users', 'lhs_table'=> 'users', 'lhs_key' => 'id', 'rhs_module'=> 'Users', 'rhs_table'=> 'users', 'rhs_key' => 'reports_to_id', 'relationship_type'=>'one-to-many'),
-  		'users_users_signatures' =>
-  		   array(
-  		       'lhs_module'=> 'Users',
-  		       'lhs_table'=> 'users',
-  		       'lhs_key' => 'id',
-  		       'rhs_module'=> 'UserSignature',
-  		       'rhs_table'=> 'users_signatures',
-  		       'rhs_key' => 'user_id',
-  		       'relationship_type'=>'one-to-many'
-  		       ),
-    	'users_email_addresses' =>
-		    array(
-		        'lhs_module'=> "Users", 'lhs_table'=> 'users', 'lhs_key' => 'id',
-		        'rhs_module'=> 'EmailAddresses', 'rhs_table'=> 'email_addresses', 'rhs_key' => 'id',
-		        'relationship_type'=>'many-to-many',
-		        'join_table'=> 'email_addr_bean_rel', 'join_key_lhs'=>'bean_id', 'join_key_rhs'=>'email_address_id',
-		        'relationship_role_column'=>'bean_module',
-		        'relationship_role_column_value'=>"Users"
-		    ),
-		'users_email_addresses_primary' =>
-		    array('lhs_module'=> "Users", 'lhs_table'=> 'users', 'lhs_key' => 'id',
-		        'rhs_module'=> 'EmailAddresses', 'rhs_table'=> 'email_addresses', 'rhs_key' => 'id',
-		        'relationship_type'=>'many-to-many',
-		        'join_table'=> 'email_addr_bean_rel', 'join_key_lhs'=>'bean_id', 'join_key_rhs'=>'email_address_id',
-		        'relationship_role_column'=>'primary_address',
-		        'relationship_role_column_value'=>'1'
-		    ),
-		'users_team_count_relationship' =>
-			 array(
-			 	'lhs_module'=> 'Teams',
-			 	'lhs_table'=> 'team_sets',
-			 	'lhs_key' => 'id',
-	    		'rhs_module'=> 'Users',
-	    		'rhs_table'=> 'users',
-	    		'rhs_key' => 'team_set_id',
-	   			'relationship_type'=>'one-to-many'
-			 ),
-		'users_teams' =>
-			array (
-				'lhs_module'        => 'Users',
-	            'lhs_table'         => 'users',
-	            'lhs_key'           => 'team_set_id',
-	            'rhs_module'        => 'Teams',
-	            'rhs_table'         => 'teams',
-	            'rhs_key'           => 'id',
-	            'relationship_type' => 'many-to-many',
-	            'join_table'        => 'team_sets_teams',
-	            'join_key_lhs'      => 'team_set_id',
-	            'join_key_rhs'      => 'team_id',
-			),
+    'relationships' => array (
+        'user_direct_reports' => array('lhs_module'=> 'Users', 'lhs_table'=> 'users', 'lhs_key' => 'id', 'rhs_module'=> 'Users', 'rhs_table'=> 'users', 'rhs_key' => 'reports_to_id', 'relationship_type'=>'one-to-many'),
+        'users_users_signatures' =>
+        array(
+            'lhs_module'=> 'Users',
+            'lhs_table'=> 'users',
+            'lhs_key' => 'id',
+            'rhs_module'=> 'UserSignature',
+            'rhs_table'=> 'users_signatures',
+            'rhs_key' => 'user_id',
+            'relationship_type'=>'one-to-many'
+        ),
+        'users_email_addresses' =>
+        array(
+            'lhs_module'=> "Users", 'lhs_table'=> 'users', 'lhs_key' => 'id',
+            'rhs_module'=> 'EmailAddresses', 'rhs_table'=> 'email_addresses', 'rhs_key' => 'id',
+            'relationship_type'=>'many-to-many',
+            'join_table'=> 'email_addr_bean_rel', 'join_key_lhs'=>'bean_id', 'join_key_rhs'=>'email_address_id',
+            'relationship_role_column'=>'bean_module',
+            'relationship_role_column_value'=>"Users"
+        ),
+        'users_email_addresses_primary' =>
+        array('lhs_module'=> "Users", 'lhs_table'=> 'users', 'lhs_key' => 'id',
+            'rhs_module'=> 'EmailAddresses', 'rhs_table'=> 'email_addresses', 'rhs_key' => 'id',
+            'relationship_type'=>'many-to-many',
+            'join_table'=> 'email_addr_bean_rel', 'join_key_lhs'=>'bean_id', 'join_key_rhs'=>'email_address_id',
+            'relationship_role_column'=>'primary_address',
+            'relationship_role_column_value'=>'1'
+        ),
+        'users_team_count_relationship' =>
+        array(
+            'lhs_module'=> 'Teams',
+            'lhs_table'=> 'team_sets',
+            'lhs_key' => 'id',
+            'rhs_module'=> 'Users',
+            'rhs_table'=> 'users',
+            'rhs_key' => 'team_set_id',
+            'relationship_type'=>'one-to-many'
+        ),
+        'users_teams' =>
+        array (
+            'lhs_module'        => 'Users',
+            'lhs_table'         => 'users',
+            'lhs_key'           => 'team_set_id',
+            'rhs_module'        => 'Teams',
+            'rhs_table'         => 'teams',
+            'rhs_key'           => 'id',
+            'relationship_type' => 'many-to-many',
+            'join_table'        => 'team_sets_teams',
+            'join_key_lhs'      => 'team_set_id',
+            'join_key_rhs'      => 'team_id',
+        ),
         'users_forecasts' => array(
             'rhs_module'		=> 'Forecasts',
             'rhs_table'			=> 'forecasts',

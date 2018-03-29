@@ -13,11 +13,14 @@
  ********************************************************************************/
 
 
-$app_list_strings['moduleList']['C_Payment'] = 'Payment';
-$app_list_strings['payment_method_options']['Cash'] = 'Cash';
-$app_list_strings['payment_method_options']['BankTranfer'] = 'Bank Tranfer';
-$app_list_strings['payment_method_options']['Card'] = 'Card';
-$app_list_strings['payment_method_options']['Other'] = 'Other';
-$app_list_strings['currency_list']['VND'] = 'VND';
-$app_list_strings['currency_list']['USD'] = 'USD';
-$app_list_strings['currency_list']['EUR'] = 'EUR';
+$app_list_strings['moduleList']['J_Payment'] = 'Payment';
+$app_list_strings['payment_type_payment_list']['Enrollment'] = 'Enrollment';
+$app_list_strings['payment_type_payment_list']['Deposit'] = 'Deposit';
+$app_list_strings['sale_type_payment_list']['Retention'] = 'Retention';
+$app_list_strings['status_payment_list']['Planing'] = 'Planing';
+$app_list_strings['foc_type_payment_list']['0'] = '0';
+$app_list_strings['foc_type_payment_list']['50'] = '50';
+$app_list_strings['foc_type_payment_list']['100'] = '100';
+$app_list_strings['payment_method_junior_list']['Cash'] = 'Cash';
+$app_list_strings['payment_method_junior_list']['Card'] = 'Card';
+$app_list_strings['payment_method_junior_list']['Other'] = 'Other';

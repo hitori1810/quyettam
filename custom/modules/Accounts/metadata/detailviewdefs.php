@@ -1,56 +1,56 @@
 <?php
-$viewdefs['Accounts'] = 
+$viewdefs['Accounts'] =
 array (
-  'DetailView' => 
+  'DetailView' =>
   array (
-    'templateMeta' => 
+    'templateMeta' =>
     array (
-      'form' => 
+      'form' =>
       array (
-        'buttons' => 
+        'buttons' =>
         array (
           0 => 'EDIT',
-          1 => 'DUPLICATE',
-          2 => 'DELETE',
-          3 => 'FIND_DUPLICATES',
-          4 => 'CONNECTOR',
+          1 => 'DELETE',
+//          2 =>
+//          array (
+//            'customCode' => '{$send_survey}',
+//          ),
+//          3 =>
+//          array (
+//            'customCode' => '{$send_poll}',
+//          ),
         ),
       ),
       'maxColumns' => '2',
       'useTabs' => false,
-      'widths' => 
+      'widths' =>
       array (
-        0 => 
+        0 =>
         array (
           'label' => '10',
           'field' => '30',
         ),
-        1 => 
+        1 =>
         array (
           'label' => '10',
           'field' => '30',
         ),
       ),
-      'includes' => 
+      'includes' =>
       array (
-        0 => 
+        0 =>
         array (
           'file' => 'modules/Accounts/Account.js',
         ),
       ),
-      'tabDefs' => 
+      'tabDefs' =>
       array (
-        'LBL_ACCOUNT_INFORMATION' => 
+        'LBL_ACCOUNT_INFORMATION' =>
         array (
           'newTab' => false,
           'panelDefault' => 'expanded',
         ),
-        'LBL_PANEL_ADVANCED' => 
-        array (
-          'newTab' => false,
-          'panelDefault' => 'expanded',
-        ),
-        'LBL_PANEL_ASSIGNMENT' => 
+        'LBL_PANEL_ADVANCED' =>
         array (
           'newTab' => false,
           'panelDefault' => 'expanded',
@@ -58,161 +58,98 @@ array (
       ),
       'syncDetailEditViews' => true,
     ),
-    'panels' => 
+    'panels' =>
     array (
-      'lbl_account_information' => 
+      'lbl_account_information' =>
       array (
-        0 => 
+        0 =>
         array (
-          0 => 
+          0 =>
           array (
-            'name' => 'code',
-            'label' => 'LBL_CODE',
-          ),
-          1 => 
-          array (
-            'name' => 'business_type',
-            'label' => 'LBL_BUSINESS_TYPE',
+            'name' => 'account_id',
+            'label' => 'LBL_ACCOUNT_ID',
+            'customCode' => '<span class="textbg_blue">{$fields.account_id.value}</span>',
           ),
         ),
-        1 => 
+        1 =>
         array (
-          0 => 
+          0 =>
           array (
             'name' => 'name',
             'comment' => 'Name of the Company',
             'label' => 'LBL_NAME',
-            'displayParams' => 
+            'displayParams' =>
             array (
               'enableConnectors' => true,
               'module' => 'Accounts',
-              'connectors' => 
+              'connectors' =>
               array (
-                0 => 'ext_rest_twitter',
+                0 => 'ext_rest_linkedin',
+                1 => 'ext_rest_twitter',
               ),
             ),
           ),
-          1 => 
+          1 =>
           array (
             'name' => 'phone_office',
             'comment' => 'The office phone number',
             'label' => 'LBL_PHONE_OFFICE',
           ),
         ),
-        2 => 
+        2 =>
         array (
-          0 => 
+          0 =>
           array (
-            'name' => 'iata_code',
+            'name' => 'website',
+            'type' => 'link',
+            'label' => 'LBL_WEBSITE',
+            'displayParams' =>
+            array (
+              'link_target' => '_blank',
+            ),
           ),
-          1 => ""
-        ),
-        3 => 
-        array (
-          0 => 
-          array (
-            'name' => 'brand_name',
-          ),
-          1 => 
-          array (
-            'name' => 'mobile_phone',
-
-          ),
-        ),
-        4 => 
-        array (
-          0 => 
-          array (
-            'name' => 'tax_code',
-          ),
-          1 => 
+          1 =>
           array (
             'name' => 'phone_fax',
+            'comment' => 'The fax phone number of this company',
+            'label' => 'LBL_FAX',
           ),
         ),
-        5 => 
+        3 =>
         array (
-          0 => 
+          0 =>
           array (
             'name' => 'billing_address_street',
             'label' => 'LBL_BILLING_ADDRESS',
             'type' => 'address',
-            'displayParams' => 
+            'displayParams' =>
             array (
               'key' => 'billing',
             ),
           ),
-          1 => 
+          1 =>
           array (
             'name' => 'shipping_address_street',
             'label' => 'LBL_SHIPPING_ADDRESS',
             'type' => 'address',
-            'displayParams' => 
+            'displayParams' =>
             array (
               'key' => 'shipping',
             ),
           ),
         ),
-        6 => 
+        4 =>
         array (
-          0 => 
+          0 =>
           array (
             'name' => 'email1',
             'studio' => 'false',
             'label' => 'LBL_EMAIL',
           ),
-          1 => 
-          array (
-            'name' => 'dob_day',
-            'label' => 'LBL_BIRTHDATE',
-            'type' => 'Dob',
-          ),
         ),
-        7 => 
+        5 =>
         array (
-            'name' => 'category',
-        ),
-        8 => 
-        array (
-          0 => 
-          array (
-            'name' => 'bank_account_number',
-            'label' => 'LBL_BANK_ACCOUNT_NUMBER',
-          ),
-          1 => 
-          array (
-             'name' => 'bank_name',
-            'label' => 'LBL_BANK_NAME',
-          ),
-        ),
-        9 => 
-        array (
-          0 => 
-          array (
-             'name' => 'credit_limit',
-            'label' => 'LBL_CREDIT_LIMIT',
-          ), 
-          1 => 
-          array (
-              'name' => 'bank_branch',
-          ),
-        ),
-        10 => 
-        array (
-          0 => 
-          array (
-            'name' => 'active_date',
-            'label' => 'LBL_ACTIVE_DATE',
-          ),
-          1 => 
-          array (
-            'name' => 'exp_date',
-            'label' => 'LBL_EXP_DATE',
-          ),
-        ),
-        11 => 
-        array (
-          0 => 
+          0 =>
           array (
             'name' => 'description',
             'comment' => 'Full text of the note',
@@ -220,98 +157,49 @@ array (
           ),
         ),
       ),
-      'LBL_PANEL_ADVANCED' => 
+      'LBL_PANEL_ADVANCED' =>
       array (
-        0 => 
+        0 =>
         array (
-          0 => 
+          0 =>
           array (
-            'name' => 'industry',
-            'comment' => 'The company belongs in this industry',
-            'label' => 'LBL_INDUSTRY',
+            'name' => 'type_of_account',
+            'comment' => 'The Company is of this type',
+            'label' => 'LBL_TYPE',
           ),
-          1 => 
+          1 =>
           array (
-            'name' => 'lead_source',
-            'comment' => 'Lead source (ex: Web, print)',
-            'label' => 'LBL_SOURCE',
+            'name' => 'tax_code',
+            'label' => 'LBL_TAX_CODE',
           ),
         ),
-        1 => 
+        1 =>
         array (
-          0 => 
+          0 =>
           array (
-            'name' => 'annual_revenue',
-            'comment' => 'Annual revenue for this company',
-            'label' => 'LBL_ANNUAL_REVENUE',
+            'name' => 'bank_name',
+            'label' => 'LBL_BANK_NAME',
           ),
-          1 => 
+          1 =>
           array (
-            'name' => 'employees',
-            'comment' => 'Number of employees, varchar to accomodate for both number (100) or range (50-100)',
-            'label' => 'LBL_EMPLOYEES',
+            'name' => 'bank_number',
+            'label' => 'LBL_BANK_NUMBER',
           ),
         ),
-        2 => 
+        2 =>
         array (
-          0 => 
-          array (
-            'name' => 'sic_code',
-            'comment' => 'SIC code of the account',
-            'label' => 'LBL_SIC_CODE',
-          ),
-          1 => 
-          array (
-            'name' => 'ticker_symbol',
-            'comment' => 'The stock trading (ticker) symbol for the company',
-            'label' => 'LBL_TICKER_SYMBOL',
-          ),
-        ),
-        3 => 
-        array (
-          0 => 
-          array (
-            'name' => 'parent_name',
-            'label' => 'LBL_MEMBER_OF',
-          ),
-          1 => 
-          array (
-            'name' => 'ownership',
-            'comment' => '',
-            'label' => 'LBL_OWNERSHIP',
-          ),
-        ),
-        4 => 
-        array (
-          0 => 'campaign_name',
-          1 => 
-          array (
-            'name' => 'rating',
-            'comment' => 'An arbitrary rating for this company for use in comparisons with others',
-            'label' => 'LBL_RATING',
-          ),
-        ),
-      ),
-      'LBL_PANEL_ASSIGNMENT' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            'name' => 'assigned_user_name',
-            'label' => 'LBL_ASSIGNED_TO',
-          ),
-          1 => 
+          0 => 'assigned_user_name',
+          1 =>
           array (
             'name' => 'date_modified',
             'label' => 'LBL_DATE_MODIFIED',
             'customCode' => '{$fields.date_modified.value} {$APP.LBL_BY} {$fields.modified_by_name.value}',
           ),
         ),
-        1 => 
+        3 =>
         array (
           0 => 'team_name',
-          1 => 
+          1 =>
           array (
             'name' => 'date_entered',
             'customCode' => '{$fields.date_entered.value} {$APP.LBL_BY} {$fields.created_by_name.value}',

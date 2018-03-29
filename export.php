@@ -90,7 +90,7 @@
     header("Content-Length: ".mb_strlen($transContent, '8bit'));
 
     print $transContent; */
-    $content = explode("\"\r\n\"",$transContent);
+    $content = explode("\"\r\n\"",$content);
 
     foreach($content as $val){ 
         $temp = explode("\"".getDelimiter()."\"",$val);
@@ -99,10 +99,7 @@
 
     /**
     * added by Hoc Bui 
-    */   
-    ob_clean();
-
-    ob_end_clean();
+    */
 
     $objPHPExcel = new PHPExcel();
 
@@ -114,6 +111,8 @@
     ->setDescription("Test document for Office 2007 XLSX, generated using PHP classes.")
     ->setKeywords("office 2007 openxml php")
     ->setCategory("Test result file");
+
+
     //Add export data
     $activeSheet = $objPHPExcel->setActiveSheetIndex(0);
 
@@ -131,16 +130,18 @@
         }  
         $row_num++;
     }
+
     //Rename worksheet
     $objPHPExcel->getActiveSheet()->setTitle($filename);
+
     //Set active sheet index to the first sheet, so Excel opens this as the first sheet
     $objPHPExcel->setActiveSheetIndex(0);
-    ob_clean();
-    ob_end_clean();
+
     //Redirect output to a client’s web browser (Excel5)
     header('Content-Type: application/vnd.ms-excel');
     header('Content-Disposition: attachment;filename="'.$filename.'.xls"');
     header('Cache-Control: max-age=0');
+
 
     $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
     $objWriter->save("php://output");

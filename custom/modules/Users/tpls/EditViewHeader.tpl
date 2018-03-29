@@ -63,6 +63,7 @@ var ERR_REENTER_PASSWORDS = '{$MOD.ERR_REENTER_PASSWORDS}';
     <input type="hidden" name="type" value="{$REDIRECT_EMAILS_TYPE}">
     <input type="hidden" id="is_group" name="is_group" value='{$IS_GROUP}' {$IS_GROUP_DISABLED}>
     <input type="hidden" id="is_template" name="is_template" value='{$IS_TEMPLATE}' {$IS_TEMPLATE_DISABLED}>
+    <input type="hidden" id="user_template_id" name="user_template_id" value="{$USER_TEMPLATE_ID}" />
     <input type="hidden" id='portal_only' name='portal_only' value='{$IS_PORTALONLY}' {$IS_PORTAL_ONLY_DISABLED}>
     <input type="hidden" name="is_admin" id="is_admin" value='{$IS_FOCUS_ADMIN}' {$IS_ADMIN_DISABLED} >
     <input type="hidden" name="is_current_admin" id="is_current_admin" value='{$IS_ADMIN}' >
@@ -136,13 +137,14 @@ EditView_tabs.on('contentReady', function(e){
 <div id="EditView_tabs" class="yui-navset">
     <ul class="yui-nav">
         <li class="selected"><a id="tab1" href="#tab1"><em>{$MOD.LBL_USER_INFORMATION}</em></a></li>
-        <li {if ($CHANGE_PWD == 0)}style='display:none'{/if}><a id="tab2" href="#tab2"><em>{$MOD.LBL_CHANGE_PASSWORD_TITLE}</em></a></li>
+        <li {if ($CHANGE_PWD == 0 || $HIDE_FOR_TEMPLATE == 'none')}style='display:none'{/if}><a id="tab2" href="#tab2"><em>{$MOD.LBL_CHANGE_PASSWORD_TITLE}</em></a></li>
         {if $SHOW_THEMES}
         <li><a id="tab3" href="#tab3" style='display:{$HIDE_FOR_GROUP_AND_PORTAL};'><em>{$MOD.LBL_THEME}</em></a></li>
         {/if}
         <li><a id="tab4" href="#tab4" style='display:{$HIDE_FOR_GROUP_AND_PORTAL};'><em>{$MOD.LBL_ADVANCED}</em></a></li>
         {if $ID}
-        <li><a id="tab5" href="#tab5" style='display:{if (isset($HIDE_FOR_GROUP_AND_PORTAL) || isset($HIDE_FOR_TEMPLATE))}none{/if};'><em>{$MOD.LBL_EAPM_SUBPANEL_TITLE}</em></a></li>
+        <!--<li><a id="tab5" href="#tab5" style='display:{if (isset($HIDE_FOR_GROUP_AND_PORTAL) || isset($HIDE_FOR_TEMPLATE))}none{/if};'><em>{$MOD.LBL_EAPM_SUBPANEL_TITLE}</em></a></li>-->
+        <!-- turn off by Trung Nguyen 2015.10.01-->
         {/if}
     </ul>
     <div class="yui-content">

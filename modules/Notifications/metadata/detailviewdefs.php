@@ -1,55 +1,95 @@
 <?php
-/*********************************************************************************
- * By installing or using this file, you are confirming on behalf of the entity
- * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
- * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
- * http://www.sugarcrm.com/master-subscription-agreement
- *
- * If Company is not bound by the MSA, then by installing or using this file
- * you are agreeing unconditionally that Company will be bound by the MSA and
- * certifying that you have authority to bind Company accordingly.
- *
- * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
- ********************************************************************************/
-
 $module_name = 'Notifications';
-$viewdefs[$module_name]['DetailView'] = array(
-'templateMeta' => array('form' => array('buttons'=>array('EDIT', 'DUPLICATE', 'DELETE',
-                                                         )),
-                        'maxColumns' => '2',
-                        'widths' => array(
-                                        array('label' => '10', 'field' => '30'),
-                                        array('label' => '10', 'field' => '30')
-                                        ),
-                        ),
-
-'panels' =>array (
-
+$viewdefs[$module_name] =
+array (
+  'DetailView' =>
   array (
-    'name',
-    'assigned_user_name',
-  ),
-  array (
-
-    'team_name',''
-  ),
-
-  array (
-	array (
-      'name' => 'date_entered',
-      'customCode' => '{$fields.date_entered.value} {$APP.LBL_BY} {$fields.created_by_name.value}',
-      'label' => 'LBL_DATE_ENTERED',
-    ),
+    'templateMeta' =>
     array (
-      'name' => 'date_modified',
-      'customCode' => '{$fields.date_modified.value} {$APP.LBL_BY} {$fields.modified_by_name.value}',
-      'label' => 'LBL_DATE_MODIFIED',
+      'form' =>
+      array (
+        'buttons' =>
+        array (
+//          0 => 'EDIT',
+//          1 => 'DUPLICATE',
+//          2 => 'DELETE',
+        ),
+      ),
+      'maxColumns' => '2',
+      'widths' =>
+      array (
+        0 =>
+        array (
+          'label' => '10',
+          'field' => '30',
+        ),
+        1 =>
+        array (
+          'label' => '10',
+          'field' => '30',
+        ),
+      ),
+      'useTabs' => false,
+      'tabDefs' =>
+      array (
+        'DEFAULT' =>
+        array (
+          'newTab' => false,
+          'panelDefault' => 'expanded',
+        ),
+      ),
+    ),
+    'panels' =>
+    array (
+      'default' =>
+      array (
+        0 =>
+        array (
+          0 => 'name',
+        ),
+        1 =>
+        array (
+          0 =>
+          array (
+            'name' => 'parent_name',
+            'studio' => true,
+            'label' => 'LBL_LIST_RELATED_TO',
+          ),
+          1 =>
+          array (
+            'name' => 'is_read',
+            'label' => 'LBL_IS_READ',
+          ),
+        ),
+        2 =>
+        array (
+          0 => 'assigned_user_name',
+          1 =>
+          array (
+            'name' => 'severity',
+            'label' => 'LBL_SEVERITY',
+          ),
+        ),
+        3 =>
+        array (
+          0 => 'description',
+        ),
+        4 =>
+        array (
+          0 =>
+          array (
+            'name' => 'date_entered',
+            'customCode' => '{$fields.date_entered.value} {$APP.LBL_BY} {$fields.created_by_name.value}',
+            'label' => 'LBL_DATE_ENTERED',
+          ),
+          1 =>
+          array (
+            'name' => 'date_modified',
+            'customCode' => '{$fields.date_modified.value} {$APP.LBL_BY} {$fields.modified_by_name.value}',
+            'label' => 'LBL_DATE_MODIFIED',
+          ),
+        ),
+      ),
     ),
   ),
-
-  array (
-    'description',
-  ),
-)
 );
-?>

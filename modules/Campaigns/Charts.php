@@ -171,7 +171,7 @@ class campaign_charts {
 			$focus = new Campaign();
             $focus->retrieve($campaign_id);
 			$opp_count=0;
-			$opp_query  = "select count(*) opp_count,sum(" . db_convert("amount_usdollar","IFNULL",array(0)).")  total_value";
+			$opp_query  = "select count(*) opp_count,sum(" . db_convert("total_in_invoice","IFNULL",array(0)).")  total_value";
             $opp_query .= " from opportunities";
             $opp_query .= " where campaign_id='$campaign_id'";
             $opp_query .= " and sales_stage='Prospecting'";
@@ -183,7 +183,7 @@ class campaign_charts {
             if (empty($opp_data['total_value'])) $opp_data['total_value']=0;
 
             //report query
-			$opp_query1  = "select SUM(opp.amount) as revenue";
+			$opp_query1  = "select SUM(opp.total_in_invoice) as revenue";
             $opp_query1 .= " from opportunities opp";
             $opp_query1 .= " right join campaigns camp on camp.id = opp.campaign_id";
             $opp_query1 .= " where opp.sales_stage = '".Opportunity::STAGE_CLOSED_WON."' and camp.id='$campaign_id' and opp.deleted=0";

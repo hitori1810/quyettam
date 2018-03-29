@@ -40,10 +40,13 @@ function smarty_function_sugar_number_format($params, &$smarty) {
 	if(!isset($params['var']) || $params['var'] === '') {  
         return '';
     } 
-
+    /**
+     * Custom hide precision By Lap Nguyen
+     */
     if ( !isset($params['precision']) ) {
-        $params['precision'] = $locale->getPrecedentPreference('default_currency_significant_digits');
+        $params['precision'] = 0;
     }
+    //END
 
     $_contents = format_number($params['var'], $params['precision'], $params['precision'], $params);
 

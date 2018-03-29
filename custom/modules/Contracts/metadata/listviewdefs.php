@@ -3,24 +3,9 @@ $listViewDefs['Contracts'] =
 array (
   'name' => 
   array (
-    'width' => '40%',
+    'width' => '20%',
     'label' => 'LBL_LIST_CONTRACT_NAME',
     'link' => true,
-    'default' => true,
-  ),
-  'status' => 
-  array (
-    'width' => '10%',
-    'label' => 'LBL_STATUS',
-    'link' => false,
-    'default' => true,
-  ),
-  'assigned_user_name' => 
-  array (
-    'width' => '2%',
-    'label' => 'LBL_LIST_ASSIGNED_TO_USER',
-    'module' => 'Employees',
-    'id' => 'ASSIGNED_USER_ID',
     'default' => true,
   ),
   'account_name' => 
@@ -37,6 +22,20 @@ array (
       0 => 'account_id',
     ),
   ),
+  'status' => 
+  array (
+    'width' => '10%',
+    'label' => 'LBL_STATUS',
+    'link' => false,
+    'default' => true,
+  ),
+  'total_student' => 
+  array (
+    'type' => 'int',
+    'label' => 'LBL_TOTAL_STUDENT',
+    'width' => '10%',
+    'default' => true,
+  ),
   'total_contract_value' => 
   array (
     'type' => 'currency',
@@ -45,36 +44,34 @@ array (
     'width' => '10%',
     'default' => true,
   ),
-  'start_date' => 
+  'kind_of_course' => 
   array (
-    'width' => '15%',
-    'label' => 'LBL_LIST_START_DATE',
-    'link' => false,
+    'type' => 'enum',
     'default' => true,
-  ),
-  'end_date' => 
-  array (
-    'width' => '15%',
-    'label' => 'LBL_LIST_END_DATE',
-    'link' => false,
-    'default' => true,
-  ),
-  'date_entered' => 
-  array (
-    'type' => 'datetime',
-    'studio' => 
-    array (
-      'portaleditview' => false,
-    ),
-    'label' => 'LBL_DATE_ENTERED',
+    'studio' => 'visible',
+    'label' => 'LBL_KIND_OF_COURSE',
     'width' => '10%',
+  ),
+  'customer_signed_date' => 
+  array (
+    'type' => 'date',
+    'label' => 'LBL_CUSTOMER_SIGNED_DATE',
+    'width' => '10%',
+    'default' => true,
+  ),
+  'assigned_user_name' => 
+  array (
+    'width' => '2%',
+    'label' => 'LBL_LIST_ASSIGNED_TO_USER',
+    'module' => 'Employees',
+    'id' => 'ASSIGNED_USER_ID',
     'default' => true,
   ),
   'team_name' => 
   array (
     'width' => '2%',
     'label' => 'LBL_LIST_TEAM',
-    'default' => false,
+    'default' => true,
     'related_fields' => 
     array (
       0 => 'team_id',

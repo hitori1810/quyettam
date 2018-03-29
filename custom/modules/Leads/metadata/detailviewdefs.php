@@ -1,413 +1,269 @@
 <?php
-$viewdefs['Leads'] = 
+$viewdefs['Leads'] =
 array (
-  'DetailView' => 
-  array (
-    'templateMeta' => 
+    'DetailView' =>
     array (
-      'form' => 
-      array (
-        'buttons' => 
+        'templateMeta' =>
         array (
-          0 => 'EDIT',
-          1 => 'DUPLICATE',
-          2 => 'DELETE',
-          4 => 'FIND_DUPLICATES',
-          5 => 
-          array (
-            'customCode' => '<input title="{$APP.LBL_MANAGE_SUBSCRIPTIONS}" class="button" onclick="this.form.return_module.value=\'Leads\'; this.form.return_action.value=\'DetailView\';this.form.return_id.value=\'{$fields.id.value}\'; this.form.action.value=\'Subscriptions\'; this.form.module.value=\'Campaigns\'; this.form.module_tab.value=\'Leads\';" type="submit" name="Manage Subscriptions" value="{$APP.LBL_MANAGE_SUBSCRIPTIONS}">',
-            'sugar_html' => 
+            'form' =>
             array (
-              'type' => 'submit',
-              'value' => '{$APP.LBL_MANAGE_SUBSCRIPTIONS}',
-              'htmlOptions' => 
-              array (
-                'title' => '{$APP.LBL_MANAGE_SUBSCRIPTIONS}',
-                'class' => 'button',
-                'id' => 'manage_subscriptions_button',
-                'onclick' => 'this.form.return_module.value=\'Leads\'; this.form.return_action.value=\'DetailView\';this.form.return_id.value=\'{$fields.id.value}\'; this.form.action.value=\'Subscriptions\'; this.form.module.value=\'Campaigns\'; this.form.module_tab.value=\'Leads\';',
-                'name' => '{$APP.LBL_MANAGE_SUBSCRIPTIONS}',
-              ),
+                'buttons' =>
+                array (
+                    0 => 'EDIT',
+                    1 => 'DUPLICATE',
+                    2 => 'DELETE',
+                    3 =>
+                    array (
+                        'customCode' => '{$btn_convert_2}',
+                    ),
+//                    4 =>
+//                    array (
+//                        'customCode' => '{$send_survey}',
+//                    ),
+//                    5 =>
+//                    array (
+//                        'customCode' => '{$send_poll}',
+//                    ),
+                ),
+                'headerTpl' => 'modules/Leads/tpls/DetailViewHeader.tpl',
             ),
-          ),
-          6 => 
-          array (
-            'customCode' => '<input title="{$APP.LBL_BOOKING_TICKET}" class="button" onclick="this.form.return_module.value=\'Leads\'; this.form.return_action.value=\'DetailView\';this.form.return_id.value=\'{$fields.id.value}\'; this.form.action.value=\'EditView\'; this.form.module.value=\'C_BookingTicket\';" type="submit" name="Booking Ticket" value="{$APP.LBL_BOOKING_TICKET}">',
-            'sugar_html' => 
+            'maxColumns' => '2',
+            'useTabs' => false,
+            'widths' =>
             array (
-              'type' => 'submit',
-              'value' => '{$APP.LBL_BOOKING_TICKET}',
-              'htmlOptions' => 
-              array (
-                'title' => '{$APP.LBL_BOOKING_TICKET}',
-                'class' => 'button',
-                'id' => 'booking_ticket_button',
-                'onclick' => 'this.form.return_module.value=\'Leads\'; this.form.return_action.value=\'DetailView\';this.form.return_id.value=\'{$fields.id.value}\'; this.form.action.value=\'EditView\'; this.form.module.value=\'C_BookingTicket\';',
-                'name' => '{$APP.LBL_BOOKING_TICKET}',
-              ),
+                0 =>
+                array (
+                    'label' => '10',
+                    'field' => '30',
+                ),
+                1 =>
+                array (
+                    'label' => '10',
+                    'field' => '30',
+                ),
             ),
-          ),
-          7 => 
-          array (
-            'customCode' => '<input title="{$APP.LBL_BOOKING_HOTEL}" class="button" onclick="this.form.return_module.value=\'Leads\'; this.form.return_action.value=\'DetailView\';this.form.return_id.value=\'{$fields.id.value}\'; this.form.action.value=\'EditView\'; this.form.module.value=\'C_BookingHotel\';" type="submit" name="Booking Hotel" value="{$APP.LBL_BOOKING_HOTEL}">',
-            'sugar_html' => 
+            'javascript' => '
+            {sugar_getscript file="custom/modules/Leads/js/addToPT.js"}
+            {sugar_getscript file="modules/Leads/Lead.js"}
+            ',
+            'tabDefs' =>
             array (
-              'type' => 'submit',
-              'value' => '{$APP.LBL_BOOKING_HOTEL}',
-              'htmlOptions' => 
-              array (
-                'title' => '{$APP.LBL_BOOKING_HOTEL}',
-                'class' => 'button',
-                'id' => 'booking_hotel_button',
-                'onclick' => 'this.form.return_module.value=\'Leads\'; this.form.return_action.value=\'DetailView\';this.form.return_id.value=\'{$fields.id.value}\'; this.form.action.value=\'EditView\'; this.form.module.value=\'C_BookingHotel\';',
-                'name' => '{$APP.LBL_BOOKING_HOTEL}',
-              ),
+                'LBL_CONTACT_INFORMATION' =>
+                array (
+                    'newTab' => false,
+                    'panelDefault' => 'expanded',
+                ),
+                'LBL_PANEL_COMPANY' =>
+                array (
+                    'newTab' => false,
+                    'panelDefault' => 'expanded',
+                ),
+                'LBL_PANEL_ASSIGNMENT' =>
+                array (
+                    'newTab' => false,
+                    'panelDefault' => 'expanded',
+                ),
             ),
-          ),
-          8 => 
-          array (
-            'customCode' => '<input title="{$APP.LBL_BOOKING_TOUR}" class="button" onclick="this.form.return_module.value=\'Leads\'; this.form.return_action.value=\'DetailView\';this.form.return_id.value=\'{$fields.id.value}\'; this.form.action.value=\'EditView\'; this.form.module.value=\'C_BookingTour\';" type="submit" name="Booking Tour" value="{$APP.LBL_BOOKING_TOUR}">',
-            'sugar_html' => 
+            'syncDetailEditViews' => true,
+        ),
+        'panels' =>
+        array (
+            'lbl_contact_information' =>
             array (
-              'type' => 'submit',
-              'value' => '{$APP.LBL_BOOKING_TOUR}',
-              'htmlOptions' => 
-              array (
-                'title' => '{$APP.LBL_BOOKING_TOUR}',
-                'class' => 'button',
-                'id' => 'booking_tour_button',
-                'onclick' => 'this.form.return_module.value=\'Leads\'; this.form.return_action.value=\'DetailView\';this.form.return_id.value=\'{$fields.id.value}\'; this.form.action.value=\'EditView\'; this.form.module.value=\'C_BookingTour\';',
-                'name' => '{$APP.LBL_BOOKING_TOUR}',
-              ),
+                0 =>
+                array (
+                    0 =>
+                    array (
+                        'name' => 'name',
+                        'label' => 'LBL_NAME',
+                    ),
+                    1 => 'birthdate',
+                ),
+                1 =>
+                array (
+                    0 => 'gender',
+                    1 =>  ''
+                ),
+                2 =>
+                array (
+                    0 => 'email1',
+                    1 =>
+                    array (
+                        'name' => 'primary_address_street',
+                        'label' => 'LBL_PRIMARY_ADDRESS',
+                        'type' => 'address',
+                        'displayParams' =>
+                        array (
+                            'key' => 'primary',
+                        ),
+                    ),
+                ),
+                3 =>
+                array (
+                    0 => 'phone_mobile',
+                    1 =>
+                    array (
+                        'name' => 'facebook',
+                        'comment' => 'URL of website for the company',
+                        'label' => 'LBL_FACEBOOK',
+                    ),
+                ),
+                4 =>
+                array (
+                    0 =>
+                    array (
+                        'name' => 'j_school_leads_1_name',
+                    ),
+                    1 =>
+                    array (
+                        'name' => 'grade',
+                        'studio' => 'visible',
+                        'label' => 'LBL_GRADE',
+                    ),
+                ),
+                6 =>
+                array (
+                    0 => 'description',
+                    1 => 'do_not_call',
+                ),
+                7 =>
+                array (
+                    1 =>
+                    array (
+                        'name' => 'alt_address_street',
+                        'label' => 'LBL_ALTERNATE_ADDRESS',
+                        'type' => 'address',
+                        'displayParams' =>
+                        array (
+                            'key' => 'alt',
+                        ),
+                    ),
+                    0 => ''
+                ),
             ),
-          ),
+            'lbl_panel_company' =>
+            array (
+                0 =>
+                array (
+                    0 =>
+                    array (
+                        'name' => 'guardian_name',
+                        'label' => 'LBL_GUARDIAN_NAME',
+                    ),
+                    1 => 'other_mobile',
+                ),
+                1 =>array (
+                    0 => '',
+                    1 => 'email_parent_1',
+                ),
+                2 =>
+                array (
+                    0 =>
+                    array (
+                        'name' => 'guardian_name_2',
+                        'comment' => '',
+                        'label' => 'LBL_GUARDIAN_NAME_2',
+                    ),
+                    1 =>
+                    array (
+                        'name' => 'phone_other',
+                        'comment' => 'Other phone number for the contact',
+                        'label' => 'LBL_OTHER_PHONE',
+                    ),
+                ),
+                3 =>array (
+                    0 => '',
+                    1 => 'email_parent_2',
+                ),
+            ),
+            'lbl_panel_assignment' =>
+            array (
+                0 =>
+                array (
+                    0 =>
+                    array (
+                        'name' => 'lead_source',
+                    ),
+                    1 =>
+                    array (
+                        'name' => 'status',
+                        'customCode' => '{if $fields.status.value == "New"}
+                        <span class="textbg_green"><b>{$fields.status.value}<b></span>
+
+                        {elseif $fields.status.value == "Assigned"}
+                        <span class="textbg_bluelight"><b>{$fields.status.value}<b></span>
+
+                        {elseif $fields.status.value == "In Process"}
+                        <span class="textbg_blue"><b>{$fields.status.value}<b></span>
+
+                        {elseif $fields.status.value == "Converted"}
+                        <span class="textbg_red"><b>{$fields.status.value}<b></span>
+
+                        {elseif $fields.status.value == "PT/Demo"}
+                        <span class="textbg_violet"><b>{$fields.status.value}<b></span>
+
+                        {elseif $fields.status.value == "Recycled"}
+                        <span class="textbg_orange"><b>{$fields.status.value}<b></span>
+
+                        {elseif $fields.status.value == "Dead"}
+                        <span class="textbg_black"><b>{$fields.status.value}<b></span>
+
+                        {else}
+                        <span><b>{$fields.status.value}<b></span>
+                        {/if}',
+                    ),
+                ),
+                1 =>
+                array (
+                    0 => 'lead_source_description',
+                    1 =>
+                    array (
+                        'name' => 'campaign_name',
+                        'label' => 'LBL_CAMPAIGN',
+                    ),
+                ),
+                2 =>
+                array (
+                    0 =>
+                    array (
+                        'name' => 'prefer_level',
+                       'customCode' => '{$fields.prefer_level.value} {if !empty($fields.last_pt_result.value)} &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<b>{$MOD.LBL_LAST_PT_RESULT}:</b> {$fields.last_pt_result.value}{/if}',
+                    ),
+                    1 =>
+                    array (
+                        'name' => 'potential',
+                        'studio' => 'visible',
+                        'label' => 'LBL_POTENTIAL',
+                        'customCode' => '{$potentialQ}',
+                    ),
+                ),
+                3 =>
+                array (
+                    0 =>
+                    array (
+                        'name' => 'assigned_user_name',
+                        'customCode' => '{$assigned_user_idQ}',
+                    ),
+                    1 =>
+                    array (
+                        'name' => 'date_entered',
+                        'customCode' => '{$fields.date_entered.value} {$APP.LBL_BY} {$fields.created_by_name.value}',
+                        'label' => 'LBL_DATE_ENTERED',
+                    ),
+                ),
+                4 =>
+                array (
+                    0 => 'team_name',
+                    1 =>
+                    array (
+                        'name' => 'date_modified',
+                        'customCode' => '{$fields.date_modified.value} {$APP.LBL_BY} {$fields.modified_by_name.value}',
+                        'label' => 'LBL_DATE_MODIFIED',
+                    ),
+                ),
+
+
+            ),
         ),
-        'headerTpl' => 'modules/Leads/tpls/DetailViewHeader.tpl',
-      ),
-      'maxColumns' => '2',
-      'useTabs' => false,
-      'widths' => 
-      array (
-        0 => 
-        array (
-          'label' => '10',
-          'field' => '30',
-        ),
-        1 => 
-        array (
-          'label' => '10',
-          'field' => '30',
-        ),
-      ),
-      'includes' => 
-      array (
-        0 => 
-        array (
-          'file' => 'custom/modules/Leads/js/DetailView.js',
-        ),
-      ),
-      'tabDefs' => 
-      array (
-        'LBL_CONTACT_INFORMATION' => 
-        array (
-          'newTab' => false,
-          'panelDefault' => 'expanded',
-        ),
-        'LBL_EDITVIEW_PANEL2' => 
-        array (
-          'newTab' => false,
-          'panelDefault' => 'expanded',
-        ),
-        'LBL_DETAILVIEW_PANEL3' => 
-        array (
-          'newTab' => false,
-          'panelDefault' => 'expanded',
-        ),
-        'LBL_EDITVIEW_PANEL1' => 
-        array (
-          'newTab' => false,
-          'panelDefault' => 'expanded',
-        ),
-      ),
-      'syncDetailEditViews' => true,
     ),
-    'panels' => 
-    array (
-      'LBL_CONTACT_INFORMATION' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            'name' => 'code',
-            'label' => 'LBL_CODE',
-          ),
-          1 => 'category',
-        ),
-        1 => 
-        array (
-          0 => 
-          array (
-            'name' => 'name',
-            'comment' => 'First name of the contact',
-            'label' => 'LBL_NAME',
-          ),
-          1 => 'fit_category',
-        ),
-        2 => 
-        array (
-          0 => 
-          array (
-            'name' => 'pax_name',
-            'label' => 'LBL_PAX_NAME',
-          ),
-          1 => 
-          array (
-            'name' => 'gs_code',
-            'customLabel' => '{$LBL_GS_CODE}',
-            'customCode' => '<label id="gs_code" name="gs_code">{$GS_CODE}</label>',
-          ),
-        ),
-        3 => 
-        array (
-          0 => 'department',
-          1 => 'website',
-        ),
-        4 => 
-        array (
-          0 => 
-          array (
-            'name' => 'account_name',
-            'displayParams' => 
-            array (
-              'enableConnectors' => true,
-              'module' => 'Leads',
-              'connectors' => 
-              array (
-                0 => 'ext_rest_twitter',
-              ),
-            ),
-          ),
-          1 => 'status',
-        ),
-        5 => 
-        array (
-          0 => 'title',
-          1 => 'phone_mobile',
-        ),
-        6 => 
-        array (
-          0 => 'email1',
-          1 => 'phone_work',
-        ),
-        7 => 
-        array (
-          0 => 'lead_source',
-          1 => 
-          array (
-            'name' => 'phone_other',
-            'comment' => 'Other phone number for the contact',
-            'label' => 'LBL_OTHER_PHONE',
-          ),
-        ),
-        8 => 
-        array (
-          0 => 
-          array (
-            'name' => 'rating',
-            'label' => 'LBL_RATING',
-          ),
-          1 => 'phone_fax',
-        ),
-        9 => 
-        array (
-          0 => 
-          array (
-            'name' => 'dob_day',
-            'label' => 'LBL_BIRTHDATE',
-            'type' => 'Dob',
-          ),
-          1 => 
-          array (
-            'name' => 'passport',
-            'label' => 'LBL_PASSPORT',
-          ),
-        ),
-        10 => array(
-            0 => 'gender',
-            1 => '',
-        ),
-       11 => 
-        array (
-          0 => 
-          array (
-            'name' => 'primary_address_street',
-            'label' => 'LBL_PRIMARY_ADDRESS',
-            'type' => 'address',
-            'displayParams' => 
-            array (
-              'key' => 'primary',
-            ),
-          ),
-          1 => 
-          array (
-            'name' => 'alt_address_street',
-            'label' => 'LBL_ALTERNATE_ADDRESS',
-            'type' => 'address',
-            'displayParams' => 
-            array (
-              'key' => 'alt',
-            ),
-          ),
-        ),
-      ),
-      'lbl_editview_panel2' => 
-      array (
-        0 => 
-        array (
-          0 => 'status_description',
-          1 => 'lead_source_description',
-        ),
-        1 => 
-        array (
-          0 => 
-          array (
-            'name' => 'airline',
-            'label' => 'LBL_AIRLINE',
-          ),
-          1 => '',
-        ),
-        2 => 
-        array (
-          0 => 'refered_by',
-          1 => 
-          array (
-            'name' => 'seat_type',
-            'label' => 'LBL_SEAT_TYPE',
-          ),
-        ),
-        3 => 
-        array (
-          0 => 
-          array (
-            'name' => 'campaign_name',
-            'label' => 'LBL_CAMPAIGN',
-          ),
-          1 => 
-          array (
-            'name' => 'working_date',
-            'label' => 'LBL_WORKING_DATE',
-          ),
-        ),
-        4 => 
-        array (
-          0 => 
-          array (
-            'name' => 'description',
-            'label' => 'LBL_DESCRIPTION',
-          ),
-          1 => 
-          array (
-            'name' => 'favorites',
-            'studio' => 'visible',
-            'label' => 'LBL_FAVORITES',
-          ),
-        ),
-        5 => 
-        array (
-          0 => 'do_not_call',
-        ),
-      ),
-      'lbl_detailview_panel3' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            'name' => 'document_type',
-            'label' => 'LBL_DOCUMENT_TYPE',
-          ),
-          1 => 
-          array (
-            'name' => 'document_number',
-            'label' => 'LBL_DOCUMENT_NUMBER',
-          ),
-        ),
-        1 => 
-        array (
-          0 => 
-          array (
-            'name' => 'nationality',
-            'label' => 'LBL_NATIONALITY',
-          ),
-          1 => 
-          array (
-            'name' => 'issuing_country',
-            'label' => 'LBL_ISSUING_COUNTRY',
-          ),
-        ),
-        2 => 
-        array (
-          0 => 
-          array (
-            'name' => 'card_holder',
-            'label' => 'LBL_CARD_HOLDER',
-          ),
-          1 => 
-          array (
-            'name' => 'membership_number',
-            'label' => 'LBL_MEMBERSHIP_NUMBER',
-          ),
-        ),
-        3 => 
-        array (
-          0 => 
-          array (
-            'name' => 'facebook_id',
-            'label' => 'LBL_FACEBOOK_ID',
-          ),
-          1 => 
-          array (
-            'name' => 'google_id',
-            'label' => 'LBL_GOOGLE_ID',
-          ),
-        ),
-        4 => 
-        array (
-          0 => 
-          array (
-            'name' => 'ibe_id',
-            'label' => 'LBL_IBE_ID',
-          ),
-          1 => '',
-        ),
-      ),
-      'lbl_editview_panel1' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            'name' => 'assigned_user_name',
-            'label' => 'LBL_ASSIGNED_TO',
-          ),
-          1 => 
-          array (
-            'name' => 'date_modified',
-            'label' => 'LBL_DATE_MODIFIED',
-            'customCode' => '{$fields.date_modified.value} {$APP.LBL_BY} {$fields.modified_by_name.value}',
-          ),
-        ),
-        1 => 
-        array (
-          0 => 'team_name',
-          1 => 
-          array (
-            'name' => 'date_entered',
-            'customCode' => '{$fields.date_entered.value} {$APP.LBL_BY} {$fields.created_by_name.value}',
-          ),
-        ),
-      ),
-    ),
-  ),
 );

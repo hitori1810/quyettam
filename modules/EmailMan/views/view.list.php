@@ -73,6 +73,10 @@ class EmailManViewList extends ViewList
                                 accessKey=\"".$app_strings['LBL_SAVE_BUTTON_KEY']."\" class=\"button\" 
                                 onclick=\"this.form.return_module.value='EmailMan'; this.form.return_action.value='index'; this.form.action.value='EmailManDelivery'\" 
                                 type=\"submit\" name=\"Send\" value=\"".$app_strings['LBL_CAMPAIGNS_SEND_QUEUED']."\">
+ <input	title=\"".$app_strings['LBL_CAMPAIGNS_SEND_QUEUED']."\" 
+            accessKey=\"".$app_strings['LBL_SAVE_BUTTON_KEY']."\" class=\"button\" 
+            onclick=\"this.form.return_module.value='EmailMan'; this.form.return_action.value='index'; this.form.action.value='SMSManDelivery'\" 
+            type=\"submit\" name=\"Send\" value=\"".$app_strings['LBL_CAMPAIGNS_SEND_SMS_QUEUED']."\">
             </td></tr></table></form>";
  	}
 }

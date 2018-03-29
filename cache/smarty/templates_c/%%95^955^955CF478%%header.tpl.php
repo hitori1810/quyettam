@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.11, created on 2018-03-27 23:02:59
+<?php /* Smarty version 2.6.11, created on 2018-03-29 10:05:42
          compiled from include/EditView/header.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'sugar_button', 'include/EditView/header.tpl', 60, false),array('function', 'sugar_action_menu', 'include/EditView/header.tpl', 70, false),)), $this); ?>
@@ -53,23 +53,34 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'sugar_butto
 {/if}
 <input type="hidden" name="offset" value="{$offset}">
 {assign var='place' value="_HEADER"} <!-- to be used for id for buttons with custom code in def files-->
-<?php if (isset ( $this->_tpl_vars['form']['hidden'] )):  $_from = $this->_tpl_vars['form']['hidden']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
+<?php if (isset ( $this->_tpl_vars['form']['hidden'] )): ?>
+<?php $_from = $this->_tpl_vars['form']['hidden']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['field']):
- echo $this->_tpl_vars['field']; ?>
+?>
+<?php echo $this->_tpl_vars['field']; ?>
    
-<?php endforeach; endif; unset($_from);  endif;  if (empty ( $this->_tpl_vars['form']['button_location'] ) || $this->_tpl_vars['form']['button_location'] == 'top'):  if (! empty ( $this->_tpl_vars['form'] ) && ! empty ( $this->_tpl_vars['form']['buttons'] )): ?>
+<?php endforeach; endif; unset($_from); ?>
+<?php endif; ?>
+<?php if (empty ( $this->_tpl_vars['form']['button_location'] ) || $this->_tpl_vars['form']['button_location'] == 'top'): ?>
+<?php if (! empty ( $this->_tpl_vars['form'] ) && ! empty ( $this->_tpl_vars['form']['buttons'] )): ?>
    <?php $_from = $this->_tpl_vars['form']['buttons']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['val'] => $this->_tpl_vars['button']):
 ?>
       <?php echo smarty_function_sugar_button(array('module' => ($this->_tpl_vars['module']),'id' => ($this->_tpl_vars['button']),'form_id' => ($this->_tpl_vars['form_id']),'view' => ($this->_tpl_vars['view']),'appendTo' => 'header_buttons','location' => 'HEADER'), $this);?>
 
-   <?php endforeach; endif; unset($_from);  else:  echo smarty_function_sugar_button(array('module' => ($this->_tpl_vars['module']),'id' => 'SAVE','view' => ($this->_tpl_vars['view']),'form_id' => ($this->_tpl_vars['form_id']),'location' => 'HEADER','appendTo' => 'header_buttons'), $this);?>
+   <?php endforeach; endif; unset($_from); ?>
+<?php else: ?>
+<?php echo smarty_function_sugar_button(array('module' => ($this->_tpl_vars['module']),'id' => 'SAVE','view' => ($this->_tpl_vars['view']),'form_id' => ($this->_tpl_vars['form_id']),'location' => 'HEADER','appendTo' => 'header_buttons'), $this);?>
 
 <?php echo smarty_function_sugar_button(array('module' => ($this->_tpl_vars['module']),'id' => 'CANCEL','view' => ($this->_tpl_vars['view']),'form_id' => ($this->_tpl_vars['form_id']),'location' => 'HEADER','appendTo' => 'header_buttons'), $this);?>
 
-<?php endif;  if (empty ( $this->_tpl_vars['form']['hideAudit'] ) || ! $this->_tpl_vars['form']['hideAudit']):  echo smarty_function_sugar_button(array('module' => ($this->_tpl_vars['module']),'id' => 'Audit','view' => ($this->_tpl_vars['view']),'form_id' => ($this->_tpl_vars['form_id']),'appendTo' => 'header_buttons'), $this);?>
+<?php endif; ?>
+<?php if (empty ( $this->_tpl_vars['form']['hideAudit'] ) || ! $this->_tpl_vars['form']['hideAudit']): ?>
+<?php echo smarty_function_sugar_button(array('module' => ($this->_tpl_vars['module']),'id' => 'Audit','view' => ($this->_tpl_vars['view']),'form_id' => ($this->_tpl_vars['form_id']),'appendTo' => 'header_buttons'), $this);?>
 
-<?php endif;  endif;  echo smarty_function_sugar_action_menu(array('buttons' => $this->_tpl_vars['header_buttons'],'class' => 'fancymenu','flat' => true), $this);?>
+<?php endif; ?>
+<?php endif; ?>
+<?php echo smarty_function_sugar_action_menu(array('buttons' => $this->_tpl_vars['header_buttons'],'class' => 'fancymenu','flat' => true), $this);?>
 
 </td>
 <td align='right'><?php echo $this->_tpl_vars['ADMIN_EDIT']; ?>
@@ -77,7 +88,8 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'sugar_butto
 <?php if ($this->_tpl_vars['panelCount'] == 0): ?>
     	<?php if ($this->_tpl_vars['SHOW_VCR_CONTROL']): ?>
 		{$PAGINATION}
-	<?php endif;  endif; ?>
+	<?php endif; ?>
+<?php endif; ?>
 </td>
 </tr>
-</table>
+</table>

@@ -10,7 +10,7 @@ if(!defined('sugarEntry'))define('sugarEntry', true);
  * you are agreeing unconditionally that Company will be bound by the MSA and
  * certifying that you have authority to bind Company accordingly.
  *
- * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ * Copyright (C) 2004-2014 SugarCRM Inc.  All rights reserved.
  ********************************************************************************/
 
 
@@ -125,13 +125,9 @@ class SugarWebServiceImplv3_1 extends SugarWebServiceImplv3 {
             return;
         } // if
 
-        $class_name = $beanList[$module_name];
-        require_once($beanFiles[$class_name]);
-
-        $temp = new $class_name();
         foreach($ids as $id)
         {
-            $seed = @clone($temp);
+            $seed = BeanFactory::getBean($module_name);
             if($using_cp)
                 $seed = $seed->retrieveTarget($id);
             else
@@ -180,7 +176,7 @@ class SugarWebServiceImplv3_1 extends SugarWebServiceImplv3 {
      * @exception 'SoapFault' -- The SOAP error, if any
      */
     function set_entry($session,$module_name, $name_value_list, $track_view = FALSE){
-        global  $beanList, $beanFiles, $current_user;
+        global $current_user;
 
         $GLOBALS['log']->info('Begin: SugarWebServiceImpl->set_entry');
         if (self::$helperObject->isLogLevelDebug()) {
@@ -191,9 +187,7 @@ class SugarWebServiceImplv3_1 extends SugarWebServiceImplv3 {
             $GLOBALS['log']->info('End: SugarWebServiceImpl->set_entry');
             return;
         } // if
-        $class_name = $beanList[$module_name];
-        require_once($beanFiles[$class_name]);
-        $seed = new $class_name();
+        $seed = BeanFactory::getBean($module_name);
         foreach($name_value_list as $name=>$value){
             if(is_array($value) &&  $value['name'] == 'id'){
                 $seed->retrieve($value['value']);
@@ -259,15 +253,12 @@ class SugarWebServiceImplv3_1 extends SugarWebServiceImplv3 {
      */
     public function login($user_auth, $application, $name_value_list = array()){
         $GLOBALS['log']->info('Begin: SugarWebServiceImpl->login');
-        global $sugar_config, $system_config;
+        global $sugar_config;
         $error = new SoapError();
-        $user = new User();
+        $user = BeanFactory::getBean('Users');
         $success = false;
-        //rrs
-        $system_config = new Administration();
-        $system_config->retrieveSettings('system');
-        $authController = new AuthenticationController();
-        //rrs
+        $authController = AuthenticationController::getInstance();
+
         if(!empty($user_auth['encryption']) && $user_auth['encryption'] === 'PLAIN' && $authController->authController->userAuthenticateClass != "LDAPAuthenticateUser")
         {
             $user_auth['password'] = md5($user_auth['password']);
@@ -369,8 +360,7 @@ class SugarWebServiceImplv3_1 extends SugarWebServiceImplv3 {
                 $nameValueArray['vardefs_md5'] = self::get_module_fields_md5(session_id(), $availModuleNames);
             }
 
-            $currencyObject = new Currency();
-            $currencyObject->retrieve($cur_id);
+            $currencyObject = BeanFactory::getBean('Currencies', $cur_id);
             $nameValueArray['user_currency_name'] = self::$helperObject->get_name_value('user_currency_name', $currencyObject->name);
             $_SESSION['user_language'] = $current_language;
             return array('id'=>session_id(), 'module_name'=>'Users', 'name_value_list'=>$nameValueArray);
@@ -497,8 +487,7 @@ class SugarWebServiceImplv3_1 extends SugarWebServiceImplv3 {
         }
 
         require_once('include/Sugarpdf/SugarpdfFactory.php');
-        $bean = new Quote();
-        $bean->retrieve($quote_id);
+        $bean = BeanFactory::getBean('Quotes', $quote_id);
         $sugarpdfBean = SugarpdfFactory::loadSugarpdf($pdf_format, 'Quotes', $bean, array() );
         $sugarpdfBean->process();
 
@@ -536,8 +525,7 @@ class SugarWebServiceImplv3_1 extends SugarWebServiceImplv3 {
 
     	require_once('modules/Reports/templates/templates_pdf.php');
 
-    	$saved_report = new SavedReport();
-    	$saved_report->retrieve($report_id);
+    	$saved_report = BeanFactory::getBean('Reports', $report_id);
 
     	$contents = '';
     	if($saved_report->id != null)
@@ -572,7 +560,6 @@ class SugarWebServiceImplv3_1 extends SugarWebServiceImplv3 {
     function get_module_layout($session, $a_module_names, $a_type, $a_view,$acl_check = TRUE, $md5 = FALSE){
     	$GLOBALS['log']->fatal('Begin: SugarWebServiceImpl->get_module_layout');
 
-    	global  $beanList, $beanFiles;
     	$error = new SoapError();
         $results = array();
         foreach ($a_module_names as $module_name)
@@ -583,9 +570,7 @@ class SugarWebServiceImplv3_1 extends SugarWebServiceImplv3 {
                 continue;
             }
 
-            $class_name = $beanList[$module_name];
-            require_once($beanFiles[$class_name]);
-            $seed = new $class_name();
+            $seed = BeanFactory::getBean($module_name);
 
             foreach ($a_view as $view)
             {
@@ -630,7 +615,6 @@ class SugarWebServiceImplv3_1 extends SugarWebServiceImplv3 {
     function get_entry_list($session, $module_name, $query, $order_by,$offset, $select_fields, $link_name_to_fields_array, $max_results, $deleted, $favorites = false ){
 
         $GLOBALS['log']->info('Begin: SugarWebServiceImpl->get_entry_list');
-        global  $beanList, $beanFiles;
         $error = new SoapError();
         $using_cp = false;
         if($module_name == 'CampaignProspects'){
@@ -653,9 +637,7 @@ class SugarWebServiceImplv3_1 extends SugarWebServiceImplv3 {
             $sugar_config['list_max_entries_per_page'] = $max_results;
         } // if
 
-        $class_name = $beanList[$module_name];
-        require_once($beanFiles[$class_name]);
-        $seed = new $class_name();
+        $seed = BeanFactory::getBean($module_name);
 
         if (!self::$helperObject->checkACLAccess($seed, 'Export', $error, 'no_access')) {
             $GLOBALS['log']->info('End: SugarWebServiceImpl->get_entry_list');
@@ -800,8 +782,7 @@ class SugarWebServiceImplv3_1 extends SugarWebServiceImplv3 {
     				$unifiedSearchFields[$name] [ $field ]['value'] = $search_string;
     			}
 
-    			require_once $beanFiles[$beanName] ;
-    			$seed = new $beanName();
+    			$seed = BeanFactory::getBean($name);
     			require_once 'include/SearchForm/SearchForm2.php' ;
     			if ($beanName == "User"
     			    || $beanName == "ProjectTask"
@@ -814,7 +795,6 @@ class SugarWebServiceImplv3_1 extends SugarWebServiceImplv3 {
     				} // if
     			}
 
-    			$selectOnlyQueryFields = array();
     			if ($beanName != "User"
     			    && $beanName != "ProjectTask"
     			    ) {
@@ -851,6 +831,7 @@ class SugarWebServiceImplv3_1 extends SugarWebServiceImplv3 {
     				}
 
     				//Pull in any db fields used for the unified search query so the correct joins will be added
+    				$selectOnlyQueryFields = array();
     				foreach ($unifiedSearchFields[$name] as $field => $def){
     				    if( isset($def['db_field']) && !in_array($field,$filterFields) ){
     				        $filterFields[] = $field;
@@ -880,7 +861,7 @@ class SugarWebServiceImplv3_1 extends SugarWebServiceImplv3 {
     				if ($beanName == "User") {
     					$filterFields = array('id', 'user_name', 'first_name', 'last_name', 'email_address');
     					$main_query = "select users.id, ea.email_address, users.user_name, first_name, last_name from users ";
-    					$main_query = $main_query . " LEFT JOIN email_addr_bean_rel eabl ON (users.id = eabl.bean_id and eabl.bean_module = '{$seed->module_dir}')
+    					$main_query = $main_query . " LEFT JOIN email_addr_bean_rel eabl ON eabl.bean_module = '{$seed->module_dir}'
     LEFT JOIN email_addresses ea ON (ea.id = eabl.email_address_id) ";
     					$main_query = $main_query . "where ((users.first_name like '{$search_string}') or (users.last_name like '{$search_string}') or (users.user_name like '{$search_string}') or (ea.email_address like '{$search_string}')) and users.deleted = 0 and users.is_group = 0 and users.employee_status = 'Active'";
     				} // if

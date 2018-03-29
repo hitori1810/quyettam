@@ -25,8 +25,8 @@ class UsersController extends SugarController
 {
 	protected function action_login()
 	{
-		if (isset($_REQUEST['mobile']) && $_REQUEST['mobile'] == 1) {
-			$_SESSION['isMobile'] = true;
+		if (isset($_REQUEST['mobile']) && $_REQUEST['mobile'] == 1 && $GLOBALS['sugar_config']['enable_mobile_redirect']) { //Check mobile redirect  - Lap Nguyen
+			$_SESSION['isMobile'] = true;  
 			$this->view = 'wirelesslogin';
 		} 
 		else{
@@ -36,7 +36,7 @@ class UsersController extends SugarController
 	
 	protected function action_default() 
 	{
-		if (isset($_REQUEST['mobile']) && $_REQUEST['mobile'] == 1){
+		if (isset($_REQUEST['mobile']) && $_REQUEST['mobile'] == 1 && $GLOBALS['sugar_config']['enable_mobile_redirect']){ //Check mobile redirect  - Lap Nguyen
 			$_SESSION['isMobile'] = true;
 			$this->view = 'wirelesslogin';
 		} 

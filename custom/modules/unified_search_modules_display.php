@@ -1,19 +1,35 @@
 <?php
-// created: 2018-03-27 22:42:57
+// created: 2017-02-16 08:56:03
 $unified_search_modules_display = array (
-  'Accounts' => 
-  array (
-    'visible' => true,
-  ),
   'Contacts' => 
   array (
     'visible' => true,
   ),
-  'Calls' => 
+  'Leads' => 
+  array (
+    'visible' => true,
+  ),
+  'Prospects' => 
+  array (
+    'visible' => true,
+  ),
+  'J_Class' => 
+  array (
+    'visible' => true,
+  ),
+  'C_Teachers' => 
+  array (
+    'visible' => true,
+  ),
+  'Accounts' => 
+  array (
+    'visible' => true,
+  ),
+  'C_Classes' => 
   array (
     'visible' => false,
   ),
-  'Cases' => 
+  'Calls' => 
   array (
     'visible' => false,
   ),
@@ -21,11 +37,7 @@ $unified_search_modules_display = array (
   array (
     'visible' => false,
   ),
-  'Leads' => 
-  array (
-    'visible' => false,
-  ),
-  'C_Hotel' => 
+  'J_Discount' => 
   array (
     'visible' => false,
   ),
@@ -41,31 +53,15 @@ $unified_search_modules_display = array (
   array (
     'visible' => false,
   ),
-  'C_BookingHotel' => 
-  array (
-    'visible' => false,
-  ),
-  'C_Tour' => 
-  array (
-    'visible' => false,
-  ),
-  'C_Ticket' => 
-  array (
-    'visible' => false,
-  ),
-  'C_BookingTour' => 
-  array (
-    'visible' => false,
-  ),
-  'C_BookingTicket' => 
-  array (
-    'visible' => false,
-  ),
   'Bugs' => 
   array (
     'visible' => false,
   ),
   'Campaigns' => 
+  array (
+    'visible' => false,
+  ),
+  'Cases' => 
   array (
     'visible' => false,
   ),
@@ -86,10 +82,6 @@ $unified_search_modules_display = array (
     'visible' => false,
   ),
   'ProspectLists' => 
-  array (
-    'visible' => false,
-  ),
-  'Prospects' => 
   array (
     'visible' => false,
   ),

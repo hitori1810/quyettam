@@ -88,7 +88,7 @@ ACLAllowedModules = {$ACLAllowedModules};
 <table width="100%" cellspacing=0 cellpadding=0>
 <tr>
 	<td width="100%" scope="row">
-		<table width="100%" id="reportDetailsTable" name="reportDetailsTable" style="{$reportDetailsTableStyle}">
+		<table width="100%" id="reportDetailsTable" name="reportDetailsTable" style="display:none;">
 			<tr>
 				<td wrap="true">
 					<b>{$mod_strings.LBL_REPORT_ATT_NAME}:</b> {$reportName}
@@ -203,7 +203,7 @@ var lbl_nothing_was_selected = "{$mod_strings.LBL_NOTHING_WAS_SELECTED}"
 var lbl_none = "{$mod_strings.LBL_NONE}";
 var lbl_outer_join_checkbox = "{$mod_strings.LBL_OUTER_JOIN_CHECKBOX}";
 var lbl_add_related = "{$mod_strings.LBL_ADD_RELATE}";
-var lbl_del_this = "{$mod_strings.LBL_DEL_THIS}";                              
+var lbl_del_this = "{$mod_strings.LBL_DEL_THIS}";
 var lbl_alert_cant_add = "{$mod_strings.LBL_ALERT_CANT_ADD}";
 var lbl_related_table_blank = "{$mod_strings.LBL_RELATED_TABLE_BLANK}";
 var lbl_optional_help = "{$mod_strings.LBL_OPTIONAL_HELP}";
@@ -211,14 +211,15 @@ var lbl_optional_help = "{$mod_strings.LBL_OPTIONAL_HELP}";
 <script type="text/javascript" src="{sugar_getjspath file='include/javascript/reportCriteria.js'}"></script>
 <script type="text/javascript" src="{sugar_getjspath file='include/javascript/reportsInlineEdit.js'}"></script>
 
-{sugar_getscript file="modules/Reports/javascript/battatech_excelexport/jquery.battatech.excelexport.js"}
-{sugar_getscript file="modules/Reports/javascript/battatech_excelexport/orginal/jquery.base64.js"}
-<script type="text/javascript" src="{sugar_getjspath file='modules/Reports/javascript/exportExcel.js'}"></script>
+{sugar_getscript file="modules/Reports/javascript/Blob.js"}
+{sugar_getscript file="modules/Reports/javascript/FileSaver.min.js"}
+{sugar_getscript file="modules/Reports/javascript/battatech_excelexport/battatech.excelexport.js"}
+{sugar_getscript file="modules/Reports/javascript/exportExcel.js"}
 <script type="text/javascript" src="{sugar_getjspath file='modules/Reports/javascript/custom.js'}"></script>
 
 <script type='text/javascript' src='custom/include/javascripts/Select2/select2.min.js'></script>
 <link rel='stylesheet' type='text/css' href='custom/include/javascripts/Select2/select2.css'>
-                                                                                                                
+
 <script language="javascript">
 visible_modules = {$allowed_modules_js};
 report_def = {$reporter_report_def_str1};

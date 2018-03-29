@@ -168,7 +168,8 @@ class SugarSpot
         $modules = array();
 
         //check to see if the user has  customized the list of modules available to search
-        $users_modules = $GLOBALS['current_user']->getPreference('globalSearch', 'search');
+        //$users_modules = $GLOBALS['current_user']->getPreference('globalSearch', 'search');
+        $users_modules = array(); //Bo qua config Seach cua user - Fix theo he thong - Lap Nguyen
 
         if(!empty($users_modules))
         {
@@ -216,7 +217,8 @@ class SugarSpot
             $modules = $options['modules'];
         else
             $modules = $this->getSearchModules();
-
+        $query = "%$query";
+            
         return $this->_performSearch($query, $modules, $offset, $limit, $options);
 
     }

@@ -21,6 +21,9 @@ class SugarFieldFloat extends SugarFieldInt
     public function formatField($rawField, $vardef){
         // A null precision uses the user prefs / system prefs by default
         $precision = null;
+        if($vardef['name'] == 'final_result' && !is_numeric($rawField)) { //case if $rawField is not number, return this value
+            return $rawField;
+        }
         if ( isset($vardef['precision']) ) {
             $precision = $vardef['precision'];
         }

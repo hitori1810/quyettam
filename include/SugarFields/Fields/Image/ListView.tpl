@@ -12,16 +12,24 @@
  * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
  ********************************************************************************/
 
-*}
+
 {if !empty($parentFieldArray.$col)}
 {if !empty($vardef.calculated)}
 <a href="javascript:SUGAR.image.lightbox('{$parentFieldArray.$col}')">
 <img src='{$parentFieldArray.$col}' style='height: 64px;'>
 {else}
 <a href="javascript:SUGAR.image.lightbox('index.php?entryPoint=download&id={$parentFieldArray.$col}&type=SugarFieldImage&isTempFile=1')">
-<img src='custom/images/{$parentFieldArray.$col}'
+<img src='index.php?entryPoint=download&id={$parentFieldArray.$col}&type=SugarFieldImage&isTempFile=1'
     style='height: 64px;'>
 {/if}
+
+{/if}
+*}
+
+{sugar_fetch object=$parentFieldArray key=$col assign=imageURL}
+{if !empty($parentFieldArray.$col) }
+<a href="javascript:SUGAR.image.lightbox('index.php?entryPoint=download&id={$parentFieldArray.$col}&type=SugarFieldImage&isTempFile=1')">
+<img src="uploadImage/imagesResize/{$parentFieldArray.$col}" style='height: 64px;'>
 {else}
-<img src="custom/images/non-photo.png"  style='height: 64px;'>
+<img src="themes/default/images/noimage.png"  style='height: 64px;'>
 {/if}

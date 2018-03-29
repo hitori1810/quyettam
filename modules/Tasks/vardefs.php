@@ -140,7 +140,7 @@ $dictionary['Task'] = array('table' => 'tasks',
   array (
     'name' => 'contact_name',
     'rname'=>'name',
-    'db_concat_fields'=> array(0=>'first_name', 1=>'last_name'),
+    'db_concat_fields'=> array(0=>'last_name', 1=>'first_name'),
     'source' => 'non-db',
     'len' => '510',
     'group'=>'contact_name',
@@ -255,7 +255,7 @@ $dictionary['Task'] = array('table' => 'tasks',
     'source'=>'non-db',
 		'vname'=>'LBL_NOTES',
   ),
-  
+
   'quotes' =>
   array (
     'name' => 'quotes',

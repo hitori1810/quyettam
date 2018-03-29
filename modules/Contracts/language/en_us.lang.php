@@ -36,8 +36,8 @@ $mod_strings = array (
     'LBL_OPPORTUNITY_NAME' => 'Opportunity Name',
     'LBL_START_DATE' => 'Start Date:',
     'LBL_END_DATE' => 'End Date:',
-    'LBL_TOTAL_CONTRACT_VALUE' => 'Contract Value:',
-    'LBL_TOTAL_CONTRACT_VALUE_USDOLLAR' => 'Contract Value (USD):',
+    'LBL_TOTAL_CONTRACT_VALUE' => 'Total Contract Value (VND ₫):',
+    'LBL_TOTAL_CONTRACT_VALUE_USDOLLAR' => 'Total Contract Value (USD):',
     'LBL_STATUS' => 'Status:',
     'LBL_CUSTOMER_SIGNED_DATE' => 'Customer Signed Date:',
     'LBL_COMPANY_SIGNED_DATE' => 'Company Signed Date:',
@@ -45,14 +45,17 @@ $mod_strings = array (
     'LBL_EXPIRATION_NOTICE' => 'Expiration Notice:',
     'LBL_TIME_TO_EXPIRY' => 'Time To Expiry:',
     'LBL_DESCRIPTION' => 'Description:',
-    'LBL_TEAM' => 'Team:',
+    'LBL_TEAM' => 'Center:',
     'LBL_ASSIGNED_TO' => 'Assigned to:',
     'LBL_CURRENCY_ID' => 'Currency ID:',
     'LBL_CURRENCY' => 'Currency:',
-    'LBL_ASSIGNED_TO_NAME'=>'Assigned to:',                   
+    'LBL_ASSIGNED_TO_NAME'=>'Assigned to:',
+    'LBL_PAYMENT'=>'Payment',
+    'LBL_STUDY_DURATION'=>'Duration Per Student (Days)',
+    'LBL_NUMBER_OF_STUDENT'=>'Number Of Student',
 
     // listview labels
-    'LBL_LIST_FORM_TITLE' => 'Contract List',	
+    'LBL_LIST_FORM_TITLE' => 'Contract List',
     'LBL_LIST_CONTRACT_NAME' => 'Contract Name',
     'LBL_LIST_ACCOUNT_NAME' => 'Account Name',
     'LBL_LIST_START_DATE' => 'Start',
@@ -86,12 +89,18 @@ $mod_strings = array (
 
     'LBL_TYPE'=>'Type',
     'LBL_CONTRACT_TYPE'=>'Type:',
+    'LBL_CONTACT_NAME'=>'Contact Name',
+    'LBL_REMAIN_AMOUNT'=>'Remain Amount',
+    'LBL_TOTAL_STUDENT'=>'Total Students',
 
     'LBL_CREATED_USER' => 'Created User',
     'LBL_MODIFIED_USER' => 'Modified User',
     'LBL_DOCUMENTS' => 'Documents',
     'LBL_CONTRACT_DOCUMENTS_SUBPANEL_TITLE' => 'Documents',
     'LBL_CONTRACT_INFORMATION' => 'Overview',
+    'LBL_HOURS_PER_STUDENT' => 'Hours Per Student',
+    'LBL_AMOUNT_PER_STUDENT' => 'Amount Per Student (VND ₫)',
+    'LBL_PAYMENT_DETAIL' => 'Payment Detail',
 );
 
 ?>

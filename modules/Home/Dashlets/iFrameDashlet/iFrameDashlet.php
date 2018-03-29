@@ -104,7 +104,6 @@ class iFrameDashlet extends Dashlet {
 
     function display(){
         $sugar_edition = 'PRO';
-        $sugar_edition = 'ENT';
 
 
         $out_url = str_replace(

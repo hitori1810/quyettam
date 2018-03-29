@@ -5,18 +5,35 @@ array (
   array (
     'basic_search' => 
     array (
-      0 => 'name',
-      1 => 
+      'name' => 
       array (
-        'name' => 'current_user_only',
-        'label' => 'LBL_CURRENT_USER_FILTER',
-        'type' => 'bool',
+        'name' => 'name',
+        'default' => true,
+        'width' => '10%',
       ),
-      2 => 
+      'contract_id' => 
       array (
-        'name' => 'favorites_only',
-        'label' => 'LBL_FAVORITES_FILTER',
-        'type' => 'bool',
+        'type' => 'varchar',
+        'label' => 'LBL_CONTRACT_ID',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'contract_id',
+      ),
+      'team_name' => 
+      array (
+        'type' => 'relate',
+        'link' => true,
+        'studio' => 
+        array (
+          'portallistview' => false,
+          'portaldetailview' => false,
+          'portaleditview' => false,
+        ),
+        'label' => 'LBL_TEAM',
+        'id' => 'TEAM_ID',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'team_name',
       ),
     ),
     'advanced_search' => 
@@ -27,41 +44,21 @@ array (
         'default' => true,
         'width' => '10%',
       ),
-      'reference_code' => 
+      'contract_id' => 
       array (
         'type' => 'varchar',
-        'label' => 'LBL_REFERENCE_CODE',
+        'label' => 'LBL_CONTRACT_ID',
         'width' => '10%',
         'default' => true,
-        'name' => 'reference_code',
+        'name' => 'contract_id',
       ),
-      'account_name' => 
+      'customer_signed_date' => 
       array (
-        'name' => 'account_name',
-        'default' => true,
-        'width' => '10%',
-      ),
-      'opportunity_name' => 
-      array (
-        'type' => 'relate',
-        'link' => true,
-        'label' => 'LBL_OPPORTUNITY_NAME',
-        'id' => 'OPPORTUNITY_ID',
+        'type' => 'date',
+        'label' => 'LBL_CUSTOMER_SIGNED_DATE',
         'width' => '10%',
         'default' => true,
-        'name' => 'opportunity_name',
-      ),
-      'start_date' => 
-      array (
-        'name' => 'start_date',
-        'default' => true,
-        'width' => '10%',
-      ),
-      'end_date' => 
-      array (
-        'name' => 'end_date',
-        'default' => true,
-        'width' => '10%',
+        'name' => 'customer_signed_date',
       ),
       'total_contract_value' => 
       array (
@@ -72,91 +69,27 @@ array (
         'default' => true,
         'name' => 'total_contract_value',
       ),
-      'date_entered' => 
+      'account_name' => 
       array (
-        'type' => 'datetime',
+        'name' => 'account_name',
+        'default' => true,
+        'width' => '10%',
+      ),
+      'team_name' => 
+      array (
+        'type' => 'relate',
+        'link' => true,
         'studio' => 
         array (
+          'portallistview' => false,
+          'portaldetailview' => false,
           'portaleditview' => false,
         ),
-        'label' => 'LBL_DATE_ENTERED',
+        'label' => 'LBL_TEAMS',
         'width' => '10%',
         'default' => true,
-        'name' => 'date_entered',
-      ),
-      'date_modified' => 
-      array (
-        'type' => 'datetime',
-        'studio' => 
-        array (
-          'portaleditview' => false,
-        ),
-        'label' => 'LBL_DATE_MODIFIED',
-        'width' => '10%',
-        'default' => true,
-        'name' => 'date_modified',
-      ),
-      'company_signed_date' => 
-      array (
-        'type' => 'date',
-        'label' => 'LBL_COMPANY_SIGNED_DATE',
-        'width' => '10%',
-        'default' => true,
-        'name' => 'company_signed_date',
-      ),
-      'customer_signed_date' => 
-      array (
-        'type' => 'date',
-        'label' => 'LBL_CUSTOMER_SIGNED_DATE',
-        'width' => '10%',
-        'default' => true,
-        'name' => 'customer_signed_date',
-      ),
-      'status' => 
-      array (
-        'name' => 'status',
-        'default' => true,
-        'width' => '10%',
-      ),
-      'type' => 
-      array (
-        'type' => 'enum',
-        'label' => 'LBL_TYPE',
-        'width' => '10%',
-        'default' => true,
-        'name' => 'type',
-      ),
-      'created_by' => 
-      array (
-        'type' => 'assigned_user_name',
-        'label' => 'LBL_CREATED',
-        'width' => '10%',
-        'default' => true,
-        'name' => 'created_by',
-      ),
-      'modified_user_id' => 
-      array (
-        'type' => 'assigned_user_name',
-        'label' => 'LBL_MODIFIED',
-        'width' => '10%',
-        'default' => true,
-        'name' => 'modified_user_id',
-      ),
-      'assigned_user_id' => 
-      array (
-        'name' => 'assigned_user_id',
-        'type' => 'enum',
-        'label' => 'LBL_ASSIGNED_TO',
-        'function' => 
-        array (
-          'name' => 'get_user_array',
-          'params' => 
-          array (
-            0 => false,
-          ),
-        ),
-        'default' => true,
-        'width' => '10%',
+        'id' => 'TEAM_ID',
+        'name' => 'team_name',
       ),
     ),
   ),

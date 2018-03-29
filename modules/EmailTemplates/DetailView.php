@@ -71,14 +71,24 @@ if(isset($_REQUEST['account_id']) && is_null($focus->parent_id)) {
 }
 
 $params = array();
+$params[] = "<a href='index.php?module={$focus->module_dir}&action=index'>{$GLOBALS['app_list_strings']['moduleList'][$focus->module_dir]}</a>";
 $params[] = $focus->name;
 
+# tracy: overwrite params
+if ($focus->sms_only) {
+	$params = array("<a href='index.php?module={$focus->module_dir}&action=index'>SMS Template</a>", $focus->name);
+}
 echo getClassicModuleTitle($focus->module_dir, $params, true);
 
 
 $GLOBALS['log']->info("EmailTemplate detail view");
 
 $xtpl=new XTemplate ('modules/EmailTemplates/DetailView.html');
+# tracy
+if(isset($focus->sms_only) && $focus->sms_only){
+    $xtpl->assign("SMS_ONLY_CHECKED","CHECKED");
+    $xtpl->assign("HIDE_THIS","style='display:none;'");
+}
 $xtpl->assign("MOD", $mod_strings);
 $xtpl->assign("APP", $app_strings);
 $buttons = array(

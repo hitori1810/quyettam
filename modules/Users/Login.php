@@ -1,17 +1,17 @@
 <?php
 if(!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
 /*********************************************************************************
- * By installing or using this file, you are confirming on behalf of the entity
- * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
- * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
- * http://www.sugarcrm.com/master-subscription-agreement
- *
- * If Company is not bound by the MSA, then by installing or using this file
- * you are agreeing unconditionally that Company will be bound by the MSA and
- * certifying that you have authority to bind Company accordingly.
- *
- * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
- ********************************************************************************/
+* By installing or using this file, you are confirming on behalf of the entity
+* subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
+* the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
+* http://www.sugarcrm.com/master-subscription-agreement
+*
+* If Company is not bound by the MSA, then by installing or using this file
+* you are agreeing unconditionally that Company will be bound by the MSA and
+* certifying that you have authority to bind Company accordingly.
+*
+* Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+********************************************************************************/
 
 /** @var AuthenticationController $authController */
 $authController->authController->pre_login();
@@ -20,7 +20,17 @@ global $current_language, $mod_strings, $app_strings;
 if(isset($_REQUEST['login_language'])){
     $lang = $_REQUEST['login_language'];
     $_REQUEST['ck_login_language_20'] = $lang;
-	$current_language = $lang;
+    $current_language = $lang;
+    $_SESSION['authenticated_user_language'] = $lang;
+    $mod_strings = return_module_language($lang, "Users");
+    $app_strings = return_application_language($lang);
+
+    //Add by MTN: Keep language string after input wrong username, password - 04/05/2015
+    setcookie('login_language', $lang);
+} else if(isset($_COOKIE['login_language'])){ //Add by MTN: Keep language string after input wrong username, password - 25/04/2015
+    $lang = $_COOKIE['login_language'];
+    $_REQUEST['ck_login_language_20'] = $lang;
+    $current_language = $lang;
     $_SESSION['authenticated_user_language'] = $lang;
     $mod_strings = return_module_language($lang, "Users");
     $app_strings = return_application_language($lang);
@@ -32,7 +42,7 @@ echo '<script type="text/javascript" src="'.getJSPath('modules/Users/login.js').
 if ( isset($_REQUEST['mobile']) && $_REQUEST['mobile'] == '0' ) {
     if (isset($_SESSION['isMobile'])) unset($_SESSION['isMobile']);
 }
-elseif (checkForMobile()){
+elseif (checkForMobile() && $GLOBALS['sugar_config']['enable_mobile_redirect']){
     // set the session variable for mobile device
     $_SESSION['isMobile'] = true;
     $url = $GLOBALS['app']->getLoginRedirect()."&mobile=1";
@@ -73,32 +83,32 @@ $query = "SELECT count(id) as total from users WHERE ".User::getLicensedUsersWhe
 // License Agreement.  Neither the Company nor the Users
 // may modify any portion of the Critical Control Software.
 if(!isset($_SESSION['LICENSE_EXPIRES_IN'])){
-	checkSystemLicenseStatus();
+    checkSystemLicenseStatus();
 }
 
 if(!ocLicense() && isset($_SESSION['LICENSE_EXPIRES_IN']) && $_SESSION['LICENSE_EXPIRES_IN'] != 'valid' && $_SESSION['LICENSE_EXPIRES_IN'] < -1 ) {
-	echo  " <p align='center' class='error' >". $GLOBALS['app_strings']['ERROR_FULLY_EXPIRED']. "</p>";
+    echo  " <p align='center' class='error' >". $GLOBALS['app_strings']['ERROR_FULLY_EXPIRED']. "</p>";
 } elseif(!ocLicense() && isset($_SESSION['VALIDATION_EXPIRES_IN']) && $_SESSION['VALIDATION_EXPIRES_IN'] != 'valid' && $_SESSION['VALIDATION_EXPIRES_IN'] < -1 ) {
-	echo "<p align='center' class='error' > ". $GLOBALS['app_strings']['ERROR_LICENSE_EXPIRED']. "</p>";
+    echo "<p align='center' class='error' > ". $GLOBALS['app_strings']['ERROR_LICENSE_EXPIRED']. "</p>";
 }
 //END REQUIRED CODE  DO NOT MODIFY
 
 // BEGIN CE-OD License User Limit Enforcement
 global $sugar_flavor;
 if((isset($sugar_flavor) && $sugar_flavor != null) &&
-	($sugar_flavor=='CE' || isset($admin->settings['license_enforce_user_limit']) && $admin->settings['license_enforce_user_limit'] == 1)){
+($sugar_flavor=='CE' || isset($admin->settings['license_enforce_user_limit']) && $admin->settings['license_enforce_user_limit'] == 1)){
 
-	global $db;
-	$result = $db->query($query, true, "Error filling in user array: ");
-	$row = $db->fetchByAssoc($result);
-   	$admin = new Administration();
+    global $db;
+    $result = $db->query($query, true, "Error filling in user array: ");
+    $row = $db->fetchByAssoc($result);
+    $admin = new Administration();
     $admin->retrieveSettings();
     $license_users = $admin->settings['license_users'];
     $license_seats_needed = $row['total'] - $license_users;
     if( $license_seats_needed > 0 ){
-		$_SESSION['EXCEEDS_MAX_USERS'] = 1;
-		echo "<p align='center' class='error' > ". $GLOBALS['app_strings']['WARN_LICENSE_SEATS_MAXED']. $GLOBALS['app_strings']['WARN_ONLY_ADMINS']."</p>";
-	}
+        $_SESSION['EXCEEDS_MAX_USERS'] = 1;
+        echo "<p align='center' class='error' > ". $GLOBALS['app_strings']['WARN_LICENSE_SEATS_MAXED']. $GLOBALS['app_strings']['WARN_ONLY_ADMINS']."</p>";
+    }
 }
 // END CE-OD License User Limit Enforcement
 
@@ -111,19 +121,19 @@ foreach($lvars as $k => $v) {
 
 // Retrieve username from the session if possible.
 if(isset($_SESSION["login_user_name"])) {
-	if (isset($_REQUEST['default_user_name']))
-		$login_user_name = $_REQUEST['default_user_name'];
-	else
-		$login_user_name = $_SESSION['login_user_name'];
+    if (isset($_REQUEST['default_user_name']))
+        $login_user_name = $_REQUEST['default_user_name'];
+    else
+        $login_user_name = $_SESSION['login_user_name'];
 } else {
-	if(isset($_REQUEST['default_user_name'])) {
-		$login_user_name = $_REQUEST['default_user_name'];
-	} elseif(isset($_REQUEST['ck_login_id_20'])) {
-		$login_user_name = get_user_name($_REQUEST['ck_login_id_20']);
-	} else {
-		$login_user_name = $sugar_config['default_user_name'];
-	}
-	$_SESSION['login_user_name'] = $login_user_name;
+    if(isset($_REQUEST['default_user_name'])) {
+        $login_user_name = $_REQUEST['default_user_name'];
+    } elseif(isset($_REQUEST['ck_login_id_20'])) {
+        $login_user_name = get_user_name($_REQUEST['ck_login_id_20']);
+    } else {
+        $login_user_name = $sugar_config['default_user_name'];
+    }
+    $_SESSION['login_user_name'] = $login_user_name;
 }
 $sugar_smarty->assign('LOGIN_USER_NAME', $login_user_name);
 
@@ -131,99 +141,130 @@ $mod_strings['VLD_ERROR'] = $GLOBALS['app_strings']["\x4c\x4f\x47\x49\x4e\x5f\x4
 
 // Retrieve password from the session if possible.
 if(isset($_SESSION["login_password"])) {
-	$login_password = $_SESSION['login_password'];
+    $login_password = $_SESSION['login_password'];
 } else {
-	$login_password = $sugar_config['default_password'];
-	$_SESSION['login_password'] = $login_password;
+    $login_password = $sugar_config['default_password'];
+    $_SESSION['login_password'] = $login_password;
 }
 $sugar_smarty->assign('LOGIN_PASSWORD', $login_password);
 
 if(isset($_SESSION["login_error"])) {
-	$sugar_smarty->assign('LOGIN_ERROR', $_SESSION['login_error']);
+    $sugar_smarty->assign('LOGIN_ERROR', $_SESSION['login_error']);
 }
 if(isset($_SESSION["waiting_error"])) {
     $sugar_smarty->assign('WAITING_ERROR', $_SESSION['waiting_error']);
 }
 
 if (isset($_REQUEST['ck_login_language_20'])) {
-	$display_language = $_REQUEST['ck_login_language_20'];
+    $display_language = $_REQUEST['ck_login_language_20'];
 } else {
-	$display_language = $sugar_config['default_language'];
+    $display_language = $sugar_config['default_language'];
 }
 
 if (empty($GLOBALS['sugar_config']['passwordsetting']['forgotpasswordON']))
-	$sugar_smarty->assign('DISPLAY_FORGOT_PASSWORD_FEATURE','none');
+    $sugar_smarty->assign('DISPLAY_FORGOT_PASSWORD_FEATURE','none');
 
 $the_languages = get_languages();
 if ( count($the_languages) > 1 )
     $sugar_smarty->assign('SELECT_LANGUAGE', get_select_options_with_id($the_languages, $display_language));
 $the_themes = SugarThemeRegistry::availableThemes();
 if ( !empty($logindisplay) )
-	$sugar_smarty->assign('LOGIN_DISPLAY', $logindisplay);;
+    $sugar_smarty->assign('LOGIN_DISPLAY', $logindisplay);;
 
 // RECAPTCHA
 
-	$admin = new Administration();
-	$admin->retrieveSettings('captcha');
-	$captcha_privatekey = "";
-	$captcha_publickey="";
-	$captcha_js = "";
-	$Captcha='';
+$admin = new Administration();
+$admin->retrieveSettings('captcha');
+$captcha_privatekey = "";
+$captcha_publickey="";
+$captcha_js = "";
+$Captcha='';
 
-	// if the admin set the captcha stuff, assign javascript and div
-	if(isset($admin->settings['captcha_on'])&& $admin->settings['captcha_on']=='1' && !empty($admin->settings['captcha_private_key']) && !empty($admin->settings['captcha_public_key'])){
+// if the admin set the captcha stuff, assign javascript and div
+if(isset($admin->settings['captcha_on'])&& $admin->settings['captcha_on']=='1' && !empty($admin->settings['captcha_private_key']) && !empty($admin->settings['captcha_public_key'])){
 
-			$captcha_privatekey = $admin->settings['captcha_private_key'];
-			$captcha_publickey = $admin->settings['captcha_public_key'];
-			$captcha_js .="<script type='text/javascript' src='" . getJSPath('cache/include/javascript/sugar_grp1_yui.js') . "'></script><script type='text/javascript' src='" . getJSPath('cache/include/javascript/sugar_grp_yui2.js') . "'></script>
-			<script type='text/javascript' src='http://api.recaptcha.net/js/recaptcha_ajax.js'></script>
-			<script>
-			function initCaptcha(){
-			Recaptcha.create('$captcha_publickey' ,'captchaImage',{theme:'custom'});
-			}
-			window.onload=initCaptcha;
+    $captcha_privatekey = $admin->settings['captcha_private_key'];
+    $captcha_publickey = $admin->settings['captcha_public_key'];
+    $captcha_js .="<script type='text/javascript' src='" . getJSPath('cache/include/javascript/sugar_grp1_yui.js') . "'></script><script type='text/javascript' src='" . getJSPath('cache/include/javascript/sugar_grp_yui2.js') . "'></script>
+    <script type='text/javascript' src='http://api.recaptcha.net/js/recaptcha_ajax.js'></script>
+    <script>
+    function initCaptcha(){
+    Recaptcha.create('$captcha_publickey' ,'captchaImage',{theme:'custom'});
+    }
+    window.onload=initCaptcha;
 
-			var handleFailure=handleSuccess;
-			var handleSuccess = function(o){
-				if(o.responseText!==undefined && o.responseText =='Success'){
-					generatepwd();
-					Recaptcha.reload();
-				}
-				else{
-					if(o.responseText!='')
-						document.getElementById('generate_success').innerHTML =o.responseText;
-					Recaptcha.reload();
-				}
-			}
-			var callback2 ={ success:handleSuccess, failure: handleFailure };
+    var handleFailure=handleSuccess;
+    var handleSuccess = function(o){
+    if(o.responseText!==undefined && o.responseText =='Success'){
+    generatepwd();
+    Recaptcha.reload();
+    }
+    else{
+    if(o.responseText!='')
+    document.getElementById('generate_success').innerHTML =o.responseText;
+    Recaptcha.reload();
+    }
+    }
+    var callback2 ={ success:handleSuccess, failure: handleFailure };
 
-			function validateAndSubmit(){
-					var form = document.getElementById('form');
-					var url = '&to_pdf=1&module=Home&action=index&entryPoint=Changenewpassword&recaptcha_challenge_field='+Recaptcha.get_challenge()+'&recaptcha_response_field='+ Recaptcha.get_response();
-					YAHOO.util.Connect.asyncRequest('POST','index.php',callback2,url);
-			}</script>";
-		$Captcha.="<tr>
-			<td scope='row' width='20%'>".$mod_strings['LBL_RECAPTCHA_INSTRUCTION'].":</td>
-		    <td width='70%'><input type='text' size='26' id='recaptcha_response_field' value=''></td>
+    function validateAndSubmit(){
+    var form = document.getElementById('form');
+    var url = '&to_pdf=1&module=Home&action=index&entryPoint=Changenewpassword&recaptcha_challenge_field='+Recaptcha.get_challenge()+'&recaptcha_response_field='+ Recaptcha.get_response();
+    YAHOO.util.Connect.asyncRequest('POST','index.php',callback2,url);
+    }</script>";
+    $Captcha.="<tr>
+    <td>
+    <div style='position: relative;'>
+    <input type='text' size='26' class='login-field' id='recaptcha_response_field' value='' placeholder = '".$mod_strings['LBL_RECAPTCHA_INSTRUCTION']."'>
+    <label class='login-field-icon fa-edit'></label>
+    </div>
+    </td>
 
-		</tr>
-		<tr>
+    </tr>
+    <tr>
 
-		 	<td colspan='2'><div style='margin-left:2px'class='x-sqs-list' id='recaptcha_image'></div></td>
-		</tr>
-		<tr>
-			<td colspan='2' align='right'><a href='javascript:Recaptcha.reload()'>".$mod_strings['LBL_RECAPTCHA_NEW_CAPTCHA']."</a>&nbsp;&nbsp;
-			 		<a class='recaptcha_only_if_image' href='javascript:Recaptcha.switch_type(\"audio\")'>".$mod_strings['LBL_RECAPTCHA_SOUND']."</a>
-			 		<a class='recaptcha_only_if_audio' href='javascript:Recaptcha.switch_type(\"image\")'> ".$mod_strings['LBL_RECAPTCHA_IMAGE']."</a>
-		 	</td>
-		</tr>";
-		$sugar_smarty->assign('CAPTCHA', $Captcha);
-		echo $captcha_js;
+    <td colspan='2'><div style='margin-left:2px'class='x-sqs-list' id='recaptcha_image'></div></td>
+    </tr>
+    <tr>
+    <td colspan='2' align='right'>
+    <a style = 'font-size: 13px;' href='javascript:Recaptcha.reload()'>".$mod_strings['LBL_RECAPTCHA_NEW_CAPTCHA']."</a><br/>
+    <a style = 'font-size: 13px;' class='recaptcha_only_if_image' href='javascript:Recaptcha.switch_type(\"audio\")'>".$mod_strings['LBL_RECAPTCHA_SOUND']."</a><br/>
+    <a style = 'font-size: 13px;' class='recaptcha_only_if_audio' href='javascript:Recaptcha.switch_type(\"image\")'> ".$mod_strings['LBL_RECAPTCHA_IMAGE']."</a><br/>
+    </td>
+    </tr>";
+    $sugar_smarty->assign('CAPTCHA', $Captcha);
+    echo $captcha_js;
 
-	}else{
-		echo "<script>
-		function validateAndSubmit(){generatepwd();}
-		</script>";
-	}
+}else{
+    echo "<script>
+    function validateAndSubmit(){generatepwd();}
+    </script>";
+}
+
+//Modified By Long 06/02/2015 Check if Have Cookie remember then Approve Login
+$sugar_smarty->assign('WAIT_LOGIN_REMEMBER', 'display:none ');
+$sugar_smarty->assign('MESSAGE_REMEMBER','<td><p id="message_remember" style="display: none"><i>'.$GLOBALS['mod_strings']['LBL_WARNING_REMEMBER_ME'].'</i></p></td>');
+$script_reme = '<script>
+var user_name_remember = "";
+var user_lang_remember = "";
+</script>';
+if (isset($_COOKIE['authenticated_user_string_cookie']) && !empty($_COOKIE['authenticated_user_string_cookie'])) {
+    require_once('custom/modules/Users/UserHelper.php');
+    $key_login = UserHelper::getCookieRememberLogin();
+    if ($key_login['user_name'] != '' && $key_login['user_pass'] != '') {
+        $sugar_smarty->assign('LOGIN_USER_NAME', $key_login['user_name']);
+        $sugar_smarty->assign('LOGIN_PASSWORD', $key_login['user_pass']);
+        $sugar_smarty->assign('CHECKED_REMEMBER', ' checked="checked" ');
+        $sugar_smarty->assign('CHECKED_REMEMBER_DISPLAY', ' display:none ');
+        $sugar_smarty->assign('WAIT_LOGIN_REMEMBER', ' ');
+        $sugar_smarty->assign('MESSAGE_REMEMBER','<td><p id="message_remember"><i>'.$GLOBALS['mod_strings']['LBL_PROCESS_REMEMBER_ME'].'</i></p></td>');
+        $script_reme = '<script>
+        var user_name_remember = "' . $key_login['user_name'] . '";
+        var user_lang_remember = "' . $_SESSION['authenticated_user_language'] . '";
+        </script>';
+    }
+}
+echo $script_reme;
+//End
 
 $sugar_smarty->display('modules/Users/login.tpl'); ?>

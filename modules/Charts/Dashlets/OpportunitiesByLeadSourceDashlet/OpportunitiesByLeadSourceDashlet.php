@@ -92,7 +92,7 @@ class OpportunitiesByLeadSourceDashlet extends DashletGenericChart
      */
     protected function constructQuery()
     {
-		$query = "SELECT lead_source,sum(amount_usdollar/1000) as total,count(*) as opp_count ".
+		$query = "SELECT lead_source,sum(total_in_invoice/1000) as total,count(*) as opp_count ".
                     "FROM opportunities ";
 		$this->getSeedBean()->add_team_security_where_clause($query);
 		$query .= "WHERE opportunities.deleted=0 ";

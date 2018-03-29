@@ -25,7 +25,7 @@ $viewdefs[$module_name]['mobile']['view']['list'] = array(
                     'default' => true,
                     'enabled' => true,
                     'link' => true,
-                    'related_fields' => array('first_name', 'last_name', 'salutation'),
+                    'related_fields' => array('last_name', 'first_name', 'salutation'),
                 ),
                 array(
                     'name' => 'team_name',

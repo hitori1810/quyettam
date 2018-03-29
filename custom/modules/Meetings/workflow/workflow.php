@@ -14,7 +14,7 @@ include_once("include/workflow/custom_utils.php");
 		include("custom/modules/Meetings/workflow/actions_array.php");
 		include("custom/modules/Meetings/workflow/plugins_array.php");
 		
- if( ( isset($focus->assigned_user_id) && ( empty($focus->fetched_row) || array_key_exists('assigned_user_id', $focus->fetched_row) ) && $focus->fetched_row['assigned_user_id'] !== $focus->assigned_user_id) ){ 
+ if((isset($focus->meeting_type) && $focus->meeting_type ==  'Meeting')){ 
  
 
 	 //Frame Secondary 
@@ -23,11 +23,19 @@ include_once("include/workflow/custom_utils.php");
 	 //Secondary Triggers 
 
 	global $triggeredWorkflows;
-	if (!isset($triggeredWorkflows['6ea32be4_abc2_fde4_a36e_55a374698037'])){
-		$triggeredWorkflows['6ea32be4_abc2_fde4_a36e_55a374698037'] = true;
-		$_SESSION['WORKFLOW_ALERTS'] = isset($_SESSION['WORKFLOW_ALERTS']) && is_array($_SESSION['WORKFLOW_ALERTS']) ? $_SESSION['WORKFLOW_ALERTS'] : array();
-		$_SESSION['WORKFLOW_ALERTS']['Meetings'] = isset($_SESSION['WORKFLOW_ALERTS']['Meetings']) && is_array($_SESSION['WORKFLOW_ALERTS']['Meetings']) ? $_SESSION['WORKFLOW_ALERTS']['Meetings'] : array();
-		$_SESSION['WORKFLOW_ALERTS']['Meetings'] = array_merge($_SESSION['WORKFLOW_ALERTS']['Meetings'],array ('Meetings0_alert0',));	}
+	if (!isset($triggeredWorkflows['8cb28cc2_a8a8_792c_1d97_586f114df640'])){
+		$triggeredWorkflows['8cb28cc2_a8a8_792c_1d97_586f114df640'] = true;
+		 $alertshell_array = array(); 
+
+	 $alertshell_array['alert_msg'] = "2fdabf90-1462-c2c4-ce9e-57c402765c05"; 
+
+	 $alertshell_array['source_type'] = "Custom Template"; 
+
+	 $alertshell_array['alert_type'] = "Email"; 
+
+	 process_workflow_alerts($focus, $alert_meta_array['Meetings0_alert0'], $alertshell_array, false); 
+ 	 unset($alertshell_array); 
+		}
  
 
 	 //End Frame Secondary 

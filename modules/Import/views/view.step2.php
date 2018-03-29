@@ -1,37 +1,37 @@
 <?php
 if(!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
 /*********************************************************************************
- * By installing or using this file, you are confirming on behalf of the entity
- * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
- * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
- * http://www.sugarcrm.com/master-subscription-agreement
- *
- * If Company is not bound by the MSA, then by installing or using this file
- * you are agreeing unconditionally that Company will be bound by the MSA and
- * certifying that you have authority to bind Company accordingly.
- *
- * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
- ********************************************************************************/
+* By installing or using this file, you are confirming on behalf of the entity
+* subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
+* the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
+* http://www.sugarcrm.com/master-subscription-agreement
+*
+* If Company is not bound by the MSA, then by installing or using this file
+* you are agreeing unconditionally that Company will be bound by the MSA and
+* certifying that you have authority to bind Company accordingly.
+*
+* Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+********************************************************************************/
 
 /*********************************************************************************
 
- * Description: view handler for step 2 of the import process
- * Portions created by SugarCRM are Copyright (C) SugarCRM, Inc.
- * All Rights Reserved.
- ********************************************************************************/
+* Description: view handler for step 2 of the import process
+* Portions created by SugarCRM are Copyright (C) SugarCRM, Inc.
+* All Rights Reserved.
+********************************************************************************/
 
 require_once('modules/Import/views/ImportView.php');
 
 
 class ImportViewStep2 extends ImportView
 {
- 	protected $pageTitleKey = 'LBL_STEP_2_TITLE';
+    protected $pageTitleKey = 'LBL_STEP_2_TITLE';
 
 
- 	/**
-     * @see SugarView::display()
-     */
- 	public function display()
+    /**
+    * @see SugarView::display()
+    */
+    public function display()
     {
         global $mod_strings, $app_list_strings, $app_strings, $current_user, $import_bean_map, $import_mod_strings;
 
@@ -52,7 +52,17 @@ class ImportViewStep2 extends ImportView
         $this->ss->assign("IMPORT_MODULE", $_REQUEST['import_module']);
         $this->ss->assign("HEADER", $app_strings['LBL_IMPORT']." ". $mod_strings['LBL_MODULE_NAME']);
         $this->ss->assign("JAVASCRIPT", $this->_getJS());
-        $this->ss->assign("SAMPLE_URL", "<a href=\"javascript: void(0);\" onclick=\"window.location.href='index.php?entryPoint=export&module=".$_REQUEST['import_module']."&action=index&all=true&sample=true'\" >".$mod_strings['LBL_EXAMPLE_FILE']."</a>");
+        if($_REQUEST['import_module'] == 'Leads'){
+            $download_url = 'custom/uploads/TemplateImport/Template_Import_Lead.xlsx';
+        }elseif($_REQUEST['import_module'] == 'Contacts'){
+            $download_url = 'custom/uploads/TemplateImport/Template_Import_Student.xlsx';
+        }elseif($_REQUEST['import_module'] == 'J_School'){
+            $download_url = 'custom/uploads/TemplateImport/Template_Import_School.xlsx';
+        }else
+            $download_url = "index.php?entryPoint=export&module=".$_REQUEST['import_module']."&action=index&all=true&sample=true";
+        //Get file Standard File import - By Lap Nguyen
+
+        $this->ss->assign("SAMPLE_URL", "<a href=\"javascript: void(0);\" onclick=\"window.location.href='$download_url'\" >".$mod_strings['LBL_EXAMPLE_FILE']."</a>");
 
         $displayBackBttn = isset($_REQUEST['action']) && $_REQUEST['action'] == 'Step2' && isset($_REQUEST['current_step']) && $_REQUEST['current_step']!=='2'? TRUE : FALSE; //bug 51239
         $this->ss->assign("displayBackBttn", $displayBackBttn);
@@ -92,7 +102,21 @@ class ImportViewStep2 extends ImportView
             $this->ss->assign('published_imports',$published);
         }
         //End custom mapping
-
+        //Edit Add by Tung Bui - 24/01/2017 - Add logic default mapping record
+        $defaultMappingRecord = "";
+        $admin = new Administration();  
+        $admin->retrieveSettings();
+        switch($this->importModule){
+            case "Leads":
+                $defaultMappingRecord = $admin->settings['wellspring_default_mapping_lead'];
+                break;
+            case "C_Parent":
+                $defaultMappingRecord = $admin->settings['wellspring_default_mapping_parent'];
+                break;
+        }
+        if($defaultMappingRecord == "none") $defaultMappingRecord = "";
+        $this->ss->assign('DEFAULT_MAPPING_RECORD',$defaultMappingRecord);
+        //END - Edit Add by Tung Bui - 24/01/2017
         // add instructions for anything other than custom_delimited
         $instructions = array();
         $lang_key = "CUSTOM";
@@ -113,8 +137,8 @@ class ImportViewStep2 extends ImportView
     }
 
     /**
-     * Returns JS used in this view
-     */
+    * Returns JS used in this view
+    */
     private function _getJS()
     {
         global $mod_strings;

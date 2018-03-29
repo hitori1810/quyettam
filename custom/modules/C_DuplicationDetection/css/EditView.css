@@ -1,9 +1,1 @@
-#targetFieldsContainer {
-    clear: both;  
-    margin-bottom: 20px;  
-}
-
-#targetFieldsContainer .dragAndDropWidget {
-    float: left;
-    margin-right: 10px;
-}
+#targetFieldsContainer{clear:both;margin-bottom:20px}#targetFieldsContainer .dragAndDropWidget{float:left;margin-right:10px}

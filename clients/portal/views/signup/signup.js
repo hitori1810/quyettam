@@ -1,4 +1,15 @@
-
+/*********************************************************************************
+ * By installing or using this file, you are confirming on behalf of the entity
+ * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
+ * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
+ * http://www.sugarcrm.com/master-subscription-agreement
+ *
+ * If Company is not bound by the MSA, then by installing or using this file
+ * you are agreeing unconditionally that Company will be bound by the MSA and
+ * certifying that you have authority to bind Company accordingly.
+ *
+ * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ ********************************************************************************/
 ({events:{"click [name=cancel_button]":"cancel","click [name=signup_button]":"signup","change select[name=country]":"render"},initialize:function(options){app.metadata.set(this._metadata);app.data.declareModels();app.controller.context.prepare(true);this.options.meta=_.clone(this._metadata.modules[this.options.module].views[this.options.name].meta);app.view.View.prototype.initialize.call(this,options);this.fallbackFieldTemplate="modal";this.signup_success=false;},render:function(){if(app.config&&app.config.logoURL){this.logoURL=app.config.logoURL}
 app.view.View.prototype.render.call(this);this.stateField=this.$('select[name=state]');this.countryField=this.$('select[name=country]');this.toggleStateField();return this;},toggleStateField:function(){if(this.countryField.val()=='USA'){this.stateField.parent().show();}else{this.stateField.parent().hide();this.context.attributes.model.attributes.state=undefined;}},cancel:function(){app.router.goBack();},signup:function(){var self=this;var oEmail=this.model.get("email");if(oEmail){this.model.set({"email":[{"email_address":oEmail}]},{silent:true});}
 var validFlag=this.model.isValid();this.model.set({"email":oEmail},{silent:true});if(validFlag){$('#content').hide();app.alert.show('signup',{level:'process',title:app.lang.getAppString('LBL_PORTAL_SIGNUP_PROCESS'),autoClose:false});var contactData={first_name:this.model.get("first_name"),last_name:this.model.get("last_name"),email:[{"email_address":this.model.get("email"),"is_primary":true,"is_invalid":false,"opted_out":false}],phone_work:this.model.get("phone_work"),primary_address_state:this.model.get("state"),primary_address_country:this.model.get("country"),title:this.model.get("jobtitle"),account_name:this.model.get("company")};var pref_lang=app.lang.getLanguage();if(pref_lang){contactData.preferred_language=pref_lang;}

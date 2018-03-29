@@ -1,5 +1,5 @@
 <?php
-// created: 2018-03-27 23:02:36
+// created: 2018-03-29 10:02:23
 $mod_strings = array (
   'LBL_ID' => 'ID',
   'LBL_DATE_ENTERED' => 'Date Created',
@@ -112,7 +112,7 @@ To quit, type \'quit\'.  To shutdown the service \'shutdown\'.
   'LBL_CRON_INSTRUCTIONS_LINUX' => 'To Setup Crontab',
   'LBL_CRON_LINUX_DESC' => 'Note: In order to run Sugar Schedulers, add the following line to the crontab file: ',
   'LBL_CRON_WINDOWS_DESC' => 'Note: In order to run the Sugar schedulers, create a batch file to run using Windows Scheduled Tasks. The batch file should include the following commands: ',
-  'LBL_NO_PHP_CLI' => 'If your host does not have the PHP binary available, you can use wget or curl to launch your Jobs.<br>for wget: <b>*&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;wget --quiet --non-verbose https://crm.gotadi.com/cron.php > /dev/null 2>&1</b><br>for curl: <b>*&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;curl --silent https://crm.gotadi.com/cron.php > /dev/null 2>&1',
+  'LBL_NO_PHP_CLI' => 'If your host does not have the PHP binary available, you can use wget or curl to launch your Jobs.<br>for wget: <b>*&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;wget --quiet --non-verbose http://localhost/atlantic/cron.php > /dev/null 2>&1</b><br>for curl: <b>*&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;curl --silent http://localhost/atlantic/cron.php > /dev/null 2>&1',
   'LBL_JOBS_SUBPANEL_TITLE' => 'Job Log',
   'LBL_EXECUTE_TIME' => 'Execute Time',
   'LBL_REFRESHJOBS' => 'Refresh Jobs',
@@ -130,4 +130,14 @@ To quit, type \'quit\'.  To shutdown the service \'shutdown\'.
   'LBL_SENDEMAILREMINDERS' => 'Run Email Reminders Sending',
   'LBL_CLEANJOBQUEUE' => 'Cleanup Job Queue',
   'LBL_REMOVEDOCUMENTSFROMFS' => 'Removal of documents from filesystem',
+  'LBL_AUTOUPDATESTUDENTSTATUS' => 'Auto-Update Student Status',
+  'LBL_DELETECLASSPLANNING' => 'Auto-Delete Class Planning',
+  'LBL_UPDATECLASSSTATUS' => 'Auto-Update Finish Class',
+  'LBL_UNRELEASEINVOICE' => 'Un-release Invoice',
+  'LBL_AUTORETRIVESTUDYRECORD' => 'Auto-Retrive Study Record',
+  'LBL_INACTIVEPORTALACCOUNT' => 'Inactive Portal Account Adult',
+  'LBL_ALERTEMAILMONTHLY' => 'Alert Email Monthly: Month-end Task List',
+  'LBL_RUNCARRYFORWARDREPORT' => 'Run carrryforward report :-)',
+  'LBL_UPDATESTATUSSTUDENTS' => 'Update Status Students Daily',
+  'LBL_SENDSCHEDULEDSURVEYS' => 'Send Scheduled Surveys',
 );

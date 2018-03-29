@@ -1,352 +1,318 @@
 <?php
-$viewdefs['Leads'] = 
+$viewdefs['Leads'] =
 array (
-  'EditView' => 
-  array (
-    'templateMeta' => 
+    'EditView' =>
     array (
-      'form' => 
-      array (
-        'hidden' => 
+        'templateMeta' =>
         array (
-          0 => '<input type="hidden" name="prospect_id" value="{if isset($smarty.request.prospect_id)}{$smarty.request.prospect_id}{else}{$bean->prospect_id}{/if}">',
-          1 => '<input type="hidden" name="account_id" value="{if isset($smarty.request.account_id)}{$smarty.request.account_id}{else}{$bean->account_id}{/if}">',
-          2 => '<input type="hidden" name="contact_id" value="{if isset($smarty.request.contact_id)}{$smarty.request.contact_id}{else}{$bean->contact_id}{/if}">',
-          3 => '<input type="hidden" name="opportunity_id" value="{if isset($smarty.request.opportunity_id)}{$smarty.request.opportunity_id}{else}{$bean->opportunity_id}{/if}">',
-          4 => '<link rel="stylesheet" type="text/css" href="custom/include/javascripts/Select2/select2.css">',
+            'form' =>
+            array (
+                'hidden' =>
+                array (
+                    0 => '<input type="hidden" name="prospect_id" value="{if isset($smarty.request.prospect_id)}{$smarty.request.prospect_id}{else}{$bean->prospect_id}{/if}">',
+                    1 => '<input type="hidden" name="contact_id" value="{if isset($smarty.request.contact_id)}{$smarty.request.contact_id}{else}{$bean->contact_id}{/if}">',
+                    2 => '<input type="hidden" name="opportunity_id" value="{if isset($smarty.request.opportunity_id)}{$smarty.request.opportunity_id}{else}{$bean->opportunity_id}{/if}">',
+                    3 => '<input type="hidden" name="assigned_user_id_2" value="{$assigned_user_id_2}">',
+                    4 => '<input type="hidden" name="birthdate_2" value="{$birthdate_2}">',
+                    5 => '<input type="hidden" name="last_name_2" value="{$last_name_2}">',
+                    6 => '<input type="hidden" name="first_name_2" value="{$first_name_2}">',
+                    7 => '<input type="hidden" name="phone_mobile_2" value="{$phone_mobile_2}">',
+                    8 => '<input type="hidden" name="is_role_mkt" id="is_role_mkt" value="{$is_role_mkt}">',
+                ),
+                'buttons' =>
+                array (
+                    0 => 'SAVE',
+                    1 => 'CANCEL',
+                ),
+            ),
+            'maxColumns' => '2',
+            'useTabs' => false,
+            'widths' =>
+            array (
+                0 =>
+                array (
+                    'label' => '10',
+                    'field' => '30',
+                ),
+                1 =>
+                array (
+                    'label' => '10',
+                    'field' => '30',
+                ),
+            ),
+            'javascript' => '<script type="text/javascript" language="Javascript">function copyAddressRight(form)  {ldelim} form.alt_address_street.value = form.primary_address_street.value;form.alt_address_city.value = form.primary_address_city.value;form.alt_address_state.value = form.primary_address_state.value;form.alt_address_postalcode.value = form.primary_address_postalcode.value;form.alt_address_country.value = form.primary_address_country.value;return true; {rdelim} function copyAddressLeft(form)  {ldelim} form.primary_address_street.value =form.alt_address_street.value;form.primary_address_city.value = form.alt_address_city.value;form.primary_address_state.value = form.alt_address_state.value;form.primary_address_postalcode.value =form.alt_address_postalcode.value;form.primary_address_country.value = form.alt_address_country.value;return true; {rdelim} </script>
+            {sugar_getscript file="custom/modules/Leads/js/editview.js"}',
+            'tabDefs' =>
+            array (
+                'LBL_CONTACT_INFORMATION' =>
+                array (
+                    'newTab' => false,
+                    'panelDefault' => 'expanded',
+                ),
+                'LBL_PANEL_COMPANY' =>
+                array (
+                    'newTab' => false,
+                    'panelDefault' => 'expanded',
+                ),
+                'LBL_PANEL_ASSIGNMENT' =>
+                array (
+                    'newTab' => false,
+                    'panelDefault' => 'expanded',
+                ),
+            ),
+            'syncDetailEditViews' => true,
         ),
-        'buttons' => 
+        'panels' =>
         array (
-          0 => 'SAVE',
-          1 => 'CANCEL',
-        ),
-      ),
-      'maxColumns' => '2',
-      'useTabs' => false,
-      'widths' => 
-      array (
-        0 => 
-        array (
-          'label' => '10',
-          'field' => '30',
-        ),
-        1 => 
-        array (
-          'label' => '10',
-          'field' => '30',
-        ),
-      ),
-      'javascript' => '       
-             {sugar_getscript file="custom/include/javascripts/SSO.js"}
-             {sugar_getscript file="custom/include/javascripts/Sample.js"}
-            {sugar_getscript file="custom/modules/Leads/js/EditView.js"}
-            {sugar_getscript file="custom/include/javascripts/Select2/select2.min.js"}',
-      'tabDefs' => 
-      array (
-        'LBL_CONTACT_INFORMATION' => 
-        array (
-          'newTab' => false,
-          'panelDefault' => 'expanded',
-        ),
-        'LBL_EDITVIEW_PANEL2' => 
-        array (
-          'newTab' => false,
-          'panelDefault' => 'expanded',
-        ),
-        'LBL_EDITVIEW_PANEL3' => 
-        array (
-          'newTab' => false,
-          'panelDefault' => 'expanded',
-        ),
-        'LBL_EDITVIEW_PANEL1' => 
-        array (
-          'newTab' => false,
-          'panelDefault' => 'expanded',
-        ),
-      ),
-      'syncDetailEditViews' => false,
-    ),
-    'panels' => 
-    array (
-      'LBL_CONTACT_INFORMATION' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            'name' => 'code',
-            'label' => 'LBL_CODE',
-            'customCode' => '{$NEWID}',
-          ),
-          1 => 'category',
-        ),
-        1 => 
-        array (
-          0 => 
-          array (
-            'name' => 'first_name',
-            'label' => 'LBL_NAME',
-            'customCode' => '{html_options name="salutation" id="salutation" options=$fields.salutation.options selected=$fields.salutation.value}&nbsp;
-                        <input name="last_name" style="width:120px !important"  id="last_name" size="15" maxlength="25" type="text" placeholder="{$MOD.LBL_LAST_NAME|replace:\':\':\'\'}" value="{$fields.last_name.value}">&nbsp;
-                        <input name="first_name" placeholder="{$MOD.LBL_FIRST_NAME|replace:\':\':\'\'}" style="width:120px !important"  id="first_name" size="15" maxlength="25" type="text" value="{$fields.first_name.value}">
+            'lbl_contact_information' =>
+            array (
+                0 =>
+                array (
+
+                    0 =>
+                    array (
+                        'name' => 'full_lead_name',
+                        'customLabel' => '{$MOD.LBL_NAME} <span class="required">*</span>',
+                        'customCode' => '
+                        {if $fields.full_lead_name.acl > 1 || $is_lead_convert}
+                        <table width="100%" style="padding:0px!important;width: 300px;">
+                        <tbody><tr>
+                        <td style="padding: 0px !important;" width = "60%"><input name="last_name" id="last_name" placeholder="{$MOD.LBL_LAST_NAME|replace:\':\':\'\'}" style="margin-right: 3px;" size="20" type="text"  value="{$fields.last_name.value}"></td>
+                        <td style="padding: 0px !important;" width="40%"><input name="first_name" id="first_name" placeholder="{$MOD.LBL_FIRST_NAME|replace:\':\':\'\'}" style="width:120px !important; margin-right: 3px;" size="15" type="text" value="{$fields.first_name.value}"></td>
+                        </tr>
+                        <tr><td colspan="2"><span style=" color: #A99A9A; font-style: italic;"> Bùi Vũ Thanh An | Họ: Bùi Vũ Thanh - Tên:  An </span></td></tr>
+                        </tbody>
+                        </table><div id = "dialogDuplicationLocated"></div>
+                        {else}
+                        <span id="full_lead_name">
+                        {$full_lead_name}
+                        </span>
+                        {/if}',
+                    ),
+                    1 =>
+                    array (
+                        'name' => 'birthdate',
+                        'customLabel' => '{$MOD.LBL_BIRTHDATE}',
+                        'comment' => 'The birthdate of the contact',
+                        'customCode' => '
+                        {if $fields.birthdate.acl > 1 || $is_lead_convert}
+                        <span class="dateTime"><input class="date_input" autocomplete="off" type="text" name="birthdate" id="birthdate" value="{$fields.birthdate.value}" title="{$MOD.LBL_BIRTHDATE}" tabindex="0" size="11" maxlength="10" style="width: 110px !important;"></span><img src="themes/OnlineCRM-Blue/images/jscalendar.png" alt="Enter Date" style="position:relative; top:6px; padding-left: 4px;" border="0" id="birthdate_trigger"></span>
+                        {literal}
+                        <script type="text/javascript">
+                        Calendar.setup ({
+                        inputField : "birthdate",
+                        ifFormat : cal_date_format,
+                        daFormat : cal_date_format,
+                        button : "birthdate_trigger",
+                        singleClick : true,
+                        dateStr : "{$fields.birthdate.value}",
+                        startWeekday: 0,
+                        step : 1,
+                        weekNumbers:false
+                        }
+                        );
+                        </script>
+                        {/literal}
+                        {else}
+                        <span id="birthdate">
+                        {$fields.birthdate.value}
+                        </span>
+                        {/if}
                         ',
-          ),
-          1 => 
-          array (
-            'name' => 'fit_category',
-            'customLabel' => '{$MOD.LBL_FIT_CATEGORY}',
-          ),
-        ),
-        2 => 
-        array (
-          0 => 
-          array (
-            'name' => 'pax_name',
-            'label' => 'LBL_PAX_NAME',
-          ),
-          1 => 
-          array (
-            'name' => 'gs_code',
-            'customLabel' => '<label id="lbl_gs_code">{$MOD.LBL_GS_CODE}:</label>',
-          ),
-        ),
-        3 => 
-        array (
-          0 => 'department',
-          1 => 'website',
-        ),
-        4 => 
-        array (
-          0 => 
-          array (
-            'name' => 'account_name',
-            'type' => 'varchar',
-            'validateDependency' => false,
-            'customCode' => '<input name="account_name" id="EditView_account_name" {if ($fields.converted.value == 1)}disabled="true"{/if} size="30" maxlength="255" type="text" value="{$fields.account_name.value}">',
-          ),
-          1 => 'status',
-        ),
-        5 => 
-        array (
-          0 => 'title',
-          1 => 'phone_mobile',
-        ),
-        6 => 
-        array (
-          0 => 'lead_source',
-          1 => 'phone_work',
-        ),
-        7 => 
-        array (
-          0 => 
-          array (
-            'name' => 'rating',
-            'label' => 'LBL_RATING',
-          ),
-          1 => 
-          array (
-            'name' => 'phone_other',
-            'comment' => 'Other phone number for the contact',
-            'label' => 'LBL_OTHER_PHONE',
-          ),
-        ),
-        8 => 
-        array (
-          0 => 'email1',
-          1 => 'phone_fax',
-        ),
-        9 => 
-        array (
-          0 => 
-          array (
-            'name' => 'dob_day',
-            'label' => 'LBL_BIRTHDATE',
-            'type' => 'Dob',
-          ),
-          1 => 
-          array (
-            'name' => 'passport',
-            'label' => 'LBL_PASSPORT',
-          ),
-        ),
-       10 => array(
-            0 => 'gender',
-            1 => '',
-        ),
-       11 =>  
-        array (
-          0 => 
-          array (
-            'name' => 'primary_address_street',
-            'hideLabel' => true,
-            'type' => 'address',
-            'displayParams' => 
-            array (
-              'key' => 'primary',
-              'rows' => 2,
-              'cols' => 30,
-              'maxlength' => 150,
+                    ),
+                ),
+                1 =>
+                array (
+                    0 =>
+                    array (
+                        'name' => 'gender',
+                        'studio' => 'visible',
+                        'label' => 'LBL_GENDER',
+                        'displayParams' =>
+                        array (
+                            'required' => true,
+                        ),
+                    ),
+                    1 => '',
+                ),
+                2 =>
+                array (
+                    0 =>
+                    array (
+                        'name' => 'email1',
+                        'studio' => 'false',
+                        'label' => 'LBL_EMAIL_ADDRESS',
+                    ),
+                    1 =>
+                    array (
+                        'name' => 'primary_address_street',
+                        'hideLabel' => true,
+                        'type' => 'address',
+                        'displayParams' =>
+                        array (
+                            'key' => 'primary',
+                            'rows' => 2,
+                            'cols' => 30,
+                            'maxlength' => 150,
+                        ),
+                    ),
+                ),
+                3 =>
+                array (
+                    0 =>
+                    array (
+                        'name' => 'phone_mobile',
+                        'customLabel' => '{$MOD.LBL_MOBILE_PHONE}',
+                        'customCode' => '{if $fields.phone_mobile.acl > 1 || $is_lead_convert}
+                        <span id="phone_mobile_span">
+                        {$fields.phone_mobile.value}
+                        </span>
+                        {else}
+                        <span id="phone_mobile_span">
+                        {$phone_mobile}
+                        </span>
+                        {/if}',
+                    ),
+                    1 => 'facebook',
+                ),
+                4 =>
+                array (
+                    0 =>
+                    array (
+                        'name' => 'j_school_leads_1_name',
+                        'displayParams' =>
+                        array (
+                            'required' => false,
+                        ),
+                    ),
+                    1 =>
+                    array (
+                        'name' => 'grade',
+                        'studio' => 'visible',
+                        'label' => 'LBL_GRADE',
+                    ),
+                ),
+                6 =>
+                array (
+                    0 =>
+                    array (
+                        'name' => 'description',
+                        'displayParams' =>
+                        array (
+                            'rows' => 4,
+                            'cols' => 55,
+                        ),
+                    ),
+                    1 =>
+                    array (
+                        'name' => 'do_not_call',
+                        'comment' => 'An indicator of whether contact can be called',
+                        'label' => 'LBL_DO_NOT_CALL',
+                    ),
+                ),
+                7 =>
+                array (
+                    0 =>
+                    array (
+                        'name' => 'alt_address_street',
+                        'label' => 'LBL_ALTERNATE_ADDRESS',
+                        'customCode' => '<textarea rows="2" cols="30" name="alt_address_street" >{$fields.alt_address_street.value}</textarea>',
+                    ),
+                    1 => '',
+                ),
             ),
-          ),
-          1 => 
-          array (
-            'name' => 'alt_address_street',
-            'hideLabel' => true,
-            'type' => 'address',
-            'displayParams' => 
+            'lbl_panel_company' =>
             array (
-              'key' => 'alt',
-              'copy' => 'primary',
-              'rows' => 2,
-              'cols' => 30,
-              'maxlength' => 150,
+                0 =>
+                array (
+                    0 => 'guardian_name',
+                    1 => 'other_mobile',
+                ),
+                1 =>array (
+                    0 => '',
+                    1 => 'email_parent_1',
+                ),
+                2 =>
+                array (
+                    0 => 'guardian_name_2',
+                    1 =>
+                    array (
+                        'name' => 'phone_other',
+                        'comment' => 'Other phone number for the contact',
+                        'label' => 'LBL_OTHER_PHONE',
+                    ),
+                ),
+                3 =>array (
+                    0 => '',
+                    1 => 'email_parent_2',
+                ),
             ),
-          ),
-        ),
-      ),
-      'lbl_editview_panel2' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            'name' => 'status_description',
-          ),
-          1 => 
-          array (
-            'name' => 'lead_source_description',
-          ),
-        ),
-        1 => 
-        array (
-          0 => 
-          array (
-            'name' => 'airline',
-            'label' => 'LBL_AIRLINE',
-          ),
-          1 => '',
-        ),
-        2 => 
-        array (
-          0 => 'refered_by',
-          1 => 
-          array (
-            'name' => 'seat_type',
-            'label' => 'LBL_SEAT_TYPE',
-          ),
-        ),
-        3 => 
-        array (
-          0 => 'campaign_name',
-          1 => 
-          array (
-            'name' => 'working_date',
-            'label' => 'LBL_WORKING_DATE',
-          ),
-        ),
-        4 => 
-        array (
-          0 => 
-          array (
-            'name' => 'description',
-            'label' => 'LBL_DESCRIPTION',
-            'customCode' => '<textarea id="description" name="description" rows="4" cols="60" title="{$MOD.LBL_DESCRIPTION}" tabindex="0" db-data="">{$fields.description.value}</textarea>',
-          ),
-          1 => 
-          array (
-            'name' => 'favorites',
-            'studio' => 'visible',
-            'label' => 'LBL_FAVORITES',
-          ),
-        ),
-        5 => 
-        array (
-          0 => 'do_not_call',
-        ),
-      ),
-      'lbl_editview_panel3' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            'name' => 'document_type',
-            'label' => 'LBL_DOCUMENT_TYPE',
-          ),
-          1 => 
-          array (
-            'name' => 'document_number',
-            'label' => 'LBL_DOCUMENT_NUMBER',
-          ),
-        ),
-        1 => 
-        array (
-          0 => 
-          array (
-            'name' => 'nationality',
-            'label' => 'LBL_NATIONALITY',
-          ),
-          1 => 
-          array (
-            'name' => 'issuing_country',
-            'label' => 'LBL_ISSUING_COUNTRY',
-          ),
-        ),
-        2 => 
-        array (
-          0 => 
-          array (
-            'name' => 'card_holder',
-            'label' => 'LBL_CARD_HOLDER',
-          ),
-          1 => 
-          array (
-            'name' => 'membership_number',
-            'label' => 'LBL_MEMBERSHIP_NUMBER',
-          ),
-        ),
-        3 => 
-        array (
-          0 => 
-          array (
-            'name' => 'facebook_id',
-            'label' => 'LBL_FACEBOOK_ID',
-          ),
-          1 => 
-          array (
-            'name' => 'google_id',
-            'label' => 'LBL_GOOGLE_ID',
-          ),
-        ),
-        4 => 
-        array (
-          0 => 
-          array (
-            'name' => 'ibe_id',
-            'label' => 'LBL_IBE_ID',
-          ),
-          1 => '',
-        ),
-      ),
-      'lbl_editview_panel1' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            'name' => 'assigned_user_name',
-            'label' => 'LBL_ASSIGNED_TO',
-          ),
-          1 => 
-          array (
-            'name' => 'team_name',
-            'displayParams' => 
+            'lbl_panel_assignment' =>
             array (
-              'display' => true,
+                0 =>
+                array (
+                    0 =>
+                    array (
+                        'name' => 'lead_source',
+                        'customCode' => '{$lead_source}',
+                    ),
+                    1 =>
+                    array (
+                        'name' => 'status',
+                        'customCode' => '{if $fields.status.value == "New"}
+                        <span class="textbg_green"><b>{$fields.status.value}<b></span>
+
+                        {elseif $fields.status.value == "Assigned"}
+                        <span class="textbg_bluelight"><b>{$fields.status.value}<b></span>
+
+                        {elseif $fields.status.value == "In Process"}
+                        <span class="textbg_blue"><b>{$fields.status.value}<b></span>
+
+                        {elseif $fields.status.value == "Converted"}
+                        <span class="textbg_red"><b>{$fields.status.value}<b></span>
+
+                        {elseif $fields.status.value == "PT/Demo"}
+                        <span class="textbg_violet"><b>{$fields.status.value}<b></span>
+
+                        {elseif $fields.status.value == "Recycled"}
+                        <span class="textbg_orange"><b>{$fields.status.value}<b></span>
+
+                        {elseif $fields.status.value == "Dead"}
+                        <span class="textbg_black"><b>{$fields.status.value}<b></span>
+
+                        {else}
+                        <span><b>{$fields.status.value}<b></span>
+                        {/if}',
+                    ),
+                ),
+                1 =>
+                array (
+                    0 => 'lead_source_description',
+                    1 => 'campaign_name',
+                ),
+                2 =>
+                array (
+                    0 => 'prefer_level',
+                    1 =>
+                    array (
+                        'name' => 'potential',
+                        'studio' => 'visible',
+                        'label' => 'LBL_POTENTIAL',
+                    ),
+                ),
+                3 =>
+                array (
+                    0 =>
+                    array (
+                        'name' => 'assigned_user_name',
+                        'displayParams' =>
+                        array (
+                            'required' => true,
+                        ),
+                    ),
+                    1 => 'team_name',
+                ),
             ),
-          ),
         ),
-      ),
     ),
-  ),
 );

@@ -50,7 +50,7 @@ if(!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
     'vname' => 'LBL_FILENAME',
     'type' => 'varchar',
     'required'=>true,
-	'importable' => 'required',
+	'importable' => true,
     'len' => '255',
     'studio' => 'false',
   ),
@@ -80,7 +80,7 @@ if(!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
     // jwhitcraft BUG44657 - Take this out as it was causing the remove button not to show up on custom modules
   ),
 
-  'active_date' =>
+'active_date' =>
   array (
     'name' => 'active_date',
     'vname' => 'LBL_DOC_ACTIVE_DATE',

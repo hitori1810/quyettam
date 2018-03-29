@@ -42,6 +42,12 @@ $viewdefs['Holidays']['UsersQuickCreate'] = array(
         ),
       ),
     ),
+     array (
+      
+      array (
+        'name' => 'type',
+      ),
+    ),
   ),
 )
 

@@ -234,7 +234,12 @@ EOQ;
 				$form->assign(strtoupper($key), ' checked ');
 			} else {
 				$form->assign(strtoupper($key), $searchInputs[$key]);
-			}
+			} 
+            if($key == 'region') {
+                $form->assign('REGION_OPTIONS', get_select_options_with_id(
+                $GLOBALS['app_list_strings']['region_list'], 
+                $searchInputs[$key]));
+            }
 		}
 
 		if($this->_create) $form->assign('CREATE', 'true');

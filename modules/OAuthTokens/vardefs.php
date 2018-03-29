@@ -144,13 +144,13 @@ $dictionary['OAuthToken'] = array('table' => 'oauth_tokens',
           'type'=>'relate',
           'link'=>'contacts',
           'join_name'=>'contacts',
-          'db_concat_fields'=> array(0=>'first_name', 1=>'last_name'),
+          'db_concat_fields'=> array(0=>'last_name', 1=>'first_name'),
           'isnull'=>'true',
           'module'=>'Contacts',
           'bean_name'=>'Contact',
           'source'=>'non-db',
       ),
-          
+
 	 'assigned_user_id' =>
 		array (
 			'name' => 'assigned_user_id',

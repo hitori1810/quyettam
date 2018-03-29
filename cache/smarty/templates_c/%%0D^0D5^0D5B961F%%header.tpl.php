@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.11, created on 2018-03-27 23:04:32
+<?php /* Smarty version 2.6.11, created on 2018-03-29 10:06:38
          compiled from themes/RacerX/tpls/header.tpl */ ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "themes/RacerX/tpls/_head.tpl", 'smarty_include_vars' => array()));
@@ -42,4 +42,4 @@ unset($_smarty_tpl_vars);
             <div id="content">
                 <?php if ($this->_tpl_vars['use_table_container']): ?>
                     <table style="width:100%" id="contentTable"><tr><td>
-                            <?php endif; ?>
+                            <?php endif; ?>

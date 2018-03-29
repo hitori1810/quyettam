@@ -200,7 +200,7 @@ class Call extends SugarBean {
 			if((!isset($GLOBALS['installing']) || $GLOBALS['installing'] != true) && (empty($this->id) && isset($this->assigned_user_id) && !empty($this->assigned_user_id) && $GLOBALS['current_user']->id != $this->assigned_user_id) || (isset($old_assigned_user_id) && !empty($old_assigned_user_id) && isset($this->assigned_user_id) && !empty($this->assigned_user_id) && $old_assigned_user_id != $this->assigned_user_id) ){
 				$this->special_notification = true;
 				if(!isset($GLOBALS['resavingRelatedBeans']) || $GLOBALS['resavingRelatedBeans'] == false) {
-					$check_notify = true;
+					$check_notify = false;
 				}
                 if(isset($_REQUEST['assigned_user_name'])) {
                     $this->new_assigned_user_name = $_REQUEST['assigned_user_name'];

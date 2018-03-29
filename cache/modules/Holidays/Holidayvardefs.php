@@ -17,6 +17,8 @@
       'vname' => 'LBL_DATE_ENTERED',
       'type' => 'datetime',
       'required' => true,
+      'enable_range_search' => true,
+      'options' => 'date_range_search_dom',
     ),
     'date_modified' => 
     array (
@@ -24,6 +26,8 @@
       'vname' => 'LBL_DATE_MODIFIED',
       'type' => 'datetime',
       'required' => true,
+      'enable_range_search' => true,
+      'options' => 'date_range_search_dom',
     ),
     'modified_user_id' => 
     array (
@@ -102,14 +106,113 @@
       'type' => 'varchar',
       'vname' => 'LBL_RESOURCE_NAME',
     ),
+    'teacher_name' => 
+    array (
+      'required' => false,
+      'source' => 'non-db',
+      'name' => 'teacher_name',
+      'vname' => 'LBL_TEACHER_NAME',
+      'type' => 'relate',
+      'rname' => 'name',
+      'id_name' => 'teacher_id',
+      'join_name' => 'c_teachers',
+      'link' => 'teacher_holidays',
+      'table' => 'c_teachers',
+      'isnull' => 'true',
+      'module' => 'C_Teachers',
+    ),
+    'teacher_id' => 
+    array (
+      'name' => 'teacher_id',
+      'rname' => 'id',
+      'vname' => 'LBL_TEACHER_ID',
+      'type' => 'id',
+      'table' => 'c_teachers',
+      'isnull' => 'true',
+      'module' => 'C_Teachers',
+      'dbType' => 'id',
+      'reportable' => false,
+      'massupdate' => false,
+      'duplicate_merge' => 'disabled',
+    ),
+    'teacher_holidays' => 
+    array (
+      'name' => 'teacher_holidays',
+      'type' => 'link',
+      'relationship' => 'teacher_holidays',
+      'module' => 'C_Teachers',
+      'bean_name' => 'C_Teachers',
+      'source' => 'non-db',
+      'vname' => 'LBL_TEACHER_NAME',
+    ),
+    'type' => 
+    array (
+      'required' => false,
+      'name' => 'type',
+      'vname' => 'LBL_TYPE',
+      'type' => 'enum',
+      'massupdate' => 0,
+      'no_default' => false,
+      'comments' => '',
+      'help' => '',
+      'importable' => 'false',
+      'duplicate_merge' => 'disabled',
+      'duplicate_merge_dom_value' => '0',
+      'audited' => false,
+      'reportable' => true,
+      'unified_search' => false,
+      'merge_filter' => 'disabled',
+      'calculated' => false,
+      'len' => 100,
+      'size' => '20',
+      'options' => 'holiday_type_list',
+      'studio' => 'visible',
+      'dependency' => false,
+    ),
+    'apply_for' => 
+    array (
+      'name' => 'apply_for',
+      'vname' => 'LBL_APPLY_FOR',
+      'type' => 'enum',
+      'massupdate' => 0,
+      'no_default' => false,
+      'comments' => '',
+      'help' => '',
+      'importable' => 'false',
+      'duplicate_merge' => 'disabled',
+      'duplicate_merge_dom_value' => '0',
+      'audited' => false,
+      'reportable' => true,
+      'unified_search' => false,
+      'merge_filter' => 'disabled',
+      'calculated' => false,
+      'len' => 100,
+      'size' => '20',
+      'options' => 'holiday_apply_for_options',
+      'studio' => 'visible',
+      'dependency' => false,
+      'default' => '',
+    ),
+    'holidays_range' => 
+    array (
+      'required' => true,
+      'name' => 'holidays_range',
+      'vname' => 'LBL_RANGE',
+      'type' => 'varchar',
+      'len' => '100',
+    ),
+    'public_holiday' => 
+    array (
+      'required' => true,
+      'name' => 'public_holiday',
+      'vname' => 'LBL_PUBLIC_HOLIDAY',
+      'type' => 'varchar',
+      'len' => '455',
+    ),
   ),
   'acls' => 
   array (
-    'SugarACLAdminOnly' => 
-    array (
-      'adminFor' => 'Users',
-      'allowUserRead' => true,
-    ),
+    'SugarACLStatic' => true,
   ),
   'indices' => 
   array (

@@ -60,10 +60,13 @@ if(typeof(SimpleList) == 'undefined'){
     	var drop_value = document.getElementById('drop_value');
     	//Validate the dropdown key manually
     	removeFromValidate('dropdown_form', 'drop_name');
-    	if(!SimpleList.isValidDropDownKey(escape(drop_name.value))) {
-			addToValidate('dropdown_form', 'drop_name', 'error', false, SUGAR.language.get("ModuleBuilder", "LBL_JS_VALIDATE_KEY"));
-    	}
-    	
+        
+        //Remove Validate - Custom Core by Lap Nguyen
+//    	if(!SimpleList.isValidDropDownKey(escape(drop_name.value))) {
+//			addToValidate('dropdown_form', 'drop_name', 'error', false, SUGAR.language.get("ModuleBuilder", "LBL_JS_VALIDATE_KEY"));
+//    	}
+    	//End - By Lap Nguyen
+        
     	if (!check_form("dropdown_form")) return;
 
         var ul1=YAHOO.util.Dom.get("ul1");

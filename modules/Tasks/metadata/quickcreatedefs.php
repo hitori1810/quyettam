@@ -95,10 +95,7 @@ array (
             ),
           ),
            
-          array (
-            'name' => 'contact_name',
-            'label' => 'LBL_CONTACT_NAME',
-          ),
+          ''
         ),
          
         array (

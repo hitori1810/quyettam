@@ -1,5 +1,5 @@
 <?php
-// created: 2018-03-27 22:40:30
+// created: 2018-03-28 11:55:57
 $sugar_config = array (
   'admin_access_control' => false,
   'admin_export_only' => false,
@@ -53,13 +53,13 @@ $sugar_config = array (
   'dbconfig' => 
   array (
     'db_host_name' => 'localhost',
-    'db_host_instance' => '',
+    'db_host_instance' => 'SQLEXPRESS',
     'db_user_name' => 'root',
     'db_password' => '',
     'db_name' => 'quyettam',
     'db_type' => 'mysql',
     'db_port' => '',
-    'db_manager' => 'MysqliManager',
+    'db_manager' => 'MysqlManager',
   ),
   'dbconfigoption' => 
   array (
@@ -165,7 +165,7 @@ $sugar_config = array (
     ),
   ),
   'default_currency_iso4217' => 'VND',
-  'default_currency_name' => 'Dong',
+  'default_currency_name' => 'Đồng',
   'default_currency_significant_digits' => 0,
   'default_currency_symbol' => '',
   'default_date_format' => 'd/m/Y',
@@ -175,7 +175,7 @@ $sugar_config = array (
   'default_email_editor' => 'html',
   'default_export_charset' => 'UTF-8',
   'default_language' => 'en_us',
-  'default_locale_name_format' => 's l f',
+  'default_locale_name_format' => 'l f',
   'default_max_tabs' => '7',
   'default_module' => 'Home',
   'default_navigation_paradigm' => 'gm',
@@ -183,17 +183,17 @@ $sugar_config = array (
   'default_password' => '',
   'default_permissions' => 
   array (
-    'dir_mode' => 1528,
-    'file_mode' => 432,
-    'user' => '',
-    'group' => '',
+    'dir_mode' => 511,
+    'file_mode' => 511,
+    'user' => 'apache',
+    'group' => 'apache',
   ),
   'default_subpanel_links' => false,
   'default_subpanel_tabs' => true,
   'default_swap_last_viewed' => false,
   'default_swap_shortcuts' => false,
-  'default_theme' => 'RacerX',
-  'default_time_format' => 'h:ia',
+  'default_theme' => 'OnlineCRM-Blue',
+  'default_time_format' => 'h:i A',
   'default_user_is_admin' => false,
   'default_user_name' => '',
   'demoData' => 'yes',
@@ -210,7 +210,7 @@ $sugar_config = array (
   'export_delimiter' => ',',
   'export_excel_compatible' => false,
   'history_max_viewed' => 50,
-  'host_name' => 'crm.gotadi.com',
+  'host_name' => 'dev.onlinecrm.vn/atlantic',
   'import_max_execution_time' => 3600,
   'import_max_records_per_file' => 100,
   'import_max_records_total_limit' => '',
@@ -221,17 +221,17 @@ $sugar_config = array (
     'max_retries' => 5,
     'timeout' => 86400,
   ),
-  'js_custom_version' => 1,
-  'js_lang_version' => 20,
+  'js_custom_version' => 3,
+  'js_lang_version' => 171,
   'languages' => 
   array (
+    'vn_vn' => 'Việt Nam',
     'en_us' => 'English (US)',
-    'en_UK' => 'English (UK)',
   ),
   'large_scale_test' => false,
   'lead_conv_activity_opt' => 'donothing',
-  'list_max_entries_per_page' => '50',
-  'list_max_entries_per_subpanel' => 10,
+  'list_max_entries_per_page' => 20,
+  'list_max_entries_per_subpanel' => 20,
   'lock_default_user_name' => false,
   'lock_homepage' => false,
   'lock_subpanels' => false,
@@ -240,7 +240,7 @@ $sugar_config = array (
   'log_memory_usage' => false,
   'logger' => 
   array (
-    'level' => 'off',
+    'level' => 'fatal',
     'file' => 
     array (
       'ext' => '.log',
@@ -254,34 +254,36 @@ $sugar_config = array (
   'max_dashlets_homepage' => '15',
   'name_formats' => 
   array (
+    'l f' => 'l f',
     's f l' => 's f l',
     'f l' => 'f l',
     's l' => 's l',
-    'l s f' => 'l s f',
+    'l, s f' => 'l, s f',
     'l, f' => 'l, f',
     's l f' => 's l f',
+    'l s f' => 'l s f',
     'l f s' => 'l f s',
   ),
   'passwordsetting' => 
   array (
     'minpwdlength' => 6,
     'maxpwdlength' => '',
-    'oneupper' => '1',
-    'onelower' => '1',
-    'onenumber' => '1',
-    'onespecial' => '1',
+    'oneupper' => '0',
+    'onelower' => true,
+    'onenumber' => '0',
+    'onespecial' => '0',
     'SystemGeneratedPasswordON' => '0',
     'generatepasswordtmpl' => '1e7c0c0d-0442-c9da-0817-52f3a85adb14',
     'lostpasswordtmpl' => '3acb6e11-2324-6fe3-6779-52f3a8b44b8d',
     'customregex' => '',
     'regexcomment' => '',
     'forgotpasswordON' => true,
-    'linkexpiration' => '0',
-    'linkexpirationtime' => '',
+    'linkexpiration' => true,
+    'linkexpirationtime' => 24,
     'linkexpirationtype' => 60,
     'userexpiration' => '0',
     'userexpirationtime' => '',
-    'userexpirationtype' => '30',
+    'userexpirationtype' => '1',
     'userexpirationlogin' => '',
     'systexpiration' => 1,
     'systexpirationtime' => 7,
@@ -293,10 +295,10 @@ $sugar_config = array (
     'lockoutexpirationlogin' => '',
   ),
   'portal_view' => 'single_user',
-  'require_accounts' => true,
+  'require_accounts' => false,
   'resource_management' => 
   array (
-    'special_query_limit' => 500000,
+    'special_query_limit' => 50000000,
     'special_query_modules' => 
     array (
       0 => 'Reports',
@@ -305,7 +307,7 @@ $sugar_config = array (
       3 => 'Administration',
       4 => 'Sync',
     ),
-    'default_limit' => 10000000,
+    'default_limit' => 1000000000,
   ),
   'rss_cache_time' => '10800',
   'save_query' => 'all',
@@ -314,7 +316,9 @@ $sugar_config = array (
   'session_dir' => '',
   'showDetailData' => true,
   'showThemePicker' => true,
-  'site_url' => 'https://crm.gotadi.com',
+  'site_url' => 'http://localhost/atlantic',
+  'site_ip' => '172.0.0.1',
+  'portal_url' => 'http://localhost/atlantic_portal',
   'slow_query_time_msec' => '100',
   'snip_url' => 'http://ease.sugarcrm.com:20010/',
   'sugar_version' => '6.7.2',
@@ -353,7 +357,7 @@ $sugar_config = array (
     12 => 'htm',
   ),
   'upload_dir' => 'upload/',
-  'upload_maxsize' => 30000000,
+  'upload_maxsize' => '20000000',
   'use_common_ml_dir' => false,
   'use_real_names' => true,
   'use_sprites' => true,
@@ -361,7 +365,7 @@ $sugar_config = array (
   'verify_client_ip' => false,
   'wl_list_max_entries_per_page' => 10,
   'wl_list_max_entries_per_subpanel' => 3,
-  'fts_disable_notification' => true,
+  'fts_disable_notification' => false,
   'disableAjaxUI' => true,
   'addAjaxBannedModules' => 
   array (
@@ -373,10 +377,31 @@ $sugar_config = array (
   'authenticationClass' => '',
   'email_xss' => 'YToxMzp7czo2OiJhcHBsZXQiO3M6NjoiYXBwbGV0IjtzOjQ6ImJhc2UiO3M6NDoiYmFzZSI7czo1OiJlbWJlZCI7czo1OiJlbWJlZCI7czo0OiJmb3JtIjtzOjQ6ImZvcm0iO3M6NToiZnJhbWUiO3M6NToiZnJhbWUiO3M6ODoiZnJhbWVzZXQiO3M6ODoiZnJhbWVzZXQiO3M6NjoiaWZyYW1lIjtzOjY6ImlmcmFtZSI7czo2OiJpbXBvcnQiO3M6ODoiXD9pbXBvcnQiO3M6NToibGF5ZXIiO3M6NToibGF5ZXIiO3M6NDoibGluayI7czo0OiJsaW5rIjtzOjY6Im9iamVjdCI7czo2OiJvYmplY3QiO3M6MzoieG1wIjtzOjM6InhtcCI7czo2OiJzY3JpcHQiO3M6Njoic2NyaXB0Ijt9',
   'default_module_favicon' => false,
-  'dashlet_auto_refresh_min' => '-1',
+  'dashlet_auto_refresh_min' => '30',
   'show_download_tab' => true,
   'enable_action_menu' => false,
   'stack_trace_errors' => false,
-  'developerMode' => false,
+  'developerMode' => true,
+  'lock_info' => false,
+  'lock_date' => '01-09',
   'full_text_engine' => '',
+  'except_lock_for_user_name' => '',
+  'enable_mobile_redirect' => false,
+  'http_referer' => 
+  array (
+    'list' => 
+    array (
+      0 => 'www.google.com',
+    ),
+  ),
+  'workflowAfterSave' => 
+  array (
+    0 => 'Contacts',
+  ),
+  'sendSMS' => false,
+  'maximum_sms_messages' => 3,
+  'outfitters_licenses' => 
+  array (
+    'SugarChimp' => '91208589b0ea6c6435f4ac31dcae7490',
+  ),
 );

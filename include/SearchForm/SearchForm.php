@@ -360,7 +360,7 @@ class SearchForm {
 
     	                    	break;
                             case 'like':
-                                $where .=  $db_field . " like ".$this->bean->db->quoted($field_value.'%');
+                                $where .=  $db_field . " like ".$this->bean->db->quoted('%'.$field_value.'%');
                                 break;
                             case 'in':
                                 $where .=  $db_field . " in (".$field_value.')';
@@ -665,25 +665,6 @@ class SearchForm {
             ";
         return $str;
     }
-    
-    /**
-      * Return the search defs for a particular module.
-      *
-      * @static
-      * @param $module
-      */
-    public static function retrieveSearchDefs($module)
-     {
-         $searchFields = SugarAutoLoader::loadSearchFields($module);
-
-         $searchdefs = array();
-         $file = SugarAutoLoader::loadWithMetafiles($module, 'searchdefs');
-         if($file) {
-             require $file;
-         }
-
-         return array('searchdefs' => $searchdefs, 'searchFields' => $searchFields );
-     }
 }
 
 ?>

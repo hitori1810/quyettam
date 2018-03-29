@@ -31,7 +31,7 @@
 {/php}
 {foreach from=$header_row key=module item=cell}
 	{if (($args.group_column_is_invisible != "") && ($args.group_pos eq $count))}
-{php}	
+{php}
 	$count = $count + 1;
 	$this->assign('count', $count);
 {/php}
@@ -39,7 +39,7 @@
 		{if strtolower($field_types[$module]) == 'currency' || strtolower($field_types[$module]) == 'int' ||strtolower($field_types[$module]) == 'float' || strtolower($field_types[$module]) == 'double' || strtolower($field_types[$module]) == 'decimal'}
 			<th scope="num" align='center'  valign=middle nowrap>
 		{else}
-	<th scope="col" align='center'  valign=middle nowrap>	
+	<th scope="col" align='center'  valign=middle nowrap>
 		{/if}
 	{$cell}
 	{/if}
@@ -66,19 +66,30 @@ while (( $row = $reporter->get_next_row() ) != 0 ) {
 {assign var='scope_row' value=true}
 {foreach from=$column_row.cells key=module item=cell}
 	{if (($column_row.group_column_is_invisible != "") && ($count|in_array:$column_row.group_pos)) }
-{php}	
+{php}
 	$count = $count + 1;
 	$this->assign('count', $count);
 {/php}
 	{ else }
-	<td width="{$width}%" valign=TOP class="{$row_class[$module]}" bgcolor="{$bg_color}" {if $scope_row} scope='row' {/if}>
-	
+    {if substr_count($cell, '/') == 2}
+    <td style='mso-number-format:"dd\/mm\/yyyy";text-align: left;' width="{$width}%" valign=TOP class="{$row_class[$module]}" bgcolor="{$bg_color}" {if $scope_row} scope='row' {/if}>
+    {elseif (date('Y-m-d', strtotime($cell)) == $cell)}
+    <td style='mso-number-format:"yyyy-mm-dd";text-align: left;' width="{$width}%" valign=TOP class="{$row_class[$module]}" bgcolor="{$bg_color}" {if $scope_row} scope='row' {/if}>
+    {elseif ((strlen($cell) > 4) && (preg_match("/^[0-9]+$/", $cell)))}
+    <td style="mso-number-format:\@;" width="{$width}%" valign=TOP class="{$row_class[$module]}" bgcolor="{$bg_color}" {if $scope_row} scope='row' {/if}>
+    {else}
+    <td width="{$width}%" valign=TOP class="{$row_class[$module]}" bgcolor="{$bg_color}" {if $scope_row} scope='row' {/if}>
+    {/if}
+
+
+
+
 	{if $cell eq '' }
    		&nbsp;
    	{else}
 		{$cell}
 	{/if}
-		
+
 	{/if}
 	{assign var='scope_row' value=false}
 {/foreach}

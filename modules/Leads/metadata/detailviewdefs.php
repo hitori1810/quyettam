@@ -36,7 +36,7 @@ $viewdefs['Leads']['DetailView'] = array (
                         'template' => '{if $bean->aclAccess("edit") && !$DISABLE_CONVERT_ACTION}[CONTENT]{/if}',
                     ),
 				),
-				'FIND_DUPLICATES',
+				/*'FIND_DUPLICATES',
 				array (
 					'customCode' => '<input title="{$APP.LBL_MANAGE_SUBSCRIPTIONS}" class="button" onclick="this.form.return_module.value=\'Leads\'; this.form.return_action.value=\'DetailView\';this.form.return_id.value=\'{$fields.id.value}\'; this.form.action.value=\'Subscriptions\'; this.form.module.value=\'Campaigns\'; this.form.module_tab.value=\'Leads\';" type="submit" name="Manage Subscriptions" value="{$APP.LBL_MANAGE_SUBSCRIPTIONS}">',
                     //Bug#51778: The custom code will be replaced with sugar_html. customCode will be deplicated.
@@ -51,7 +51,7 @@ $viewdefs['Leads']['DetailView'] = array (
                             'name' => '{$APP.LBL_MANAGE_SUBSCRIPTIONS}',
                         )
                     )
-				),
+				),*/
 				
 			),
 			'headerTpl'=>'modules/Leads/tpls/DetailViewHeader.tpl',

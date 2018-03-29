@@ -39,19 +39,22 @@ function addFilterInput(cell, filter) {
         add_filter_option(filter_row.qualify_select,qualifier_name);
         //END
         addFilterNoInput(row, filter);
-    } else if (field_type == 'date' || field_type == 'datetime') {
+    } else if (field_type == 'date' || field_type == 'datetime'|| field_type == 'datetime') {
         if (qualifier_name.indexOf('tp_') == 0) {
             addFilterInputEmpty(row, filter);
         } else {
             addFilterInputDate(row, filter);
         }
-    } else if (field_type == 'datetimecombo') {
-        if (qualifier_name.indexOf('tp_') == 0) {
-            addFilterInputEmpty(row, filter);
-        } else {
-            addFilterInputDatetimecombo(row, filter);
-        }
-    } else if (field_type == 'id' || field_type == 'name' || field_type == 'fullname') {
+    }
+     
+//    else if (field_type == 'datetimecombo') {
+//        if (qualifier_name.indexOf('tp_') == 0) {
+//            addFilterInputEmpty(row, filter);
+//        } else {
+//            addFilterInputDatetimecombo(row, filter);
+//        }
+//    } 
+    else if (field_type == 'id' || field_type == 'name' || field_type == 'fullname') {
         //This part edit By Lap Nguyen
         if (typeof filter.qualifier_name != "undefined"){
             qualifier_name = filter.qualifier_name;  
@@ -313,7 +316,7 @@ function validateFilterRow(filter, returnObject) {
                     returnObject.got_error = 1;
                 }
             }
-            if (field.type == 'datetime' || field.type == 'date') {
+            if (field.type == 'datetime' || field.type == 'date' || field.type == 'datetimecombo') { 
                 if (typeof(filter.input_name0) != 'undefined' && typeof(filter.input_name0) != 'array') {
                     var date_match = filter.input_name0.match(date_reg_format);
                     if (date_match != null) {
@@ -326,20 +329,22 @@ function validateFilterRow(filter, returnObject) {
                         filter.input_name1 = date_match[date_reg_positions['Y']] + "-" + date_match[date_reg_positions['m']] + "-" + date_match[date_reg_positions['d']];
                     }
                 }
-            } else if (field.type == 'datetimecombo') {
-                if ((typeof(filter.input_name0) != 'undefined' && typeof(filter.input_name0) != 'array') && (typeof(filter.input_name1) != 'undefined' && typeof(filter.input_name1) != 'array')) {
-                    var dbValue = convertReportDateTimeToDB(filter.input_name0, filter.input_name1);
-                    if (dbValue != '') {
-                        filter.input_name0 = dbValue;
-                    }
-                }
-                if (typeof(filter.input_name2) != 'undefined' && typeof(filter.input_name2) != 'array' && typeof(filter.input_name3) != 'undefined' && typeof(filter.input_name3) != 'array') {
-                    var dbValue = convertReportDateTimeToDB(filter.input_name2, filter.input_name3);
-                    if (dbValue != '') {
-                        filter.input_name2 = dbValue;
-                    }
-                }
             }
+            debugger; 
+//            else if (field.type == 'datetimecombo') {
+//                if ((typeof(filter.input_name0) != 'undefined' && typeof(filter.input_name0) != 'array') && (typeof(filter.input_name1) != 'undefined' && typeof(filter.input_name1) != 'array')) {
+//                    var dbValue = convertReportDateTimeToDB(filter.input_name0, filter.input_name1);
+//                    if (dbValue != '') {
+//                        filter.input_name0 = dbValue;
+//                    }
+//                }
+//                if (typeof(filter.input_name2) != 'undefined' && typeof(filter.input_name2) != 'array' && typeof(filter.input_name3) != 'undefined' && typeof(filter.input_name3) != 'array') {
+//                    var dbValue = convertReportDateTimeToDB(filter.input_name2, filter.input_name3);
+//                    if (dbValue != '') {
+//                        filter.input_name2 = dbValue;
+//                    }
+//                }
+//            }
 
         }  
 

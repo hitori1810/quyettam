@@ -137,8 +137,8 @@
       'join_name' => 'contacts',
       'db_concat_fields' => 
       array (
-        0 => 'first_name',
-        1 => 'last_name',
+        0 => 'last_name',
+        1 => 'first_name',
       ),
       'isnull' => 'true',
       'module' => 'Contacts',

@@ -15,6 +15,7 @@
 *}
 <link type="text/css" href="{sugar_getjspath file="modules/Calendar/Cal.css"}" rel="stylesheet" />
 {sugar_getscript file="modules/Calendar/Cal.js"}
+{sugar_getscript file="modules/Calendar/js/custom.js"}
 <script type="text/javascript">
 
 	{literal}

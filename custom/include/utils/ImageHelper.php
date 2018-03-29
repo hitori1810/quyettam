@@ -107,7 +107,7 @@
         function parseImage($ext,$img,$file = null){
             switch($ext){
                 case "png":
-                    imagepng($img,($file != null ? $file : ''));
+                    imagepng($img,($file != null ? $file : ''),90);
                     break;
                 case "jpeg":
                     imagejpeg($img,($file ? $file : ''),90);

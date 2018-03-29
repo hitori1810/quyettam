@@ -89,7 +89,7 @@ $mod_strings = array (
 	'LBL_SHIPPING_ADDRESS' => 'Shipping Address:',
 
 	'LBL_STATE' => 'State:',
-	'LBL_TEAMS_LINK'=>'Teams',
+	'LBL_TEAMS_LINK'=>'Center',
 	'LBL_TICKER_SYMBOL' => 'Ticker Symbol:',
 	'LBL_TYPE' => 'Type:',
 	'LBL_USERS_ASSIGNED_LINK'=>'Assigned Users',

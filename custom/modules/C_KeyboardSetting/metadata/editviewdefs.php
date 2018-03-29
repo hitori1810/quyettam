@@ -20,17 +20,10 @@ array (
           'field' => '30',
         ),
       ),
-      'includes' => 
-      array (
-        0 => 
-        array (
-          'file' => 'cache/include/javascript/sugar_grp_yui_widgets.js',
-        ),
-        1 => 
-        array (
-          'file' => 'custom/modules/C_KeyboardSetting/js/EditView.js',
-        ),
-      ),
+      'javascript' => '
+        {sugar_getscript file="cache/include/javascript/sugar_grp_yui_widgets.js"}
+        {sugar_getscript file="custom/modules/C_KeyboardSetting/js/EditView.js"}
+      ',
       'useTabs' => false,
       'tabDefs' => 
       array (

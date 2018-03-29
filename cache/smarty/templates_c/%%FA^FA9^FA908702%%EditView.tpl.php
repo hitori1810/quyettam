@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.11, created on 2018-03-27 23:02:59
+<?php /* Smarty version 2.6.11, created on 2018-03-29 10:05:42
          compiled from include/EditView/EditView.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'counter', 'include/EditView/EditView.tpl', 28, false),array('function', 'math', 'include/EditView/EditView.tpl', 102, false),array('function', 'sugar_field', 'include/EditView/EditView.tpl', 197, false),array('function', 'sugar_evalcolumn', 'include/EditView/EditView.tpl', 202, false),array('modifier', 'upper', 'include/EditView/EditView.tpl', 32, false),array('modifier', 'count', 'include/EditView/EditView.tpl', 104, false),)), $this); ?>
@@ -57,7 +57,8 @@ if ($this->_foreach['section']['total'] > 0):
     <?php endif; ?>
     <div <?php if ($this->_tpl_vars['useTabs']): ?>class="yui-content"<?php endif; ?>>
 
-<?php $this->assign('tabIndexVal', 0);  echo smarty_function_counter(array('name' => 'panelCount','start' => -1,'print' => false,'assign' => 'panelCount'), $this);?>
+<?php $this->assign('tabIndexVal', 0); ?>
+<?php echo smarty_function_counter(array('name' => 'panelCount','start' => -1,'print' => false,'assign' => 'panelCount'), $this);?>
 
 <?php echo smarty_function_counter(array('name' => 'tabCount','start' => -1,'print' => false,'assign' => 'tabCount'), $this);?>
 
@@ -65,7 +66,8 @@ if ($this->_foreach['section']['total'] > 0):
 if ($this->_foreach['section']['total'] > 0):
     foreach ($_from as $this->_tpl_vars['label'] => $this->_tpl_vars['panel']):
         $this->_foreach['section']['iteration']++;
- echo smarty_function_counter(array('name' => 'panelCount','print' => false), $this);?>
+?>
+<?php echo smarty_function_counter(array('name' => 'panelCount','print' => false), $this);?>
 
 <?php ob_start();  echo ((is_array($_tmp=$this->_tpl_vars['label'])) ? $this->_run_mod_handler('upper', true, $_tmp) : smarty_modifier_upper($_tmp));  $this->_smarty_vars['capture']['label_upper'] = ob_get_contents();  $this->assign('label_upper', ob_get_contents());ob_end_clean(); ?>
   <?php if (( isset ( $this->_tpl_vars['tabDefs'][$this->_tpl_vars['label_upper']]['newTab'] ) && $this->_tpl_vars['tabDefs'][$this->_tpl_vars['label_upper']]['newTab'] == true )): ?>
@@ -125,7 +127,9 @@ _img_show" src="{sugar_getimagepath file="advanced_search.gif"}"></a>
 ' <?php endif; ?> class="yui3-skin-sam edit view panelContainer">
 
 
-<?php $this->assign('rowCount', 0);  $this->assign('ACCKEY', '');  $_from = $this->_tpl_vars['panel']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }$this->_foreach['rowIteration'] = array('total' => count($_from), 'iteration' => 0);
+<?php $this->assign('rowCount', 0); ?>
+<?php $this->assign('ACCKEY', ''); ?>
+<?php $_from = $this->_tpl_vars['panel']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }$this->_foreach['rowIteration'] = array('total' => count($_from), 'iteration' => 0);
 if ($this->_foreach['rowIteration']['total'] > 0):
     foreach ($_from as $this->_tpl_vars['row'] => $this->_tpl_vars['rowData']):
         $this->_foreach['rowIteration']['iteration']++;
@@ -358,7 +362,8 @@ _label' width='<?php echo $this->_tpl_vars['def']['templateMeta']['widths'][($th
 $this->_smarty_include(array('smarty_include_tpl_file' => $this->_tpl_vars['footerTpl'], 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
-  if ($this->_tpl_vars['useTabs']): ?>
+ ?>
+<?php if ($this->_tpl_vars['useTabs']): ?>
 {sugar_getscript file="cache/include/javascript/sugar_grp_yui_widgets.js"}
 <script type="text/javascript">
 var <?php echo $this->_tpl_vars['form_name']; ?>
@@ -387,4 +392,4 @@ $(document).ready(function() {ldelim}
   {rdelim});
 {rdelim}
 
-</script>
+</script>

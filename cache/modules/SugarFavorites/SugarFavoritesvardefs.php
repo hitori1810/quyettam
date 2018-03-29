@@ -27,7 +27,7 @@
         'boost' => 3,
       ),
       'required' => true,
-      'importable' => 'required',
+      'importable' => 'true',
       'duplicate_merge' => 'enabled',
       'merge_filter' => 'selected',
     ),

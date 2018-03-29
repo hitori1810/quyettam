@@ -18,7 +18,7 @@ if(!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
 
 $mod_strings = array (
 	'LBL_MODULE_NAME' => 'Holidays',
-	'LBL_MODULE_NAME_SINGULAR' => 'Holiday',
+	'LBL_MODULE_NAME_SINGULAR' => 'Holidays',
 	'LBL_MODULE_TITLE' => 'Holidays: Home',
 	'LBL_HOLIDAY' => 'Holiday: ',
 	'LBL_HOLIDAY_DATE' => 'Holiday Date: ',
@@ -42,6 +42,12 @@ $mod_strings = array (
 	// For HolidaysQuickCreate.php
 	'LBL_SELECT_RESOURCE_TYPE' => 'Select Resource Type...',
 	'LBL_USER' => 'User',
-	'LBL_CONTACT' => 'Contact',
+    'LBL_CONTACT' => 'Contact',
+    'LBL_TEACHER_ID' => 'Teacher ID',
+    'LBL_TEACHER_NAME' => 'Teacher Name',
+    'LBL_TYPE' => 'Type',
+    'LBL_RANGE' => 'Leave Date',
+    'LBL_PUBLIC_HOLIDAY' => 'Public Holiday',
+	'LBL_CONTENT' => 'Content',
 );
 ?>

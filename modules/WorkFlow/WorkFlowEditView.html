@@ -56,20 +56,23 @@ function remember_place(obj)
     <td width="15%" scope="row">
        {MOD.LBL_EMAILTEMPLATES_TYPE}
     </td>
+    <!--Edit by Bui Kim Tung - customize display fot sms type-->
     <td width="30%" >
-        <select name='type' tabindex="4">{TYPEDROPDOWN}</select>
+        
+        <select name='type' tabindex="4" onchange="displayTinymce();">{TYPEDROPDOWN}</select>
     </td>
 	</tr>
-	<tr>
+	<tr id="tr_from_name">
 	<td width="15%" scope="row">{MOD.LBL_FROM_NAME} </td>
 	<td width="30%" ><input name='from_name' tabindex="2" type="text" size='30' maxlength="255" value="{FROM_NAME}"></td>
 	<td colspan=2></td>
 	</tr>
-	<tr>
+	<tr id="tr_from_address">
 	<td width="15%" scope="row">{MOD.LBL_FROM_ADDRESS} </td>
 	<td width="30%" ><input name='from_address' tabindex="3" type="text" size='30' maxlength="255" value="{FROM_ADDRESS}"></td>
 	<td colspan=2></td>
 	</tr>
+    <!--END edit by Bui Kim Tung-->
 <style>
 #subjectfield { height: 1.6em; }
 </style>
@@ -113,8 +116,8 @@ function remember_place(obj)
 	</tr>
 	<tr><td colspan=4>&nbsp;</td></tr>
 	
-	
-	<tr>
+	<!--Edit by Bui Kim Tung - customize display fot sms type-->
+	<tr id="tr_subject">
 	<td width="15%" scope="row">{MOD.LBL_SUBJECT}</td>
         <td colspan='4' ><textarea onblur="remember_place(this);" name='subject' tabindex='1' cols="90" rows="1"  style="height: 1.6.em; overflow-y:auto; font-family:sans-serif,monospace; font-size:inherit;" id="subjectfield">{SUBJECT}</textarea></td>
         </tr>
@@ -122,10 +125,15 @@ function remember_place(obj)
 	<td valign="top" scope="row">{MOD.LBL_BODY}</td>
 <!-- BEGIN: htmlarea -->
     <td colspan="4" >
-        <textarea id='body_html' tabindex='90' name='body_html'>{HTMLAREA}</textarea> 
+        <textarea id='body_html' tabindex='90' name='body_html' style='width: 400px; height: 100px;'>{HTMLAREA}</textarea> 
+        
+        <div id="alt_text_check">
         <input id="toggle_textarea_elem" onchange="toggle_textarea(this);" type="checkbox" name="toggle_html" {ALT_CHECKED}> {MOD.LBL_EDIT_ALT_TEXT}<br>
-        <div id="text_div" style="display: none"><textarea tabindex='0' name='body' cols="100" rows="20">{BODY}</textarea></div>
+        </div>
+        <div id="text_div" style="display: none"><textarea id='alt_text' tabindex='0' name='body' cols="100" rows="20">{BODY}</textarea></div>
+        
     </td>
+    <!--END -- Edit by Bui Kim Tung--> 
 <!-- END: htmlarea -->
 <script>
 function toggle_textarea(obj)

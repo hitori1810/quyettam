@@ -5,19 +5,41 @@ array (
   array (
     'basic_search' => 
     array (
-      'code' => 
+      'full_lead_name' => 
       array (
         'type' => 'varchar',
-        'label' => 'LBL_CODE',
+        'label' => 'LBL_FULL_NAME',
         'width' => '10%',
         'default' => true,
-        'name' => 'code',
+        'name' => 'full_lead_name',
       ),
-      'search_name' => 
+      'phone' => 
       array (
-        'name' => 'search_name',
-        'label' => 'LBL_NAME',
+        'name' => 'phone',
+        'label' => 'LBL_ANY_PHONE',
         'type' => 'name',
+        'default' => true,
+        'width' => '10%',
+      ),
+      'status' => 
+      array (
+        'name' => 'status',
+        'default' => true,
+        'width' => '10%',
+      ),
+      'assigned_user_id' => 
+      array (
+        'name' => 'assigned_user_id',
+        'type' => 'enum',
+        'label' => 'LBL_ASSIGNED_TO',
+        'function' => 
+        array (
+          'name' => 'get_user_array',
+          'params' => 
+          array (
+            0 => false,
+          ),
+        ),
         'default' => true,
         'width' => '10%',
       ),
@@ -26,32 +48,33 @@ array (
         'name' => 'current_user_only',
         'label' => 'LBL_CURRENT_USER_FILTER',
         'type' => 'bool',
-        'default' => true,
         'width' => '10%',
+        'default' => true,
+      ),
+      'favorites_only' => 
+      array (
+        'name' => 'favorites_only',
+        'label' => 'LBL_FAVORITES_FILTER',
+        'type' => 'bool',
+        'width' => '10%',
+        'default' => true,
       ),
     ),
     'advanced_search' => 
     array (
-      'code' => 
+      'full_lead_name' => 
       array (
         'type' => 'varchar',
-        'label' => 'LBL_CODE',
+        'label' => 'LBL_FULL_NAME',
         'width' => '10%',
         'default' => true,
-        'name' => 'code',
+        'name' => 'full_lead_name',
       ),
-      'name' => 
+      'phone' => 
       array (
+        'name' => 'phone',
+        'label' => 'LBL_ANY_PHONE',
         'type' => 'name',
-        'link' => true,
-        'label' => 'LBL_NAME',
-        'width' => '10%',
-        'default' => true,
-        'name' => 'name',
-      ),
-      'account_name' => 
-      array (
-        'name' => 'account_name',
         'default' => true,
         'width' => '10%',
       ),
@@ -63,19 +86,78 @@ array (
         'default' => true,
         'width' => '10%',
       ),
-      'phone' => 
+      'nick_name' => 
       array (
-        'name' => 'phone',
-        'label' => 'LBL_ANY_PHONE',
-        'type' => 'name',
-        'default' => true,
+        'type' => 'varchar',
+        'label' => 'LBL_NICK_NAME',
         'width' => '10%',
+        'default' => true,
+        'name' => 'nick_name',
       ),
-      'address_street' => 
+      'birthdate' => 
       array (
-        'name' => 'address_street',
-        'label' => 'LBL_ANY_ADDRESS',
-        'type' => 'name',
+        'type' => 'date',
+        'label' => 'LBL_BIRTHDATE',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'birthdate',
+      ),
+      'school_name' => 
+      array (
+        'type' => 'varchar',
+        'label' => 'LBL_SCHOOL_NAME',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'school_name',
+      ),
+      'prefer_level' => 
+      array (
+        'type' => 'enum',
+        'default' => true,
+        'studio' => 'visible',
+        'label' => 'LBL_PREFER_LEVEL',
+        'width' => '10%',
+        'name' => 'prefer_level',
+      ),
+      'facebook' => 
+      array (
+        'type' => 'url',
+        'label' => 'LBL_FACEBOOK',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'facebook',
+      ),
+      'identity_number' => 
+      array (
+        'type' => 'varchar',
+        'label' => 'LBL_INDENTITY_NUMBER',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'identity_number',
+      ),
+      'j_school_leads_1_name' => 
+      array (
+        'type' => 'relate',
+        'link' => true,
+        'label' => 'LBL_J_SCHOOL_LEADS_1_FROM_J_SCHOOL_TITLE',
+        'id' => 'J_SCHOOL_LEADS_1J_SCHOOL_IDA',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'j_school_leads_1_name',
+      ),
+      'assigned_user_id' => 
+      array (
+        'name' => 'assigned_user_id',
+        'type' => 'enum',
+        'label' => 'LBL_ASSIGNED_TO',
+        'function' => 
+        array (
+          'name' => 'get_user_array',
+          'params' => 
+          array (
+            0 => false,
+          ),
+        ),
         'default' => true,
         'width' => '10%',
       ),
@@ -85,27 +167,30 @@ array (
         'default' => true,
         'width' => '10%',
       ),
+      'potential' => 
+      array (
+        'type' => 'enum',
+        'default' => true,
+        'studio' => 'visible',
+        'label' => 'LBL_POTENTIAL',
+        'width' => '10%',
+        'name' => 'potential',
+      ),
       'lead_source' => 
       array (
         'name' => 'lead_source',
         'default' => true,
         'width' => '10%',
       ),
-      'category' => 
+      'campaign_name' => 
       array (
-        'type' => 'enum',
-        'default' => true,
-        'label' => 'LBL_CATEGORY',
-        'width' => '10%',
-        'name' => 'category',
-      ),
-      'created_by' => 
-      array (
-        'type' => 'assigned_user_name',
-        'label' => 'LBL_CREATED',
+        'type' => 'relate',
+        'link' => true,
+        'label' => 'LBL_CAMPAIGN',
+        'id' => 'CAMPAIGN_ID',
         'width' => '10%',
         'default' => true,
-        'name' => 'created_by',
+        'name' => 'campaign_name',
       ),
       'date_entered' => 
       array (
@@ -118,6 +203,30 @@ array (
         'width' => '10%',
         'default' => true,
         'name' => 'date_entered',
+      ),
+      'created_by' => 
+      array (
+        'type' => 'assigned_user_name',
+        'label' => 'LBL_CREATED',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'created_by',
+      ),
+      'team_name' => 
+      array (
+        'type' => 'relate',
+        'link' => true,
+        'studio' => 
+        array (
+          'portallistview' => false,
+          'portaldetailview' => false,
+          'portaleditview' => false,
+        ),
+        'label' => 'LBL_TEAMS',
+        'id' => 'TEAM_ID',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'team_name',
       ),
       'date_modified' => 
       array (
@@ -139,45 +248,29 @@ array (
         'default' => true,
         'name' => 'modified_user_id',
       ),
-      'team_name' => 
+      'address_street' => 
       array (
-        'type' => 'relate',
-        'link' => true,
-        'studio' => 
-        array (
-          'portallistview' => false,
-          'portaldetailview' => false,
-          'portaleditview' => false,
-        ),
-        'label' => 'LBL_TEAMS',
-        'id' => 'TEAM_ID',
-        'width' => '10%',
+        'name' => 'address_street',
+        'label' => 'LBL_ANY_ADDRESS',
+        'type' => 'name',
         'default' => true,
-        'name' => 'team_name',
+        'width' => '10%',
       ),
       'current_user_only' => 
       array (
         'label' => 'LBL_CURRENT_USER_FILTER',
         'type' => 'bool',
-        'default' => true,
         'width' => '10%',
+        'default' => true,
         'name' => 'current_user_only',
       ),
-      'assigned_user_id' => 
+      'favorites_only' => 
       array (
-        'name' => 'assigned_user_id',
-        'type' => 'enum',
-        'label' => 'LBL_ASSIGNED_TO',
-        'function' => 
-        array (
-          'name' => 'get_user_array',
-          'params' => 
-          array (
-            0 => false,
-          ),
-        ),
-        'default' => true,
+        'name' => 'favorites_only',
+        'label' => 'LBL_FAVORITES_FILTER',
+        'type' => 'bool',
         'width' => '10%',
+        'default' => true,
       ),
     ),
   ),

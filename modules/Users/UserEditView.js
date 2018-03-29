@@ -1,15 +1,4 @@
-/*********************************************************************************
- * By installing or using this file, you are confirming on behalf of the entity
- * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
- * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
- * http://www.sugarcrm.com/master-subscription-agreement
- *
- * If Company is not bound by the MSA, then by installing or using this file
- * you are agreeing unconditionally that Company will be bound by the MSA and
- * certifying that you have authority to bind Company accordingly.
- *
- * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
- ********************************************************************************/
+
 function setSymbolValue(id){document.getElementById('symbol').value=currencies[id];}
 function user_status_display(field){if(typeof field.form.is_admin=='undefined')
 {var input=document.createElement("input");input.setAttribute("id","is_admin");input.setAttribute("type","hidden");input.setAttribute("name","is_admin");input.setAttribute("value","");field.form.appendChild(input);}
@@ -17,7 +6,7 @@ if(typeof field.form.is_group=='undefined')
 {var input=document.createElement("input");input.setAttribute("id","is_group");input.setAttribute("type","hidden");input.setAttribute("name","is_group");input.setAttribute("value","");field.form.appendChild(input);}
 if(typeof field.form.portal_only=='undefined')
 {var input=document.createElement("input");input.setAttribute("id","portal_only");input.setAttribute("type","hidden");input.setAttribute("name","portal_only");input.setAttribute("value","");field.form.appendChild(input);}
-switch(field.value){case'Administrator':document.getElementById('UserTypeDesc').innerHTML=SUGAR.language.get('Users',"LBL_ADMIN_DESC");document.getElementById('is_admin').value='1';break;case'RegularUser':document.getElementById('is_admin').value='0';document.getElementById('UserTypeDesc').innerHTML=SUGAR.language.get('Users',"LBL_REGULAR_DESC");break;case'UserAdministrator':document.getElementById('is_admin').value='0';document.getElementById('UserTypeDesc').innerHTML=SUGAR.language.get('Users',"LBL_USER_ADMIN_DESC");break;case'TEMPLATE':document.getElementById('is_admin').value='0';document.getElementById('is_template').value='1';document.getElementById('UserTypeDesc').innerHTML=SUGAR.language.get('Users',"LBL_TEMPLATE_DESC");break;case'GROUP':document.getElementById('is_admin').value='0';document.getElementById('is_group').value='1';document.getElementById('UserTypeDesc').innerHTML=SUGAR.language.get('Users',"LBL_GROUP_DESC");break;case'PORTAL_ONLY':document.getElementById('is_admin').value='0';document.getElementById('is_group').value='0';document.getElementById('portal_only').value='1';document.getElementById('UserTypeDesc').innerHTML=SUGAR.language.get('Users','LBL_PORTAL_ONLY_DESC');break;}}
+switch(field.value){case'Administrator':document.getElementById('UserTypeDesc').innerHTML=SUGAR.language.get('Users',"LBL_ADMIN_DESC");document.getElementById('is_admin').value='1';break;case'RegularUser':document.getElementById('is_admin').value='0';document.getElementById('UserTypeDesc').innerHTML=SUGAR.language.get('Users',"LBL_REGULAR_DESC");break;case'UserAdministrator':document.getElementById('is_admin').value='0';document.getElementById('UserTypeDesc').innerHTML=SUGAR.language.get('Users',"LBL_USER_ADMIN_DESC");break;case'GROUP':document.getElementById('is_admin').value='0';document.getElementById('is_group').value='1';document.getElementById('UserTypeDesc').innerHTML=SUGAR.language.get('Users',"LBL_GROUP_DESC");break;case'PORTAL_ONLY':document.getElementById('is_admin').value='0';document.getElementById('is_group').value='0';document.getElementById('portal_only').value='1';document.getElementById('UserTypeDesc').innerHTML=SUGAR.language.get('Users','LBL_PORTAL_ONLY_DESC');break;}}
 function startOutBoundEmailSettingsTest()
 {var loader=new YAHOO.util.YUILoader({require:["element","sugarwidgets"],loadOptional:true,skin:{base:'blank',defaultSkin:''},onSuccess:testOutboundSettings,allowRollup:true,base:"include/javascript/yui/build/"});loader.addModule({name:"sugarwidgets",type:"js",fullpath:"include/javascript/sugarwidgets/SugarYUIWidgets.js",varName:"YAHOO.SUGAR",requires:["datatable","dragdrop","treeview","tabview"]});loader.insert();}
 function testOutboundSettings()

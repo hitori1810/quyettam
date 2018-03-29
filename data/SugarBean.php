@@ -1662,8 +1662,8 @@ class SugarBean
             $this->fetched_row[$change['field_name']] = $change['after'];
         }
 
-        //rrs - bug 7908
-        $this->process_workflow_alerts();
+        //rrs - bug 7908 -- Comment By Lap Nguyen - Fix bug send Email 2 time Workflow After Save
+        //$this->process_workflow_alerts();
         //rrs
 
         //If we aren't in setup mode and we have a current user and module, then we track
@@ -2683,7 +2683,7 @@ class SugarBean
      * Internal function, do not override.
     */
     function retrieve($id = -1, $encode=true,$deleted=true)
-    {  
+    {
         global $locale;
 
         $custom_logic_arguments['id'] = $id;
@@ -2752,7 +2752,7 @@ class SugarBean
         {
             return null;
         }
-        
+
         //make copy of the fetched row for construction of audit record and for business logic/workflow
         $row = $this->convertRow($row);
         $this->fetched_row=$row;
@@ -2818,7 +2818,7 @@ class SugarBean
         $custom_logic_arguments['id'] = $id;
         $custom_logic_arguments['encode'] = $encode;
         $this->call_custom_logic("after_retrieve", $custom_logic_arguments);
-        unset($custom_logic_arguments);    
+        unset($custom_logic_arguments);
         return $this;
     }
 
@@ -3766,7 +3766,7 @@ class SugarBean
 						$rel_mod = new $beanList[$rel_module]();
 						//if bean has first and last name fields, then name should be concatenated
 						if(isset($rel_mod->field_name_map['first_name']) && isset($rel_mod->field_name_map['last_name'])){
-								$data['db_concat_fields'] = array(0=>'first_name', 1=>'last_name');
+								$data['db_concat_fields'] = array(0=>'last_name' ,1=>'first_name', );
 						}
 					}
 
@@ -6829,50 +6829,5 @@ class SugarBean
         {
             return false;
         }
-    }
-    
-    /**
-    * return array with get some fields
-    * 
-    * @param mixed $dbOnly
-    * @param mixed $stringOnly
-    * @param mixed $upperKeys
-    */
-    function toFieldsArray($params = array(), $to_db_date = true, $get_link = false) {
-        global $timedate;
-        
-        static $cache = array();
-        $arr = array();
-
-        foreach($this->field_defs as $field=>$data)
-        {
-            if(!empty($params) && !in_array($field,$params)) continue; 
-            if($field == "teams") continue;
-            if(!$get_link && $data['type'] == 'link') continue ;
-            if(isset($this->$field)){
-                $arr[$field] = $this->$field;
-            }else{
-                $arr[$field] = '';
-            }
-
-            if($to_db_date && isset($this->$field) && !empty($this->$field) 
-                && in_array($data['type'],array('date','datetime','datetimecombo'))) {
-                switch ($data['type']) {
-                    case 'datetime' : {
-                        $arr[$field] =  $timedate->to_db($this->$field);
-                        break;
-                    }
-                    case 'datetimecombo' : {
-                        $arr[$field] =  $timedate->to_db($this->$field);
-                        break;
-                    }
-                    case 'date' : {
-                        $arr[$field] =  $timedate->to_db_date($this->$field, false);
-                        break;
-                    }                       
-                }
-            }
-        }
-        return $arr;
     }
 }

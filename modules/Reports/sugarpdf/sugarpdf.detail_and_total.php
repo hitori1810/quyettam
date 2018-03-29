@@ -13,6 +13,7 @@ if(!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
  * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
  ********************************************************************************/
 
+
 require_once('modules/Reports/sugarpdf/sugarpdf.reports.php');
 
 class ReportsSugarpdfDetail_and_total extends ReportsSugarpdfReports

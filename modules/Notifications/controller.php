@@ -9,7 +9,7 @@
  * you are agreeing unconditionally that Company will be bound by the MSA and
  * certifying that you have authority to bind Company accordingly.
  *
- * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+ * Copyright (C) 2004-2014 SugarCRM Inc.  All rights reserved.
  ********************************************************************************/
 
 require_once('modules/Notifications/Notifications.php');
@@ -19,8 +19,7 @@ class NotificationsController extends SugarController
     var $action_remap = array ( ) ;
 
     /**
-     * DEPRECATED 
-     *
+     * @deprecated Since 7.2 will be removed on 7.5
      */
     function action_checkNewNotifications()
     {
@@ -32,7 +31,7 @@ class NotificationsController extends SugarController
 
 	    $lastNotiticationCheck = !empty($_SESSION['lastNotificationCheck']) ? $_SESSION['lastNotificationCheck'] : $thirtySecondsAgoFormatted;
 	    
-        $n = new Notifications();
+        $n = BeanFactory::getBean('Notifications');
         $unreadCount = $n->retrieveUnreadCountFromDateEnteredFilter($lastNotiticationCheck);
         
         //Store the last datetime checked.

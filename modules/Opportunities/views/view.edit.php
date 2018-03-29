@@ -1,61 +1,62 @@
 <?php
-if (!defined('sugarEntry') || !sugarEntry) {
-    die('Not A Valid Entry Point');
-}
-
-/*********************************************************************************
- * By installing or using this file, you are confirming on behalf of the entity
- * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
- * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
- * http://www.sugarcrm.com/master-subscription-agreement
- *
- * If Company is not bound by the MSA, then by installing or using this file
- * you are agreeing unconditionally that Company will be bound by the MSA and
- * certifying that you have authority to bind Company accordingly.
- *
- * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
- ********************************************************************************/
-
-/*********************************************************************************
-
- * Description: This file is used to override the default Meta-data DetailView behavior
- * to provide customization specific to the Campaigns module.
- * Portions created by SugarCRM are Copyright (C) SugarCRM, Inc.
- * All Rights Reserved.
- * Contributor(s): ______________________________________..
- ********************************************************************************/
-
-class OpportunitiesViewEdit extends ViewEdit
-{
-
-    public function __construct()
-    {
-        parent::__construct();
-        $this->useForSubpanel = true;
+    if (!defined('sugarEntry') || !sugarEntry) {
+        die('Not A Valid Entry Point');
     }
 
-    /**
-     * @deprecated
-     */
-    public function OpportunitiesViewEdit()
-    {
-        self::__construct();
-    }
+    /*********************************************************************************
+    * By installing or using this file, you are confirming on behalf of the entity
+    * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
+    * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
+    * http://www.sugarcrm.com/master-subscription-agreement
+    *
+    * If Company is not bound by the MSA, then by installing or using this file
+    * you are agreeing unconditionally that Company will be bound by the MSA and
+    * certifying that you have authority to bind Company accordingly.
+    *
+    * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+    ********************************************************************************/
 
-    public function display()
+    /*********************************************************************************
+
+    * Description: This file is used to override the default Meta-data DetailView behavior
+    * to provide customization specific to the Campaigns module.
+    * Portions created by SugarCRM are Copyright (C) SugarCRM, Inc.
+    * All Rights Reserved.
+    * Contributor(s): ______________________________________..
+    ********************************************************************************/
+
+    class OpportunitiesViewEdit extends ViewEdit
     {
-        global $app_list_strings;
-        $json = getJSONobj();
-        $prob_array = $json->encode($app_list_strings['sales_probability_dom']);
-        $prePopProb = '';
-        if (empty($this->bean->id) && empty($_REQUEST['probability'])) {
-            $prePopProb = 'document.getElementsByName(\'sales_stage\')[0].onchange();';
+
+        public function __construct()
+        {
+            //    $this->options['show_subpanels'] = true;
+            parent::__construct();
+            $this->useForSubpanel = true;
         }
-        $admin = BeanFactory::getBean('Administration');
-        $settings = $admin->getConfigForModule('Forecasts');
-        $wonStages = $json->encode($settings['sales_stage_won']);
 
-        $probability_script = <<<EOQ
+        /**
+        * @deprecated
+        */
+        public function OpportunitiesViewEdit()
+        {
+            self::__construct();
+        }
+
+        public function display()
+        {
+            global $app_list_strings;
+            $json = getJSONobj();
+            $prob_array = $json->encode($app_list_strings['sales_probability_dom']);
+            $prePopProb = '';
+            if (empty($this->bean->id) && empty($_REQUEST['probability'])) {
+                $prePopProb = 'document.getElementsByName(\'sales_stage\')[0].onchange();';
+            }
+            $admin = BeanFactory::getBean('Administration');
+            $settings = $admin->getConfigForModule('Forecasts');
+            $wonStages = $json->encode($settings['sales_stage_won']);
+
+            $probability_script = <<<EOQ
 	<script>
 	prob_array = $prob_array;
 	var sales_stage = document.getElementsByName('sales_stage')[0];
@@ -118,7 +119,7 @@ class OpportunitiesViewEdit extends ViewEdit
 	</script>
 EOQ;
 
-        $this->ss->assign('PROBABILITY_SCRIPT', $probability_script);
-        parent::display();
+            $this->ss->assign('PROBABILITY_SCRIPT', $probability_script);
+            parent::display();
+        }
     }
-}

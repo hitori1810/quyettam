@@ -17,12 +17,6 @@ if(!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
 
 
 $listViewDefs['Contacts'] = array(
-'PICTURE' => 
-  array (
-    'width' => '10%',
-    'label' => 'LBL_PICTURE_FILE',
-    'default' => true,
-  ),
 	'NAME' => array(
 		'width' => '20%', 		
 		'label' => 'LBL_LIST_NAME', 

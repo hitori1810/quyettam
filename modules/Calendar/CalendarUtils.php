@@ -41,6 +41,7 @@ class CalendarUtils
 				'duration_minutes',
 				'status',
 				'related_to',
+                'meeting_type',
 			),
 			'Calls' => array(
 				'name',

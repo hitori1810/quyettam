@@ -26,7 +26,7 @@ $searchdefs['Holidays'] = array(
                 ),
                 'advanced_search' => array(
                     'holiday_date',
-                    'description',
+                    'type',
                 ),                                              
             ),
 );

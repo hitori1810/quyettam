@@ -310,6 +310,33 @@
       'options' => 'emailTemplates_type_list',
       'comment' => 'Type of the email template',
     ),
+    'survey_id' => 
+    array (
+      'name' => 'survey_id',
+      'vname' => 'LBL_SURVEY_ID',
+      'type' => 'id',
+      'required' => false,
+      'reportable' => false,
+      'comment' => 'Unique identifier',
+    ),
+    'sms_only' => 
+    array (
+      'name' => 'sms_only',
+      'vname' => 'LBL_SMS_ONLY',
+      'type' => 'bool',
+      'reportable' => false,
+      'comment' => 'Distinguishes the template from the one for Emails',
+    ),
+    'sms_link' => 
+    array (
+      'name' => 'sms_link',
+      'type' => 'link',
+      'relationship' => 'emailtemplate_sms',
+      'module' => 'C_SMS',
+      'bean_name' => 'C_SMS',
+      'source' => 'non-db',
+      'vname' => 'LBL_SMS',
+    ),
   ),
   'indices' => 
   array (
@@ -384,6 +411,16 @@
       'rhs_module' => 'EmailTemplates',
       'rhs_table' => 'email_templates',
       'rhs_key' => 'assigned_user_id',
+      'relationship_type' => 'one-to-many',
+    ),
+    'emailtemplate_sms' => 
+    array (
+      'lhs_module' => 'EmailTemplates',
+      'lhs_table' => 'email_templates',
+      'lhs_key' => 'id',
+      'rhs_module' => 'C_SMS',
+      'rhs_table' => 'c_sms',
+      'rhs_key' => 'template_id',
       'relationship_type' => 'one-to-many',
     ),
   ),

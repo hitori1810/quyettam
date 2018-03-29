@@ -52,6 +52,7 @@
                         <input type="radio"  id="wizardtype_nl" name="wizardtype" value='1'checked ><label for='wizardtype_nl'>{$MOD.LBL_NEWSLETTER}</label><br>
                         <input type="radio"  id="wizardtype_em" name="wizardtype" value='2'><label for='wizardtype_em'>{$MOD.LBL_EMAIL}</label><br>
                         <input type="radio"  id="wizardtype_ot" name='wizardtype' value='3'><label for='wizardtype_ot'>{$MOD.LBL_OTHER_TYPE_CAMPAIGN}</label><br>
+                        <input type="radio"  id="wizardtype" name='wizardtype' value='4'>&nbsp;{$MOD.LBL_SMS}<br>
                     </p>
                 </fieldset>
 			</td></tr>

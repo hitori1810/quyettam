@@ -151,12 +151,44 @@
       'len' => '36',
       'required' => true,
     ),
+    'list_of' => 
+    array (
+      'required' => false,
+      'name' => 'list_of',
+      'vname' => '',
+      'type' => 'multienum',
+      'massupdate' => 0,
+      'no_default' => false,
+      'comments' => '',
+      'help' => '',
+      'importable' => 'true',
+      'duplicate_merge' => 'disabled',
+      'duplicate_merge_dom_value' => '0',
+      'audited' => false,
+      'reportable' => true,
+      'unified_search' => false,
+      'merge_filter' => 'disabled',
+      'calculated' => false,
+      'size' => '20',
+      'studio' => 'visible',
+      'rows' => '4',
+      'cols' => '20',
+      'isMultiSelect' => true,
+      'options' => 'report_list_list',
+    ),
     'custom_url' => 
     array (
       'name' => 'custom_url',
       'vname' => 'LBL_CUSTOM_URL',
       'type' => 'varchar',
-      'len' => '255',
+      'len' => '100',
+    ),
+    'limit_result' => 
+    array (
+      'name' => 'limit_result',
+      'vname' => 'LBL_LIMIT_RESULT',
+      'type' => 'varchar',
+      'len' => '100',
     ),
     'content' => 
     array (
@@ -300,27 +332,21 @@
       'required' => false,
       'reportable' => false,
     ),
-    'report_scope_type' => 
+    'is_admin_data' => 
     array (
-      'name' => 'report_scope_type',
-      'vname' => 'LBL_REPORT_SCOPE_TYPE',
-      'type' => 'enum',
-      'options' => 'report_scope_type_dom',
+      'name' => 'is_admin_data',
+      'vname' => 'LBL_IS_ADMIN_DATA',
+      'type' => 'bool',
+      'default' => 0,
+      'required' => true,
     ),
-    'report_scope' => 
+    'row_number' => 
     array (
-      'name' => 'report_scope',
-      'vname' => 'LBL_REPORT_SCOPE',
-      'type' => 'text',
-      'required' => false,
-      'reportable' => false,
-    ),
-    'limit_result' => 
-    array (
-      'name' => 'limit_result',
-      'vname' => 'LBL_LIMIT_RESULT',
-      'type' => 'int',
-      'len' => 15,
+      'name' => 'row_number',
+      'vname' => 'LBL_IS_ROW_NUMBER',
+      'type' => 'bool',
+      'default' => 0,
+      'required' => true,
     ),
   ),
   'indices' => 

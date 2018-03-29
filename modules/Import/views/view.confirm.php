@@ -1,24 +1,24 @@
 <?php
 if(!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
 /*********************************************************************************
- * By installing or using this file, you are confirming on behalf of the entity
- * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
- * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
- * http://www.sugarcrm.com/master-subscription-agreement
- *
- * If Company is not bound by the MSA, then by installing or using this file
- * you are agreeing unconditionally that Company will be bound by the MSA and
- * certifying that you have authority to bind Company accordingly.
- *
- * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
- ********************************************************************************/
+* By installing or using this file, you are confirming on behalf of the entity
+* subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
+* the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
+* http://www.sugarcrm.com/master-subscription-agreement
+*
+* If Company is not bound by the MSA, then by installing or using this file
+* you are agreeing unconditionally that Company will be bound by the MSA and
+* certifying that you have authority to bind Company accordingly.
+*
+* Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+********************************************************************************/
 
 /*********************************************************************************
 
- * Description: view handler for step 1 of the import process
- * Portions created by SugarCRM are Copyright (C) SugarCRM, Inc.
- * All Rights Reserved.
- ********************************************************************************/
+* Description: view handler for step 1 of the import process
+* Portions created by SugarCRM are Copyright (C) SugarCRM, Inc.
+* All Rights Reserved.
+********************************************************************************/
 require_once('modules/Import/views/ImportView.php');
 require_once('modules/Import/sources/ImportFile.php');
 require_once('modules/Import/ImportFileSplitter.php');
@@ -29,13 +29,13 @@ require_once('include/upload_file.php');
 class ImportViewConfirm extends ImportView
 {
     const SAMPLE_ROW_SIZE = 3;
- 	protected $pageTitleKey = 'LBL_CONFIRM_TITLE';
+    protected $pageTitleKey = 'LBL_CONFIRM_TITLE';
     protected $errorScript = "";
 
- 	/**
-     * @see SugarView::display()
-     */
- 	public function display()
+    /**
+    * @see SugarView::display()
+    */
+    public function display()
     {
         global $mod_strings, $app_strings, $current_user;
         global $sugar_config, $locale;
@@ -85,7 +85,7 @@ class ImportViewConfirm extends ImportView
 
         //check to see if the file mime type is not a form of text or application octed streramand fire error if not
         if(isset($_FILES['userfile']['type']) && strpos($_FILES['userfile']['type'],'octet-stream') === false && strpos($_FILES['userfile']['type'],'text') === false
-            && strpos($_FILES['userfile']['type'],'application/vnd.ms-excel') === false && strpos($_FILES['userfile']['type'],'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet') === false) {
+        && strpos($_FILES['userfile']['type'],'application/vnd.ms-excel') === false && strpos($_FILES['userfile']['type'],'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet') === false) {
             //this file does not have a known text or application type of mime type, issue the warning
             $error_msgs[] = $mod_strings['LBL_MIME_TYPE_ERROR_1'];
             $error_msgs[] = $mod_strings['LBL_MIME_TYPE_ERROR_2'];
@@ -108,8 +108,8 @@ class ImportViewConfirm extends ImportView
             {
                 //show error only if previous mime type check has passed
                 if($mimeTypeOk){
-                     $this->ss->assign("AUTO_DETECT_ERROR",  $mod_strings['LBL_AUTO_DETECT_ERROR']);
-                 }
+                    $this->ss->assign("AUTO_DETECT_ERROR",  $mod_strings['LBL_AUTO_DETECT_ERROR']);
+                }
             }
             else
             {
@@ -163,16 +163,16 @@ class ImportViewConfirm extends ImportView
             return;
         }
 
-         //Check if we will exceed the maximum number of records allowed per import.
-         $maxRecordsExceeded = FALSE;
-         $maxRecordsWarningMessg = "";
-         $lineCount = $importFile->getNumberOfLinesInfile();
-         $maxLineCount = isset($sugar_config['import_max_records_total_limit'] ) ? $sugar_config['import_max_records_total_limit'] : 5000;
-         if( !empty($maxLineCount) && ($lineCount > $maxLineCount) )
-         {
-             $maxRecordsExceeded = TRUE;
-             $maxRecordsWarningMessg = string_format($mod_strings['LBL_IMPORT_ERROR_MAX_REC_LIMIT_REACHED'], array($lineCount, $maxLineCount) );
-         }
+        //Check if we will exceed the maximum number of records allowed per import.
+        $maxRecordsExceeded = FALSE;
+        $maxRecordsWarningMessg = "";
+        $lineCount = $importFile->getNumberOfLinesInfile();
+        $maxLineCount = isset($sugar_config['import_max_records_total_limit'] ) ? $sugar_config['import_max_records_total_limit'] : 5000;
+        if( !empty($maxLineCount) && ($lineCount > $maxLineCount) )
+        {
+            $maxRecordsExceeded = TRUE;
+            $maxRecordsWarningMessg = string_format($mod_strings['LBL_IMPORT_ERROR_MAX_REC_LIMIT_REACHED'], array($lineCount, $maxLineCount) );
+        }
 
         //Retrieve a sample set of data
         $rows = $this->getSampleSet($importFile);
@@ -281,16 +281,18 @@ class ImportViewConfirm extends ImportView
     private function setNumberFormatOptions($field_map = array())
     {
         global $locale, $current_user, $sugar_config;
-
-        $num_grp_sep = isset($field_map['importlocale_num_grp_sep'])? $field_map['importlocale_num_grp_sep'] : $current_user->getPreference('num_grp_sep');
-        $dec_sep = isset($field_map['importlocale_dec_sep'])? $field_map['importlocale_dec_sep'] : $current_user->getPreference('dec_sep');
+        //Fix Number format by current user - Lap nguyen
+        //$num_grp_sep = isset($field_map['importlocale_num_grp_sep'])? $field_map['importlocale_num_grp_sep'] : $current_user->getPreference('num_grp_sep');
+        //$dec_sep = isset($field_map['importlocale_dec_sep'])? $field_map['importlocale_dec_sep'] : $current_user->getPreference('dec_sep');
+        $num_grp_sep = $current_user->getPreference('num_grp_sep');
+        $dec_sep = $current_user->getPreference('dec_sep');
 
         $this->ss->assign("NUM_GRP_SEP",( empty($num_grp_sep) ? $sugar_config['default_number_grouping_seperator'] : $num_grp_sep ));
         $this->ss->assign("DEC_SEP",( empty($dec_sep)? $sugar_config['default_decimal_seperator'] : $dec_sep ));
 
 
         $significantDigits = isset($field_map['importlocale_default_currency_significant_digits']) ? $field_map['importlocale_default_currency_significant_digits']
-                                :  $locale->getPrecedentPreference('default_currency_significant_digits', $current_user);
+        :  $locale->getPrecedentPreference('default_currency_significant_digits', $current_user);
 
         $sigDigits = '';
         for($i=0; $i<=6; $i++)
@@ -346,8 +348,13 @@ eoq;
         global $current_user, $sugar_config;
 
         $timeFormat = $current_user->getUserDateTimePreferences();
-        $defaultTimeOption = isset($field_map['importlocale_timeformat'])? $field_map['importlocale_timeformat'] : $timeFormat['time'];
-        $defaultDateOption = isset($field_map['importlocale_dateformat'])? $field_map['importlocale_dateformat'] : $timeFormat['date'];
+        //Fix date time by current user - Lap nguyen
+        //    $defaultTimeOption = isset($field_map['importlocale_timeformat'])? $field_map['importlocale_timeformat'] : $timeFormat['time'];
+        //    $defaultDateOption = isset($field_map['importlocale_dateformat'])? $field_map['importlocale_dateformat'] : $timeFormat['date'];
+
+        $defaultTimeOption = $timeFormat['time'];
+        $defaultDateOption = $timeFormat['date'];
+
 
         $timeOptions = get_select_options_with_id($sugar_config['time_formats'], $defaultTimeOption);
         $dateOptions = get_select_options_with_id($sugar_config['date_formats'], $defaultDateOption);
@@ -414,7 +421,7 @@ eoq;
         {
             array_unshift($rows, array_fill(0,1,'') );
         }
-        
+
         foreach ($rows as &$row) {
             if (is_array($row)) {
                 foreach ($row as &$val) {
@@ -426,8 +433,8 @@ eoq;
     }
 
     /**
-     * Returns JS used in this view
-     */
+    * Returns JS used in this view
+    */
     private function _getJS($maxRecordsExceeded, $maxRecordsWarningMessg, $importMappingJS, $importFileMap)
     {
         global $mod_strings, $locale;
@@ -579,12 +586,12 @@ EOJAVASCRIPT;
     }
 
     /**
-     * Displays the Smarty template for an error
-     *
-     * @param string $message error message to show
-     * @param string $module what module we were importing into
-     * @param string $action what page we should go back to
-     */
+    * Displays the Smarty template for an error
+    *
+    * @param string $message error message to show
+    * @param string $module what module we were importing into
+    * @param string $action what page we should go back to
+    */
     protected function _showImportError($message,$module,$action = 'Step1',$showCancel = false, $cancelLabel = null, $display = false)
     {
         if(!is_array($message)){
@@ -595,7 +602,7 @@ EOJAVASCRIPT;
         foreach($message as $m){
             $display_msg .= '<p>'.htmlentities($m, ENT_QUOTES, 'utf-8').'</p><br>';
         }
-		global $mod_strings;
+        global $mod_strings;
 
         $ss->assign("MESSAGE",$display_msg);
         $ss->assign("ACTION",$action);

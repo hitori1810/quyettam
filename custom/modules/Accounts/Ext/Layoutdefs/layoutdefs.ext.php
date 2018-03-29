@@ -2,15 +2,15 @@
  //WARNING: The contents of this file are auto-generated
 
 
- // created: 2015-02-11 11:04:59
-$layout_defs["Accounts"]["subpanel_setup"]['accounts_campaigns_1'] = array (
+ // created: 2017-08-09 23:33:27
+$layout_defs["Accounts"]["subpanel_setup"]['accounts_c_contacts_1'] = array (
   'order' => 100,
-  'module' => 'Campaigns',
+  'module' => 'C_Contacts',
   'subpanel_name' => 'default',
   'sort_order' => 'asc',
   'sort_by' => 'id',
-  'title_key' => 'LBL_ACCOUNTS_CAMPAIGNS_1_FROM_CAMPAIGNS_TITLE',
-  'get_subpanel_data' => 'accounts_campaigns_1',
+  'title_key' => 'LBL_ACCOUNTS_C_CONTACTS_1_FROM_C_CONTACTS_TITLE',
+  'get_subpanel_data' => 'accounts_c_contacts_1',
   'top_buttons' => 
   array (
     0 => 
@@ -26,20 +26,20 @@ $layout_defs["Accounts"]["subpanel_setup"]['accounts_campaigns_1'] = array (
 );
 
 
- // created: 2015-03-05 14:18:59
-$layout_defs["Accounts"]["subpanel_setup"]['accounts_c_bookinghotel_1'] = array (
+ // created: 2014-04-12 00:29:43
+$layout_defs["Accounts"]["subpanel_setup"]['accounts_c_invoices_1'] = array (
   'order' => 100,
-  'module' => 'C_BookingHotel',
+  'module' => 'C_Invoices',
   'subpanel_name' => 'default',
   'sort_order' => 'asc',
   'sort_by' => 'id',
-  'title_key' => 'LBL_ACCOUNTS_C_BOOKINGHOTEL_1_FROM_C_BOOKINGHOTEL_TITLE',
-  'get_subpanel_data' => 'accounts_c_bookinghotel_1',
+  'title_key' => 'LBL_ACCOUNTS_C_INVOICES_1_FROM_C_INVOICES_TITLE',
+  'get_subpanel_data' => 'accounts_c_invoices_1',
   'top_buttons' => 
   array (
     0 => 
     array (
-      'widget_class' => 'SubPanelTopCreateButton',
+      'widget_class' => 'SubPanelTopButtonQuickCreate',
     ),
     1 => 
     array (
@@ -50,22 +50,22 @@ $layout_defs["Accounts"]["subpanel_setup"]['accounts_c_bookinghotel_1'] = array 
 );
 
 
- // created: 2015-03-24 09:12:26
-$layout_defs["Accounts"]["subpanel_setup"]['accounts_c_bookingticket_1'] = array (
+ // created: 2014-04-12 00:31:10
+$layout_defs["Accounts"]["subpanel_setup"]['accounts_c_payments_1'] = array (
   'order' => 100,
-  'module' => 'C_BookingTicket',
+  'module' => 'C_Payments',
   'subpanel_name' => 'default',
   'sort_order' => 'asc',
   'sort_by' => 'id',
-  'title_key' => 'LBL_ACCOUNTS_C_BOOKINGTICKET_1_FROM_C_BOOKINGTICKET_TITLE',
-  'get_subpanel_data' => 'accounts_c_bookingticket_1',
-  'top_buttons' => 
+  'title_key' => 'LBL_ACCOUNTS_C_PAYMENTS_1_FROM_C_PAYMENTS_TITLE',
+  'get_subpanel_data' => 'accounts_c_payments_1',
+  'top_buttons' =>
   array (
-    0 => 
+    0 =>
     array (
-      'widget_class' => 'SubPanelTopCreateButton',
+      'widget_class' => 'SubPanelTopButtonQuickCreate',
     ),
-    1 => 
+    1 =>
     array (
       'widget_class' => 'SubPanelTopSelectButton',
       'mode' => 'MultiSelect',
@@ -73,141 +73,79 @@ $layout_defs["Accounts"]["subpanel_setup"]['accounts_c_bookingticket_1'] = array
   ),
 );
 
-
- // created: 2015-03-05 14:16:16
-$layout_defs["Accounts"]["subpanel_setup"]['accounts_c_bookingtour_1'] = array (
-  'order' => 100,
-  'module' => 'C_BookingTour',
-  'subpanel_name' => 'default',
-  'sort_order' => 'asc',
-  'sort_by' => 'id',
-  'title_key' => 'LBL_ACCOUNTS_C_BOOKINGTOUR_1_FROM_C_BOOKINGTOUR_TITLE',
-  'get_subpanel_data' => 'accounts_c_bookingtour_1',
-  'top_buttons' => 
-  array (
-    0 => 
+$layout_defs["Accounts"]["subpanel_setup"]["account_payments"] = array (
+    'order' => 100,
+    'module' => 'J_Payment',
+    'subpanel_name' => 'default',
+    'title_key' => 'Payment',
+    'sort_order' => 'asc',
+    'sort_by' => 'payment_type',
+    'get_subpanel_data' => 'payment_link',
+    'top_buttons' =>
     array (
-      'widget_class' => 'SubPanelTopCreateButton',
     ),
-    1 => 
-    array (
-      'widget_class' => 'SubPanelTopSelectButton',
-      'mode' => 'MultiSelect',
-    ),
-  ),
 );
 
 
- // created: 2015-04-06 15:51:51
-//$layout_defs["Accounts"]["subpanel_setup"]['accounts_c_ticketreport_1'] = array (
-  //'order' => 100,
-//  'module' => 'C_TicketReport',
-//  'subpanel_name' => 'default',
-//  'sort_order' => 'asc',
-//  'sort_by' => 'id',
-//  'title_key' => 'LBL_ACCOUNTS_C_TICKETREPORT_1_FROM_C_TICKETREPORT_TITLE',
-//  'get_subpanel_data' => 'accounts_c_ticketreport_1',
-//  'top_buttons' => 
-//  array (
-//    0 => 
-//    array (
-//      'widget_class' => 'SubPanelTopButtonQuickCreate',
-//    ),
-//    1 => 
-//    array (
-//      'widget_class' => 'SubPanelTopSelectButton',
-//      'mode' => 'MultiSelect',
-//    ),
-//  ),
-//);
-
-
- // created: 2015-04-15 15:51:36
-$layout_defs["Accounts"]["subpanel_setup"]['accounts_c_ticket_1'] = array (
+ // created: 2014-10-08 08:28:57
+/**
+ *
+ * LICENSE: The contents of this file are subject to the license agreement ("License") which is included
+ * in the installation package (LICENSE.txt). By installing or using this file, you have unconditionally
+ * agreed to the terms and conditions of the License, and you may not use this file except in compliance
+ * with the License.
+ *
+ * @author     Original Author Biztech Co.
+ */
+$layout_defs["Accounts"]["subpanel_setup"]['bc_survey_accounts'] = array (
   'order' => 100,
-  'module' => 'C_Ticket',
+  'module' => 'bc_survey',
   'subpanel_name' => 'default',
   'sort_order' => 'asc',
   'sort_by' => 'id',
-  'title_key' => 'LBL_ACCOUNTS_C_TICKET_1_FROM_C_TICKET_TITLE',
-  'get_subpanel_data' => 'accounts_c_ticket_1',
-  'top_buttons' => 
-  array (
-    //0 => 
-//    array (
-//      'widget_class' => 'SubPanelTopButtonQuickCreate',
-//    ),
-//    1 => 
-//    array (
-//      'widget_class' => 'SubPanelTopSelectButton',
-//      'mode' => 'MultiSelect',
-//    ),
-  ),
+  'title_key' => 'LBL_BC_SURVEY_ACCOUNTS_FROM_BC_SURVEY_TITLE',
+  'get_subpanel_data' => 'bc_survey_accounts',
+  'top_buttons' => array (),
 );
 
 
-//    $layout_defs['Accounts']['subpanel_setup']['leads']= array(
-//        'order' => 80,
-//        'module' => 'Leads',
-//        'sort_order' => 'asc',
-//        'sort_by' => 'last_name, first_name',
-//        'subpanel_name' => 'default',
-//        'get_subpanel_data' => 'leads',
-//        'add_subpanel_data' => 'lead_id',
-//        'title_key' => 'LBL_LEADS_SUBPANEL_TITLE',
-//        'top_buttons' => array(
-//            array('widget_class' => 'SubPanelTopCreateButton'),
-//            array('widget_class' => 'SubPanelTopSelectButton',
-//                'popup_module' => 'Opportunities',
-//                'mode' => 'MultiSelect',
-//            ),
-//        ),
-//    );
-//
-//    $layout_defs['Accounts']['subpanel_setup']['leads']= array(
-//        'order' => 30,
-//        'module' => 'Contacts',
-//        'sort_order' => 'asc',
-//        'sort_by' => 'last_name, first_name',
-//        'subpanel_name' => 'ForAccounts',
-//        'get_subpanel_data' => 'contacts',
-//        'add_subpanel_data' => 'contact_id',
-//        'title_key' => 'LBL_CONTACTS_SUBPANEL_TITLE',
-//        'top_buttons' => array(
-//            array('widget_class' => 'SubPanelTopCreateButton'),
-//            array('widget_class' => 'SubPanelTopSelectButton', 'mode'=>'MultiSelect')
-//        ),
-//    );
-    
-    //$layout_defs['Accounts']['subpanel_setup']['activities']['top_buttons'][] = array('widget_class' => 'SubPanelTopActivityHistoryFilterInputButton');
-//    $layout_defs['Accounts']['subpanel_setup']['history']['top_buttons'][] = array('widget_class' => 'SubPanelTopActivityHistoryFilterInputButton');
-//    $layout_defs['Accounts']['subpanel_setup']['documents']['top_buttons'][] = array('widget_class' => 'SubPanelTopFilterInputButton');
-//    $layout_defs['Accounts']['subpanel_setup']['contacts']['top_buttons'][] = array('widget_class' => 'SubPanelTopFilterInputButton');
-//    $layout_defs['Accounts']['subpanel_setup']['opportunities']['top_buttons'][] = array('widget_class' => 'SubPanelTopFilterInputButton');
-//    $layout_defs['Accounts']['subpanel_setup']['leads']['top_buttons'][] = array('widget_class' => 'SubPanelTopFilterInputButton');
-//    $layout_defs['Accounts']['subpanel_setup']['cases']['top_buttons'][] = array('widget_class' => 'SubPanelTopFilterInputButton');
-//    $layout_defs['Accounts']['subpanel_setup']['products']['top_buttons'][] = array('widget_class' => 'SubPanelTopFilterInputButton');
-//    $layout_defs['Accounts']['subpanel_setup']['quotes']['top_buttons'][] = array('widget_class' => 'SubPanelTopFilterInputButton');
-//    $layout_defs['Accounts']['subpanel_setup']['accounts']['top_buttons'][] = array('widget_class' => 'SubPanelTopFilterInputButton');
-//    $layout_defs['Accounts']['subpanel_setup']['bugs']['top_buttons'][] = array('widget_class' => 'SubPanelTopFilterInputButton');
-//    $layout_defs['Accounts']['subpanel_setup']['project']['top_buttons'][] = array('widget_class' => 'SubPanelTopFilterInputButton');
-//    $layout_defs['Accounts']['subpanel_setup']['campaigns']['top_buttons'][] = array('widget_class' => 'SubPanelTopFilterInputButton');
-//    $layout_defs['Accounts']['subpanel_setup']['contracts']['top_buttons'][] = array('widget_class' => 'SubPanelTopFilterInputButton');
+ // created: 2014-10-08 08:28:57
+/**
+ *
+ * LICENSE: The contents of this file are subject to the license agreement ("License") which is included
+ * in the installation package (LICENSE.txt). By installing or using this file, you have unconditionally
+ * agreed to the terms and conditions of the License, and you may not use this file except in compliance
+ * with the License.
+ *
+ * @author     Original Author Biztech Co.
+ */
+$layout_defs["Accounts"]["subpanel_setup"]['bc_survey_submission_accounts'] = array (
+  'order' => 100,
+  'module' => 'bc_survey_submission',
+  'subpanel_name' => 'default',
+  'sort_order' => 'asc',
+  'sort_by' => 'id',
+  'title_key' => 'LBL_BC_SURVEY_SUBMISSION_ACCOUNTS_FROM_BC_SURVEY_SUBMISSION_TITLE',
+  'get_subpanel_data' => 'bc_survey_submission_accounts',
+    'top_buttons' =>
+        array (),
+);
 
 
 //auto-generated file DO NOT EDIT
-$layout_defs['Accounts']['subpanel_setup']['accounts_c_bookinghotel_1']['override_subpanel_name'] = 'Account_subpanel_accounts_c_bookinghotel_1';
+/**
+ *
+ * LICENSE: The contents of this file are subject to the license agreement ("License") which is included
+ * in the installation package (LICENSE.txt). By installing or using this file, you have unconditionally
+ * agreed to the terms and conditions of the License, and you may not use this file except in compliance
+ * with the License.
+ *
+ * @author     Original Author Biztech Co.
+ */
+$layout_defs['Accounts']['subpanel_setup']['bc_survey_submission_accounts']['override_subpanel_name'] = 'Account_subpanel_bc_survey_submission_accounts';
 
 
 //auto-generated file DO NOT EDIT
-$layout_defs['Accounts']['subpanel_setup']['cases']['override_subpanel_name'] = 'Account_subpanel_cases';
-
-
-//auto-generated file DO NOT EDIT
-$layout_defs['Accounts']['subpanel_setup']['contacts']['override_subpanel_name'] = 'Account_subpanel_contacts';
-
-
-//auto-generated file DO NOT EDIT
-$layout_defs['Accounts']['subpanel_setup']['documents']['override_subpanel_name'] = 'Account_subpanel_documents';
+$layout_defs['Accounts']['subpanel_setup']['contracts']['override_subpanel_name'] = 'Account_subpanel_contracts';
 
 ?>

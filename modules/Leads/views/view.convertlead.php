@@ -974,9 +974,7 @@ class ViewConvertLead extends SugarView
     }
 
 
-    protected function checkForDuplicates(
-        $lead
-        )
+    protected function checkForDuplicates( $lead)
     {
     	if ($lead->status == "Converted")
     	{

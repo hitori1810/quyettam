@@ -139,7 +139,7 @@ class SugarWidgetField extends SugarWidget {
 				return "<input name='checkbox_display' class='checkbox' type='checkbox' disabled='true' checked>";
 			}
 			return "<input name='checkbox_display' class='checkbox' type='checkbox' disabled='true'>";
-		}
+		}             
 		return $value;
 	}
 

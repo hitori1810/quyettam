@@ -1,5 +1,5 @@
 <?php
-// created: 2015-04-10 22:25:18
+// created: 2016-11-23 13:25:50
 $searchFields['Prospects'] = array (
   'first_name' => 
   array (
@@ -115,9 +115,9 @@ $searchFields['Prospects'] = array (
     'query_type' => 'format',
     'operator' => 'subquery',
     'subquery' => 'SELECT sugarfavorites.record_id FROM sugarfavorites 
-			                    WHERE sugarfavorites.deleted=0 
-			                        and sugarfavorites.module = \'Prospects\'
-			                        and sugarfavorites.assigned_user_id = \'{0}\'',
+        WHERE sugarfavorites.deleted=0 
+        and sugarfavorites.module = \'Prospects\'
+        and sugarfavorites.assigned_user_id = \'{0}\'',
     'db_field' => 
     array (
       0 => 'id',
@@ -159,34 +159,19 @@ $searchFields['Prospects'] = array (
     'enable_range_search' => true,
     'is_date_field' => true,
   ),
-  'range_dob_year' => 
-  array (
-    'query_type' => 'default',
-    'enable_range_search' => true,
-  ),
-  'start_range_dob_year' => 
-  array (
-    'query_type' => 'default',
-    'enable_range_search' => true,
-  ),
-  'end_range_dob_year' => 
-  array (
-    'query_type' => 'default',
-    'enable_range_search' => true,
-  ),
-  'range_dob_date' => 
+  'range_birthdate' => 
   array (
     'query_type' => 'default',
     'enable_range_search' => true,
     'is_date_field' => true,
   ),
-  'start_range_dob_date' => 
+  'start_range_birthdate' => 
   array (
     'query_type' => 'default',
     'enable_range_search' => true,
     'is_date_field' => true,
   ),
-  'end_range_dob_date' => 
+  'end_range_birthdate' => 
   array (
     'query_type' => 'default',
     'enable_range_search' => true,

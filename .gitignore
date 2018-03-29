@@ -1,1 +1,6 @@
-/nbproject/private/
+cache
+/config.php
+/config_override.php
+/sugarcrm.log
+upload
+/sis_empty2.zip

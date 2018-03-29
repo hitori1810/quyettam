@@ -2,61 +2,43 @@
  //WARNING: The contents of this file are auto-generated
 
 
-    $dictionary["Call"]["fields"]["parent_name"] = array (
-        'name' => 'parent_name',
-        'vname' => 'LBL_PARENT_NAME',
-        'type' => 'parent',
-        'massupdate' => 0,
-        'dbtype' => 'varchar',
-        'comments' => '',
-        'help' => '',
-        'importable' => 'true',
-        'duplicate_merge' => 'disabled',
-        'duplicate_merge_dom_value' => '0',
-        'audited' => false,
-        'reportable' => true,
-        'len' => 100,
-        'size' => '20',
-        'options' => 'parent_type_display',
-        'studio' => 'visible',
-        'type_name' => 'parent_type',
-        'id_name' => 'parent_id',
-        'parent_type' => 'parent_type_display',
-    );
-    $dictionary["Call"]["fields"]["parent_type"] = array (
-        'required' => false,
-        'name' => 'parent_type',
-        'vname' => 'LBL_PARENT_TYPE',
-        'type' => 'parent_type',
-        'massupdate' => 0,
-        'comments' => '',
-        'help' => '',
-        'importable' => 'true',
-        'duplicate_merge' => 'disabled',
-        'duplicate_merge_dom_value' => 0,
-        'audited' => false,
-        'reportable' => true,
-        'len' => 50,
-        'size' => '20',
-        'default' => '',
-        'dbType' => 'varchar',
-        'studio' => 'hidden',
-    );
-    $dictionary["Call"]["fields"]["parent_id"] = array (
-        'required' => false,
-        'name' => 'parent_id',
-        'vname' => 'LBL_PARENT_ID',
-        'type' => 'id',
-        'massupdate' => 0,
-        'comments' => '',
-        'help' => '',
-        'importable' => 'true',
-        'duplicate_merge' => 'disabled',
-        'duplicate_merge_dom_value' => 0,
-        'audited' => false,
-        'reportable' => true,
-        'len' => 36,
-        'size' => '20',
-    );
+ // created: 2018-01-30 15:54:33
+$dictionary['Call']['fields']['call_destination_c']['duplicate_merge_dom_value']=0;
 
+ 
+
+ // created: 2018-01-30 15:54:33
+$dictionary['Call']['fields']['call_duration_minute_c']['duplicate_merge_dom_value']=0;
+
+ 
+
+ // created: 2018-01-30 15:54:33
+$dictionary['Call']['fields']['call_entrysource_c']['duplicate_merge_dom_value']=0;
+
+ 
+
+ // created: 2018-01-30 15:54:33
+$dictionary['Call']['fields']['call_popup_status_c']['duplicate_merge_dom_value']=0;
+
+ 
+
+ // created: 2018-01-30 15:54:33
+$dictionary['Call']['fields']['call_source_c']['duplicate_merge_dom_value']=0;
+
+ 
+
+ // created: 2018-01-30 15:54:33
+$dictionary['Call']['fields']['record_c']['duplicate_merge_dom_value']=0;
+
+ 
+
+$dictionary["Call"]["fields"]["call_type"] = array (
+    'name' => 'call_type',
+    'vname' => 'LBL_CALL_TYPE',
+    'type' => 'enum',
+    'len' => 100,
+    'options' => 'call_type_dom',
+);
+ $dictionary["Call"]["fields"]["description"]['cols'] = 60;
+ 
 ?>

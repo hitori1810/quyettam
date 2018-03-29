@@ -127,7 +127,6 @@ array (
           'panelDefault' => 'expanded',
         ),
       ),
-      'syncDetailEditViews' => true,
     ),
     'panels' => 
     array (
@@ -149,6 +148,7 @@ array (
             'name' => 'start_date',
             'label' => 'LBL_CAMPAIGN_START_DATE',
           ),
+          1 => 'campaign_type',
         ),
         2 => 
         array (
@@ -160,19 +160,15 @@ array (
           1 => 
           array (
             'name' => 'frequency',
-            'customCode' => '{if $fields.campaign_type.value == "NewsLetter"}<div style=\'none\' id=\'freq_field\'>{$APP_LIST.newsletter_frequency_dom[$fields.frequency.value]}</div>{/if}&nbsp;',
-            'customLabel' => '{if $fields.campaign_type.value == "NewsLetter"}<div style=\'none\' id=\'freq_label\'>{$MOD.LBL_CAMPAIGN_FREQUENCY}</div>{/if}&nbsp;',
+            'customCode' => '{if $fields.campaign_type.value == "NewsLetter"}<div style=\'none\' id=\'freq_field\'>{$APP_LIST.newsletter_frequency_dom[$fields.frequency.value]}</div>{/if}
+                            {if $fields.campaign_type.value == "Other"}<div style=\'none\' id=\'other_type\'>{$fields.other_type.value}</div>{/if}',
+            'customLabel' => '{if $fields.campaign_type.value == "NewsLetter"}<div style=\'none\' id=\'freq_label\'>{$MOD.LBL_CAMPAIGN_FREQUENCY}</div>{/if}
+                            {if $fields.campaign_type.value == "Other"}<div style=\'none\' id=\'other_type\'>{$MOD.LBL_OTHER_TYPE}</div>{/if}',
           ),
         ),
         3 => 
         array (
           0 => 
-          array (
-            'name' => 'currency_id',
-            'comment' => 'Currency in use for the campaign',
-            'label' => 'LBL_CURRENCY',
-          ),
-          1 => 
           array (
             'name' => 'impressions',
             'label' => 'LBL_CAMPAIGN_IMPRESSIONS',
@@ -218,10 +214,6 @@ array (
           array (
             'name' => 'content',
             'label' => 'LBL_CAMPAIGN_CONTENT',
-          ),
-          1 => 
-          array (
-            'name' => 'accounts_campaigns_1_name',
           ),
         ),
       ),

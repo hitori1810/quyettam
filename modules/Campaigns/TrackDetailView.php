@@ -1,64 +1,64 @@
 <?php
-if(!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
-/*********************************************************************************
- * By installing or using this file, you are confirming on behalf of the entity
- * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
- * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
- * http://www.sugarcrm.com/master-subscription-agreement
- *
- * If Company is not bound by the MSA, then by installing or using this file
- * you are agreeing unconditionally that Company will be bound by the MSA and
- * certifying that you have authority to bind Company accordingly.
- *
- * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
- ********************************************************************************/
+    if(!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
+    /*********************************************************************************
+    * By installing or using this file, you are confirming on behalf of the entity
+    * subscribed to the SugarCRM Inc. product ("Company") that Company is bound by
+    * the SugarCRM Inc. Master Subscription Agreement (“MSA”), which is viewable at:
+    * http://www.sugarcrm.com/master-subscription-agreement
+    *
+    * If Company is not bound by the MSA, then by installing or using this file
+    * you are agreeing unconditionally that Company will be bound by the MSA and
+    * certifying that you have authority to bind Company accordingly.
+    *
+    * Copyright (C) 2004-2013 SugarCRM Inc.  All rights reserved.
+    ********************************************************************************/
 
-/*********************************************************************************
+    /*********************************************************************************
 
- * Description:  TODO: To be written.
- * Portions created by SugarCRM are Copyright (C) SugarCRM, Inc.
- * All Rights Reserved.
- * Contributor(s): ______________________________________..
- ********************************************************************************/
-
-
+    * Description:  TODO: To be written.
+    * Portions created by SugarCRM are Copyright (C) SugarCRM, Inc.
+    * All Rights Reserved.
+    * Contributor(s): ______________________________________..
+    ********************************************************************************/
 
 
 
-require_once('include/DetailView/DetailView.php');
-require_once('modules/Campaigns/Charts.php');
 
 
-global $mod_strings;
-global $app_strings;
-global $app_list_strings;
-global $sugar_version, $sugar_config;
+    require_once('include/DetailView/DetailView.php');
+    require_once('modules/Campaigns/Charts.php');
 
-$focus = new Campaign();
 
-$detailView = new DetailView();
-$offset = 0;
-$offset=0;
-if (isset($_REQUEST['offset']) or isset($_REQUEST['record'])) {
-	$result = $detailView->processSugarBean("CAMPAIGN", $focus, $offset);
-	if($result == null) {
-	    sugar_die($app_strings['ERROR_NO_RECORD']);
-	}
-	$focus=$result;
-} else {
-	header("Location: index.php?module=Accounts&action=index");
-}
+    global $mod_strings;
+    global $app_strings;
+    global $app_list_strings;
+    global $sugar_version, $sugar_config;
 
-// if campaign type is set to newsletter, then include newsletter detail view..
-// ..else default to legacy detail view
+    $focus = new Campaign();
 
-//    include ('modules/Campaigns/NewsLetterTrackDetailView.php');
+    $detailView = new DetailView();
+    $offset = 0;
+    $offset=0;
+    if (isset($_REQUEST['offset']) or isset($_REQUEST['record'])) {
+        $result = $detailView->processSugarBean("CAMPAIGN", $focus, $offset);
+        if($result == null) {
+            sugar_die($app_strings['ERROR_NO_RECORD']);
+        }
+        $focus=$result;
+    } else {
+        header("Location: index.php?module=Accounts&action=index");
+    }
 
-if(isset($focus->campaign_type) && $focus->campaign_type == "NewsLetter"){
-    echo getClassicModuleTitle($mod_strings['LBL_MODULE_NAME'], array($mod_strings['LBL_NEWSLETTER'],$focus->name), true);
-} else{
-    echo getClassicModuleTitle($mod_strings['LBL_MODULE_NAME'], array($mod_strings['LBL_MODULE_NAME'],$focus->name), true);
-}
+    // if campaign type is set to newsletter, then include newsletter detail view..
+    // ..else default to legacy detail view
+
+    //    include ('modules/Campaigns/NewsLetterTrackDetailView.php');
+
+    if(isset($focus->campaign_type) && $focus->campaign_type == "NewsLetter"){
+        echo getClassicModuleTitle($mod_strings['LBL_MODULE_NAME'], array($mod_strings['LBL_NEWSLETTER'],$focus->name), true);
+    } else{
+        echo getClassicModuleTitle($mod_strings['LBL_MODULE_NAME'], array($mod_strings['LBL_MODULE_NAME'],$focus->name), true);
+    }
 
     $GLOBALS['log']->info("Campaign detail view");
     $smarty = new Sugar_Smarty();
@@ -97,21 +97,21 @@ if(isset($focus->campaign_type) && $focus->campaign_type == "NewsLetter"){
         $smarty->assign("TRACK_DELETE_BUTTON","<input title=\"{$mod_strings['LBL_TRACK_DELETE_BUTTON_TITLE']}\" class=\"button\" onclick=\"this.form.module.value='Campaigns'; this.form.action.value='Delete';this.form.return_module.value='Campaigns'; this.form.return_action.value='TrackDetailView';this.form.mode.value='Test';return confirm('{$mod_strings['LBL_TRACK_DELETE_CONFIRM']}');\" type=\"submit\" name=\"button\" value=\"  {$mod_strings['LBL_TRACK_DELETE_BUTTON_LABEL']}  \">");
     }
 
-    	$currency  = new Currency();
+    $currency  = new Currency();
     if(isset($focus->currency_id) && !empty($focus->currency_id))
     {
-    	$currency->retrieve($focus->currency_id);
-    	if( $currency->deleted != 1){
-    		$smarty->assign("CURRENCY", $currency->iso4217 .' '.$currency->symbol );
-    	}else $smarty->assign("CURRENCY", $currency->getDefaultISO4217() .' '.$currency->getDefaultCurrencySymbol() );
+        $currency->retrieve($focus->currency_id);
+        if( $currency->deleted != 1){
+            $smarty->assign("CURRENCY", $currency->iso4217 .' '.$currency->symbol );
+        }else $smarty->assign("CURRENCY", $currency->getDefaultISO4217() .' '.$currency->getDefaultCurrencySymbol() );
     }else{
 
-    	$smarty->assign("CURRENCY", $currency->getDefaultISO4217() .' '.$currency->getDefaultCurrencySymbol() );
+        $smarty->assign("CURRENCY", $currency->getDefaultISO4217() .' '.$currency->getDefaultCurrencySymbol() );
 
     }
     global $current_user;
     if(is_admin($current_user) && $_REQUEST['module'] != 'DynamicLayout' && !empty($_SESSION['editinplace'])){
-    	$smarty->assign("ADMIN_EDIT","<a href='index.php?action=index&module=DynamicLayout&from_action=".$_REQUEST['action'] ."&from_module=".$_REQUEST['module'] ."&record=".$_REQUEST['record']. "'>".SugarThemeRegistry::current()->getImage("EditLayout","border='0' align='bottom'",null,null,'.gif',$mod_strings['LBL_EDIT_LAYOUT'])."</a>");
+        $smarty->assign("ADMIN_EDIT","<a href='index.php?action=index&module=DynamicLayout&from_action=".$_REQUEST['action'] ."&from_module=".$_REQUEST['module'] ."&record=".$_REQUEST['record']. "'>".SugarThemeRegistry::current()->getImage("EditLayout","border='0' align='bottom'",null,null,'.gif',$mod_strings['LBL_EDIT_LAYOUT'])."</a>");
     }
 
     global $xtpl;
@@ -141,7 +141,7 @@ if(isset($focus->campaign_type) && $focus->campaign_type == "NewsLetter"){
             //first, populated the latest marketing id variable, as this
             // variable will be used to build chart and subpanels
             if($focus->campaign_type == 'NewsLetter') {
-            	$latest_marketing_id = $row['id'];
+                $latest_marketing_id = $row['id'];
             }
 
             //fill in first option value
@@ -149,11 +149,11 @@ if(isset($focus->campaign_type) && $focus->campaign_type == "NewsLetter"){
             // if the marketing id is same as selected marketing id, set this option to render as "selected"
             if (!empty($selected_marketing_id) && $selected_marketing_id == $row['id']) {
                 $options_str .=' selected>'. $row['name'] .'</option>';
-            // if the marketing id is empty then set this first option to render as "selected"
+                // if the marketing id is empty then set this first option to render as "selected"
             }elseif(empty($selected_marketing_id) && $focus->campaign_type == 'NewsLetter'){
                 $options_str .=' selected>'. $row['name'] .'</option>';
-            // if the marketing is not empty, but not same as selected marketing id, then..
-            //.. do not set this option to render as "selected"
+                // if the marketing is not empty, but not same as selected marketing id, then..
+                //.. do not set this option to render as "selected"
             }else{
                 $options_str .='>'. $row['name'] .'</option>';
             }
@@ -168,20 +168,30 @@ if(isset($focus->campaign_type) && $focus->campaign_type == "NewsLetter"){
             }else{
                 $options_str .=' >'. $row['name'] .'</option>';
             }
-         }
-         $options_str .="</select>";
+        }
+        $options_str .="</select>";
         //populate the dropdown
         $smarty->assign("FILTER_LABEL", $mod_strings['LBL_FILTER_CHART_BY']);
         $smarty->assign("MKT_DROP_DOWN",$options_str);
     }
-//add chart
-$seps               = array("-", "/");
-$dates              = array(date($GLOBALS['timedate']->dbDayFormat), $GLOBALS['timedate']->dbDayFormat);
-$dateFileNameSafe   = str_replace($seps, "_", $dates);
-$cache_file_name    = $current_user->getUserPrivGuid()."_campaign_response_by_activity_type_".$dateFileNameSafe[0]."_".$dateFileNameSafe[1].".xml";
-$cache_file_name_roi    = $current_user->getUserPrivGuid()."_campaign_response_by_roi_".$dateFileNameSafe[0]."_".$dateFileNameSafe[1].".xml";
-$chart= new campaign_charts();
+    //add chart
+    $seps               = array("-", "/");
+    $dates              = array(date($GLOBALS['timedate']->dbDayFormat), $GLOBALS['timedate']->dbDayFormat);
+    $dateFileNameSafe   = str_replace($seps, "_", $dates);
+    $cache_file_name    = $current_user->getUserPrivGuid()."_campaign_response_by_activity_type_".$dateFileNameSafe[0]."_".$dateFileNameSafe[1].".xml";
+    $cache_file_name_roi    = $current_user->getUserPrivGuid()."_campaign_response_by_roi_".$dateFileNameSafe[0]."_".$dateFileNameSafe[1].".xml";
+    $chart= new campaign_charts();
 
+
+    # tracy: overrides the types of activities for SMS
+    if ($focus->campaign_type =='SMS') {
+        $app_list_strings['campainglog_activity_type_dom'] = array (
+            //'track_queue' => 'Message Queue',
+            'targeted' => 'Message Sent/Attempted',
+            'send error' => 'Send Error',
+            'invalid email' => 'Invalid Phone Number',  
+        );
+    }
     //if marketing id has been selected, then set "latest_marketing_id" to the selected value
     //latest marketing id will be passed in to filter the charts and subpanels
 
@@ -192,17 +202,17 @@ $chart= new campaign_charts();
         $smarty->assign("MY_CHART", $chart->campaign_response_by_activity_type($app_list_strings['campainglog_activity_type_dom'],$app_list_strings['campainglog_target_type_dom'],$focus->id,sugar_cached("xml/$cache_file_name"),true,$latest_marketing_id));
     }
 
-//end chart
-//custom chart code
+    //end chart
+    //custom chart code
     require_once('include/SugarCharts/SugarChartFactory.php');
     $sugarChart = SugarChartFactory::getInstance();
-	$resources = $sugarChart->getChartResources();
-	$smarty->assign('chartResources', $resources);
+    $resources = $sugarChart->getChartResources();
+    $smarty->assign('chartResources', $resources);
 
-echo $smarty->fetch('modules/Campaigns/TrackDetailView.tpl');
+    echo $smarty->fetch('modules/Campaigns/TrackDetailView.tpl');
 
-require_once('include/SubPanel/SubPanelTiles.php');
-$subpanel = new SubPanelTiles($focus, 'Campaigns');
+    require_once('include/SubPanel/SubPanelTiles.php');
+    $subpanel = new SubPanelTiles($focus, 'Campaigns');
     //if latest marketing id is empty, or if it is set to 'all'', then do no filtering, otherwise filter..
     //.. out the chart and subpanels by marketing id
     if(empty($latest_marketing_id) || $latest_marketing_id === 'all'){
@@ -220,44 +230,54 @@ $subpanel = new SubPanelTiles($focus, 'Campaigns');
         foreach($layoutDefsArr as $subpanels_name => $subpanels){
 
             //process each subpanel definition
-             foreach($subpanels as $subpane_key => $subpane){
+            foreach($subpanels as $subpane_key => $subpane){
 
-                    //see if "function_parameters" key exists in subpanel properties array
-                      if (isset($subpane['function_parameters'])){
-                          //if a function_parameters property key exists, then process further
-                          $functionParamsArr = $subpane['function_parameters'];//$panelProperty;
+                //see if "function_parameters" key exists in subpanel properties array
+                if (isset($subpane['function_parameters'])){
+                    //if a function_parameters property key exists, then process further
+                    $functionParamsArr = $subpane['function_parameters'];//$panelProperty;
 
-                            //Check the array of function parameters and see if
-                            //one exists for market value id.
-                            if (isset($functionParamsArr['EMAIL_MARKETING_ID_VALUE'])){
-                                //We found the property, lets fill in the marketing id value...
-                                //.. into the subpanel object, using the keys of the array that..
-                                //.. we used to get to thi property
-                                $subpanel->subpanel_definitions->layout_defs[$subpanels_name][$subpane_key]['function_parameters']['EMAIL_MARKETING_ID_VALUE'] = $latest_marketing_id;
-                            }
-                        }//end if (isset($subpane['function_parameters'])){
+                    //Check the array of function parameters and see if
+                    //one exists for market value id.
+                    if (isset($functionParamsArr['EMAIL_MARKETING_ID_VALUE'])){
+                        //We found the property, lets fill in the marketing id value...
+                        //.. into the subpanel object, using the keys of the array that..
+                        //.. we used to get to thi property
+                        $subpanel->subpanel_definitions->layout_defs[$subpanels_name][$subpane_key]['function_parameters']['EMAIL_MARKETING_ID_VALUE'] = $latest_marketing_id;
+                    }
+                }//end if (isset($subpane['function_parameters'])){
             }//end foreach($subpanels as $subpane_key => $subpane){
 
         }//_pp($subpanel->subpanel_definitions->layout_defs);
     }//end else
 
-$deletedCampaignLogLeadsCount = $focus->getDeletedCampaignLogLeadsCount();
-if ($deletedCampaignLogLeadsCount > 0)
-{
-    $subpanel->subpanel_definitions->layout_defs['subpanel_setup']['lead']['top_buttons'][] = array(
-        'widget_class' => 'SubPanelTopMessage',
-        'message' => string_format($mod_strings['LBL_LEADS_DELETED_SINCE_CREATED'], array($deletedCampaignLogLeadsCount)),
-    );
-}
+    $deletedCampaignLogLeadsCount = $focus->getDeletedCampaignLogLeadsCount();
+    if ($deletedCampaignLogLeadsCount > 0)
+    {
+        $subpanel->subpanel_definitions->layout_defs['subpanel_setup']['lead']['top_buttons'][] = array(
+            'widget_class' => 'SubPanelTopMessage',
+            'message' => string_format($mod_strings['LBL_LEADS_DELETED_SINCE_CREATED'], array($deletedCampaignLogLeadsCount)),
+        );
+    }
 
-$alltabs=$subpanel->subpanel_definitions->get_available_tabs();
-if (!empty($alltabs)) {
+    $alltabs=$subpanel->subpanel_definitions->get_available_tabs();
+    if (!empty($alltabs)) {
 
-    foreach ($alltabs as $name) {
-        if ($name == 'prospectlists' || $name=='emailmarketing' || $name == 'tracked_urls') {
-            $subpanel->subpanel_definitions->exclude_tab($name);
+        # tracy: defines the subpanels that are not needed for SMS campaigns  Add By Hai Duc
+        $sp_not_for_sms = array("contact","lead","leads","accounts","removed","viewed","link","blocked","campaign_izeno_sms");
+        foreach ($alltabs as $name) {
+            if ($name == 'prospectlists' || $name=='emailmarketing' || $name == 'tracked_urls') {
+                $subpanel->subpanel_definitions->exclude_tab($name);
+            }
+            # tracy: this will exclude subpanels not needed for sms
+            if ($focus->campaign_type=='SMS' && in_array($name, $sp_not_for_sms))
+                $subpanel->subpanel_definitions->exclude_tab($name);
         }
     }
-}
-echo $subpanel->display();
+    # tracy: change the title key of the subpanels for SMS
+    if ($focus->campaign_type=='SMS') {  
+        $subpanel->subpanel_definitions->layout_defs['subpanel_setup']['invalid email']['title_key'] = $app_list_strings['campainglog_activity_type_dom']['invalid email'];
+        $subpanel->subpanel_definitions->layout_defs['subpanel_setup']['send error']['title_key'] = $app_list_strings['campainglog_activity_type_dom']['send error']; 
+    }
+    echo $subpanel->display();
 ?>

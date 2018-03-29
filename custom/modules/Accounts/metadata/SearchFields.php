@@ -1,23 +1,7 @@
 <?php
-// created: 2015-07-03 12:01:57
+// created: 2016-11-30 16:43:57
 $searchFields['Accounts'] = array (
   'name' => 
-  array (
-    'query_type' => 'default',
-  ),
-  'code' => 
-  array (
-    'query_type' => 'default',
-  ),
-  'tax_code' => 
-  array (
-    'query_type' => 'default',
-  ),
-  'iata_code' => 
-  array (
-    'query_type' => 'default',
-  ),
-  'brand_name' => 
   array (
     'query_type' => 'default',
   ),
@@ -193,75 +177,5 @@ $searchFields['Accounts'] = array (
     'query_type' => 'default',
     'enable_range_search' => true,
     'is_date_field' => true,
-  ),
-  'range_select_year_dob' => 
-  array (
-    'query_type' => 'default',
-    'enable_range_search' => true,
-  ),
-  'start_range_select_year_dob' => 
-  array (
-    'query_type' => 'default',
-    'enable_range_search' => true,
-  ),
-  'end_range_select_year_dob' => 
-  array (
-    'query_type' => 'default',
-    'enable_range_search' => true,
-  ),
-  'range_birthdate' => 
-  array (
-    'query_type' => 'default',
-    'enable_range_search' => true,
-    'is_date_field' => true,
-  ),
-  'start_range_birthdate' => 
-  array (
-    'query_type' => 'default',
-    'enable_range_search' => true,
-    'is_date_field' => true,
-  ),
-  'end_range_birthdate' => 
-  array (
-    'query_type' => 'default',
-    'enable_range_search' => true,
-    'is_date_field' => true,
-  ),
-  'range_dob_year' => 
-  array (
-    'query_type' => 'default',
-    'enable_range_search' => true,
-  ),
-  'start_range_dob_year' => 
-  array (
-    'query_type' => 'default',
-    'enable_range_search' => true,
-  ),
-  'end_range_dob_year' => 
-  array (
-    'query_type' => 'default',
-    'enable_range_search' => true,
-  ),
-  'range_dob_date' => 
-  array (
-    'query_type' => 'default',
-    'enable_range_search' => true,
-    'is_date_field' => true,
-  ),
-  'start_range_dob_date' => 
-  array (
-    'query_type' => 'default',
-    'enable_range_search' => true,
-    'is_date_field' => true,
-  ),
-  'end_range_dob_date' => 
-  array (
-    'query_type' => 'default',
-    'enable_range_search' => true,
-    'is_date_field' => true,
-  ),
-  'description' => 
-  array (
-    'query_type' => 'default',
   ),
 );

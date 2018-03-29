@@ -55,7 +55,6 @@ table.dataTable thead .sorting_desc_disabled {
 }
 table.dataTable tbody tr {
   background-color: white;
-  height: 31px;
 }
 table.dataTable tbody tr.selected {
   background-color: #b0bed9;
@@ -475,12 +474,7 @@ table.dataTable td {
     margin-top: 0.5em;
   }
 }
-table.KeyTable th.focus,
-table.KeyTable td.focus {
-    outline: 3px solid #3366FF;
-    outline-offset: -3px;
-}
 
-table.dataTable tbody td.no-border-right {
-        border-right: solid 0px #FFF;
- }
+.duplicatedDiv .dataTables_length{
+    margin-bottom: 20px;
+}

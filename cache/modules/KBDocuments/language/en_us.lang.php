@@ -1,9 +1,6 @@
 <?php
-// created: 2018-03-27 23:02:38
+// created: 2018-03-29 16:49:26
 $mod_strings = array (
-  'LBL_TEAM' => 'Team:',
-  'LBL_TEAMS' => 'Teams',
-  'LBL_TEAM_ID' => 'Team Id',
   'LBL_MODULE_NAME' => 'Knowledge Base',
   'LBL_MODULE_NAME_SINGULAR' => 'KBDocument',
   'LBL_MODULE_TITLE' => 'Knowledge Base Article',
@@ -89,6 +86,7 @@ $mod_strings = array (
   'LBL_IS_EXTERNAL_ARTICLE' => 'External Article? :',
   'LBL_SHOW_TAGS' => 'Show More Tags',
   'LBL_HIDE_TAGS' => 'Hide Tags',
+  'LBL_TEAM' => 'Team:',
   'LBL_DOC_DESCRIPTION' => 'Description:',
   'LBL_KBDOC_SUBJECT' => 'Subject:',
   'LBL_DOC_ACTIVE_DATE' => 'Publish Date:',
@@ -187,7 +185,7 @@ $mod_strings = array (
   'LBL_CONTRACTS_SUBPANEL_TITLE' => 'Related Contracts',
   'LBL_LAST_REV_CREATE_DATE' => 'Last Revision Create Date',
   'LBL_KEYWORDS' => 'Keywords:',
-  'LBL_CASES' => 'Cases',
+  'LBL_CASES' => 'Feedbackss',
   'LBL_EMAILS' => 'Emails',
   'LBL_DEFAULT_ADMIN_MESSAGE' => 'Select an action from the dropdown list',
   'LBL_SELECT_PARENT_TAG_MESSAGE' => 'Select the parent tag from tree',

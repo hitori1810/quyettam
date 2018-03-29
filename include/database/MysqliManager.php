@@ -564,5 +564,24 @@ class MysqliManager extends MysqlManager
         $sql = "$sql ORDER BY hrs._id DESC";  // try and mimic other DB return orders for consistancy. breaks unit test otherwise
         return $sql;
     }
+    
+    /**
+        * Runs a query and returns a array data 
+        *
+        * @param  string   $sql        SQL Statement to execute
+        * @param  string   $resultType Specifies what type of array that should be produced: MYSQLI_ASSOC; MYSQLI_NUM ; MYSQLI_BOTH              
+        * @param  bool     $dieOnError True if we want to call die if the query returns errors
+        * @param  string   $msg        Message to log if error occurs
+        * @param  bool     $suppress   Flag to suppress all error output unless in debug logging mode.
+        * @param  bool     $keepResult True if we want to push this result into the $lastResult array.
+        * 
+        * @return array data 
+        * 
+        * Add by Trung Nguyen 2015.02.27
+        */
+    public function fetchArray($sql, $resultType = MYSQLI_ASSOC, $dieOnError = false, $msg = '', $suppress = false, $keepResult = false) {
+        $result = $this->query($sql, $dieOnError, $msg, $suppress, $keepResult, false);
+        return mysqli_fetch_all($result, $resultType);
+    }
 
 }

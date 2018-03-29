@@ -1,8 +1,8 @@
 <?php
-// created: 2018-03-27 23:02:36
+// created: 2018-03-29 10:02:23
 $mod_strings = array (
-  'LBL_TEAM' => 'Teams',
-  'LBL_TEAMS' => 'Teams',
+  'LBL_TEAM' => 'Center',
+  'LBL_TEAMS' => 'Center',
   'LBL_TEAM_ID' => 'Team:',
   'LBL_MODULE_NAME' => 'Project Tasks',
   'LBL_MODULE_NAME_SINGULAR' => 'Project Task',
@@ -77,6 +77,5 @@ $mod_strings = array (
   'LBL_LIST_PROJECT_NAME' => 'Projects',
   'LBL_EDITLAYOUT' => 'Edit Layout',
   'LBL_RESOURCE_ID' => 'Resource ID',
-  'LBL_PROJECTTASK_PROJECT_1_FROM_PROJECT_TITLE' => 'Projects',
-  'LBL_PROJECTTASK_C_WORKLOG_1_FROM_C_WORKLOG_TITLE' => 'Work Logs',
+  'LBL_MEETINGS' => 'Schedule',
 );

@@ -662,7 +662,7 @@ currentForm.return_module.value='EmailTemplates';currentForm.return_action.value
 SUGAR.image={remove_upload_imagefile:function(field_name){var field=document.getElementById('remove_imagefile_'+field_name);field.value=1;var field=document.getElementById(field_name);field.style.display="";var field=document.getElementById('img_'+field_name);field.style.display="none";var field=document.getElementById('bt_remove_'+field_name);field.style.display="none";if(document.getElementById(field_name+'_duplicate')){var field=document.getElementById(field_name+'_duplicate');field.value="";}},confirm_imagefile:function(field_name){var field=document.getElementById(field_name);var filename=field.value;var fileExtension=filename.substring(filename.lastIndexOf(".")+1);fileExtension=fileExtension.toLowerCase();if(fileExtension=="jpg"||fileExtension=="jpeg"||fileExtension=="gif"||fileExtension=="png"||fileExtension=="bmp"){}
 else{field.value=null;alert(SUGAR.language.get('app_strings','LBL_UPLOAD_IMAGE_FILE_INVALID'));}},lightbox:function(image)
 {if(typeof(SUGAR.image.lighboxWindow)=="undefined")
-SUGAR.image.lighboxWindow=new YAHOO.widget.SimpleDialog('sugarImageViewer',{type:'message',modal:true,id:'sugarMsgWindow',close:true,title:"Alert",msg:"<img src='"+image+"'> </img>",buttons:[]});SUGAR.image.lighboxWindow.setBody("<img src='"+image+"'> </img>");SUGAR.image.lighboxWindow.render(document.body);SUGAR.image.lighboxWindow.show();SUGAR.image.lighboxWindow.center()}}
+SUGAR.image.lighboxWindow=new YAHOO.widget.SimpleDialog('sugarImageViewer',{type:'message',modal:true,id:'sugarMsgWindow',close:true,title:"Alert",msg:"<img src='"+image+"'> </img>",buttons:[]});SUGAR.image.lighboxWindow.setBody("<img src='"+image+"' width='400px'> </img>");SUGAR.image.lighboxWindow.render(document.body);SUGAR.image.lighboxWindow.show();SUGAR.image.lighboxWindow.center()}}
 SUGAR.append(SUGAR.util,{isTouchScreen:function(){if(Get_Cookie("touchscreen")=='1'){return true;}
 if((navigator.userAgent.match(/iPad/i)!=null)){return true;}
 return false;},isLoginPage:function(content){if(SUGAR.util.isPackageManager()){return false;}
@@ -1072,7 +1072,7 @@ return date;if(oldFormat=="user")
 if(oldFormat==null||oldFormat==""){oldFormat=SUGAR.util.DateUtils.guessFormat(date);}
 if(oldFormat==false){if(/^\d+$/.test(date))
 return new Date(date);return false;}
-var jsDate=new Date("Jan 1, 1970 00:00:00");var part="";var dateRemain=YAHOO.lang.trim(date);oldFormat=YAHOO.lang.trim(oldFormat)+" ";for(var j=0;j<oldFormat.length;j++){var c=oldFormat.charAt(j);if(c==':'||c=='/'||c=='-'||c=='.'||c==" "||c=='a'||c=="A"){var i=dateRemain.indexOf(c);if(i==-1)i=dateRemain.length;var v=dateRemain.substring(0,i);dateRemain=dateRemain.substring(i+1);switch(part){case'm':if(!(v>0&&v<13))return false;jsDate.setMonth(v-1);break;case'd':if(!(v>0&&v<32))return false;jsDate.setDate(v);break;case'Y':if(!(v>0))return false;jsDate.setYear(v);break;case'h':var timeformat=oldFormat.substring(oldFormat.length-4);if(timeformat.toLowerCase()=="i a "||timeformat.toLowerCase()==c+"ia "){if(dateRemain.substring(dateRemain.length-2).toLowerCase()=='pm'){v=v*1;if(v<12){v+=12;}}}
+var jsDate=new Date("Jan 1, 1972 00:00:00");var part="";var dateRemain=YAHOO.lang.trim(date);oldFormat=YAHOO.lang.trim(oldFormat)+" ";for(var j=0;j<oldFormat.length;j++){var c=oldFormat.charAt(j);if(c==':'||c=='/'||c=='-'||c=='.'||c==" "||c=='a'||c=="A"){var i=dateRemain.indexOf(c);if(i==-1)i=dateRemain.length;var v=dateRemain.substring(0,i);dateRemain=dateRemain.substring(i+1);switch(part){case'm':if(!(v>0&&v<13))return false;jsDate.setMonth(v-1);break;case'd':if(!(v>0&&v<32))return false;jsDate.setDate(v);break;case'Y':if(!(v>0))return false;jsDate.setYear(v);break;case'h':var timeformat=oldFormat.substring(oldFormat.length-4);if(timeformat.toLowerCase()=="i a "||timeformat.toLowerCase()==c+"ia "){if(dateRemain.substring(dateRemain.length-2).toLowerCase()=='pm'){v=v*1;if(v<12){v+=12;}}}
 case'H':jsDate.setHours(v);break;case'i':v=v.substring(0,2);jsDate.setMinutes(v);break;}
 part="";}else{part=c;}}
 return jsDate;},guessFormat:function(date){if(typeof date!="string")
@@ -1084,7 +1084,7 @@ else if(date.indexOf(".")!=-1)
 {dateSep=".";}
 else
 {return false;}
-var dateParts=date.split(dateSep);var dateFormat="";var jsDate=new Date("Jan 1, 1970 00:00:00");if(dateParts[0].length==4)
+var dateParts=date.split(dateSep);var dateFormat="";var jsDate=new Date("Jan 1, 1972 00:00:00");if(dateParts[0].length==4)
 {dateFormat="Y"+dateSep+"m"+dateSep+"d";}
 else if(dateParts[2].length==4)
 {dateFormat="m"+dateSep+"d"+dateSep+"Y";}

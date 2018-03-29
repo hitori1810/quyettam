@@ -35,7 +35,7 @@ $vardefs = array(
         'unified_search' => true,
         'full_text_search' => array('boost' => 3),
         'required'=>true,
-		'importable' => 'required',
+		'importable' => 'true',
         'duplicate_merge' => 'enabled',
         //'duplicate_merge_dom_value' => '3',
         'merge_filter' => 'selected',
@@ -132,7 +132,7 @@ $vardefs = array(
 	    'vname' => 'LBL_DESCRIPTION',
 	    'type' => 'text',
 	    'comment' => 'Full text of the note',
-	    'rows' => 6,
+	    'rows' => 4,
 	    'cols' => 80,
 	  ),
 	  'deleted' =>

@@ -119,7 +119,7 @@
       'vname' => 'LBL_DESCRIPTION',
       'type' => 'text',
       'comment' => 'Full text of the note',
-      'rows' => 6,
+      'rows' => 4,
       'cols' => 80,
     ),
     'deleted' => 
@@ -311,8 +311,8 @@
       'source' => 'non-db',
       'db_concat_fields' => 
       array (
-        0 => 'first_name',
-        1 => 'last_name',
+        0 => 'last_name',
+        1 => 'first_name',
       ),
     ),
     'type_id' => 

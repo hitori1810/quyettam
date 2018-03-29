@@ -16,8 +16,8 @@ if(!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
 $module_name = '<module_name>';
 $searchFields[$module_name] = 
 	array (
+        'last_name'=> array('query_type'=>'default'),
 		'first_name' => array( 'query_type'=>'default'),
-		'last_name'=> array('query_type'=>'default'),
 		'search_name'=> array('query_type'=>'default','db_field'=>array('first_name','last_name'),'force_unifiedsearch'=>true),
 		'do_not_call'=> array('query_type'=>'default', 'input_type' => 'checkbox', 'operator'=>'='),
 		'phone'=> array('query_type'=>'default','db_field'=>array('phone_mobile','phone_work','phone_other','phone_fax','assistant_phone')),

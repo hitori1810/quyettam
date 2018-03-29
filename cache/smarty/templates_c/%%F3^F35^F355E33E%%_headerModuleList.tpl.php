@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.11, created on 2018-03-27 23:02:58
+<?php /* Smarty version 2.6.11, created on 2018-03-29 10:02:13
          compiled from themes/RacerX/tpls/_headerModuleList.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'sugar_link', 'themes/RacerX/tpls/_headerModuleList.tpl', 57, false),array('function', 'sugar_ajax_url', 'themes/RacerX/tpls/_headerModuleList.tpl', 74, false),array('modifier', 'replace', 'themes/RacerX/tpls/_headerModuleList.tpl', 74, false),)), $this); ?>
@@ -14,11 +14,15 @@ Set_Cookie('sugar_theme_gm_current','<?php echo $this->_tpl_vars['currentGroupTa
 
 <?php if ($this->_tpl_vars['AJAX'] != '1'): ?>
 <div id="moduleList">
-<?php endif;  $this->assign('overflowSuffix', 'Overflow');  $this->assign('overflowHidden', 'Hidden');  $_from = $this->_tpl_vars['groupTabs']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }$this->_foreach['tabGroups'] = array('total' => count($_from), 'iteration' => 0);
+<?php endif; ?>
+<?php $this->assign('overflowSuffix', 'Overflow'); ?>
+<?php $this->assign('overflowHidden', 'Hidden'); ?>
+<?php $_from = $this->_tpl_vars['groupTabs']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }$this->_foreach['tabGroups'] = array('total' => count($_from), 'iteration' => 0);
 if ($this->_foreach['tabGroups']['total'] > 0):
     foreach ($_from as $this->_tpl_vars['tabGroupName'] => $this->_tpl_vars['tabGroup']):
         $this->_foreach['tabGroups']['iteration']++;
- 
+?>
+<?php 
 $tabGroupName = str_replace(" ", "_", $this->get_template_vars('tabGroupName'));
 $currentGroupTab = str_replace(" ", "_", $this->get_template_vars('currentGroupTab'));
 $this->assign('tabGroupName', $tabGroupName);
@@ -267,6 +271,7 @@ if ($this->_foreach['groupList']['total'] > 0):
 	
 	
 </ul>
-<?php endforeach; endif; unset($_from);  if ($this->_tpl_vars['AJAX'] != '1'): ?>
+<?php endforeach; endif; unset($_from); ?>
+<?php if ($this->_tpl_vars['AJAX'] != '1'): ?>
 </div>
-<?php endif; ?>
+<?php endif; ?>

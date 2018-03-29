@@ -22,59 +22,75 @@ $subpanel_layout = array(
 	),
 
 	'where' => '',
-	
-	
+
+
 
 	'list_fields' => array(
-		'name'=>array(
-			'name'=>'name',		
-			'vname' => 'LBL_LIST_NAME',
-			'widget_class' => 'SubPanelDetailViewLink',
-		 	'module' => 'Contacts',
-			'width' => '23%',
-		),
-		'account_name'=>array(
-			'name'=>'account_name',
-		 	'module' => 'Accounts',
-		 	'target_record_key' => 'account_id',
-		 	'target_module' => 'Accounts',
-			'widget_class' => 'SubPanelDetailViewLink',
-		 	'vname' => 'LBL_LIST_ACCOUNT_NAME',
-			'width' => '22%',
-			'sortable'=>false,
-		),
-		'start_date'=>array(
-			'name'=>'start_date',		
-			'vname' => 'LBL_LIST_START_DATE',
-			'width' => '10%',
-		),
-		'end_date'=>array(
-			'name'=>'end_date',		
-			'vname' => 'LBL_LIST_END_DATE',
-			'width' => '10%',
-		),
-		'status'=>array(
-			'name'=>'status',		
-			'vname' => 'LBL_LIST_STATUS',
-			'width' => '10%',
-		),
-		'total_contract_value'=>array (
-			'name'=>'total_contract_value',		
-			'vname' => 'LBL_LIST_CONTRACT_VALUE',
-			'width' => '15%',
-		),
-		'edit_button'=>array(
-			'vname' => 'LBL_EDIT_BUTTON',
-			'widget_class' => 'SubPanelEditButton',
-		 	'module' => 'Contracts',
-			'width' => '5%',
-		),
-		'remove_button'=>array(
-			'vname' => 'LBL_REMOVE',
-			'widget_class' => 'SubPanelRemoveButton',
-		 	'module' => 'Contracts',
-			'width' => '5%',
-		),
+	'contract_id' =>
+  array (
+    'type' => 'varchar',
+    'vname' => 'LBL_CONTRACT_ID',
+    'width' => '10%',
+    'default' => true,
+  ),
+  'name' =>
+  array (
+    'name' => 'name',
+    'vname' => 'LBL_LIST_NAME',
+    'widget_class' => 'SubPanelDetailViewLink',
+    'module' => 'Contacts',
+    'width' => '15%',
+    'default' => true,
+  ),
+  'status' =>
+  array (
+    'name' => 'status',
+    'vname' => 'LBL_LIST_STATUS',
+    'width' => '10%',
+    'default' => true,
+  ),
+  'total_contract_value' =>
+  array (
+    'type' => 'currency',
+    'vname' => 'LBL_TOTAL_CONTRACT_VALUE',
+    'currency_format' => true,
+    'width' => '10%',
+    'default' => true,
+  ),
+  'amount_per_student' =>
+  array (
+    'type' => 'currency',
+    'vname' => 'LBL_AMOUNT_PER_STUDENT',
+    'currency_format' => true,
+    'width' => '10%',
+    'default' => true,
+  ),
+  'study_duration' =>
+  array (
+    'type' => 'decimal',
+    'vname' => 'LBL_STUDY_DURATION',
+    'width' => '10%',
+    'default' => true,
+  ),
+  'customer_signed_date' =>
+  array (
+    'type' => 'date',
+    'vname' => 'LBL_CUSTOMER_SIGNED_DATE',
+    'width' => '10%',
+    'default' => true,
+  ),
+      'team_name' =>
+    array (
+        'width' => '10%',
+        'vname' => 'LBL_TEAM',
+        'widget_class' => 'SubPanelDetailViewLink',
+        'default' => true,
+    ),
+  'currency_id' =>
+  array (
+    'name' => 'currency_id',
+    'usage' => 'query_only',
+  ),
 	),
-);		
+);
 ?>

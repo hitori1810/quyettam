@@ -1,33 +1,33 @@
 <?php
-$viewdefs['Prospects'] = 
+$viewdefs['Prospects'] =
 array (
-  'EditView' => 
+  'EditView' =>
   array (
-    'templateMeta' => 
+    'templateMeta' =>
     array (
       'maxColumns' => '2',
       'useTabs' => false,
-      'widths' => 
+      'widths' =>
       array (
-        0 => 
+        0 =>
         array (
           'label' => '10',
           'field' => '30',
         ),
-        1 => 
+        1 =>
         array (
           'label' => '10',
           'field' => '30',
         ),
       ),
-      'tabDefs' => 
+      'tabDefs' =>
       array (
-        'LBL_PROSPECT_INFORMATION' => 
+        'LBL_PROSPECT_INFORMATION' =>
         array (
           'newTab' => false,
           'panelDefault' => 'expanded',
         ),
-        'LBL_PANEL_ASSIGNMENT' => 
+        'LBL_PANEL_ASSIGNMENT' =>
         array (
           'newTab' => false,
           'panelDefault' => 'expanded',
@@ -35,97 +35,53 @@ array (
       ),
       'syncDetailEditViews' => true,
     ),
-    'panels' => 
+    'panels' =>
     array (
-      'lbl_prospect_information' => 
+      'lbl_prospect_information' =>
       array (
-        0 => 
+        0 =>
         array (
-          0 => 
+          0 =>
           array (
-            'name' => 'first_name',
-            'label' => 'LBL_NAME',
-            'customCode' => '{html_options name="salutation" id="salutation" options=$fields.salutation.options selected=$fields.salutation.value}&nbsp;<input name="last_name" style="width:120px !important"  id="last_name" size="15" maxlength="25" type="text" placeholder="{$MOD.LBL_LAST_NAME|replace:\':\':\'\'}" value="{$fields.last_name.value}">&nbsp;<input name="first_name" placeholder="{$MOD.LBL_FIRST_NAME|replace:\':\':\'\'}" style="width:120px !important"  id="first_name" size="15" maxlength="25" type="text" value="{$fields.first_name.value}">',
-             
+            'name' => 'name',
+            'customLabel' => '{$MOD.LBL_NAME} <span class="required">*</span>',
+            'customCode' => '<table width="100%" style="padding:0px!important;width: 300px;">
+                        <tbody><tr>
+                        <td style="padding: 0px !important;" width = "60%"><input name="last_name" id="last_name" placeholder="{$MOD.LBL_LAST_NAME|replace:\':\':\'\'}" style="margin-right: 3px;" size="20" type="text"  value="{$fields.last_name.value}"></td>
+                        <td style="padding: 0px !important;" width="40%"><input name="first_name" id="first_name" placeholder="{$MOD.LBL_FIRST_NAME|replace:\':\':\'\'}" style="width:120px !important; margin-right: 3px;" size="15" type="text" value="{$fields.first_name.value}"></td>
+                        </tr>
+                        <tr><td colspan="2"><span style=" color: #A99A9A; font-style: italic;"> Bùi Vũ Thanh An | Họ: Bùi Vũ Thanh - Tên:  An </span></td></tr>
+                        </tbody>
+                        </table><div id = "dialogDuplicationLocated"></div>',
           ),
-          1 => 
+          1 =>
           array (
-            'name' => 'category',
-            'label' => 'LBL_CATEGORY',
-          ),
-        ),
-        1 => 
-        array (
-          0 => 'department',
-          1 => 'account_name',
-        ),
-        2 => 
-        array (
-          0 => 'title',
-          1 => 
-          array (
-            'name' => 'tax_code',
-            'label' => 'LBL_TAX_CODE',
+            'name' => 'birthdate',
+            'label' => 'LBL_BIRTHDATE',
           ),
         ),
-        3 => 
+        1 =>
         array (
-          0 => 
+          0 =>
           array (
-            'name' => 'website',
-            'comment' => 'URL of website for the company',
-            'label' => 'LBL_WEBSITE',
+            'name' => 'gender',
+            'label' => 'LBL_GENDER',
+            'displayParams' =>
+            array (
+              'required' => true,
+            ),
           ),
-          1 => 'phone_mobile',
+          1 => 'j_school_prospects_1_name',
         ),
-        4 => 
-        array (
-          0 => 'phone_fax',
-          1 => 'phone_work',
-        ),
-        5 => 
-        array (
-          0 => 
-          array (
-            'name' => 'status',
-            'comment' => 'Status of the target',
-            'label' => 'LBL_STATUS',
-          ),
-          1 => 
-          array (
-            'name' => 'phone_other',
-            'comment' => 'Other phone number for the contact',
-            'label' => 'LBL_OTHER_PHONE',
-          ),
-        ),
-        6 => 
+        2 =>
         array (
           0 => 'email1',
-          1 => 
-          array (
-            'name' => 'description',
-            'label' => 'LBL_DESCRIPTION',
-            'customCode' => '<textarea id="description" name="description" rows="4" cols="60" title="{$MOD.LBL_DESCRIPTION}" value={$fields.description.value} tabindex="0" db-data=""></textarea>',
-          ),
-        ),
-        7 => 
-        array (
-          0 => 
-          array (
-            'name' => 'dob_day',
-            'vname' => 'LBL_BIRTHDAY',
-            'type' => 'Dob',
-          ),
-          1 => 'do_not_call',
-        ),
-        8 => 
-        array (
-          0 => 
+          1 =>
           array (
             'name' => 'primary_address_street',
             'hideLabel' => true,
             'type' => 'address',
-            'displayParams' => 
+            'displayParams' =>
             array (
               'key' => 'primary',
               'rows' => 2,
@@ -133,31 +89,81 @@ array (
               'maxlength' => 150,
             ),
           ),
-          1 => 
+        ),
+        3 =>
+        array (
+          0 => 'phone_mobile',
+          1 => 'facebook',
+        ),
+        4 =>
+        array (
+          0 =>
           array (
-            'name' => 'alt_address_street',
-            'hideLabel' => true,
-            'type' => 'address',
-            'displayParams' => 
-            array (
-              'key' => 'alt',
-              'copy' => 'primary',
-              'rows' => 2,
-              'cols' => 30,
-              'maxlength' => 150,
-            ),
+            'name' => 'guardian_name',
+            'label' => 'LBL_GUARDIAN_NAME',
+          ),
+          1 =>
+          array (
+            'name' => 'other_mobile',
+            'label' => 'LBL_OTHER_MOBILE',
           ),
         ),
       ),
-      'LBL_PANEL_ASSIGNMENT' => 
+      'LBL_PANEL_ASSIGNMENT' =>
       array (
-        0 => 
+        0 =>
         array (
-          0 => 'assigned_user_name',
-          1 => 
+          0 =>
+          array (
+            'name' => 'lead_source',
+            'label' => 'LBL_LEAD_SOURCE',
+            'customCode' => '{$lead_source}',
+          ),
+          1 =>
+          array (
+            'name' => 'status',
+            'comment' => 'Status of the target',
+            'label' => 'LBL_STATUS',
+            'customCode' => '{$STATUS}',
+          ),
+        ),
+        1 =>
+        array (
+          0 =>
+          array (
+            'name' => 'lead_source_description',
+            'studio' => 'visible',
+            'label' => 'LBL_SOURCE_DESCRIPTION',
+          ),
+          1 =>
+          array (
+            'name' => 'potential',
+            'studio' => 'visible',
+            'label' => 'LBL_POTENTIAL',
+          ),
+        ),
+        2 =>
+        array (
+          0 =>
+          array (
+            'name' => 'campaign_name',
+            'label' => 'LBL_CAMPAIGN',
+          ),
+        ),
+        3 =>
+        array (
+          0 =>
+          array (
+            'name' => 'assigned_user_name',
+            'displayParams' =>
+            array (
+              'required' => true,
+            ),
+          ),
+          1 =>
           array (
             'name' => 'team_name',
-            'displayParams' => 
+            'displayParams' =>
             array (
               'required' => true,
             ),

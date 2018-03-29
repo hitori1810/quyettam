@@ -153,7 +153,7 @@ class TaxRate extends SugarBean {
 			while (($row = $this->db->fetchByAssoc($result)) != null){
 			//while ($row = $this->db->fetchByAssoc($result)) {
 				$js .= "    case '".$row['id']."': \n";
-				$value = $row['value'] / 100;
+                $value = $row['value'] / 100;
 				$js .= "      return ".$value."; \n";
 			}
 		//}

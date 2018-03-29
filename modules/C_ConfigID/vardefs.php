@@ -14,7 +14,7 @@
 
 $dictionary['C_ConfigID'] = array(
 	'table'=>'c_configid',
-	'audited'=>true,
+	'audited'=>false,
 		'duplicate_merge'=>true,
 		'fields'=>array (
   'name' => 
