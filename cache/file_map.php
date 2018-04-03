@@ -1,5 +1,5 @@
 <?php
-// created: 2018-03-29 10:01:58
+// created: 2018-03-30 14:51:12
 $existing_files = array (
   '.git' => 
   array (
@@ -2423,6 +2423,11 @@ $existing_files = array (
           'time.js' => 1,
         ),
         'DCBoxFix.js' => 1,
+        'DynamicTable' => 
+        array (
+          'DynamicTable.css' => 1,
+          'DynamicTable.js' => 1,
+        ),
         'fonts' => 
         array (
         ),
@@ -6289,6 +6294,10 @@ $existing_files = array (
       ),
       'J_Payment' => 
       array (
+        'css' => 
+        array (
+          'EditView.css' => 1,
+        ),
         'Ext' => 
         array (
           'Language' => 
@@ -6309,6 +6318,10 @@ $existing_files = array (
             'wireless.subpaneldefs.ext.php' => 1,
           ),
         ),
+        'js' => 
+        array (
+          'EditView.js' => 1,
+        ),
         'language' => 
         array (
           'en_us.lang.php' => 1,
@@ -6317,7 +6330,18 @@ $existing_files = array (
         array (
           'detailviewdefs.php' => 1,
           'editviewdefs.php' => 1,
+          'listviewdefs.php' => 1,
         ),
+        'tpls' => 
+        array (
+          'PaymentDetail.tpl' => 1,
+          'PaymentDetailRow.tpl' => 1,
+        ),
+        'views' => 
+        array (
+          'view.edit.php' => 1,
+        ),
+        'logic_hooks.php' => 1,
       ),
       'J_PaymentDetail' => 
       array (
@@ -6929,6 +6953,15 @@ $existing_files = array (
           'en_us.lang.php' => 1,
           'vn_vn.lang.php' => 1,
         ),
+        'metadata' => 
+        array (
+          'detailviewdefs.php' => 1,
+          'editviewdefs.php' => 1,
+          'listviewdefs.php' => 1,
+          'searchdefs.php' => 1,
+          'SearchFields.php' => 1,
+        ),
+        'logic_hooks.php' => 1,
       ),
       'ProductTemplates' => 
       array (

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.11, created on 2018-03-29 10:02:06
+<?php /* Smarty version 2.6.11, created on 2018-03-30 10:33:15
          compiled from themes/RacerX/tpls/footer.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'addslashes', 'themes/RacerX/tpls/footer.tpl', 56, false),)), $this); ?>

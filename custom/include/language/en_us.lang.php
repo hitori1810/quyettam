@@ -1518,3 +1518,5 @@ $app_list_strings['moduleListSingular']['J_Payment']='Payment';
 $app_list_strings['record_type_display']['Contacts']='Contact';
 $app_list_strings['parent_type_display']['Contacts']='Contact';
 $app_list_strings['record_type_display_notes']['Contacts']='Contact';
+$app_strings['BTN_ADD_TITLE'] = 'Add';
+$app_strings['BTN_REMOVE_TITLE'] = 'Remove';

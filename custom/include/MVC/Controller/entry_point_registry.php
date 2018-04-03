@@ -16,17 +16,10 @@ $entry_point_registry['getCallStatus'] = array('file' => 'custom/modules/Asteris
 
     $entry_point_registry['SendingData'] = array('file' => 'custom/include/utils/SendingData.php' , 'auth' => '0');
     $entry_point_registry['quickEditAdmin'] = array('file' => 'custom/include/utils/quickEditAdmin.php' , 'auth' => '1');
-
-//    $entry_point_registry['class_junior'] = array('file' => 'custom/modules/J_Class/handleCron.php' , 'auth' => '0');             //Đã chuyển nhà vào Scheduler - Ko xài Entrypoint vì lý do bảo mật
-//    $entry_point_registry['payment_junior'] = array('file' => 'custom/modules/J_Payment/handleCron.php' , 'auth' => '0');
-//    $entry_point_registry['student_junior'] = array('file' => 'custom/modules/Contacts/handleCron.php' , 'auth' => '0');
-
-//    $entry_point_registry['SMS_birthdate'] = array('file' => 'custom/modules/C_SMS/cron_happy_birthday.php' , 'auth' => '0');
-//    $entry_point_registry['SMS_remind_payment'] = array('file' => 'custom/modules/C_SMS/cron_remind_payment.php' , 'auth' => '0');
-//    $entry_point_registry['lead_import_portal'] = array('file' => 'custom/modules/Leads/lead_import_portal.php' , 'auth' => '0');
-
+                
     $entry_point_registry['GetJSLanguage'] = array('file' => 'custom/include/utils/GetJSLanguage.php' , 'auth' => false);
-//    $entry_point_registry['updateStatusContacts'] = array('file' => 'custom/modules/Contacts/updateStatusStudents.php' , 'auth' => false);
+
     $entry_point_registry['getAvatar'] = array('file' => 'getAvatar.php', 'auth' => false);
     $entry_point_registry['api'] = array('file' => 'api/api.php', 'auth' => false);
+    $entry_point_registry['downloadExportFile'] = array('file' => 'custom/uploads/exportExcel/downloadExportFile.php', 'auth' => false);
 ?>

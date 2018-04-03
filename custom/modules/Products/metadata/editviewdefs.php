@@ -1,0 +1,73 @@
+<?php
+$viewdefs['Products'] = 
+array (
+    'EditView' => 
+    array (
+        'templateMeta' => 
+        array (
+            'maxColumns' => '2',
+            'widths' => 
+            array (
+                0 => 
+                array (
+                    'label' => '10',
+                    'field' => '30',
+                ),
+                1 => 
+                array (
+                    'label' => '10',
+                    'field' => '30',
+                ),
+            ),
+            'javascript' => '{sugar_getscript file="cache/include/javascript/sugar_grp_jsolait.js"}
+            {sugar_getscript file="modules/Products/EditView.js"}',
+            'useTabs' => false,
+            'tabDefs' => 
+            array (
+                'LBL_EDITVIEW_PANEL2' => 
+                array (
+                    'newTab' => false,
+                    'panelDefault' => 'expanded',
+                ),
+            ),
+            'syncDetailEditViews' => false,
+        ),
+        'panels' => 
+        array (
+            'lbl_editview_panel2' => 
+            array (
+                0 => 
+                array (
+                    0 => 
+                    array (
+                        'name' => 'code',
+                        'label' => 'LBL_CODE',
+                        'customCode' => '{$fields.code.value}'
+                    ),
+                    1 => '',
+                ),
+                1 => 
+                array (
+                    0 => 
+                    array (
+                        'name' => 'name',
+                    ),
+                    1 => '',
+                ),
+                2 => 
+                array (
+                    0 => 
+                    array (
+                        'name' => 'unit_cost',
+                        'label' => 'LBL_UNIT_COST',
+                    ),
+                    1 => 
+                    array (
+                        'name' => 'unit',
+                        'label' => 'LBL_UNIT',
+                    ), 
+                ),
+            ),
+        ),
+    ),
+);

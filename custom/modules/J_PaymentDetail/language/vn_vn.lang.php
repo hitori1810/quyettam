@@ -1,0 +1,27 @@
+<?php
+// created: 2018-03-12 01:03:11
+$mod_strings = array (
+  'LNK_NEW_RECORD' => 'Tạo mới',
+  'LNK_LIST' => 'Xem danh sách',
+  'LBL_MODULE_NAME' => 'Chi tiết thanh toán',
+  'LBL_NEW_FORM_TITLE' => 'Tạo mới Chi tiết thanh toán',
+  'LNK_IMPORT_J_PAYMENTDETAIL' => 'Import Chi tiết thanh toán',
+  'LBL_LIST_FORM_TITLE' => 'Danh sách Chi tiết thanh toán',
+  'LBL_SEARCH_FORM_TITLE' => 'Tìm Chi tiết thanh toán',
+  'LBL_HOMEPAGE_TITLE' => 'Chi tiết thanh toán của tôi',
+  'LBL_EDITVIEW_PANEL1' => 'New Panel 1',
+  'LBL_PAYMENT_AMOUNT' => 'Tổng tiền thu',
+  'LBL_CUSTOM_BUTTON' => '',
+  'LBL_PRINTED_DATE' => 'Ngày in',
+  'LBL_STATUS' => 'Trạng thái',
+  'LBL_TYPE' => 'Loại',
+  'LBL_PAYMENT_DATE' => 'Ngày phiếu thu',
+  'LBL_PAYMENT_NO' => 'No.',
+  'LBL_INVOICE_NUMBER' => 'VAT No.',
+  'LBL_IS_RELEASE' => 'Is Release',
+  'LBL_CARD_TYPE' => 'Loại Card/Bank',
+  'LBL_IS_DISCOUNT' => 'Hiển thị thông tin Discount ?',
+  'LBL_CONTRACT_NAME' => 'Hợp đồng',
+  'LBL_PAYMENT_NAME' => 'Thanh toán',
+  'LBL_STUDENT_NAME' => 'Học viên',
+);

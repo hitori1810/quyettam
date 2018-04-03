@@ -1,5 +1,5 @@
 <?php
-// created: 2018-03-29 16:49:26
+// created: 2018-04-03 15:18:42
 $mod_strings = array (
   'LBL_MODULE_NAME' => 'Products',
   'LBL_MODULE_NAME_SINGULAR' => 'Product',
@@ -112,6 +112,10 @@ $mod_strings = array (
   'LBL_DATE_CLOSED_TIMESTAMP' => 'Expected Close Date Timestamp',
   'LBL_COMMIT_STAGE' => 'Commit Stage',
   'LBL_PROBABILITY' => 'Probability (%)',
+  'LBL_CODE' => 'Cost',
+  'LBL_UNIT' => 'Unit',
+  'LBL_UNIT_COST' => 'Unit Cost',
   'LBL_OPPORTUNITIES' => 'Enrollments',
   'LBL_ACCOUNT' => 'Corporate',
+  'LBL_EDITVIEW_PANEL2' => 'General',
 );

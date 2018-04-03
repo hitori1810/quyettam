@@ -1,0 +1,99 @@
+<?php
+$module_name = 'C_BookingTicket';
+$listViewDefs[$module_name] = 
+array (
+  'internal_doc_id' => 
+  array (
+    'width' => '10%',
+    'label' => 'LBL_INTERNAL_DOC_ID',
+    'default' => true,
+    'link' => true,
+  ),
+  'status' => 
+  array (
+    'type' => 'enum',
+    'studio' => 'visible',
+    'label' => 'LBL_STATUS',
+    'width' => '10%',
+    'default' => true,
+    'link' => true,
+  ),
+  'parent_name' => 
+  array (
+    'type' => 'parent',
+    'studio' => 'visible',
+    'label' => 'LBL_PARENT_NAME',
+    'link' => true,
+    'sortable' => false,
+    'ACLTag' => 'PARENT',
+    'dynamic_module' => 'PARENT_TYPE',
+    'id' => 'PARENT_ID',
+    'related_fields' => 
+    array (
+      0 => 'parent_id',
+      1 => 'parent_type',
+    ),
+    'width' => '15%',
+    'default' => true,
+    'customCode' => '<a href="index.php?module=C_BookingTicket&return_module=C_BookingTicket&action=DetailView&record={$ID}">{$PARENT_NAME}&nbsp;</a>',
+  ),
+  'booking_date' => 
+  array (
+    'type' => 'date',
+    'label' => 'LBL_BOOKING_DATE',
+    'width' => '10%',
+    'default' => true,
+    'sort_order' => 'desc',
+  ),
+  'total_amount' => 
+  array (
+    'type' => 'currency',
+    'label' => 'LBL_TOTAL_AMOUNT',
+    'currency_format' => true,
+    'width' => '10%',
+    'default' => true,
+  ),
+  'assigned_user_name' => 
+  array (
+    'width' => '9%',
+    'label' => 'LBL_ASSIGNED_TO_NAME',
+    'module' => 'Employees',
+    'id' => 'ASSIGNED_USER_ID',
+    'default' => true,
+  ),
+  'team_name' => 
+  array (
+    'width' => '10%',
+    'label' => 'LBL_TEAM',
+    'default' => true,
+  ),
+  'date_modified' => 
+  array (
+    'type' => 'datetime',
+    'studio' => 
+    array (
+      'portaleditview' => false,
+    ),
+    'label' => 'LBL_DATE_MODIFIED',
+    'width' => '10%',
+    'default' => true,
+  ),
+  'user_sale' => 
+  array (
+    'type' => 'varchar',
+    'link' => true,
+    'label' => 'LBL_USER_SALE',
+    'id' => 'USER_SALE_ID',
+    'width' => '10%',
+    'default' => false,
+  ),
+  'created_by_name' => 
+  array (
+    'type' => 'relate',
+    'link' => true,
+    'label' => 'LBL_CREATED',
+    'id' => 'CREATED_BY',
+    'width' => '10%',
+    'default' => false,
+  ),
+);

@@ -1,0 +1,216 @@
+<?php
+$module_name = 'C_Ticket';
+$viewdefs[$module_name] = 
+array (
+  'EditView' => 
+  array (
+    'templateMeta' => 
+    array (
+      'form' => 
+      array (
+        'hideAudit' => true,
+        'buttons' => 
+        array (
+        ),
+      ),
+      'maxColumns' => '2',
+      'widths' => 
+      array (
+        0 => 
+        array (
+          'label' => '10',
+          'field' => '30',
+        ),
+        1 => 
+        array (
+          'label' => '10',
+          'field' => '30',
+        ),
+      ),
+      'javascript' => '       
+                {sugar_getscript file="custom/modules/C_Ticket/js/editview.js"}',
+      'useTabs' => false,
+      'tabDefs' => 
+      array (
+        'DEFAULT' => 
+        array (
+          'newTab' => false,
+          'panelDefault' => 'expanded',
+        ),
+      ),
+      'syncDetailEditViews' => false,
+    ),
+    'panels' => 
+    array (
+      'default' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            'name' => 'refund_code',
+            'label' => 'LBL_REFUND_CODE',
+            'customCode' => '{$REFUND_CODE}',
+          ),
+          1 => 
+          array (
+            'name' => 'refund_date',
+            'label' => 'LBL_REFUND_DATE',
+          ),
+        ),
+        1 => 
+        array (
+          0 => 
+          array (
+            'name' => 'name',
+            'label' => 'LBL_TICKET_NUMBER',
+            'customCode' => '<input type="text" name="name" id="name" size="30" maxlength="100" value="{$fields.name.value}" title="{$MOD.LBL_TICKET_NUMBER}" style="font-weight: bold; color: rgb(165, 42, 42); background-color: rgb(221, 221, 221);" readonly>',
+          ),
+          1 => 
+          array (
+            'name' => 'pax_name',
+            'label' => 'LBL_PAX_NAME',
+            'customCode' => '<input type="text" name="pax_name" id="pax_name" size="30" maxlength="255" value="{$fields.pax_name.value}" title="{$MOD.LBL_PAX_NAME}" style="font-weight: bold; color: rgb(165, 42, 42); background-color: rgb(221, 221, 221);" readonly>',
+          ),
+        ),
+        2 => 
+        array (
+          0 => 
+          array (
+            'name' => 'routing',
+            'label' => 'LBL_ROUTING',
+          ),
+          1 => 
+          array (
+            'name' => 'tour',
+            'label' => 'LBL_TOUR',
+            'customCode' => '<input type="text" name="tour" id="tour" size="30" maxlength="255" value="{$fields.tour.value}" title="{$MOD.LBL_TOUR}" style="font-weight: bold; color: rgb(165, 42, 42);  background-color: rgb(221, 221, 221);" readonly>',
+          ),
+        ),
+        3 => 
+        array (
+          0 => 
+          array (
+            'name' => 'gateway',
+            'label' => 'LBL_GATEWAY',
+            'customCode' => '<input type="text" name="gateway" id="gateway" size="30" maxlength="255" value="{$fields.gateway.value}" title="{$MOD.LBL_GATEWAY}" style="font-weight: bold; color: rgb(165, 42, 42);  background-color: rgb(221, 221, 221);" readonly>',
+          ),
+          1 => 
+          array (
+            'name' => 'class',
+            'label' => 'LBL_CLASS',
+            'customCode' => '<input type="text" name="class" id="class" size="30" maxlength="255" value="{$fields.class.value}" title="{$MOD.LBL_CLASS}" style="font-weight: bold; color: rgb(165, 42, 42);  background-color: rgb(221, 221, 221);" readonly>',
+          ),
+        ),
+        4 => 
+        array (
+          0 => 
+          array (
+            'name' => 'public_fare',
+            'label' => 'LBL_PUBLIC_FARE',
+            'customCode' => '<input class="currency" type="text" name="public_fare" id="public_fare" size="30" maxlength="26" value="{sugar_number_format var=$fields.public_fare.value}" title="{$MOD.LBL_PUBLIC_FARE}" tabindex="0"  style="font-weight: bold; color: rgb(165, 42, 42); text-align: right; background-color: rgb(221, 221, 221);" readonly>',
+          ),
+          1 => 
+          array (
+            'name' => 'market_fare',
+            'label' => 'LBL_MARKET_FARE',
+            'customCode' => '<input class="currency" type="text" name="market_fare" id="market_fare" size="30" maxlength="26" value="{sugar_number_format var=$fields.market_fare.value}" title="{$MOD.LBL_MARKET_FARE}" tabindex="0"  style="font-weight: bold; color: rgb(165, 42, 42); text-align: right; background-color: rgb(221, 221, 221);" readonly>',
+          ),
+        ),
+        5 => 
+        array (
+          0 => 
+          array (
+            'name' => 'commission',
+            'label' => 'LBL_COMMISSION',
+            'customCode' => '<input class="currency" type="text" name="commission" id="commission" size="30" maxlength="26" value="{sugar_number_format var=$fields.commission.value}" title="{$MOD.LBL_COMMISSION}" tabindex="0"  style="font-weight: bold; color: rgb(165, 42, 42); text-align: right; background-color: rgb(221, 221, 221);" readonly>',
+          ),
+          1 => 
+          array (
+            'name' => 'discount',
+            'label' => 'LBL_DISCOUNT',
+            'customCode' => '<input class="currency" type="text" name="discount" id="discount" size="30" maxlength="26" value="{sugar_number_format var=$fields.discount.value}" title="{$MOD.LBL_DISCOUNT}" tabindex="0"  style="font-weight: bold; color: rgb(165, 42, 42); text-align: right; background-color: rgb(221, 221, 221);" readonly>',
+          ),
+        ),
+        6 => 
+        array (
+          0 => 
+          array (
+            'name' => 'airport_tax',
+            'label' => 'LBL_AIRPORT_TAX',
+            'customCode' => '<input class="currency" type="text" name="airport_tax" id="airport_tax" size="30" maxlength="26" value="{sugar_number_format var=$fields.airport_tax.value}" title="{$MOD.LBL_AIRPORT_TAX}" tabindex="0"  style="font-weight: bold; color: rgb(165, 42, 42); text-align: right; background-color: rgb(221, 221, 221);" readonly>',
+          ),
+          1 => 
+          array (
+            'name' => 'service_charge',
+            'label' => 'LBL_SERVICE_CHARGE',
+            'customCode' => '<input class="currency" type="text" name="service_charge" id="service_charge" size="30" maxlength="26" value="{sugar_number_format var=$fields.service_charge.value}" title="{$MOD.LBL_SERVICE_CHARGE}" tabindex="0"  style="font-weight: bold; color: rgb(165, 42, 42); text-align: right; background-color: rgb(221, 221, 221);" readonly>',
+          ),
+        ),
+        7 => 
+        array (
+          0 => 
+          array (
+            'name' => 'payable',
+            'label' => 'LBL_PAID_AIRLINE',
+            'customCode' => '<input class="currency" type="text" name="payable" id="payable" size="30" maxlength="26" value="{sugar_number_format var=$fields.payable.value}" title="{$MOD.LBL_PAID_AIRLINE}" tabindex="0"  style="font-weight: bold; color: rgb(165, 42, 42); text-align: right; background-color: rgb(221, 221, 221);" readonly>',
+          ),
+          1 => 
+          array (
+            'name' => 'receivable',
+            'label' => 'LBL_RECEIVED_CLIENT',
+            'customCode' => '<input class="currency" type="text" name="receivable" id="receivable" size="30" maxlength="26" value="{sugar_number_format var=$fields.receivable.value}" title="{$MOD.LBL_RECEIVED_CLIENT}" tabindex="0"  style="font-weight: bold; color: rgb(165, 42, 42); text-align: right; background-color: rgb(221, 221, 221);" readonly>',
+          ),
+        ),
+        8 => 
+        array (
+          0 => 
+          array (
+            'name' => 'refund_fee_airline',
+            'label' => 'LBL_REFUND_FEE_AIRLINE',
+          ),
+          1 => 
+          array (
+            'name' => 'refund_fee',
+            'label' => 'LBL_REFUND_FEE',
+          ),
+        ),
+        9 => 
+        array (
+          0 => 
+          array (
+            'name' => 'airline_repay',
+            'label' => 'LBL_AIRLINE_REPAY',
+            'customCode' => '<input class="currency" type="text" name="airline_repay" id="airline_repay" size="30" maxlength="26" value="{sugar_number_format var=$fields.airline_repay.value}" title="{$MOD.LBL_AIRLINE_REPAY}" tabindex="0"  style="font-weight: bold; color: rgb(165, 42, 42); text-align: right; background-color: rgb(221, 221, 221);" readonly>',
+          ),
+          1 => 
+          array (
+            'name' => 'repay_client',
+            'label' => 'LBL_REPAY_CLIENT',
+            'customCode' => '<input class="currency" type="text" name="repay_client" id="repay_client" size="30" maxlength="26" value="{sugar_number_format var=$fields.repay_client.value}" title="{$MOD.LBL_REPAY_CLIENT}" tabindex="0"  style="font-weight: bold; color: rgb(165, 42, 42); text-align: right; background-color: rgb(221, 221, 221);" readonly>',
+          ),
+        ),
+        10 => 
+        array (
+          0 => 
+          array (
+            'name' => 'refunded',
+            'label' => 'LBL_REFUNDED',
+          ),
+        ),
+        11 => 
+        array (
+          0 => 
+          array (
+            'name' => 'description',
+            'customCode' => '<textarea id="description" name="description" rows="4" cols="60" title="Description" tabindex="0">{$fields.description.value}</textarea>',
+          ),
+          1 => 'assigned_user_name',
+        ),
+        12 => 
+        array (
+        ),
+      ),
+    ),
+  ),
+);

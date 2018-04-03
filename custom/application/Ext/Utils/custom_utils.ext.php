@@ -165,6 +165,52 @@ function checkDataLockDate($input_date_time){
 
 }
 
+//Add by Tung Bui - get grade option for vardef
+function getProductForVardef()
+{
+    $sql = "SELECT id, name
+    FROM products
+    WHERE deleted <> 1
+    ORDER BY code";
+    $result = $GLOBALS['db']->query($sql);
+    $dataArr = array("" => "");
+    while ($row = $GLOBALS['db']->fetchByAssoc($result)) {
+        $dataArr[$row['id']] = $row['name'];
+    }
+
+    return $dataArr;
+}
+//Add by Tung Bui - get grade option for vardef
+function getCustomerForVardef()
+{
+    $sql = "SELECT id, first_name
+    FROM contacts
+    WHERE deleted <> 1
+    ORDER BY first_name";
+    $result = $GLOBALS['db']->query($sql);
+    $dataArr = array("" => "");
+    while ($row = $GLOBALS['db']->fetchByAssoc($result)) {
+        $dataArr[$row['id']] = $row['first_name'];
+    }
+
+    return $dataArr;
+}
+//Add by Tung Bui - get grade option for vardef
+function getPaymentForVardef()
+{
+    $sql = "SELECT id, name
+    FROM j_payments
+    WHERE deleted <> 1
+    ORDER BY name";
+    $result = $GLOBALS['db']->query($sql);
+    $dataArr = array("" => "");
+    while ($row = $GLOBALS['db']->fetchByAssoc($result)) {
+        $dataArr[$row['id']] = $row['name'];
+    }
+
+    return $dataArr;
+}
+
     function getTeacher(){
         $options = array();
         $sql  = "SELECT id,full_teacher_name FROM c_teachers WHERE deleted = 0";

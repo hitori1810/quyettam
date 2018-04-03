@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.11, created on 2018-03-29 10:02:13
+<?php /* Smarty version 2.6.11, created on 2018-03-30 10:33:17
          compiled from themes/RacerX/tpls/_globalLinks.tpl */ ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "themes/OnlineCRM-Blue/tpls/_globalLinks.tpl", 'smarty_include_vars' => array()));

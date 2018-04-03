@@ -1,0 +1,352 @@
+
+.stickytooltip{
+    box-shadow: 5px 5px 8px #818181; /*shadow for CSS3 capable browsers.*/
+    -webkit-box-shadow: 5px 5px 8px #818181;
+    -moz-box-shadow: 5px 5px 8px #818181;
+    display:none;
+    position:absolute;
+    display:none;
+    border:5px solid black; /*Border around tooltip*/
+    background:white;
+    z-index:3000;
+}
+
+
+.stickytooltip .stickystatus{ /*Style for footer bar within tooltip*/
+    background:black;
+    color:white;
+    padding-top:5px;
+    text-align:center;
+    font:bold 11px Arial;
+}
+
+
+#tooltip {
+    position:absolute;
+    z-index:9999;
+    color:#000;
+    font-size:10px;
+    width:700px;
+
+}
+
+/*#tooltip .tipHeader {
+height:2px;
+width:600px; 
+background:url(images/tipHeader.gif) no-repeat;
+}*/
+
+
+#tooltip .tipBody {
+    background-color:#FFFFFF;
+    padding:5px 5px 5px 15px;
+    border: 1px solid;
+    border-color: red;
+    font-size: 12pt !important;
+    border-collapse: collapse;
+    border-radius:3px;
+}
+
+/*#tooltip .tipFooter {
+height:2px;
+width:600px; 
+background:url(images/tipFooter.gif) no-repeat;
+}*/
+
+/* end tooltip */
+
+.new{
+    color :lime !important;
+    font-weight: bold;
+}
+
+.lead_source{
+    color :orange !important;
+    font-weight: bold;
+}
+
+.in_process{
+    color :red !important;
+    font-weight: bold;
+}
+
+.dead{
+    color :black !important;
+    font-weight: bold;
+}
+
+.converted{
+    color :blue !important;
+    font-weight: bold; 
+}
+
+.recycled{
+    color :#FF6600 !important;
+    font-weight: bold; 
+}
+  
+#divNotification{
+    background:#777;
+    border:1px solid #ccc;
+    width:200px;
+    height:100px;
+    position: fixed;
+    bottom:100px;
+    left: 150px;
+    border-radius: 3px;
+    transition: bottom 1s ease-out;
+    -moz-transition:bottom 1s ease-out;
+    -webkit-transition:bottom 1s ease-out;
+}
+#divNotification #toggleClose{
+    display:block;
+    position:absolute;
+    top:0px;
+    right: 0;
+   /* width:50px;
+    height:30px;*/
+
+}
+.divNotificationhide{
+    bottom:-50px !important;
+}
+div#divNotification div#dataList{
+    height: 170px;
+    overflow: auto !important;
+}
+
+
+/* Custom Subpanel: make the extra lines separated from the first line */
+#groupTabs li {
+    margin-bottom: 12px !important;
+}
+
+/* Duplication table */
+.duplicationStatus, .helpTextButton {
+    display: inline-table;
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    margin-right: 3px;
+    background-position: center center fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    -o-background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+}
+
+.duplicationStatus.loading {
+    background-image: url('../../../themes/default/images/img_loading.gif');
+}
+
+.duplicationStatus.duplicated {
+    background-image: url('../../../themes/RacerX/images/icon_caution.gif');
+}
+
+.duplicationStatus.verified {
+    background-image: url('../../../themes/RacerX/images/icon_verified.gif');
+}
+
+#dialogDuplication {
+    border: 1px solid #AFAFAE;
+    margin-top: 5px;
+    display: none;  
+}
+
+#dialogDuplication #dialogTitle {
+    background-image: -webkit-gradient( linear, left top, left bottom, color-stop(0, #ffffff), color-stop(.02, #eeeeee), color-stop(1, #dfdfdf) );   
+    font-size: 14px;
+    color: red;
+    padding-top: 4px;
+    text-shadow: 0px 1px #fff;
+    padding: 5px;
+}
+
+#dialogDuplication #dialogTitle #btnCloseDialog {
+    background: url('../../../themes/RacerX/images/dashlet-header-close.png');
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    float: right;
+    margin-top: -3px;
+    margin-right: -5px;
+    cursor: pointer;   
+}
+
+#dialogDuplication #criteria {
+    padding: 5px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#dialogDuplication #dialogContent table {
+    width: 100%;
+}
+
+.helpTextButton {
+    background-image: url('../../../themes/RacerX/images/help-dashlet.png');
+    cursor: pointer;
+}
+
+.highlight_blue {
+    background:#115CAB;
+    color: #fff !important;
+    border-radius:5px;
+    padding:2px 5px 2px 5px;
+    font-weight: bold; 
+}
+
+.highlight_bluelight {
+    background:#04ADEC;
+    color: #fff !important;
+    border-radius:5px;
+    padding:2px 5px 2px 5px;
+    font-weight: bold; 
+}
+
+.highlight_red {
+    background:#A8141B;
+    color: #fff !important;
+    border-radius:5px;
+    padding:2px 5px 2px 5px;
+    font-weight: bold; 
+}
+
+.highlight_redlight {
+    background:#FF0000;
+    color: #fff !important;
+    border-radius:5px;
+    padding:2px 5px 2px 5px;
+    font-weight: bold; 
+}
+
+.highlight_black {
+    background:#272727;
+    color: #fff !important;
+    border-radius:5px;
+    padding:2px 5px 2px 5px;
+    font-weight: bold; 
+}
+
+.highlight_yellow {
+    background:#F1D44A;
+    color: #fff !important;
+    border-radius:5px;
+    padding:2px 5px 2px 5px;
+    font-weight: bold; 
+}
+
+.highlight_yellowlight {
+    background:#e8b71a;
+    color: #fff !important;
+    border-radius:5px;
+    padding:2px 5px 2px 5px;
+    font-weight: bold; 
+}
+
+.highlight_green {
+    background:#468931;
+    color: #fff !important;
+    border-radius:5px;
+    padding:2px 5px 2px 5px;
+    font-weight: bold; 
+}
+
+.highlight_violet {
+    background:#aa68ff;
+    color: #fff !important;
+    border-radius:5px;
+    padding:2px 5px 2px 5px;
+    font-weight: bold; 
+}
+
+.highlight_orange {
+    background:#FF8C00;
+    color: #fff !important;
+    border-radius:5px;
+    padding:2px 5px 2px 5px;
+    font-weight: bold; 
+}
+
+.highlight_crimson {
+    background:#DC143C;
+    color: #fff !important;
+    border-radius:5px;
+    padding:2px 5px 2px 5px;
+    font-weight: bold; 
+}
+
+.highlight_blood {
+    background:#db3340;
+    color: #fff !important;
+    border-radius:5px;
+    padding:2px 5px 2px 5px;
+    font-weight: bold; 
+}
+
+.highlight_dream {
+    background:#32CD32;
+    color: #fff !important;
+    border-radius:5px;
+    padding:2px 5px 2px 5px;
+    font-weight: bold; 
+}
+
+.highlight_bold {
+    font-weight: bold; 
+}
+
+.highlight_bolditalic {
+    font-weight: bold; 
+    font-style: italic;
+}
+
+.highlight_boldunderline {
+    font-weight: bold;
+    text-decoration: underline; 
+}
+
+.highlight_italic {
+    font-style: italic; 
+}
+
+.highlight_underline {
+    text-decoration: underline; 
+}
+
+.highlight_greencolor {
+    color: green !important; 
+}
+
+.highlight_bluecolor {
+    color: blue !important; 
+}
+
+.highlight_redcolor {
+    color: red !important; 
+}
+
+.highlight_violetcolor {
+    color: violet !important; 
+}
+
+.highlight_yellowcolor {
+    color: yellow !important; 
+}
+
+.highlight_orangecolor {
+    color: orange !important; 
+}
+
+.highlight_browncolor {
+    color: brown !important; 
+}
+
+.firstLetterCapital {
+    display: inline-block !important;    
+}
+
+.firstLetterCapital:first-letter {
+    text-transform: uppercase !important;
+}
