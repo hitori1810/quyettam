@@ -147,11 +147,14 @@
         $('#img_loading').show();
         $('.cover').show();
         $('#div_response').html('');
+        var url = window.location.href;
+        url = url.replace("api/call.php", "?entryPoint=api");
+        
         $.ajax({
             type: "POST",
-            url: "api.php",
+            url: url,
             data: data,
-            beforeSend: function(xhr){xhr.setRequestHeader('Token', token);xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');},
+            beforeSend: function(xhr){xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');},
             dataType: "json",
             success: function (response) {  
                 $('#div_response').html('<pre>' + showParameter(response) +'</pre>');

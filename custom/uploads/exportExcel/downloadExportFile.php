@@ -1,10 +1,10 @@
 <?php
 if(!defined('sugarEntry'))define('sugarEntry', true);
 
-chdir(dirname(__FILE__).'/../');                            
+chdir($_SERVER['DOCUMENT_ROOT']);  
 
 require_once('/include/entryPoint.php');
-require_once('custom/include/utils/ApiHelper.php');
+require_once('/custom/include/utils/ApiHelper.php');
 
 require_once("custom/include/PHPExcel/Classes/PHPExcel.php");
 require_once("custom/include/PHPExcel/Classes/PHPExcel/IOFactory.php"); 
@@ -52,31 +52,46 @@ AND p.id = '$id'";
 $result = $GLOBALS['db']->query($sql);
 $returnList = array();
 $data = $GLOBALS['db']->fetchByAssoc($result);
-$payDetail = json_decode(html_entity_decode($data['payment_detail']), true);
-$productOptions = getProductForVardef();                                                                              
+
+$sql = "
+SELECT id                  
+, IFNULL(name, '') name
+, IFNULL(unit, '') unit               
+FROM products
+WHERE deleted <> 1";      
+$result = $GLOBALS['db']->query($sql);
+$productOptions = array();
+while($row = $GLOBALS['db']->fetchByAssoc($result)){        
+    $productOptions[$row['id']] = $row;                                                    
+} 
+
+$payDetail = json_decode(html_entity_decode($data['payment_detail']), true);                                                                                
 $objPHPExcel->setActiveSheetIndex(0);    
 $objPHPExcel->getActiveSheet()->getCell('B7')->setValue("Tên khách hàng: ".$data['customer_name']);
 $currentRow = 10;
 foreach($payDetail as $key => $value){
-    $objPHPExcel->getActiveSheet()->getCell('C'.$currentRow)->setValue($productOptions[$value['product']]);    
-    $objPHPExcel->getActiveSheet()->getCell('E'.$currentRow)->setValue($value['quantity']);    
-    $objPHPExcel->getActiveSheet()->getCell('F'.$currentRow)->setValue($value['unit_cost']);    
-    $objPHPExcel->getActiveSheet()->getCell('G'.$currentRow)->setValue($value['payment_amount']);    
+    $objPHPExcel->getActiveSheet()->getCell('B'.$currentRow)->setValue($productOptions[$value['product']]['name']);    
+    $objPHPExcel->getActiveSheet()->getCell('E'.$currentRow)->setValue($productOptions[$value['product']]['unit']);    
+    $objPHPExcel->getActiveSheet()->getCell('F'.$currentRow)->setValue($value['quantity']);    
+    $objPHPExcel->getActiveSheet()->getCell('G'.$currentRow)->setValue($value['unit_cost']);    
+    $objPHPExcel->getActiveSheet()->getCell('H'.$currentRow)->setValue($value['payment_amount']);    
     $currentRow++;
 }
 
 $int = new Integer();
 $moneyStr = $int->toText(unformat_number($data['payment_amount']));
-$objPHPExcel->getActiveSheet()->getCell('B27')->setValue("Cộng thành tiền (viết bằng chữ): ".$moneyStr);
+$objPHPExcel->getActiveSheet()->getCell('A27')->setValue("Cộng thành tiền (viết bằng chữ): ".$moneyStr);
+
 
 $dateParts = explode("-", $GLOBALS['timedate']->nowDbDate());
 $dateStr = "Ngày ".$dateParts[2]." tháng ".$dateParts[1]." năm ".$dateParts[0];
-$objPHPExcel->getActiveSheet()->getCell('E30')->setValue($dateStr);
+$objPHPExcel->getActiveSheet()->getCell('F29')->setValue($dateStr);
 
 $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
 $section = create_guid_section(6);  
 $filename = 'Payment_'.$section.'.xlsx'; 
 $file = $filename; 
+$objWriter->setPreCalculateFormulas(); 
 $objWriter->save($file);                               
 
 if (file_exists($file)) {

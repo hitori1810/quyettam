@@ -33,7 +33,18 @@
         }
 
         static function parseInput() {
-            $input = $_POST;   
+            $input = $_POST; 
+            
+            if(empty($input)){
+                $json = file_get_contents('php://input');
+                $json = html_entity_decode_utf8($json);
+
+                $input = json_decode($json, true);
+
+                if(!is_array($input)) {
+                    parse_str($json, $input);
+                }
+            } 
                                              
             $input = self::escapeInput($input);
                                            

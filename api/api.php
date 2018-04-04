@@ -3,8 +3,8 @@
                         
     chdir(dirname(__FILE__).'/../');                            
                                             
-    require_once('/include/entryPoint.php');
-    require_once('/custom/include/utils/ApiHelper.php');
+    require_once('./include/entryPoint.php');
+    require_once('./custom/include/utils/ApiHelper.php');
     session_start();    // Session should be started after the declaration
 
     try {                
