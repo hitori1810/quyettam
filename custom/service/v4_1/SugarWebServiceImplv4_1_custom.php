@@ -719,31 +719,11 @@ class SugarWebServiceImplv4_1_custom extends SugarWebServiceImplv4_1
             case 'getUserRoles':
                 $result = getUserRoles($param);
                 return $result;
-                break;
-            case 'getSessionBooking':
-                $result = getSessionBooking($param);
-                return $result;
-                break;
-            case 'getSSOCode':
-                $result = getSSOCode($param);
-                return $result;
-                break;
-            case 'inputBooking':
-                $result = inputBooking($param);
-                return $result;
-                break;
+                break;      
             case 'checkDuplication':
                 $result = checkDuplication($param);
                 return $result;
-                break;
-            case 'cancelBooking':
-                $result = cancelBooking($param);
-                return $result;
-                break;
-            case 'historyBooking':
-                $result = historyBooking($param);
-                return $result;
-                break;
+                break;      
             case 'getPaymentList':
                 $result = getPaymentList($param);
                 return $result;

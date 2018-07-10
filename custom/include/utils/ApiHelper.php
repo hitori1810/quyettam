@@ -256,14 +256,7 @@ class ApiHelper extends RestfulApiHelper {
         WHERE deleted <> 1";
 
         $result = $GLOBALS['db']->query($sql);
-        $returnList = array();
-        $returnList[] = (object) array(
-            'id' => '',
-            'code' => '',
-            'name' => '',
-            'unit' => '',
-            'unit_cost' => '',
-        );
+        $returnList = array();     
         
         while($row = $GLOBALS['db']->fetchByAssoc($result)){        
             $returnList[] = (object) $row;                                                    
