@@ -3,8 +3,8 @@ if(!defined('sugarEntry'))define('sugarEntry', true);
 
 chdir($_SERVER['DOCUMENT_ROOT']);  
 
-require_once('/include/entryPoint.php');
-require_once('/custom/include/utils/ApiHelper.php');
+require_once('include/entryPoint.php');
+require_once('custom/include/utils/ApiHelper.php');
 
 require_once("custom/include/PHPExcel/Classes/PHPExcel.php");
 require_once("custom/include/PHPExcel/Classes/PHPExcel/IOFactory.php"); 
