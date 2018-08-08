@@ -70,7 +70,7 @@ $objPHPExcel->setActiveSheetIndex(0);
 $objPHPExcel->getActiveSheet()->getCell('B7')->setValue("Tên khách hàng: ".$data['customer_name']);
 $currentRow = 10;
 foreach($payDetail as $key => $value){
-    $objPHPExcel->getActiveSheet()->getCell('B'.$currentRow)->setValue($productOptions[$value['product']]['name']);    
+    $objPHPExcel->getActiveSheet()->getCell('C'.$currentRow)->setValue($productOptions[$value['product']]['name']);    
     $objPHPExcel->getActiveSheet()->getCell('E'.$currentRow)->setValue($productOptions[$value['product']]['unit']);    
     $objPHPExcel->getActiveSheet()->getCell('F'.$currentRow)->setValue($value['quantity']);    
     $objPHPExcel->getActiveSheet()->getCell('G'.$currentRow)->setValue($value['unit_cost']);    
@@ -80,12 +80,12 @@ foreach($payDetail as $key => $value){
 
 $int = new Integer();
 $moneyStr = $int->toText(unformat_number($data['payment_amount']));
-$objPHPExcel->getActiveSheet()->getCell('A27')->setValue("Cộng thành tiền (viết bằng chữ): ".$moneyStr);
+$objPHPExcel->getActiveSheet()->getCell('B27')->setValue("Cộng thành tiền (viết bằng chữ): ".$moneyStr);
 
 
 $dateParts = explode("-", $GLOBALS['timedate']->nowDbDate());
 $dateStr = "Ngày ".$dateParts[2]." tháng ".$dateParts[1]." năm ".$dateParts[0];
-$objPHPExcel->getActiveSheet()->getCell('F29')->setValue($dateStr);
+$objPHPExcel->getActiveSheet()->getCell('F30')->setValue($dateStr);
 
 $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
 $section = create_guid_section(6);  
